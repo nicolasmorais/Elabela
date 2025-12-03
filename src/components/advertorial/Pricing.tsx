@@ -53,7 +53,6 @@ export const Pricing = () => {
           Investimento Único de Apenas:
         </p>
         <div className="flex items-baseline justify-center gap-4">
-          <p className="text-3xl text-gray-500 line-through">De R$ 127,00</p>
           <p className="text-8xl font-extrabold text-green-600">R$ 29,90</p>
         </div>
         <div className="text-left max-w-sm mx-auto space-y-2 text-lg">
