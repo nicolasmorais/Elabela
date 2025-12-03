@@ -81,6 +81,11 @@ export const Pricing = () => {
           explodir: Amputações, Cegueira progressiva, Insuficiência renal,
           Derrame, Infarto silencioso. Essas são as próximas fases da doença.
         </AlertDescription>
+        <img
+          src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ferida-no-pe-diabetico-1024x512%20%281%29-WBhIaxRKCsgD0YUgYr4DpR52RKyiZ2.jpg"
+          alt="Pé diabético com ferida, uma complicação grave da diabetes"
+          className="w-full h-auto rounded-lg my-4 shadow-md"
+        />
       </Alert>
 
       <div className="w-full mt-16 text-left space-y-6 border-t pt-8">
