@@ -10,6 +10,11 @@ export const CaseStudy = () => {
         Manoel — o diabético que fez "tudo certo"... mas quase parou em uma
         máquina de hemodiálise
       </h2>
+      <img
+        src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/retrato-de-um-homem-de-meia-idade-usando-um-bone-colorido_335332-742%20%281%29-I7rcgiM28V7I462M9PijjBhrl934F6.jpg"
+        alt="Seu Manoel, um homem de meia idade sorrindo"
+        className="w-full h-auto rounded-lg my-6 shadow-md"
+      />
       <div className="space-y-6 text-xl leading-relaxed">
         <p>
           Seu Manoel, 64 anos, aposentado, morava no interior de Goiás.
