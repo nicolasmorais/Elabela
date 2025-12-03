@@ -27,6 +27,11 @@ export const CaseStudy = () => {
           O problema é que ele já seguia tudo que o seu endocrinologista
           mandava:
         </p>
+        <img
+          src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/urina-com-espuma-scaled-1-kSjxkgXRuOWxUI7AaEm6uWo3FX7ZK2.jpg"
+          alt="Urina com espuma, um sintoma de problema renal"
+          className="w-full h-auto rounded-lg my-6 shadow-md"
+        />
         <ul className="space-y-2 my-4">
           <li className="flex items-center gap-2">
             <CheckCircle className="h-6 w-6 text-green-600" />
