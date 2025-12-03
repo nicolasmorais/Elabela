@@ -1,7 +1,20 @@
+import { MadeWithDyad } from "@/components/made-with-dyad";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
 export default function Home() {
   return (
-    <main className="min-h-screen p-8">
-      {/* A página agora está limpa. Você pode começar a adicionar novos conteúdos aqui. */}
-    </main>
+    <div className="grid grid-rows-[1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-1 items-center sm:items-start text-center">
+        <h1 className="text-4xl font-bold">Bem-vindo(a)</h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300">
+          Esta é a página inicial. Confira o advertorial abaixo.
+        </p>
+        <Link href="/advertorial" passHref>
+          <Button size="lg">Ver Página do Protocolo</Button>
+        </Link>
+      </main>
+      <MadeWithDyad />
+    </div>
   );
 }
