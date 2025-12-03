@@ -12,6 +12,7 @@ import { Offer } from "@/components/advertorial/Offer";
 import { ProblemAlert } from "@/components/advertorial/ProblemAlert";
 import { Solution } from "@/components/advertorial/Solution";
 import { Testimonials } from "@/components/advertorial/Testimonials";
+import { TopBar } from "@/components/advertorial/TopBar";
 
 const testimonialsData = [
   {
@@ -54,6 +55,7 @@ const testimonialsData = [
 export default function AdvertorialPage() {
   return (
     <div className="bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-200">
+      <TopBar />
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <Header />
         <ProblemAlert />
