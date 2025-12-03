@@ -46,6 +46,11 @@ export const Solution = () => {
           Em 28 dias, os exames de Seu Manoel se normalizaram e sua glicose
           estabilizou em 98 mg/dL.
         </p>
+        <img
+          src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%203%20de%20dez.%20de%202025%2C%2020_24_07-CegP8MFAadFJUCgpK40pYN2w5o7Ilv.png"
+          alt="Bebida medicinal japonesa em uma xícara com ingredientes ao redor"
+          className="w-full h-auto mt-6 -mx-6 -mb-6"
+        />
       </div>
 
       <div className="p-6 border rounded-lg">
