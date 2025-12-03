@@ -28,11 +28,6 @@ export const Solution = () => {
           </span>
           , que age em três pontos-chave do organismo:
         </p>
-        <img
-          src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/99-MG-IgSMMgb2YR6xq6B4cwf1g3qVvwB4MM.jpeg"
-          alt="Bebida medicinal japonesa em uma xícara"
-          className="w-full h-auto rounded-lg my-6 shadow-md"
-        />
         <ul className="list-disc list-inside space-y-2 my-4">
           <li>
             Desinflama o tecido pancreático, permitindo que as células beta
@@ -51,6 +46,11 @@ export const Solution = () => {
           Em 28 dias, os exames de Seu Manoel se normalizaram e sua glicose
           estabilizou em 98 mg/dL.
         </p>
+        <img
+          src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/99-MG-IgSMMgb2YR6xq6B4cwf1g3qVvwB4MM.jpeg"
+          alt="Bebida medicinal japonesa em uma xícara"
+          className="w-full h-auto rounded-lg my-6 shadow-md"
+        />
       </div>
 
       <div className="p-6 border rounded-lg">
