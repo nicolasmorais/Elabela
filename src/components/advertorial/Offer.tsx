@@ -45,25 +45,27 @@ export const Offer = () => {
   return (
     <section
       id="offer"
-      className="mb-12 bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900 p-8 rounded-lg shadow-2xl border-2 border-green-500"
+      className="mb-12 bg-gray-100 dark:bg-gray-800 p-8 rounded-lg"
     >
-      <h3 className="text-3xl font-extrabold text-center mb-2">
-        O Protocolo do Chá Japonês agora está disponível em formato digital
+      <h3 className="text-3xl font-extrabold text-center mb-6">
+        Como Acessar o Protocolo Digital do Chá Japonês
       </h3>
-      <p className="text-xl text-center mb-6">
-        Acesso imediato por apenas R$ 29,90
+      <p className="text-lg text-center mb-8">
+        Devido à complexidade da pesquisa e para garantir a distribuição correta
+        do material, o Dr. Yano compilou todo o conhecimento em um pacote
+        digital completo, disponível para o público.
       </p>
 
-      <Card className="bg-white dark:bg-gray-800/50">
+      <Card className="bg-white dark:bg-gray-900">
         <CardHeader>
           <CardTitle className="text-2xl text-center">
-            O QUE VOCÊ RECEBE IMEDIATAMENTE:
+            O Material Digital Inclui:
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-lg">
           {offerItems.map((item, index) => (
             <div key={index} className="flex items-start gap-3">
-              <item.icon className="text-green-500 mt-1 h-6 w-6 flex-shrink-0" />
+              <item.icon className="text-blue-600 dark:text-blue-400 mt-1 h-6 w-6 flex-shrink-0" />
               <div>
                 <span className="font-bold">{item.title}:</span> {item.desc}
               </div>
@@ -71,7 +73,7 @@ export const Offer = () => {
           ))}
           <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
             <h4 className="font-bold text-xl text-center mb-4 flex items-center justify-center gap-2">
-              <Gift className="h-6 w-6" /> BÔNUS EXCLUSIVOS:
+              <Gift className="h-6 w-6" /> Materiais de Apoio Adicionais:
             </h4>
             <ul className="list-disc list-inside space-y-1">
               {bonusItems.map((bonus, index) => (
@@ -83,20 +85,25 @@ export const Offer = () => {
       </Card>
 
       <div className="text-center my-8">
-        <p className="text-lg">INVESTIMENTO ÚNICO DE APENAS:</p>
-        <p className="text-2xl line-through text-gray-500">De R$ 127,00</p>
-        <p className="text-6xl font-extrabold text-green-600 dark:text-green-400 my-2">
+        <p className="text-lg">
+          Para cobrir os custos de pesquisa, manutenção da plataforma e
+          distribuição digital, o acesso ao protocolo completo é disponibilizado
+          por uma taxa única de:
+        </p>
+        <p className="text-4xl font-extrabold text-gray-800 dark:text-white my-2">
           R$ 29,90
         </p>
-        <p className="font-semibold">✅ Pagamento único via PIX</p>
-        <p className="font-semibold">✅ Acesso vitalício ao material</p>
+        <p className="font-semibold text-gray-600 dark:text-gray-300">
+          Pagamento único via PIX com acesso vitalício ao material.
+        </p>
       </div>
 
       <Button
         size="lg"
-        className="w-full h-16 text-2xl font-bold bg-green-600 hover:bg-green-700 text-white shadow-lg animate-pulse"
+        variant="outline"
+        className="w-full h-14 text-xl font-bold border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900"
       >
-        QUERO ACESSO IMEDIATO AGORA!
+        Acessar o Protocolo Digital
       </Button>
     </section>
   );

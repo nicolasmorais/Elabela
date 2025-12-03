@@ -2,21 +2,20 @@
 
 export const Header = () => {
   return (
-    <header className="text-center py-12">
-      <h1 className="text-3xl md:text-5xl font-extrabold text-red-700 dark:text-red-500 leading-tight">
-        Dr. Roberto Yano afirma: 7 em cada 10 diabéticos tipo 2 estão sendo
-        tratados de forma errada no Brasil.
-      </h1>
-      <h2 className="mt-4 text-2xl md:text-4xl font-bold text-gray-900 dark:text-white">
-        "A Metformina está sufocando o seu pâncreas".
-      </h2>
-      <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
-        Você já parou para pensar o por que da sua glicose continuar alta,
-        mesmo tomando os remédios receitados corretamente, fazendo o que os
-        médicos pedem e até mesmo comendo um pouco menos açúcar?
+    <header className="text-center py-12 border-b mb-8">
+      <p className="text-sm text-red-600 font-semibold uppercase tracking-wider">
+        Saúde & Bem-Estar
       </p>
-      <p className="mt-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
-        Pois saiba que isso não é sua culpa.
+      <h1 className="mt-4 text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
+        Pesquisa revela: 7 em cada 10 diabéticos tipo 2 no Brasil podem estar
+        seguindo tratamento ultrapassado.
+      </h1>
+      <h2 className="mt-4 text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300">
+        Dr. Roberto Yano, especialista em medicina integrativa, alerta: "A
+        Metformina pode estar sufocando o seu pâncreas".
+      </h2>
+      <p className="mt-6 text-md text-gray-500 dark:text-gray-400">
+        Publicado em: {new Date().toLocaleDateString("pt-BR")}
       </p>
     </header>
   );
