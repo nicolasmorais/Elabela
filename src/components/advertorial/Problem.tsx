@@ -56,6 +56,11 @@ export const Problem = () => {
         seu corpo continua entrando em colapso.
       </p>
       <div className="p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+        <img
+          src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/enhanced_441b7b5d-8850-444d-af70-488f594d5c22-aBTZK4gzJYBzRRy8spjG8H089khVpA.png"
+          alt="Dr. Roberto Kazushigue Yano"
+          className="w-full h-auto rounded-lg mb-4 shadow-md"
+        />
         <p>
           Quem afirma isso é o{" "}
           <span className="font-bold">Dr. Roberto Kazushigue Yano</span>, figura
