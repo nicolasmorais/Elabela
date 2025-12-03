@@ -4,7 +4,6 @@ import { CaseStudy } from "@/components/advertorial/CaseStudy";
 import { Solution } from "@/components/advertorial/Solution";
 import { Offer } from "@/components/advertorial/Offer";
 import { Pricing } from "@/components/advertorial/Pricing";
-import { Guarantee } from "@/components/advertorial/Guarantee";
 import { Testimonials } from "@/components/advertorial/Testimonials";
 import { Footer } from "@/components/advertorial/Footer";
 
@@ -18,7 +17,6 @@ export default function Home() {
         <Solution />
         <Offer />
         <Pricing />
-        <Guarantee />
         <Testimonials />
       </main>
       <Footer />
