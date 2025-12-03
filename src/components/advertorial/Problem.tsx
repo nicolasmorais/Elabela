@@ -11,6 +11,11 @@ export const Problem = () => {
         tomando os remédios receitados corretamente, fazendo o que os médicos
         pedem e até mesmo comendo um pouco menos açúcar?
       </p>
+      <img
+        src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/metformina-6DhI93KiQK2MaPncdPNDTznhGiePYK.jpg"
+        alt="Médico apontando para uma caixa de Metformina com um X vermelho sobre ela"
+        className="w-full h-auto rounded-lg my-6 shadow-md"
+      />
       <p className="font-bold">Pois saiba que isso não é sua culpa.</p>
       <Alert className="bg-yellow-100 dark:bg-yellow-900/30 border-yellow-500 border-l-4 p-6">
         <AlertTriangle className="h-7 w-7 text-yellow-600" />
