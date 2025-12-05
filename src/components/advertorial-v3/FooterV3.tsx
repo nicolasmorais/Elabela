@@ -10,6 +10,14 @@ export const FooterV3 = () => {
             consulte um profissional da saúde para tratar de assuntos relativos
             à saúde.
           </p>
+          <div className="space-y-1">
+            <p>
+              Empresa: OneConversion Soluções Digitais - Av. Digital, 123, Sala
+              4, Aparecida de Goiania - GO
+            </p>
+            <p>CNPJ: 60.357.932/0001-18</p>
+            <p>Contato: suporte@oneconversion.pro</p>
+          </div>
           <p>Todos os direitos reservados © 2024</p>
         </div>
       </div>
