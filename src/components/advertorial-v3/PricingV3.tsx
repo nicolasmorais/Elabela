@@ -17,13 +17,15 @@ export const PricingV3 = () => {
           Pagamento Único
         </p>
 
-        <Button
-          size="lg"
-          className="w-full h-20 text-2xl font-bold animate-pulse bg-green-600 hover:bg-green-700 text-white shadow-lg rounded-lg"
-        >
-          <Zap className="mr-4 h-8 w-8" />
-          COMPRAR ACESSO
-        </Button>
+        <a href="https://oneconversion.pro/checkout?product_id=8c458bcc-a121-4e3b-8bd7-f35cef65bd97">
+          <Button
+            size="lg"
+            className="w-full h-20 text-2xl font-bold animate-pulse bg-green-600 hover:bg-green-700 text-white shadow-lg rounded-lg"
+          >
+            <Zap className="mr-4 h-8 w-8" />
+            COMPRAR ACESSO
+          </Button>
+        </a>
 
         <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
           <ShieldCheck className="h-4 w-4" />
