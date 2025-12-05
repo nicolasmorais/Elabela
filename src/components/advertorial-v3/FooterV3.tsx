@@ -64,26 +64,90 @@ export const FooterV3 = () => {
       ),
     },
     {
-      title: "Política de Trocas e Devoluções",
-      trigger: "Trocas e Devoluções",
+      title: "Política de Reembolso",
+      trigger: "Política de Reembolso",
       content: (
-        <div className="space-y-4">
+        <div className="space-y-4 text-left">
           <p>
-            Em conformidade com o Código de Defesa do Consumidor, o cliente tem
-            o direito de solicitar devolução ou reembolso em até 7 dias
-            corridos após o recebimento do produto.
+            Por se tratar de um produto digital, o acesso ao conteúdo é liberado
+            imediatamente após a confirmação do pagamento. Ainda assim,
+            oferecemos uma política de reembolso transparente para garantir a
+            satisfação do cliente.
           </p>
           <p>
-            Para iniciar o processo, basta entrar em contato com nossa equipe
-            de suporte informando o número do pedido e o motivo da solicitação.
+            Você pode solicitar o reembolso em até 7 dias corridos após a compra,
+            conforme o Código de Defesa do Consumidor, desde que respeitadas as
+            condições abaixo:
           </p>
+
+          <h3 className="font-bold text-lg pt-2">Como solicitar o reembolso</h3>
           <p>
-            O produto deve ser devolvido em condições adequadas, e o reembolso
-            será processado após a conferência do item.
+            Para iniciar o processo, envie um e-mail para nosso suporte:
           </p>
-          <p>
-            Nosso objetivo é garantir uma experiência segura, transparente e
-            satisfatória em todas as etapas da compra.
+          <p className="font-mono bg-gray-100 dark:bg-gray-800 p-2 rounded text-center">
+            suporte@oneconversion.pro
+          </p>
+          <p>Inclua obrigatoriamente as seguintes informações:</p>
+          <ul className="list-disc list-inside pl-4 space-y-1">
+            <li>Nome completo</li>
+            <li>E-mail utilizado na compra</li>
+            <li>Número do pedido</li>
+            <li>Data da compra</li>
+            <li>
+              Motivo da solicitação (opcional, mas ajuda a melhorar nosso
+              serviço)
+            </li>
+          </ul>
+
+          <h3 className="font-bold text-lg pt-2">Processo de avaliação</h3>
+          <p>Após recebermos seu e-mail:</p>
+          <ul className="list-disc list-inside pl-4 space-y-1">
+            <li>Nossa equipe irá confirmar os dados da compra.</li>
+            <li>
+              O acesso ao produto digital será revogado para evitar novos
+              downloads.
+            </li>
+            <li>O pedido de reembolso será processado em até 5 dias úteis.</li>
+          </ul>
+
+          <h3 className="font-bold text-lg pt-2">Forma de reembolso</h3>
+          <ul className="list-disc list-inside pl-4 space-y-2">
+            <li>
+              <strong>Pagamentos via cartão:</strong> o estorno será solicitado
+              à operadora e pode levar de 5 a 15 dias úteis dependendo da
+              bandeira e banco emissor.
+            </li>
+            <li>
+              <strong>Pagamentos via Pix:</strong> o valor é devolvido
+              diretamente na mesma chave utilizada para o pagamento em até 5
+              dias úteis.
+            </li>
+            <li>
+              <strong>Pagamentos via boleto:</strong> o cliente deverá informar
+              uma conta bancária para depósito.
+            </li>
+          </ul>
+
+          <h3 className="font-bold text-lg pt-2">
+            Casos em que o reembolso pode ser recusado
+          </h3>
+          <p>O reembolso poderá não ser concedido quando:</p>
+          <ul className="list-disc list-inside pl-4 space-y-1">
+            <li>A solicitação for feita após o prazo de 7 dias</li>
+            <li>
+              Houver evidência de uso excessivo, distribuição ou violação dos
+              direitos autorais do produto
+            </li>
+            <li>
+              O cliente não fornecer os dados necessários para identificação da
+              compra
+            </li>
+          </ul>
+
+          <p className="pt-2">
+            Nosso objetivo é garantir clareza, segurança e confiança durante
+            toda a sua experiência. Caso tenha dúvidas sobre o processo, nossa
+            equipe está pronta para ajudar.
           </p>
         </div>
       ),
