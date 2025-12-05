@@ -148,16 +148,42 @@ export const FooterV3 = () => {
     <footer className="bg-gray-900 text-gray-400">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
-          {/* Disclaimer Section */}
-          <div className="space-y-2">
+          {/* Disclaimers Section */}
+          <div className="space-y-4">
             <h3 className="text-base font-semibold text-white">
-              Aviso Importante
+              Avisos e Isenções de Responsabilidade
             </h3>
-            <p className="text-sm">
-              Este produto não substitui o parecer médico profissional. Sempre
-              consulte um profissional da saúde para tratar de assuntos
-              relativos à saúde.
-            </p>
+            <div className="text-sm space-y-3">
+              <div>
+                <p className="font-medium text-gray-300">
+                  Isenção de Responsabilidade
+                </p>
+                <p>
+                  Este conteúdo tem caráter exclusivamente informativo e
+                  educacional. Não oferece diagnóstico, tratamento ou cura de
+                  condições de saúde. Os resultados podem variar de pessoa para
+                  pessoa. Sempre consulte um profissional de saúde qualificado
+                  antes de iniciar qualquer mudança na dieta, no consumo de
+                  chás, suplementos ou rotina de bem-estar.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium text-gray-300">
+                  Declaração de Risco
+                </p>
+                <p>
+                  O uso de qualquer produto natural deve ser feito com
+                  responsabilidade. Pessoas com condições médicas
+                  pré-existentes, gestantes, lactantes ou usuários de
+                  medicamentos devem buscar orientação profissional antes do
+                  consumo.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium text-gray-300">Aviso de Idade</p>
+                <p>Conteúdo destinado a maiores de 18 anos.</p>
+              </div>
+            </div>
           </div>
 
           {/* Company Info Section */}
