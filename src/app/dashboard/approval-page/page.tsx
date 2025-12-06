@@ -55,7 +55,7 @@ export default function ApprovalPageEditor() {
     });
   };
 
-  const handleArrayChange = <T,>(section: keyof ApprovalPageContent, arrayName: keyof ApprovalPageContent[keyof ApprovalPageContent], index: number, field: keyof T, value: string) => {
+  const handleArrayChange = <T extends object>(section: keyof ApprovalPageContent, arrayName: keyof ApprovalPageContent[keyof ApprovalPageContent], index: number, field: keyof T, value: string) => {
     setContent(prev => {
         if (!prev) return null;
         const newContent = { ...prev };
@@ -64,7 +64,20 @@ export default function ApprovalPageEditor() {
     });
   };
 
-  const handlePillarChange = (index: number, value: string) => { handleArrayChange<{pillar: string}, 'content'>('content', 'pillars' as any, index, 'pillar' as any, value); };
+  const handlePillarChange = (index: number, value: string) => {
+    setContent(prev => {
+      if (!prev) return null;
+      const newPillars = [...prev.content.pillars];
+      newPillars[index] = value;
+      return {
+        ...prev,
+        content: {
+          ...prev.content,
+          pillars: newPillars,
+        },
+      };
+    });
+  };
   const addPillar = () => { setContent(prev => prev ? { ...prev, content: { ...prev.content, pillars: [...prev.content.pillars, "Novo Pilar"] } } : null); };
   const removePillar = (index: number) => { setContent(prev => prev ? { ...prev, content: { ...prev.content, pillars: prev.content.pillars.filter((_, i) => i !== index) } } : null); };
 
@@ -117,8 +130,8 @@ export default function ApprovalPageEditor() {
                     <h3 className="font-semibold text-lg">Avisos e Isenções</h3>
                     {content.footer.disclaimers.map((disclaimer, index) => (
                         <div key={index} className="space-y-2 p-2 border-b border-zinc-800">
-                            <div><Label className="text-zinc-300">Título do Aviso {index + 1}</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={disclaimer.title} onChange={e => handleArrayChange<Disclaimer, 'footer'>('footer', 'disclaimers', index, 'title', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Texto do Aviso {index + 1}</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={disclaimer.text} onChange={e => handleArrayChange<Disclaimer, 'footer'>('footer', 'disclaimers', index, 'text', e.target.value)} rows={3} /></div>
+                            <div><Label className="text-zinc-300">Título do Aviso {index + 1}</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={disclaimer.title} onChange={e => handleArrayChange<Disclaimer>('footer', 'disclaimers', index, 'title', e.target.value)} /></div>
+                            <div><Label className="text-zinc-300">Texto do Aviso {index + 1}</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={disclaimer.text} onChange={e => handleArrayChange<Disclaimer>('footer', 'disclaimers', index, 'text', e.target.value)} rows={3} /></div>
                         </div>
                     ))}
                 </div>
@@ -128,9 +141,9 @@ export default function ApprovalPageEditor() {
                     <h3 className="font-semibold text-lg">Políticas</h3>
                     {content.footer.policies.map((policy, index) => (
                         <div key={index} className="space-y-2 p-2 border-b border-zinc-800">
-                            <div><Label className="text-zinc-300">Título da Política {index + 1}</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={policy.title} onChange={e => handleArrayChange<Policy, 'footer'>('footer', 'policies', index, 'title', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Texto do Gatilho (Link) {index + 1}</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={policy.trigger} onChange={e => handleArrayChange<Policy, 'footer'>('footer', 'policies', index, 'trigger', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Conteúdo da Política {index + 1}</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={policy.content} onChange={e => handleArrayChange<Policy, 'footer'>('footer', 'policies', index, 'content', e.target.value)} rows={8} /></div>
+                            <div><Label className="text-zinc-300">Título da Política {index + 1}</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={policy.title} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'title', e.target.value)} /></div>
+                            <div><Label className="text-zinc-300">Texto do Gatilho (Link) {index + 1}</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={policy.trigger} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'trigger', e.target.value)} /></div>
+                            <div><Label className="text-zinc-300">Conteúdo da Política {index + 1}</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={policy.content} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'content', e.target.value)} rows={8} /></div>
                         </div>
                     ))}
                 </div>

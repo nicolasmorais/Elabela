@@ -23,7 +23,7 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
   }
 }
 
-export default async function DynamicPage({ params }: { params: { slug: string[] } }) {
+export default async function DynamicPage({ params }: { params: { slug?: string[] } }) {
   // Construct the path from the slug segments.
   // If slug is undefined or empty, it's the root path '/'.
   const path = params.slug ? `/${params.slug.join('/')}` : '/';
