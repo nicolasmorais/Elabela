@@ -83,6 +83,7 @@ export async function getDb(): Promise<Low<DbSchema>> {
         { path: '/v1', name: 'Rota do Advertorial V1', contentId: 'v1' },
         { path: '/v2', name: 'Rota do Advertorial V2', contentId: 'v2' },
         { path: '/v3', name: 'Rota do Advertorial V3', contentId: 'v3' },
+        { path: '/aprovado', name: 'Página de Aprovação (Preview)', contentId: 'ap' },
       ],
       approvalPageContent: defaultApprovalPageContent,
     });

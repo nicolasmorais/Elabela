@@ -20,6 +20,11 @@
       "path": "/v3",
       "name": "Advertorial V3 Path",
       "contentId": "v3"
+    },
+    {
+      "path": "/aprovado",
+      "name": "Página de Aprovação (Preview)",
+      "contentId": "ap"
     }
   ],
   "approvalPageContent": {
