@@ -38,6 +38,7 @@ interface ApprovalPageContent {
   header: {
     preTitle: string;
     title: string;
+    subheadline: string;
   };
   content: {
     intro: string;
@@ -64,6 +65,7 @@ const defaultApprovalPageContent: ApprovalPageContent = {
   header: {
     preTitle: "Bem-Estar e Saúde",
     title: "Um Guia Para Uma Rotina Mais Saudável",
+    subheadline: "Uma nova abordagem para o seu bem-estar diário.",
   },
   content: {
     intro: "Descubra práticas e dicas que podem ser incorporadas no seu dia a dia para promover mais equilíbrio e bem-estar. Uma rotina bem estruturada é o primeiro passo para uma vida mais saudável.",

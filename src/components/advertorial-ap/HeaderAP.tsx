@@ -3,9 +3,10 @@
 interface HeaderAPProps {
   preTitle: string;
   title: string;
+  subheadline: string;
 }
 
-export const HeaderAP = ({ preTitle, title }: HeaderAPProps) => {
+export const HeaderAP = ({ preTitle, title, subheadline }: HeaderAPProps) => {
   return (
     <header className="text-center py-10 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
       <div className="max-w-4xl mx-auto px-4">
@@ -15,6 +16,11 @@ export const HeaderAP = ({ preTitle, title }: HeaderAPProps) => {
         <h1 className="mt-4 text-3xl md:text-5xl text-gray-900 dark:text-white leading-tight font-black">
           {title}
         </h1>
+        {subheadline && (
+          <h2 className="mt-4 text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300">
+            {subheadline}
+          </h2>
+        )}
       </div>
     </header>
   );
