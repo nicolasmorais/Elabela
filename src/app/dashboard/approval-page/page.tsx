@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { Trash2 } from 'lucide-react';
 
 interface Policy { title: string; trigger: string; content: string; }
 interface Disclaimer { title: string; text: string; }
@@ -16,7 +15,8 @@ interface CompanyInfo { name: string; address: string; cnpj: string; contact: st
 interface ApprovalPageFooter { disclaimers: Disclaimer[]; companyInfo: CompanyInfo; policies: Policy[]; copyright: string; }
 interface ApprovalPageContent {
   header: { preTitle: string; title: string; subheadline: string; };
-  content: { intro: string; pillarsTitle: string; pillars: string[]; outro: string; };
+  body: { imageUrl1: string; advertorialText: string; imageUrl2: string; guaranteeText: string; };
+  pricing: { prePriceText: string; price: string; paymentType: string; buttonText: string; buttonUrl: string; postButtonText: string; };
   footer: ApprovalPageFooter;
 }
 
@@ -64,23 +64,6 @@ export default function ApprovalPageEditor() {
     });
   };
 
-  const handlePillarChange = (index: number, value: string) => {
-    setContent(prev => {
-      if (!prev) return null;
-      const newPillars = [...prev.content.pillars];
-      newPillars[index] = value;
-      return {
-        ...prev,
-        content: {
-          ...prev.content,
-          pillars: newPillars,
-        },
-      };
-    });
-  };
-  const addPillar = () => { setContent(prev => prev ? { ...prev, content: { ...prev.content, pillars: [...prev.content.pillars, "Novo Pilar"] } } : null); };
-  const removePillar = (index: number) => { setContent(prev => prev ? { ...prev, content: { ...prev.content, pillars: prev.content.pillars.filter((_, i) => i !== index) } } : null); };
-
   const handleSave = async () => {
     if (!content) return;
     setIsSaving(true);
@@ -111,8 +94,29 @@ export default function ApprovalPageEditor() {
         </div>
 
         <Card className="bg-zinc-900/50 border-zinc-800 text-white"><CardHeader><CardTitle>Cabeçalho</CardTitle></CardHeader><CardContent className="space-y-4"><div><Label className="text-zinc-300">Pré-Título</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.header.preTitle} onChange={e => handleInputChange('header', 'preTitle', e.target.value)} /></div><div><Label className="text-zinc-300">Título Principal</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.header.title} onChange={e => handleInputChange('header', 'title', e.target.value)} /></div><div><Label className="text-zinc-300">Sub-headline</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.header.subheadline || ''} onChange={e => handleInputChange('header', 'subheadline', e.target.value)} /></div></CardContent></Card>
-        <Card className="bg-zinc-900/50 border-zinc-800 text-white"><CardHeader><CardTitle>Conteúdo Principal</CardTitle></CardHeader><CardContent className="space-y-4"><div><Label className="text-zinc-300">Parágrafo de Introdução</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={content.content.intro} onChange={e => handleInputChange('content', 'intro', e.target.value)} rows={3} /></div><div><Label className="text-zinc-300">Título da Seção de Pilares</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.content.pillarsTitle} onChange={e => handleInputChange('content', 'pillarsTitle', e.target.value)} /></div><div><Label className="text-zinc-300">Pilares</Label><div className="space-y-2">{content.content.pillars.map((pillar, index) => (<div key={index} className="flex items-center gap-2"><Input className="bg-zinc-800 border-zinc-700 text-white" value={pillar} onChange={e => handlePillarChange(index, e.target.value)} /><Button variant="ghost" size="icon" onClick={() => removePillar(index)}><Trash2 className="h-4 w-4" /></Button></div>))}<Button variant="outline" size="sm" onClick={addPillar} className="mt-2 bg-transparent border-zinc-700 hover:bg-zinc-800">Adicionar Pilar</Button></div></div><div><Label className="text-zinc-300">Parágrafo de Conclusão</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={content.content.outro} onChange={e => handleInputChange('content', 'outro', e.target.value)} rows={3} /></div></CardContent></Card>
         
+        <Card className="bg-zinc-900/50 border-zinc-800 text-white">
+          <CardHeader><CardTitle>Corpo do Advertorial</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            <div><Label className="text-zinc-300">URL da Imagem 1</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.body.imageUrl1} onChange={e => handleInputChange('body', 'imageUrl1', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">Texto do Advertorial</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={content.body.advertorialText} onChange={e => handleInputChange('body', 'advertorialText', e.target.value)} rows={10} /></div>
+            <div><Label className="text-zinc-300">URL da Imagem 2</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.body.imageUrl2} onChange={e => handleInputChange('body', 'imageUrl2', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">Texto de Garantia</Label><Textarea className="bg-zinc-800 border-zinc-700 text-white" value={content.body.guaranteeText} onChange={e => handleInputChange('body', 'guaranteeText', e.target.value)} rows={3} /></div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-zinc-900/50 border-zinc-800 text-white">
+          <CardHeader><CardTitle>Seção de Preço</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            <div><Label className="text-zinc-300">Texto Acima do Preço</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.pricing.prePriceText} onChange={e => handleInputChange('pricing', 'prePriceText', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">Preço (ex: R$ 29,90)</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.pricing.price} onChange={e => handleInputChange('pricing', 'price', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">Texto de Pagamento</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.pricing.paymentType} onChange={e => handleInputChange('pricing', 'paymentType', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">Texto do Botão</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.pricing.buttonText} onChange={e => handleInputChange('pricing', 'buttonText', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">URL do Botão</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.pricing.buttonUrl} onChange={e => handleInputChange('pricing', 'buttonUrl', e.target.value)} /></div>
+            <div><Label className="text-zinc-300">Texto Abaixo do Botão</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={content.pricing.postButtonText} onChange={e => handleInputChange('pricing', 'postButtonText', e.target.value)} /></div>
+          </CardContent>
+        </Card>
+
         <Card className="bg-zinc-900/50 border-zinc-800 text-white">
             <CardHeader><CardTitle>Rodapé</CardTitle></CardHeader>
             <CardContent className="space-y-6">

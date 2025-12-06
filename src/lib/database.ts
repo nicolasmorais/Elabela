@@ -40,11 +40,19 @@ interface ApprovalPageContent {
     title: string;
     subheadline: string;
   };
-  content: {
-    intro: string;
-    pillarsTitle: string;
-    pillars: string[];
-    outro: string;
+  body: {
+    imageUrl1: string;
+    advertorialText: string;
+    imageUrl2: string;
+    guaranteeText: string;
+  };
+  pricing: {
+    prePriceText: string;
+    price: string;
+    paymentType: string;
+    buttonText: string;
+    buttonUrl: string;
+    postButtonText: string;
   };
   footer: ApprovalPageFooter;
 }
@@ -67,16 +75,19 @@ const defaultApprovalPageContent: ApprovalPageContent = {
     title: "Um Guia Para Uma Rotina Mais Saudável",
     subheadline: "Uma nova abordagem para o seu bem-estar diário.",
   },
-  content: {
-    intro: "Descubra práticas e dicas que podem ser incorporadas no seu dia a dia para promover mais equilíbrio e bem-estar. Uma rotina bem estruturada é o primeiro passo para uma vida mais saudável.",
-    pillarsTitle: "Pilares do Bem-Estar",
-    pillars: [
-      "Alimentação Consciente",
-      "Hidratação Adequada",
-      "Movimento e Atividade Física",
-      "Descanso e Recuperação",
-    ],
-    outro: "Nosso guia oferece um olhar aprofundado sobre como pequenas mudanças podem gerar grandes resultados na sua saúde e disposição diária.",
+  body: {
+    imageUrl1: "https://via.placeholder.com/800x400.png?text=Imagem+Principal",
+    advertorialText: "Este é o espaço para o texto principal do seu advertorial. Fale sobre os benefícios, a história e tudo o que for relevante para convencer o leitor.\n\nVocê pode usar múltiplos parágrafos.",
+    imageUrl2: "https://via.placeholder.com/800x400.png?text=Imagem+Secundária",
+    guaranteeText: "Garantia de satisfação de 7 dias. Se você não ficar satisfeito, devolvemos o seu dinheiro sem burocracia.",
+  },
+  pricing: {
+    prePriceText: "ACESSO AO GUIA COMPLETO",
+    price: "R$ 29,90",
+    paymentType: "Pagamento Único",
+    buttonText: "COMPRAR ACESSO",
+    buttonUrl: "#",
+    postButtonText: "Compra segura e acesso imediato.",
   },
   footer: {
     disclaimers: [
@@ -140,7 +151,7 @@ export async function getDb(): Promise<Low<DbSchema>> {
     if (!dbInstance.data.routes) {
       dbInstance.data.routes = [];
     }
-    if (!dbInstance.data.approvalPageContent || !dbInstance.data.approvalPageContent.footer.policies) {
+    if (!dbInstance.data.approvalPageContent || !dbInstance.data.approvalPageContent.body) {
       dbInstance.data.approvalPageContent = defaultApprovalPageContent;
     }
     
