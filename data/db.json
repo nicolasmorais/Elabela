@@ -31,18 +31,21 @@
     "header": {
       "preTitle": "Bem-Estar e Saúde",
       "title": "Um Guia Para Uma Rotina Mais Saudável",
-      "subheadline": "Um Guia Para Uma Rotina Mais Saudável"
+      "subheadline": "Uma nova abordagem para o seu bem-estar diário."
     },
-    "content": {
-      "intro": "Descubra práticas e dicas que podem ser incorporadas no seu dia a dia para promover mais equilíbrio e bem-estar. Uma rotina bem estruturada é o primeiro passo para uma vida mais saudável.",
-      "pillarsTitle": "Pilares do Bem-Estar",
-      "pillars": [
-        "Alimentação Consciente",
-        "Hidratação Adequada",
-        "Movimento e Atividade Física",
-        "Descanso e Recuperação"
-      ],
-      "outro": "Nosso guia oferece um olhar aprofundado sobre como pequenas mudanças podem gerar grandes resultados na sua saúde e disposição diária."
+    "body": {
+      "imageUrl1": "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%203%20de%20dez.%20de%202025%2C%2019_16_42-chAkYbYIm1134REeZ26ZWHwreF1Pdi.png",
+      "advertorialText": "Este é o espaço para o texto principal do seu advertorial. Fale sobre os benefícios, a história e tudo o que for relevante para convencer o leitor.\n\nVocê pode usar múltiplos parágrafos.\n\noiii\n\noii\n\noii",
+      "imageUrl2": "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%203%20de%20dez.%20de%202025%2C%2020_24_07-CegP8MFAadFJUCgpK40pYN2w5o7Ilv.png",
+      "guaranteeText": "Garantia de satisfação de 7 dias. Se você não ficar satisfeito, devolvemos o seu dinheiro sem burocracia."
+    },
+    "pricing": {
+      "prePriceText": "ACESSO AO GUIA COMPLETO",
+      "price": "R$ 29,90",
+      "paymentType": "Pagamento Único",
+      "buttonText": "COMPRAR ACESSO",
+      "buttonUrl": "#",
+      "postButtonText": "Compra segura e acesso imediato."
     },
     "footer": {
       "disclaimers": [

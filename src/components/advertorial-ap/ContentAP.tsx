@@ -8,6 +8,11 @@ interface ContentAPProps {
 }
 
 export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText }: ContentAPProps) => {
+  // Processa o texto para substituir *texto* por <strong>texto</strong> e novas linhas por <br>
+  const formattedAdvertorialText = advertorialText
+    .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br />');
+
   return (
     <section className="space-y-6 text-xl leading-relaxed py-8">
       {imageUrl1 && (
@@ -18,7 +23,7 @@ export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText
         />
       )}
       
-      <div className="prose prose-xl dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: advertorialText.replace(/\n/g, '<br />') }} />
+      <div className="prose prose-xl dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: formattedAdvertorialText }} />
 
       {imageUrl2 && (
         <img
