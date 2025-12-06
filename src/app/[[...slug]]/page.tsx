@@ -11,6 +11,8 @@ interface DynamicPageProps {
   params: {
     slug?: string[];
   };
+  // Adicionando searchParams para corresponder à estrutura PageProps do Next.js
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 // This component maps a contentId to the actual Page Component
