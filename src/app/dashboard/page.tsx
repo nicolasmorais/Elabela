@@ -65,42 +65,40 @@ export default function DashboardPage() {
   return (
     <>
       <Toaster richColors />
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle>Dashboard</CardTitle>
-            <CardDescription>
-              Select which page will be displayed as the main page of your website.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="main-page">Main Page</Label>
-                {isLoading ? (
-                  <div className="h-10 w-full bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse" />
-                ) : (
-                  <Select value={selectedPage} onValueChange={setSelectedPage}>
-                    <SelectTrigger id="main-page">
-                      <SelectValue placeholder="Select a page" />
-                    </SelectTrigger>
-                    <SelectContent position="popper">
-                      <SelectItem value="/">Advertorial V1</SelectItem>
-                      <SelectItem value="/v2">Advertorial V2</SelectItem>
-                      <SelectItem value="/v3">Advertorial V3</SelectItem>
-                    </SelectContent>
-                  </Select>
-                )}
-              </div>
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>Page Settings</CardTitle>
+          <CardDescription>
+            Select which page will be displayed as the main page of your website.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="main-page">Main Page</Label>
+              {isLoading ? (
+                <div className="h-10 w-full bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse" />
+              ) : (
+                <Select value={selectedPage} onValue-change={setSelectedPage}>
+                  <SelectTrigger id="main-page">
+                    <SelectValue placeholder="Select a page" />
+                  </SelectTrigger>
+                  <SelectContent position="popper">
+                    <SelectItem value="/">Advertorial V1</SelectItem>
+                    <SelectItem value="/v2">Advertorial V2</SelectItem>
+                    <SelectItem value="/v3">Advertorial V3</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
             </div>
-          </CardContent>
-          <CardFooter className="flex justify-end">
-            <Button onClick={handleSave} disabled={isLoading || isSaving}>
-              {isSaving ? "Saving..." : "Save"}
-            </Button>
-          </CardFooter>
-        </Card>
-      </div>
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-end">
+          <Button onClick={handleSave} disabled={isLoading || isSaving}>
+            {isSaving ? "Saving..." : "Save"}
+          </Button>
+        </CardFooter>
+      </Card>
     </>
   );
 }
