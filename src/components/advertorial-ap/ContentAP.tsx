@@ -4,10 +4,10 @@ interface ContentAPProps {
   imageUrl1: string;
   advertorialText: string;
   imageUrl2: string;
-  guaranteeText: string;
+  guaranteeText?: string; // Tornando opcional
 }
 
-export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText }: ContentAPProps) => {
+export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2 }: ContentAPProps) => {
   // Processa o texto para substituir *texto* por <strong>texto</strong> e novas linhas por <br>
   const formattedAdvertitorialText = advertorialText
     .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
@@ -31,12 +31,6 @@ export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText
           alt="Imagem secundária do advertorial"
           className="w-full h-auto rounded-lg my-6 shadow-md"
         />
-      )}
-
-      {guaranteeText && (
-        <div className="mt-12 p-6 bg-gray-50 rounded-lg border border-gray-200 text-center">
-          <p className="text-lg leading-relaxed">{guaranteeText}</p>
-        </div>
       )}
     </section>
   );

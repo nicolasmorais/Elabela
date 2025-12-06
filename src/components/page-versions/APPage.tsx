@@ -1,6 +1,7 @@
 import { HeaderAP } from "@/components/advertorial-ap/HeaderAP";
 import { ContentAP } from "@/components/advertorial-ap/ContentAP";
 import { PricingAP } from "@/components/advertorial-ap/PricingAP";
+import { GuaranteeAP } from "@/components/advertorial-ap/GuaranteeAP";
 import { FooterAP } from "@/components/advertorial-ap/FooterAP";
 import { getDb } from "@/lib/database";
 import type { Metadata } from "next";
@@ -18,6 +19,9 @@ export async function APPage() {
   const db = await getDb();
   const content = db.data.approvalPageContent;
 
+  // Extrai guaranteeText do body para renderizá-lo separadamente
+  const { guaranteeText, ...contentBodyProps } = content.body;
+
   return (
     <div className="bg-white text-gray-800 font-merriweather">
       <div className="bg-gray-100 text-center py-2">
@@ -27,8 +31,9 @@ export async function APPage() {
       </div>
       <HeaderAP {...content.header} />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <ContentAP {...content.body} />
+        <ContentAP {...contentBodyProps} />
         <PricingAP {...content.pricing} />
+        <GuaranteeAP guaranteeText={guaranteeText} />
       </main>
       <FooterAP {...content.footer} />
     </div>
