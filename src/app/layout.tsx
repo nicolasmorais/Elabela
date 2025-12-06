@@ -25,8 +25,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Protocolo Japonês",
-  description: "Guia para uma rotina mais saudável",
+  title: "PageShift",
+  description: "Gerencie e alterne o conteúdo de suas páginas dinamicamente.",
 };
 
 export default function RootLayout({
