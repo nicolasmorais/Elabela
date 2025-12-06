@@ -25,7 +25,7 @@ export const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r border-zinc-800 bg-zinc-900 text-white sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r border-zinc-800 bg-[#101010] text-white sm:flex">
       <div className="flex h-20 items-center justify-center border-b border-zinc-800 px-6">
         <Link href="/dashboard">
           <img
