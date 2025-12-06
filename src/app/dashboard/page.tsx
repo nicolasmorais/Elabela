@@ -1,75 +1,29 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
+import { RouteRow } from '@/components/dashboard/RouteRow';
 
 interface RouteMapping {
   path: string;
   contentId: string;
   name: string;
-}
-
-const contentOptions = [
-  { id: 'v1', name: 'Advertorial V1' },
-  { id: 'v2', name: 'Advertorial V2' },
-  { id: 'v3', name: 'Advertorial V3' },
-  { id: 'ap', name: 'Página de Aprovação' },
-];
-
-function RouteCard({ route, onSave }: { route: RouteMapping, onSave: (path: string, contentId: string) => Promise<void> }) {
-  const [selectedContent, setSelectedContent] = useState(route.contentId);
-  const [isSaving, setIsSaving] = useState(false);
-
-  const handleSave = async () => {
-    setIsSaving(true);
-    await onSave(route.path, selectedContent);
-    setIsSaving(false);
-  };
-
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{route.name}</CardTitle>
-        <CardDescription>Caminho da URL: <code>{route.path}</code></CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Label htmlFor={`content-for-${route.path}`}>Conteúdo Exibido</Label>
-        <Select value={selectedContent} onValueChange={setSelectedContent}>
-          <SelectTrigger id={`content-for-${route.path}`}>
-            <SelectValue placeholder="Selecione o conteúdo" />
-          </SelectTrigger>
-          <SelectContent>
-            {contentOptions.map(opt => (
-              <SelectItem key={opt.id} value={opt.id}>{opt.name}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </CardContent>
-      <CardFooter className="flex justify-end">
-        <Button onClick={handleSave} disabled={isSaving || selectedContent === route.contentId}>
-          {isSaving ? "Salvando..." : "Salvar"}
-        </Button>
-      </CardFooter>
-    </Card>
-  );
 }
 
 export default function DashboardPage() {
@@ -104,7 +58,8 @@ export default function DashboardPage() {
       });
       if (!response.ok) throw new Error('Failed to save');
       toast.success(`Rota ${path} atualizada com sucesso!`);
-      fetchRoutes(); // Refresh data after save
+      // We need to refetch to update the "original" state in each row
+      fetchRoutes();
     } catch (error) {
       toast.error(`Falha ao atualizar a rota ${path}.`);
     }
@@ -113,34 +68,42 @@ export default function DashboardPage() {
   return (
     <>
       <Toaster richColors />
-      <div className="space-y-4">
-        <h1 className="text-2xl font-bold">Gerenciamento de Rotas</h1>
-        <p className="text-muted-foreground">
-          Controle qual conteúdo é exibido para cada rota (URL).
-        </p>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {isLoading ? (
-            Array.from({ length: 4 }).map((_, i) => (
-              <Card key={i}>
-                <CardHeader>
-                  <Skeleton className="h-6 w-3/4" />
-                  <Skeleton className="h-4 w-1/2" />
-                </CardHeader>
-                <CardContent>
-                  <Skeleton className="h-10 w-full" />
-                </CardContent>
-                <CardFooter className="flex justify-end">
-                  <Skeleton className="h-10 w-20" />
-                </CardFooter>
-              </Card>
-            ))
-          ) : (
-            routes.map(route => (
-              <RouteCard key={route.path} route={route} onSave={handleSaveRoute} />
-            ))
-          )}
-        </div>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Gerenciamento de Rotas</CardTitle>
+          <CardDescription>
+            Controle qual conteúdo é exibido para cada rota (URL) do seu site.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Nome da Rota</TableHead>
+                <TableHead>Caminho (URL)</TableHead>
+                <TableHead>Conteúdo Atribuído</TableHead>
+                <TableHead className="text-right">Ações</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {isLoading ? (
+                Array.from({ length: 4 }).map((_, i) => (
+                  <TableRow key={i}>
+                    <TableCell><Skeleton className="h-5 w-3/4" /></TableCell>
+                    <TableCell><Skeleton className="h-5 w-1/2" /></TableCell>
+                    <TableCell><Skeleton className="h-10 w-full" /></TableCell>
+                    <TableCell className="text-right"><Skeleton className="h-10 w-20" /></TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                routes.map(route => (
+                  <RouteRow key={route.path} route={route} onSave={handleSaveRoute} />
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </>
   );
 }
