@@ -23,7 +23,7 @@ export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText
         />
       )}
       
-      <div className="prose prose-xl dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: formattedAdvertorialText }} />
+      <div className="prose prose-xl max-w-none" dangerouslySetInnerHTML={{ __html: formattedAdvertitorialText }} />
 
       {imageUrl2 && (
         <img
@@ -34,7 +34,7 @@ export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText
       )}
 
       {guaranteeText && (
-        <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700 text-center">
+        <div className="mt-12 p-6 bg-gray-50 rounded-lg border border-gray-200 text-center">
           <p className="text-lg leading-relaxed">{guaranteeText}</p>
         </div>
       )}

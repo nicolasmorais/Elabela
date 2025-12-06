@@ -94,7 +94,7 @@ export const FooterAP = ({ disclaimers, companyInfo, policies, copyright }: Foot
                   <DialogTitle>{policy.title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea className="h-[400px] w-full p-4 border rounded-md">
-                  <div className="prose prose-sm dark:prose-invert text-left" dangerouslySetInnerHTML={{ __html: policy.content.replace(/\n/g, '<br />') }} />
+                  <div className="prose prose-sm text-left" dangerouslySetInnerHTML={{ __html: policy.content.replace(/\n/g, '<br />') }} />
                 </ScrollArea>
               </DialogContent>
             </Dialog>
