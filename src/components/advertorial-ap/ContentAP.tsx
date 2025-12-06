@@ -9,7 +9,7 @@ interface ContentAPProps {
 
 export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText }: ContentAPProps) => {
   // Processa o texto para substituir *texto* por <strong>texto</strong> e novas linhas por <br>
-  const formattedAdvertitorialText = advertorialText
+  const formattedAdvertorialText = advertorialText
     .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
     .replace(/\n/g, '<br />');
 
@@ -19,7 +19,7 @@ export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2, guaranteeText
         <img
           src={imageUrl1}
           alt="Imagem principal do advertorial"
-          className="w-full h-auto rounded-lg my-6 shadow-md"
+          className="w-full h-auto rounded-lg mt-4 mb-6 shadow-md"
         />
       )}
       
