@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, LayoutDashboard } from "lucide-react";
+import { Settings, LayoutDashboard, FileCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
@@ -18,7 +18,12 @@ export const Sidebar = () => {
     {
       href: "/dashboard",
       icon: Settings,
-      label: "Page Settings",
+      label: "Route Settings",
+    },
+    {
+      href: "/dashboard/approval-page",
+      icon: FileCheck,
+      label: "Approval Page Editor",
     },
   ];
 
