@@ -160,7 +160,7 @@ const defaultApprovalPageContent: ApprovalPageContent = {
 };
 
 // Default footer content based on the existing approval page footer
-const defaultCustomAdvertorialFooter: CustomAdvertorialFooter = {
+export const defaultCustomAdvertorialFooter: CustomAdvertorialFooter = {
     ...defaultApprovalPageContent.footer,
     hideDisclaimers: false,
     hideCompanyInfo: false,
