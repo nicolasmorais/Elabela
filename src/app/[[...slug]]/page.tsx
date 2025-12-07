@@ -23,31 +23,27 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
   }
 }
 
-interface DynamicPageProps {
+export default async function DynamicPage({ 
+  params, 
+  searchParams 
+}: {
   params: {
     slug?: string[];
   };
   searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export default function DynamicPage({ 
-  params, 
-  searchParams 
-}: DynamicPageProps): Promise<JSX.Element> {
+}) {
   // Construct the path from the slug segments.
   // If slug is undefined or empty, it's the root path '/'.
   const path = params.slug ? `/${params.slug.join('/')}` : '/';
 
-  // Refactored to use Promise chaining to avoid Next.js type conflict with async keyword
-  return getDb().then(db => {
-    const route = db.data.routes.find(r => r.path === path);
+  const db = await getDb();
+  const route = db.data.routes.find(r => r.path === path);
 
-    if (!route) {
-      // If no route mapping is found in the database, return a 404.
-      return notFound();
-    }
+  if (!route) {
+    // If no route mapping is found in the database, return a 404.
+    return notFound();
+  }
 
-    // Render the component corresponding to the contentId found in the database.
-    return <ContentSwitcher contentId={route.contentId} />;
-  });
+  // Render the component corresponding to the contentId found in the database.
+  return <ContentSwitcher contentId={route.contentId} />;
 }
