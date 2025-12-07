@@ -4,19 +4,29 @@ import { ContentBlock } from '@/lib/database';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertTriangle, Zap, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils'; // Importando cn para construir classes dinâmicas
 
 interface BlockRendererProps {
   block: ContentBlock;
 }
 
-const TextBlock = ({ value }: { value: string }) => {
+const TextBlock = ({ value, fontSize }: { value: string, fontSize?: string }) => {
     // Processa o texto para substituir *texto* por <strong>texto</strong> e novas linhas por <br>
     const formattedText = value
         .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
         .replace(/\n/g, '<br />');
 
+    // Define a classe de tamanho de fonte padrão ou usa a fornecida
+    const sizeClass = fontSize ? `text-${fontSize}` : 'text-xl';
+    
+    // Se o valor for um tamanho em px (ex: '16px'), usamos style, senão usamos a classe Tailwind
+    const style = fontSize && fontSize.endsWith('px') ? { fontSize: fontSize } : {};
+
     return (
-        <div className="prose prose-xl max-w-none text-gray-800 dark:text-gray-200 leading-relaxed">
+        <div 
+            className={cn("prose prose-xl max-w-none text-gray-800 dark:text-gray-200 leading-relaxed", sizeClass)}
+            style={style}
+        >
             <div dangerouslySetInnerHTML={{ __html: formattedText }} />
         </div>
     );
@@ -111,7 +121,7 @@ const PricingBlock = ({ block }: { block: ContentBlock }) => {
 export function BlockRenderer({ block }: BlockRendererProps) {
   switch (block.type) {
     case 'text':
-      return <TextBlock value={block.value} />;
+      return <TextBlock value={block.value} fontSize={block.fontSize} />;
     case 'image':
       return <ImageBlock value={block.value} />;
     case 'alert':

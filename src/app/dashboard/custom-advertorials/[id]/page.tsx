@@ -23,7 +23,7 @@ const getDefaultBlock = (type: BlockType): ContentBlock => {
     const id = generateId();
     switch (type) {
         case 'text':
-            return { id, type, value: "Novo parágrafo de texto. Use **asteriscos** para negrito." };
+            return { id, type, value: "Novo parágrafo de texto. Use **asteriscos** para negrito.", fontSize: 'xl' };
         case 'image':
             return { id, type, value: "https://via.placeholder.com/800x400.png?text=Nova+Imagem" };
         case 'alert':
@@ -91,6 +91,18 @@ const BlockEditor = ({ block, index, onUpdate, onDelete }: { block: ContentBlock
                             onChange={e => handleValueChange('value', e.target.value)} 
                         />
                     )}
+                </div>
+            )}
+            
+            {/* Text Specific Fields (Font Size) */}
+            {block.type === 'text' && (
+                <div>
+                    <Label className="text-zinc-400">Tamanho da Fonte (ex: xl, 2xl, 16px)</Label>
+                    <Input 
+                        className="bg-zinc-900 border-zinc-700 text-white" 
+                        value={block.fontSize || 'xl'} 
+                        onChange={e => handleValueChange('fontSize', e.target.value)} 
+                    />
                 </div>
             )}
 

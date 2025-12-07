@@ -113,7 +113,7 @@
           "type": "alert",
           "value": "Este é o texto do alerta.",
           "alertTitle": "Atenção!",
-          "alertVariant": "destructive"
+          "alertVariant": "warning"
         },
         {
           "id": "58lfwne",

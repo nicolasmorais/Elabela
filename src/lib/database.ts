@@ -72,9 +72,10 @@ export interface ContentBlock {
   type: BlockType;
   // Common fields
   value: string; // Main content (text, URL, etc.)
+  fontSize?: string; // NEW: Font size for text blocks (e.g., 'xl', '2xl', '16px')
   // Specific fields for 'alert'
   alertTitle?: string;
-  alertVariant?: 'default' | 'destructive' | 'warning'; // Added 'warning'
+  alertVariant?: 'default' | 'destructive' | 'warning';
   // Specific fields for 'pricing'
   price?: string;
   buttonText?: string;
