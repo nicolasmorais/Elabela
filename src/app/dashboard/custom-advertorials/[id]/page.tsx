@@ -30,7 +30,8 @@ const getDefaultBlock = (type: BlockType): ContentBlock => {
     const id = generateId();
     switch (type) {
         case 'text':
-            return { id, type, value: "Novo parágrafo de texto. Use **asteriscos** para negrito.", fontSize: 'xl', fontFamily: 'merriweather' };
+            // Removendo fontFamily do default, pois será herdado
+            return { id, type, value: "Novo parágrafo de texto. Use **asteriscos** para negrito.", fontSize: 'xl' };
         case 'image':
             return { id, type, value: "https://via.placeholder.com/800x400.png?text=Nova+Imagem" };
         case 'alert':
@@ -65,6 +66,7 @@ const BlockEditor = ({ block, index, onUpdate, onDelete }: { block: ContentBlock
     }, [block.type]);
 
     const handleValueChange = (field: keyof ContentBlock, value: string) => {
+        // Se o campo for fontFamily, ele será ignorado aqui, pois o controle é global
         onUpdate(index, { ...block, [field]: value });
     };
 
@@ -84,7 +86,7 @@ const BlockEditor = ({ block, index, onUpdate, onDelete }: { block: ContentBlock
             {block.type !== 'pricing' && (
                 <div>
                     <Label className="text-zinc-400">Conteúdo Principal ({block.type === 'image' ? 'URL' : 'Texto'})</Label>
-                    {block.type === 'text' ? (
+                    {block.type === 'text' || block.type === 'alert' ? (
                         <Textarea 
                             className="bg-zinc-900 border-zinc-700 text-white" 
                             value={block.value} 
@@ -101,35 +103,15 @@ const BlockEditor = ({ block, index, onUpdate, onDelete }: { block: ContentBlock
                 </div>
             )}
             
-            {/* Text Specific Fields (Font Size & Family) */}
+            {/* Text Specific Fields (Font Size) */}
             {block.type === 'text' && (
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <Label className="text-zinc-400">Tamanho da Fonte (ex: xl, 2xl, 16px)</Label>
-                        <Input 
-                            className="bg-zinc-900 border-zinc-700 text-white" 
-                            value={block.fontSize || 'xl'} 
-                            onChange={e => handleValueChange('fontSize', e.target.value)} 
-                        />
-                    </div>
-                    <div>
-                        <Label className="text-zinc-400">Família da Fonte</Label>
-                        <Select 
-                            value={block.fontFamily || 'merriweather'} 
-                            onValueChange={(v) => handleValueChange('fontFamily', v)}
-                        >
-                            <SelectTrigger className="bg-zinc-900 border-zinc-700 text-white">
-                                <SelectValue placeholder="Selecione a fonte" />
-                            </SelectTrigger>
-                            <SelectContent className="bg-zinc-900 text-white border-zinc-800">
-                                {FONT_OPTIONS.map(opt => (
-                                    <SelectItem key={opt.value} value={opt.value} className={`font-${opt.value}`}>
-                                        {opt.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </div>
+                <div>
+                    <Label className="text-zinc-400">Tamanho da Fonte (ex: xl, 2xl, 16px)</Label>
+                    <Input 
+                        className="bg-zinc-900 border-zinc-700 text-white" 
+                        value={block.fontSize || 'xl'} 
+                        onChange={e => handleValueChange('fontSize', e.target.value)} 
+                    />
                 </div>
             )}
 
@@ -203,8 +185,11 @@ export default function CustomAdvertorialEditor() {
                     setName(data.name);
                     // Ensure fontFamily defaults if missing in old data
                     setHeader({ ...data.header, fontFamily: data.header.fontFamily || 'sans' });
-                    // Ensure fontFamily defaults for blocks if missing in old data
-                    setBlocks(data.blocks.map((b: ContentBlock) => ({ ...b, fontFamily: b.fontFamily || (b.type === 'text' ? 'merriweather' : undefined) })));
+                    // Remove individual block font family if it exists, as control is now global
+                    setBlocks(data.blocks.map((b: ContentBlock) => {
+                        const { fontFamily, ...rest } = b;
+                        return rest;
+                    }));
                 })
                 .catch(() => {
                     toast.error("Advertorial não encontrado ou falha ao carregar.");
@@ -318,7 +303,7 @@ export default function CustomAdvertorialEditor() {
                         
                         <div className="grid grid-cols-2 gap-4">
                             <div><Label className="text-zinc-300">Pré-Título</Label><Input className="bg-zinc-800 border-zinc-700 text-white" value={header.preTitle} onChange={e => handleHeaderChange('preTitle', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Família da Fonte (Cabeçalho)</Label>
+                            <div><Label className="text-zinc-300">Família da Fonte (Global)</Label>
                                 <Select 
                                     value={header.fontFamily || 'sans'} 
                                     onValueChange={(v) => handleHeaderChange('fontFamily', v)}

@@ -26,7 +26,8 @@ export async function generateMetadata({ advertorialId }: CustomAdvertorialPageP
 
 // Component to render the header
 const DynamicHeader = ({ preTitle, title, subheadline, fontFamily }: CustomAdvertorial["header"]) => (
-    <header className={cn("text-center pt-10 pb-6 border-b border-gray-200 dark:border-gray-700", fontFamily && `font-${fontFamily}`)}>
+    // Removemos a classe de fonte daqui, ela será aplicada no container principal
+    <header className="text-center pt-10 pb-6 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl mx-auto px-4">
             <p className="text-sm text-blue-600 font-semibold uppercase tracking-wider">
                 {preTitle}
@@ -52,9 +53,12 @@ export async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorial
   if (!advertorial) {
     notFound();
   }
+  
+  // Determina a classe de fonte principal
+  const mainFontClass = advertorial.header.fontFamily ? `font-${advertorial.header.fontFamily}` : 'font-sans';
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-merriweather min-h-screen">
+    <div className={cn("bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen", mainFontClass)}>
       <div className="bg-gray-100 dark:bg-gray-800 text-center py-2">
         <p className="text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
           Advertorial

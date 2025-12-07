@@ -10,7 +10,7 @@ interface BlockRendererProps {
   block: ContentBlock;
 }
 
-const TextBlock = ({ value, fontSize, fontFamily }: { value: string, fontSize?: string, fontFamily?: string }) => {
+const TextBlock = ({ value, fontSize }: { value: string, fontSize?: string }) => {
     // Processa o texto para substituir *texto* por <strong>texto</strong> e novas linhas por <br>
     const formattedText = value
         .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
@@ -19,15 +19,13 @@ const TextBlock = ({ value, fontSize, fontFamily }: { value: string, fontSize?: 
     // Define a classe de tamanho de fonte padrão ou usa a fornecida
     const sizeClass = fontSize ? `text-${fontSize}` : 'text-xl';
     
-    // Define a classe de família de fonte, usando 'font-merriweather' como fallback se não houver 'fontFamily'
-    const fontClass = fontFamily ? `font-${fontFamily}` : 'font-merriweather';
-
     // Se o valor for um tamanho em px (ex: '16px'), usamos style, senão usamos a classe Tailwind
     const style = fontSize && fontSize.endsWith('px') ? { fontSize: fontSize } : {};
 
     return (
         <div 
-            className={cn("prose prose-xl max-w-none text-gray-800 dark:text-gray-200 leading-relaxed", sizeClass, fontClass)}
+            // A classe de fonte será herdada do componente pai (CustomAdvertorialPage)
+            className={cn("prose prose-xl max-w-none text-gray-800 dark:text-gray-200 leading-relaxed", sizeClass)}
             style={style}
         >
             <div dangerouslySetInnerHTML={{ __html: formattedText }} />
@@ -134,7 +132,8 @@ const PricingBlock = ({ block }: { block: ContentBlock }) => {
 export function BlockRenderer({ block }: BlockRendererProps) {
   switch (block.type) {
     case 'text':
-      return <TextBlock value={block.value} fontSize={block.fontSize} fontFamily={block.fontFamily} />;
+      // Passamos apenas fontSize, a família de fonte será herdada
+      return <TextBlock value={block.value} fontSize={block.fontSize} />;
     case 'image':
       return <ImageBlock value={block.value} />;
     case 'alert':

@@ -96,7 +96,7 @@
         "preTitle": "Reportagem Especial",
         "title": "Título do Novo Advertorial",
         "subheadline": "Subtítulo chamativo aqui.",
-        "fontFamily": "open-sans"
+        "fontFamily": "sans"
       },
       "blocks": [
         {
@@ -110,7 +110,7 @@
           "type": "text",
           "value": "Novo parágrafo de texto. Use *asteriscos* para negrito.",
           "fontSize": "25px",
-          "fontFamily": "open-sans"
+          "fontFamily": "sans"
         },
         {
           "id": "850ksge",
