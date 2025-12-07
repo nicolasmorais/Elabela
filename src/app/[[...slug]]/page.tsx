@@ -23,27 +23,31 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
   }
 }
 
-export default async function DynamicPage({ 
-  params, 
-  searchParams 
-}: {
+interface DynamicPageProps {
   params: {
     slug?: string[];
   };
   searchParams?: { [key: string]: string | string[] | undefined };
-}) {
+}
+
+// Using Promise chaining instead of async/await to resolve TS2344 type conflict
+export default function DynamicPage({ 
+  params, 
+  searchParams 
+}: DynamicPageProps): Promise<any> {
   // Construct the path from the slug segments.
   // If slug is undefined or empty, it's the root path '/'.
   const path = params.slug ? `/${params.slug.join('/')}` : '/';
 
-  const db = await getDb();
-  const route = db.data.routes.find(r => r.path === path);
+  return getDb().then(db => {
+    const route = db.data.routes.find(r => r.path === path);
 
-  if (!route) {
-    // If no route mapping is found in the database, return a 404.
-    return notFound();
-  }
+    if (!route) {
+      // If no route mapping is found in the database, return a 404.
+      return notFound();
+    }
 
-  // Render the component corresponding to the contentId found in the database.
-  return <ContentSwitcher contentId={route.contentId} />;
+    // Render the component corresponding to the contentId found in the database.
+    return <ContentSwitcher contentId={route.contentId} />;
+  });
 }
