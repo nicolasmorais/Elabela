@@ -244,7 +244,35 @@ export default function CustomAdvertorialEditor() {
         }
     }, [advertorialId, isNew, router, defaultFooter]);
 
-    // FIX 3, 4, 5, 6: Correcting handleFooterChange signature and logic
+    // FIX 1, 2, 3, 4: Header change handler
+    const handleHeaderChange = (field: keyof CustomAdvertorialHeader, value: string) => {
+        setHeader(prev => ({ ...prev, [field]: value }));
+    };
+
+    // FIX 10: Block update handler
+    const handleBlockUpdate = (index: number, newBlock: ContentBlock) => {
+        setBlocks(prev => prev.map((b, i) => (i === index ? newBlock : b)));
+    };
+
+    // FIX 11: Block delete handler
+    const handleBlockDelete = (index: number) => {
+        setBlocks(prev => prev.filter((_, i) => i !== index));
+    };
+
+    // FIX 5, 6, 7, 8: Add block handler
+    const handleAddBlock = (type: BlockType) => {
+        setBlocks(prev => [...prev, getDefaultBlock(type)]);
+    };
+
+    // FIX 9: Drag and drop handler
+    const onDragEnd = (result: DropResult) => {
+        if (!result.destination) return;
+        const items = Array.from(blocks);
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+        setBlocks(items);
+    };
+
     const handleFooterChange = (section: keyof CustomAdvertorialFooter | 'copyright' | 'hideDisclaimers' | 'hideCompanyInfo' | 'hidePolicies', field: string, value: any) => {
         setFooter(prev => {
             if (!prev) return null;
