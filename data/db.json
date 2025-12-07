@@ -87,5 +87,50 @@
       ],
       "copyright": "Todos os direitos reservados © 2024 - OneConversion Soluções Digitais"
     }
-  }
+  },
+  "customAdvertorials": [
+    {
+      "id": "2f4d841b-3d43-4cfb-9ba7-cdc00128e230",
+      "name": "Novo Advertorial Dinâmico",
+      "header": {
+        "preTitle": "Reportagem Especial",
+        "title": "Título do Novo Advertorial",
+        "subheadline": "Subtítulo chamativo aqui."
+      },
+      "blocks": [
+        {
+          "id": "pfromsy",
+          "type": "text",
+          "value": "Novo parágrafo de texto. Use **asteriscos** para negrito."
+        },
+        {
+          "id": "erndhb5",
+          "type": "pricing",
+          "value": "R$ 29,90",
+          "price": "R$ 29,90",
+          "buttonText": "COMPRAR AGORA",
+          "buttonUrl": "#",
+          "prePriceText": "OFERTA ESPECIAL",
+          "paymentType": "Pagamento Único",
+          "postButtonText": "Acesso imediato."
+        }
+      ]
+    },
+    {
+      "id": "64b64e8b-1d21-4447-85d7-76c637edc9bc",
+      "name": "Novo Advertorial Dinâmico",
+      "header": {
+        "preTitle": "Reportagem Especial",
+        "title": "Título do Novo Advertorial",
+        "subheadline": "Subtítulo chamativo aqui."
+      },
+      "blocks": [
+        {
+          "id": "u27m0do",
+          "type": "text",
+          "value": "Novo parágrafo de texto. Use **asteriscos** para negrito."
+        }
+      ]
+    }
+  ]
 }

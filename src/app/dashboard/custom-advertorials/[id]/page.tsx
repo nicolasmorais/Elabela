@@ -13,6 +13,7 @@ import { Plus, Trash2, GripVertical, AlertTriangle, Image, Text, DollarSign } fr
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
+import Link from 'next/link'; // Importação adicionada
 
 // Helper function to generate unique IDs
 const generateId = () => Math.random().toString(36).substring(2, 9);
