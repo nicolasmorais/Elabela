@@ -116,7 +116,8 @@ const BlockEditor = ({ block, index, onUpdate, onDelete }: { block: ContentBlock
                             </SelectTrigger>
                             <SelectContent className="bg-zinc-900 text-white border-zinc-800">
                                 <SelectItem value="default">Padrão (Cinza/Azul)</SelectItem>
-                                <SelectItem value="destructive">Destrutivo (Vermelho/Amarelo)</SelectItem>
+                                <SelectItem value="destructive">Destrutivo (Vermelho)</SelectItem>
+                                <SelectItem value="warning">Aviso (Amarelo)</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>

@@ -74,7 +74,7 @@ export interface ContentBlock {
   value: string; // Main content (text, URL, etc.)
   // Specific fields for 'alert'
   alertTitle?: string;
-  alertVariant?: 'default' | 'destructive';
+  alertVariant?: 'default' | 'destructive' | 'warning'; // Added 'warning'
   // Specific fields for 'pricing'
   price?: string;
   buttonText?: string;

@@ -33,18 +33,41 @@ const ImageBlock = ({ value }: { value: string }) => {
 };
 
 const AlertBlock = ({ block }: { block: ContentBlock }) => {
-    const isDestructive = block.alertVariant === 'destructive';
+    const variant = block.alertVariant;
     
+    let classes = "text-left";
+    let iconClasses = "h-5 w-5";
+    let titleClasses = "font-bold text-2xl mb-2";
+    let descriptionClasses = "text-xl";
+
+    if (variant === 'destructive') {
+        classes += " bg-red-50 dark:bg-red-900/20 border-red-500";
+        iconClasses += " text-red-600";
+        titleClasses += " text-red-800 dark:text-red-200";
+        descriptionClasses += " text-red-700 dark:text-red-300";
+    } else if (variant === 'warning') {
+        classes += " bg-yellow-50 dark:bg-yellow-900/20 border-yellow-500";
+        iconClasses += " text-yellow-600";
+        titleClasses += " text-yellow-800 dark:text-yellow-200";
+        descriptionClasses += " text-yellow-700 dark:text-yellow-300";
+    } else {
+        // Default/Blue variant
+        classes += " bg-blue-50 dark:bg-blue-900/20 border-blue-500";
+        iconClasses += " text-blue-600";
+        titleClasses += " text-blue-800 dark:text-blue-200";
+        descriptionClasses += " text-blue-700 dark:text-blue-300";
+    }
+
     return (
         <Alert 
-            variant={block.alertVariant || 'default'} 
-            className={isDestructive ? "bg-red-50 dark:bg-red-900/20 border-red-500 text-left" : "bg-blue-50 dark:bg-blue-900/20 border-blue-500 text-left"}
+            variant={variant === 'destructive' ? 'destructive' : 'default'} // Use default for warning/blue, as Shadcn Alert only supports default/destructive
+            className={classes}
         >
-            <AlertTriangle className={`h-5 w-5 ${isDestructive ? 'text-red-600' : 'text-blue-600'}`} />
-            <AlertTitle className={`font-bold text-2xl mb-2 ${isDestructive ? 'text-red-800 dark:text-red-200' : 'text-blue-800 dark:text-blue-200'}`}>
+            <AlertTriangle className={iconClasses} />
+            <AlertTitle className={titleClasses}>
                 {block.alertTitle || 'Aviso'}
             </AlertTitle>
-            <AlertDescription className={`text-xl ${isDestructive ? 'text-red-700 dark:text-red-300' : 'text-blue-700 dark:text-blue-300'}`}>
+            <AlertDescription className={descriptionClasses}>
                 {block.value}
             </AlertDescription>
         </Alert>

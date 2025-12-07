@@ -99,9 +99,32 @@
       },
       "blocks": [
         {
+          "id": "v0fut0p",
+          "type": "image",
+          "value": "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%203%20de%20dez.%20de%202025%2C%2019_16_42-chAkYbYIm1134REeZ26ZWHwreF1Pdi.png"
+        },
+        {
           "id": "pfromsy",
           "type": "text",
-          "value": "Novo parágrafo de texto. Use **asteriscos** para negrito."
+          "value": "Novo parágrafo de texto. Use *asteriscos* para negrito."
+        },
+        {
+          "id": "850ksge",
+          "type": "alert",
+          "value": "Este é o texto do alerta.",
+          "alertTitle": "Atenção!",
+          "alertVariant": "destructive"
+        },
+        {
+          "id": "58lfwne",
+          "type": "pricing",
+          "value": "R$ 29,90",
+          "price": "R$ 49,90",
+          "buttonText": "COMPRAR AGORA",
+          "buttonUrl": "#",
+          "prePriceText": "OFERTA ESPECIAL",
+          "paymentType": "Pagamento Único",
+          "postButtonText": "Acesso imediato."
         }
       ]
     },
