@@ -17,7 +17,7 @@ export const HeaderAP = ({ preTitle, title, subheadline }: HeaderAPProps) => {
           {title}
         </h1>
         {subheadline && (
-          <h2 className="mt-4 text-xl md:text-2xl font-semibold text-gray-700">
+          <h2 className="mt-4 text-xl md:text-2xl font-medium text-gray-700">
             {subheadline}
           </h2>
         )}
