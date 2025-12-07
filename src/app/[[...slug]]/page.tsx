@@ -27,7 +27,7 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
 
 interface DynamicPageProps {
   params: {
-    slug?: string[]; // Explicitly define slug as optional string array
+    slug?: string[];
   };
   searchParams?: { [key: string]: string | string[] | undefined };
 }
