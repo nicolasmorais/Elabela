@@ -29,7 +29,7 @@ interface DynamicPageProps {
   params: Promise<{
     slug?: string[];
   }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 // Refatorado para usar async/await, tratando-o como um Server Component
