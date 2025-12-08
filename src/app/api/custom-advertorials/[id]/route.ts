@@ -7,9 +7,9 @@ interface RouteContext {
 }
 
 // GET: Fetch a single custom advertorial by ID
-export async function GET(request: Request, context: Promise<RouteContext>) {
+export async function GET(request: Request, context: RouteContext) {
   try {
-    const { params } = await context;
+    const { params } = context;
     const db = await getDb();
     const advertorial = db.data.customAdvertorials.find(a => a.id === params.id);
 
@@ -25,10 +25,10 @@ export async function GET(request: Request, context: Promise<RouteContext>) {
 }
 
 // DELETE: Delete a custom advertorial by ID
-export async function DELETE(request: Request, context: Promise<RouteContext>) {
+export async function DELETE(request: Request, context: RouteContext) {
   try {
-    const { params } = await context;
-    const db = await await getDb();
+    const { params } = context;
+    const db = await getDb();
     const initialLength = db.data.customAdvertorials.length;
     
     db.data.customAdvertorials = db.data.customAdvertorials.filter(a => a.id !== params.id);
