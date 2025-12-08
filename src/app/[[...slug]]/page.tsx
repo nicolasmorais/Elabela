@@ -26,9 +26,9 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
 }
 
 interface DynamicPageProps {
-  params: {
+  params: Promise<{
     slug?: string[];
-  };
+  }>;
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
@@ -37,9 +37,12 @@ export default async function DynamicPage({
   params, 
   searchParams 
 }: DynamicPageProps) {
+  // Await the params promise
+  const { slug } = await params;
+  
   // Construct the path from the slug segments.
   // If slug is undefined or empty, it's the root path '/'.
-  const path = params.slug ? `/${params.slug.join('/')}` : '/';
+  const path = slug ? `/${slug.join('/')}` : '/';
 
   const db = await getDb();
   const route = db.data.routes.find(r => r.path === path);
