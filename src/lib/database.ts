@@ -47,7 +47,13 @@ export async function getDb(): Promise<Low<DbSchema>> {
     console.log(`Database file exists: ${dbExists} at ${DB_FULL_PATH}`);
 
     const adapter = new JSONFile<DbSchema>(DB_FULL_PATH);
-    dbInstance = new Low<DbSchema>(adapter);
+    const defaultData = {
+      examples: [],
+      routes: defaultDbData.routes,
+      approvalPageContent: defaultDbData.approvalPageContent,
+      customAdvertorials: defaultDbData.customAdvertorials,
+    };
+    dbInstance = new Low<DbSchema>(adapter, defaultData);
 
     // Try to read existing data
     await dbInstance.read();
@@ -55,12 +61,7 @@ export async function getDb(): Promise<Low<DbSchema>> {
     // Initialize with default data if file doesn't exist or is empty
     if (!dbInstance.data || Object.keys(dbInstance.data).length === 0) {
       console.log('Initializing database with default data...');
-      dbInstance.data = {
-        examples: [],
-        routes: defaultDbData.routes,
-        approvalPageContent: defaultDbData.approvalPageContent,
-        customAdvertorials: defaultDbData.customAdvertorials,
-      };
+      dbInstance.data = defaultData;
       await dbInstance.write();
       console.log('Database initialized successfully');
     } else {
