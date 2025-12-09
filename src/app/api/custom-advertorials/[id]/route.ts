@@ -3,7 +3,7 @@ import { getDb } from '@/lib/database';
 import { CustomAdvertorial } from '@/lib/advertorial-types';
 
 // GET: Fetch a single custom advertorial by ID
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: any) {
   try {
     const db = await getDb();
     const advertorial = db.data.customAdvertorials.find(a => a.id === params.id);
@@ -20,7 +20,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
 }
 
 // DELETE: Delete a custom advertorial by ID
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: any) {
   try {
     const db = await getDb();
 
