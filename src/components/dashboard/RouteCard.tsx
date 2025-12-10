@@ -62,14 +62,13 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
     setIsSaving(false);
   };
 
-  // Cores ajustadas: Card #0f172a, Borda #1e293b, Input #00030a, Botão Primário #0bc839
+  // Cores ajustadas: Card #0f172a, Borda #1e293b, Input/Select BG #1e293b, Botão Primário #0bc839
   const cardBg = 'bg-[#0f172a]';
   const borderColor = 'border-[#1e293b]';
-  const inputBg = 'bg-[#00030a]';
+  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b (slate-800)
   const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
   const deleteButtonClasses = 'text-red-500 hover:bg-red-900/20';
-  const codeBg = 'bg-[#00030a]';
-  const selectContentBg = 'bg-[#00030a]';
+  const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
 
   return (
     <div className={cn(cardBg, borderColor, "rounded-lg shadow-sm border p-6 flex flex-col space-y-6 text-white")}>

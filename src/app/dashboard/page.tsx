@@ -11,7 +11,7 @@ import {
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
 import { RouteCard } from '@/components/dashboard/RouteCard';
-import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog'; // Importando o novo componente
+import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
 import { cn } from '@/lib/utils';
 import { Search, Filter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -133,11 +133,11 @@ export default function DashboardPage() {
     return matchesSearch && matchesFilter;
   });
 
-  // Cores ajustadas: Card #0f172a, Borda #1e293b, Input #00030a
+  // Cores ajustadas: Card #0f172a, Borda #1e293b, Input #1e293b
   const cardBg = 'bg-[#0f172a]';
   const borderColor = 'border-[#1e293b]';
-  const inputBg = 'bg-[#00030a]';
-  const selectContentBg = 'bg-[#00030a]';
+  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+  const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
 
   return (
     <>

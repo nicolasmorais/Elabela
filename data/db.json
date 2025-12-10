@@ -25,6 +25,11 @@
       "path": "/aprovado",
       "name": "Página de Aprovação (Preview)",
       "contentId": "ap"
+    },
+    {
+      "path": "/a20a8ed1-9f42-4bad-9fed-59b0e067b510",
+      "contentId": "ap",
+      "name": "Rota Personalizada: /a20a8ed1-9f42-4bad-9fed-59b0e067b510"
     }
   ],
   "approvalPageContent": {

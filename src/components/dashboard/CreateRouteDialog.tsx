@@ -35,11 +35,11 @@ export function CreateRouteDialog({ contentOptions, onRouteCreated }: CreateRout
   const [contentId, setContentId] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Cores ajustadas
-  const inputBg = 'bg-[#00030a]';
+  // Cores ajustadas: Input/Select BG #1e293b
+  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
   const borderColor = 'border-[#1e293b]';
   const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
-  const selectContentBg = 'bg-[#00030a]';
+  const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
