@@ -6,10 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
 import { Settings, Plus, MinusCircle } from 'lucide-react';
 import { CustomAdvertorialFooter, Policy, Disclaimer } from '@/lib/advertorial-types';
 import { cn } from '@/lib/utils';
+import { DashboardSwitch } from '@/components/dashboard/DashboardSwitch'; // Importando o novo Switch
 
 interface FooterEditorProps {
     footer: CustomAdvertorialFooter;
@@ -48,27 +48,23 @@ export const FooterEditor = ({
                     <h3 className="font-semibold text-lg">Visibilidade das Seções</h3>
                     <div className="flex items-center justify-between">
                         <Label className="text-zinc-300">Ocultar Avisos/Isenções</Label>
-                        <Switch 
+                        <DashboardSwitch 
                             checked={footer.hideDisclaimers} 
                             onCheckedChange={(checked) => handleFooterChange('hideDisclaimers', 'hideDisclaimers', checked)}
-                            // Forçando o estilo do switch para o tema escuro
-                            className="data-[state=checked]:bg-[#0bc839] data-[state=unchecked]:bg-[#1e293b]"
                         />
                     </div>
                     <div className="flex items-center justify-between">
                         <Label className="text-zinc-300">Ocultar Informações da Empresa</Label>
-                        <Switch 
+                        <DashboardSwitch 
                             checked={footer.hideCompanyInfo} 
                             onCheckedChange={(checked) => handleFooterChange('hideCompanyInfo', 'hideCompanyInfo', checked)}
-                            className="data-[state=checked]:bg-[#0bc839] data-[state=unchecked]:bg-[#1e293b]"
                         />
                     </div>
                     <div className="flex items-center justify-between">
                         <Label className="text-zinc-300">Ocultar Links de Políticas</Label>
-                        <Switch 
+                        <DashboardSwitch 
                             checked={footer.hidePolicies} 
                             onCheckedChange={(checked) => handleFooterChange('hidePolicies', 'hidePolicies', checked)}
-                            className="data-[state=checked]:bg-[#0bc839] data-[state=unchecked]:bg-[#1e293b]"
                         />
                     </div>
                 </div>
