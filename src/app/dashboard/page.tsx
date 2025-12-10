@@ -19,6 +19,7 @@ import {
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
 import { RouteRow } from '@/components/dashboard/RouteRow';
+import { cn } from '@/lib/utils'; // <-- FIX: Importing cn
 
 interface RouteMapping {
   path: string;
