@@ -67,13 +67,13 @@ export default function CustomAdvertorialsPage() {
     }
   };
 
-  // Cores ajustadas
-  const cardBg = 'bg-[#0f172a]';
-  const borderColor = 'border-[#1e293b]';
+  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+  const cardBg = 'bg-[#1e293b]';
+  const borderColor = 'border-[#334155]';
   const hoverBg = 'hover:bg-[#1e293b]';
-  const skeletonBg = 'bg-[#1e293b]';
-  const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
-  const codeBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+  const skeletonBg = 'bg-[#334155]';
+  const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
+  const codeBg = 'bg-[#020617]'; // Novo fundo de código
 
   return (
     <>

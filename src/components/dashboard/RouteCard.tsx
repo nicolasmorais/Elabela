@@ -62,13 +62,13 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
     setIsSaving(false);
   };
 
-  // Cores ajustadas: Card #0f172a, Borda #1e293b, Input/Select BG #1e293b, Botão Primário #0bc839
-  const cardBg = 'bg-[#0f172a]';
-  const borderColor = 'border-[#1e293b]';
-  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b (slate-800)
-  const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
+  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+  const cardBg = 'bg-[#1e293b]';
+  const borderColor = 'border-[#334155]';
+  const inputBg = 'bg-[#020617]'; 
+  const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
   const deleteButtonClasses = 'text-red-500 hover:bg-red-900/20';
-  const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+  const selectContentBg = 'bg-[#1e293b]'; 
 
   return (
     <div className={cn(cardBg, borderColor, "rounded-lg shadow-sm border p-6 flex flex-col space-y-6 text-white")}>
@@ -107,7 +107,7 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
             </SelectTrigger>
             <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
               {contentOptions.map(opt => (
-                <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#0f172a]">
+                <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#1e293b]">
                   {opt.name}
                 </SelectItem>
               ))}
@@ -116,7 +116,7 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
         </div>
       </div>
       
-      <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#1e293b]">
+      <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#334155]">
         
         {/* Link de Visualização */}
         <Link href={route.path} target="_blank">

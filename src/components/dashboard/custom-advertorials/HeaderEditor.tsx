@@ -23,11 +23,11 @@ const FONT_OPTIONS = [
 ];
 
 export const HeaderEditor = ({ name, header, setName, handleHeaderChange }: HeaderEditorProps) => {
-    // Cores ajustadas
-    const cardBg = 'bg-[#0f172a]';
-    const borderColor = 'border-[#1e293b]';
-    const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
-    const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+    // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617
+    const cardBg = 'bg-[#1e293b]';
+    const borderColor = 'border-[#334155]';
+    const inputBg = 'bg-[#020617]'; 
+    const selectContentBg = 'bg-[#1e293b]'; 
 
     return (
         <Card className={cn(cardBg, borderColor, "text-white")}>
@@ -47,7 +47,7 @@ export const HeaderEditor = ({ name, header, setName, handleHeaderChange }: Head
                             </SelectTrigger>
                             <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
                                 {FONT_OPTIONS.map(opt => (
-                                    <SelectItem key={opt.value} value={opt.value} className={`focus:bg-[#0f172a] font-${opt.value}`}>
+                                    <SelectItem key={opt.value} value={opt.value} className={`focus:bg-[#1e293b] font-${opt.value}`}>
                                         {opt.label}
                                     </SelectItem>
                                 ))}

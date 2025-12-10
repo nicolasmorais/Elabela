@@ -35,11 +35,12 @@ export function CreateRouteDialog({ contentOptions, onRouteCreated }: CreateRout
   const [contentId, setContentId] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Cores ajustadas: Input/Select BG #1e293b
-  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
-  const borderColor = 'border-[#1e293b]';
-  const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
-  const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+  const cardBg = 'bg-[#1e293b]';
+  const borderColor = 'border-[#334155]';
+  const inputBg = 'bg-[#020617]'; 
+  const selectContentBg = 'bg-[#1e293b]'; 
+  const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,7 +87,7 @@ export function CreateRouteDialog({ contentOptions, onRouteCreated }: CreateRout
           Adicionar Nova Rota
         </Button>
       </DialogTrigger>
-      <DialogContent className={cn("sm:max-w-[425px] bg-[#0f172a] border-[#1e293b] text-white")}>
+      <DialogContent className={cn("sm:max-w-[425px]", cardBg, borderColor, "text-white")}>
         <DialogHeader>
           <DialogTitle>Criar Nova Rota</DialogTitle>
           <DialogDescription className="text-zinc-400">
@@ -126,7 +127,7 @@ export function CreateRouteDialog({ contentOptions, onRouteCreated }: CreateRout
               </SelectTrigger>
               <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
                 {contentOptions.map(opt => (
-                  <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#0f172a]">
+                  <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#1e293b]">
                     {opt.name}
                   </SelectItem>
                 ))}

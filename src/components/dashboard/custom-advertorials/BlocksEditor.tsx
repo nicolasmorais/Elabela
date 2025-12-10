@@ -40,12 +40,12 @@ export const BlocksEditor = ({ blocks, setBlocks, onSave, isSaving, name }: Bloc
         setBlocks(items);
     };
 
-    // Cores ajustadas
-    const cardBg = 'bg-[#0f172a]';
-    const borderColor = 'border-[#1e293b]';
-    const blockBg = 'bg-[#00030a]';
-    const secondaryButtonClasses = 'text-white bg-[#1e293b] hover:bg-[#2d3748]';
-    const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
+    // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+    const cardBg = 'bg-[#1e293b]';
+    const borderColor = 'border-[#334155]';
+    const blockBg = 'bg-[#0f172a]'; // Fundo do bloco interno (mais escuro que o card)
+    const secondaryButtonClasses = 'text-white bg-[#334155] hover:bg-[#475569]'; // Novo secondary
+    const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
 
     return (
         <Card className={cn(cardBg, borderColor, "text-white")}>

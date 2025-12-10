@@ -177,9 +177,10 @@ export default function CustomAdvertorialEditor() {
         }
     };
 
-    // Cores ajustadas
-    const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
-    const skeletonBg = 'bg-[#0f172a]';
+    // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+    const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
+    const skeletonBg = 'bg-[#1e293b]'; // Novo skeletonBg
+    const mainBg = 'bg-[#0f172a]'; // Fundo principal
 
     if (isLoading || !footer) return <Skeleton className={cn("h-screen w-full", skeletonBg)} />;
 
@@ -187,7 +188,7 @@ export default function CustomAdvertorialEditor() {
         <>
             <Toaster richColors />
             <div className="space-y-6">
-                <div className="flex items-center justify-between sticky top-0 z-20 py-4 bg-[#00030a]">
+                <div className={cn("flex items-center justify-between sticky top-0 z-20 py-4", mainBg)}>
                     <div>
                         <h1 className="text-2xl font-bold text-white">{isNew ? "Criar Novo Advertorial" : `Editando: ${name}`}</h1>
                         <p className="text-zinc-400">ID: {isNew ? 'Novo' : advertorialId}</p>
@@ -195,7 +196,7 @@ export default function CustomAdvertorialEditor() {
                     <div className="flex space-x-2">
                         {!isNew && (
                             <Link href={`/${advertorialId}`} target="_blank">
-                                <Button variant="outline" className="border-[#1e293b] hover:bg-[#0f172a] text-white">
+                                <Button variant="outline" className="border-[#334155] hover:bg-[#1e293b] text-white">
                                     Visualizar Rota
                                 </Button>
                             </Link>

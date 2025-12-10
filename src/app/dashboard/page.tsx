@@ -29,9 +29,9 @@ interface ContentOption {
 }
 
 const LoadingSkeleton = () => {
-  const skeletonBg = 'bg-[#1e293b]';
-  const cardBg = 'bg-[#0f172a]';
-  const borderColor = 'border-[#1e293b]';
+  const skeletonBg = 'bg-[#334155]'; // Novo skeletonBg
+  const cardBg = 'bg-[#1e293b]'; // Novo cardBg
+  const borderColor = 'border-[#334155]'; // Nova borda
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -45,7 +45,7 @@ const LoadingSkeleton = () => {
             <Skeleton className={cn("h-4 w-1/3", skeletonBg)} />
             <Skeleton className={cn("h-10 w-full", skeletonBg)} />
           </div>
-          <div className="flex justify-end pt-4 border-t border-[#1e293b]">
+          <div className="flex justify-end pt-4 border-t border-[#334155]">
             <Skeleton className={cn("h-8 w-20", skeletonBg)} />
           </div>
         </div>
@@ -133,11 +133,12 @@ export default function DashboardPage() {
     return matchesSearch && matchesFilter;
   });
 
-  // Cores ajustadas: Card #0f172a, Borda #1e293b, Input #1e293b
-  const cardBg = 'bg-[#0f172a]';
-  const borderColor = 'border-[#1e293b]';
-  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
-  const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+  const cardBg = 'bg-[#1e293b]';
+  const borderColor = 'border-[#334155]';
+  const inputBg = 'bg-[#020617]'; 
+  const selectContentBg = 'bg-[#1e293b]'; 
+  const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white'; // sky-400
 
   return (
     <>
@@ -160,7 +161,7 @@ export default function DashboardPage() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500" />
           <Input 
             aria-label="Pesquisar rota" 
-            className={cn("w-full pl-10 pr-4 py-2.5 rounded-lg focus:ring-2 focus:ring-[#0bc839] focus:border-[#0bc839] transition-colors text-white", inputBg, borderColor)} 
+            className={cn("w-full pl-10 pr-4 py-2.5 rounded-lg focus:ring-2 focus:ring-[#38bdf8] focus:border-[#38bdf8] transition-colors text-white", inputBg, borderColor)} 
             placeholder="Pesquisar por nome ou caminho..." 
             type="text"
             value={searchTerm}
@@ -170,14 +171,14 @@ export default function DashboardPage() {
         
         <div className="relative w-full sm:w-56">
           <Select value={filterContentId} onValueChange={setFilterContentId}>
-            <SelectTrigger className={cn("w-full sm:w-56 appearance-none pl-4 pr-10 py-2.5 rounded-lg focus:ring-2 focus:ring-[#0bc839] focus:border-[#0bc839] transition-colors text-white", inputBg, borderColor)}>
+            <SelectTrigger className={cn("w-full sm:w-56 appearance-none pl-4 pr-10 py-2.5 rounded-lg focus:ring-2 focus:ring-[#38bdf8] focus:border-[#38bdf8] transition-colors text-white", inputBg, borderColor)}>
               <Filter className="h-5 w-5 text-zinc-500 mr-2" />
               <SelectValue placeholder="Filtrar por conteúdo" />
             </SelectTrigger>
             <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
-              <SelectItem value="all" className="focus:bg-[#0f172a]">Todos os Conteúdos</SelectItem>
+              <SelectItem value="all" className="focus:bg-[#1e293b]">Todos os Conteúdos</SelectItem>
               {contentOptions.map(opt => (
-                <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#0f172a]">
+                <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#1e293b]">
                   {opt.name}
                 </SelectItem>
               ))}

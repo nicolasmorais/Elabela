@@ -32,11 +32,11 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
         onUpdate(index, { ...block, [field]: value });
     };
 
-    // Cores ajustadas: Fundo do Bloco #00030a, Input/Select BG #1e293b
-    const blockBg = 'bg-[#00030a]';
-    const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
-    const borderColor = 'border-[#1e293b]';
-    const selectContentBg = 'bg-[#1e293b]'; // Alterado para #1e293b
+    // Cores ajustadas: Fundo do Bloco #0f172a, Input/Select BG #020617, Borda #334155
+    const blockBg = 'bg-[#0f172a]';
+    const inputBg = 'bg-[#020617]'; 
+    const borderColor = 'border-[#334155]';
+    const selectContentBg = 'bg-[#1e293b]'; // Mantém a cor do card para o dropdown
 
     return (
         <div className={cn("p-4 border rounded-md space-y-3", borderColor, blockBg)}>
@@ -49,7 +49,7 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
                     variant="ghost" 
                     size="icon" 
                     onClick={() => onDelete(index)}
-                    className="text-red-500 hover:bg-red-900/20" // Estilo customizado para ser discreto
+                    className="text-red-500 hover:bg-red-900/20" 
                 >
                     <Trash2 className="h-4 w-4" />
                 </Button>
@@ -121,9 +121,9 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
                                 <SelectValue placeholder="Selecione a variante" />
                             </SelectTrigger>
                             <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
-                                <SelectItem value="default" className="focus:bg-[#0f172a]">Padrão (Cinza/Azul)</SelectItem>
-                                <SelectItem value="destructive" className="focus:bg-[#0f172a]">Destrutivo (Vermelho)</SelectItem>
-                                <SelectItem value="warning" className="focus:bg-[#0f172a]">Aviso (Amarelo)</SelectItem>
+                                <SelectItem value="default" className="focus:bg-[#1e293b]">Padrão (Cinza/Azul)</SelectItem>
+                                <SelectItem value="destructive" className="focus:bg-[#1e293b]">Destrutivo (Vermelho)</SelectItem>
+                                <SelectItem value="warning" className="focus:bg-[#1e293b]">Aviso (Amarelo)</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>

@@ -23,9 +23,9 @@ interface ApprovalPageContent {
 
 const LoadingSkeleton = () => (
   <div className="space-y-6">
-    <Card className="bg-[#0f172a] border-[#1e293b]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#1e293b]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-[#1e293b]" /><Skeleton className="h-10 w-full bg-[#1e293b]" /></CardContent></Card>
-    <Card className="bg-[#0f172a] border-[#1e293b]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#1e293b]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-20 w-full bg-[#1e293b]" /><Skeleton className="h-6 w-1/3 bg-[#1e293b]" /><Skeleton className="h-10 w-full bg-[#1e293b]" /><Skeleton className="h-10 w-full bg-[#1e293b]" /><Skeleton className="h-20 w-full bg-[#1e293b]" /></CardContent></Card>
-    <Card className="bg-[#0f172a] border-[#1e293b]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#1e293b]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-[#1e293b]" /><Skeleton className="h-10 w-full bg-[#1e293b]" /><Skeleton className="h-10 w-full bg-[#1e293b]" /><Skeleton className="h-10 w-full bg-[#1e293b]" /></CardContent></Card>
+    <Card className="bg-[#1e293b] border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /></CardContent></Card>
+    <Card className="bg-[#1e293b] border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-20 w-full bg-[#334155]" /><Skeleton className="h-6 w-1/3 bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-20 w-full bg-[#334155]" /></CardContent></Card>
+    <Card className="bg-[#1e293b] border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /></CardContent></Card>
   </div>
 );
 
@@ -87,11 +87,11 @@ export default function ApprovalPageEditor() {
     }
   };
 
-  // Cores ajustadas
-  const cardBg = 'bg-[#0f172a]';
-  const borderColor = 'border-[#1e293b]';
-  const inputBg = 'bg-[#1e293b]'; // Alterado para #1e293b
-  const primaryButtonClasses = 'bg-[#0bc839] hover:bg-[#09a82e] text-white';
+  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+  const cardBg = 'bg-[#1e293b]';
+  const borderColor = 'border-[#334155]';
+  const inputBg = 'bg-[#020617]'; 
+  const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
 
   if (isLoading) return <LoadingSkeleton />;
   if (!content) return <p className="text-white">Não foi possível carregar o conteúdo. Por favor, tente atualizar a página.</p>;

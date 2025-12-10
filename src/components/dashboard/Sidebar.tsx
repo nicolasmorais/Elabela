@@ -29,10 +29,10 @@ const pagesNavItems = [
 export const Sidebar = () => {
   const pathname = usePathname();
 
-  // Cores ajustadas: Fundo #00030a, Hover/Ativo #0f172a, Borda #1e293b
-  const sidebarBg = 'bg-[#00030a]';
-  const hoverActiveBg = 'bg-[#0f172a]';
-  const borderColor = 'border-[#1e293b]';
+  // Cores ajustadas: Fundo #0f172a, Hover/Ativo #1e293b, Borda #334155
+  const sidebarBg = 'bg-[#0f172a]'; // Novo fundo principal
+  const hoverActiveBg = 'bg-[#1e293b]'; // Novo fundo de card/hover
+  const borderColor = 'border-[#334155]'; // Borda mais clara para contraste
 
   return (
     <aside className={cn("fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r text-white sm:flex", sidebarBg, borderColor)}>
