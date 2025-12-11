@@ -105,6 +105,11 @@
       },
       "blocks": [
         {
+          "id": "kr334ga",
+          "type": "html",
+          "value": "<p>Este é um texto de exemplo criado apenas para demonstração. Você pode substituí-lo pelo conteúdo que desejar.</p>\n"
+        },
+        {
           "id": "fpoeo9l",
           "type": "text",
           "value": "Novo parágrafo de texto. Use **asteriscos** para negrito.",
@@ -120,11 +125,6 @@
           "prePriceText": "OFERTA ESPECIAL",
           "paymentType": "Pagamento Único",
           "postButtonText": "Acesso imediato."
-        },
-        {
-          "id": "kr334ga",
-          "type": "html",
-          "value": "<p>Este é um texto de exemplo criado apenas para demonstração. Você pode substituí-lo pelo conteúdo que desejar.</p>\n"
         }
       ],
       "footer": {

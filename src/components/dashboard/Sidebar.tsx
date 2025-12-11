@@ -9,7 +9,7 @@ const mainNavItems = [
   {
     href: "/dashboard",
     icon: Settings,
-    label: "Gerenciamento de Rotas",
+    label: "Route Control",
   },
 ];
 
@@ -17,12 +17,12 @@ const pagesNavItems = [
   {
     href: "/dashboard/approval-page",
     icon: Wand2,
-    label: "Editor da Página AP",
+    label: "Página de Aprovação",
   },
   {
     href: "/dashboard/custom-advertorials",
     icon: LayoutGrid,
-    label: "Advertoriais Dinâmicos",
+    label: "Criar Advertoriais",
   },
 ];
 
