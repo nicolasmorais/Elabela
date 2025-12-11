@@ -177,10 +177,10 @@ export default function CustomAdvertorialEditor() {
         }
     };
 
-    // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
+    // Cores Dinâmicas
     const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
-    const skeletonBg = 'bg-[#1e293b]'; // Novo skeletonBg
-    const mainBg = 'bg-[#0f172a]'; // Fundo principal
+    const skeletonBg = 'bg-gray-200 dark:bg-[#334155]'; 
+    const mainBg = 'bg-[#f8fafc] dark:bg-[#0f172a]'; // Fundo principal dinâmico
 
     if (isLoading || !footer) return <Skeleton className={cn("h-screen w-full", skeletonBg)} />;
 
@@ -190,13 +190,13 @@ export default function CustomAdvertorialEditor() {
             <div className="space-y-6">
                 <div className={cn("flex items-center justify-between sticky top-0 z-20 py-4", mainBg)}>
                     <div>
-                        <h1 className="text-2xl font-bold text-white">{isNew ? "Criar Novo Advertorial" : `Editando: ${name}`}</h1>
-                        <p className="text-zinc-400">ID: {isNew ? 'Novo' : advertorialId}</p>
+                        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{isNew ? "Criar Novo Advertorial" : `Editando: ${name}`}</h1>
+                        <p className="text-gray-500 dark:text-zinc-400">ID: {isNew ? 'Novo' : advertorialId}</p>
                     </div>
                     <div className="flex space-x-2">
                         {!isNew && (
                             <Link href={`/${advertorialId}`} target="_blank">
-                                <Button variant="outline" className="border-[#334155] hover:bg-[#1e293b] text-white">
+                                <Button variant="outline" className="border-gray-200 dark:border-[#334155] hover:bg-gray-100 dark:hover:bg-[#1e293b] text-gray-900 dark:text-white">
                                     Visualizar Rota
                                 </Button>
                             </Link>

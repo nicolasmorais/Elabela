@@ -47,38 +47,32 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
     if (!isChanged) return;
     setIsSaving(true);
     
-    // If only the name changed, we still call onSave with the current contentId
-    // Note: The current API only supports updating contentId based on path. 
-    // We need to update the API later if we want to persist route name changes.
-    // For now, we only save if contentId changes.
     if (isContentChanged) {
         await onSave(route.path, selectedContent);
     } else if (isNameChanged) {
-        // Since the current API doesn't support updating route name, we'll just show a toast for now.
-        // In a real scenario, we'd need a dedicated API endpoint for route management (name/path).
         toast.warning("A alteração do nome da rota não é suportada pela API atual.");
     }
     
     setIsSaving(false);
   };
 
-  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
-  const cardBg = 'bg-[#1e293b]';
-  const borderColor = 'border-[#334155]';
-  const inputBg = 'bg-[#020617]'; 
+  // Cores Dinâmicas
+  const cardBg = 'bg-white dark:bg-[#1e293b]';
+  const borderColor = 'border-gray-200 dark:border-[#334155]';
+  const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
+  const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
   const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
-  const deleteButtonClasses = 'text-red-500 hover:bg-red-900/20';
-  const selectContentBg = 'bg-[#1e293b]'; 
+  const deleteButtonClasses = 'text-red-500 hover:bg-red-100 dark:hover:bg-red-900/20';
 
   return (
-    <div className={cn(cardBg, borderColor, "rounded-lg shadow-sm border p-6 flex flex-col space-y-6 text-white")}>
+    <div className={cn(cardBg, borderColor, "rounded-lg shadow-sm border p-6 flex flex-col space-y-6 text-gray-900 dark:text-white")}>
       <div className="flex-grow space-y-4">
         
         {/* Nome da Rota */}
         <div>
-          <Label className="block text-sm font-medium text-zinc-300 mb-1" htmlFor={`routeName-${route.path}`}>Nome da Rota</Label>
+          <Label className="block text-sm font-medium text-gray-600 dark:text-zinc-300 mb-1" htmlFor={`routeName-${route.path}`}>Nome da Rota</Label>
           <Input 
-            className={cn(inputBg, borderColor, "text-white")} 
+            className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")} 
             id={`routeName-${route.path}`} 
             type="text" 
             value={routeName}
@@ -88,9 +82,9 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
         
         {/* Caminho (URL) */}
         <div>
-          <Label className="block text-sm font-medium text-zinc-300 mb-1" htmlFor={`routePath-${route.path}`}>Caminho (URL)</Label>
+          <Label className="block text-sm font-medium text-gray-600 dark:text-zinc-300 mb-1" htmlFor={`routePath-${route.path}`}>Caminho (URL)</Label>
           <Input 
-            className={cn(inputBg, borderColor, "text-zinc-400")} 
+            className={cn(inputBg, borderColor, "text-gray-500 dark:text-zinc-400")} 
             id={`routePath-${route.path}`} 
             type="text" 
             value={route.path}
@@ -100,14 +94,14 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
         
         {/* Conteúdo Atribuído */}
         <div>
-          <Label className="block text-sm font-medium text-zinc-300 mb-1" htmlFor={`routeContent-${route.path}`}>Conteúdo Atribuído</Label>
+          <Label className="block text-sm font-medium text-gray-600 dark:text-zinc-300 mb-1" htmlFor={`routeContent-${route.path}`}>Conteúdo Atribuído</Label>
           <Select value={selectedContent} onValueChange={setSelectedContent}>
-            <SelectTrigger className={cn(inputBg, borderColor, "text-white")}>
+            <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
               <SelectValue placeholder="Selecione o conteúdo" />
             </SelectTrigger>
-            <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
+            <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
               {contentOptions.map(opt => (
-                <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#1e293b]">
+                <SelectItem key={opt.id} value={opt.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                   {opt.name}
                 </SelectItem>
               ))}
@@ -116,26 +110,15 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
         </div>
       </div>
       
-      <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#334155]">
+      <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-[#334155]">
         
         {/* Link de Visualização */}
         <Link href={route.path} target="_blank">
-            <Button variant="outline" size="sm" className={cn(borderColor, "hover:bg-[#1e293b] text-white")}>
+            <Button variant="outline" size="sm" className={cn(borderColor, "hover:bg-gray-100 dark:hover:bg-[#1e293b] text-gray-900 dark:text-white")}>
                 <ExternalLink className="h-4 w-4" />
             </Button>
         </Link>
 
-        {/* Botão Excluir (Apenas para rotas dinâmicas, se implementarmos) */}
-        {/* <Button 
-          onClick={() => onDelete(route.path, route.name)}
-          variant="ghost"
-          size="sm"
-          className={deleteButtonClasses}
-        >
-          <Trash2 className="h-4 w-4 mr-1.5" />
-          Excluir
-        </Button> */}
-        
         {/* Botão Salvar */}
         <Button 
           onClick={handleSave} 

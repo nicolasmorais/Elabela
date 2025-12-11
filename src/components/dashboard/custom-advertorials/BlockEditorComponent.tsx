@@ -32,24 +32,26 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
         onUpdate(index, { ...block, [field]: value });
     };
 
-    // Cores ajustadas: Fundo do Bloco #0f172a, Input/Select BG #020617, Borda #334155
-    const blockBg = 'bg-[#0f172a]';
-    const inputBg = 'bg-[#020617]'; 
-    const borderColor = 'border-[#334155]';
-    const selectContentBg = 'bg-[#1e293b]'; // Mantém a cor do card para o dropdown
+    // Cores Dinâmicas
+    const blockBg = 'bg-gray-50 dark:bg-[#0f172a]';
+    const inputBg = 'bg-white dark:bg-[#020617]'; 
+    const borderColor = 'border-gray-200 dark:border-[#334155]';
+    const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
+    const textColor = 'text-gray-900 dark:text-white';
+    const labelColor = 'text-gray-600 dark:text-zinc-400';
 
     return (
         <div className={cn("p-4 border rounded-md space-y-3", borderColor, blockBg)}>
             <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-zinc-300">
+                <div className={cn("flex items-center gap-2 font-semibold", labelColor)}>
                     <Icon className="h-5 w-5" />
-                    <span className="capitalize font-semibold">{block.type}</span>
+                    <span className="capitalize">{block.type}</span>
                 </div>
                 <Button 
                     variant="ghost" 
                     size="icon" 
                     onClick={() => onDelete(index)}
-                    className="text-red-500 hover:bg-red-900/20" 
+                    className="text-red-500 hover:bg-red-100 dark:hover:bg-red-900/20" 
                 >
                     <Trash2 className="h-4 w-4" />
                 </Button>
@@ -58,17 +60,17 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
             {/* Common Fields */}
             {block.type !== 'pricing' && (
                 <div>
-                    <Label className="text-zinc-400">Conteúdo Principal ({block.type === 'image' ? 'URL' : 'Texto'})</Label>
+                    <Label className={labelColor}>Conteúdo Principal ({block.type === 'image' ? 'URL' : 'Texto'})</Label>
                     {block.type === 'text' || block.type === 'alert' ? (
                         <Textarea 
-                            className={cn(inputBg, borderColor, "text-white")} 
+                            className={cn(inputBg, borderColor, textColor)} 
                             value={block.value} 
                             onChange={e => handleValueChange('value', e.target.value)} 
                             rows={4}
                         />
                     ) : (
                         <Input 
-                            className={cn(inputBg, borderColor, "text-white")} 
+                            className={cn(inputBg, borderColor, textColor)} 
                             value={block.value} 
                             onChange={e => handleValueChange('value', e.target.value)} 
                         />
@@ -79,9 +81,9 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
             {/* Image Specific Fields (Caption) */}
             {block.type === 'image' && (
                 <div>
-                    <Label className="text-zinc-400">Legenda da Imagem (Opcional)</Label>
+                    <Label className={labelColor}>Legenda da Imagem (Opcional)</Label>
                     <Input 
-                        className={cn(inputBg, borderColor, "text-white")} 
+                        className={cn(inputBg, borderColor, textColor)} 
                         value={block.caption || ''} 
                         onChange={e => handleValueChange('caption', e.target.value)} 
                     />
@@ -91,9 +93,9 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
             {/* Text Specific Fields (Font Size) */}
             {block.type === 'text' && (
                 <div>
-                    <Label className="text-zinc-400">Tamanho da Fonte (ex: xl, 2xl, 16px)</Label>
+                    <Label className={labelColor}>Tamanho da Fonte (ex: xl, 2xl, 16px)</Label>
                     <Input 
-                        className={cn(inputBg, borderColor, "text-white")} 
+                        className={cn(inputBg, borderColor, textColor)} 
                         value={block.fontSize || 'xl'} 
                         onChange={e => handleValueChange('fontSize', e.target.value)} 
                     />
@@ -104,26 +106,26 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
             {block.type === 'alert' && (
                 <>
                     <div>
-                        <Label className="text-zinc-400">Título do Alerta</Label>
+                        <Label className={labelColor}>Título do Alerta</Label>
                         <Input 
-                            className={cn(inputBg, borderColor, "text-white")} 
+                            className={cn(inputBg, borderColor, textColor)} 
                             value={block.alertTitle || ''} 
                             onChange={e => handleValueChange('alertTitle', e.target.value)} 
                         />
                     </div>
                     <div>
-                        <Label className="text-zinc-400">Variante</Label>
+                        <Label className={labelColor}>Variante</Label>
                         <Select 
                             value={block.alertVariant} 
                             onValueChange={(v) => handleValueChange('alertVariant', v)}
                         >
-                            <SelectTrigger className={cn(inputBg, borderColor, "text-white")}>
+                            <SelectTrigger className={cn(inputBg, borderColor, textColor)}>
                                 <SelectValue placeholder="Selecione a variante" />
                             </SelectTrigger>
-                            <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
-                                <SelectItem value="default" className="focus:bg-[#1e293b]">Padrão (Cinza/Azul)</SelectItem>
-                                <SelectItem value="destructive" className="focus:bg-[#1e293b]">Destrutivo (Vermelho)</SelectItem>
-                                <SelectItem value="warning" className="focus:bg-[#1e293b]">Aviso (Amarelo)</SelectItem>
+                            <SelectContent className={cn(selectContentBg, textColor, borderColor)}>
+                                <SelectItem value="default" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Padrão (Cinza/Azul)</SelectItem>
+                                <SelectItem value="destructive" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Destrutivo (Vermelho)</SelectItem>
+                                <SelectItem value="warning" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Aviso (Amarelo)</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -133,12 +135,12 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
             {/* Pricing Specific Fields */}
             {block.type === 'pricing' && (
                 <>
-                    <div><Label className="text-zinc-400">Texto Acima do Preço</Label><Input className={cn(inputBg, borderColor, "text-white")} value={block.prePriceText || ''} onChange={e => handleValueChange('prePriceText', e.target.value)} /></div>
-                    <div><Label className="text-zinc-400">Preço</Label><Input className={cn(inputBg, borderColor, "text-white")} value={block.price || ''} onChange={e => handleValueChange('price', e.target.value)} /></div>
-                    <div><Label className="text-zinc-400">Texto de Pagamento</Label><Input className={cn(inputBg, borderColor, "text-white")} value={block.paymentType || ''} onChange={e => handleValueChange('paymentType', e.target.value)} /></div>
-                    <div><Label className="text-zinc-400">Texto do Botão</Label><Input className={cn(inputBg, borderColor, "text-white")} value={block.buttonText || ''} onChange={e => handleValueChange('buttonText', e.target.value)} /></div>
-                    <div><Label className="text-zinc-400">URL do Botão</Label><Input className={cn(inputBg, borderColor, "text-white")} value={block.buttonUrl || ''} onChange={e => handleValueChange('buttonUrl', e.target.value)} /></div>
-                    <div><Label className="text-zinc-400">Texto Abaixo do Botão</Label><Input className={cn(inputBg, borderColor, "text-white")} value={block.postButtonText || ''} onChange={e => handleValueChange('postButtonText', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Texto Acima do Preço</Label><Input className={cn(inputBg, borderColor, textColor)} value={block.prePriceText || ''} onChange={e => handleValueChange('prePriceText', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Preço</Label><Input className={cn(inputBg, borderColor, textColor)} value={block.price || ''} onChange={e => handleValueChange('price', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Texto de Pagamento</Label><Input className={cn(inputBg, borderColor, textColor)} value={block.paymentType || ''} onChange={e => handleValueChange('paymentType', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Texto do Botão</Label><Input className={cn(inputBg, borderColor, textColor)} value={block.buttonText || ''} onChange={e => handleValueChange('buttonText', e.target.value)} /></div>
+                    <div><Label className={labelColor}>URL do Botão</Label><Input className={cn(inputBg, borderColor, textColor)} value={block.buttonUrl || ''} onChange={e => handleValueChange('buttonUrl', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Texto Abaixo do Botão</Label><Input className={cn(inputBg, borderColor, textColor)} value={block.postButtonText || ''} onChange={e => handleValueChange('postButtonText', e.target.value)} /></div>
                 </>
             )}
         </div>

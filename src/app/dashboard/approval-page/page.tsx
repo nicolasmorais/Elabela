@@ -23,9 +23,9 @@ interface ApprovalPageContent {
 
 const LoadingSkeleton = () => (
   <div className="space-y-6">
-    <Card className="bg-[#1e293b] border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /></CardContent></Card>
-    <Card className="bg-[#1e293b] border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-20 w-full bg-[#334155]" /><Skeleton className="h-6 w-1/3 bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-20 w-full bg-[#334155]" /></CardContent></Card>
-    <Card className="bg-[#1e293b] border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /><Skeleton className="h-10 w-full bg-[#334155]" /></CardContent></Card>
+    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
+    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-20 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-6 w-1/3 bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-20 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
+    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
   </div>
 );
 
@@ -87,14 +87,17 @@ export default function ApprovalPageEditor() {
     }
   };
 
-  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
-  const cardBg = 'bg-[#1e293b]';
-  const borderColor = 'border-[#334155]';
-  const inputBg = 'bg-[#020617]'; 
+  // Cores Dinâmicas
+  const cardBg = 'bg-white dark:bg-[#1e293b]';
+  const borderColor = 'border-gray-200 dark:border-[#334155]';
+  const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
   const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
+  const textColor = 'text-gray-900 dark:text-white';
+  const labelColor = 'text-gray-600 dark:text-zinc-300';
+  const descriptionColor = 'text-gray-500 dark:text-zinc-400';
 
   if (isLoading) return <LoadingSkeleton />;
-  if (!content) return <p className="text-white">Não foi possível carregar o conteúdo. Por favor, tente atualizar a página.</p>;
+  if (!content) return <p className={textColor}>Não foi possível carregar o conteúdo. Por favor, tente atualizar a página.</p>;
 
   return (
     <>
@@ -102,46 +105,46 @@ export default function ApprovalPageEditor() {
       <div className="space-y-6">
         <div className="flex items-center justify-between sticky top-4 z-10 py-2">
           <div>
-            <h1 className="text-2xl font-bold text-white">Editor da Página de Aprovação</h1>
-            <p className="text-zinc-400">Modifique o conteúdo exibido na página de aprovação.</p>
+            <h1 className={cn("text-2xl font-bold", textColor)}>Editor da Página de Aprovação</h1>
+            <p className={descriptionColor}>Modifique o conteúdo exibido na página de aprovação.</p>
           </div>
           <Button onClick={handleSave} disabled={isSaving} className={primaryButtonClasses}>{isSaving ? "Salvando..." : "Salvar Alterações"}</Button>
         </div>
 
-        <Card className={cn(cardBg, borderColor, "text-white")}><CardHeader><CardTitle>Cabeçalho</CardTitle></CardHeader><CardContent className="space-y-4"><div><Label className="text-zinc-300">Pré-Título</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.header.preTitle} onChange={e => handleInputChange('header', 'preTitle', e.target.value)} /></div><div><Label className="text-zinc-300">Título Principal</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.header.title} onChange={e => handleInputChange('header', 'title', e.target.value)} /></div><div><Label className="text-zinc-300">Sub-headline</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.header.subheadline || ''} onChange={e => handleInputChange('header', 'subheadline', e.target.value)} /></div></CardContent></Card>
+        <Card className={cn(cardBg, borderColor, textColor)}><CardHeader><CardTitle>Cabeçalho</CardTitle></CardHeader><CardContent className="space-y-4"><div><Label className={labelColor}>Pré-Título</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.header.preTitle} onChange={e => handleInputChange('header', 'preTitle', e.target.value)} /></div><div><Label className={labelColor}>Título Principal</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.header.title} onChange={e => handleInputChange('header', 'title', e.target.value)} /></div><div><Label className={labelColor}>Sub-headline</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.header.subheadline || ''} onChange={e => handleInputChange('header', 'subheadline', e.target.value)} /></div></CardContent></Card>
         
-        <Card className={cn(cardBg, borderColor, "text-white")}>
+        <Card className={cn(cardBg, borderColor, textColor)}>
           <CardHeader><CardTitle>Corpo do Advertorial</CardTitle></CardHeader>
           <CardContent className="space-y-4">
-            <div><Label className="text-zinc-300">URL da Imagem 1</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.body.imageUrl1} onChange={e => handleInputChange('body', 'imageUrl1', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">Texto do Advertorial</Label><Textarea className={cn(inputBg, borderColor, "text-white")} value={content.body.advertorialText} onChange={e => handleInputChange('body', 'advertorialText', e.target.value)} rows={10} /></div>
-            <div><Label className="text-zinc-300">URL da Imagem 2</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.body.imageUrl2} onChange={e => handleInputChange('body', 'imageUrl2', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">Texto de Garantia</Label><Textarea className={cn(inputBg, borderColor, "text-white")} value={content.body.guaranteeText} onChange={e => handleInputChange('body', 'guaranteeText', e.target.value)} rows={3} /></div>
+            <div><Label className={labelColor}>URL da Imagem 1</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.body.imageUrl1} onChange={e => handleInputChange('body', 'imageUrl1', e.target.value)} /></div>
+            <div><Label className={labelColor}>Texto do Advertorial</Label><Textarea className={cn(inputBg, borderColor, textColor)} value={content.body.advertorialText} onChange={e => handleInputChange('body', 'advertorialText', e.target.value)} rows={10} /></div>
+            <div><Label className={labelColor}>URL da Imagem 2</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.body.imageUrl2} onChange={e => handleInputChange('body', 'imageUrl2', e.target.value)} /></div>
+            <div><Label className={labelColor}>Texto de Garantia</Label><Textarea className={cn(inputBg, borderColor, textColor)} value={content.body.guaranteeText} onChange={e => handleInputChange('body', 'guaranteeText', e.target.value)} rows={3} /></div>
           </CardContent>
         </Card>
 
-        <Card className={cn(cardBg, borderColor, "text-white")}>
+        <Card className={cn(cardBg, borderColor, textColor)}>
           <CardHeader><CardTitle>Seção de Preço</CardTitle></CardHeader>
           <CardContent className="space-y-4">
-            <div><Label className="text-zinc-300">Texto Acima do Preço</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.pricing.prePriceText} onChange={e => handleInputChange('pricing', 'prePriceText', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">Preço (ex: R$ 29,90)</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.pricing.price} onChange={e => handleInputChange('pricing', 'price', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">Texto de Pagamento</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.pricing.paymentType} onChange={e => handleInputChange('pricing', 'paymentType', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">Texto do Botão</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.pricing.buttonText} onChange={e => handleInputChange('pricing', 'buttonText', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">URL do Botão</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.pricing.buttonUrl} onChange={e => handleInputChange('pricing', 'buttonUrl', e.target.value)} /></div>
-            <div><Label className="text-zinc-300">Texto Abaixo do Botão</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.pricing.postButtonText} onChange={e => handleInputChange('pricing', 'postButtonText', e.target.value)} /></div>
+            <div><Label className={labelColor}>Texto Acima do Preço</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.pricing.prePriceText} onChange={e => handleInputChange('pricing', 'prePriceText', e.target.value)} /></div>
+            <div><Label className={labelColor}>Preço (ex: R$ 29,90)</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.pricing.price} onChange={e => handleInputChange('pricing', 'price', e.target.value)} /></div>
+            <div><Label className={labelColor}>Texto de Pagamento</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.pricing.paymentType} onChange={e => handleInputChange('pricing', 'paymentType', e.target.value)} /></div>
+            <div><Label className={labelColor}>Texto do Botão</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.pricing.buttonText} onChange={e => handleInputChange('pricing', 'buttonText', e.target.value)} /></div>
+            <div><Label className={labelColor}>URL do Botão</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.pricing.buttonUrl} onChange={e => handleInputChange('pricing', 'buttonUrl', e.target.value)} /></div>
+            <div><Label className={labelColor}>Texto Abaixo do Botão</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.pricing.postButtonText} onChange={e => handleInputChange('pricing', 'postButtonText', e.target.value)} /></div>
           </CardContent>
         </Card>
 
-        <Card className={cn(cardBg, borderColor, "text-white")}>
+        <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader><CardTitle>Rodapé</CardTitle></CardHeader>
             <CardContent className="space-y-6">
                 {/* Company Info */}
                 <div className={cn("space-y-4 p-4 rounded-md", borderColor, "border")}>
                     <h3 className="font-semibold text-lg">Informações da Empresa</h3>
-                    <div><Label className="text-zinc-300">Nome da Empresa</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.footer.companyInfo.name} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'name', e.target.value)} /></div>
-                    <div><Label className="text-zinc-300">Endereço</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.footer.companyInfo.address} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'address', e.target.value)} /></div>
-                    <div><Label className="text-zinc-300">CNPJ</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.footer.companyInfo.cnpj} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'cnpj', e.target.value)} /></div>
-                    <div><Label className="text-zinc-300">Contato</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.footer.companyInfo.contact} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'contact', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Nome da Empresa</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.companyInfo.name} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'name', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Endereço</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.companyInfo.address} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'address', e.target.value)} /></div>
+                    <div><Label className={labelColor}>CNPJ</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.companyInfo.cnpj} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'cnpj', e.target.value)} /></div>
+                    <div><Label className={labelColor}>Contato</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.companyInfo.contact} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'contact', e.target.value)} /></div>
                 </div>
 
                 {/* Disclaimers */}
@@ -149,8 +152,8 @@ export default function ApprovalPageEditor() {
                     <h3 className="font-semibold text-lg">Avisos e Isenções</h3>
                     {content.footer.disclaimers.map((disclaimer, index) => (
                         <div key={index} className={cn("space-y-2 p-2 border-b", borderColor)}>
-                            <div><Label className="text-zinc-300">Título do Aviso {index + 1}</Label><Input className={cn(inputBg, borderColor, "text-white")} value={disclaimer.title} onChange={e => handleArrayChange<Disclaimer>('footer', 'disclaimers', index, 'title', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Texto do Aviso {index + 1}</Label><Textarea className={cn(inputBg, borderColor, "text-white")} value={disclaimer.text} onChange={e => handleArrayChange<Disclaimer>('footer', 'disclaimers', index, 'text', e.target.value)} rows={3} /></div>
+                            <div><Label className={labelColor}>Título do Aviso {index + 1}</Label><Input className={cn(inputBg, borderColor, textColor)} value={disclaimer.title} onChange={e => handleArrayChange<Disclaimer>('footer', 'disclaimers', index, 'title', e.target.value)} /></div>
+                            <div><Label className={labelColor}>Texto do Aviso {index + 1}</Label><Textarea className={cn(inputBg, borderColor, textColor)} value={disclaimer.text} onChange={e => handleArrayChange<Disclaimer>('footer', 'disclaimers', index, 'text', e.target.value)} rows={3} /></div>
                         </div>
                     ))}
                 </div>
@@ -160,15 +163,15 @@ export default function ApprovalPageEditor() {
                     <h3 className="font-semibold text-lg">Políticas</h3>
                     {content.footer.policies.map((policy, index) => (
                         <div key={index} className={cn("space-y-2 p-2 border-b", borderColor)}>
-                            <div><Label className="text-zinc-300">Título da Política {index + 1}</Label><Input className={cn(inputBg, borderColor, "text-white")} value={policy.title} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'title', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Texto do Gatilho (Link) {index + 1}</Label><Input className={cn(inputBg, borderColor, "text-white")} value={policy.trigger} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'trigger', e.target.value)} /></div>
-                            <div><Label className="text-zinc-300">Conteúdo da Política {index + 1}</Label><Textarea className={cn(inputBg, borderColor, "text-white")} value={policy.content} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'content', e.target.value)} rows={8} /></div>
+                            <div><Label className={labelColor}>Título da Política {index + 1}</Label><Input className={cn(inputBg, borderColor, textColor)} value={policy.title} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'title', e.target.value)} /></div>
+                            <div><Label className={labelColor}>Texto do Gatilho (Link) {index + 1}</Label><Input className={cn(inputBg, borderColor, textColor)} value={policy.trigger} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'trigger', e.target.value)} /></div>
+                            <div><Label className={labelColor}>Conteúdo da Política {index + 1}</Label><Textarea className={cn(inputBg, borderColor, textColor)} value={policy.content} onChange={e => handleArrayChange<Policy>('footer', 'policies', index, 'content', e.target.value)} rows={8} /></div>
                         </div>
                     ))}
                 </div>
                 
                 {/* Copyright */}
-                <div><Label className="text-zinc-300">Direitos Autorais</Label><Input className={cn(inputBg, borderColor, "text-white")} value={content.footer.copyright} onChange={e => handleInputChange('footer', 'copyright', e.target.value)} /></div>
+                <div><Label className={labelColor}>Direitos Autorais</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.copyright} onChange={e => handleInputChange('footer', 'copyright', e.target.value)} /></div>
             </CardContent>
             <CardFooter className="flex justify-end"><Button onClick={handleSave} disabled={isSaving} className={primaryButtonClasses}>{isSaving ? "Salvando..." : "Salvar Alterações"}</Button></CardFooter>
         </Card>

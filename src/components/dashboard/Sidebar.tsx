@@ -29,14 +29,27 @@ const pagesNavItems = [
 export const Sidebar = () => {
   const pathname = usePathname();
 
-  // Cores ajustadas: Fundo #0f172a, Hover/Ativo #1e293b, Borda #334155
-  const sidebarBg = 'bg-[#0f172a]'; // Novo fundo principal
-  const hoverActiveBg = 'bg-[#1e293b]'; // Novo fundo de card/hover
-  const borderColor = 'border-[#334155]'; // Borda mais clara para contraste
+  // Cores do Modo Claro (Padrão)
+  const lightBg = 'bg-white';
+  const lightHoverActiveBg = 'bg-gray-100';
+  const lightBorderColor = 'border-gray-200';
+  const lightTextColor = 'text-gray-600';
+  const lightActiveTextColor = 'text-gray-900';
+
+  // Cores do Modo Escuro (Dark Mode - O esquema anterior)
+  const darkBg = 'dark:bg-[#0f172a]';
+  const darkHoverActiveBg = 'dark:bg-[#1e293b]';
+  const darkBorderColor = 'dark:border-[#334155]';
+  const darkTextColor = 'dark:text-zinc-400';
+  const darkActiveTextColor = 'dark:text-zinc-50';
 
   return (
-    <aside className={cn("fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r text-white sm:flex", sidebarBg, borderColor)}>
-      <div className={cn("flex h-20 items-center justify-center border-b px-6", borderColor)}>
+    <aside className={cn(
+      "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r sm:flex", 
+      lightBg, lightBorderColor, lightTextColor,
+      darkBg, darkBorderColor, darkTextColor
+    )}>
+      <div className={cn("flex h-20 items-center justify-center border-b px-6", lightBorderColor, darkBorderColor)}>
         <Link href="/dashboard">
           <img
             src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f-zzhjEezm98VoMWqEUpkxkCiEYvH7rp.png"
@@ -47,7 +60,7 @@ export const Sidebar = () => {
       </div>
       <nav className="flex-1 space-y-4 p-4">
         <div>
-          <h3 className="mb-2 px-3 text-xs font-semibold uppercase text-zinc-400">
+          <h3 className={cn("mb-2 px-3 text-xs font-semibold uppercase", lightTextColor, darkTextColor)}>
             Principal
           </h3>
           <div className="space-y-1">
@@ -56,9 +69,13 @@ export const Sidebar = () => {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-zinc-400 transition-all hover:text-zinc-50",
-                  `hover:${hoverActiveBg}`,
-                  pathname === item.href && `${hoverActiveBg} text-zinc-50`
+                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all",
+                  // Light Mode
+                  lightTextColor, lightHoverActiveBg, 'hover:text-gray-900',
+                  pathname === item.href && `${lightHoverActiveBg} ${lightActiveTextColor}`,
+                  // Dark Mode
+                  darkTextColor, darkHoverActiveBg, 'dark:hover:text-zinc-50',
+                  pathname === item.href && `${darkHoverActiveBg} ${darkActiveTextColor}`
                 )}
               >
                 <item.icon className="h-4 w-4" />
@@ -68,7 +85,7 @@ export const Sidebar = () => {
           </div>
         </div>
         <div>
-          <h3 className="mb-2 px-3 text-xs font-semibold uppercase text-zinc-400">
+          <h3 className={cn("mb-2 px-3 text-xs font-semibold uppercase", lightTextColor, darkTextColor)}>
             Páginas
           </h3>
           <div className="space-y-1">
@@ -77,9 +94,13 @@ export const Sidebar = () => {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-zinc-400 transition-all hover:text-zinc-50",
-                  `hover:${hoverActiveBg}`,
-                  pathname === item.href && `${hoverActiveBg} text-zinc-50`
+                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all",
+                  // Light Mode
+                  lightTextColor, lightHoverActiveBg, 'hover:text-gray-900',
+                  pathname === item.href && `${lightHoverActiveBg} ${lightActiveTextColor}`,
+                  // Dark Mode
+                  darkTextColor, darkHoverActiveBg, 'dark:hover:text-zinc-50',
+                  pathname === item.href && `${darkHoverActiveBg} ${darkActiveTextColor}`
                 )}
               >
                 <item.icon className="h-4 w-4" />

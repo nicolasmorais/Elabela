@@ -40,8 +40,10 @@ export const LoginForm = () => {
     }
   };
 
-  // Estilos baseados na imagem fornecida (fundo claro, texto escuro)
-  const inputClasses = "flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-gray-900 focus:outline-0 focus:ring-2 focus:ring-blue-600/50 border-none bg-gray-200 focus:border-blue-600 h-16 placeholder:text-gray-500 p-4 text-xl font-normal leading-normal";
+  // Cores ajustadas para o tema escuro da página de login
+  const inputClasses = "flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-2 focus:ring-[#38bdf8]/50 border-none bg-[#1e293b] focus:border-[#38bdf8] h-16 placeholder:text-gray-400 p-4 text-xl font-normal leading-normal";
+  const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white'; // sky-400
+  const focusRingOffset = 'focus:ring-offset-[#0f172a]'; // Fundo da página de login
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
@@ -56,12 +58,12 @@ export const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="absolute inset-y-0 right-0 text-gray-500 flex items-center justify-center pr-4">
+          <div className="absolute inset-y-0 right-0 text-gray-400 flex items-center justify-center pr-4">
             <Button 
                 type="button" 
                 variant="ghost" 
                 size="icon" 
-                className="h-full w-full text-gray-500 hover:bg-transparent hover:text-gray-700"
+                className="h-full w-full text-gray-400 hover:bg-transparent hover:text-white"
                 onClick={() => setShowPassword(!showPassword)}
             >
                 {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
@@ -74,7 +76,9 @@ export const LoginForm = () => {
       <Button
         type="submit"
         className={cn(
-          "h-16 px-6 text-xl font-bold text-white bg-[#0bc839] hover:bg-[#09a82e] transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#00030a] focus:ring-[#0bc839] rounded-xl",
+          "h-16 px-6 text-xl font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#38bdf8] rounded-xl",
+          primaryButtonClasses,
+          focusRingOffset,
           isSubmitting && "opacity-70 cursor-not-allowed"
         )}
         disabled={isSubmitting}

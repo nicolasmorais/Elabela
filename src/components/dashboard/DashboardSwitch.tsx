@@ -14,9 +14,11 @@ export const DashboardSwitch = React.forwardRef<
     <Switch
       ref={ref}
       className={cn(
-        // Sobrescreve as cores padrão do Shadcn para usar o azul e o cinza escuro
-        "data-[state=checked]:bg-[#38bdf8] data-[state=unchecked]:bg-[#020617]", // Azul primário e fundo de input
-        // Garante que o thumb seja branco
+        // Light Mode: Fundo desativado cinza claro, Fundo ativado azul primário
+        "data-[state=unchecked]:bg-gray-300 data-[state=checked]:bg-[#38bdf8]", 
+        // Dark Mode: Fundo desativado cinza escuro, Fundo ativado azul primário
+        "dark:data-[state=unchecked]:bg-[#020617] dark:data-[state=checked]:bg-[#38bdf8]",
+        // Garante que o thumb seja branco em ambos os modos
         "[&>span]:data-[state=checked]:bg-white [&>span]:data-[state=unchecked]:bg-white",
         className
       )}

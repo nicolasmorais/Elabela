@@ -40,15 +40,16 @@ export const BlocksEditor = ({ blocks, setBlocks, onSave, isSaving, name }: Bloc
         setBlocks(items);
     };
 
-    // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
-    const cardBg = 'bg-[#1e293b]';
-    const borderColor = 'border-[#334155]';
-    const blockBg = 'bg-[#0f172a]'; // Fundo do bloco interno (mais escuro que o card)
-    const secondaryButtonClasses = 'text-white bg-[#334155] hover:bg-[#475569]'; // Novo secondary
+    // Cores Dinâmicas
+    const cardBg = 'bg-white dark:bg-[#1e293b]';
+    const borderColor = 'border-gray-200 dark:border-[#334155]';
+    const blockBg = 'bg-gray-50 dark:bg-[#0f172a]'; // Fundo do bloco interno
+    const secondaryButtonClasses = 'text-gray-900 bg-gray-200 hover:bg-gray-300 dark:text-white dark:bg-[#334155] dark:hover:bg-[#475569]'; 
     const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
+    const textColor = 'text-gray-900 dark:text-white';
 
     return (
-        <Card className={cn(cardBg, borderColor, "text-white")}>
+        <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle>Blocos de Conteúdo ({blocks.length})</CardTitle>
                 <div className="flex space-x-2">
@@ -71,7 +72,7 @@ export const BlocksEditor = ({ blocks, setBlocks, onSave, isSaving, name }: Bloc
                                                 {...provided.draggableProps}
                                                 className="flex items-start gap-2"
                                             >
-                                                <div {...provided.dragHandleProps} className="p-4 cursor-grab text-zinc-500 hover:text-white transition-colors">
+                                                <div {...provided.dragHandleProps} className="p-4 cursor-grab text-gray-500 hover:text-gray-900 dark:text-zinc-500 dark:hover:text-white transition-colors">
                                                     <GripVertical className="h-5 w-5" />
                                                 </div>
                                                 <div className="flex-1">
@@ -92,7 +93,7 @@ export const BlocksEditor = ({ blocks, setBlocks, onSave, isSaving, name }: Bloc
                     </Droppable>
                 </DragDropContext>
                 {blocks.length === 0 && (
-                    <p className="text-center text-zinc-500 mt-4">Adicione o primeiro bloco de conteúdo.</p>
+                    <p className="text-center text-gray-500 dark:text-zinc-500 mt-4">Adicione o primeiro bloco de conteúdo.</p>
                 )}
             </CardContent>
             <CardFooter className="flex justify-end">

@@ -35,11 +35,11 @@ export function CreateRouteDialog({ contentOptions, onRouteCreated }: CreateRout
   const [contentId, setContentId] = useState('');
   const [isSaving, setIsSaving] = useState(false);
 
-  // Cores ajustadas: Card #1e293b, Borda #334155, Input #020617, Botão Primário #38bdf8
-  const cardBg = 'bg-[#1e293b]';
-  const borderColor = 'border-[#334155]';
-  const inputBg = 'bg-[#020617]'; 
-  const selectContentBg = 'bg-[#1e293b]'; 
+  // Cores Dinâmicas
+  const cardBg = 'bg-white dark:bg-[#1e293b]';
+  const borderColor = 'border-gray-200 dark:border-[#334155]';
+  const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
+  const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
   const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -87,47 +87,47 @@ export function CreateRouteDialog({ contentOptions, onRouteCreated }: CreateRout
           Adicionar Nova Rota
         </Button>
       </DialogTrigger>
-      <DialogContent className={cn("sm:max-w-[425px]", cardBg, borderColor, "text-white")}>
+      <DialogContent className={cn("sm:max-w-[425px]", cardBg, borderColor, "text-gray-900 dark:text-white")}>
         <DialogHeader>
           <DialogTitle>Criar Nova Rota</DialogTitle>
-          <DialogDescription className="text-zinc-400">
+          <DialogDescription className="text-gray-500 dark:text-zinc-400">
             Defina um novo caminho (URL) e atribua um conteúdo a ele.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 py-4">
           <div className="space-y-2">
-            <Label htmlFor="new-path" className="text-zinc-300">Caminho (URL)</Label>
+            <Label htmlFor="new-path" className="text-gray-600 dark:text-zinc-300">Caminho (URL)</Label>
             <div className="flex items-center">
-                <span className="text-zinc-500 pr-2">/</span>
+                <span className="text-gray-500 dark:text-zinc-500 pr-2">/</span>
                 <Input
                     id="new-path"
                     value={path.startsWith('/') ? path.substring(1) : path}
                     onChange={(e) => setPath(e.target.value)}
                     placeholder="ex: promocao-especial"
-                    className={cn(inputBg, borderColor, "text-white")}
+                    className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}
                     required
                 />
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="new-name" className="text-zinc-300">Nome Interno (Opcional)</Label>
+            <Label htmlFor="new-name" className="text-gray-600 dark:text-zinc-300">Nome Interno (Opcional)</Label>
             <Input
               id="new-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Nome para identificação no painel"
-              className={cn(inputBg, borderColor, "text-white")}
+              className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="new-content" className="text-zinc-300">Conteúdo a Atribuir</Label>
+            <Label htmlFor="new-content" className="text-gray-600 dark:text-zinc-300">Conteúdo a Atribuir</Label>
             <Select value={contentId} onValueChange={setContentId} required>
-              <SelectTrigger className={cn(inputBg, borderColor, "text-white")}>
+              <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
                 <SelectValue placeholder="Selecione o conteúdo" />
               </SelectTrigger>
-              <SelectContent className={cn(selectContentBg, "text-white", borderColor)}>
+              <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
                 {contentOptions.map(opt => (
-                  <SelectItem key={opt.id} value={opt.id} className="focus:bg-[#1e293b]">
+                  <SelectItem key={opt.id} value={opt.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                     {opt.name}
                   </SelectItem>
                 ))}
