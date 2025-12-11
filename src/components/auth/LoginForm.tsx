@@ -40,10 +40,17 @@ export const LoginForm = () => {
     }
   };
 
-  // Cores ajustadas para o tema escuro da página de login
-  const inputClasses = "flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-2 focus:ring-[#38bdf8]/50 border-none bg-[#1e293b] focus:border-[#38bdf8] h-16 placeholder:text-gray-400 p-4 text-xl font-normal leading-normal";
+  // Classes dinâmicas para Input
+  const inputClasses = "flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl h-16 p-4 text-xl font-normal leading-normal border-none";
+  
+  // Cores do Input: Claro (fundo cinza, texto escuro) / Escuro (fundo azul escuro, texto branco)
+  const inputThemeClasses = "bg-gray-100 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-[#38bdf8] focus:border-[#38bdf8] dark:bg-[#1e293b] dark:text-white dark:placeholder:text-gray-400 dark:focus:ring-[#38bdf8]/50 dark:focus:border-[#38bdf8]";
+  
+  // Botão Primário
   const primaryButtonClasses = 'bg-[#38bdf8] hover:bg-[#0ea5e9] text-white'; // sky-400
-  const focusRingOffset = 'focus:ring-offset-[#0f172a]'; // Fundo da página de login
+  
+  // Offset do anel de foco (deve ser o fundo da página)
+  const focusRingOffset = 'focus:ring-offset-background dark:focus:ring-offset-[#0f172a]'; 
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
@@ -51,19 +58,20 @@ export const LoginForm = () => {
       <label className="flex flex-col w-full">
         <div className="flex w-full flex-1 items-stretch rounded-lg relative">
           <Input
-            className={cn(inputClasses, "pr-12")}
+            className={cn(inputClasses, inputThemeClasses, "pr-12")}
             placeholder="Senha"
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="absolute inset-y-0 right-0 text-gray-400 flex items-center justify-center pr-4">
+          <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-4">
             <Button 
                 type="button" 
                 variant="ghost" 
                 size="icon" 
-                className="h-full w-full text-gray-400 hover:bg-transparent hover:text-white"
+                // Cores do ícone: Claro (cinza, hover escuro) / Escuro (cinza, hover branco)
+                className="h-full w-full text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 onClick={() => setShowPassword(!showPassword)}
             >
                 {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
