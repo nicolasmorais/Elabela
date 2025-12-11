@@ -32,17 +32,46 @@ export const Sidebar = () => {
 
   // Cores do Modo Claro (Padrão)
   const lightBg = 'bg-white';
-  const lightHoverActiveBg = 'bg-gray-100';
+  const lightActiveBg = 'bg-gray-100'; // Fundo ativo
   const lightBorderColor = 'border-gray-200';
   const lightTextColor = 'text-gray-600';
   const lightActiveTextColor = 'text-gray-900';
 
-  // Cores do Modo Escuro (Dark Mode - O esquema anterior)
+  // Cores do Modo Escuro (Dark Mode)
   const darkBg = 'dark:bg-[#0f172a]';
-  const darkHoverActiveBg = 'dark:bg-[#1e293b]';
+  const darkActiveBg = 'dark:bg-[#1e293b]'; // Fundo ativo
   const darkBorderColor = 'dark:border-[#334155]';
   const darkTextColor = 'dark:text-zinc-400';
   const darkActiveTextColor = 'dark:text-zinc-50';
+
+  const getLinkClasses = (href: string) => {
+    const isActive = pathname === href;
+    
+    // Base classes
+    let classes = "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all";
+
+    // Light Mode
+    classes += ` ${lightTextColor}`;
+    
+    // Remove hover effect, only apply active styles
+    if (isActive) {
+        classes += ` ${lightActiveBg} ${lightActiveTextColor}`;
+    } else {
+        // Ensure hover is transparent/default text color when not active
+        classes += ` hover:bg-transparent hover:text-gray-900`;
+    }
+
+    // Dark Mode
+    classes += ` ${darkTextColor}`;
+    if (isActive) {
+        classes += ` ${darkActiveBg} ${darkActiveTextColor}`;
+    } else {
+        // Ensure dark hover is transparent/default text color when not active
+        classes += ` dark:hover:bg-transparent dark:hover:text-zinc-50`;
+    }
+
+    return classes;
+  };
 
   return (
     <aside className={cn(
@@ -69,15 +98,7 @@ export const Sidebar = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all",
-                  // Light Mode
-                  lightTextColor, lightHoverActiveBg, 'hover:text-gray-900',
-                  pathname === item.href && `${lightHoverActiveBg} ${lightActiveTextColor}`,
-                  // Dark Mode
-                  darkTextColor, darkHoverActiveBg, 'dark:hover:text-zinc-50',
-                  pathname === item.href && `${darkHoverActiveBg} ${darkActiveTextColor}`
-                )}
+                className={getLinkClasses(item.href)}
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
@@ -94,15 +115,7 @@ export const Sidebar = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all",
-                  // Light Mode
-                  lightTextColor, lightHoverActiveBg, 'hover:text-gray-900',
-                  pathname === item.href && `${lightHoverActiveBg} ${lightActiveTextColor}`,
-                  // Dark Mode
-                  darkTextColor, darkHoverActiveBg, 'dark:hover:text-zinc-50',
-                  pathname === item.href && `${darkHoverActiveBg} ${darkActiveTextColor}`
-                )}
+                className={getLinkClasses(item.href)}
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
