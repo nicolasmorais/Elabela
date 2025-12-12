@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 async function getGeoLocation(ip: string | null): Promise<{ country?: string, regionName?: string }> {
     if (!ip || ip === '::1' || ip === '127.0.0.1') {
         // IP local ou não disponível, retorna dados de teste
-        return { country: 'Brasil', regionName: 'SP' };
+        return { country: 'Brasil', regionName: 'GO' }; // Alterado de SP para GO
     }
     
     const apiKey = process.env.IPGEOLOCATION_API_KEY;
