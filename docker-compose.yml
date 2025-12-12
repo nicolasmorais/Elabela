@@ -26,12 +26,32 @@ services:
       DATABASE_DIR: /app/data
       # Chave de API para ipgeolocation.io (DEVE SER DEFINIDA NO .ENV ou Dyad UI)
       IPGEOLOCATION_API_KEY: d04e5f06615e4ad78f0eb2d479c61ecd
+      
+      # Variáveis de Conexão PostgreSQL (Usadas pelo serviço 'web')
+      DATABASE_URL: postgres://user:password@db:5432/mydatabase
+      
+    # Depende do serviço de banco de dados
+    depends_on:
+      - db
 
     # Restart policy for the container
     restart: unless-stopped
 
+  db:
+    image: postgres:16-alpine
+    container_name: dyad-app-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      # Mapeia a porta do PostgreSQL para a porta 5432 do host (opcional, mas útil para ferramentas externas)
+      - "5432:5432"
+
 # Define the named volumes used by the services
 volumes:
   dyad_db_data:
-    # Driver can be local (default), or other options like 'azure_file', 'gcp_gcs_fuse' etc.
-    # For local development, 'local' is sufficient.
+  postgres_data:
