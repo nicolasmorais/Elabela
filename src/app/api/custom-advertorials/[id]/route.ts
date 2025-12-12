@@ -1,14 +1,16 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { getDb } from '@/lib/database';
-import { CustomAdvertorial } from '@/lib/advertorial-types'; // NEW: Import type from here
+import { CustomAdvertorial } from '@/lib/advertorial-types';
+
+interface RouteContext {
+  params: { id: string };
+}
 
 // GET: Fetch a single custom advertorial by ID
-export async function GET(request: Request, context: any) {
+export async function GET(request: NextRequest, context: RouteContext) {
   try {
     const { params } = context;
     const db = await getDb();
-    // Nota: No modo PostgreSQL, db.data não existe. Precisamos migrar esta lógica.
-    // Por enquanto, mantemos a compatibilidade com lowdb.
     const advertorial = (await db).data.customAdvertorials.find(a => a.id === params.id);
 
     if (!advertorial) {
@@ -23,13 +25,11 @@ export async function GET(request: Request, context: any) {
 }
 
 // DELETE: Delete a custom advertorial by ID
-export async function DELETE(request: Request, context: any) {
+export async function DELETE(request: NextRequest, context: RouteContext) {
   try {
     const { params } = context;
     const db = await getDb();
     
-    // Nota: No modo PostgreSQL, db.data não existe. Precisamos migrar esta lógica.
-    // Por enquanto, mantemos a compatibilidade com lowdb.
     const initialLength = (await db).data.customAdvertorials.length;
     
     (await db).data.customAdvertorials = (await db).data.customAdvertorials.filter(a => a.id !== params.id);
