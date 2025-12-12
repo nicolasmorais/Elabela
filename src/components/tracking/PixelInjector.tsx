@@ -44,7 +44,7 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps) {
     <!-- End Meta Pixel Code -->
   ` : '';
 
-  // 2. Taboola Pixel Script (PageView padrão)
+  // 2. Taboola Pixel Script (PageView padrão) - CORRIGIDO
   const taboolaScript = taboolaPixelId ? `
     <!-- Taboola Pixel Code -->
     <script type="text/javascript">
@@ -56,8 +56,8 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps) {
         }
       }(document.createElement('script'),
       document.getElementsByTagName('script')[0],
-      '//cdn.taboola.com/libtrc/unip.js',
-      'tb_loader_script');
+      '//cdn.taboola.com/libtrc/unip/${taboolaPixelId}/tfa.js',
+      'tb_tfa_script');
     </script>
     <!-- End Taboola Pixel Code -->
   ` : '';

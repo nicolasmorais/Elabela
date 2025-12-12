@@ -25,6 +25,11 @@
       "path": "/aprovado",
       "name": "Página de Aprovação (Preview)",
       "contentId": "ap"
+    },
+    {
+      "path": "/c350eb67-4ad9-46c3-bbd8-2657f98736a7",
+      "contentId": "c350eb67-4ad9-46c3-bbd8-2657f98736a7",
+      "name": "Rota Personalizada: /c350eb67-4ad9-46c3-bbd8-2657f98736a7"
     }
   ],
   "approvalPageContent": {
@@ -96,7 +101,7 @@
   },
   "customAdvertorials": [
     {
-      "id": "a20a8ed1-9f42-4bad-9fed-59b0e067b510",
+      "id": "c350eb67-4ad9-46c3-bbd8-2657f98736a7",
       "name": "Novo Advertorial Dinâmico",
       "header": {
         "preTitle": "Reportagem Especial",
@@ -106,18 +111,13 @@
       },
       "blocks": [
         {
-          "id": "kr334ga",
-          "type": "html",
-          "value": "<p>Este é um texto de exemplo criado apenas para demonstração. Você pode substituí-lo pelo conteúdo que desejar.</p>\n"
-        },
-        {
-          "id": "fpoeo9l",
+          "id": "w0wfs9a",
           "type": "text",
           "value": "Novo parágrafo de texto. Use **asteriscos** para negrito.",
           "fontSize": "xl"
         },
         {
-          "id": "g7yw5mh",
+          "id": "0c7fg7e",
           "type": "pricing",
           "value": "R$ 29,90",
           "price": "R$ 29,90",
@@ -173,7 +173,7 @@
       },
       "pixels": {
         "metaPixelId": "",
-        "taboolaPixelId": "",
+        "taboolaPixelId": "1959176",
         "customScripts": "",
         "useGlobalPixels": true
       }
