@@ -21,7 +21,8 @@ export default function CustomAdvertorialEditor() {
     const params = useParams();
     const router = useRouter();
     
-    const advertorialId = (params?.id as string) || 'new';
+    // Tratamento seguro para advertorialId
+    const advertorialId = Array.isArray(params?.id) ? params.id[0] : (params?.id as string) || 'new';
     const isNew = advertorialId === 'new';
 
     const [isLoading, setIsLoading] = useState(true);

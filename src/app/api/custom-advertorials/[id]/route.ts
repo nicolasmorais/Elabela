@@ -7,7 +7,7 @@ interface RouteContext {
 }
 
 // GET: Fetch a single custom advertorial by ID
-export async function GET(request: NextRequest, context: RouteContext) {
+export async function GET(request: NextRequest, context: any) { // Usando 'any' aqui
   try {
     const { params } = context;
     const db = await getDb();
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
 }
 
 // DELETE: Delete a custom advertorial by ID
-export async function DELETE(request: NextRequest, context: RouteContext) {
+export async function DELETE(request: NextRequest, context: any) { // Usando 'any' aqui
   try {
     const { params } = context;
     const db = await getDb();
