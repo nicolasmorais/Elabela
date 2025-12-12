@@ -9,8 +9,8 @@ import {
   defaultCustomAdvertorialFooter,
   defaultDbData,
   AuthSchema,
-  PixelConfig, // NEW: Import PixelConfig
-  defaultPixelConfig // NEW: Import defaultPixelConfig
+  PixelConfig,
+  PageViewEvent // NEW: Import PageViewEvent
 } from './advertorial-types';
 
 // ----------------------------------------------
@@ -21,7 +21,8 @@ interface DbSchema {
   approvalPageContent: ApprovalPageContent;
   customAdvertorials: CustomAdvertorial[];
   auth: AuthSchema;
-  pixelConfig: PixelConfig; // NEW: Pixel configuration
+  pixelConfig: PixelConfig;
+  pageViews: PageViewEvent[]; // NEW: Analytics collection
 }
 
 const DB_FILE_NAME = 'db.json';
@@ -52,7 +53,8 @@ export async function getDb(): Promise<Low<DbSchema>> {
       approvalPageContent: defaultDbData.approvalPageContent,
       customAdvertorials: defaultDbData.customAdvertorials,
       auth: defaultDbData.auth,
-      pixelConfig: defaultDbData.pixelConfig, // Include pixelConfig default
+      pixelConfig: defaultDbData.pixelConfig,
+      pageViews: defaultDbData.pageViews, // Include pageViews default
     };
 
     const adapter = new JSONFile<DbSchema>(DB_FULL_PATH);
@@ -84,8 +86,12 @@ export async function getDb(): Promise<Low<DbSchema>> {
         dbInstance.data.auth = defaultDbData.auth;
         needsUpdate = true;
       }
-      if (!dbInstance.data.pixelConfig) { // Check for new pixelConfig field
+      if (!dbInstance.data.pixelConfig) {
         dbInstance.data.pixelConfig = defaultDbData.pixelConfig;
+        needsUpdate = true;
+      }
+      if (!dbInstance.data.pageViews) { // NEW: Check for pageViews
+        dbInstance.data.pageViews = defaultDbData.pageViews;
         needsUpdate = true;
       }
       

@@ -1,11 +1,12 @@
 import { getDb } from '@/lib/database';
-import { CustomAdvertorial } from '@/lib/advertorial-types'; // NEW: Import type from here
+import { CustomAdvertorial } from '@/lib/advertorial-types';
 import { BlockRenderer } from '@/components/advertorial-dynamic/BlockRenderer';
-import { FooterAP } from '@/components/advertorial-ap/FooterAP'; // Reusing the dynamic footer
+import { FooterAP } from '@/components/advertorial-ap/FooterAP';
 import { notFound } from 'next/navigation';
 import type { Metadata } from "next";
 import { cn } from '@/lib/utils';
-import { PixelInjector } from '@/components/tracking/PixelInjector'; // NEW: Import PixelInjector
+import { PixelInjector } from '@/components/tracking/PixelInjector';
+import { usePageTracker } from '@/hooks/use-page-tracker'; // NEW
 
 interface CustomAdvertorialPageProps {
     advertorialId: string;
@@ -59,29 +60,38 @@ export async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorial
   const mainFontClass = advertorial.header.fontFamily ? `font-${advertorial.header.fontFamily}` : 'font-sans';
 
   return (
-    <>
-      {/* Injeta os pixels específicos da página no head */}
-      <head>
-        <PixelInjector pagePixels={advertorial.pixels} />
-      </head>
-      <div className={cn("bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen", mainFontClass)}>
-        <div className="bg-gray-100 dark:bg-gray-800 text-center py-2">
-          <p className="text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
-            Advertorial
-          </p>
-        </div>
-        
-        <DynamicHeader {...advertorial.header} />
-        
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-          {advertorial.blocks.map((block) => (
-            <BlockRenderer key={block.id} block={block} />
-          ))}
-        </main>
-        
-        {/* Using the custom footer from the advertorial object */}
-        <FooterAP {...advertorial.footer} />
-      </div>
-    </>
+    <CustomAdvertorialPageClient advertorial={advertorial} mainFontClass={mainFontClass} />
   );
+}
+
+// Wrapper Client Component para usar o hook de rastreamento
+function CustomAdvertorialPageClient({ advertorial, mainFontClass }: { advertorial: CustomAdvertorial, mainFontClass: string }) {
+    usePageTracker(advertorial.id); // Rastreia a visualização usando o ID do advertorial
+    
+    return (
+        <>
+            {/* Injeta os pixels específicos da página no head */}
+            <head>
+                <PixelInjector pagePixels={advertorial.pixels} />
+            </head>
+            <div className={cn("bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen", mainFontClass)}>
+                <div className="bg-gray-100 dark:bg-gray-800 text-center py-2">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+                        Advertorial
+                    </p>
+                </div>
+                
+                <DynamicHeader {...advertorial.header} />
+                
+                <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+                    {advertorial.blocks.map((block) => (
+                        <BlockRenderer key={block.id} block={block} />
+                    ))}
+                </main>
+                
+                {/* Using the custom footer from the advertorial object */}
+                <FooterAP {...advertorial.footer} />
+            </div>
+        </>
+    );
 }

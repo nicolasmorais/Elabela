@@ -31,6 +31,14 @@ export interface RouteMapping {
   contentId: string;
 }
 
+// Analytics Interface
+export interface PageViewEvent {
+    id: string;
+    contentId: string;
+    path: string;
+    timestamp: string;
+}
+
 // Interfaces for Custom Advertorials
 export interface CustomAdvertorialHeader {
   preTitle: string;
@@ -200,4 +208,5 @@ export const defaultDbData = {
         passwordHash: '', // Hash will be generated on first run if empty
     },
     pixelConfig: defaultGlobalPixelConfig, // Global configuration
+    pageViews: [] as PageViewEvent[], // NEW: Analytics collection
 };

@@ -7,12 +7,15 @@ import { Pricing } from "@/components/advertorial/Pricing";
 import { Testimonials } from "@/components/advertorial/Testimonials";
 import { Footer } from "@/components/advertorial/Footer";
 import type { Metadata } from "next";
+import { usePageTracker } from '@/hooks/use-page-tracker'; // NEW
 
 export const metadata: Metadata = {
   title: "Advertorial - V1",
 };
 
 export function V1Page() {
+  usePageTracker('v1'); // Rastreia a visualização para o contentId 'v1'
+  
   return (
     <div className="bg-white text-gray-800 font-merriweather">
       <div className="bg-gray-100 text-center py-2">

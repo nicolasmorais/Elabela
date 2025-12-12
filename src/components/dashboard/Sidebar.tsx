@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Zap } from "lucide-react"; // Importando Zap
+import { Settings, Wand2, LayoutGrid, Zap, BarChart } from "lucide-react"; // Importando BarChart
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,11 @@ const mainNavItems = [
     href: "/dashboard",
     icon: Settings,
     label: "Route Control",
+  },
+  { // NEW: Analytics link
+    href: "/dashboard/analytics",
+    icon: BarChart,
+    label: "Analytics",
   },
 ];
 

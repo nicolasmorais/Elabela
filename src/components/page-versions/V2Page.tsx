@@ -1,3 +1,5 @@
+"use client"; // Tornando o componente cliente para usar o hook
+
 import { HeaderV2 } from "@/components/advertorial-v2/HeaderV2";
 import { IntroductionV2 } from "@/components/advertorial-v2/IntroductionV2";
 import { GuideContentsV2 } from "@/components/advertorial-v2/GuideContentsV2";
@@ -5,8 +7,11 @@ import { OfferV2 } from "@/components/advertorial-v2/OfferV2";
 import { PricingV2 } from "@/components/advertorial-v2/PricingV2";
 import { DisclaimerV2 } from "@/components/advertorial-v2/DisclaimerV2";
 import { FooterV2 } from "@/components/advertorial-v2/FooterV2";
+import { usePageTracker } from '@/hooks/use-page-tracker'; // NEW
 
 export function V2Page() {
+  usePageTracker('v2'); // Rastreia a visualização para o contentId 'v2'
+  
   return (
     <div className="bg-white text-gray-800 font-merriweather">
       <div className="bg-gray-100 text-center py-2">

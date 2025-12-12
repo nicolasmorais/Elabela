@@ -1,3 +1,5 @@
+"use client"; // Tornando o componente cliente para usar o hook
+
 import { HeaderV3 } from "@/components/advertorial-v3/HeaderV3";
 import { IntroductionV3 } from "@/components/advertorial-v3/IntroductionV3";
 import { WhyItWorksV3 } from "@/components/advertorial-v3/WhyItWorksV3";
@@ -7,8 +9,11 @@ import { TestimonialsV3 } from "@/components/advertorial-v3/TestimonialsV3";
 import { PricingV3 } from "@/components/advertorial-v3/PricingV3";
 import { DisclaimerV3 } from "@/components/advertorial-v3/DisclaimerV3";
 import { FooterV3 } from "@/components/advertorial-v3/FooterV3";
+import { usePageTracker } from '@/hooks/use-page-tracker'; // NEW
 
 export function V3Page() {
+  usePageTracker('v3'); // Rastreia a visualização para o contentId 'v3'
+  
   return (
     <div className="bg-white text-gray-800 font-merriweather">
       <HeaderV3 />
