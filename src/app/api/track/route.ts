@@ -10,20 +10,19 @@ async function getGeoLocation(ip: string | null): Promise<{ country?: string, re
         return { country: 'Brasil', regionName: 'SP' };
     }
     
-    // CRITICAL PITFALL: Server-side calls MUST use the direct ENV variable, not the proxy path.
-    // However, since we are using a public GeoIP service (ip-api.com), we can use the proxy
-    // if the user configured it, or call the external API directly using the ENV variable.
-    // Since the user is expected to set GEOIP_API_URL, we use it directly for server-side fetch.
-    
-    const geoIpApiUrl = process.env.GEOIP_API_URL;
-    if (!geoIpApiUrl) {
-        console.warn("GEOIP_API_URL not set. Skipping GeoIP lookup.");
+    const apiKey = process.env.IPGEOLOCATION_API_KEY;
+    const apiUrl = 'https://api.ipgeolocation.io/ipgeo';
+
+    if (!apiKey) {
+        console.warn("IPGEOLOCATION_API_KEY not set. Skipping GeoIP lookup.");
         return {};
     }
 
     try {
-        // ip-api.com/json/{ip}
-        const response = await fetch(`${geoIpApiUrl}/${ip}`, {
+        // ipgeolocation.io usa o parâmetro 'ip' e 'apiKey'
+        const url = `${apiUrl}?apiKey=${apiKey}&ip=${ip}`;
+        
+        const response = await fetch(url, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             // Adicionando timeout para evitar bloqueio
@@ -37,10 +36,11 @@ async function getGeoLocation(ip: string | null): Promise<{ country?: string, re
 
         const data = await response.json();
         
-        if (data.status === 'success') {
+        // ipgeolocation.io retorna 'country_name' e 'state_prov' (estado/região)
+        if (data.country_name) {
             return {
-                country: data.country || 'Desconhecido',
-                regionName: data.regionName || 'Desconhecido', // Nome do estado/região
+                country: data.country_name || 'Desconhecido',
+                regionName: data.state_prov || 'Desconhecido', // Nome do estado/região
             };
         }
         return {};

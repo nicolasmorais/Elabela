@@ -26,6 +26,8 @@ services:
       DATABASE_DIR: /app/data
       # Exemplo de URL para GeoIP (ip-api.com)
       # GEOIP_API_URL: http://ip-api.com/json
+      # Chave de API para ipgeolocation.io (DEVE SER DEFINIDA NO .ENV)
+      # IPGEOLOCATION_API_KEY: sua_chave_secreta
 
     # Restart policy for the container
     restart: unless-stopped
