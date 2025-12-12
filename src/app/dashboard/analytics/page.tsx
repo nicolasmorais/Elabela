@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Card,
   CardContent,
@@ -18,31 +18,47 @@ import {
 } from "@/components/ui/table";
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { BarChart, TrendingUp, LayoutGrid, MapPin, Route } from 'lucide-react';
+import { BarChart, TrendingUp, LayoutGrid, MapPin, Route, Filter } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PageViewEvent, RouteMapping, CustomAdvertorial } from '@/lib/advertorial-types';
 import { DateRangePicker } from '@/components/dashboard/DateRangePicker';
 import { DateRange } from 'react-day-picker';
 import { format } from 'date-fns';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface AnalyticsData {
     contentId: string;
     name: string;
     totalViews: number;
     paths: { path: string; views: number }[];
-    regions: { regionName: string; views: number }[]; // NEW
+    regions: { regionName: string; views: number }[];
+}
+
+interface ContentOption {
+    id: string;
+    name: string;
 }
 
 const LoadingSkeleton = () => (
-  <div className="space-y-6">
-    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-40 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
+    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-40 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
   </div>
 );
 
 export default function AnalyticsPage() {
   const [analytics, setAnalytics] = useState<AnalyticsData[]>([]);
+  const [contentOptions, setContentOptions] = useState<ContentOption[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
+  const [selectedContentId, setSelectedContentId] = useState('all');
+
+  const baseContentOptions: ContentOption[] = [
+    { id: 'v1', name: 'Advertorial V1' },
+    { id: 'v2', name: 'Advertorial V2' },
+    { id: 'v3', name: 'Advertorial V3' },
+    { id: 'ap', name: 'Página de Aprovação (AP)' },
+  ];
 
   const fetchAnalytics = async (range?: DateRange) => {
     setIsLoading(true);
@@ -51,7 +67,6 @@ export default function AnalyticsPage() {
     const params = new URLSearchParams();
 
     if (range?.from) {
-        // Formato ISO para o backend
         params.append('startDate', format(range.from, 'yyyy-MM-dd'));
     }
     if (range?.to) {
@@ -63,27 +78,25 @@ export default function AnalyticsPage() {
     }
 
     try {
-      const [viewsRes, routesRes, customAdvRes] = await Promise.all([
+      const [viewsRes, customAdvRes] = await Promise.all([
         fetch(url),
-        fetch('/api/routes'),
         fetch('/api/custom-advertorials'),
       ]);
 
-      if (!viewsRes.ok || !routesRes.ok || !customAdvRes.ok) {
+      if (!viewsRes.ok || !customAdvRes.ok) {
         throw new Error('Failed to fetch data');
       }
 
       const viewsData: PageViewEvent[] = await viewsRes.json();
-      const routesData: RouteMapping[] = await routesRes.json();
       const customAdvData: CustomAdvertorial[] = await customAdvRes.json();
 
       // Mapeamento de ContentId para Nome
       const contentMap = new Map<string, string>();
-      contentMap.set('v1', 'Advertorial V1 (Hardcoded)');
-      contentMap.set('v2', 'Advertorial V2 (Hardcoded)');
-      contentMap.set('v3', 'Advertorial V3 (Hardcoded)');
-      contentMap.set('ap', 'Página de Aprovação (AP)');
-      customAdvData.forEach(adv => contentMap.set(adv.id, adv.name));
+      baseContentOptions.forEach(opt => contentMap.set(opt.id, opt.name));
+      customAdvData.forEach(adv => contentMap.set(adv.id, `Dinâmico: ${adv.name}`));
+      
+      // Atualiza as opções de filtro
+      setContentOptions([...baseContentOptions, ...customAdvData.map(adv => ({ id: adv.id, name: `Dinâmico: ${adv.name}` }))]);
 
       // Agrupar visualizações por ContentId, Path e Região
       const groupedData = viewsData.reduce((acc, event) => {
@@ -95,7 +108,7 @@ export default function AnalyticsPage() {
             name: contentMap.get(contentId) || `Conteúdo Desconhecido (${contentId})`,
             totalViews: 0,
             paths: {},
-            regions: {}, // NEW
+            regions: {},
           };
         }
         
@@ -113,7 +126,7 @@ export default function AnalyticsPage() {
       const formattedAnalytics: AnalyticsData[] = Object.values(groupedData).map(item => ({
         ...item,
         paths: Object.entries(item.paths).map(([path, views]) => ({ path, views })).sort((a, b) => b.views - a.views),
-        regions: Object.entries(item.regions).map(([regionName, views]) => ({ regionName, views })).sort((a, b) => b.views - a.views), // NEW
+        regions: Object.entries(item.regions).map(([regionName, views]) => ({ regionName, views })).sort((a, b) => b.views - a.views),
       })).sort((a, b) => b.totalViews - a.totalViews);
 
       setAnalytics(formattedAnalytics);
@@ -131,11 +144,30 @@ export default function AnalyticsPage() {
     fetchAnalytics(dateRange);
   }, [dateRange]);
 
+  // Filtra os dados de região para o Card 2
+  const filteredRegions = useMemo(() => {
+    if (selectedContentId === 'all') {
+        // Agrupa todas as regiões de todos os advertoriais
+        const allRegions: Record<string, number> = {};
+        analytics.forEach(adv => {
+            adv.regions.forEach(region => {
+                allRegions[region.regionName] = (allRegions[region.regionName] || 0) + region.views;
+            });
+        });
+        return Object.entries(allRegions).map(([regionName, views]) => ({ regionName, views })).sort((a, b) => b.views - a.views);
+    }
+    
+    const selectedAdv = analytics.find(adv => adv.contentId === selectedContentId);
+    return selectedAdv ? selectedAdv.regions : [];
+  }, [analytics, selectedContentId]);
+
   // Cores Dinâmicas
   const cardBg = 'bg-white dark:bg-[#1e293b]';
   const borderColor = 'border-gray-200 dark:border-[#334155]';
   const textColor = 'text-gray-900 dark:text-white';
   const secondaryTextColor = 'text-gray-500 dark:text-zinc-400';
+  const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
+  const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
 
   return (
     <>
@@ -159,31 +191,116 @@ export default function AnalyticsPage() {
             <CardDescription className="mt-2 text-gray-500 dark:text-zinc-500">Ajuste o filtro de data ou visite suas rotas para começar a rastrear.</CardDescription>
           </Card>
         ) : (
-          analytics.map((item) => (
-            <Card key={item.contentId} className={cn(cardBg, borderColor, textColor)}>
-              <CardHeader className="flex flex-row items-center justify-between">
-                <div className="space-y-1">
-                    <CardTitle className="flex items-center gap-2 text-xl">
-                        <LayoutGrid className="h-5 w-5 text-blue-500" />
-                        {item.name}
-                    </CardTitle>
-                    <CardDescription className={secondaryTextColor}>
-                        ID: <code className="text-sm bg-gray-100 dark:bg-[#020617] px-1 rounded">{item.contentId}</code>
-                    </CardDescription>
-                </div>
-                <div className="flex items-center gap-2 text-3xl font-bold text-green-600 dark:text-green-400">
-                    <TrendingUp className="h-6 w-6" />
-                    {item.totalViews}
-                    <span className="text-base font-normal text-gray-500 dark:text-zinc-400">visualizações</span>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            {/* CARD 1: Visualizações por Advertorial (Conteúdo Final) */}
+            <Card className={cn(cardBg, borderColor, textColor, "lg:col-span-1")}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl">
+                    <LayoutGrid className="h-5 w-5 text-blue-500" />
+                    Visualizações por Conteúdo (Advertorial)
+                </CardTitle>
+                <CardDescription className={secondaryTextColor}>
+                    Total de acessos agrupados pelo conteúdo final exibido.
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Coluna 1: Visualizações por Rota */}
-                    <div>
-                        <h3 className="font-semibold mb-2 text-gray-700 dark:text-zinc-300 flex items-center gap-2">
-                            <Route className="h-4 w-4" /> Visualizações por Rota (Path)
-                        </h3>
+                <Table>
+                    <TableHeader>
+                        <TableRow className={cn(borderColor, "hover:bg-transparent")}>
+                            <TableHead className="text-gray-500 dark:text-zinc-400">Conteúdo</TableHead>
+                            <TableHead className="text-right text-gray-500 dark:text-zinc-400">Total de Views</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {analytics.map((item) => (
+                            <TableRow key={item.contentId} className={cn(borderColor, "hover:bg-gray-50 dark:hover:bg-[#0f172a]")}>
+                                <TableCell>
+                                    <div className="font-medium">{item.name}</div>
+                                    <code className="text-xs bg-gray-100 dark:bg-[#020617] px-1 rounded text-gray-500 dark:text-zinc-400">{item.contentId}</code>
+                                </TableCell>
+                                <TableCell className="text-right text-xl font-bold text-green-600 dark:text-green-400">{item.totalViews}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+
+            {/* CARD 2: Distribuição Geográfica Filtrável */}
+            <Card className={cn(cardBg, borderColor, textColor, "lg:col-span-1")}>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl">
+                    <MapPin className="h-5 w-5 text-purple-500" />
+                    Acesso por Estados (Distribuição Geográfica)
+                </CardTitle>
+                <CardDescription className={secondaryTextColor}>
+                    Filtre para ver a distribuição de visualizações por estado.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {/* Filtro de Conteúdo */}
+                <div className="mb-4">
+                    <Select value={selectedContentId} onValueChange={setSelectedContentId}>
+                        <SelectTrigger className={cn(inputBg, borderColor, textColor)}>
+                            <Filter className="h-4 w-4 mr-2 text-gray-500 dark:text-zinc-400" />
+                            <SelectValue placeholder="Filtrar por Advertorial" />
+                        </SelectTrigger>
+                        <SelectContent className={cn(selectContentBg, textColor, borderColor)}>
+                            <SelectItem value="all" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Todos os Conteúdos ({analytics.reduce((sum, item) => sum + item.totalViews, 0)})</SelectItem>
+                            {contentOptions.map(opt => {
+                                const views = analytics.find(a => a.contentId === opt.id)?.totalViews || 0;
+                                return (
+                                    <SelectItem key={opt.id} value={opt.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
+                                        {opt.name} ({views})
+                                    </SelectItem>
+                                );
+                            })}
+                        </SelectContent>
+                    </Select>
+                </div>
+
+                {/* Tabela de Regiões */}
+                <Table>
+                    <TableHeader>
+                        <TableRow className={cn(borderColor, "hover:bg-transparent")}>
+                            <TableHead className="text-gray-500 dark:text-zinc-400">Região/Estado</TableHead>
+                            <TableHead className="text-right text-gray-500 dark:text-zinc-400">Visualizações</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {filteredRegions.length === 0 ? (
+                            <TableRow className={cn(borderColor, "hover:bg-transparent")}>
+                                <TableCell colSpan={2} className="text-center text-gray-500 dark:text-zinc-500">
+                                    Nenhuma visualização encontrada para este filtro.
+                                </TableCell>
+                            </TableRow>
+                        ) : (
+                            filteredRegions.map((regionItem, index) => (
+                                <TableRow key={index} className={cn(borderColor, "hover:bg-gray-50 dark:hover:bg-[#0f172a]")}>
+                                    <TableCell className="font-medium">{regionItem.regionName}</TableCell>
+                                    <TableCell className="text-right font-bold">{regionItem.views}</TableCell>
+                                </TableRow>
+                            ))
+                        )}
+                    </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+            
+            {/* CARD 3: Visualizações por Rota (Mantido, mas agora em uma coluna separada) */}
+            {analytics.map((item) => (
+                <Card key={`paths-${item.contentId}`} className={cn(cardBg, borderColor, textColor, "lg:col-span-2")}>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-xl">
+                            <Route className="h-5 w-5 text-orange-500" />
+                            Rotas de Acesso para: {item.name}
+                        </CardTitle>
+                        <CardDescription className={secondaryTextColor}>
+                            Quais URLs foram usadas para acessar este conteúdo.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
                         <Table>
                             <TableHeader>
                                 <TableRow className={cn(borderColor, "hover:bg-transparent")}>
@@ -200,34 +317,10 @@ export default function AnalyticsPage() {
                                 ))}
                             </TableBody>
                         </Table>
-                    </div>
-
-                    {/* Coluna 2: Distribuição Geográfica */}
-                    <div>
-                        <h3 className="font-semibold mb-2 text-gray-700 dark:text-zinc-300 flex items-center gap-2">
-                            <MapPin className="h-4 w-4" /> Distribuição por Região
-                        </h3>
-                        <Table>
-                            <TableHeader>
-                                <TableRow className={cn(borderColor, "hover:bg-transparent")}>
-                                    <TableHead className="text-gray-500 dark:text-zinc-400">Região/Estado</TableHead>
-                                    <TableHead className="text-right text-gray-500 dark:text-zinc-400">Visualizações</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {item.regions.map((regionItem, index) => (
-                                    <TableRow key={index} className={cn(borderColor, "hover:bg-gray-50 dark:hover:bg-[#0f172a]")}>
-                                        <TableCell className="font-medium">{regionItem.regionName}</TableCell>
-                                        <TableCell className="text-right font-bold">{regionItem.views}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))
+                    </CardContent>
+                </Card>
+            ))}
+          </div>
         )}
       </div>
     </>
