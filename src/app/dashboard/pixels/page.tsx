@@ -12,24 +12,24 @@ import { cn } from '@/lib/utils';
 import { GlobalPixelConfig } from '@/lib/advertorial-types'; // Corrigido: Usando GlobalPixelConfig
 import { Save, Zap, Code } from 'lucide-react';
 
-const LoadingSkeleton = () => (
+const LoadingSkeleton = (): JSX.Element => (
   <div className="space-y-6">
     <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
     <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-40 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
   </div>
 );
 
-export default function PixelManagerPage() {
+export default function PixelManagerPage(): JSX.Element {
   const [config, setConfig] = useState<GlobalPixelConfig | null>(null); // Corrigido: Usando GlobalPixelConfig
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
 
-  const fetchConfig = async () => {
+  const fetchConfig = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/pixels');
+      const res: Response = await fetch('/api/pixels');
       if (!res.ok) throw new Error('Failed to fetch');
-      const data = await res.json();
+      const data: GlobalPixelConfig = await res.json();
       setConfig(data);
     } catch (error) {
       toast.error("Falha ao carregar a configuração de pixels.");
@@ -42,18 +42,18 @@ export default function PixelManagerPage() {
     fetchConfig();
   }, []);
 
-  const handleInputChange = (field: keyof GlobalPixelConfig, value: string) => { // Corrigido: Tipagem de field
+  const handleInputChange = (field: keyof GlobalPixelConfig, value: string): void => { // Corrigido: Tipagem de field
     setConfig((prev: GlobalPixelConfig | null) => { // Corrigido: Tipagem de prev
       if (!prev) return null;
       return { ...prev, [field]: value };
     });
   };
 
-  const handleSave = async () => {
+  const handleSave = async (): Promise<void> => {
     if (!config) return;
     setIsSaving(true);
     try {
-      const response = await fetch('/api/pixels', { 
+      const response: Response = await fetch('/api/pixels', { 
         method: 'POST', 
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(config) 

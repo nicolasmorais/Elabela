@@ -7,10 +7,11 @@ interface RouteContext {
 }
 
 // GET: Fetch a single custom advertorial by ID
-export async function GET(request: NextRequest, context: any) { // Usando 'any' aqui
+export async function GET(request: NextRequest, context: RouteContext): Promise<NextResponse> {
   try {
     const { params } = context;
     const db = await getDb();
+    // Explicitly typing the parameter in find
     const advertorial = db.data.customAdvertorials.find((a: CustomAdvertorial) => a.id === params.id);
 
     if (!advertorial) {
@@ -25,13 +26,14 @@ export async function GET(request: NextRequest, context: any) { // Usando 'any' 
 }
 
 // DELETE: Delete a custom advertorial by ID
-export async function DELETE(request: NextRequest, context: any) { // Usando 'any' aqui
+export async function DELETE(request: NextRequest, context: RouteContext): Promise<NextResponse> {
   try {
     const { params } = context;
     const db = await getDb();
     
     const initialLength = db.data.customAdvertorials.length;
     
+    // Explicitly typing the parameter in filter
     db.data.customAdvertorials = db.data.customAdvertorials.filter((a: CustomAdvertorial) => a.id !== params.id);
 
     if (db.data.customAdvertorials.length === initialLength) {
@@ -39,6 +41,7 @@ export async function DELETE(request: NextRequest, context: any) { // Usando 'an
     }
 
     // Also remove any route mapping pointing to this content ID
+    // Explicitly typing the parameter in filter
     db.data.routes = db.data.routes.filter(r => r.contentId !== params.id);
 
     await db.write();

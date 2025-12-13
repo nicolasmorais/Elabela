@@ -3,8 +3,13 @@ import { getDb } from '@/lib/database';
 import { PageViewEvent } from '@/lib/advertorial-types';
 import { v4 as uuidv4 } from 'uuid';
 
+interface GeoLocation {
+    country?: string;
+    regionName?: string;
+}
+
 // Função para buscar a localização baseada no IP
-async function getGeoLocation(ip: string | null): Promise<{ country?: string, regionName?: string }> {
+async function getGeoLocation(ip: string | null): Promise<GeoLocation> {
     if (!ip || ip === '::1' || ip === '127.0.0.1') {
         // IP local ou não disponível, retorna dados de teste
         return { country: 'Brasil', regionName: 'GO' }; // Alterado de SP para GO
@@ -50,9 +55,9 @@ async function getGeoLocation(ip: string | null): Promise<{ country?: string, re
     }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
-    const { contentId, path } = await req.json();
+    const { contentId, path } = await req.json() as { contentId: string, path: string };
     
     if (!contentId || !path) {
       return NextResponse.json({ message: 'contentId e path são obrigatórios' }, { status: 400 });
@@ -63,7 +68,7 @@ export async function POST(req: Request) {
     const clientIp = forwardedFor ? forwardedFor.split(',')[0].trim() : null;
     
     // 2. Obter a localização
-    const location = await getGeoLocation(clientIp);
+    const location: GeoLocation = await getGeoLocation(clientIp);
 
     const db = await getDb();
     

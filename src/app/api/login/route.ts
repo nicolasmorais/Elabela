@@ -7,9 +7,9 @@ import { cookies } from 'next/headers';
 const SESSION_COOKIE_NAME = 'auth_session';
 const SESSION_EXPIRY_SECONDS = 60 * 60 * 24; // 24 hours
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
-    const { password } = await req.json();
+    const { password } = await req.json() as { password: string };
     
     if (!password) {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });

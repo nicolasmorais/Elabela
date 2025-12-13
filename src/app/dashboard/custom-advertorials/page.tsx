@@ -22,21 +22,22 @@ import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
 import { Plus, Trash2, Edit, ExternalLink, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { CustomAdvertorial } from '@/lib/advertorial-types'; // Importando CustomAdvertorial
 
 interface CustomAdvertorial {
   id: string;
   name: string;
 }
 
-export default function CustomAdvertorialsPage() {
+export default function CustomAdvertorialsPage(): JSX.Element {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const fetchAdvertorials = () => {
+  const fetchAdvertorials = (): void => {
     setIsLoading(true);
     fetch('/api/custom-advertorials')
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res: Response) => res.json())
+      .then((data: CustomAdvertorial[]) => {
         setAdvertorials(data);
       })
       .catch(() => {
@@ -51,7 +52,7 @@ export default function CustomAdvertorialsPage() {
     fetchAdvertorials();
   }, []);
 
-  const handleDelete = async (id: string, name: string) => {
+  const handleDelete = async (id: string, name: string): Promise<void> => {
     if (!window.confirm(`Tem certeza que deseja excluir o advertorial: "${name}"? Todas as rotas associadas também serão removidas.`)) {
       return;
     }
@@ -119,7 +120,7 @@ export default function CustomAdvertorialsPage() {
             </TableHeader>
             <TableBody>
               {isLoading ? (
-                Array.from({ length: 3 }).map((_, i) => (
+                Array.from({ length: 3 }).map((_, i: number) => (
                   <TableRow key={i} className={borderColor}>
                     <TableCell><Skeleton className={cn("h-5 w-3/4", skeletonBg)} /></TableCell>
                     <TableCell><Skeleton className={cn("h-5 w-1/2", skeletonBg)} /></TableCell>
@@ -133,7 +134,7 @@ export default function CustomAdvertorialsPage() {
                   </TableCell>
                 </TableRow>
               ) : (
-                advertorials.map(adv => (
+                advertorials.map((adv: CustomAdvertorial) => (
                   <TableRow key={adv.id} className={cn(borderColor, hoverBg)}>
                     <TableCell>
                       <div className="font-medium">{adv.name}</div>

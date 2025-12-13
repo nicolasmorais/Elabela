@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
+import { ApprovalPageContent } from '@/lib/advertorial-types'; // Importando o tipo
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const db = await getDb();
-    const content = db.data.approvalPageContent;
+    const content: ApprovalPageContent = db.data.approvalPageContent;
     return NextResponse.json(content);
   } catch (error) {
     console.error('Failed to get approval page content:', error);
@@ -12,9 +13,9 @@ export async function GET() {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
-    const newContent = await req.json();
+    const newContent: ApprovalPageContent = await req.json();
     if (!newContent) {
       return NextResponse.json({ message: 'O conteúdo é obrigatório' }, { status: 400 });
     }

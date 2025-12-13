@@ -2,10 +2,10 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 import { RouteMapping } from '@/lib/advertorial-types'; // Importando o tipo
 
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const db = await getDb();
-    const routes = db.data.routes;
+    const routes: RouteMapping[] = db.data.routes;
     return NextResponse.json(routes);
   } catch (error) {
     console.error('Failed to get routes:', error);
@@ -13,15 +13,16 @@ export async function GET() {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
-    const { path, contentId, name } = await req.json();
+    const { path, contentId, name } = await req.json() as { path: string, contentId: string, name?: string };
     if (!path || !contentId) {
       return NextResponse.json({ message: 'Os campos path e contentId são obrigatórios' }, { status: 400 });
     }
 
     const db = await getDb();
-    const routeIndex = db.data.routes.findIndex(r => r.path === path);
+    // Explicitly typing the parameter in findIndex
+    const routeIndex = db.data.routes.findIndex((r: RouteMapping) => r.path === path);
 
     if (routeIndex !== -1) {
       // Rota existente: Atualiza contentId (e nome, se fornecido)

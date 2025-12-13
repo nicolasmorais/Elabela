@@ -17,36 +17,37 @@ import { FooterEditor } from '@/components/dashboard/custom-advertorials/FooterE
 import { PixelEditor } from '@/components/dashboard/custom-advertorials/PixelEditor'; // NEW: Import PixelEditor
 
 
-export default function CustomAdvertorialEditor() {
+export default function CustomAdvertorialEditor(): JSX.Element {
     const params = useParams();
     const router = useRouter();
     
     // Tratamento seguro para advertorialId
     const advertorialId = Array.isArray(params?.id) ? params.id[0] : (params?.id as string) || 'new';
-    const isNew = advertorialId === 'new';
+    const isNew: boolean = advertorialId === 'new';
 
-    const [isLoading, setIsLoading] = useState(true);
-    const [isSaving, setIsSaving] = useState(false);
-    const [name, setName] = useState('');
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isSaving, setIsSaving] = useState<boolean>(false);
+    const [name, setName] = useState<string>('');
     const [header, setHeader] = useState<CustomAdvertorialHeader>({ preTitle: '', title: '', subheadline: '', fontFamily: 'sans' });
     const [blocks, setBlocks] = useState<ContentBlock[]>([]);
     const [footer, setFooter] = useState<CustomAdvertorialFooter | null>(null);
     const [pixels, setPixels] = useState<PagePixelConfig>({ metaPixelId: '', taboolaPixelId: '', customScripts: '', useGlobalPixels: true }); // NEW: Pixel state
 
     // Use the default footer structure from advertorial-types.ts
-    const defaultFooter = useMemo(() => defaultCustomAdvertorialFooter, []);
+    const defaultFooter: CustomAdvertorialFooter = useMemo(() => defaultCustomAdvertorialFooter, []);
 
 
     useEffect(() => {
         if (!isNew) {
             fetch(`/api/custom-advertorials/${advertorialId}`)
-                .then(res => {
+                .then((res: Response) => {
                     if (!res.ok) throw new Error('Not found');
                     return res.json();
                 })
-                .then(data => {
+                .then((data: CustomAdvertorial) => {
                     setName(data.name);
                     setHeader({ ...data.header, fontFamily: data.header.fontFamily || 'sans' });
+                    // Explicitly typing the parameter in map
                     setBlocks(data.blocks.map((b: ContentBlock) => {
                         const { fontFamily, ...rest } = b;
                         return rest;
@@ -85,12 +86,12 @@ export default function CustomAdvertorialEditor() {
     }, [advertorialId, isNew, router, defaultFooter]);
 
     // --- Handlers for Header/Name ---
-    const handleHeaderChange = (field: keyof CustomAdvertorialHeader, value: string) => {
+    const handleHeaderChange = (field: keyof CustomAdvertorialHeader, value: string): void => {
         setHeader(prev => ({ ...prev, [field]: value }));
     };
 
     // --- Handlers for Footer ---
-    const handleFooterChange = (section: keyof CustomAdvertorialFooter | 'copyright' | 'hideDisclaimers' | 'hideCompanyInfo' | 'hidePolicies', field: string, value: any) => {
+    const handleFooterChange = (section: keyof CustomAdvertorialFooter | 'copyright' | 'hideDisclaimers' | 'hideCompanyInfo' | 'hidePolicies', field: string, value: any): void => {
         setFooter(prev => {
             if (!prev) return null;
             const newFooter = { ...prev };
@@ -111,7 +112,7 @@ export default function CustomAdvertorialEditor() {
         index: number, 
         field: keyof T, 
         value: string
-    ) => {
+    ): void => {
         setFooter(prev => {
             if (!prev) return null;
             const newFooter = { ...prev };
@@ -121,7 +122,7 @@ export default function CustomAdvertorialEditor() {
         });
     };
 
-    const handleAddFooterItem = (arrayName: 'disclaimers' | 'policies') => {
+    const handleAddFooterItem = (arrayName: 'disclaimers' | 'policies'): void => {
         setFooter(prev => {
             if (!prev) return null;
             const newFooter = { ...prev };
@@ -134,10 +135,11 @@ export default function CustomAdvertorialEditor() {
         });
     };
 
-    const handleRemoveFooterItem = (arrayName: 'disclaimers' | 'policies', index: number) => {
+    const handleRemoveFooterItem = (arrayName: 'disclaimers' | 'policies', index: number): void => {
         setFooter(prev => {
             if (!prev) return null;
             const newFooter = { ...prev };
+            // Explicitly typing the parameter in filter
             (newFooter as any)[arrayName] = (newFooter as any)[arrayName].filter((_: any, i: number) => i !== index);
             return newFooter;
         });
@@ -145,13 +147,13 @@ export default function CustomAdvertorialEditor() {
     // --- End Handlers for Footer ---
     
     // --- Handlers for Pixels ---
-    const handlePixelChange = (field: keyof PagePixelConfig, value: string | boolean) => {
+    const handlePixelChange = (field: keyof PagePixelConfig, value: string | boolean): void => {
         setPixels(prev => ({ ...prev, [field]: value }));
     };
     // --- End Handlers for Pixels ---
 
 
-    const handleSave = async () => {
+    const handleSave = async (): Promise<void> => {
         if (!name || blocks.length === 0 || !footer) {
             toast.error("O nome, blocos de conteúdo e rodapé são obrigatórios.");
             return;

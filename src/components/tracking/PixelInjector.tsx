@@ -6,11 +6,11 @@ interface PixelInjectorProps {
 }
 
 // Componente para injetar scripts de rastreamento no head
-export async function PixelInjector({ pagePixels }: PixelInjectorProps) {
+export async function PixelInjector({ pagePixels }: PixelInjectorProps): Promise<JSX.Element | null> {
   
-  let metaPixelId = pagePixels.metaPixelId;
-  let taboolaPixelId = pagePixels.taboolaPixelId;
-  let customScripts = pagePixels.customScripts;
+  let metaPixelId: string = pagePixels.metaPixelId;
+  let taboolaPixelId: string = pagePixels.taboolaPixelId;
+  let customScripts: string = pagePixels.customScripts;
 
   if (pagePixels.useGlobalPixels) {
     const db = await getDb();
@@ -23,7 +23,7 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps) {
   }
 
   // 1. Meta Pixel Script (PageView padrão)
-  const metaScript = metaPixelId ? `
+  const metaScript: string = metaPixelId ? `
     <!-- Meta Pixel Code -->
     <script>
       !function(f,b,e,v,n,t,s)
@@ -45,7 +45,7 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps) {
   ` : '';
 
   // 2. Taboola Pixel Script (PageView padrão) - CORRIGIDO
-  const taboolaScript = taboolaPixelId ? `
+  const taboolaScript: string = taboolaPixelId ? `
     <!-- Taboola Pixel Code -->
     <script type="text/javascript">
       window._tfa = window._tfa || [];
@@ -63,7 +63,7 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps) {
   ` : '';
 
   // 3. Global Scripts (Injetado como HTML puro)
-  const combinedScripts = metaScript + taboolaScript + customScripts;
+  const combinedScripts: string = metaScript + taboolaScript + customScripts;
 
   if (!combinedScripts) {
     return null;

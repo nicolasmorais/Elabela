@@ -1,14 +1,14 @@
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 import { DbSchema, defaultDbData } from './advertorial-types';
-import { Client } from 'pg';
+import { Client } from 'pg'; // Importando Client
 
 // Esta classe simula a interface do lowdb (db.data) para que o código do Next.js
 // possa ser migrado gradualmente.
 class PgDbSimulator {
-    private client: any; // pg.Client
+    private client: Client;
     
-    constructor(client: any) {
+    constructor(client: Client) {
         this.client = client;
     }
     
@@ -22,15 +22,15 @@ class PgDbSimulator {
     // Nota: A implementação completa de todas as propriedades (routes, customAdvertorials, etc.)
     // deve ser feita aqui, mas por enquanto, retornamos os defaults para evitar quebras.
     
-    get examples(): { id: number; name: string; createdAt: string }[] {
+    get examples(): DbSchema['examples'] {
         // Em um ambiente real, você faria uma busca assíncrona aqui,
         // mas como o lowdb é síncrono, precisamos de um wrapper.
         // Por enquanto, retornamos um array vazio para evitar erros de acesso.
         console.warn("Acesso síncrono a 'examples' no PgDbSimulator. Use funções assíncronas para leitura real.");
-        return []; // Retornando array vazio para examples
+        return defaultDbData.examples;
     }
     
-    get routes(): any[] {
+    get routes(): DbSchema['routes'] {
         // Em um ambiente real, você faria uma busca assíncrona aqui,
         // mas como o lowdb é síncrono, precisamos de um wrapper.
         // Por enquanto, retornamos um array vazio para evitar erros de acesso.
@@ -38,40 +38,35 @@ class PgDbSimulator {
         return defaultDbData.routes; 
     }
     
-    get approvalPageContent(): any {
+    get approvalPageContent(): DbSchema['approvalPageContent'] {
         console.warn("Acesso síncrono a 'approvalPageContent' no PgDbSimulator.");
         return defaultDbData.approvalPageContent;
     }
     
-    get customAdvertorials(): any[] {
+    get customAdvertorials(): DbSchema['customAdvertorials'] {
         console.warn("Acesso síncrono a 'customAdvertorials' no PgDbSimulator.");
         return defaultDbData.customAdvertorials;
     }
     
-    get auth(): any {
+    get auth(): DbSchema['auth'] {
         console.warn("Acesso síncrono a 'auth' no PgDbSimulator.");
         return defaultDbData.auth;
     }
     
-    get pixelConfig(): any {
+    get pixelConfig(): DbSchema['pixelConfig'] {
         console.warn("Acesso síncrono a 'pixelConfig' no PgDbSimulator.");
         return defaultDbData.pixelConfig;
     }
     
-    get pageViews(): any[] {
+    get pageViews(): DbSchema['pageViews'] {
         console.warn("Acesso síncrono a 'pageViews' no PgDbSimulator.");
         return defaultDbData.pageViews;
     }
     
     // --- Implementação de Escrita (POST/PUT/DELETE) ---
     
-    // Para escrita, o código do Next.js deve ser atualizado para usar funções assíncronas
-    // que interagem diretamente com o PostgreSQL, em vez de modificar db.data.
-    // Por exemplo, em vez de `db.data.routes.push(newRoute); await db.write();`,
-    // o código deve chamar uma função `await savePgRoute(newRoute);`.
-    
     // O método write() é mantido para compatibilidade, mas deve ser evitado.
-    async write() {
+    async write(): Promise<void> {
         console.warn("Chamada a 'db.write()' no PgDbSimulator. Esta função não faz nada no modo PostgreSQL. Use funções de persistência específicas.");
     }
 }
@@ -93,8 +88,9 @@ export async function getDb(): Promise<Low<DbSchema> | PgDbSimulator> {
     if (connectionString) {
         // Modo PostgreSQL
         try {
-            const { Client } = await import('pg');
-            const client = new Client({ connectionString });
+            // Importação dinâmica para evitar erro de dependência se pg não for usado
+            const { Client: PgClient } = await import('pg');
+            const client = new PgClient({ connectionString });
             await client.connect();
             console.log("Conexão PostgreSQL estabelecida com sucesso.");
             
@@ -114,7 +110,7 @@ export async function getDb(): Promise<Low<DbSchema> | PgDbSimulator> {
     const adapter = new JSONFile<DbSchema>(getDatabasePath());
     db = new Low(adapter, defaultDbData);
     await db.read();
-    await db.write(); // Garante que o arquivo db.json seja criado com a estrutura inicial
+    await (db as Low<DbSchema>).write(); // Casting para garantir que write exista no Low
     console.log("Banco de dados lowdb inicializado.");
     
     return db;
@@ -123,7 +119,7 @@ export async function getDb(): Promise<Low<DbSchema> | PgDbSimulator> {
 /**
  * Garante que as tabelas necessárias existam no PostgreSQL
  */
-async function ensureTablesExist(client: Client) {
+async function ensureTablesExist(client: Client): Promise<void> {
     // Tabela para rotas
     await client.query(`
         CREATE TABLE IF NOT EXISTS routes (

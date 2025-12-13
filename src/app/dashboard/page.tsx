@@ -28,7 +28,7 @@ interface ContentOption {
   name: string;
 }
 
-const LoadingSkeleton = () => {
+const LoadingSkeleton = (): JSX.Element => {
   // Cores do Modo Escuro
   const darkSkeletonBg = 'dark:bg-[#334155]';
   const darkCardBg = 'dark:bg-[#1e293b]';
@@ -41,7 +41,7 @@ const LoadingSkeleton = () => {
   
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {Array.from({ length: 3 }).map((_, i) => (
+      {Array.from({ length: 3 }).map((_, i: number) => (
         <div key={i} className={cn(lightCardBg, lightBorderColor, darkCardBg, darkBorderColor, "rounded-lg shadow-sm border p-6 flex flex-col space-y-6")}>
           <div className="flex-grow space-y-4">
             <Skeleton className={cn("h-4 w-1/3", lightSkeletonBg, darkSkeletonBg)} />
@@ -61,12 +61,12 @@ const LoadingSkeleton = () => {
 };
 
 
-export default function DashboardPage() {
+export default function DashboardPage(): JSX.Element {
   const [routes, setRoutes] = useState<RouteMapping[]>([]);
   const [contentOptions, setContentOptions] = useState<ContentOption[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterContentId, setFilterContentId] = useState('all');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [filterContentId, setFilterContentId] = useState<string>('all');
 
   const baseOptions: ContentOption[] = [
     { id: 'v1', name: 'Advertorial V1' },
@@ -75,7 +75,7 @@ export default function DashboardPage() {
     { id: 'ap', name: 'Página de Aprovação (AP)' },
   ];
 
-  const fetchRoutesAndContent = async () => {
+  const fetchRoutesAndContent = async (): Promise<void> => {
     setIsLoading(true);
     try {
       const [routesRes, customAdvRes] = await Promise.all([
@@ -87,10 +87,10 @@ export default function DashboardPage() {
         throw new Error('Failed to fetch data');
       }
 
-      const routesData = await routesRes.json();
+      const routesData: RouteMapping[] = await routesRes.json();
       const customAdvData: { id: string, name: string }[] = await customAdvRes.json();
 
-      const dynamicOptions: ContentOption[] = customAdvData.map(adv => ({
+      const dynamicOptions: ContentOption[] = customAdvData.map((adv: { id: string, name: string }) => ({
         id: adv.id,
         name: `Dinâmico: ${adv.name}`,
       }));
@@ -109,7 +109,7 @@ export default function DashboardPage() {
     fetchRoutesAndContent();
   }, []);
 
-  const handleSaveRoute = async (path: string, contentId: string) => {
+  const handleSaveRoute = async (path: string, contentId: string): Promise<void> => {
     try {
       const response = await fetch('/api/routes', {
         method: 'POST',
@@ -119,17 +119,17 @@ export default function DashboardPage() {
       if (!response.ok) throw new Error('Failed to save');
       toast.success(`Rota ${path} atualizada com sucesso!`);
       // Refetch all data to ensure consistency
-      fetchRoutesAndContent();
+      await fetchRoutesAndContent();
     } catch (error) {
       toast.error(`Falha ao atualizar a rota ${path}.`);
     }
   };
   
-  const handleDeleteRoute = async (path: string, name: string) => {
+  const handleDeleteRoute = async (path: string, name: string): Promise<void> => {
     toast.warning(`A exclusão da rota ${name} (${path}) não é suportada pela API atual.`);
   };
 
-  const filteredRoutes = routes.filter(route => {
+  const filteredRoutes = routes.filter((route: RouteMapping) => {
     const matchesSearch = route.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           route.path.toLowerCase().includes(searchTerm.toLowerCase());
     
@@ -182,7 +182,7 @@ export default function DashboardPage() {
             </SelectTrigger>
             <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
               <SelectItem value="all" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Todos os Conteúdos</SelectItem>
-              {contentOptions.map(opt => (
+              {contentOptions.map((opt: ContentOption) => (
                 <SelectItem key={opt.id} value={opt.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                   {opt.name}
                 </SelectItem>
@@ -201,7 +201,7 @@ export default function DashboardPage() {
             <CardDescription className="mt-2 text-gray-500 dark:text-zinc-500">Ajuste os filtros ou a pesquisa.</CardDescription>
           </Card>
         ) : (
-          filteredRoutes.map(route => (
+          filteredRoutes.map((route: RouteMapping) => (
             <RouteCard 
               key={route.path} 
               route={route} 

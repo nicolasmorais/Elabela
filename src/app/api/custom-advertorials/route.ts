@@ -4,10 +4,10 @@ import { CustomAdvertorial } from '@/lib/advertorial-types'; // NEW: Import type
 import { v4 as uuidv4 } from 'uuid';
 
 // GET: Fetch all custom advertorials
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   try {
     const db = await getDb();
-    const advertorials = db.data.customAdvertorials;
+    const advertorials: CustomAdvertorial[] = db.data.customAdvertorials;
     return NextResponse.json(advertorials);
   } catch (error) {
     console.error('Failed to get custom advertorials:', error);
@@ -16,7 +16,7 @@ export async function GET() {
 }
 
 // POST: Create or Update a custom advertorial
-export async function POST(req: Request) {
+export async function POST(req: Request): Promise<NextResponse> {
   try {
     const payload: CustomAdvertorial = await req.json();
     const db = await getDb();
@@ -29,7 +29,8 @@ export async function POST(req: Request) {
     
     if (payload.id) {
       // Update existing advertorial
-      const index = db.data.customAdvertorials.findIndex(a => a.id === payload.id);
+      // Explicitly typing the parameter in findIndex
+      const index = db.data.customAdvertorials.findIndex((a: CustomAdvertorial) => a.id === payload.id);
       if (index === -1) {
         return NextResponse.json({ message: 'Advertorial não encontrado' }, { status: 404 });
       }

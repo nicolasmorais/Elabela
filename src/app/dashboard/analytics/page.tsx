@@ -39,19 +39,20 @@ interface ContentOption {
     name: string;
 }
 
-const LoadingSkeleton = () => (
+const LoadingSkeleton = (): JSX.Element => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-40 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
-    <Card className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent className="space-y-4"><Skeleton className="h-40 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
+    {Array.from({ length: 4 }).map((_, i: number) => (
+      <Card key={i} className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/4 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent><Skeleton className="h-40 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
+    ))}
   </div>
 );
 
-export default function AnalyticsPage() {
+export default function AnalyticsPage(): JSX.Element {
   const [analytics, setAnalytics] = useState<AnalyticsData[]>([]);
   const [contentOptions, setContentOptions] = useState<ContentOption[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
-  const [selectedContentId, setSelectedContentId] = useState('all');
+  const [selectedContentId, setSelectedContentId] = useState<string>('all');
 
   const baseContentOptions: ContentOption[] = [
     { id: 'v1', name: 'Advertorial V1' },
@@ -60,7 +61,7 @@ export default function AnalyticsPage() {
     { id: 'ap', name: 'Página de Aprovação (AP)' },
   ];
 
-  const fetchAnalytics = async (range?: DateRange) => {
+  const fetchAnalytics = async (range?: DateRange): Promise<void> => {
     setIsLoading(true);
     
     let url = '/api/analytics/views';
@@ -92,14 +93,16 @@ export default function AnalyticsPage() {
 
       // Mapeamento de ContentId para Nome
       const contentMap = new Map<string, string>();
-      baseContentOptions.forEach(opt => contentMap.set(opt.id, opt.name));
-      customAdvData.forEach(adv => contentMap.set(adv.id, `Dinâmico: ${adv.name}`));
+      baseContentOptions.forEach((opt: ContentOption) => contentMap.set(opt.id, opt.name));
+      customAdvData.forEach((adv: CustomAdvertorial) => contentMap.set(adv.id, `Dinâmico: ${adv.name}`));
       
       // Atualiza as opções de filtro
-      setContentOptions([...baseContentOptions, ...customAdvData.map(adv => ({ id: adv.id, name: `Dinâmico: ${adv.name}` }))]);
+      setContentOptions([...baseContentOptions, ...customAdvData.map((adv: CustomAdvertorial) => ({ id: adv.id, name: `Dinâmico: ${adv.name}` }))]);
 
+      type GroupedItem = Omit<AnalyticsData, 'paths' | 'regions'> & { paths: Record<string, number>, regions: Record<string, number> };
+      
       // Agrupar visualizações por ContentId, Path e Região
-      const groupedData = viewsData.reduce((acc, event) => {
+      const groupedData = viewsData.reduce((acc: Record<string, GroupedItem>, event: PageViewEvent) => {
         const { contentId, path, regionName } = event;
         
         if (!acc[contentId]) {
@@ -120,10 +123,10 @@ export default function AnalyticsPage() {
         acc[contentId].regions[region] = (acc[contentId].regions[region] || 0) + 1;
 
         return acc;
-      }, {} as Record<string, Omit<AnalyticsData, 'paths' | 'regions'> & { paths: Record<string, number>, regions: Record<string, number> }>);
+      }, {} as Record<string, GroupedItem>);
 
       // Formatar para o estado final
-      const formattedAnalytics: AnalyticsData[] = Object.values(groupedData).map(item => ({
+      const formattedAnalytics: AnalyticsData[] = Object.values(groupedData).map((item: GroupedItem) => ({
         ...item,
         paths: Object.entries(item.paths).map(([path, views]) => ({ path, views })).sort((a, b) => b.views - a.views),
         regions: Object.entries(item.regions).map(([regionName, views]) => ({ regionName, views })).sort((a, b) => b.views - a.views),
@@ -149,15 +152,15 @@ export default function AnalyticsPage() {
     if (selectedContentId === 'all') {
         // Agrupa todas as regiões de todos os advertoriais
         const allRegions: Record<string, number> = {};
-        analytics.forEach(adv => {
-            adv.regions.forEach(region => {
+        analytics.forEach((adv: AnalyticsData) => {
+            adv.regions.forEach((region: { regionName: string; views: number }) => {
                 allRegions[region.regionName] = (allRegions[region.regionName] || 0) + region.views;
             });
         });
         return Object.entries(allRegions).map(([regionName, views]) => ({ regionName, views })).sort((a, b) => b.views - a.views);
     }
     
-    const selectedAdv = analytics.find(adv => adv.contentId === selectedContentId);
+    const selectedAdv = analytics.find((adv: AnalyticsData) => adv.contentId === selectedContentId);
     return selectedAdv ? selectedAdv.regions : [];
   }, [analytics, selectedContentId]);
 
@@ -213,7 +216,7 @@ export default function AnalyticsPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {analytics.map((item) => (
+                        {analytics.map((item: AnalyticsData) => (
                             <TableRow key={item.contentId} className={cn(borderColor, "hover:bg-gray-50 dark:hover:bg-[#0f172a]")}>
                                 <TableCell>
                                     <div className="font-medium">{item.name}</div>
@@ -247,9 +250,9 @@ export default function AnalyticsPage() {
                             <SelectValue placeholder="Filtrar por Advertorial" />
                         </SelectTrigger>
                         <SelectContent className={cn(selectContentBg, textColor, borderColor)}>
-                            <SelectItem value="all" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Todos os Conteúdos ({analytics.reduce((sum, item) => sum + item.totalViews, 0)})</SelectItem>
-                            {contentOptions.map(opt => {
-                                const views = analytics.find(a => a.contentId === opt.id)?.totalViews || 0;
+                            <SelectItem value="all" className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">Todos os Conteúdos ({analytics.reduce((sum: number, item: AnalyticsData) => sum + item.totalViews, 0)})</SelectItem>
+                            {contentOptions.map((opt: ContentOption) => {
+                                const views = analytics.find((a: AnalyticsData) => a.contentId === opt.id)?.totalViews || 0;
                                 return (
                                     <SelectItem key={opt.id} value={opt.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                                         {opt.name} ({views})
@@ -276,7 +279,7 @@ export default function AnalyticsPage() {
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            filteredRegions.map((regionItem, index) => (
+                            filteredRegions.map((regionItem: { regionName: string; views: number }, index: number) => (
                                 <TableRow key={index} className={cn(borderColor, "hover:bg-gray-50 dark:hover:bg-[#0f172a]")}>
                                     <TableCell className="font-medium">{regionItem.regionName}</TableCell>
                                     <TableCell className="text-right font-bold">{regionItem.views}</TableCell>
@@ -289,7 +292,7 @@ export default function AnalyticsPage() {
             </Card>
             
             {/* CARD 3: Visualizações por Rota (Mantido, mas agora em uma coluna separada) */}
-            {analytics.map((item) => (
+            {analytics.map((item: AnalyticsData) => (
                 <Card key={`paths-${item.contentId}`} className={cn(cardBg, borderColor, textColor, "lg:col-span-2")}>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-xl">
@@ -309,7 +312,7 @@ export default function AnalyticsPage() {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {item.paths.map((pathItem, index) => (
+                                {item.paths.map((pathItem: { path: string; views: number }, index: number) => (
                                     <TableRow key={index} className={cn(borderColor, "hover:bg-gray-50 dark:hover:bg-[#0f172a]")}>
                                         <TableCell className="font-mono text-sm text-blue-600 dark:text-blue-400">{pathItem.path}</TableCell>
                                         <TableCell className="text-right font-bold">{pathItem.views}</TableCell>

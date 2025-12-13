@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 import { PageViewEvent } from '@/lib/advertorial-types';
 
-export async function GET(request: Request) {
+export async function GET(request: Request): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(request.url);
     const startDateParam = searchParams.get('startDate');
@@ -15,7 +15,8 @@ export async function GET(request: Request) {
       const startDate = startDateParam ? new Date(startDateParam) : null;
       const endDate = endDateParam ? new Date(endDateParam) : null;
 
-      pageViews = pageViews.filter(view => {
+      // Explicitly typing the parameter in filter
+      pageViews = pageViews.filter((view: PageViewEvent) => {
         const viewDate = new Date(view.timestamp);
         let matchesStart = true;
         let matchesEnd = true;

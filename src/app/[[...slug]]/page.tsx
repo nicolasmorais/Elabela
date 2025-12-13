@@ -9,7 +9,7 @@ import { CustomAdvertorialPage } from '@/components/page-versions/CustomAdvertor
 import { RouteMapping } from '@/lib/advertorial-types'; // Import RouteMapping type
 
 // This component maps a contentId to the actual Page Component
-function ContentSwitcher({ contentId }: { contentId: string }) {
+function ContentSwitcher({ contentId }: { contentId: string }): JSX.Element {
   switch (contentId) {
     case 'v1':
       return <V1Page />;
@@ -26,25 +26,25 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
 }
 
 interface DynamicPageProps {
-  params: Promise<{
+  params: {
     slug?: string[];
-  }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 // Refatorado para usar async/await, tratando-o como um Server Component
 export default async function DynamicPage({ 
   params, 
-  searchParams 
-}: DynamicPageProps) {
-  // Await the params promise
-  const { slug } = await params;
+}: DynamicPageProps): Promise<JSX.Element> {
+  // Await the params promise (removed promise type from props interface)
+  const { slug } = params;
   
   // Construct the path from the slug segments.
   // If slug is undefined or empty, it's the root path '/'.
   const path = slug ? `/${slug.join('/')}` : '/';
 
   const db = await getDb();
+  // Explicitly typing the parameter in find
   const route = db.data.routes.find((r: RouteMapping) => r.path === path);
 
   if (route) {

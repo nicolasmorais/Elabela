@@ -41,7 +41,7 @@ export async function getPgClient(): Promise<Client> {
  * Garante que as tabelas necessárias existam.
  * Esta é uma migração básica.
  */
-async function ensureTablesExist(client: Client) {
+async function ensureTablesExist(client: Client): Promise<void> {
     // Tabela para rotas (RouteMapping)
     await client.query(`
         CREATE TABLE IF NOT EXISTS routes (
@@ -90,7 +90,7 @@ export async function getPgRoutes(): Promise<RouteMapping[]> {
     const client = await getPgClient();
     const result: QueryResult = await client.query('SELECT path, name, content_id FROM routes');
     
-    return result.rows.map(row => ({
+    return result.rows.map((row: any) => ({ // Explicitly typing row as any since QueryResult row type is generic
         path: row.path,
         name: row.name,
         contentId: row.content_id,

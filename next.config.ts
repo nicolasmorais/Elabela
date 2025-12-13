@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   async rewrites() {
+    // Explicitly typing the rewrites array
     const rewrites: Array<{ source: string; destination: string }> = [];
 
     const externalApiUrlService1 = process.env.EXTERNAL_API_URL_SERVICE1;
