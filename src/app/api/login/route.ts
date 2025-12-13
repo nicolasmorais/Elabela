@@ -40,7 +40,7 @@ export async function POST(req: Request) {
     }
 
     // Se a senha estiver correta, define o cookie de sessão
-    cookies().set(SESSION_COOKIE_NAME, 'true', {
+    (await cookies()).set(SESSION_COOKIE_NAME, 'true', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       maxAge: SESSION_EXPIRY_SECONDS,
