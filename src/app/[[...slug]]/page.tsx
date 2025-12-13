@@ -1,3 +1,4 @@
+import React from 'react'; // Adicionado para resolver o erro JSX.Element
 import { getDb } from '@/lib/database';
 import { notFound } from 'next/navigation';
 
