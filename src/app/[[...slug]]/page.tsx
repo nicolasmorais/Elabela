@@ -6,6 +6,7 @@ import { V2Page } from '@/components/page-versions/V2Page';
 import { V3Page } from '@/components/page-versions/V3Page';
 import { APPage } from '@/components/page-versions/APPage';
 import { CustomAdvertorialPage } from '@/components/page-versions/CustomAdvertorialPage';
+import { RouteMapping } from '@/lib/advertorial-types'; // Import RouteMapping type
 
 // This component maps a contentId to the actual Page Component
 function ContentSwitcher({ contentId }: { contentId: string }) {
@@ -44,7 +45,7 @@ export default async function DynamicPage({
   const path = slug ? `/${slug.join('/')}` : '/';
 
   const db = await getDb();
-  const route = db.data.routes.find(r => r.path === path);
+  const route = db.data.routes.find((r: RouteMapping) => r.path === path);
 
   if (route) {
     // Render the component corresponding to the contentId found in the database.
