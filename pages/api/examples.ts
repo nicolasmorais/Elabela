@@ -19,7 +19,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // Generate a simple ID (lowdb doesn't auto-increment like SQL dbs)
       const examples = db.data?.examples || [];
-      const newId = examples.length > 0 ? Math.max(...examples.map(e => e.id)) + 1 : 1;
+      const newId = examples.length > 0 ? Math.max(...examples.map((e: { id: number }) => e.id)) + 1 : 1;
 
       const newExample = {
         id: newId,
