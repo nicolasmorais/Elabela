@@ -11,7 +11,7 @@ export async function GET(request: NextRequest, context: any) { // Usando 'any' 
   try {
     const { params } = context;
     const db = await getDb();
-    const advertorial = db.data.customAdvertorials.find(a => a.id === params.id);
+    const advertorial = db.data.customAdvertorials.find((a: CustomAdvertorial) => a.id === params.id);
 
     if (!advertorial) {
       return NextResponse.json({ message: 'Advertorial não encontrado' }, { status: 404 });
@@ -32,7 +32,7 @@ export async function DELETE(request: NextRequest, context: any) { // Usando 'an
     
     const initialLength = db.data.customAdvertorials.length;
     
-    db.data.customAdvertorials = db.data.customAdvertorials.filter(a => a.id !== params.id);
+    db.data.customAdvertorials = db.data.customAdvertorials.filter((a: CustomAdvertorial) => a.id !== params.id);
 
     if (db.data.customAdvertorials.length === initialLength) {
       return NextResponse.json({ message: 'Advertorial não encontrado' }, { status: 404 });
