@@ -24,11 +24,6 @@ import { Plus, Trash2, Edit, ExternalLink, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CustomAdvertorial } from '@/lib/advertorial-types'; // Importando CustomAdvertorial
 
-interface CustomAdvertorial {
-  id: string;
-  name: string;
-}
-
 export default function CustomAdvertorialsPage() {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
