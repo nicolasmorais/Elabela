@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-import { RouteMapping } from '@/lib/advertorial-types'; // Importando o tipo
+import { RouteMapping } from '@/lib/advertorial-types';
 
 export async function GET(): Promise<NextResponse> {
   try {
@@ -21,7 +21,6 @@ export async function POST(req: Request): Promise<NextResponse> {
     }
 
     const db = await getDb();
-    // Explicitly typing the parameter in findIndex
     const routeIndex = db.data.routes.findIndex((r: RouteMapping) => r.path === path);
 
     if (routeIndex !== -1) {

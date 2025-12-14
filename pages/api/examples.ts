@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getDb } from '@/lib/database'; // Corrected absolute import
-import { DbSchema } from '@/lib/advertorial-types'; // Importando DbSchema para tipagem
+import { getDb } from '@/lib/database';
+import { DbSchema } from '@/lib/advertorial-types';
 
 // Definindo o tipo para um item de exemplo
 interface ExampleItem {
@@ -28,7 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       // Generate a simple ID (lowdb doesn't auto-increment like SQL dbs)
       const examples: ExampleItem[] = db.data?.examples || [];
-      // Explicitly typing the parameter in map
       const newId = examples.length > 0 ? Math.max(...examples.map((e: ExampleItem) => e.id)) + 1 : 1;
 
       const newExample: ExampleItem = {

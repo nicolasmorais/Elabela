@@ -37,8 +37,8 @@ export interface PageViewEvent {
     contentId: string;
     path: string;
     timestamp: string;
-    country?: string; // NEW
-    regionName?: string; // NEW (Estado/Região)
+    country?: string;
+    regionName?: string;
 }
 
 // Interfaces for Custom Advertorials
@@ -56,16 +56,16 @@ export interface CustomAdvertorialFooter extends ApprovalPageFooter {
   hidePolicies?: boolean;
 }
 
-export type BlockType = 'text' | 'image' | 'alert' | 'pricing' | 'html'; // <-- Adicionado 'html'
+export type BlockType = 'text' | 'image' | 'alert' | 'pricing' | 'html';
 
 export interface ContentBlock {
   id: string;
   type: BlockType;
   // Common fields
-  value: string; // Main content (text, URL, HTML code, etc.)
-  fontSize?: string; // Font size for text blocks (e.g., 'xl', '2xl', '16px')
+  value: string;
+  fontSize?: string;
   fontFamily?: string;
-  caption?: string; // Caption for images
+  caption?: string;
   // Specific fields for 'alert'
   alertTitle?: string;
   alertVariant?: 'default' | 'destructive' | 'warning';
@@ -83,7 +83,7 @@ export interface PagePixelConfig {
     metaPixelId: string;
     taboolaPixelId: string;
     customScripts: string;
-    useGlobalPixels: boolean; // NEW: Flag to use global settings
+    useGlobalPixels: boolean;
 }
 
 export interface CustomAdvertorial {
@@ -92,7 +92,7 @@ export interface CustomAdvertorial {
   header: CustomAdvertorialHeader;
   blocks: ContentBlock[];
   footer: CustomAdvertorialFooter;
-  pixels: PagePixelConfig; // NEW: Pixel configuration for this page
+  pixels: PagePixelConfig;
 }
 
 // Interfaces for Approval Page (AP)
@@ -117,14 +117,14 @@ export interface ApprovalPageContent {
     postButtonText: string;
   };
   footer: ApprovalPageFooter;
-  pixels: PagePixelConfig; // NEW: Pixel configuration for AP page
+  pixels: PagePixelConfig;
 }
 
 // Global Pixel Configuration Interface
 export interface GlobalPixelConfig {
     metaPixelId: string;
     taboolaPixelId: string;
-    globalScripts: string; // Scripts adicionais (ex: Google Analytics, TikTok)
+    globalScripts: string;
 }
 
 // Auth Schema
@@ -132,7 +132,7 @@ export interface AuthSchema {
     passwordHash: string;
 }
 
-// NEW: DbSchema Interface for lowdb
+// DbSchema Interface for lowdb - REMOVIDO READONLY
 export interface DbSchema {
     examples: Array<{ id: number; name: string; createdAt: string }>;
     routes: RouteMapping[];
@@ -190,7 +190,7 @@ const defaultApprovalPageContent: ApprovalPageContent = {
     ],
     copyright: "Todos os direitos reservados © 2024 - OneConversion Soluções Digitais"
   },
-  pixels: defaultPagePixelConfig, // NEW: Default pixel config for AP
+  pixels: defaultPagePixelConfig,
 };
 
 // Default footer content based on the existing approval page footer
@@ -219,8 +219,8 @@ export const defaultDbData: DbSchema = {
     approvalPageContent: defaultApprovalPageContent,
     customAdvertorials: [],
     auth: {
-        passwordHash: '', // Hash will be generated on first run if empty
+        passwordHash: '',
     },
-    pixelConfig: defaultGlobalPixelConfig, // Global configuration
-    pageViews: [] as PageViewEvent[], // NEW: Analytics collection
+    pixelConfig: defaultGlobalPixelConfig,
+    pageViews: [] as PageViewEvent[],
 };

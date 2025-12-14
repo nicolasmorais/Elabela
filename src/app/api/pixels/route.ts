@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-import { GlobalPixelConfig } from '@/lib/advertorial-types'; // Corrigido: Usando GlobalPixelConfig
+import { GlobalPixelConfig } from '@/lib/advertorial-types';
 
 // GET: Fetch pixel configuration
 export async function GET() {
   try {
     const db = await getDb();
-    const config = db.data.pixelConfig;
+    const config: GlobalPixelConfig = db.data.pixelConfig;
     return NextResponse.json(config);
   } catch (error) {
     console.error('Failed to get pixel config:', error);
@@ -17,7 +17,7 @@ export async function GET() {
 // POST: Update pixel configuration
 export async function POST(req: Request) {
   try {
-    const newConfig: GlobalPixelConfig = await req.json(); // Corrigido: Usando GlobalPixelConfig
+    const newConfig: GlobalPixelConfig = await req.json();
     
     if (!newConfig) {
       return NextResponse.json({ message: 'Configuração é obrigatória' }, { status: 400 });

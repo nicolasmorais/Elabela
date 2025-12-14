@@ -12,7 +12,7 @@ interface GeoLocation {
 async function getGeoLocation(ip: string | null): Promise<GeoLocation> {
     if (!ip || ip === '::1' || ip === '127.0.0.1') {
         // IP local ou não disponível, retorna dados de teste
-        return { country: 'Brasil', regionName: 'GO' }; // Alterado de SP para GO
+        return { country: 'Brasil', regionName: 'GO' };
     }
     
     const apiKey = process.env.IPGEOLOCATION_API_KEY;
@@ -24,13 +24,11 @@ async function getGeoLocation(ip: string | null): Promise<GeoLocation> {
     }
 
     try {
-        // ipgeolocation.io usa o parâmetro 'ip' e 'apiKey'
         const url = `${apiUrl}?apiKey=${apiKey}&ip=${ip}`;
         
         const response = await fetch(url, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
-            // Adicionando timeout para evitar bloqueio
             signal: AbortSignal.timeout(1000), 
         });
 
@@ -41,11 +39,10 @@ async function getGeoLocation(ip: string | null): Promise<GeoLocation> {
 
         const data = await response.json();
         
-        // ipgeolocation.io retorna 'country_name' e 'state_prov' (estado/região)
         if (data.country_name) {
             return {
                 country: data.country_name || 'Desconhecido',
-                regionName: data.state_prov || 'Desconhecido', // Nome do estado/região
+                regionName: data.state_prov || 'Desconhecido',
             };
         }
         return {};
@@ -82,6 +79,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     };
 
     db.data.pageViews.push(newEvent);
+    
     await db.write();
 
     return NextResponse.json({ success: true, message: 'Evento registrado' }, { status: 201 });

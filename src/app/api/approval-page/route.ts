@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-import { ApprovalPageContent } from '@/lib/advertorial-types'; // Importando o tipo
+import { ApprovalPageContent } from '@/lib/advertorial-types';
 
 export async function GET(): Promise<NextResponse> {
   try {

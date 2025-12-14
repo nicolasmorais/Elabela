@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { getDb } from '@/lib/database';
-import { CustomAdvertorial } from '@/lib/advertorial-types'; // NEW: Import type from here
+import { CustomAdvertorial } from '@/lib/advertorial-types';
 import { v4 as uuidv4 } from 'uuid';
 
 // GET: Fetch all custom advertorials
@@ -29,7 +29,6 @@ export async function POST(req: Request): Promise<NextResponse> {
     
     if (payload.id) {
       // Update existing advertorial
-      // Explicitly typing the parameter in findIndex
       const index = db.data.customAdvertorials.findIndex((a: CustomAdvertorial) => a.id === payload.id);
       if (index === -1) {
         return NextResponse.json({ message: 'Advertorial não encontrado' }, { status: 404 });

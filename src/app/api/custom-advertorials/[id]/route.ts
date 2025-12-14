@@ -10,7 +10,6 @@ export async function GET(
   try {
     const { id } = await params;
     const db = await getDb();
-    // Explicitly typing the parameter in find
     const advertorial = db.data.customAdvertorials.find((a: CustomAdvertorial) => a.id === id);
 
     if (!advertorial) {
@@ -35,7 +34,6 @@ export async function DELETE(
     
     const initialLength = db.data.customAdvertorials.length;
     
-    // Explicitly typing the parameter in filter
     db.data.customAdvertorials = db.data.customAdvertorials.filter((a: CustomAdvertorial) => a.id !== id);
 
     if (db.data.customAdvertorials.length === initialLength) {
@@ -43,7 +41,6 @@ export async function DELETE(
     }
 
     // Also remove any route mapping pointing to this content ID
-    // Explicitly typing the parameter in filter
     db.data.routes = db.data.routes.filter(r => r.contentId !== id);
 
     await db.write();
