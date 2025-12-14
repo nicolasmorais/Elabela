@@ -9,7 +9,7 @@ WORKDIR /app
 # Copia arquivos de configuração do package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 # Instala dependências com legacy-peer-deps para evitar conflitos
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 
 # Constrói a aplicação
 FROM base AS builder
