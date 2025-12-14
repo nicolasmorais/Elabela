@@ -73,16 +73,18 @@ export async function DELETE(
     }
     
     // Fallback para lowdb (não deve acontecer)
-    const initialLength = db.data.customAdvertorials.length;
+    // Type assertion para permitir modificação
+    const dbData = db.data as any;
+    const initialLength = dbData.customAdvertorials.length;
     
-    db.data.customAdvertorials = db.data.customAdvertorials.filter((a: CustomAdvertorial) => a.id !== id);
+    dbData.customAdvertorials = dbData.customAdvertorials.filter((a: CustomAdvertorial) => a.id !== id);
 
-    if (db.data.customAdvertorials.length === initialLength) {
+    if (dbData.customAdvertorials.length === initialLength) {
       return NextResponse.json({ message: 'Advertorial não encontrado' }, { status: 404 });
     }
 
     // Also remove any route mapping pointing to this content ID
-    db.data.routes = db.data.routes.filter(r => r.contentId !== id);
+    dbData.routes = dbData.routes.filter((r: any) => r.contentId !== id);
 
     await db.write();
 
