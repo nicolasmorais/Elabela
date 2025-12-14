@@ -14,7 +14,7 @@ export async function GET(): Promise<NextResponse> {
       const result = await client.query('SELECT id, name, data FROM custom_advertorials ORDER BY name');
       
       // Transformar os dados para o formato esperado
-      const advertorials: CustomAdvertorial[] = result.rows.map(row => ({
+      const advertorials: CustomAdvertorial[] = result.rows.map((row: any) => ({
         id: row.id,
         name: row.name,
         ...row.data
