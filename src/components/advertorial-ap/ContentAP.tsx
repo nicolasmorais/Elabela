@@ -4,12 +4,11 @@ interface ContentAPProps {
   imageUrl1: string;
   advertorialText: string;
   imageUrl2: string;
-  guaranteeText?: string; // Tornando opcional
+  guaranteeText?: string;
 }
 
 export const ContentAP = ({ imageUrl1, advertorialText, imageUrl2 }: ContentAPProps) => {
-  // Processa o texto para substituir *texto* por <strong>texto</strong> e novas linhas por <br>
-  const formattedAdvertitorialText = advertorialText
+  const formattedAdvertorialText = advertorialText
     .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
     .replace(/\n/g, '<br />');
 
