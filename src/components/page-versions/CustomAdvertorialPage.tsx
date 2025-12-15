@@ -7,15 +7,32 @@ import type { Metadata } from "next";
 import { cn } from '@/lib/utils';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { usePageTracker } from '@/hooks/use-page-tracker'; // NEW
+import { Client } from 'pg'; // Importando Client
 
 interface CustomAdvertorialPageProps {
     advertorialId: string;
 }
 
+// Função auxiliar para buscar o advertorial dinâmico
+async function fetchCustomAdvertorial(db: Client, id: string): Promise<CustomAdvertorial | undefined> {
+    const result = await db.query('SELECT id, name, data FROM custom_advertorials WHERE id = $1', [id]);
+    
+    if (result.rows.length === 0) {
+        return undefined;
+    }
+    
+    const row = result.rows[0];
+    return {
+        id: row.id,
+        name: row.name,
+        ...row.data
+    } as CustomAdvertorial;
+}
+
 // Function to generate metadata dynamically
 export async function generateMetadata({ advertorialId }: CustomAdvertorialPageProps): Promise<Metadata> {
   const db = await getDb();
-  const advertorial = db.data.customAdvertorials.find(a => a.id === advertorialId);
+  const advertorial = await fetchCustomAdvertorial(db, advertorialId);
   
   if (!advertorial) {
     return { title: "Conteúdo Não Encontrado" };
@@ -84,7 +101,7 @@ CustomAdvertorialPageClient.displayName = 'CustomAdvertorialPageClient';
 
 export async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorialPageProps) {
   const db = await getDb();
-  const advertorial = db.data.customAdvertorials.find(a => a.id === advertorialId);
+  const advertorial = await fetchCustomAdvertorial(db, advertorialId);
 
   if (!advertorial) {
     notFound();

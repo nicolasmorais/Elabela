@@ -8,11 +8,21 @@ import type { Metadata } from "next";
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { usePageTracker } from '@/hooks/use-page-tracker';
 import { ApprovalPageContent } from '@/lib/advertorial-types'; // Importando o tipo
+import { Client } from 'pg'; // Importando Client
+
+// Função auxiliar para buscar o conteúdo da página de aprovação
+async function fetchApprovalPageContent(db: Client): Promise<ApprovalPageContent> {
+    const result = await db.query('SELECT value FROM settings WHERE key = $1', ['approvalPageContent']);
+    if (result.rows.length === 0) {
+        throw new Error("Approval page content not found in settings.");
+    }
+    return result.rows[0].value as ApprovalPageContent;
+}
 
 // Função para gerar metadados dinamicamente
 export async function generateMetadata(): Promise<Metadata> {
   const db = await getDb();
-  const content = db.data.approvalPageContent;
+  const content = await fetchApprovalPageContent(db);
   return {
     title: content.header.title || "Página de Aprovação",
   };
@@ -54,7 +64,7 @@ APPageClient.displayName = 'APPageClient';
 export async function APPage() {
   // Busca de dados no servidor
   const db = await getDb();
-  const content: ApprovalPageContent = db.data.approvalPageContent;
+  const content: ApprovalPageContent = await fetchApprovalPageContent(db);
 
   // Extrai guaranteeText do body
   const { guaranteeText, ...contentBodyProps } = content.body;

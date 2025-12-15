@@ -1,8 +1,19 @@
 import { getDb } from '@/lib/database';
 import { GlobalPixelConfig, PagePixelConfig } from '@/lib/advertorial-types';
+import { Client } from 'pg';
 
 interface PixelInjectorProps {
     pagePixels: PagePixelConfig;
+}
+
+// Função auxiliar para buscar a configuração global de pixels
+async function fetchGlobalPixelConfig(db: Client): Promise<GlobalPixelConfig> {
+    const result = await db.query('SELECT value FROM settings WHERE key = $1', ['pixelConfig']);
+    if (result.rows.length === 0) {
+        // Retorna um objeto vazio se não for encontrado
+        return { metaPixelId: '', taboolaPixelId: '', globalScripts: '' };
+    }
+    return result.rows[0].value as GlobalPixelConfig;
 }
 
 // Componente para injetar scripts de rastreamento no head
@@ -14,7 +25,7 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps): Promise
 
   if (pagePixels.useGlobalPixels) {
     const db = await getDb();
-    const globalConfig: GlobalPixelConfig = db.data.pixelConfig;
+    const globalConfig: GlobalPixelConfig = await fetchGlobalPixelConfig(db);
     
     // Se usar global, os IDs globais substituem os locais se estes estiverem vazios
     metaPixelId = metaPixelId || globalConfig.metaPixelId;
