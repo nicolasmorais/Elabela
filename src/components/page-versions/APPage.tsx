@@ -3,7 +3,7 @@ import { ContentAP } from "@/components/advertorial-ap/ContentAP";
 import { PricingAP } from "@/components/advertorial-ap/PricingAP";
 import { GuaranteeAP } from "@/components/advertorial-ap/GuaranteeAP";
 import { FooterAP } from "@/components/advertorial-ap/FooterAP";
-import { getDb } from "@/lib/database";
+import { getDb } from '@/lib/database';
 import type { Metadata } from "next";
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { usePageTracker } from '@/hooks/use-page-tracker';

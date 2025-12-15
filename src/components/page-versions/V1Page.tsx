@@ -32,6 +32,8 @@ function V1PageClient() {
     </div>
   );
 }
+
+// Marcar explicitamente como Client Component
 V1PageClient.displayName = 'V1PageClient';
 (V1PageClient as any).isClientComponent = true;
 

@@ -29,6 +29,8 @@ function V3PageClient() {
     </div>
   );
 }
+
+// Marcar explicitamente como Client Component
 V3PageClient.displayName = 'V3PageClient';
 (V3PageClient as any).isClientComponent = true;
 

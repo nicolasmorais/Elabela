@@ -44,7 +44,7 @@ export async function generateMetadata({ advertorialId }: CustomAdvertorialPageP
   };
 }
 
-// Component to render the header
+// Component to render header
 const DynamicHeader = ({ preTitle, title, subheadline, fontFamily }: CustomAdvertorial["header"]) => (
     // Removendo a borda inferior (border-b)
     <header className="text-center pt-10 pb-6">
@@ -89,7 +89,7 @@ function CustomAdvertorialPageClient({ advertorial, mainFontClass, pixelScripts 
                     ))}
                 </main>
                 
-                {/* Using the custom footer from the advertorial object */}
+                {/* Using custom footer from advertorial object */}
                 <FooterAP {...advertorial.footer} />
             </div>
         </>

@@ -30,6 +30,8 @@ function V2PageClient() {
     </div>
   );
 }
+
+// Marcar explicitamente como Client Component
 V2PageClient.displayName = 'V2PageClient';
 (V2PageClient as any).isClientComponent = true;
 
