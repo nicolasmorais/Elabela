@@ -66,7 +66,7 @@ const DynamicHeader = ({ preTitle, title, subheadline, fontFamily }: CustomAdver
 );
 
 // Server Component principal
-export async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorialPageProps) {
+export default async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorialPageProps) {
   const db = await getDb();
   const advertorial = await fetchCustomAdvertorial(db, advertorialId);
 

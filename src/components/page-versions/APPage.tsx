@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // Server Component principal
-export default function APPage() {
+export default async function APPage() {
   // Busca de dados no servidor
   const db = await getDb();
   const content: ApprovalPageContent = await fetchApprovalPageContent(db);
