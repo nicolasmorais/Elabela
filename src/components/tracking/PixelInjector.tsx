@@ -1,6 +1,7 @@
 import { getDb } from '@/lib/database';
 import { GlobalPixelConfig, PagePixelConfig } from '@/lib/advertorial-types';
 import { Client } from 'pg';
+import Head from 'next/head'; // Importando o Head do Next.js
 
 interface PixelInjectorProps {
     pagePixels: PagePixelConfig;
@@ -80,8 +81,6 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps): Promise
     return null;
   }
 
-  // Usamos dangerouslySetInnerHTML para injetar os scripts no head
-  return (
-    <div dangerouslySetInnerHTML={{ __html: combinedScripts }} />
-  );
+  // Retorna o HTML para ser injetado
+  return combinedScripts;
 }

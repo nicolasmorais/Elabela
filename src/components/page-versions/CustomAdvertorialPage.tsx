@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { PageTracker } from "./PageTracker";
 import { Client } from 'pg';
+import Head from 'next/head';
 
 interface CustomAdvertorialPageProps {
     advertorialId: string;
@@ -82,9 +83,9 @@ export async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorial
   return (
     <>
       <PageTracker contentId={advertorialId} />
-      <head>
-        {pixelScripts}
-      </head>
+      <Head>
+        {pixelScripts && <div dangerouslySetInnerHTML={{ __html: pixelScripts }} />}
+      </Head>
       <div className={cn("bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen", mainFontClass)}>
         <div className="bg-gray-100 dark:bg-gray-800 text-center py-2">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">

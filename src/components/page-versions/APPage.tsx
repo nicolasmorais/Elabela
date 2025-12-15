@@ -9,6 +9,7 @@ import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { PageTracker } from "./PageTracker";
 import { ApprovalPageContent } from '@/lib/advertorial-types';
 import { Client } from 'pg';
+import Head from 'next/head';
 
 // Função auxiliar para buscar o conteúdo da página de aprovação
 async function fetchApprovalPageContent(db: Client): Promise<ApprovalPageContent> {
@@ -29,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // Server Component principal
-export async function APPage() {
+export default function APPage() {
   // Busca de dados no servidor
   const db = await getDb();
   const content: ApprovalPageContent = await fetchApprovalPageContent(db);
@@ -43,9 +44,9 @@ export async function APPage() {
   return (
     <>
       <PageTracker contentId="ap" />
-      <head>
-        {pixelScripts}
-      </head>
+      <Head>
+        {pixelScripts && <div dangerouslySetInnerHTML={{ __html: pixelScripts }} />}
+      </Head>
       <div className="bg-white text-gray-800 font-merriweather">
         <div className="bg-gray-100 text-center py-2">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-600">
