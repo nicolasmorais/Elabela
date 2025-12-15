@@ -6,38 +6,52 @@ import { Client } from 'pg';
 
 // GET: Fetch all custom advertorials
 export async function GET(): Promise<NextResponse> {
+  console.log("API: GET /api/custom-advertorials - Iniciando busca...");
+  
   try {
     const client: Client = await getDb();
+    console.log("API: Conexão com o banco estabelecida.");
     
     // Buscar da tabela custom_advertorials
     const result = await client.query('SELECT id, name, data FROM custom_advertorials ORDER BY name');
+    console.log(`API: Busca executada. Encontrados ${result.rows.length} advertoriais.`);
     
     // Transformar os dados para o formato esperado
-    const advertorials: CustomAdvertorial[] = result.rows.map((row: any) => ({
-      id: row.id,
-      name: row.name,
-      ...row.data
-    }));
+    const advertorials: CustomAdvertorial[] = result.rows.map((row: any) => {
+      console.log(`API: Processando advertorial - ID: ${row.id}, Nome: ${row.name}`);
+      return {
+        id: row.id,
+        name: row.name,
+        ...row.data
+      };
+    });
     
+    console.log(`API: Retornando ${advertorials.length} advertoriais transformados.`);
     return NextResponse.json(advertorials);
   } catch (error) {
-    console.error('Failed to get custom advertorials:', error);
-    return NextResponse.json({ message: 'Erro Interno do Servidor' }, { status: 500 });
+    console.error('API: Falha ao buscar custom advertorials:', error);
+    return NextResponse.json({ message: 'Erro Interno do Servidor', error: String(error) }, { status: 500 });
   }
 }
 
 // POST: Create or Update a custom advertorial
 export async function POST(req: Request): Promise<NextResponse> {
+  console.log("API: POST /api/custom-advertorials - Iniciando criação/atualização...");
+  
   try {
     const payload: CustomAdvertorial = await req.json();
+    console.log(`API: Payload recebido. ID: ${payload.id}, Nome: ${payload.name}`);
+    
     const client: Client = await getDb();
 
     if (!payload.name || !payload.header || !payload.blocks) {
+      console.error("API: Dados incompletos recebidos:", payload);
       return NextResponse.json({ message: 'Dados incompletos' }, { status: 400 });
     }
 
     if (payload.id) {
       // Update existing advertorial
+      console.log(`API: Atualizando advertorial existente: ${payload.id}`);
       const { id, ...data } = payload;
       await client.query(
         'UPDATE custom_advertorials SET name = $1, data = $2 WHERE id = $3',
@@ -47,6 +61,7 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Advertorial atualizado com sucesso', advertorial: payload });
     } else {
       // Create new advertorial
+      console.log("API: Criando novo advertorial...");
       const newId = uuidv4();
       const { id, ...data } = payload;
       
@@ -56,10 +71,11 @@ export async function POST(req: Request): Promise<NextResponse> {
       );
       
       const newAdvertorial = { ...payload, id: newId };
+      console.log(`API: Novo advertorial criado com ID: ${newId}`);
       return NextResponse.json({ message: 'Advertorial criado com sucesso', advertorial: newAdvertorial });
     }
   } catch (error) {
-    console.error('Failed to save custom advertorial:', error);
-    return NextResponse.json({ message: 'Erro Interno do Servidor' }, { status: 500 });
+    console.error('API: Falha ao salvar custom advertorial:', error);
+    return NextResponse.json({ message: 'Erro Interno do Servidor', error: String(error) }, { status: 500 });
   }
 }

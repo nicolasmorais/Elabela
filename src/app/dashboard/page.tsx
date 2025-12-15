@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Route, ExternalLink, RefreshCw, ArrowRightLeft } from 'lucide-react';
+import { Plus, Route, ExternalLink, RefreshCw, ArrowRightLeft, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface CustomAdvertorial {
@@ -34,6 +34,7 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [isAssigning, setIsAssigning] = useState<boolean>(false);
+  const [debugInfo, setDebugInfo] = useState<any>(null);
 
   // States for "Gerar Nova Rota"
   const [selectedAdvertorialId, setSelectedAdvertorialId] = useState<string>('');
@@ -46,21 +47,38 @@ export default function DashboardPage() {
   const fetchAdvertorialsAndRoutes = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      const [advRes, routeRes] = await Promise.all([
+      console.log("Dashboard: Buscando dados...");
+      
+      const [advRes, routeRes, debugRes] = await Promise.all([
         fetch('/api/custom-advertorials'),
-        fetch('/api/routes')
+        fetch('/api/routes'),
+        fetch('/api/debug/db')
       ]);
 
-      if (!advRes.ok || !routeRes.ok) throw new Error('Failed to fetch data');
+      console.log("Dashboard: Respostas recebidas - Adv:", advRes.status, "Routes:", routeRes.status, "Debug:", debugRes.status);
+
+      if (!advRes.ok || !routeRes.ok) {
+        throw new Error(`Falha ao buscar dados. Adv: ${advRes.status}, Routes: ${routeRes.status}`);
+      }
 
       const advData: CustomAdvertorial[] = await advRes.json();
       const routeData: ExistingRoute[] = await routeRes.json();
+      const debugData = await debugRes.json();
+      
+      console.log("Dashboard: Dados recebidos - Advertoriais:", advData.length, "Rotas:", routeData.length);
+      console.log("Debug info:", debugData);
 
       setAdvertorials(advData);
       setExistingRoutes(routeData);
+      setDebugInfo(debugData);
 
-    } catch (error) {
-      toast.error("Falha ao carregar os dados.");
+      if (advData.length === 0) {
+        toast.warning("Nenhum advertorial encontrado. Crie um novo em 'Meus Advertoriais'.");
+      }
+
+    } catch (error: any) {
+      console.error("Dashboard: Erro ao buscar dados:", error);
+      toast.error(`Falha ao carregar os dados: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -156,11 +174,44 @@ export default function DashboardPage() {
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Gerenciamento de Rotas</h1>
             <p className="mt-1 text-gray-500 dark:text-zinc-400">Crie novas rotas ou atribua conteúdo de advertoriais a URLs existentes.</p>
         </div>
-        <Button onClick={fetchAdvertorialsAndRoutes} variant="outline" className={borderColor}>
+        <div className="flex gap-2">
+          <Button 
+            onClick={() => window.open('/api/debug/db', '_blank')} 
+            variant="outline" 
+            className={borderColor}
+          >
+            <AlertTriangle className="mr-2 h-4 w-4" />
+            Debug DB
+          </Button>
+          <Button onClick={fetchAdvertorialsAndRoutes} variant="outline" className={borderColor}>
             <RefreshCw className="mr-2 h-4 w-4" />
             Atualizar Lista
-        </Button>
+          </Button>
+        </div>
       </header>
+
+      {/* Debug Info Card */}
+      {debugInfo && (
+        <Card className={cn(cardBg, borderColor, "text-gray-900 dark:text-white")}>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5 text-yellow-500" />
+              Informações de Depuração
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-2 text-sm">
+              <p><strong>Tabela custom_advertorials existe:</strong> {debugInfo.tableExists ? 'Sim' : 'Não'}</p>
+              <p><strong>Quantidade de advertoriais:</strong> {debugInfo.advertorialCount}</p>
+              <p><strong>Amostra de advertoriais:</strong></p>
+              <pre className="bg-gray-100 dark:bg-gray-800 p-2 rounded overflow-x-auto">
+                {JSON.stringify(debugInfo.advertorialSample, null, 2)}
+              </pre>
+              <p><strong>Todas as tabelas:</strong> {debugInfo.allTables?.join(', ')}</p>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       <main className="space-y-8">
         {/* Card 1: Gerar Nova Rota */}
@@ -177,9 +228,9 @@ export default function DashboardPage() {
             <CardContent className="space-y-4">
                 <div>
                     <Label className="text-gray-600 dark:text-zinc-300">Escolher Advertorial</Label>
-                    <Select value={selectedAdvertorialId} onValueChange={setSelectedAdvertorialId}>
+                    <Select value={selectedAdvertorialId} onValueChange={setSelectedAdvertorialId} disabled={advertorials.length === 0}>
                         <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
-                            <SelectValue placeholder="Selecione um advertorial" />
+                            <SelectValue placeholder={advertorials.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
                         </SelectTrigger>
                         <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
                             {advertorials.map((adv) => (
@@ -189,6 +240,11 @@ export default function DashboardPage() {
                             ))}
                         </SelectContent>
                     </Select>
+                    {advertorials.length === 0 && (
+                      <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
+                        Nenhum advertorial encontrado. <a href="/dashboard/custom-advertorials" className="underline">Crie um aqui</a>.
+                      </p>
+                    )}
                 </div>
                 
                 <div>
@@ -245,9 +301,9 @@ export default function DashboardPage() {
 
                 <div>
                     <Label className="text-gray-600 dark:text-zinc-300">Advertorial a ser Atribuído</Label>
-                    <Select value={selectedAdvertorialIdForAssignment} onValueChange={setSelectedAdvertorialIdForAssignment}>
+                    <Select value={selectedAdvertorialIdForAssignment} onValueChange={setSelectedAdvertorialIdForAssignment} disabled={advertorials.length === 0}>
                         <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
-                            <SelectValue placeholder="Selecione um advertorial" />
+                            <SelectValue placeholder={advertorials.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
                         </SelectTrigger>
                         <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
                             {advertorials.map((adv) => (
@@ -257,9 +313,11 @@ export default function DashboardPage() {
                             ))}
                         </SelectContent>
                     </Select>
-                    <p className="text-xs text-gray-500 dark:text-zinc-500 mt-1">
-                        Se não escolher nenhum, a rota voltará ao seu conteúdo original (se houver).
-                    </p>
+                    {advertorials.length === 0 && (
+                      <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
+                        Nenhum advertorial encontrado. <a href="/dashboard/custom-advertorials" className="underline">Crie um aqui</a>.
+                      </p>
+                    )}
                 </div>
 
                 <Button 

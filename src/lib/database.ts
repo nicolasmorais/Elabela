@@ -61,6 +61,8 @@ export async function getDb(): Promise<Client> {
  * Garante que as tabelas necessárias existam no PostgreSQL
  */
 async function ensureTablesExist(client: Client): Promise<void> {
+    console.log("Verificando/criando tabelas no PostgreSQL...");
+    
     // Tabela para rotas
     await client.query(`
         CREATE TABLE IF NOT EXISTS routes (
@@ -69,6 +71,7 @@ async function ensureTablesExist(client: Client): Promise<void> {
             content_id VARCHAR(255) NOT NULL
         );
     `);
+    console.log("Tabela 'routes' verificada/criada.");
     
     // Tabela para visualizações de página
     await client.query(`
@@ -81,6 +84,7 @@ async function ensureTablesExist(client: Client): Promise<void> {
             region_name VARCHAR(100)
         );
     `);
+    console.log("Tabela 'page_views' verificada/criada.");
     
     // Tabela para configurações
     await client.query(`
@@ -89,6 +93,7 @@ async function ensureTablesExist(client: Client): Promise<void> {
             value JSONB NOT NULL
         );
     `);
+    console.log("Tabela 'settings' verificada/criada.");
     
     // Tabela para Advertoriais Dinâmicos
     await client.query(`
@@ -98,21 +103,26 @@ async function ensureTablesExist(client: Client): Promise<void> {
             data JSONB NOT NULL
         );
     `);
+    console.log("Tabela 'custom_advertorials' verificada/criada.");
     
     // Inserir dados padrão se não existirem
     await insertDefaultData(client);
     
-    console.log("Tabelas do PostgreSQL verificadas/criadas.");
+    console.log("Todas as tabelas verificadas/criadas com sucesso.");
 }
 
 /**
  * Insere dados padrão nas tabelas se não existirem
  */
 async function insertDefaultData(client: Client): Promise<void> {
+    console.log("Verificando dados padrão...");
+    
     // Verificar se já existem rotas
-    const routeCount = await client.query('SELECT COUNT(*) FROM routes');
-    if (parseInt(routeCount.rows[0].count) === 0) {
-        // Inserir rotas padrão
+    const routeCountResult = await client.query('SELECT COUNT(*) FROM routes');
+    const routeCount = parseInt(routeCountResult.rows[0].count);
+    
+    if (routeCount === 0) {
+        console.log("Inserindo rotas padrão...");
         const defaultRoutes = [
             { path: '/', name: 'Página Principal', content_id: 'v1' },
             { path: '/v1', name: 'Rota do Advertorial V1', content_id: 'v1' },
@@ -127,34 +137,43 @@ async function insertDefaultData(client: Client): Promise<void> {
                 [route.path, route.name, route.content_id]
             );
         }
+        console.log("Rotas padrão inseridas.");
     }
 
     // Verificar se já existe configuração de approval page
     const approvalPageCount = await client.query('SELECT COUNT(*) FROM settings WHERE key = $1', ['approvalPageContent']);
     if (parseInt(approvalPageCount.rows[0].count) === 0) {
+        console.log("Inserindo configuração padrão da approval page...");
         await client.query(
             'INSERT INTO settings (key, value) VALUES ($1, $2)',
             ['approvalPageContent', JSON.stringify(defaultDbData.approvalPageContent)]
         );
+        console.log("Configuração da approval page inserida.");
     }
 
     // Verificar se já existe configuração de pixels
     const pixelConfigCount = await client.query('SELECT COUNT(*) FROM settings WHERE key = $1', ['pixelConfig']);
     if (parseInt(pixelConfigCount.rows[0].count) === 0) {
+        console.log("Inserindo configuração padrão de pixels...");
         await client.query(
             'INSERT INTO settings (key, value) VALUES ($1, $2)',
             ['pixelConfig', JSON.stringify(defaultDbData.pixelConfig)]
         );
+        console.log("Configuração de pixels inserida.");
     }
 
     // Verificar se já existe configuração de auth
     const authCount = await client.query('SELECT COUNT(*) FROM settings WHERE key = $1', ['auth']);
     if (parseInt(authCount.rows[0].count) === 0) {
+        console.log("Inserindo configuração padrão de auth...");
         await client.query(
             'INSERT INTO settings (key, value) VALUES ($1, $2)',
             ['auth', JSON.stringify(defaultDbData.auth)]
         );
+        console.log("Configuração de auth inserida.");
     }
+    
+    console.log("Verificação de dados padrão concluída.");
 }
 
 /**
