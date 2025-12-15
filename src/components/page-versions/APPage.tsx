@@ -7,8 +7,8 @@ import { getDb } from '@/lib/database';
 import type { Metadata } from "next";
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { usePageTracker } from '@/hooks/use-page-tracker';
-import { ApprovalPageContent } from '@/lib/advertorial-types'; // Importando o tipo
-import { Client } from 'pg'; // Importando Client
+import { ApprovalPageContent } from '@/lib/advertorial-types';
+import { Client } from 'pg';
 
 // Função auxiliar para buscar o conteúdo da página de aprovação
 async function fetchApprovalPageContent(db: Client): Promise<ApprovalPageContent> {

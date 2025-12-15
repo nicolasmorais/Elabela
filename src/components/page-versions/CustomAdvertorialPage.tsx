@@ -6,8 +6,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from "next";
 import { cn } from '@/lib/utils';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
-import { usePageTracker } from '@/hooks/use-page-tracker'; // NEW
-import { Client } from 'pg'; // Importando Client
+import { usePageTracker } from '@/hooks/use-page-tracker';
+import { Client } from 'pg';
 
 interface CustomAdvertorialPageProps {
     advertorialId: string;
