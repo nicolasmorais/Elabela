@@ -251,7 +251,7 @@ export default function DashboardPage() {
                         </SelectTrigger>
                         <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
                             {advertorials.map((adv) => (
-                                <SelectItem key={adv.id} value={adv.id} className="focus:bg-gray-100 dark:focus-bg-[#1e293b]">
+                                <SelectItem key={adv.id} value={adv.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                                     {adv.name}
                                 </SelectItem>
                             ))}
