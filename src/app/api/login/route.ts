@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
+import { Client } from 'pg';
 
 // Define a chave do cookie de sessão e o tempo de expiração (1 dia)
 const SESSION_COOKIE_NAME = 'auth_session';
@@ -15,22 +16,16 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });
     }
 
-    const db = await getDb();
+    const client: Client = await getDb();
     
-    // Lógica para obter o hash da senha (compatível com PgDbSimulator e lowdb)
+    // Lógica para obter o hash da senha (usando PostgreSQL)
     let storedHash = '';
     
-    if (db.constructor.name === 'PgDbSimulator') {
-      const client = (db as any).client;
-      const result = await client.query('SELECT value FROM settings WHERE key = $1', ['auth']);
-      
-      if (result.rows.length > 0) {
-        const authData = result.rows[0].value;
-        storedHash = authData.passwordHash || '';
-      }
-    } else {
-      // Fallback para lowdb (não deve acontecer)
-      storedHash = db.data.auth.passwordHash;
+    const result = await client.query('SELECT value FROM settings WHERE key = $1', ['auth']);
+    
+    if (result.rows.length > 0) {
+      const authData = result.rows[0].value;
+      storedHash = authData.passwordHash || '';
     }
 
     // Se não houver hash armazenado, inicializa com a senha padrão (84740949)
@@ -39,16 +34,10 @@ export async function POST(req: Request): Promise<NextResponse> {
       const newHash = await bcrypt.hash(defaultPassword, 10);
       
       // Persiste o novo hash no DB
-      if (db.constructor.name === 'PgDbSimulator') {
-        const client = (db as any).client;
-        await client.query(
-          'INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO UPDATE SET value = $2',
-          ['auth', JSON.stringify({ passwordHash: newHash })]
-        );
-      } else {
-        (db.data as any).auth.passwordHash = newHash;
-        await db.write();
-      }
+      await client.query(
+        'INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO UPDATE SET value = $2',
+        ['auth', JSON.stringify({ passwordHash: newHash })]
+      );
       
       storedHash = newHash;
     }
