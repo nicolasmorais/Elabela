@@ -130,6 +130,7 @@ export interface GlobalPixelConfig {
 // Auth Schema
 export interface AuthSchema {
     passwordHash: string;
+    isSetup?: boolean; // Added optional isSetup property
 }
 
 // DbSchema Interface for lowdb - REMOVIDO READONLY
@@ -220,6 +221,7 @@ export const defaultDbData: DbSchema = {
     customAdvertorials: [],
     auth: {
         passwordHash: '',
+        isSetup: false, // Added default value
     },
     pixelConfig: defaultGlobalPixelConfig,
     pageViews: [] as PageViewEvent[],
