@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Eye, EyeOff, ArrowRight, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -14,6 +13,8 @@ export const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [needsSetup, setNeedsSetup] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error' | 'info'>('info');
 
   useEffect(() => {
     checkSetup();
@@ -36,6 +37,7 @@ export const LoginForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setMessage('');
     
     try {
       const response = await fetch('/api/login', {
@@ -47,17 +49,21 @@ export const LoginForm = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success("Login bem-sucedido!");
-        router.push('/dashboard');
+        setMessage("Login bem-sucedido!");
+        setMessageType('success');
+        setTimeout(() => router.push('/dashboard'), 1000);
       } else if (data.needsSetup) {
-        toast.info("Sistema não configurado. Redirecionando...");
-        router.push('/setup');
+        setMessage("Sistema não configurado. Redirecionando...");
+        setMessageType('info');
+        setTimeout(() => router.push('/setup'), 1500);
       } else {
-        toast.error(data.message || "Senha incorreta.");
+        setMessage(data.message || "Senha incorreta.");
+        setMessageType('error');
       }
     } catch (error) {
       console.error("Login failed:", error);
-      toast.error("Erro de conexão. Tente novamente.");
+      setMessage("Erro de conexão. Tente novamente.");
+      setMessageType('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -100,6 +106,16 @@ export const LoginForm = () => {
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+      {message && (
+        <div className={`p-3 rounded-md text-sm ${
+          messageType === 'success' ? 'bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-200' :
+          messageType === 'error' ? 'bg-red-50 text-red-800 dark:bg-red-900/20 dark:text-red-200' :
+          'bg-blue-50 text-blue-800 dark:bg-blue-900/20 dark:text-blue-200'
+        }`}>
+          {message}
+        </div>
+      )}
+      
       <label className="flex flex-col w-full">
         <div className="flex w-full flex-1 items-stretch rounded-lg relative">
           <Input

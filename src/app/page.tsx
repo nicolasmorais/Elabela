@@ -1,2 +1,2 @@
-// Esta página foi removida para evitar conflito com a rota dinâmica [[...slug]]
-// O redirecionamento será tratado pelo middleware
+// REMOVIDO - Esta página causava conflito com [[...slug]]
+// O middleware agora trata o redirecionamento da raiz

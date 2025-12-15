@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Lock, CheckCircle, AlertCircle, Eye, EyeOff } from 'lucide-react';
-import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
 export default function SetupPage() {
@@ -17,6 +16,8 @@ export default function SetupPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAlreadySetup, setIsAlreadySetup] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'error' | 'info'>('info');
 
   useEffect(() => {
     checkIfSetup();
@@ -62,12 +63,14 @@ export default function SetupPage() {
     e.preventDefault();
     
     if (!passwordValidation.isValid) {
-      toast.error('Senha não atende aos requisitos de segurança');
+      setMessage('Senha não atende aos requisitos de segurança');
+      setMessageType('error');
       return;
     }
     
     if (!passwordsMatch) {
-      toast.error('As senhas não coincidem');
+      setMessage('As senhas não coincidem');
+      setMessageType('error');
       return;
     }
 
@@ -83,13 +86,16 @@ export default function SetupPage() {
       const data = await response.json();
       
       if (response.ok) {
-        toast.success('Senha configurada com sucesso!');
-        router.push('/login');
+        setMessage('Senha configurada com sucesso!');
+        setMessageType('success');
+        setTimeout(() => router.push('/login'), 1500);
       } else {
-        toast.error(data.message || 'Erro ao configurar senha');
+        setMessage(data.message || 'Erro ao configurar senha');
+        setMessageType('error');
       }
     } catch (error) {
-      toast.error('Erro de conexão');
+      setMessage('Erro de conexão');
+      setMessageType('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -123,6 +129,16 @@ export default function SetupPage() {
         </CardHeader>
         
         <CardContent>
+          {message && (
+            <div className={`mb-4 p-3 rounded-md text-sm ${
+              messageType === 'success' ? 'bg-green-50 text-green-800 dark:bg-green-900/20 dark:text-green-200' :
+              messageType === 'error' ? 'bg-red-50 text-red-800 dark:bg-red-900/20 dark:text-red-200' :
+              'bg-blue-50 text-blue-800 dark:bg-blue-900/20 dark:text-blue-200'
+            }`}>
+              {message}
+            </div>
+          )}
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="text-sm font-medium">Nova Senha</label>
@@ -150,7 +166,6 @@ export default function SetupPage() {
                 </Button>
               </div>
               
-              {/* Validação da senha */}
               {password && (
                 <div className="space-y-1">
                   <div className={cn(
