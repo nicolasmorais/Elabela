@@ -67,10 +67,10 @@ export default async function DynamicPage({
     const resolvedParams = await params;
     const { slug } = resolvedParams;
     
-    // Se não houver slug, redireciona para login
+    // Se não houver slug, renderiza a página padrão (v1) em vez de redirecionar
     if (!slug || slug.length === 0) {
-      console.log("DynamicPage: Nenhum slug encontrado, redirecionando para login");
-      redirect('/login');
+      console.log("DynamicPage: Nenhum slug encontrado, renderizando página padrão v1");
+      return <V1Page />;
     }
     
     // Constrói o path a partir dos segmentos da slug.
