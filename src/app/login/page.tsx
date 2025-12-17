@@ -44,7 +44,7 @@ export default function LoginPage() {
               Acesse sua conta
             </h1>
             <p className="text-gray-500 dark:text-gray-400 text-lg font-normal leading-normal mt-2">
-              Insira a senha para acessar o painel de gerenciamento de advertoriais.
+              Insira a senha para acessar o painel
             </p>
           </div>
           
