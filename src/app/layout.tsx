@@ -55,6 +55,27 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         {/* Os scripts de pixel agora são injetados dentro das páginas específicas (ex: CustomAdvertorialPage) */}
+        {/* Swetrix Tracking Script */}
+        <script src="https://swetrix.org/swetrix.js" defer></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('DOMContentLoaded', function() {
+                swetrix.init('FUBK8k33p9FP', {
+                  apiURL: 'http://swetrixapi-jso0o0co04ww0kw8w4w0s4kg.147.93.179.152.sslip.io/log',
+                });
+                swetrix.trackViews();
+              });
+            `,
+          }}
+        />
+        <noscript>
+          <img
+            src="http://swetrixapi-jso0o0co04ww0kw8w4w0s4kg.147.93.179.152.sslip.io/log/noscript?pid=FUBK8k33p9FP"
+            alt=""
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </noscript>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${merriweather.variable} ${spaceGrotesk.variable} ${roboto.variable} ${openSans.variable} font-sans antialiased`}
