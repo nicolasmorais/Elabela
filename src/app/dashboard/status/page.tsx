@@ -34,7 +34,7 @@ interface SystemStatus {
 
 const LoadingSkeleton = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    {Array.from({ length: 4 }).map((_, i) => (
+    {Array.from({ length: 4 }).map((_, i: number) => (
       <Card key={i} className="bg-white border-gray-200 dark:bg-[#1e293b] dark:border-[#334155]"><CardHeader><Skeleton className="h-6 w-1/2 bg-gray-200 dark:bg-[#334155]" /></CardHeader><CardContent><Skeleton className="h-10 w-full bg-gray-200 dark:bg-[#334155]" /></CardContent></Card>
     ))}
   </div>
@@ -138,7 +138,7 @@ export default function StatusPage() {
           {/* Status do Banco de Dados */}
           <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Banco de Dados (lowdb)</CardTitle>
+              <CardTitle className="text-sm font-medium">Banco de Dados (PostgreSQL)</CardTitle>
               <Database className="h-4 w-4 text-gray-500" />
             </CardHeader>
             <CardContent>

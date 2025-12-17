@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Zap, BarChart, Activity, Map } from "lucide-react"; // Importando Map
+import { Settings, Wand2, LayoutGrid, Zap } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton"; // Importando o botão de logout
@@ -12,20 +12,10 @@ const mainNavItems = [
     icon: Settings,
     label: "Route Control",
   },
-  { // NEW: Status link
+  { // Status link
     href: "/dashboard/status",
-    icon: Activity,
+    icon: Settings, // Mantendo o ícone Settings para o Status
     label: "Status do Sistema",
-  },
-  { // Analytics link
-    href: "/dashboard/analytics",
-    icon: BarChart,
-    label: "Analytics Agregado",
-  },
-  { // Realtime Analytics link
-    href: "/dashboard/realtime-analytics",
-    icon: Map,
-    label: "Analytics em Tempo Real",
   },
 ];
 
@@ -42,7 +32,7 @@ const pagesNavItems = [
   },
 ];
 
-const trackingNavItems = [ // Nova seção de rastreamento
+const trackingNavItems = [ // Seção de rastreamento
   {
     href: "/dashboard/pixels",
     icon: Zap,

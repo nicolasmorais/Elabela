@@ -9,7 +9,7 @@ RUN npm install --production=false --legacy-peer-deps
 # Copy source code
 COPY . .
 
-# Build Next.js application
+# Build the Next.js application
 RUN npm run build
 
 # Stage 2: Production image
@@ -25,20 +25,8 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
 
-# Copy necessary files for the socket server (ts-node, socket-server.ts, tsconfig.json, src/lib)
-# We need ts-node and typescript to run socket-server.ts
-RUN npm install -g ts-node typescript
-
-# Copy source files for the socket server and API routes
-COPY tsconfig.json ./
-COPY socket-server.ts ./
-COPY src/lib ./src/lib
-COPY src/app/api ./src/app/api
-COPY src/hooks ./src/hooks
-
-# Expose ports
+# Expose port
 EXPOSE 3000
-EXPOSE 3001
 
-# Command to run the Next.js application (used by the 'web' service)
+# Command to run the Next.js application
 CMD ["npm", "start"]
