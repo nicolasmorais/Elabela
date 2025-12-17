@@ -47,7 +47,7 @@ const trackingNavItems = [ // Nova seção de rastreamento
 
 export const Sidebar = () => {
   const pathname = usePathname();
-  const LOGO_URL = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29-cQ9d9YZNOknrfYOmNv38Sj0LQVfjHp.png";
+  const LOGO_URL = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
 
   // Cores do Modo Claro (Padrão)
   const lightBg = 'bg-white';

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   // Cores do novo design: background-dark: #0f172a
   // Removendo mainBg fixo para usar bg-background
-  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29-cQ9d9YZNOknrfYOmNv38Sj0LQVfjHp.png";
+  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
 
   return (
     <>
