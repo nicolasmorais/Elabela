@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
-COPY package.json yarn.lock package-lock.json* ./
+COPY package.json package-lock.json* ./
 RUN npm install --production=false
 
 # Copy source code
