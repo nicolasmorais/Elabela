@@ -1,5 +1,5 @@
 import { getDb } from '@/lib/database';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Client } from 'pg';
 import { validate as isUUID } from 'uuid';
 
@@ -67,9 +67,14 @@ export default async function DynamicPage({
     const resolvedParams = await params;
     const { slug } = resolvedParams;
     
+    // Se não houver slug, redireciona para login
+    if (!slug || slug.length === 0) {
+      console.log("DynamicPage: Nenhum slug encontrado, redirecionando para login");
+      redirect('/login');
+    }
+    
     // Constrói o path a partir dos segmentos da slug.
-    // Se slug for undefined ou vazio, é o caminho raiz '/'.
-    const path = slug ? `/${slug.join('/')}` : '/';
+    const path = `/${slug.join('/')}`;
     console.log("DynamicPage: Path construído:", path);
 
     const client: Client = await getDb();
