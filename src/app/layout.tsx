@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   title: "PageShift - Gerenciamento de Advertoriais",
   description: "Plataforma completa para gerenciar e otimizar seus advertoriais dinamicamente.",
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: '/favicon.svg', // Usando o novo SVG
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 };
 
