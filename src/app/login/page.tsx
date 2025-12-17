@@ -2,10 +2,16 @@ import { LoginForm } from '@/components/auth/LoginForm';
 import { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 import { Toaster } from 'sonner';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Login - PageShift',
   description: 'Acesse o painel de gerenciamento de advertoriais',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function LoginPage() {
@@ -22,11 +28,14 @@ export default function LoginPage() {
         <div className="w-full max-w-sm mx-auto space-y-8">
           
           {/* Logo */}
-          <div className="mb-8">
-            <img
+          <div className="mb-8 flex justify-center">
+            <Image
               src={logoUrl}
               alt="PageShift Logo"
+              width={120}
+              height={40}
               className="h-10 w-auto"
+              priority
             />
           </div>
 
