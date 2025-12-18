@@ -28,6 +28,14 @@ interface ExistingRoute {
   contentId: string;
 }
 
+// Conteúdos estáticos disponíveis
+const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
+    { id: 'v1', name: 'Advertorial V1 (Original)' },
+    { id: 'v2', name: 'Advertorial V2' },
+    { id: 'v3', name: 'Advertorial V3' },
+    { id: 'ap', name: 'Página de Aprovação (AP)' },
+];
+
 export default function DashboardPage() {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
   const [existingRoutes, setExistingRoutes] = useState<ExistingRoute[]>([]);
@@ -42,6 +50,8 @@ export default function DashboardPage() {
   // States for "Atribuir Conteúdo a Rota Existente"
   const [selectedRoutePath, setSelectedRoutePath] = useState<string>('');
   const [selectedAdvertorialIdForAssignment, setSelectedAdvertorialIdForAssignment] = useState<string>('');
+
+  const allContentOptions = [...STATIC_CONTENT_OPTIONS, ...advertorials];
 
   const fetchAdvertorialsAndRoutes = async (): Promise<void> => {
     setIsLoading(true);
@@ -68,7 +78,7 @@ export default function DashboardPage() {
       setExistingRoutes(routeData);
 
       if (advData.length === 0) {
-        toast.warning("Nenhum advertorial encontrado. Crie um novo em 'Meus Advertoriais'.");
+        toast.warning("Nenhum advertorial dinâmico encontrado. Crie um novo em 'Meus Advertoriais'.");
       }
 
     } catch (error: any) {
@@ -91,13 +101,15 @@ export default function DashboardPage() {
 
     setIsGenerating(true);
     try {
+      const selectedContent = allContentOptions.find(a => a.id === selectedAdvertorialId);
+      
       const response = await fetch('/api/routes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           contentId: selectedAdvertorialId, 
           path: customSlug || undefined,
-          name: `Rota para ${advertorials.find(a => a.id === selectedAdvertorialId)?.name}`
+          name: `Rota para ${selectedContent?.name || selectedAdvertorialId}`
         }),
       });
 
@@ -126,13 +138,15 @@ export default function DashboardPage() {
 
     setIsAssigning(true);
     try {
+      const selectedContent = allContentOptions.find(a => a.id === selectedAdvertorialIdForAssignment);
+
       const response = await fetch('/api/routes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           contentId: selectedAdvertorialIdForAssignment, 
           path: selectedRoutePath,
-          name: `Rota para ${advertorials.find(a => a.id === selectedAdvertorialIdForAssignment)?.name}`
+          name: `Rota para ${selectedContent?.name || selectedAdvertorialIdForAssignment}`
         }),
       });
 
@@ -190,19 +204,19 @@ export default function DashboardPage() {
             <CardContent className="space-y-4">
                 <div>
                     <Label className="text-gray-600 dark:text-zinc-300">Escolher Advertorial</Label>
-                    <Select value={selectedAdvertorialId} onValueChange={setSelectedAdvertorialId} disabled={advertorials.length === 0}>
+                    <Select value={selectedAdvertorialId} onValueChange={setSelectedAdvertorialId} disabled={allContentOptions.length === 0}>
                         <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
-                            <SelectValue placeholder={advertorials.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
+                            <SelectValue placeholder={allContentOptions.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
                         </SelectTrigger>
                         <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
-                            {advertorials.map((adv) => (
+                            {allContentOptions.map((adv) => (
                                 <SelectItem key={adv.id} value={adv.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                                     {adv.name}
                                 </SelectItem>
                             ))}
                         </SelectContent>
                     </Select>
-                    {advertorials.length === 0 && (
+                    {allContentOptions.length === 0 && (
                       <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
                         Nenhum advertorial encontrado. <a href="/dashboard/custom-advertorials" className="underline">Crie um aqui</a>.
                       </p>
@@ -263,19 +277,19 @@ export default function DashboardPage() {
 
                 <div>
                     <Label className="text-gray-600 dark:text-zinc-300">Advertorial a ser Atribuído</Label>
-                    <Select value={selectedAdvertorialIdForAssignment} onValueChange={setSelectedAdvertorialIdForAssignment} disabled={advertorials.length === 0}>
+                    <Select value={selectedAdvertorialIdForAssignment} onValueChange={setSelectedAdvertorialIdForAssignment} disabled={allContentOptions.length === 0}>
                         <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
-                            <SelectValue placeholder={advertorials.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
+                            <SelectValue placeholder={allContentOptions.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
                         </SelectTrigger>
                         <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
-                            {advertorials.map((adv) => (
+                            {allContentOptions.map((adv) => (
                                 <SelectItem key={adv.id} value={adv.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
                                     {adv.name}
                                 </SelectItem>
                             ))}
                         </SelectContent>
                     </Select>
-                    {advertorials.length === 0 && (
+                    {allContentOptions.length === 0 && (
                       <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
                         Nenhum advertorial encontrado. <a href="/dashboard/custom-advertorials" className="underline">Crie um aqui</a>.
                       </p>
@@ -284,7 +298,7 @@ export default function DashboardPage() {
 
                 <Button 
                     onClick={handleAssignContent} 
-                    disabled={isAssigning || !selectedRoutePath} 
+                    disabled={isAssigning || !selectedRoutePath || !selectedAdvertorialIdForAssignment} 
                     className={primaryButtonClasses}
                 >
                     <ArrowRightLeft className="mr-2 h-4 w-4" />
