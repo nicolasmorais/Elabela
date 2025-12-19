@@ -16,6 +16,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Plus, Route, ExternalLink, RefreshCw, ArrowRightLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { RouteLinkBuilder } from '@/components/dashboard/RouteLinkBuilder'; // Importando o novo componente
 
 interface CustomAdvertorial {
   id: string;
@@ -40,12 +41,7 @@ export default function DashboardPage() {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
   const [existingRoutes, setExistingRoutes] = useState<ExistingRoute[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [isAssigning, setIsAssigning] = useState<boolean>(false);
-
-  // States for "Gerar Nova Rota"
-  const [selectedAdvertorialId, setSelectedAdvertorialId] = useState<string>('');
-  const [customSlug, setCustomSlug] = useState<string>('');
 
   // States for "Atribuir Conteúdo a Rota Existente"
   const [selectedRoutePath, setSelectedRoutePath] = useState<string>('');
@@ -93,43 +89,6 @@ export default function DashboardPage() {
     fetchAdvertorialsAndRoutes();
   }, []);
 
-  const handleGenerateRoute = async () => {
-    if (!selectedAdvertorialId) {
-      toast.error("Selecione um advertorial para gerar a rota.");
-      return;
-    }
-
-    setIsGenerating(true);
-    try {
-      const selectedContent = allContentOptions.find(a => a.id === selectedAdvertorialId);
-      
-      const response = await fetch('/api/routes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          contentId: selectedAdvertorialId, 
-          path: customSlug || undefined,
-          name: `Rota para ${selectedContent?.name || selectedAdvertorialId}`
-        }),
-      });
-
-      if (!response.ok) throw new Error('Failed to generate route');
-
-      const result = await response.json();
-      toast.success(`Rota gerada: ${result.route.path}`);
-      
-      // Limpa o formulário
-      setSelectedAdvertorialId('');
-      setCustomSlug('');
-      fetchAdvertorialsAndRoutes(); // Atualiza a lista de rotas
-
-    } catch (error) {
-      toast.error("Falha ao gerar a rota.");
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
   const handleAssignContent = async () => {
     if (!selectedRoutePath || !selectedAdvertorialIdForAssignment) {
       toast.error("Selecione uma rota e um advertorial.");
@@ -173,6 +132,8 @@ export default function DashboardPage() {
   const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
   const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
   const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white'; // Nova cor primária
+  const textColor = 'text-gray-900 dark:text-white';
+  const labelColor = 'text-gray-600 dark:text-zinc-300';
 
   return (
     <>
@@ -190,60 +151,19 @@ export default function DashboardPage() {
       </header>
 
       <main className="space-y-8">
-        {/* Card 1: Gerar Nova Rota */}
-        <Card className={cn(cardBg, borderColor, "text-gray-900 dark:text-white")}>
+        {/* Card 1: Gerar Link de Rastreamento (Novo Componente) */}
+        <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Route className="h-5 w-5" />
-                    Gerar Nova Rota
+                    Gerador de Links de Rastreamento
                 </CardTitle>
                 <CardDescription className="text-gray-500 dark:text-zinc-400">
-                    Crie uma nova URL para um advertorial.
+                    Crie links de checkout com parâmetros UTM e macros do Taboola para rastreamento.
                 </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-                <div>
-                    <Label className="text-gray-600 dark:text-zinc-300">Escolher Advertorial</Label>
-                    <Select value={selectedAdvertorialId} onValueChange={setSelectedAdvertorialId} disabled={allContentOptions.length === 0}>
-                        <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
-                            <SelectValue placeholder={allContentOptions.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
-                        </SelectTrigger>
-                        <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
-                            {allContentOptions.map((adv) => (
-                                <SelectItem key={adv.id} value={adv.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
-                                    {adv.name}
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                    {allContentOptions.length === 0 && (
-                      <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1">
-                        Nenhum advertorial encontrado. <a href="/dashboard/custom-advertorials" className="underline">Crie um aqui</a>.
-                      </p>
-                    )}
-                </div>
-                
-                <div>
-                    <Label className="text-gray-600 dark:text-zinc-300">URL Personalizada (Opcional)</Label>
-                    <Input 
-                        className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")} 
-                        value={customSlug}
-                        onChange={(e) => setCustomSlug(e.target.value)}
-                        placeholder="ex: promocao-de-verao (deixe em branco para usar o ID)"
-                    />
-                    <p className="text-xs text-gray-500 dark:text-zinc-500 mt-1">
-                        Se não preenchida, a URL será o ID do advertorial.
-                    </p>
-                </div>
-
-                <Button 
-                    onClick={handleGenerateRoute} 
-                    disabled={isGenerating || !selectedAdvertorialId} 
-                    className={primaryButtonClasses}
-                >
-                    <Plus className="mr-2 h-4 w-4" />
-                    {isGenerating ? "Gerando..." : "Gerar Rota"}
-                </Button>
+            <CardContent>
+                <RouteLinkBuilder contentOptions={allContentOptions} />
             </CardContent>
         </Card>
 
@@ -260,7 +180,7 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="space-y-4">
                 <div>
-                    <Label className="text-gray-600 dark:text-zinc-300">Rota Existente (URL)</Label>
+                    <Label className={labelColor}>Rota Existente (URL)</Label>
                     <Select value={selectedRoutePath} onValueChange={setSelectedRoutePath}>
                         <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
                             <SelectValue placeholder="Selecione uma rota existente" />
@@ -276,7 +196,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div>
-                    <Label className="text-gray-600 dark:text-zinc-300">Advertorial a ser Atribuído</Label>
+                    <Label className={labelColor}>Advertorial a ser Atribuído</Label>
                     <Select value={selectedAdvertorialIdForAssignment} onValueChange={setSelectedAdvertorialIdForAssignment} disabled={allContentOptions.length === 0}>
                         <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
                             <SelectValue placeholder={allContentOptions.length === 0 ? "Nenhum advertorial encontrado" : "Selecione um advertorial"} />
