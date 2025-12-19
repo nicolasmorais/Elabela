@@ -35,11 +35,11 @@ export const BlockEditorComponent = ({ block, index, onUpdate, onDelete }: Block
 
     // Cores Dinâmicas
     const blockBg = 'bg-gray-50 dark:bg-[#0f172a]';
-    const inputBg = 'bg-white dark:bg-[#020617]'; 
+    const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
     const borderColor = 'border-gray-200 dark:border-[#334155]';
     const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
     const textColor = 'text-gray-900 dark:text-white';
-    const labelColor = 'text-gray-600 dark:text-zinc-400';
+    const labelColor = 'text-gray-600 dark:text-zinc-300';
 
     return (
         <div className={cn("p-4 border rounded-md space-y-3", borderColor, blockBg)}>
