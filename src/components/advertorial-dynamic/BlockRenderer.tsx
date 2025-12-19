@@ -32,8 +32,11 @@ const isTaboolaMacro = (value: string) => {
 };
 
 // Função para construir o link final com base na URL atual
-const buildFinalLink = (baseLink: string, currentSearchParams: URLSearchParams): string => {
+const buildFinalLink = (baseLink: string, currentSearchParams: URLSearchParams | null): string => {
     if (!baseLink) return '#';
+
+    // Se não houver parâmetros de busca, retorna o link base
+    if (!currentSearchParams) return baseLink;
 
     try {
         const url = new URL(baseLink);
