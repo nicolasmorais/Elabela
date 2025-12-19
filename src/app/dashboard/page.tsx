@@ -16,7 +16,8 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Plus, Route, ExternalLink, RefreshCw, ArrowRightLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { RouteLinkBuilder } from '@/components/dashboard/RouteLinkBuilder'; // Importando o novo componente
+import { RouteLinkBuilder } from '@/components/dashboard/RouteLinkBuilder';
+import { UTMLinkGenerator } from '@/components/dashboard/UTMLinkGenerator'; // Importando o novo componente
 
 interface CustomAdvertorial {
   id: string;
@@ -41,7 +42,6 @@ export default function DashboardPage() {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
   const [existingRoutes, setExistingRoutes] = useState<ExistingRoute[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isAssigning, setIsAssigning] = useState<boolean>(false);
 
   // States for "Atribuir Conteúdo a Rota Existente"
   const [selectedRoutePath, setSelectedRoutePath] = useState<string>('');
@@ -151,19 +151,19 @@ export default function DashboardPage() {
       </header>
 
       <main className="space-y-8">
-        {/* Card 1: Gerar Link de Rastreamento (Novo Componente) */}
+        {/* Card 1: Gerador de Links UTM (Novo Componente) */}
         <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Route className="h-5 w-5" />
-                    Gerador de Links de Rastreamento
+                    Gerador de Links UTM
                 </CardTitle>
                 <CardDescription className="text-gray-500 dark:text-zinc-400">
-                    Crie links de checkout com parâmetros UTM e macros do Taboola para rastreamento.
+                    Crie links com parâmetros UTM para rastreamento de campanhas de marketing.
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <RouteLinkBuilder contentOptions={allContentOptions} />
+                <UTMLinkGenerator />
             </CardContent>
         </Card>
 
