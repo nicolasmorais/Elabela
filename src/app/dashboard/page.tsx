@@ -16,7 +16,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Plus, Route, ExternalLink, RefreshCw, ArrowRightLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { RouteLinkBuilder } from '@/components/dashboard/RouteLinkBuilder';
+import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
 import { UTMLinkGenerator } from '@/components/dashboard/UTMLinkGenerator'; // Importando o novo componente
 
 interface CustomAdvertorial {
@@ -152,7 +152,26 @@ export default function DashboardPage() {
       </header>
 
       <main className="space-y-8">
-        {/* Card 1: Gerador de Links UTM (Novo Componente) */}
+        {/* Card 1: Criar Nova Rota */}
+        <Card className={cn(cardBg, borderColor, textColor)}>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                    <Plus className="h-5 w-5" />
+                    Criar Nova Rota
+                </CardTitle>
+                <CardDescription className="text-gray-500 dark:text-zinc-400">
+                    Crie um novo caminho (URL) e atribua conteúdo a ele.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <CreateRouteDialog 
+                    contentOptions={allContentOptions}
+                    onRouteCreated={fetchAdvertorialsAndRoutes}
+                />
+            </CardContent>
+        </Card>
+
+        {/* Card 2: Gerador de Links UTM */}
         <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -160,7 +179,7 @@ export default function DashboardPage() {
                     Gerador de Links UTM
                 </CardTitle>
                 <CardDescription className="text-gray-500 dark:text-zinc-400">
-                    Crie links com parâmetros UTM para rastreamento de campanhas de marketing.
+                    Crie links com parâmetros UTM e macros da Taboola para rastreamento de campanhas.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -168,7 +187,7 @@ export default function DashboardPage() {
             </CardContent>
         </Card>
 
-        {/* Card 2: Atribuir Conteúdo a Rota Existente */}
+        {/* Card 3: Atribuir Conteúdo a Rota Existente */}
         <Card className={cn(cardBg, borderColor, "text-gray-900 dark:text-white")}>
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -228,7 +247,7 @@ export default function DashboardPage() {
             </CardContent>
         </Card>
 
-        {/* Card 3: Rotas Existentes */}
+        {/* Card 4: Rotas Existentes */}
         <Card className={cn(cardBg, borderColor, "text-gray-900 dark:text-white")}>
             <CardHeader>
                 <CardTitle>Rotas Existentes</CardTitle>
