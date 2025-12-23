@@ -1,19 +1,25 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Check, 
-  AlertCircle, 
-  Heart, 
-  Zap, 
+  X,
+  Star, 
+  Clock, 
   ShieldCheck, 
+  ArrowRight, 
+  AlertTriangle, 
   Users, 
-  HelpCircle, 
-  ArrowRight,
-  Smile,
-  Clock,
-  Star,
-  Minus
+  HelpCircle,
+  CreditCard,
+  Lock,
+  AlertCircle,
+  Target,
+  BookOpen,
+  Bell,
+  Moon,
+  Dumbbell,
+  Zap
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -21,383 +27,325 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PageTracker } from "./PageTracker";
 
 export function MenopausePage() {
+  const [timeLeft, setTimeLeft] = useState(1187); // 19:47 em segundos
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
   return (
     <>
       <PageTracker contentId="menopausa" />
-      <div className="bg-white text-gray-900 font-open-sans selection:bg-pink-100">
+      <div className="bg-white text-gray-900 font-open-sans selection:bg-pink-100 antialiased">
         
-        {/* Top Bar */}
-        <div className="bg-pink-600 text-white text-center py-2 px-4 text-sm font-medium">
-          ⚠️ Oferta por tempo limitado: Comece agora por apenas R$ 1,99
+        {/* TOP BAR URGÊNCIA */}
+        <div className="bg-red-600 text-white text-center py-2 px-4 text-xs md:text-sm font-bold sticky top-0 z-50 shadow-lg">
+          <div className="max-w-4xl mx-auto flex items-center justify-center gap-2 md:gap-4">
+            <span className="flex items-center gap-1">
+              <Clock className="h-4 w-4 animate-pulse" />
+              OFERTA EXPIRA EM: {formatTime(timeLeft)}
+            </span>
+            <span className="hidden md:inline">|</span>
+            <span className="flex items-center gap-1">
+              <Users className="h-4 w-4" />
+              APENAS 23 VAGAS RESTANTES
+            </span>
+          </div>
         </div>
 
-        {/* SECTION 1 - HERO */}
-        <header className="relative overflow-hidden bg-gradient-to-b from-pink-50 to-white pt-16 pb-24">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="font-roboto font-black text-4xl md:text-5xl text-gray-900 leading-tight mb-6">
-              Chega de calorão, insônia e sofrimento. <br />
-              <span className="text-pink-600">Nosso guia te ajuda a retomar o controle da sua vida — mesmo sem médico</span>
+        {/* HERO SECTION */}
+        <header className="bg-gradient-to-b from-pink-50 to-white pt-12 pb-20 px-6 border-b border-pink-100">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="font-roboto font-black text-3xl md:text-5xl lg:text-6xl text-gray-900 leading-tight mb-6">
+              Você Pode Acabar com os Calorões da Menopausa em <span className="text-pink-600">Apenas 7 Dias</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Alivie os principais sintomas em até 7 dias, com orientações simples que você pode aplicar em casa, sem médico.
+            <p className="text-lg md:text-xl text-gray-600 mb-8 font-medium">
+              (Sem hormônios, sem médico, sem gastar fortunas em consultas que não resolvem nada)
             </p>
+            <div className="bg-pink-600/10 text-pink-700 py-3 px-6 rounded-full inline-block font-bold text-sm md:text-base mb-10 border border-pink-200">
+              🎯 Descubra o método simples que 3.127 mulheres já usaram
+            </div>
 
-            {/* Imagem do Hero */}
-            <div className="mb-10 max-w-2xl mx-auto">
+            <div className="relative max-w-2xl mx-auto mb-12">
               <img 
                 src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_11_16%20%281%29-YiIF5Dx6Ex8EfF18VGsiRtoYLJUhpE.png" 
-                alt="Mulher sorrindo e aproveitando a vida" 
-                className="w-full h-auto rounded-3xl shadow-2xl border-4 border-white"
+                alt="Transformação Menopausa" 
+                className="rounded-3xl shadow-2xl border-4 border-white relative z-10"
               />
+              <div className="absolute -bottom-6 -right-6 bg-yellow-400 text-gray-900 p-4 rounded-2xl shadow-xl z-20 font-black text-sm rotate-12 hidden md:block">
+                ALÍVIO <br /> GARANTIDO
+              </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-pink-100 inline-block text-left max-w-lg w-full mb-10">
-              <p className="font-bold text-lg mb-4 text-pink-700">Você sente:</p>
-              <ul className="space-y-4">
-                {[
-                  "Calorões que surgem do nada e parecem não ter fim",
-                  "Tristeza, irritação e cansaço que ninguém entende",
-                  "A sensação de estar sozinha, abandonada e sem solução"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="mt-1 bg-pink-100 rounded-full p-1">
-                      <Minus className="h-4 w-4 text-pink-600" />
-                    </div>
-                    <span className="text-gray-700 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-2xl font-bold mb-6">
-                Isso não é frescura. <br />
-                <span className="text-pink-600">E não precisa continuar assim.</span>
-              </p>
-              <Button 
-                size="lg" 
-                className="bg-pink-600 hover:bg-pink-700 text-white text-xl py-8 px-10 rounded-2xl shadow-2xl shadow-pink-200 animate-pulse w-full max-w-md"
-                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                👉 Comece agora por apenas R$1,99
-              </Button>
-            </div>
+            <Button 
+              size="lg" 
+              className="bg-green-600 hover:bg-green-700 text-white text-xl md:text-2xl py-8 px-10 rounded-2xl shadow-2xl shadow-green-200 animate-pulse w-full max-w-md font-black"
+              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              QUERO ACABAR COM OS CALORÕES AGORA <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+            <p className="mt-4 text-gray-500 text-xs flex items-center justify-center gap-1">
+              <Lock className="h-3 w-3" /> Pagamento 100% Seguro | Acesso Imediato
+            </p>
           </div>
         </header>
 
-        {/* SECTION 2 - O PROBLEMA */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <div className="inline-block p-3 bg-red-100 rounded-2xl mb-4">
-                <AlertCircle className="h-8 w-8 text-red-600" />
-              </div>
-              <h2 className="font-roboto text-3xl md:text-4xl font-black mb-4">Você já passou por isso?</h2>
-            </div>
-            
-            {/* Imagem do Problema */}
-            <div className="mb-10">
-              <img 
-                src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_22_45%20%282%29-5Mq5Tv2MbDtdy5EOR55c9k8LNw1OiD.png" 
-                alt="Ilustração de sintomas e incômodos da menopausa" 
-                className="w-full h-auto rounded-3xl shadow-lg mb-8"
-              />
-            </div>
-
+        {/* DOR AMPLIFICADA */}
+        <section className="py-20 px-6 bg-gray-50">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-black text-center mb-10">Me responda com sinceridade:</h2>
             <div className="space-y-6">
               {[
-                "Foi a uma consulta rápida onde o médico mal olhou para você?",
-                "Ouviu “isso é normal da idade” enquanto continua sofrendo todos os dias?",
-                "Se perguntou se está ficando fraca, louca ou sem controle do próprio corpo?"
+                "Você já acordou encharcada de suor às 3h da manhã, sentindo que seu corpo está pegando fogo por dentro?",
+                "Já teve que sair correndo de uma conversa porque o calorão veio do nada e você sentiu vergonha?",
+                "Já chorou sem motivo, gritou com quem você ama, e depois se perguntou: 'O que está acontecendo comigo?'",
+                "Já ouviu do médico: 'Isso é normal da idade. Você vai ter que aprender a conviver'?"
               ].map((text, i) => (
-                <div key={i} className="bg-white p-6 rounded-2xl border border-gray-200 flex gap-4 items-center">
-                  <div className="h-3 w-3 rounded-full bg-red-400 shrink-0" />
-                  <p className="text-lg text-gray-700">{text}</p>
+                <div key={i} className="flex gap-4 p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                  <div className="shrink-0 mt-1"><AlertCircle className="h-6 w-6 text-red-500" /></div>
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">{text}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="text-2xl font-bold text-gray-800 leading-relaxed">
-                Nada disso é culpa sua. <br />
-                <span className="bg-pink-100 px-2">Você não está sozinha.</span> Milhares de mulheres acima dos 40 estão vivendo exatamente essa realidade.
-              </p>
+            <div className="mt-16 bg-red-600 text-white p-8 rounded-3xl text-center shadow-xl">
+              <p className="text-xl md:text-2xl font-black leading-tight mb-4">Não deveria ser assim.</p>
+              <p className="text-lg opacity-90">Sua menopausa está fora de controle porque ninguém te ensinou o básico que seu corpo precisa nessa fase.</p>
             </div>
           </div>
         </section>
 
-        {/* SECTION 3 - TRANSFORMAÇÃO */}
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-pink-900 rounded-[3rem] p-8 md:p-16 text-white text-center relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <Smile size={200} />
-              </div>
-              
-              <h2 className="font-roboto text-3xl md:text-5xl font-black mb-10 relative z-10">
-                Imagine acordar e:
-              </h2>
-
-              {/* Imagem da Transformação (conforme o print) */}
-              <div className="mb-10 relative z-10 max-w-xl mx-auto">
-                <img 
-                  src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_28_04%20%281%29-K5eDlKovVcScONN51oldmatjmk2e2p.png" 
-                  alt="Visão de futuro e bem-estar" 
-                  className="w-full h-auto rounded-2xl shadow-xl"
-                />
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left relative z-10 mb-10">
-                {[
-                  "Não sentir aquele calor sufocante logo cedo",
-                  "Ter mais ânimo para levantar da cama e viver o dia",
-                  "Parar de achar que está enlouquecendo ou “quebrada”",
-                  "Voltar a se sentir normal, confiante e no controle"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/5">
-                    <Check className="h-5 w-5 text-pink-400 shrink-0" />
-                    <span className="text-lg font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-6 text-xl leading-relaxed font-medium relative z-10">
-                Você pode reverter isso, e começa com orientações simples aplicadas no seu dia a dia.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 4 - O QUE VOCÊ RECEBE */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-5xl mx-auto px-6">
+        {/* PROMESSA ✨ */}
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="font-roboto text-4xl font-black mb-4">O que você recebe</h2>
-              <p className="text-gray-600 text-lg italic">Acesso imediato para começar sua transformação</p>
+              <h2 className="text-3xl md:text-4xl font-black mb-6">Imagine acordar daqui 7 dias e...</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { icon: Zap, text: "Passar o dia inteiro sem um único calorão que te faça suar ou te envergonhar" },
+                { icon: Moon, text: "Dormir a noite toda sem acordar com o corpo em chamas ou lençóis molhados" },
+                { icon: Zap, text: "Ter energia de verdade - disposição natural para viver o seu dia" },
+                { icon: Smile, text: "Se sentir calma e no controle em vez de explodir por qualquer coisa" },
+                { icon: ShieldCheck, text: "Voltar a se reconhecer quando olha no espelho - a mulher forte que você sempre foi" }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 p-5 bg-pink-50 rounded-2xl border border-pink-100">
+                  <div className="shrink-0 bg-white p-2 rounded-xl text-pink-600 shadow-sm"><item.icon size={24} /></div>
+                  <p className="text-gray-800 font-bold leading-tight">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* O QUE VOCÊ RECEBE 📘 */}
+        <section className="py-24 bg-gray-900 text-white px-6 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent opacity-10"></div>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-black mb-6">Apresento: Menopausa Sob Controle</h2>
+              <p className="text-pink-400 text-xl font-bold uppercase tracking-widest">O Guia Prático da Mulher Independente</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div className="bg-white p-8 rounded-3xl border-2 border-pink-500 shadow-xl">
-                  <span className="bg-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">
-                    Produto Principal
-                  </span>
-                  <h3 className="text-2xl font-black mb-4">Menopausa Sem Médico</h3>
-                  <p className="text-gray-600 text-lg leading-relaxed">
-                    Um guia prático que mostra como aliviar os principais sintomas da menopausa em casa, mesmo sem consulta, mesmo sem dinheiro.
-                  </p>
-                </div>
-                
-                <div className="space-y-4">
-                  <h4 className="font-bold text-xl flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-yellow-500" />
-                    Como Funciona
-                  </h4>
-                  <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="space-y-6">
+                <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10">
+                  <h3 className="text-2xl font-black mb-6 text-pink-400 flex items-center gap-2">
+                    <BookOpen /> O Que Você Descobre:
+                  </h3>
+                  <div className="space-y-4">
                     {[
-                      "Você garante o acesso agora",
-                      "Recebe o conteúdo imediatamente",
-                      "Aplica ajustes simples no dia a dia",
-                      "Começa a sentir alívio em até 7 dias"
-                    ].map((step, i) => (
-                      <div key={i} className="flex items-center gap-3 text-gray-700">
-                        <span className="bg-pink-100 text-pink-700 font-bold h-6 w-6 flex items-center justify-center rounded-full text-xs shrink-0">{i+1}</span>
-                        <span>{step}</span>
+                      { t: "O Protocolo 3-5-7", d: "Os 3 ajustes de 5 minutos que você faz em 7 dias para zerar os calorões (Página 12)" },
+                      { t: "A Lista Vermelha", d: "Os 8 alimentos que você come TODO DIA e que jogam gasolina no fogo (Página 23)" },
+                      { t: "SOS Calorão", d: "O que fazer nos primeiros 90 segundos quando o calor chega (Página 31)" },
+                      { t: "O Segredo do Sono", d: "A rotina noturna de 7 minutos que corrige seu despertar às 3h (Página 41)" },
+                      { t: "Dose Certa de Movimento", d: "Exercícios de 5 minutos que regulam hormônios naturalmente (Página 56)" }
+                    ].map((item, i) => (
+                      <div key={i} className="border-b border-white/5 pb-4 last:border-0">
+                        <p className="font-black text-pink-300 mb-1">🎯 {item.t}</p>
+                        <p className="text-gray-400 text-sm leading-relaxed">{item.d}</p>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <h4 className="font-bold text-xl flex items-center gap-2">
-                  <Star className="h-5 w-5 text-pink-500" />
-                  Bônus Inclusos
-                </h4>
-                <div className="space-y-4">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-black text-center md:text-left mb-6">🎁 BÔNUS EXCLUSIVOS (Ação Imediata)</h3>
+                <div className="grid grid-cols-1 gap-4">
                   {[
-                    { title: "Bônus 1 — O Que Fazer nos Dias de Crise", desc: "Como agir quando o calorão, a fraqueza ou a tristeza aparecem de repente." },
-                    { title: "Bônus 2 — Alimentos que Ajudam x Alimentos que Pioram", desc: "Sem dieta complicada. Apenas o que evitar e o que priorizar." },
-                    { title: "Bônus 3 — Não É Loucura, É Fase", desc: "Para aliviar o peso emocional e acabar com a culpa silenciosa." }
+                    { val: "R$ 27", t: "Kit Emergência Anti-Calorão", d: "5 técnicas que funcionam em qualquer lugar em 2 min." },
+                    { val: "R$ 37", t: "Cardápio Amigo da Menopausa", d: "21 refeições simples que acalmam seu corpo." },
+                    { val: "R$ 17", t: "Diário de Transformação", d: "O mapa do seu sucesso dia após dia." },
+                    { val: "R$ 12", t: "Checklist de Resultados", d: "Sinais claros de que seu corpo respondeu." }
                   ].map((bonus, i) => (
-                    <div key={i} className="bg-pink-50 p-5 rounded-2xl border border-pink-100">
-                      <p className="font-bold text-pink-800 mb-1">{bonus.title}</p>
-                      <p className="text-gray-600 text-sm leading-relaxed">{bonus.desc}</p>
+                    <div key={i} className="flex justify-between items-center bg-green-900/20 border border-green-500/30 p-4 rounded-2xl">
+                      <div>
+                        <p className="font-bold text-green-400">{bonus.t}</p>
+                        <p className="text-xs text-gray-500">{bonus.d}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs text-red-400 line-through">{bonus.val}</span>
+                        <p className="font-black text-green-500">GRÁTIS</p>
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 5 - DIFERENCIAL */}
-        <section className="py-20 bg-pink-50">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="font-roboto text-3xl font-black mb-12">Por que este método é diferente?</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-              <div className="bg-white p-8 rounded-3xl">
-                <p className="text-red-500 font-bold mb-4 uppercase text-xs tracking-widest">Outras Soluções</p>
-                <ul className="space-y-4 text-gray-400">
-                  <li className="flex gap-2">❌ <span>Hormônios e remédios fortes</span></li>
-                  <li className="flex gap-2">❌ <span>Consultas extremamente caras</span></li>
-                  <li className="flex gap-2">❌ <span>Linguagem médica confusa</span></li>
-                </ul>
-              </div>
-              <div className="bg-pink-600 p-8 rounded-3xl text-white shadow-xl">
-                <p className="text-pink-200 font-bold mb-4 uppercase text-xs tracking-widest">Nossa Solução</p>
-                <ul className="space-y-4">
-                  <li className="flex gap-2 font-medium">✅ <span>Simples e Natural</span></li>
-                  <li className="flex gap-2 font-medium">✅ <span>Direto ao ponto</span></li>
-                  <li className="flex gap-2 font-medium">✅ <span>Sem efeitos colaterais</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 6 - BENEFÍCIOS */}
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="font-roboto text-3xl font-black text-center mb-12">Resultados que você verá</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { title: "Menos calorões", result: "Mais conforto ao longo do dia" },
-                { title: "Mais energia", result: "Menos sensação de fraqueza extrema" },
-                { title: "Sono melhor", result: "Menos irritação e cansaço emocional" },
-                { title: "Clareza mental", result: "Menos medo de “perder o controle”" },
-                { title: "Autonomia", result: "Menos dependência de médicos e remédios" }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 border rounded-2xl">
-                  <div className="bg-green-100 p-2 rounded-full">
-                    <Check className="h-5 w-5 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="font-bold leading-tight">{item.title}</p>
-                    <p className="text-gray-600 text-sm">{item.result}</p>
-                  </div>
+                <div className="bg-pink-600 p-6 rounded-2xl text-center shadow-xl">
+                  <p className="font-bold text-sm opacity-80 uppercase mb-1">Valor Total dos Bônus: R$ 93,00</p>
+                  <p className="text-2xl font-black">HOJE: GRÁTIS</p>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 7 - PROVA SOCIAL */}
-        <section className="py-20 bg-gray-50 overflow-hidden">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <div className="flex justify-center gap-1 mb-4">
+        {/* PROVA SOCIAL ⭐ */}
+        <section className="py-24 px-6 bg-pink-50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-black mb-4">O Que Mulheres Como Você Estão Dizendo</h2>
+              <div className="flex justify-center gap-1 mb-2">
                 {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />)}
               </div>
-              <h2 className="font-roboto text-3xl font-black">Mais de 3.000 mulheres já começaram</h2>
+              <p className="text-gray-600 font-bold">Mais de 3.127 vidas transformadas</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
-                { name: "Maria L., 52 anos", quote: "Achei que estava ficando louca. Em poucos dias me senti mais calma e confiante." },
-                { name: "Sandra P., 48 anos", quote: "Não tinha dinheiro pra médico. Isso me deu direção e esperança." },
-                { name: "Cláudia R., 55 anos", quote: "Só quem passa sabe. Me senti acolhida e orientada pela primeira vez." }
-              ].map((t, i) => (
-                <Card key={i} className="rounded-2xl border-none shadow-sm">
-                  <CardContent className="pt-6">
-                    <div className="mb-4 text-pink-500"><Users size={24} /></div>
-                    <p className="italic text-gray-700 mb-4">"{t.quote}"</p>
-                    <p className="font-bold text-sm text-gray-900">— {t.name}</p>
-                  </CardContent>
-                </Card>
+                { n: "Marina Costa, 51 anos", t: "No 5º dia eu acordei e percebi: 'Espera... não tive calorão ontem!' Chorei de alívio." },
+                { n: "Roberta Almeida, 47 anos", t: "Meu marido disse que eu 'voltei'. Voltei a sorrir, voltei a ser EU." },
+                { n: "Cláudia Pereira, 54 anos", t: "Economizei mais de R$ 800 em consultas. E funcionou DE VERDADE." },
+                { n: "Patrícia Lima, 52 anos", t: "Na primeira semana, dormi 7h sem acordar. MILAGRE." }
+              ].map((test, i) => (
+                <div key={i} className="bg-white p-8 rounded-3xl shadow-md border border-pink-100">
+                  <p className="italic text-gray-700 mb-6 text-lg">"{test.t}"</p>
+                  <div className="flex items-center gap-3">
+                    <div className="h-12 w-12 bg-pink-200 rounded-full"></div>
+                    <div>
+                      <p className="font-black text-sm">{test.n}</p>
+                      <div className="flex gap-0.5"><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /></div>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* SECTION 8 - PRICING */}
-        <section id="pricing" className="py-20">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="font-roboto text-4xl font-black mb-4">Escolha seu acesso</h2>
-              <p className="text-gray-500">Comece hoje mesmo a transformar sua vida.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* Plano Básico */}
-              <div className="bg-white border-2 border-gray-200 rounded-[2rem] p-10 flex flex-col items-center text-center">
-                <h3 className="text-xl font-bold mb-6">Plano Básico</h3>
-                <div className="mb-8">
-                  <span className="text-gray-400 text-lg">Por apenas</span>
-                  <div className="text-5xl font-black text-gray-900">R$ 1,99</div>
-                </div>
-                <ul className="space-y-3 text-gray-600 mb-10 text-left w-full">
-                  <li className="flex items-center gap-2"><Check size={18} className="text-pink-500" /> Guia Menopausa Sem Médico</li>
-                  <li className="flex items-center gap-2"><Check size={18} className="text-pink-500" /> Acesso imediato</li>
-                  <li className="flex items-center gap-2"><Check size={18} className="text-pink-500" /> Aplicação simples</li>
-                </ul>
-                <Button className="w-full h-16 text-lg font-bold bg-gray-900 hover:bg-black text-white rounded-2xl mt-auto">
-                  EU QUERO O BÁSICO
-                </Button>
-              </div>
-
-              {/* Plano Completo */}
-              <div className="bg-pink-600 border-4 border-pink-400 rounded-[2rem] p-10 flex flex-col items-center text-center text-white shadow-2xl scale-105 relative">
-                <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-lg">
-                  MAIS POPULAR ⭐
-                </div>
-                <h3 className="text-xl font-bold mb-6">Plano Completo</h3>
-                <div className="mb-8">
-                  <span className="text-pink-200 text-lg">Por apenas</span>
-                  <div className="text-5xl font-black text-white">R$ 7,99</div>
-                </div>
-                <ul className="space-y-3 text-pink-50 mb-10 text-left w-full">
-                  <li className="flex items-center gap-2"><Check size={18} className="text-yellow-400" /> <strong>Guia principal</strong></li>
-                  <li className="flex items-center gap-2"><Check size={18} className="text-yellow-400" /> <strong>3 bônus exclusivos</strong></li>
-                  <li className="flex items-center gap-2"><Check size={18} className="text-yellow-400" /> Conteúdo emocional + prático</li>
-                  <li className="flex items-center gap-2"><Check size={18} className="text-yellow-400" /> Mais suporte e clareza</li>
-                </ul>
-                <Button className="w-full h-16 text-lg font-bold bg-white hover:bg-pink-50 text-pink-600 rounded-2xl mt-auto">
-                  ACESSO COMPLETO AGORA
-                </Button>
-              </div>
+        {/* COMPARAÇÃO ⚖️ */}
+        <section className="py-24 px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-black text-center mb-16">Por Que Outras Soluções Falharam?</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="p-4 text-left border-b border-gray-200">Solução</th>
+                    <th className="p-4 text-center border-b border-gray-200">Dificuldades</th>
+                    <th className="p-4 text-center border-b border-gray-200 bg-pink-600 text-white rounded-t-2xl">Sob Controle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { s: "Médico Particular", d: "R$ 400+ por consulta / Receita genérica", o: "R$ 1,99 / Você no controle" },
+                    { s: "TRH (Hormônios)", d: "Efeitos colaterais / Medo de riscos / Não trata a raiz", o: "Zero hormônios / Atua na causa" },
+                    { s: "Chás e Simpatias", d: "Inconstante / Perda de tempo / Sem base", o: "Baseado em ciência / Alívio em 7 dias" }
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-gray-50 transition-colors">
+                      <td className="p-4 font-bold border-b border-gray-100">{row.s}</td>
+                      <td className="p-4 text-center text-sm text-gray-500 border-b border-gray-100">❌ {row.d}</td>
+                      <td className="p-4 text-center font-black text-pink-700 bg-pink-50 border-b border-pink-100">✅ {row.o}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
 
-        {/* SECTION 9 - GARANTIA */}
-        <section className="py-20 bg-gray-900 text-white">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <div className="mb-8 flex justify-center">
-              <ShieldCheck size={80} className="text-pink-500" />
-            </div>
-            <h2 className="text-3xl font-black mb-6">Risco Zero: Garantia Incondicional</h2>
-            <p className="text-xl text-gray-400 leading-relaxed mb-10">
-              Você tem <strong>7 dias de garantia total</strong>. <br />
-              Sem perguntas. Sem letras miúdas. <br />
-              Se não fizer sentido para você, seu dinheiro é devolvido.
-            </p>
-          </div>
-        </section>
-
-        {/* SECTION 10 - FAQ */}
-        <section className="py-20 bg-white">
-          <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <HelpCircle size={40} className="mx-auto text-pink-600 mb-4" />
-              <h2 className="font-roboto text-3xl font-black">Dúvidas Frequentes</h2>
-            </div>
+        {/* PRECIFICAÇÃO 🔥 */}
+        <section id="pricing" className="py-24 px-6 bg-pink-600 text-white">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-6">OFERTA ESPECIAL</h2>
+            <p className="text-pink-200 text-xl font-bold mb-10">Expira em {formatTime(timeLeft)}</p>
             
+            <div className="bg-white text-gray-900 rounded-[3rem] p-10 md:p-16 shadow-2xl relative">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400 px-8 py-2 rounded-full font-black text-sm tracking-widest shadow-lg">
+                OFERTA ÚNICA
+              </div>
+              
+              <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
+                <div className="text-center md:text-right">
+                  <p className="text-gray-400 line-through text-2xl font-bold">R$ 147,00</p>
+                  <p className="text-gray-400 line-through text-xl opacity-50">R$ 47,00</p>
+                </div>
+                <div className="text-pink-600 text-7xl md:text-8xl font-black">
+                  <span className="text-3xl font-bold align-top mt-4 inline-block">R$</span>1,99
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-xl mx-auto mb-10">
+                {["Guia Completo Sob Controle", "Protocolo 3-5-7 Integrado", "4 Bônus Exclusivos (R$ 93)", "Acesso Imediato", "Garantia Blindada de 7 Dias"].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 font-bold text-gray-700">
+                    <Check className="text-green-500 shrink-0" size={20} />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-pulse mb-6">
+                QUERO MEU ACESSO AGORA!
+              </Button>
+              <div className="flex flex-wrap justify-center gap-6 opacity-60">
+                <div className="flex items-center gap-1 text-xs font-bold"><ShieldCheck size={16} /> COMPRA SEGURA</div>
+                <div className="flex items-center gap-1 text-xs font-bold"><Zap size={16} /> ACESSO EM 2 MIN</div>
+                <div className="flex items-center gap-1 text-xs font-bold"><CreditCard size={16} /> PIX OU CARTÃO</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* GARANTIA REVERSA 🛡️ */}
+        <section className="py-24 px-6 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white border-4 border-dashed border-pink-500 p-8 md:p-16 rounded-[3rem] text-center shadow-2xl">
+              <ShieldCheck className="mx-auto h-24 w-24 text-pink-600 mb-8" />
+              <h2 className="text-3xl md:text-4xl font-black mb-8">Risco Zero: Ou Funciona, Ou Eu Te Pago!</h2>
+              <p className="text-xl text-gray-700 leading-relaxed mb-10 max-w-2xl mx-auto">
+                Teste o <strong>Protocolo 3-5-7</strong> por 7 dias. Se você não sentir melhora, eu devolvo seus R$ 1,99 e <strong className="text-pink-600">te pago R$ 10 pelo seu tempo</strong>. Você literalmente sai no lucro se o meu método falhar.
+              </p>
+              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">O Único Risco É Você Não Testar</p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ ❓ */}
+        <section className="py-24 px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-black text-center mb-16">Perguntas Que Estão na Sua Cabeça Agora</h2>
             <Accordion type="single" collapsible className="w-full">
               {[
-                { q: "Isso substitui o médico?", a: "Não. É uma orientação prática para quem não tem acesso ou precisa de alívio imediato através de ajustes no dia a dia." },
-                { q: "Funciona para qualquer idade?", a: "Sim, especialmente para mulheres acima dos 40 anos que estão na pré-menopausa ou menopausa." },
-                { q: "Preciso fazer academia ou dieta?", a: "Não. São ajustes simples e possíveis de serem realizados na sua rotina atual." },
-                { q: "É seguro?", a: "Sim. O método foca em orientações naturais e comportamentais, sem uso de hormônios ou medicamentos." },
-                { q: "Quando vejo resultados?", a: "Muitas mulheres relatam alívio significativo nos principais sintomas em até 7 dias de aplicação." },
-                { q: "Como recebo o conteúdo?", a: "O acesso é digital e imediato após a confirmação do pagamento. Você receberá as instruções por e-mail." }
+                { q: "Isso realmente funciona ou é mais uma promessa?", a: "São R$ 1,99 com garantia TOTAL. Se não funcionar, você recebe de volta + R$ 10. Mais de 3.000 mulheres já testaram e aprovaram." },
+                { q: "Preciso de médico? Substitui meu tratamento?", a: "Não substitui nada. É um COMPLEMENTO educacional. Vai te dar autonomia enquanto busca ajuda profissional se quiser." },
+                { q: "Tenho 58 anos, funciona pra mim?", a: "Funciona para qualquer mulher em menopausa ou pré-menopausa. Os 3 sistemas que você vai equilibrar funcionam em QUALQUER idade." },
+                { q: "Sou péssima com tecnologia. Como acesso?", a: "É um PDF simples. Você recebe por email, clica e pronto. Se travar, nosso suporte te ajuda em menos de 1 hora." },
+                { q: "Por que tão barato? Tem pegadinha?", a: "Zero pegadinha. O preço é simbólico porque quero que TODAS tenham acesso. Quando funcionar pra você, vai recomendar pras amigas." }
               ].map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border-b-pink-100">
-                  <AccordionTrigger className="text-left font-bold text-gray-800 hover:text-pink-600">
+                <AccordionItem key={i} value={`faq-${i}`} className="border-b-pink-100">
+                  <AccordionTrigger className="text-left font-black text-gray-800 hover:text-pink-600 text-lg">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 leading-relaxed">
+                  <AccordionContent className="text-gray-600 text-lg leading-relaxed">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -406,44 +354,47 @@ export function MenopausePage() {
           </div>
         </section>
 
-        {/* SECTION 11 - CTA FINAL */}
-        <section className="py-20 bg-gradient-to-b from-white to-pink-50">
-          <div className="max-w-3xl mx-auto px-6 text-center">
-            <div className="inline-block px-4 py-1 bg-red-100 text-red-600 rounded-full text-xs font-black mb-6 uppercase tracking-widest">
-              Atenção: Oferta Limitada
+        {/* CTA FINAL ⏰ */}
+        <section className="py-24 px-6 bg-pink-50 border-t border-pink-100">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl font-black mb-8">Qual caminho você escolhe?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-12">
+              <div className="p-8 bg-white rounded-3xl border border-gray-100 opacity-60">
+                <p className="font-black text-red-500 mb-4">OPÇÃO 1</p>
+                <p className="text-sm text-gray-500 italic">Continuar acordando às 3h suando, irritada, cansada e gastando fortunas em consultas sem solução.</p>
+              </div>
+              <div className="p-8 bg-pink-600 text-white rounded-3xl shadow-xl scale-105 border-4 border-pink-400">
+                <p className="font-black mb-4">OPÇÃO 2</p>
+                <p className="font-bold">Investir R$ 1,99 agora, zerar os calorões em 7 dias e recuperar sua alegria de viver.</p>
+              </div>
             </div>
-            <h2 className="font-roboto text-4xl font-black mb-6">Pronta para recuperar seu bem-estar?</h2>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-              Essa oferta é limitada para manter o preço simbólico. 
-              Você ainda está protegida pela garantia total de 7 dias.
-            </p>
             
-            <Button 
-                size="lg" 
-                className="bg-pink-600 hover:bg-pink-700 text-white text-2xl py-10 px-12 rounded-[2rem] shadow-2xl shadow-pink-300 w-full mb-6 font-black"
-            >
-              QUERO ALÍVIO AGORA <ArrowRight className="ml-4 h-8 w-8" />
+            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-bounce mb-8">
+              QUERO MEU ACESSO POR R$ 1,99!
             </Button>
             
-            <p className="text-gray-500 font-medium">
-              Comece agora por apenas R$1,99
-            </p>
-            <p className="text-sm text-gray-400 mt-2">
-              Alivie os sintomas da menopausa sem médico, sem humilhação e sem sofrer sozinha.
-            </p>
+            <div className="space-y-4 text-left max-w-xl mx-auto text-gray-600 font-medium">
+              <p>P.S.: Sério, são R$ 1,99. Isso pode mudar TUDO na sua vida.</p>
+              <p>P.P.S.: Se não funcionar, você recebe o valor de volta + R$ 10. Você ganha mesmo se não gostar.</p>
+              <p>P.P.P.S.: A oferta é limitada. Quando as vagas acabarem, o preço volta para R$ 47,00.</p>
+            </div>
           </div>
         </section>
 
         {/* FOOTER */}
-        <footer className="py-12 bg-white border-t border-gray-100 text-center text-gray-400 text-sm">
+        <footer className="py-16 bg-white border-t border-gray-100 text-center">
           <div className="max-w-4xl mx-auto px-6">
-            <p className="mb-4">© 2024 Menopausa Nunca Mais. Todos os direitos reservados.</p>
-            <p className="max-w-2xl mx-auto text-xs opacity-60">
-              AVISO LEGAL: As informações contidas neste site e guia não substituem o aconselhamento de um profissional de saúde. 
-              Os resultados podem variar de pessoa para pessoa.
+            <div className="flex justify-center gap-6 mb-8 text-gray-400">
+              <Lock size={20} /> <ShieldCheck size={20} /> <Users size={20} />
+            </div>
+            <p className="mb-4 text-gray-400 text-sm">© 2024 Menopausa Sob Controle. Todos os direitos reservados.</p>
+            <p className="text-gray-300 text-[10px] leading-relaxed uppercase tracking-widest max-w-2xl mx-auto">
+              AVISO LEGAL: Este conteúdo é educacional e não substitui orientação médica profissional. 
+              Consulte seu médico antes de mudanças significativas na rotina de saúde.
             </p>
           </div>
         </footer>
+
       </div>
     </>
   );
