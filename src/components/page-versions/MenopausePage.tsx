@@ -19,7 +19,8 @@ import {
   Bell,
   Moon,
   Dumbbell,
-  Zap
+  Zap,
+  Smile
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -223,7 +224,7 @@ export function MenopausePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 { n: "Marina Costa, 51 anos", t: "No 5º dia eu acordei e percebi: 'Espera... não tive calorão ontem!' Chorei de alívio." },
-                { n: "Roberta Almeida, 47 anos", t: "Meu marido disse que eu 'voltei'. Voltei a sorrir, voltei a ser EU." },
+                { n: "Roberta Almeida, 47 anos", t: "Meu marido disse que eu 'voltei'. Voltei a sorrir, voltei a ter paciência, voltei a ser EU." },
                 { n: "Cláudia Pereira, 54 anos", t: "Economizei mais de R$ 800 em consultas. E funcionou DE VERDADE." },
                 { n: "Patrícia Lima, 52 anos", t: "Na primeira semana, dormi 7h sem acordar. MILAGRE." }
               ].map((test, i) => (
