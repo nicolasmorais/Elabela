@@ -85,10 +85,6 @@ export function MenopausePage() {
               </div>
             </div>
 
-            <div className="bg-pink-600/10 text-pink-700 py-3 px-6 rounded-full inline-block font-bold text-sm md:text-base mb-10 border border-pink-200">
-              🎯 Descubra o método simples que 3.127 mulheres já usaram
-            </div>
-
             <Button 
               size="lg" 
               className="bg-green-600 hover:bg-green-700 text-white text-xl md:text-2xl py-8 px-10 rounded-2xl shadow-2xl shadow-green-200 animate-pulse w-full max-w-md font-black"
@@ -110,7 +106,7 @@ export function MenopausePage() {
             {/* IMAGEM 2 - DOR/PROBLEMA */}
             <div className="mb-12">
                 <img 
-                    src="https://iv2jb3reuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_22_45%20%282%29-5Mq5Tv2MbDtdy5EOR55c9k8LNw1OiD.png" 
+                    src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_22_45%20%282%29-5Mq5Tv2MbDtdy5EOR55c9k8LNw1OiD.png" 
                     alt="Sintomas da Menopausa" 
                     className="w-full h-auto rounded-3xl shadow-xl border border-gray-200"
                 />
@@ -146,7 +142,7 @@ export function MenopausePage() {
                 </div>
                 
                 <div className="text-center mb-12 relative z-10">
-                    <h2 className="text-3xl md:text-4xl font-black mb-6">Imagine acordar daqui 7 dias e...</h2>
+                    <h2 className="text-3xl md:text-4xl font-black mb-6">Imagine acordar daqui 3 dias e...</h2>
                 </div>
 
                 {/* IMAGEM 3 - TRANSFORMAÇÃO/IMAGINE */}
@@ -286,7 +282,7 @@ export function MenopausePage() {
                 </thead>
                 <tbody>
                   {[
-                    { s: "Médico Particular", d: "R$ 400+ por consulta / Receita genérica", o: "R$ 1,99 / Você no controle" },
+                    { s: "Médico Particular", d: "R$ 400+ por consulta / Receita genérica", o: "R$ 19,90 / Você no controle" },
                     { s: "TRH (Hormônios)", d: "Efeitos colaterais / Medo de riscos / Não trata a raiz", o: "Zero hormônios / Atua na causa" },
                     { s: "Chás e Simpatias", d: "Inconstante / Perda de tempo / Sem base", o: "Baseado em ciência / Alívio em 7 dias" }
                   ].map((row, i) => (
@@ -319,7 +315,7 @@ export function MenopausePage() {
                   <p className="text-gray-400 line-through text-xl opacity-50">R$ 47,00</p>
                 </div>
                 <div className="text-pink-600 text-7xl md:text-8xl font-black">
-                  <span className="text-3xl font-bold align-top mt-4 inline-block">R$</span>1,99
+                  <span className="text-3xl font-bold align-top mt-4 inline-block">R$</span>19,90
                 </div>
               </div>
 
@@ -351,7 +347,7 @@ export function MenopausePage() {
               <ShieldCheck className="mx-auto h-24 w-24 text-pink-600 mb-8" />
               <h2 className="text-3xl md:text-4xl font-black mb-8">Risco Zero: Ou Funciona, Ou Eu Te Pago!</h2>
               <p className="text-xl text-gray-700 leading-relaxed mb-10 max-w-2xl mx-auto">
-                Teste o <strong>Protocolo 3-5-7</strong> por 7 dias. Se você não sentir melhora, eu devolvo seus R$ 1,99 e <strong className="text-pink-600">te pago R$ 10 pelo seu tempo</strong>. Você literalmente sai no lucro se o meu método falhar.
+                Teste o <strong>Protocolo 3-5-7</strong> por 7 dias. Se você não sentir melhora, eu devolvo seus R$ 19,90 e <strong className="text-pink-600">te pago R$ 10 pelo seu tempo</strong>. Você literalmente sai no lucro se o meu método falhar.
               </p>
               <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">O Único Risco É Você Não Testar</p>
             </div>
@@ -364,7 +360,7 @@ export function MenopausePage() {
             <h2 className="text-3xl font-black text-center mb-16">Perguntas Que Estão na Sua Cabeça Agora</h2>
             <Accordion type="single" collapsible className="w-full">
               {[
-                { q: "Isso realmente funciona ou é mais uma promessa?", a: "São R$ 1,99 com garantia TOTAL. Se não funcionar, você recebe de volta + R$ 10. Mais de 3.000 mulheres já testaram e aprovaram." },
+                { q: "Isso realmente funciona ou é mais uma promessa?", a: "São R$ 19,90 com garantia TOTAL. Se não funcionar, você recebe de volta + R$ 10. Mais de 3.000 mulheres já testaram e aprovaram." },
                 { q: "Preciso de médico? Substitui meu tratamento?", a: "Não substitui nada. É um COMPLEMENTO educacional. Vai te dar autonomia enquanto busca ajuda profissional se quiser." },
                 { q: "Tenho 58 anos, funciona pra mim?", a: "Funciona para qualquer mulher em menopausa ou pré-menopausa. Os 3 sistemas que você vai equilibrar funcionam em QUALQUER idade." },
                 { q: "Sou péssima com tecnologia. Como acesso?", a: "É um PDF simples. Você recebe por email, clica e pronto. Se travar, nosso suporte te ajuda em menos de 1 hora." },
@@ -394,16 +390,16 @@ export function MenopausePage() {
               </div>
               <div className="p-8 bg-pink-600 text-white rounded-3xl shadow-xl scale-105 border-4 border-pink-400">
                 <p className="font-black mb-4">OPÇÃO 2</p>
-                <p className="font-bold">Investir R$ 1,99 agora, zerar os calorões em 7 dias e recuperar sua alegria de viver.</p>
+                <p className="font-bold">Investir R$ 19,90 agora, zerar os calorões em 3 dias e recuperar sua alegria de viver.</p>
               </div>
             </div>
             
             <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-bounce mb-8">
-              QUERO MEU ACESSO POR R$ 1,99!
+              QUERO MEU ACESSO POR R$ 19,90!
             </Button>
             
             <div className="space-y-4 text-left max-w-xl mx-auto text-gray-600 font-medium">
-              <p>P.S.: Sério, são R$ 1,99. Isso pode mudar TUDO na sua vida.</p>
+              <p>P.S.: Sério, são R$ 19,90. Isso pode mudar TUDO na sua vida.</p>
               <p>P.P.S.: Se não funcionar, você recebe o valor de volta + R$ 10. Você ganha mesmo se não gostar.</p>
               <p>P.P.P.S.: A oferta é limitada. Quando as vagas acabarem, o preço volta para R$ 47,00.</p>
             </div>
