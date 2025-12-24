@@ -115,10 +115,11 @@ export function MenopausePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Grid ajustado para vídeos verticais */}
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="group">
-                  <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-gray-100 group-hover:shadow-2xl group-hover:scale-[1.02] transition-all duration-300">
+                <div key={i} className="group w-full max-w-[300px]">
+                  <div className="relative aspect-[9/16] w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-100 bg-gray-900 group-hover:shadow-pink-200 transition-all duration-300">
                     <iframe 
                       src={videoUrl} 
                       width="100%" 
@@ -128,12 +129,12 @@ export function MenopausePage() {
                       allowFullScreen
                     ></iframe>
                   </div>
-                  <div className="mt-4 flex items-center justify-between px-2">
+                  <div className="mt-6 flex flex-col items-center gap-2">
                     <div className="flex gap-1 text-yellow-400">
-                      {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
+                      {[...Array(5)].map((_, idx) => <Star key={idx} size={16} fill="currentColor" />)}
                     </div>
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-tighter flex items-center gap-1">
-                      <Video size={12} /> Depoimento Verificado
+                    <span className="text-sm font-black text-gray-400 uppercase tracking-tighter flex items-center gap-2">
+                      <Video size={14} className="text-pink-600" /> Depoimento Verificado
                     </span>
                   </div>
                 </div>
@@ -217,7 +218,7 @@ export function MenopausePage() {
         {/* O QUE VOCÊ RECEBE 📘 */}
         <section className="py-24 bg-gray-900 text-white px-6 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent opacity-10"></div>
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5_xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-black mb-6">Apresento: Menopausa Sob Controle</h2>
               <p className="text-pink-400 text-xl font-bold uppercase tracking-widest">O Guia Prático da Mulher Independente</p>
