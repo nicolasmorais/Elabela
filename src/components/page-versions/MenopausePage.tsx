@@ -21,7 +21,8 @@ import {
   Dumbbell,
   Zap,
   Smile,
-  Video
+  Video,
+  Play
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -29,9 +30,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PageTracker } from "./PageTracker";
 
 const TESTIMONIAL_VIDEOS = [
-  "https://viewshift-9vkhjlyqp-nicolas-morais-projects.vercel.app/embed/https%3A%2F%2Fydo1oposreyoyzh5.public.blob.vercel-storage.com%2F729b9773-837a-4701-be78-26a8f00395be-DP3.mp4",
-  "https://viewshift-9vkhjlyqp-nicolas-morais-projects.vercel.app/embed/https%3A%2F%2Fydo1oposreyoyzh5.public.blob.vercel-storage.com%2Fe6acb5f6-e381-4d6d-94e4-81538e8856e8-dp-menopausa-001.mp4",
-  "https://viewshift-9vkhjlyqp-nicolas-morais-projects.vercel.app/embed/https%3A%2F%2Fydo1oposreyoyzh5.public.blob.vercel-storage.com%2Fbfb848bc-e1f8-4c87-a126-5a8bb2d16495-DP2.mp4"
+  "https://ydo1oposreyoyzh5.public.blob.vercel-storage.com/729b9773-837a-4701-be78-26a8f00395be-DP3.mp4",
+  "https://ydo1oposreyoyzh5.public.blob.vercel-storage.com/e6acb5f6-e381-4d6d-94e4-81538e8856e8-dp-menopausa-001.mp4",
+  "https://ydo1oposreyoyzh5.public.blob.vercel-storage.com/bfb848bc-e1f8-4c87-a126-5a8bb2d16495-DP2.mp4"
 ];
 
 export function MenopausePage() {
@@ -125,13 +126,14 @@ export function MenopausePage() {
               {TESTIMONIAL_VIDEOS.map((url, i) => (
                 <div key={i} className="group w-full max-w-[300px]">
                   <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-gray-100 bg-gray-900 group-hover:shadow-pink-200 transition-all duration-300">
-                    <iframe 
-                      src={url} 
-                      className="absolute inset-0 w-full h-full"
-                      frameBorder="0" 
-                      allow="autoplay; fullscreen" 
-                      allowFullScreen
-                    ></iframe>
+                    <video
+                      src={url}
+                      className="absolute inset-0 w-full h-full object-cover rounded-[2rem]"
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster="https://via.placeholder.com/300x534/f87171/ffffff?text=▶%20Assista+ao+Depoimento"
+                    />
                   </div>
                   <div className="mt-6 flex flex-col items-center gap-2">
                     <div className="flex gap-1 text-yellow-400">
