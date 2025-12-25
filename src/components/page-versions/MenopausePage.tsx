@@ -28,9 +28,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Card, CardContent } from '@/components/ui/card';
 import { PageTracker } from "./PageTracker";
 
+const TESTIMONIAL_VIDEOS = [
+  "https://viewshift-9vkhjlyqp-nicolas-morais-projects.vercel.app/embed/https%3A%2F%2Fydo1oposreyoyzh5.public.blob.vercel-storage.com%2F729b9773-837a-4701-be78-26a8f00395be-DP3.mp4",
+  "https://viewshift-9vkhjlyqp-nicolas-morais-projects.vercel.app/embed/https%3A%2F%2Fydo1oposreyoyzh5.public.blob.vercel-storage.com%2Fe6acb5f6-e381-4d6d-94e4-81538e8856e8-dp-menopausa-001.mp4",
+  "https://viewshift-9vkhjlyqp-nicolas-morais-projects.vercel.app/embed/https%3A%2F%2Fydo1oposreyoyzh5.public.blob.vercel-storage.com%2Fbfb848bc-e1f8-4c87-a126-5a8bb2d16495-DP2.mp4"
+];
+
 export function MenopausePage() {
   const [timeLeft, setTimeLeft] = useState(1187); // 19:47 em segundos
-  const videoUrl = "https://wandering-meerkat-skid.vercel.app/embed/bb6f639e-5462-4883-a2c9-1f461595b97d";
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -117,11 +122,11 @@ export function MenopausePage() {
 
             {/* Grid ajustado para vídeos verticais */}
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              {[1, 2, 3].map((i) => (
+              {TESTIMONIAL_VIDEOS.map((url, i) => (
                 <div key={i} className="group w-full max-w-[300px]">
                   <div className="relative aspect-[9/16] w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-100 bg-gray-900 group-hover:shadow-pink-200 transition-all duration-300">
                     <iframe 
-                      src={videoUrl} 
+                      src={url} 
                       width="100%" 
                       height="100%" 
                       frameBorder="0" 
@@ -443,8 +448,8 @@ export function MenopausePage() {
             
             <div className="space-y-4 text-left max-w-xl mx-auto text-gray-600 font-medium">
               <p>P.S.: Sério, são R$ 19,90. Isso pode mudar TUDO na sua vida.</p>
-              <p>P.P.S.: Se não funcionar, você recebe o valor de volta + R$ 10. Você ganha mesmo se não gostar.</p>
-              <p>P.P.P.S.: A oferta é limitada. Quando as vagas acabarem, o preço volta para R$ 47,00.</p>
+              <p>P.S.S.: Se não funcionar, você recebe o valor de volta + R$ 10. Você ganha mesmo se não gostar.</p>
+              <p>P.S.S.S.: A oferta é limitada. Quando as vagas acabarem, o preço volta para R$ 47,00.</p>
             </div>
           </div>
         </section>
