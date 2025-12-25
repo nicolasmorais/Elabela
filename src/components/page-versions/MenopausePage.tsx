@@ -64,15 +64,17 @@ export function MenopausePage() {
     <>
       <PageTracker contentId="menopausa" />
       
-      {/* Taboola Pixel Code */}
-      <script>
-        {`
-          _tfa.push({notify: 'event', name: 'view_content', id: 1959176});
-        `}
-      </script>
-      <noscript>
-        <img src="https://trc.taboola.com/1959176/log/3/unip?en=view_content" width="0" height="0" style="display:none" />
-      </noscript>
+      {/* Taboola Pixel Code - Using Head component */}
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            _tfa.push({notify: 'event', name: 'view_content', id: 1959176});
+          `
+        }} />
+        <noscript>
+          <img src="https://trc.taboola.com/1959176/log/3/unip?en=view_content" width="0" height="0" style={{ display: 'none' }} />
+        </noscript>
+      </head>
       
       <div className="bg-white text-gray-900 font-space-grotesk selection:bg-pink-100 antialiased">
         
