@@ -123,7 +123,7 @@ export function MenopausePage() {
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               {TESTIMONIAL_VIDEOS.map((video, i) => (
                 <div key={i} className="group w-full max-w-[300px]">
-                  <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-gray-100 bg-gray-900 group-hover:shadow-pink-200 transition-all duration-300">
+                  <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-gray-100 bg-gray-900">
                     {/* Frame/Poster do vídeo */}
                     <div className="relative w-full h-full">
                       <img
@@ -134,7 +134,7 @@ export function MenopausePage() {
                       
                       {/* Overlay com ícone de play */}
                       <div className="absolute inset-0 bg-black/30 rounded-[2rem] flex items-center justify-center">
-                        <div className="bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-xl transform group-hover:scale-110 transition-transform duration-300">
+                        <div className="bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-xl">
                           <Play className="h-8 w-8 text-pink-600" />
                         </div>
                       </div>
@@ -385,7 +385,7 @@ export function MenopausePage() {
                 ))}
               </div>
 
-              <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-pulse mb-6">
+              <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl mb-6">
                 <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                   QUERO MEU ACESSO AGORA!
                 </a>
@@ -453,7 +453,7 @@ export function MenopausePage() {
               </div>
             </div>
             
-            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-bounce mb-8">
+            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl mb-8">
               <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                 QUERO MEU ACESSO POR R$ 19,90!
               </a>
