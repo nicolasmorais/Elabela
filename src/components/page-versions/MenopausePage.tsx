@@ -92,17 +92,6 @@ export function MenopausePage() {
                 ALÍVIO <br /> GARANTIDO
               </div>
             </div>
-
-            <Button 
-              size="lg" 
-              className="bg-green-600 hover:bg-green-700 text-white text-xl md:text-2xl py-8 px-10 rounded-2xl shadow-2xl shadow-green-200 animate-pulse w-full max-w-md font-black"
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              QUERO ACABAR COM OS CALORÕES AGORA <ArrowRight className="ml-2 h-6 w-6" />
-            </Button>
-            <p className="mt-4 text-gray-500 text-xs flex items-center justify-center gap-1">
-              <Lock className="h-3 w-3" /> Pagamento 100% Seguro | Acesso Imediato
-            </p>
           </div>
         </header>
 
@@ -378,7 +367,9 @@ export function MenopausePage() {
               </div>
 
               <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-pulse mb-6">
-                QUERO MEU ACESSO AGORA!
+                <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                  QUERO MEU ACESSO AGORA!
+                </a>
               </Button>
               <div className="flex flex-wrap justify-center gap-6 opacity-60">
                 <div className="flex items-center gap-1 text-xs font-bold"><ShieldCheck size={16} /> COMPRA SEGURA</div>
@@ -444,7 +435,9 @@ export function MenopausePage() {
             </div>
             
             <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-3xl font-black rounded-[2rem] shadow-2xl animate-bounce mb-8">
-              QUERO MEU ACESSO POR R$ 19,90!
+              <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                QUERO MEU ACESSO POR R$ 19,90!
+              </a>
             </Button>
             
             <div className="space-y-4 text-left max-w-xl mx-auto text-gray-600 font-medium">
