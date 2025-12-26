@@ -112,19 +112,11 @@ export function MenopausePage() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // Efeito para carregar o Taboola Pixel
-  useEffect(() => {
-    // Verificar se o _tfa existe globalmente
-    if (typeof window !== 'undefined' && window._tfa) {
-      window._tfa.push({notify: 'event', name: 'view_content', id: 1959176});
-    }
-  }, []);
-
   return (
     <>
       <PageTracker contentId="menopausa" />
       
-      {/* Script do Taboola Pixel - Carregado dinamicamente */}
+      {/* Script do Taboola Pixel - Carregado dinamicamente com PageView padrão */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
@@ -141,9 +133,18 @@ export function MenopausePage() {
         }}
       />
       
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window._tfa = window._tfa || [];
+            window._tfa.push({notify: 'event', name: 'page_view', id: 1959176});
+          `
+        }}
+      />
+      
       <noscript>
         <img 
-          src="https://trc.taboola.com/1959176/log/3/unip?en=view_content" 
+          src="https://trc.taboola.com/1959176/log/3/unip?en=page_view" 
           width="0" 
           height="0" 
           style={{ display: 'none' }} 
