@@ -32,9 +32,8 @@ export default function CustomAdvertorialEditor() {
     const [footer, setFooter] = useState<CustomAdvertorialFooter | null>(null);
     const [pixels, setPixels] = useState<PagePixelConfig>({ metaPixelId: '', taboolaPixelId: '', customScripts: '', useGlobalPixels: true });
 
-    // Use the default footer structure from advertorial-types.ts
+    // Use default footer structure from advertorial-types.ts
     const defaultFooter: CustomAdvertorialFooter = useMemo(() => defaultCustomAdvertorialFooter, []);
-
 
     useEffect(() => {
         if (!isNew) {
@@ -46,7 +45,7 @@ export default function CustomAdvertorialEditor() {
                 .then((data: CustomAdvertorial) => {
                     setName(data.name);
                     setHeader({ ...data.header, fontFamily: data.header.fontFamily || 'sans' });
-                    // Explicitly typing the parameter in map
+                    // Explicitamente typing parameter in map
                     setBlocks(data.blocks.map((b: ContentBlock) => {
                         const { fontFamily, ...rest } = b;
                         return rest;
@@ -62,7 +61,8 @@ export default function CustomAdvertorialEditor() {
                     // Initialize pixels
                     setPixels(data.pixels || { metaPixelId: '', taboolaPixelId: '', customScripts: '', useGlobalPixels: true });
                 })
-                .catch(() => {
+                .catch((error) => {
+                    console.error('Erro ao carregar advertorial:', error);
                     toast.error("Advertorial não encontrado ou falha ao carregar.");
                     router.push('/dashboard/custom-advertorials');
                 })
@@ -138,7 +138,7 @@ export default function CustomAdvertorialEditor() {
         setFooter(prev => {
             if (!prev) return null;
             const newFooter = { ...prev };
-            // Explicitly typing the parameter in filter
+            // Explicitamente typing parameter in filter
             (newFooter as any)[arrayName] = (newFooter as any)[arrayName].filter((_: any, i: number) => i !== index);
             return newFooter;
         });
@@ -181,7 +181,7 @@ export default function CustomAdvertorialEditor() {
             toast.success("Advertorial salvo com sucesso!");
 
             if (isNew) {
-                // Redirect to the edit page of the newly created advertorial
+                // Redirect to edit page of newly created advertorial
                 router.replace(`/dashboard/custom-advertorials/${result.advertorial.id}`);
             }
         } catch (error) {

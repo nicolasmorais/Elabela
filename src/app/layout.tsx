@@ -57,14 +57,14 @@ export default function RootLayout({
         {/* Graphik Trial Font */}
         <link href="https://fonts.cdnfonts.com/css/graphik-trial" rel="stylesheet" />
         
-        {/* Swetrix Tracking Script */}
+        {/* Swetrix Tracking Script - Corrigido para HTTPS */}
         <script src="https://swetrix.org/swetrix.js" defer></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               document.addEventListener('DOMContentLoaded', function() {
                 swetrix.init('FUBK8k33p9FP', {
-                  apiURL: 'http://swetrixapi-jso0o0co04ww0kw8w4w0s4kg.147.93.179.152.sslip.io/log',
+                  apiURL: 'https://swetrixapi-jso0o0co04ww0kw8w4w0s4kg.147.93.179.152.sslip.io/log',
                 });
                 swetrix.trackViews();
               });
@@ -73,7 +73,7 @@ export default function RootLayout({
         />
         <noscript>
           <img
-            src="http://swetrixapi-jso0o0co04ww0kw8w4w0s4kg.147.93.179.152.sslip.io/log/noscript?pid=FUBK8k33p9FP"
+            src="https://swetrixapi-jso0o0co04ww0kw8w4w0s4kg.147.93.179.152.sslip.io/log/noscript?pid=FUBK8k33p9FP"
             alt=""
             referrerPolicy="no-referrer-when-downgrade"
           />
