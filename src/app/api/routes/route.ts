@@ -54,3 +54,30 @@ export async function POST(req: Request): Promise<NextResponse> {
     return NextResponse.json({ message: 'Erro Interno do Servidor' }, { status: 500 });
   }
 }
+
+export async function DELETE(req: Request): Promise<NextResponse> {
+  try {
+    const { path } = await req.json() as { path: string };
+    if (!path) {
+      return NextResponse.json({ message: 'O campo path é obrigatório' }, { status: 400 });
+    }
+
+    const client: Client = await getDb();
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+    
+    // Verificar se a rota existe antes de deletar
+    const existingRoute = await client.query('SELECT * FROM routes WHERE path = $1', [normalizedPath]);
+    
+    if (existingRoute.rows.length === 0) {
+      return NextResponse.json({ message: 'Rota não encontrada' }, { status: 404 });
+    }
+    
+    // Deletar a rota
+    await client.query('DELETE FROM routes WHERE path = $1', [normalizedPath]);
+    
+    return NextResponse.json({ message: 'Rota excluída com sucesso' });
+  } catch (error) {
+    console.error('Failed to delete route:', error);
+    return NextResponse.json({ message: 'Erro Interno do Servidor' }, { status: 500 });
+  }
+}

@@ -29,7 +29,7 @@ interface ContentOption {
 
 interface RouteCardProps {
   route: RouteMapping;
-  onSave: (path: string, contentId: string) => Promise<void>;
+  onSave: (path: string, contentId: string, name?: string) => Promise<void>;
   onDelete: (path: string, name: string) => Promise<void>;
   contentOptions: ContentOption[];
 }
@@ -47,13 +47,15 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
     if (!isChanged) return;
     setIsSaving(true);
     
-    if (isContentChanged) {
-        await onSave(route.path, selectedContent);
-    } else if (isNameChanged) {
-        toast.warning("A alteração do nome da rota não é suportada pela API atual.");
+    try {
+      // Envia tanto o contentId quanto o name se for alterado
+      await onSave(route.path, selectedContent, routeName);
+    } catch (error) {
+      console.error('Erro ao salvar rota:', error);
+      toast.error("Erro ao salvar a rota.");
+    } finally {
+      setIsSaving(false);
     }
-    
-    setIsSaving(false);
   };
 
   // Cores Dinâmicas
