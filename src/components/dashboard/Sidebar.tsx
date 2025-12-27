@@ -1,10 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Zap } from "lucide-react";
+import { Settings, Wand2, LayoutGrid } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { LogoutButton } from "@/components/auth/LogoutButton"; // Importando o botão de logout
+import { LogoutButton } from "@/components/auth/LogoutButton";
 
 const mainNavItems = [
   {
@@ -14,7 +12,7 @@ const mainNavItems = [
   },
   { // Status link
     href: "/dashboard/status",
-    icon: Settings, // Mantendo o ícone Settings para o Status
+    icon: Settings,
     label: "Status do Sistema",
   },
 ];
@@ -29,14 +27,6 @@ const pagesNavItems = [
     href: "/dashboard/custom-advertorials",
     icon: LayoutGrid,
     label: "Meus Advertoriais",
-  },
-];
-
-const trackingNavItems = [ // Seção de rastreamento
-  {
-    href: "/dashboard/pixels",
-    icon: Zap,
-    label: "Gerenciamento de Pixels",
   },
 ];
 
@@ -127,24 +117,6 @@ export const Sidebar = () => {
           </h3>
           <div className="space-y-1">
             {pagesNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={getLinkClasses(item.href)}
-              >
-                <item.icon className="h-4 w-4" />
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-        {/* Tracking Section */}
-        <div>
-          <h3 className={cn("mb-2 px-3 text-xs font-semibold uppercase", lightTextColor, darkTextColor)}>
-            Rastreamento
-          </h3>
-          <div className="space-y-1">
-            {trackingNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
