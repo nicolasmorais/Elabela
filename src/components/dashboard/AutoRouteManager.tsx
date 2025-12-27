@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"; // Importação adicionada
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Plus, Trash2, Save, RefreshCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
@@ -30,7 +30,7 @@ interface ContentOption {
 }
 
 interface AutoRouteManagerProps {
-  autoRoutes: AutoRoute[];
+  autoRoutes: { [slug: string]: string };
   contentOptions: ContentOption[];
   onRefresh: () => void;
 }
@@ -125,7 +125,7 @@ export function AutoRouteManager({ autoRoutes, contentOptions, onRefresh }: Auto
           </Button>
         </CardTitle>
         <CardDescription className={labelColor}>
-          Crie redirecionamentos automáticos (ex: /menopausa → /ad-ap). Ao excluir, a rota volta ao conteúdo original.
+          Crie redirecionamentos automáticos (ex: /menopausa → /ap). Ao excluir, a rota volta ao conteúdo original.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
