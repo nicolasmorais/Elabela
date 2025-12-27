@@ -26,8 +26,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     checkAuth();
   }, []);
 
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
+  const login = () => {
+    // Persiste no cookie para o middleware e refresh
+    Cookies.set('auth_session', 'true', { expires: 1 }); // 1 dia
+    setIsAuthenticated(true);
+  };
+  
+  const logout = () => {
+    Cookies.remove('auth_session');
+    setIsAuthenticated(false);
+  };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, isLoading, login, logout }}>
@@ -38,9 +46,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
+  
   if (context === undefined) {
-    // Retornamos um objeto seguro em vez de lançar erro para evitar quebras em componentes que não verificam o contexto
-    return { isAuthenticated: false, isLoading: true, login: () => {}, logout: () => {} };
+    throw new Error(
+      '⚠️ useAuth deve ser usado dentro de um AuthProvider! ' +
+      'Verifique se o AuthProvider está envolvendo sua aplicação no arquivo src/app/layout.tsx'
+    );
   }
+  
   return context;
 }
