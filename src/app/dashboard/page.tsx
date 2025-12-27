@@ -220,7 +220,7 @@ export default function DashboardPage() {
                     <div className="space-y-6">
                         {existingRoutes.map((route) => (
                             <RouteCard
-                                key={route.path}
+                                key={route.path} // Adicionada key única aqui
                                 route={route}
                                 contentOptions={allContentOptions}
                                 onSave={handleSaveRoute}
