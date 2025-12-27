@@ -37,8 +37,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsAuthenticated(false);
   };
 
+  const contextValue = React.useMemo(() => ({
+    isAuthenticated,
+    isLoading,
+    login,
+    logout,
+  }), [isAuthenticated, isLoading]);
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isLoading, login, logout }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );
@@ -55,4 +62,17 @@ export function useAuth() {
   }
   
   return context;
+}
+
+// Hook seguro para uso opcional (não lança erro se não houver provider)
+export function useAuthSafe() {
+  const context = useContext(AuthContext);
+  
+  // Retorna valores padrão se o contexto não existir
+  return context || {
+    isAuthenticated: false,
+    isLoading: false,
+    login: () => {},
+    logout: () => {},
+  };
 }

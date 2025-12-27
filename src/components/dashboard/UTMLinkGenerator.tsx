@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Plus, Link as LinkIcon, Copy, Code } from 'lucide-react';
+import { Plus, Link as LinkIcon, Copy } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
@@ -22,27 +22,20 @@ interface UTMLinkGeneratorProps {
   // Props futuras se necessário
 }
 
-// UTMs comuns
-const UTM_OPTIONS = [
-    { key: 'utm_source', label: 'utm_source', defaultValue: 'taboola' },
-    { key: 'utm_medium', label: 'utm_medium', defaultValue: 'cpc' },
-    { key: 'utm_campaign', label: 'utm_campaign', defaultValue: '' },
-    { key: 'utm_content', label: 'utm_content', defaultValue: '' },
-    { key: 'utm_term', label: 'utm_term', defaultValue: '' },
-];
-
-// Macros da Taboola
-const TABOOLA_OPTIONS = [
-    { key: 'site', label: '{site} - Site do publisher', isMacro: true },
-    { key: 'site_id', label: '{site_id} - ID exclusivo do site', isMacro: true },
-    { key: 'site_domain', label: '{site_domain} - Nome/URL do site', isMacro: true },
-    { key: 'thumbnail', label: '{thumbnail} - URL da imagem/vídeo', isMacro: true },
-    { key: 'title', label: '{title} - Título do item', isMacro: true },
-    { key: 'timestamp', label: '{timestamp} - Horário da oferta', isMacro: true },
-    { key: 'platform', label: '{platform} - Plataforma (Desktop/Mobile/Tablet)', isMacro: true },
-    { key: 'campaign_id', label: '{campaign_id} - ID exclusivo da campanha', isMacro: true },
-    { key: 'campaign_name', label: '{campaign_name} - Nome da campanha', isMacro: true },
-    { key: 'campaign_item_id', label: '{campaign_item_id} - ID exclusivo do item', isMacro: true },
+// Macros do Taboola e UTMs comuns
+const TRACKING_OPTIONS = [
+    { key: 'utm_source', label: 'utm_source (Taboola)', isMacro: false, defaultValue: 'Taboola' },
+    { key: 'utm_medium', label: 'utm_medium (referral)', isMacro: false, defaultValue: 'referral' },
+    { key: 'utm_campaign', label: 'utm_campaign', isMacro: false, defaultValue: '' },
+    { key: 'utm_content', label: 'utm_content', isMacro: false, defaultValue: '' },
+    { key: 'utm_term', label: 'utm_term', isMacro: false, defaultValue: '' },
+    { key: 'creative_name', label: '{creative_name}', isMacro: true },
+    { key: 'site', label: '{site}', isMacro: true },
+    { key: 'site_id', label: '{site_id}', isMacro: true },
+    { key: 'campaign_id', label: '{campaign_id}', isMacro: true },
+    { key: 'campaign_name', label: '{campaign_name}', isMacro: true },
+    { key: 'campaign_item_id', label: '{campaign_item_id}', isMacro: true },
+    { key: 'platform', label: '{platform}', isMacro: true },
 ];
 
 export function UTMLinkGenerator({ }: UTMLinkGeneratorProps) {
@@ -66,12 +59,8 @@ export function UTMLinkGenerator({ }: UTMLinkGeneratorProps) {
       const newState = { ...prev };
       if (isChecked) {
         // Se for UTM, usa o valor padrão ou string vazia
-        const option = [...UTM_OPTIONS, ...TABOOLA_OPTIONS].find(opt => opt.key === key);
-        if (option && 'defaultValue' in option) {
-          newState[key] = option.defaultValue;
-        } else {
-          newState[key] = true; // Para macros
-        }
+        const option = TRACKING_OPTIONS.find(opt => opt.key === key);
+        newState[key] = option?.isMacro ? true : (option?.defaultValue || '');
       } else {
         delete newState[key];
       }
@@ -153,12 +142,9 @@ export function UTMLinkGenerator({ }: UTMLinkGeneratorProps) {
 
           {/* 2. Parâmetros UTM */}
           <div className="space-y-4 p-4 border rounded-md bg-gray-50 dark:bg-[#0f172a]">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <LinkIcon className="h-5 w-5 text-blue-500" />
-              Parâmetros UTM
-            </h3>
+            <h3 className="font-semibold text-lg">Parâmetros UTM</h3>
             <div className="space-y-3">
-              {UTM_OPTIONS.map(option => (
+              {TRACKING_OPTIONS.map(option => (
                 <div key={option.key} className="flex items-center space-x-3">
                   <Checkbox
                     id={`utm-${option.key}`}
@@ -168,7 +154,7 @@ export function UTMLinkGenerator({ }: UTMLinkGeneratorProps) {
                   <Label htmlFor={`utm-${option.key}`} className="flex-1 cursor-pointer font-mono text-sm">
                     {option.label}
                   </Label>
-                  {selectedParams[option.key] !== undefined && (
+                  {!option.isMacro && selectedParams[option.key] !== undefined && (
                     <Input
                       value={selectedParams[option.key] as string}
                       onChange={(e) => handleParamValueChange(option.key, e.target.value)}
@@ -181,34 +167,7 @@ export function UTMLinkGenerator({ }: UTMLinkGeneratorProps) {
             </div>
           </div>
 
-          {/* 3. Macros da Taboola */}
-          <div className="space-y-4 p-4 border rounded-md bg-blue-50 dark:bg-blue-900/20">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <Code className="h-5 w-5 text-purple-500" />
-              Macros da Taboola
-            </h3>
-            <p className="text-sm text-blue-700 dark:text-blue-300 mb-3">
-              Parâmetros dinâmicos que serão substituídos pela Taboola no momento da exibição.
-            </p>
-            <div className="grid grid-cols-1 gap-3">
-              {TABOOLA_OPTIONS.map(option => (
-                <div key={option.key} className="flex items-center space-x-3">
-                  <Checkbox
-                    id={`taboola-${option.key}`}
-                    checked={!!selectedParams[option.key]}
-                    onCheckedChange={(checked) => handleParamToggle(option.key, checked as boolean)}
-                  />
-                  <Label htmlFor={`taboola-${option.key}`} className="flex-1 cursor-pointer text-sm">
-                    <span className="font-mono bg-white dark:bg-gray-800 px-2 py-1 rounded">
-                      {option.label}
-                    </span>
-                  </Label>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 4. Link Gerado */}
+          {/* 3. Link Gerado */}
           <div className="space-y-2">
             <Label className={labelColor}>Link Gerado</Label>
             <div className="flex items-center gap-2">
