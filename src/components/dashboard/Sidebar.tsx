@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid } from "lucide-react";
+import { Settings, Wand2, LayoutGrid, Database } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton";
@@ -12,10 +12,15 @@ const mainNavItems = [
     icon: Settings,
     label: "Route Control",
   },
-  { // Status link
+  {
     href: "/dashboard/status",
     icon: Settings,
     label: "Status do Sistema",
+  },
+  {
+    href: "/dashboard/db-test",
+    icon: Database,
+    label: "Teste de Banco",
   },
 ];
 
@@ -64,7 +69,7 @@ export const Sidebar = () => {
         classes += ` ${lightActiveBg} ${lightActiveTextColor}`;
     } else {
         // Ensure no hover effect is applied
-        classes += ` hover:bg-transparent hover:text-gray-600`; // Mantém a cor padrão no hover
+        classes += ` hover:bg-transparent hover:text-gray-600`; 
     }
 
     // Dark Mode (Default text color)
@@ -74,7 +79,7 @@ export const Sidebar = () => {
         classes += ` ${darkActiveBg} ${darkActiveTextColor}`;
     } else {
         // Ensure no hover effect is applied
-        classes += ` dark:hover:bg-transparent dark:hover:text-zinc-400`; // Mantém a cor padrão no hover
+        classes += ` dark:hover:bg-transparent dark:hover:text-zinc-400`; 
     }
 
     return classes;
@@ -132,7 +137,6 @@ export const Sidebar = () => {
         </div>
       </nav>
       
-      {/* Botão de Logout no final da Sidebar */}
       <div className="p-4 border-t border-gray-200 dark:border-[#334155]">
         <LogoutButton />
       </div>
