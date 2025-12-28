@@ -9,6 +9,11 @@ import { LogoutButton } from "@/components/auth/LogoutButton";
 const mainNavItems = [
   {
     href: "/dashboard",
+    icon: Settings,
+    label: "Route Control",
+  },
+  {
+    href: "/dashboard/custom-advertorials",
     icon: LayoutGrid,
     label: "Meus Advertoriais",
   },
@@ -16,11 +21,6 @@ const mainNavItems = [
     href: "/dashboard/approval-page",
     icon: Wand2,
     label: "Página de Aprovação",
-  },
-  {
-    href: "/dashboard",
-    icon: Settings,
-    label: "Route Control",
   },
 ];
 
