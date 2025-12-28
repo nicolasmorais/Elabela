@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Database, Monitor } from "lucide-react";
+import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton";
@@ -13,6 +13,11 @@ const mainNavItems = [
     label: "Route Control",
   },
   {
+    href: "/dashboard/status",
+    icon: CheckCircle,
+    label: "Status de Sistema",
+  },
+  {
     href: "/dashboard/settings",
     icon: Monitor,
     label: "Configurações",
@@ -21,14 +26,14 @@ const mainNavItems = [
 
 const pagesNavItems = [
   {
-    href: "/dashboard/approval-page",
-    icon: Wand2,
-    label: "Página de Aprovação",
-  },
-  {
     href: "/dashboard/custom-advertorials",
     icon: LayoutGrid,
     label: "Meus Advertoriais",
+  },
+  {
+    href: "/dashboard/approval-page",
+    icon: Wand2,
+    label: "Página de Aprovação",
   },
 ];
 
@@ -115,7 +120,7 @@ export const Sidebar = () => {
         </div>
         <div>
           <h3 className={cn("mb-2 px-3 text-xs font-semibold uppercase", lightTextColor, darkTextColor)}>
-            Páginas
+            Advertoriais
           </h3>
           <div className="space-y-1">
             {pagesNavItems.map((item) => (
