@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Eye, EyeOff, ArrowRight, Database, AlertTriangle } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -13,25 +13,6 @@ export const LoginFormOffline = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isCheckingDb, setIsCheckingDb] = useState(false);
-  const [dbStatus, setDbStatus] = useState<'unknown' | 'online' | 'offline'>('unknown');
-
-  const checkDbStatus = async () => {
-    setIsCheckingDb(true);
-    try {
-      const response = await fetch('/api/simple-db-test');
-      const data = await response.json();
-      setDbStatus(data.success ? 'online' : 'offline');
-    } catch (error) {
-      setDbStatus('offline');
-    } finally {
-      setIsCheckingDb(false);
-    }
-  };
-
-  React.useEffect(() => {
-    checkDbStatus();
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,35 +48,11 @@ export const LoginFormOffline = () => {
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-      {/* Status do Banco */}
-      <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-[#0f172a] rounded-lg border border-gray-200 dark:border-[#334155]">
-        <span className="text-sm text-gray-600 dark:text-zinc-400">
-          {isCheckingDb ? (
-            <>
-              <Database className="inline h-4 w-4 animate-spin mr-2" />
-              Verificando banco...
-            </>
-          ) : dbStatus === 'online' ? (
-            <>
-              <Database className="inline h-4 w-4 text-green-500 mr-2" />
-              Banco Online
-            </>
-          ) : (
-            <>
-              <AlertTriangle className="inline h-4 w-4 text-yellow-500 mr-2" />
-              Banco Offline - Senha Padrão
-            </>
-          )}
+      {/* Informação da Senha */}
+      <div className="flex items-center justify-center p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <span className="text-sm text-blue-700 dark:text-blue-300 font-medium">
+          Senha padrão: <strong>84740949</strong>
         </span>
-        {dbStatus !== 'unknown' && (
-          <button
-            type="button"
-            onClick={checkDbStatus}
-            className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            Verificar novamente
-          </button>
-        )}
       </div>
 
       {/* Campo de Senha */}
@@ -103,7 +60,7 @@ export const LoginFormOffline = () => {
         <div className="flex w-full flex-1 items-stretch rounded-lg relative">
           <Input
             className={cn(inputClasses, inputThemeClasses, "pr-12")}
-            placeholder="Senha"
+            placeholder="Digite a senha"
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -138,16 +95,6 @@ export const LoginFormOffline = () => {
           {!isSubmitting && <ArrowRight className="h-5 w-5" />}
         </span>
       </Button>
-
-      {/* Informações de Ajuda */}
-      {dbStatus === 'offline' && (
-        <div className="text-center text-sm text-gray-500 dark:text-zinc-400">
-          <p>Use a senha padrão ou</p>
-          <a href="/init-database" className="text-blue-600 dark:text-blue-400 hover:underline">
-            configure o banco de dados
-          </a>
-        </div>
-      )}
     </form>
   );
 };
