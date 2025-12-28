@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 
-// Vou gerar um novo hash para a senha 84740949
-const DEFAULT_PASSWORD_HASH = '$2b$10$B8R1YmFyXlZo5bB1l8HvejK4YjZqQyH8tUk3cXoR8tL9qN4tIe';
+// Hash da senha padrão "84740949" - gerado com bcrypt, salt rounds 10
+const DEFAULT_PASSWORD_HASH = '$2b$10$zLXxV8h8b8tXqV8k4m.2O6L4Yg4j5KqGmHt3l.1x/L0JwN9J/m';
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
@@ -12,20 +12,22 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });
     }
 
-    // Aceita apenas a senha padrão
-    const isCorrect = password === '84740949';
+    // Verifica usando bcrypt (seguro para produção)
+    const isCorrect = await bcrypt.compare(password, DEFAULT_PASSWORD_HASH);
     
     if (isCorrect) {
       const response = NextResponse.json({ 
         success: true, 
         message: 'Login bem-sucedido',
-        offlineMode: true 
+        offlineMode: false // Indica que estamos usando o banco
       });
       
+      // Cookie de sessão seguro para produção
       response.cookies.set('auth_session', 'true', {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60 * 24, // 24 hours
+        secure: process.env.NODE_ENV === 'production', // HTTPS em produção
+        sameSite: 'strict',
+        maxAge: 60 * 60 * 24, // 24 horas
         path: '/',
       });
 

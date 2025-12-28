@@ -23,7 +23,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     
     if (authCookie) {
       setIsAuthenticated(true);
-      setIsOfflineMode(authCookie === 'offline_mode');
+      // Verifica se está em modo offline (para compatibilidade futura)
+      setIsOfflineMode(false);
     } else {
       setIsAuthenticated(false);
       setIsOfflineMode(false);
@@ -36,8 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = () => {
-    // Persiste no cookie para o middleware e refresh
-    Cookies.set('auth_session', 'true', { expires: 1 }); // 1 dia
+    // Em produção, o cookie será setado pelo servidor
     setIsAuthenticated(true);
   };
   

@@ -41,10 +41,17 @@ export const LoginFormOffline = () => {
     }
   };
 
-  // Classes dinâmicas
+  // Classes dinâmicas para Input
   const inputClasses = "flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl h-16 p-4 text-xl font-normal leading-normal border-none";
+  
+  // Cores do Input: Claro (fundo cinza, texto escuro) / Escuro (fundo azul escuro, texto branco)
   const inputThemeClasses = "bg-gray-100 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-[#6B16ED] focus:border-[#6B16ED] dark:bg-[#1e293b] dark:text-white dark:placeholder:text-gray-400 dark:focus:ring-[#6B16ED]/50 dark:focus:border-[#6B16ED]";
+  
+  // Botão Primário
   const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
+  
+  // Offset do anel de foco (deve ser o fundo da página)
+  const focusRingOffset = 'focus:ring-offset-background dark:focus:ring-offset-[#0f172a]'; 
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
@@ -55,7 +62,7 @@ export const LoginFormOffline = () => {
         </span>
       </div>
 
-      {/* Campo de Senha */}
+      {/* Password Input */}
       <label className="flex flex-col w-full">
         <div className="flex w-full flex-1 items-stretch rounded-lg relative">
           <Input
@@ -68,31 +75,33 @@ export const LoginFormOffline = () => {
           />
           <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-4">
             <Button 
-              type="button" 
-              variant="ghost" 
-              size="icon" 
-              className="h-full w-full text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-              onClick={() => setShowPassword(!showPassword)}
+                type="button" 
+                variant="ghost" 
+                size="icon" 
+                // Cores do ícone: Claro (cinza, hover escuro) / Escuro (cinza, hover branco)
+                className="h-full w-full text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
+                {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
             </Button>
           </div>
         </div>
       </label>
 
-      {/* Botão de Submit */}
+      {/* Submit Button */}
       <Button
         type="submit"
         className={cn(
           "h-16 px-6 text-xl font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6B16ED] rounded-xl",
           primaryButtonClasses,
+          focusRingOffset,
           isSubmitting && "opacity-70 cursor-not-allowed"
         )}
         disabled={isSubmitting}
       >
         <span className="truncate flex items-center gap-2">
-          {isSubmitting ? 'Acessando...' : 'Acessar sua conta'}
-          {!isSubmitting && <ArrowRight className="h-5 w-5" />}
+            {isSubmitting ? 'Acessando...' : 'Acessar sua conta'}
+            {!isSubmitting && <ArrowRight className="h-5 w-5" />}
         </span>
       </Button>
     </form>
