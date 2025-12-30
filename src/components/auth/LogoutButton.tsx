@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
 
 export function LogoutButton() {
   const router = useRouter();
@@ -19,18 +20,21 @@ export function LogoutButton() {
       }
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
-      toast.error('Não foi possível sair. Tente novamente.');
+      toast.error('Não foi possível sair.');
     }
   };
 
   return (
     <Button 
       onClick={handleLogout} 
-      variant="outline" 
-      className="bg-red-500 hover:bg-red-600 text-white dark:bg-red-700 dark:hover:bg-red-800 border-red-500 dark:border-red-700"
+      variant="ghost" 
+      className={cn(
+        "w-full h-11 flex items-center justify-start gap-3 px-4 rounded-xl font-semibold transition-all duration-200",
+        "text-slate-500 hover:text-red-600 hover:bg-red-50 dark:text-slate-400 dark:hover:text-red-400 dark:hover:bg-red-900/10"
+      )}
     >
-      <LogOut className="mr-2 h-4 w-4" />
-      Sair
+      <LogOut size={18} />
+      <span>Encerrar Sessão</span>
     </Button>
   );
 }

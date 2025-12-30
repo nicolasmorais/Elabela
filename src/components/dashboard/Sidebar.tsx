@@ -46,103 +46,89 @@ export const Sidebar = () => {
   const pathname = usePathname();
   const LOGO_URL = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
 
-  // Cores do Modo Claro (Padrão)
-  const lightBg = 'bg-white';
-  const lightActiveBg = 'bg-gray-100'; // Fundo ativo
-  const lightBorderColor = 'border-gray-200';
-  const lightTextColor = 'text-gray-600';
-  const lightActiveTextColor = 'text-gray-900';
-
-  // Cores do Modo Escuro (Dark Mode)
-  const darkBg = 'dark:bg-[#0f172a]';
-  const darkActiveBg = 'dark:bg-[#1e293b]'; // Fundo ativo
-  const darkBorderColor = 'dark:border-[#334155]';
-  const darkTextColor = 'dark:text-zinc-400';
-  const darkActiveTextColor = 'dark:text-zinc-50';
-
   const getLinkClasses = (href: string) => {
     const isActive = pathname === href;
     
-    // Base classes
-    let classes = "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-all";
-
-    // Light Mode (Default text color)
-    classes += ` ${lightTextColor}`;
-    
-    if (isActive) {
-        // Active styles
-        classes += ` ${lightActiveBg} ${lightActiveTextColor}`;
-    } else {
-        // Ensure no hover effect is applied
-        classes += ` hover:bg-transparent hover:text-gray-600`; 
-    }
-
-    // Dark Mode (Default text color)
-    classes += ` ${darkTextColor}`;
-    if (isActive) {
-        // Active styles
-        classes += ` ${darkActiveBg} ${darkActiveTextColor}`;
-    } else {
-        // Ensure no hover effect is applied
-        classes += ` dark:hover:bg-transparent dark:hover:text-zinc-400`; 
-    }
-
-    return classes;
+    return cn(
+        "group relative flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200",
+        // Estilos Inativos
+        "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100",
+        // Estilos Ativos
+        isActive && [
+            "bg-slate-50 text-[#6B16ED] dark:bg-slate-900/50 dark:text-[#6B16ED]",
+            "after:absolute after:left-0 after:h-5 after:w-1 after:rounded-full after:bg-[#6B16ED]"
+        ]
+    );
   };
 
   return (
     <aside className={cn(
-      "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r sm:flex", 
-      lightBg, lightBorderColor, lightTextColor,
-      darkBg, darkBorderColor, darkTextColor
+      "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-[#020617] border-slate-200 dark:border-slate-800 sm:flex"
     )}>
-      <div className={cn("flex h-20 items-center justify-center px-6")}>
-        <Link href="/dashboard">
+      {/* Logo Section */}
+      <div className="flex h-24 items-center px-8">
+        <Link href="/dashboard" className="transition-opacity hover:opacity-80">
           <img
             src={LOGO_URL}
             alt="PageShift Logo"
-            className="h-12"
+            className="h-10 w-auto"
           />
         </Link>
       </div>
-      <nav className="flex-1 space-y-4 p-4">
-        <div>
-          <h3 className={cn("mb-2 px-3 text-xs font-semibold uppercase", lightTextColor, darkTextColor)}>
-            Principal
-          </h3>
-          <div className="space-y-1">
-            {mainNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={getLinkClasses(item.href)}
-              >
-                <item.icon className="h-4 w-4" />
-                {item.label}
-              </Link>
-            ))}
+
+      {/* Navigation Section */}
+      <div className="flex flex-1 flex-col overflow-y-auto px-4 py-4 scrollbar-none">
+        <div className="space-y-8">
+          
+          {/* Menu Principal */}
+          <div className="space-y-2">
+            <h3 className="px-4 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
+              Gestão de Conteúdo
+            </h3>
+            <nav className="space-y-1">
+              {mainNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={getLinkClasses(item.href)}
+                >
+                  <item.icon className={cn(
+                    "h-5 w-5 transition-colors",
+                    pathname === item.href ? "text-[#6B16ED]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
+                  )} />
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
-        </div>
-        <div>
-          <h3 className={cn("mb-2 px-3 text-xs font-semibold uppercase", lightTextColor, darkTextColor)}>
-            Sistema
-          </h3>
-          <div className="space-y-1">
-            {systemNavItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={getLinkClasses(item.href)}
-              >
-                <item.icon className="h-4 w-4" />
-                {item.label}
-              </Link>
-            ))}
+
+          {/* Menu Sistema */}
+          <div className="space-y-2">
+            <h3 className="px-4 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
+              Monitoramento
+            </h3>
+            <nav className="space-y-1">
+              {systemNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={getLinkClasses(item.href)}
+                >
+                  <item.icon className={cn(
+                    "h-5 w-5 transition-colors",
+                    pathname === item.href ? "text-[#6B16ED]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
+                  )} />
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
+
         </div>
-      </nav>
+      </div>
       
-      <div className="p-4 border-t border-gray-200 dark:border-[#334155]">
+      {/* Footer Section */}
+      <div className="mt-auto p-4 border-t border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-900/20">
         <LogoutButton />
       </div>
     </aside>
