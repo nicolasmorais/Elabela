@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Trash2, Save, ExternalLink } from 'lucide-react';
+import { Trash2, Save, ExternalLink, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -39,74 +39,62 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
   const [routeName, setRouteName] = useState(route.name);
   const [isSaving, setIsSaving] = useState(false);
 
-  const isContentChanged = selectedContent !== route.contentId;
-  const isNameChanged = routeName !== route.name;
-  const isChanged = isContentChanged || isNameChanged;
+  const isChanged = selectedContent !== route.contentId || routeName !== route.name;
 
   const handleSave = async () => {
     if (!isChanged) return;
     setIsSaving(true);
-    
     try {
-      // Envia tanto o contentId quanto o name se for alterado
       await onSave(route.path, selectedContent, routeName);
-    } catch (error) {
-      console.error('Erro ao salvar rota:', error);
-      toast.error("Erro ao salvar a rota.");
     } finally {
       setIsSaving(false);
     }
   };
 
-  // Cores Dinâmicas
-  const cardBg = 'bg-white dark:bg-[#1e293b]';
-  const borderColor = 'border-gray-200 dark:border-[#334155]';
-  const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
-  const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
-  const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
-  const deleteButtonClasses = 'text-red-500 hover:bg-red-100 dark:hover:bg-red-900/20';
-
-  // Garante que o path seja uma string válida
-  const validPath = route.path && typeof route.path === 'string' ? route.path : '/';
-
   return (
-    <div className={cn(cardBg, borderColor, "rounded-lg shadow-sm border p-6 flex flex-col space-y-6 text-gray-900 dark:text-white")}>
-      <div className="flex-grow space-y-4">
-        
-        {/* Nome da Rota */}
-        <div>
-          <Label className="block text-sm font-medium text-gray-600 dark:text-zinc-300 mb-1" htmlFor={`routeName-${validPath}`}>Nome da Rota</Label>
+    <div className="bg-slate-50/50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-2xl p-5 space-y-4 transition-all hover:border-slate-200 dark:hover:border-slate-700 group">
+      <div className="flex items-center justify-between gap-2 mb-2">
+        <div className="flex items-center gap-2 overflow-hidden">
+            <Globe className="h-4 w-4 text-[#6B16ED] shrink-0" />
+            <span className="font-mono text-xs font-bold text-slate-500 truncate">{route.path}</span>
+        </div>
+        <div className="flex items-center gap-1">
+            <Link href={route.path} target="_blank">
+                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#6B16ED]">
+                    <ExternalLink className="h-4 w-4" />
+                </Button>
+            </Link>
+            <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => onDelete(route.path, route.name)}
+                className="h-8 w-8 rounded-lg text-slate-400 hover:text-red-600"
+            >
+                <Trash2 className="h-4 w-4" />
+            </Button>
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <Label className="text-[10px] font-bold uppercase tracking-wider text-slate-400" htmlFor={`name-${route.path}`}>Apelido Interno</Label>
           <Input 
-            className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")} 
-            id={`routeName-${validPath}`} 
-            type="text" 
+            className="h-10 text-sm bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 rounded-xl"
+            id={`name-${route.path}`} 
             value={routeName}
             onChange={(e) => setRouteName(e.target.value)}
           />
         </div>
         
-        {/* Caminho (URL) */}
-        <div>
-          <Label className="block text-sm font-medium text-gray-600 dark:text-zinc-300 mb-1" htmlFor={`routePath-${validPath}`}>Caminho (URL)</Label>
-          <Input 
-            className={cn(inputBg, borderColor, "text-gray-500 dark:text-zinc-400")} 
-            id={`routePath-${validPath}`} 
-            type="text" 
-            value={validPath}
-            readOnly
-          />
-        </div>
-        
-        {/* Conteúdo Atribuído */}
-        <div>
-          <Label className="block text-sm font-medium text-gray-600 dark:text-zinc-300 mb-1" htmlFor={`routeContent-${validPath}`}>Conteúdo Atribuído</Label>
+        <div className="space-y-1">
+          <Label className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Conteúdo de Destino</Label>
           <Select value={selectedContent} onValueChange={setSelectedContent}>
-            <SelectTrigger className={cn(inputBg, borderColor, "text-gray-900 dark:text-white")}>
+            <SelectTrigger className="h-10 text-sm bg-white dark:bg-slate-950 border-slate-200 dark:border-slate-800 rounded-xl">
               <SelectValue placeholder="Selecione o conteúdo" />
             </SelectTrigger>
-            <SelectContent className={cn(selectContentBg, "text-gray-900 dark:text-white", borderColor)}>
+            <SelectContent className="rounded-xl border-slate-200 dark:border-slate-800">
               {contentOptions.map(opt => (
-                <SelectItem key={opt.id} value={opt.id} className="focus:bg-gray-100 dark:focus:bg-[#1e293b]">
+                <SelectItem key={opt.id} value={opt.id} className="text-sm rounded-lg">
                   {opt.name}
                 </SelectItem>
               ))}
@@ -115,26 +103,15 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
         </div>
       </div>
       
-      <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200 dark:border-[#334155]">
-        
-        {/* Link de Visualização */}
-        <Link href={validPath} target="_blank">
-            <Button variant="outline" size="sm" className={cn(borderColor, "hover:bg-gray-100 dark:hover:bg-[#1e293b] text-gray-900 dark:text-white")}>
-                <ExternalLink className="h-4 w-4" />
-            </Button>
-        </Link>
-
-        {/* Botão Salvar */}
+      {isChanged && (
         <Button 
           onClick={handleSave} 
-          disabled={isSaving || !isChanged}
-          size="sm"
-          className={primaryButtonClasses}
+          disabled={isSaving}
+          className="w-full h-10 bg-[#6B16ED] hover:bg-[#5512C7] text-white rounded-xl font-bold text-xs animate-in slide-in-from-top-2"
         >
-          <Save className="h-4 w-4 mr-1.5" />
-          {isSaving ? "Salvando..." : "Salvar"}
+          {isSaving ? "Salvando..." : "Salvar Alterações"}
         </Button>
-      </div>
+      )}
     </div>
   );
 }

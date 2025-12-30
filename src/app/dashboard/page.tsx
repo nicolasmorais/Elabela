@@ -11,10 +11,7 @@ import {
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Route, ExternalLink, RefreshCw } from 'lucide-react';
+import { Route, Plus, RefreshCw, Layout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
 import { UTMLinkGenerator } from '@/components/dashboard/UTMLinkGenerator';
@@ -33,10 +30,9 @@ interface ExistingRoute {
 }
 
 interface AutoRoute {
-  [slug: string]: string; // slug -> advertorialId
+  [slug: string]: string;
 }
 
-// Conteúdos estáticos disponíveis
 const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'v1', name: 'Advertorial V1 (Original)' },
     { id: 'v2', name: 'Advertorial V2' },
@@ -56,36 +52,22 @@ export default function DashboardPage() {
   const fetchAllData = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      console.log("Dashboard: Buscando dados...");
-      
       const [advRes, routeRes, autoRouteRes] = await Promise.all([
         fetch('/api/custom-advertorials'),
         fetch('/api/routes'),
         fetch('/api/auto-routes')
       ]);
 
-      console.log("Dashboard: Respostas recebidas - Adv:", advRes.status, "Routes:", routeRes.status, "AutoRoutes:", autoRouteRes.status);
+      if (!advRes.ok || !routeRes.ok || !autoRouteRes.ok) throw new Error('Falha ao buscar dados');
 
-      if (!advRes.ok || !routeRes.ok || !autoRouteRes.ok) {
-        throw new Error(`Falha ao buscar dados. Adv: ${advRes.status}, Routes: ${routeRes.status}, AutoRoutes: ${autoRouteRes.status}`);
-      }
-
-      const routeData: ExistingRoute[] = await routeRes.json();
-      const advData: CustomAdvertorial[] = await advRes.json();
-      const autoRouteData: AutoRoute = await autoRouteRes.json();
-      
-      console.log("Dashboard: Dados recebidos - Advertoriais:", advData.length, "Rotas:", routeData.length, "AutoRotas:", Object.keys(autoRouteData).length);
+      const routeData = await routeRes.json();
+      const advData = await advRes.json();
+      const autoRouteData = await autoRouteRes.json();
 
       setAdvertorials(advData);
       setExistingRoutes(routeData);
       setAutoRoutes(autoRouteData);
-
-      if (advData.length === 0) {
-        toast.warning("Nenhum advertorial dinâmico encontrado. Crie um novo em 'Meus Advertoriais'.");
-      }
-
     } catch (error: any) {
-      console.error("Dashboard: Erro ao buscar dados:", error);
       toast.error(`Falha ao carregar os dados: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -101,142 +83,103 @@ export default function DashboardPage() {
       const response = await fetch('/api/routes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          path, 
-          contentId, 
-          name: name || `Rota Personalizada: ${path}`
-        }),
+        body: JSON.stringify({ path, contentId, name }),
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to save route');
-      }
-
-      const result = await response.json();
-      toast.success(`Rota ${path} atualizada com sucesso!`);
-      fetchAllData(); // Atualiza todos os dados
+      if (!response.ok) throw new Error('Failed to save route');
+      toast.success(`Rota ${path} atualizada!`);
+      fetchAllData();
     } catch (error) {
-      console.error("Erro ao salvar rota:", error);
-      toast.error(error instanceof Error ? error.message : "Falha ao salvar a rota.");
-      throw error; // Re-lança para que o RouteCard possa tratar
+      toast.error("Falha ao salvar a rota.");
     }
   };
 
   const handleDeleteRoute = async (path: string, name: string): Promise<void> => {
-    if (!window.confirm(`Tem certeza que deseja excluir a rota: ${name} (${path})?`)) {
-      return;
-    }
-    
+    if (!window.confirm(`Excluir rota: ${name}?`)) return;
     try {
       const response = await fetch('/api/routes', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ path }),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete route');
-      }
-
-      toast.success(`Rota ${path} excluída com sucesso!`);
-      fetchAllData(); // Atualiza todos os dados
+      if (!response.ok) throw new Error('Failed to delete');
+      toast.success(`Rota excluída!`);
+      fetchAllData();
     } catch (error) {
-      console.error("Erro ao excluir rota:", error);
-      toast.error("Falha ao excluir a rota.");
+      toast.error("Falha ao excluir.");
     }
   };
-
-  // Cores Dinâmicas
-  const cardBg = 'bg-white dark:bg-[#1e293b]';
-  const borderColor = 'border-gray-200 dark:border-[#334155]';
-  const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
-  const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
-  const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
-  const textColor = 'text-gray-900 dark:text-white';
-  const labelColor = 'text-gray-600 dark:text-zinc-300';
 
   return (
     <>
       <Toaster richColors />
       
-      <header className="mb-8 pt-4 flex items-center justify-between">
-        <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Gerenciamento de Rotas</h1>
-            <p className="mt-1 text-gray-500 dark:text-zinc-400">Crie novas rotas ou atribua conteúdo de advertoriais a URLs existentes.</p>
-        </div>
-        <Button onClick={fetchAllData} variant="outline" className={borderColor}>
-          <RefreshCw className="mr-2 h-4 w-4" />
-          Atualizar Lista
-        </Button>
-      </header>
+      <div className="max-w-6xl mx-auto pb-10">
+        <header className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="animate-in fade-in slide-in-from-left-4 duration-700">
+              <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Route Control</h1>
+              <p className="mt-2 text-slate-500 dark:text-slate-400 font-medium max-w-lg">
+                Gerencie URLs e redirecionamentos. Aponte caminhos amigáveis para seus advertoriais.
+              </p>
+          </div>
+          <Button onClick={fetchAllData} variant="outline" className="h-11 rounded-xl font-bold border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 animate-in fade-in slide-in-from-right-4 duration-700">
+            <RefreshCw className={cn("mr-2 h-4 w-4", isLoading && "animate-spin")} />
+            Atualizar Status
+          </Button>
+        </header>
 
-      <main className="space-y-8">
-        
-        {/* NOVO: Auto Route Manager */}
-        <AutoRouteManager 
-          autoRoutes={autoRoutes}
-          contentOptions={allContentOptions}
-          onRefresh={fetchAllData}
-        />
-
-        {/* Card 1: Criar Nova Rota */}
-        <Card className={cn(cardBg, borderColor, textColor)}>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <Plus className="h-5 w-5" />
-                    Rotas Fixas (Legado)
-                </CardTitle>
-                <CardDescription className="text-gray-500 dark:text-zinc-400">
-                    Crie rotas permanentes no banco de dados. Use as "Rotas Automáticas" acima para redirecionamentos dinâmicos.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <CreateRouteDialog 
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Coluna Esquerda: Auto Routes e Ferramentas */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="animate-in fade-in zoom-in-95 duration-500 delay-100">
+                <AutoRouteManager 
+                    autoRoutes={autoRoutes}
                     contentOptions={allContentOptions}
-                    onRouteCreated={fetchAllData}
+                    onRefresh={fetchAllData}
                 />
-            </CardContent>
-        </Card>
+            </div>
 
-        {/* Card 2: Gerador de Links UTM */}
-        <Card className={cn(cardBg, borderColor, textColor)}>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                    <Route className="h-5 w-5" />
-                    Gerador de Links UTM
-                </CardTitle>
-                <CardDescription className="text-gray-500 dark:text-zinc-400">
-                    Crie links com parâmetros UTM e macros da Taboola para rastreamento de campanhas.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <UTMLinkGenerator />
-            </CardContent>
-        </Card>
+            <Card className="border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm rounded-3xl overflow-hidden shadow-sm animate-in fade-in zoom-in-95 duration-500 delay-200">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-lg">
+                        <Route className="h-5 w-5 text-[#6B16ED]" />
+                        Gerador de Links UTM
+                    </CardTitle>
+                    <CardDescription>Rastreie suas campanhas com parâmetros dinâmicos.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <UTMLinkGenerator />
+                </CardContent>
+            </Card>
+          </div>
 
-        {/* Card 3: Rotas Existentes */}
-        <Card className={cn(cardBg, borderColor, textColor)}>
-            <CardHeader>
-                <CardTitle>Rotas Fixas Existentes</CardTitle>
-                <CardDescription className="text-gray-500 dark:text-zinc-400">
-                    Lista de todas as URLs permanentes mapeadas no sistema.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                {isLoading ? (
-                    <div className="space-y-3">
-                        {Array.from({ length: 3 }).map((_, i) => (
-                            <Skeleton key={i} className="h-24 w-full bg-gray-200 dark:bg-[#334155]" />
-                        ))}
+          {/* Coluna Direita: Rotas Fixas */}
+          <div className="lg:col-span-5 space-y-8 animate-in fade-in slide-in-from-right-4 duration-700 delay-300">
+            <Card className="border-slate-200 dark:border-slate-800 rounded-3xl shadow-sm">
+                <CardHeader className="border-b border-slate-100 dark:border-slate-800 pb-6">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <CardTitle className="text-lg">Rotas Fixas</CardTitle>
+                            <CardDescription>URLs permanentes no banco.</CardDescription>
+                        </div>
+                        <CreateRouteDialog 
+                            contentOptions={allContentOptions}
+                            onRouteCreated={fetchAllData}
+                        />
                     </div>
-                ) : existingRoutes.length === 0 ? (
-                    <p className="text-center text-gray-500 dark:text-zinc-500">
-                        Nenhuma rota fixa encontrada. Crie uma nova acima.
-                    </p>
-                ) : (
-                    <div className="space-y-6">
-                        {existingRoutes.map((route) => (
+                </CardHeader>
+                <CardContent className="p-4 space-y-4">
+                    {isLoading ? (
+                        Array.from({ length: 3 }).map((_, i) => (
+                            <Skeleton key={i} className="h-40 w-full rounded-2xl bg-slate-50 dark:bg-slate-900" />
+                        ))
+                    ) : existingRoutes.length === 0 ? (
+                        <div className="py-12 text-center opacity-40">
+                            <Layout className="h-10 w-10 mx-auto mb-2" />
+                            <p className="font-medium">Nenhuma rota fixa.</p>
+                        </div>
+                    ) : (
+                        existingRoutes.map((route) => (
                             <RouteCard
                                 key={route.path}
                                 route={route}
@@ -244,12 +187,14 @@ export default function DashboardPage() {
                                 onSave={handleSaveRoute}
                                 onDelete={handleDeleteRoute}
                             />
-                        ))}
-                    </div>
-                )}
-            </CardContent>
-        </Card>
-      </main>
+                        ))
+                    )}
+                </CardContent>
+            </Card>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 }
