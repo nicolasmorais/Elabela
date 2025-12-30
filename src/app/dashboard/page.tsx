@@ -24,7 +24,8 @@ import {
   Settings2,
   Filter,
   ArrowRightLeft,
-  Link2
+  Link2,
+  LayoutGrid // Added correct icon import
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
@@ -173,7 +174,7 @@ export default function DashboardPage() {
             {[
                 { label: 'Rotas Fixas', val: existingRoutes.length, icon: Globe, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
                 { label: 'Redirecionamentos', val: Object.keys(autoRoutes).length, icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
-                { label: 'Conteúdos', val: allContentOptions.length, icon: Layout, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
+                { label: 'Conteúdos', val: allContentOptions.length, icon: LayoutGrid, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
                 { label: 'Status BD', val: 'Online', icon: Activity, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
             ].map((stat, i) => (
                 <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-sm">
