@@ -9,10 +9,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Route, Plus, RefreshCw, Layout, Search, Globe, Activity, Zap, ArrowUpRight } from 'lucide-react';
+import { 
+  Route, 
+  Plus, 
+  RefreshCw, 
+  Search, 
+  Globe, 
+  Activity, 
+  Zap, 
+  Settings2,
+  Filter,
+  ArrowRightLeft,
+  Link2
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
 import { UTMLinkGenerator } from '@/components/dashboard/UTMLinkGenerator';
@@ -121,140 +134,140 @@ export default function DashboardPage() {
     <>
       <Toaster richColors position="top-center" />
       
-      <div className="max-w-[1400px] mx-auto space-y-10 pb-20">
+      <div className="max-w-[1400px] mx-auto space-y-8 pb-20">
         
-        {/* Modern Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div className="space-y-1">
-            <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
-              Route Control 
-              <span className="text-xs bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 px-2 py-1 rounded-full font-bold uppercase tracking-widest">Enterprise</span>
-            </h1>
-            <p className="text-slate-500 dark:text-slate-400 text-lg font-medium">
-                Gerenciamento centralizado de tráfego e redirecionamentos inteligentes.
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-200 dark:border-slate-800 pb-8">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+                <div className="p-2 bg-purple-600 rounded-lg text-white">
+                    <Settings2 size={20} />
+                </div>
+                <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+                  Route Control
+                </h1>
+            </div>
+            <p className="text-slate-500 dark:text-slate-400 font-medium">
+                Gerencie o tráfego e redirecionamentos de seus advertoriais.
             </p>
           </div>
+          
           <div className="flex items-center gap-3">
-            <UTMLinkGenerator />
-            <Button onClick={fetchAllData} variant="outline" className="h-12 rounded-2xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-bold px-6">
-                <RefreshCw className={cn("mr-2 h-4 w-4", isLoading && "animate-spin")} />
-                Sincronizar
+            <Button 
+                onClick={fetchAllData} 
+                variant="outline" 
+                className="h-11 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 font-bold px-4"
+            >
+                <RefreshCw className={cn("h-4 w-4", isLoading && "animate-spin")} />
             </Button>
+            <UTMLinkGenerator />
+            <CreateRouteDialog 
+                contentOptions={allContentOptions}
+                onRouteCreated={fetchAllData}
+            />
           </div>
         </div>
 
-        {/* Quick Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-[2rem] shadow-sm flex items-center gap-5">
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-2xl text-blue-600">
-                    <Globe size={28} />
+        {/* Status Mini Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+                { label: 'Rotas Fixas', val: existingRoutes.length, icon: Globe, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
+                { label: 'Redirecionamentos', val: Object.keys(autoRoutes).length, icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
+                { label: 'Conteúdos', val: allContentOptions.length, icon: Layout, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
+                { label: 'Status BD', val: 'Online', icon: Activity, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
+            ].map((stat, i) => (
+                <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-sm">
+                    <div className={cn("p-2 rounded-xl", stat.bg, stat.color)}>
+                        <stat.icon size={20} />
+                    </div>
+                    <div>
+                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{stat.label}</p>
+                        <p className="text-lg font-black">{stat.val}</p>
+                    </div>
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-slate-500 uppercase tracking-tighter">Rotas Mapeadas</p>
-                    <p className="text-3xl font-black">{existingRoutes.length + Object.keys(autoRoutes).length}</p>
-                </div>
-            </div>
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-[2rem] shadow-sm flex items-center gap-5">
-                <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-2xl text-purple-600">
-                    <Zap size={28} />
-                </div>
-                <div>
-                    <p className="text-sm font-bold text-slate-500 uppercase tracking-tighter">Automáticos</p>
-                    <p className="text-3xl font-black">{Object.keys(autoRoutes).length}</p>
-                </div>
-            </div>
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-[2rem] shadow-sm flex items-center gap-5">
-                <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-2xl text-green-600">
-                    <Activity size={28} />
-                </div>
-                <div>
-                    <p className="text-sm font-bold text-slate-500 uppercase tracking-tighter">Status do Banco</p>
-                    <p className="text-xl font-black text-green-600 flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                        Conectado
-                    </p>
-                </div>
-            </div>
+            ))}
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-10">
-          
-          {/* Main Action Area: Auto Routes & Management */}
-          <div className="xl:col-span-8 space-y-10">
-            <section className="space-y-4">
-                <div className="flex items-center justify-between px-2">
-                    <h2 className="text-2xl font-black flex items-center gap-3">
-                        <Zap className="text-yellow-500" /> Redirecionamentos Instantâneos
-                    </h2>
+        <Tabs defaultValue="routes" className="space-y-6">
+          <TabsList className="bg-slate-100 dark:bg-slate-900 p-1 rounded-xl border border-slate-200 dark:border-slate-800 h-12">
+            <TabsTrigger value="routes" className="rounded-lg px-6 font-bold data-[state=active]:bg-white dark:data-[state=active]:bg-slate-800 data-[state=active]:shadow-sm">
+                <ArrowRightLeft className="h-4 w-4 mr-2" />
+                Gerenciar Rotas
+            </TabsTrigger>
+            <TabsTrigger value="auto" className="rounded-lg px-6 font-bold data-[state=active]:bg-white dark:data-[state=active]:bg-slate-800 data-[state=active]:shadow-sm">
+                <Zap className="h-4 w-4 mr-2" />
+                Redirecionamentos Rápidos
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="routes" className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-400">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div className="flex-1">
+                    <h2 className="text-xl font-black">Rotas Fixas e Permanentes</h2>
+                    <p className="text-sm text-slate-500 font-medium">Gerencie URLs específicas mapeadas para seus conteúdos.</p>
                 </div>
+                <div className="relative w-full md:w-80">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                    <Input 
+                        placeholder="Buscar rota ou apelido..." 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 rounded-xl pl-10 h-11"
+                    />
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {isLoading ? (
+                    Array.from({ length: 6 }).map((_, i) => (
+                        <Skeleton key={i} className="h-48 w-full rounded-3xl bg-slate-100 dark:bg-slate-900" />
+                    ))
+                ) : filteredRoutes.length === 0 ? (
+                    <div className="col-span-full py-20 text-center bg-slate-50 dark:bg-slate-900/30 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+                        <Globe size={48} className="mx-auto text-slate-300 mb-4" />
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white">Nenhuma rota encontrada</h3>
+                        <p className="text-slate-500 max-w-xs mx-auto mt-2">Crie uma nova rota fixa para começar a direcionar tráfego.</p>
+                        <Button variant="link" onClick={() => setSearchQuery('')} className="text-purple-600 font-bold mt-2">Limpar filtros</Button>
+                    </div>
+                ) : (
+                    filteredRoutes.map((route) => (
+                        <RouteCard
+                            key={route.path}
+                            route={route}
+                            contentOptions={allContentOptions}
+                            onSave={handleSaveRoute}
+                            onDelete={handleDeleteRoute}
+                        />
+                    ))
+                )}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="auto" className="animate-in fade-in slide-in-from-bottom-2 duration-400">
+            <div className="max-w-4xl">
                 <AutoRouteManager 
                     autoRoutes={autoRoutes}
                     contentOptions={allContentOptions}
                     onRefresh={fetchAllData}
                 />
-            </section>
-          </div>
-
-          {/* Side Area: Fixed/Legacy Routes */}
-          <div className="xl:col-span-4 space-y-6">
-            <div className="bg-slate-900 dark:bg-slate-900 rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
-                    <Route size={120} />
-                </div>
-                <h2 className="text-2xl font-black mb-2 relative z-10">Rotas Fixas</h2>
-                <p className="text-slate-400 mb-8 relative z-10 font-medium">URLs permanentes configuradas no banco de dados.</p>
-                
-                <div className="space-y-4 relative z-10">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
-                        <Input 
-                            placeholder="Buscar rota..." 
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="bg-white/10 border-white/10 text-white placeholder:text-slate-500 h-12 rounded-2xl pl-10 focus:ring-purple-500"
-                        />
-                    </div>
-                    
-                    <CreateRouteDialog 
-                        contentOptions={allContentOptions}
-                        onRouteCreated={fetchAllData}
-                    />
-                </div>
-
-                <div className="mt-10 space-y-4 relative z-10 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-white/10">
-                    {isLoading ? (
-                        Array.from({ length: 3 }).map((_, i) => (
-                            <Skeleton key={i} className="h-32 w-full rounded-3xl bg-white/5" />
-                        ))
-                    ) : filteredRoutes.length === 0 ? (
-                        <div className="text-center py-10 opacity-30">
-                            <p className="text-sm">Nenhuma rota fixa.</p>
-                        </div>
-                    ) : (
-                        filteredRoutes.map((route) => (
-                            <div key={route.path} className="bg-white/5 hover:bg-white/10 border border-white/5 rounded-3xl p-5 transition-all">
-                                <div className="flex items-center justify-between mb-4">
-                                    <span className="font-mono text-xs text-purple-400 font-bold">{route.path}</span>
-                                    <div className="flex gap-2">
-                                        <Link href={route.path} target="_blank">
-                                            <ArrowUpRight size={16} className="text-slate-500 hover:text-white transition-colors" />
-                                        </Link>
-                                    </div>
-                                </div>
-                                <RouteCard
-                                    route={route}
-                                    contentOptions={allContentOptions}
-                                    onSave={handleSaveRoute}
-                                    onDelete={handleDeleteRoute}
-                                />
-                            </div>
-                        ))
-                    )}
-                </div>
             </div>
-          </div>
+          </TabsContent>
+        </Tabs>
 
+        {/* Footer info tip */}
+        <div className="bg-slate-900 rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="absolute top-0 right-0 p-12 opacity-5">
+                <Link2 size={160} />
+            </div>
+            <div className="relative z-10 text-center md:text-left">
+                <h3 className="text-xl font-black mb-2">Precisa de um link de rastreamento?</h3>
+                <p className="text-slate-400 font-medium">Use nosso gerador de UTMs para criar links prontos para Taboola e Facebook.</p>
+            </div>
+            <div className="relative z-10">
+                <UTMLinkGenerator />
+            </div>
         </div>
+
       </div>
     </>
   );
