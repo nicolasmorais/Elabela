@@ -7,11 +7,6 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'Login - PageShift',
   description: 'Acesse o painel de gerenciamento de advertoriais',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
-  },
 };
 
 export default function LoginPage() {
@@ -19,32 +14,51 @@ export default function LoginPage() {
 
   return (
     <>
-      <Toaster richColors />
-      <div className={cn("relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden p-6 bg-background")}>
+      <Toaster richColors position="top-center" />
+      <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-slate-50 dark:bg-[#020617]">
         
-        <div className="w-full max-w-sm mx-auto space-y-8">
-          
-          <div className="mb-8 flex justify-start">
-            <Image
-              src={logoUrl}
-              alt="PageShift Logo"
-              width={150}
-              height={50}
-              className="h-[50px] w-auto"
-              priority
-            />
-          </div>
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 z-0">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#6B16ED]/10 blur-[120px]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]" />
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-[0.05]" />
+        </div>
 
-          <div className="mb-8">
-            <h1 className="text-gray-900 dark:text-white text-4xl font-bold leading-tight tracking-[-0.015em] text-left">
-              Acesse sua conta
-            </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-lg font-normal leading-normal mt-2">
-              Insira a senha para acessar o painel
-            </p>
+        <div className="relative z-10 w-full max-w-md px-6">
+          <div className="flex flex-col items-center text-center space-y-8">
+            
+            {/* Logo Area */}
+            <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
+                <Image
+                  src={logoUrl}
+                  alt="PageShift Logo"
+                  width={180}
+                  height={60}
+                  className="h-14 w-auto drop-shadow-sm"
+                  priority
+                />
+            </div>
+
+            {/* Form Card */}
+            <div className="w-full bg-white dark:bg-slate-900/50 backdrop-blur-xl rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-2xl shadow-slate-200/50 dark:shadow-none animate-in fade-in zoom-in-95 duration-700 delay-200">
+                <div className="mb-8 text-center">
+                    <h1 className="text-slate-900 dark:text-white text-3xl font-bold tracking-tight">
+                        Página de Acesso
+                    </h1>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mt-2 font-medium">
+                        Insira sua senha de segurança abaixo
+                    </p>
+                </div>
+                
+                <LoginFormOffline />
+                
+                <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/50 text-center">
+                    <p className="text-xs text-slate-400 font-medium uppercase tracking-widest">
+                        PageShift • Enterprise v2.0
+                    </p>
+                </div>
+            </div>
           </div>
-          
-          <LoginFormOffline />
         </div>
       </div>
     </>

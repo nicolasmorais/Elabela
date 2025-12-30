@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight, Lock, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
@@ -31,71 +31,69 @@ export const LoginFormOffline = () => {
         router.push('/dashboard');
       } else {
         const errorData = await response.json();
-        toast.error(errorData.message || "Senha incorreta.");
+        toast.error(errorData.message || "Acesso negado.");
+        setPassword('');
       }
     } catch (error) {
       console.error("Login failed:", error);
-      toast.error("Erro de conexão. Tente novamente.");
+      toast.error("Erro ao conectar com o servidor.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Classes dinâmicas para Input
-  const inputClasses = "flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl h-16 p-4 text-xl font-normal leading-normal border-none";
-  
-  // Cores do Input: Claro (fundo cinza, texto escuro) / Escuro (fundo azul escuro, texto branco)
-  const inputThemeClasses = "bg-gray-100 text-gray-900 placeholder:text-gray-500 focus:ring-2 focus:ring-[#6B16ED] focus:border-[#6B16ED] dark:bg-[#1e293b] dark:text-white dark:placeholder:text-gray-400 dark:focus:ring-[#6B16ED]/50 dark:focus:border-[#6B16ED]";
-  
-  // Botão Primário
-  const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
-  
-  // Offset do anel de foco (deve ser o fundo da página)
-  const focusRingOffset = 'focus:ring-offset-background dark:focus:ring-offset-[#0f172a]'; 
-
   return (
-    <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-      {/* Password Input */}
-      <label className="flex flex-col w-full">
-        <div className="flex w-full flex-1 items-stretch rounded-lg relative">
+    <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+      <div className="space-y-2">
+        <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">
+          Senha mestra
+        </label>
+        <div className="relative group">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400 group-focus-within:text-[#6B16ED] transition-colors">
+            <Lock size={18} />
+          </div>
           <Input
-            className={cn(inputClasses, inputThemeClasses, "pr-12")}
-            placeholder="Digite sua senha"
+            className={cn(
+                "h-14 pl-11 pr-12 text-lg rounded-2xl border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 transition-all",
+                "focus:ring-4 focus:ring-[#6B16ED]/10 focus:border-[#6B16ED] placeholder:text-slate-400"
+            )}
+            placeholder="••••••••"
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            autoFocus
           />
-          <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-4">
-            <Button 
-                type="button" 
-                variant="ghost" 
-                size="icon" 
-                // Cores do ícone: Claro (cinza, hover escuro) / Escuro (cinza, hover branco)
-                className="h-full w-full text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                onClick={() => setShowPassword(!showPassword)}
-            >
-                {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
-            </Button>
-          </div>
+          <button 
+            type="button"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
         </div>
-      </label>
+      </div>
 
-      {/* Submit Button */}
       <Button
         type="submit"
         className={cn(
-          "h-16 px-6 text-xl font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6B16ED] rounded-xl",
-          primaryButtonClasses,
-          focusRingOffset,
-          isSubmitting && "opacity-70 cursor-not-allowed"
+          "h-14 text-lg font-bold rounded-2xl transition-all shadow-xl shadow-[#6B16ED]/20 hover:shadow-[#6B16ED]/30",
+          "bg-[#6B16ED] hover:bg-[#5512C7] text-white",
+          isSubmitting && "opacity-80 scale-[0.98]"
         )}
         disabled={isSubmitting}
       >
-        <span className="truncate flex items-center gap-2">
-            {isSubmitting ? 'Acessando...' : 'Acessar sua conta'}
-            {!isSubmitting && <ArrowRight className="h-5 w-5" />}
-        </span>
+        {isSubmitting ? (
+          <div className="flex items-center gap-2">
+            <Loader2 className="h-5 w-5 animate-spin" />
+            <span>Validando...</span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span>Entrar no Painel</span>
+            <ArrowRight size={20} />
+          </div>
+        )}
       </Button>
     </form>
   );
