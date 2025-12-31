@@ -194,7 +194,7 @@ export function MenopausePage() {
             <div className="space-y-6">
               {[
                 "Você já acordou encharcada de suor às 3h da manhã, sentindo que seu corpo está pegando fogo por dentro?",
-                "Já teve que sair correndo de uma conversa porque o calorão veio do nada e você sentiu vergonha?",
+                "Já teve que sair correndo de uma conversa porque o calorão veio do nada e você sentiu vergemha?",
                 "Já chorou sem motivo, gritou com quem você ama, e depois se perguntou: 'O que está acontecendo comigo?'",
                 "Já ouviu do médico: 'Isso é normal da idade. Você vai ter que aprender a conviver'?"
               ].map((text, i) => (
@@ -345,10 +345,9 @@ export function MenopausePage() {
                 { n: "Patrícia Lima, 52 anos", t: "Na primeira semana, dormi 7h sem acordar. MILAGRE.", img: "12" }
               ].map((test, i) => (
                 <div key={i} className="bg-white p-10 rounded-[3rem] shadow-xl border border-white flex flex-col gap-6 relative group transition-all hover:-translate-y-2">
-                  <div className="absolute -top-6 -left-6 text-pink-100 text-9xl font-serif select-none pointer-events-none group-hover:text-pink-200 transition-colors opacity-40">"</div>
+                  <div className="absolute -top-6 -left-6 text-pink-100 text-9xl font-serif select-none pointer-events-none group-hover:text-pink-200 transition-colors opacity-40">“</div>
                   <p className="italic text-slate-600 text-xl font-medium leading-relaxed relative z-10">"{test.t}"</p>
                   <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                    <img src={`https://i.pravatar.cc/150?img=${test.img}`} className="h-14 w-14 rounded-2xl object-cover shadow-lg" alt={test.n} />
                     <div>
                       <p className="font-black text-slate-900 text-lg flex items-center gap-2">
                         {test.n}
