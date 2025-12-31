@@ -22,12 +22,17 @@ import {
   Zap,
   Smile,
   Video,
-  Play
+  Play,
+  Gift,
+  CheckCircle2,
+  TrendingUp,
+  Gem
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Card, CardContent } from '@/components/ui/card';
 import { PageTracker } from "./PageTracker";
+import { cn } from '@/lib/utils';
 
 const TESTIMONIAL_VIDEOS = [
   {
@@ -44,60 +49,40 @@ const TESTIMONIAL_VIDEOS = [
   }
 ];
 
-// Componente para o vídeo com播放 controls
 const VideoPlayer = ({ video, index }: { video: typeof TESTIMONIAL_VIDEOS[0], index: number }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error('Erro ao reproduzir vídeo:', error);
-      });
-    }
-  };
-
   return (
-    <div className="group w-full max-w-[300px]">
-      <div className="relative aspect-[9/16] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-gray-100 bg-gray-900">
+    <div className="group w-full max-w-[300px] animate-in fade-in zoom-in duration-700" style={{ animationDelay: `${index * 150}ms` }}>
+      <div className="relative aspect-[9/16] w-full rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-[6px] border-white bg-slate-900 transition-transform hover:scale-[1.02]">
         <video
           ref={videoRef}
-          className="w-full h-full object-cover rounded-[2rem]"
+          className="w-full h-full object-cover"
           poster={video.poster}
           controls
           playsInline
           preload="metadata"
         >
           <source src={video.url} type="video/mp4" />
-          Seu navegador não suporta o elemento de vídeo.
         </video>
-        
-        {/* Overlay customizado quando não está tocando */}
-        <div 
-          className="absolute inset-0 bg-black/30 rounded-[2rem] flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
-          onClick={handlePlay}
-        >
-          <div className="bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-xl pointer-events-auto">
-            <Play className="h-8 w-8 text-pink-600" />
-          </div>
+        <div className="absolute top-4 left-4 bg-pink-600/90 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1">
+            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div> AO VIVO
         </div>
-        
-        {/* Efeitos de borda */}
-        <div className="absolute inset-0 border-2 border-white/20 rounded-[2rem] pointer-events-none"></div>
       </div>
-      <div className="mt-6 flex flex-col items-center gap-2">
-        <div className="flex gap-1 text-yellow-400">
-          {[...Array(5)].map((_, idx) => <Star key={idx} size={16} fill="currentColor" />)}
+      <div className="mt-6 text-center space-y-2">
+        <div className="flex justify-center gap-1 text-yellow-400">
+          {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
         </div>
-        <span className="text-sm font-black text-gray-400 uppercase tracking-tighter flex items-center gap-2">
-          <Video size={14} className="text-pink-600" /> Depoimento Verificado
-        </span>
+        <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+           Depoimento Verificado
+        </p>
       </div>
     </div>
   );
 };
 
 export function MenopausePage() {
-  const [timeLeft, setTimeLeft] = useState(1187); // 19:47 em segundos
+  const [timeLeft, setTimeLeft] = useState(1187);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -116,99 +101,72 @@ export function MenopausePage() {
     <>
       <PageTracker contentId="menopausa" />
       
-      {/* Script do Taboola Pixel - Carregado dinamicamente com PageView padrão */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            !function(t, f, a, x) {
-              if (!document.getElementById(x)) {
-                t.async = 1; t.src = a; t.id = x;
-                f.parentNode.insertBefore(t, f);
-              }
-            }(document.createElement('script'),
-            document.getElementsByTagName('script')[0],
-            '//cdn.taboola.com/libtrc/unip/1959176/tfa.js',
-            'tb_tfa_script');
-          `
-        }}
-      />
-      
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window._tfa = window._tfa || [];
-            window._tfa.push({notify: 'event', name: 'page_view', id: 1959176});
-          `
-        }}
-      />
-      
-      <noscript>
-        <img 
-          src="https://trc.taboola.com/1959176/log/3/unip?en=page_view" 
-          width="0" 
-          height="0" 
-          style={{ display: 'none' }} 
-        />
-      </noscript>
-      
-      <div className="bg-white text-gray-900 font-space-grotesk selection:bg-pink-100 antialiased">
+      <div className="bg-white text-slate-900 font-sans selection:bg-pink-100 antialiased">
         
-        {/* TOP BAR URGÊNCIA */}
-        <div className="bg-red-600 text-white text-center py-2 px-4 text-xs md:text-sm font-bold sticky top-0 z-50 shadow-lg">
-          <div className="max-w-4xl mx-auto flex items-center justify-center gap-2 md:gap-4">
-            <span className="flex items-center gap-1">
-              <Clock className="h-4 w-4 animate-pulse" />
-              OFERTA EXPIRA EM: {formatTime(timeLeft)}
-            </span>
-            <span className="hidden md:inline">|</span>
-            <span className="flex items-center gap-1">
-              <Users className="h-4 w-4" />
-              APENAS 23 VAGAS RESTANTES
-            </span>
+        {/* TOP BAR URGÊNCIA - MAIS MODERNA */}
+        <div className="bg-slate-900 text-white py-3 px-4 sticky top-0 z-50 shadow-2xl">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
+            <div className="flex items-center gap-4">
+                <span className="flex items-center gap-2 text-pink-500">
+                    <div className="w-2 h-2 bg-pink-500 rounded-full animate-ping"></div>
+                    142 pessoas vendo agora
+                </span>
+                <span className="hidden md:inline opacity-20">|</span>
+                <span className="flex items-center gap-2">
+                    <Users size={14} className="text-blue-400" />
+                    23 vagas restantes
+                </span>
+            </div>
+            <div className="bg-red-600 px-4 py-1 rounded-full flex items-center gap-2 shadow-lg shadow-red-600/20">
+              <Clock className="h-3 w-3" />
+              OFERTA EXPIRA EM: <span className="font-mono text-sm">{formatTime(timeLeft)}</span>
+            </div>
           </div>
         </div>
 
-        {/* HERO SECTION */}
-        <header className="bg-gradient-to-b from-pink-50 to-white pt-12 pb-20 px-6 border-b border-pink-100">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-space-grotesk font-black text-2xl md:text-4xl lg:text-5xl text-gray-900 leading-tight mb-6">
-              Diga <strong className="text-pink-600">Adeus</strong> aos Calorões da Menopausa em 7 Dias — <strong className="text-pink-600">Naturalmente</strong>, Sem Hormônios e Sem Gastar Fortunas!
+        {/* HERO SECTION - EFEITO GRADIENTE PREMIUM */}
+        <header className="relative pt-16 pb-24 px-6 overflow-hidden bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-pink-50 via-white to-white">
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-pink-100/30 to-transparent pointer-events-none"></div>
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-pink-200">
+                Protocolo Revelado 2024
+            </span>
+            <h1 className="text-3xl md:text-6xl lg:text-7xl text-slate-900 leading-[1.1] font-black tracking-tight mb-8">
+              Diga <span className="text-pink-600 italic">Adeus</span> aos Calorões da Menopausa em 7 Dias — <span className="underline decoration-pink-600/20 underline-offset-8">Naturalmente</span>.
             </h1>
-            <p className="text-base md:text-lg text-gray-600 mb-8 font-medium">
-              Em apenas 7 dias, você dorme melhor, controla o humor e acaba com o suor noturno — tudo com um guia simples e 100% natural
+            <p className="text-lg md:text-2xl text-slate-500 mb-12 font-medium max-w-3xl mx-auto leading-relaxed">
+              Em apenas 7 dias, você dorme melhor, controla o humor e acaba com o suor noturno — tudo com um guia simples e 100% natural.
             </p>
 
-            {/* IMAGEM DE TRANSFORMAÇÃO (HERO) */}
-            <div className="relative max-w-2xl mx-auto mb-10">
+            <div className="relative max-w-2xl mx-auto group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 to-purple-600 rounded-[3rem] blur-2xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
               <img 
                 src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_11_16%20%281%29-YiIF5Dx6Ex8EfF18VGsiRtoYLJUhpE.png" 
                 alt="Transformação Menopausa" 
-                className="rounded-3xl shadow-2xl border-4 border-white relative z-10"
+                className="rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border-8 border-white relative z-10"
               />
-              <div className="absolute -bottom-6 -right-6 bg-yellow-400 text-gray-900 p-4 rounded-2xl shadow-xl z-20 font-black text-sm rotate-12 hidden md:block">
-                ALÍVIO <br /> GARANTIDO
+              <div className="absolute -bottom-6 -right-6 bg-amber-400 text-slate-900 p-6 rounded-3xl shadow-2xl z-20 font-black text-sm rotate-6 hidden md:flex flex-col items-center gap-1 border-4 border-white">
+                <ShieldCheck size={32} />
+                <span>ALÍVIO <br /> GARANTIDO</span>
               </div>
             </div>
           </div>
         </header>
 
-        {/* SEÇÃO DE DEPOIMENTOS EM VÍDEO */}
-        <section className="py-20 px-6 bg-white border-b border-gray-100">
+        {/* DEPOIMENTOS EM VÍDEO - VISUAL MODERNO */}
+        <section className="py-24 px-6 bg-slate-50">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="text-pink-600 font-black text-sm uppercase tracking-widest bg-pink-50 px-4 py-2 rounded-full border border-pink-100 mb-4 inline-block">
-                Resultados Reais
-              </span>
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mt-4">
-                Elas Também Voltaram a Sorrir
+            <div className="text-center mb-20 space-y-4">
+              <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter">
+                Elas Voltaram a Sorrir
               </h2>
-              <p className="text-gray-500 text-lg mt-4 max-w-2xl mx-auto">
-                Assista aos depoimentos de mulheres que aplicaram o nosso método e hoje vivem livres dos sintomas da menopausa.
+              <div className="h-2 w-24 bg-pink-600 mx-auto rounded-full"></div>
+              <p className="text-slate-500 text-lg max-w-2xl mx-auto font-medium italic">
+                "Nunca imaginei que algo tão simples pudesse devolver minha liberdade."
               </p>
             </div>
 
-            {/* Grid com vídeos funcionais */}
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+            <div className="flex flex-wrap justify-center gap-10 md:gap-16">
               {TESTIMONIAL_VIDEOS.map((video, i) => (
                 <VideoPlayer key={i} video={video} index={i} />
               ))}
@@ -216,16 +174,17 @@ export function MenopausePage() {
           </div>
         </section>
 
-        {/* DOR AMPLIFICADA */}
-        <section className="py-20 px-6 bg-gray-50">
+        {/* DOR AMPLIFICADA - DESIGN DE ALERTA */}
+        <section className="py-24 px-6">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-black text-center mb-10">Me responda com sinceridade:</h2>
+            <h2 className="text-3xl font-black text-center mb-16 uppercase tracking-widest text-slate-400">Me responda com sinceridade:</h2>
             
-            <div className="mb-12">
+            <div className="relative mb-20 group">
+                <div className="absolute inset-0 bg-red-600 rounded-[3rem] blur-3xl opacity-5"></div>
                 <img 
                     src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_22_45%20%282%29-5Mq5Tv2MbDtdy5EOR55c9k8LNw1OiD.png" 
                     alt="Sintomas da Menopausa" 
-                    className="w-full h-auto rounded-3xl shadow-xl border border-gray-200"
+                    className="w-full h-auto rounded-[3rem] shadow-2xl border border-slate-100 grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
                 />
             </div>
 
@@ -236,145 +195,165 @@ export function MenopausePage() {
                 "Já chorou sem motivo, gritou com quem você ama, e depois se perguntou: 'O que está acontecendo comigo?'",
                 "Já ouviu do médico: 'Isso é normal da idade. Você vai ter que aprender a conviver'?"
               ].map((text, i) => (
-                <div key={i} className="flex gap-4 p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
-                  <div className="shrink-0 mt-1"><AlertCircle className="h-6 w-6 text-red-500" /></div>
-                  <p className="text-lg text-gray-700 leading-relaxed font-medium">{text}</p>
+                <div key={i} className="flex gap-6 p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1">
+                  <div className="shrink-0"><AlertCircle className="h-8 w-8 text-red-500" /></div>
+                  <p className="text-xl text-slate-700 leading-relaxed font-bold">{text}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-16 bg-red-600 text-white p-8 rounded-3xl text-center shadow-xl">
-              <p className="text-xl md:text-2xl font-black leading-tight mb-4">Não deveria ser assim.</p>
-              <p className="text-lg opacity-90">Sua menopausa está fora de controle porque ninguém te ensinou o básico que seu corpo precisa nessa fase.</p>
+            <div className="mt-20 bg-red-600 text-white p-12 rounded-[3.5rem] text-center shadow-[0_32px_64px_-16px_rgba(220,38,38,0.3)] relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 opacity-10"><AlertTriangle size={120} /></div>
+                <p className="text-3xl font-black leading-tight mb-6 relative z-10 tracking-tight">Não deveria ser assim.</p>
+                <p className="text-xl opacity-90 font-medium relative z-10">Sua menopausa está fora de controle porque ninguém te ensinou o básico que seu corpo precisa nessa fase.</p>
             </div>
           </div>
         </section>
 
-        {/* PROMESSA ✨ */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-pink-900 text-white rounded-[3rem] p-8 md:p-16 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-10 opacity-10">
-                    <Smile size={180} />
+        {/* PROMESSA ✨ - GLASSMORPHISM */}
+        <section className="py-24 px-6 bg-slate-950 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-gradient-to-br from-pink-900 to-pink-950 text-white rounded-[4rem] p-10 md:p-20 shadow-2xl relative overflow-hidden border border-white/10">
+                <div className="absolute top-0 right-0 p-10 opacity-5">
+                    <Smile size={240} />
                 </div>
                 
-                <div className="text-center mb-12 relative z-10">
-                    <h2 className="text-3xl md:text-4xl font-black mb-6">Imagine acordar daqui 3 dias e...</h2>
+                <div className="text-center mb-16 relative z-10">
+                    <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter leading-none">Imagine acordar daqui 3 dias e...</h2>
                 </div>
 
-                <div className="mb-12 relative z-10 flex justify-center">
-                    <img 
-                        src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_28_04%20%281%29-K5eDlKovVcScONN51oldmatjmk2e2p.png" 
-                        alt="Vida Renovada" 
-                        className="max-w-full h-auto rounded-3xl shadow-2xl border-4 border-pink-800"
-                    />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-                {[
-                    { icon: Zap, text: "Passar o dia inteiro sem um único calorão que te faça suar ou te envergonhar" },
-                    { icon: Moon, text: "Dormir a noite toda sem acordar com o corpo em chamas ou lençóis molhados" },
-                    { icon: Zap, text: "Ter energia de verdade - disposição natural para viver o seu dia" },
-                    { icon: Smile, text: "Se sentir calma e no controle em vez de explodir por qualquer coisa" },
-                    { icon: ShieldCheck, text: "Voltar a se reconhecer quando olha no espelho - a mulher forte que você sempre foi" }
-                ].map((item, i) => (
-                    <div key={i} className="flex gap-4 p-5 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
-                    <div className="shrink-0 bg-pink-600 p-2 rounded-xl text-white shadow-sm"><item.icon size={24} /></div>
-                    <p className="text-gray-100 font-bold leading-tight">{item.text}</p>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <div className="relative group">
+                        <div className="absolute -inset-4 bg-pink-500 rounded-[3rem] blur-2xl opacity-20"></div>
+                        <img 
+                            src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_28_04%20%281%29-K5eDlKovVcScONN51oldmatjmk2e2p.png" 
+                            alt="Vida Renovada" 
+                            className="w-full h-auto rounded-[3rem] shadow-2xl border-4 border-white/10"
+                        />
                     </div>
-                ))}
+                    <div className="space-y-6">
+                        {[
+                            { icon: Zap, text: "Passar o dia inteiro sem um único calorão que te faça suar ou te envergonhar" },
+                            { icon: Moon, text: "Dormir a noite toda sem acordar com o corpo em chamas ou lençóis molhados" },
+                            { icon: TrendingUp, text: "Ter energia de verdade - disposição natural para viver o seu dia" },
+                            { icon: Smile, text: "Se sentir calma e no controle em vez de explodir por qualquer coisa" },
+                            { icon: Gem, text: "Voltar a se reconhecer quando olha no espelho" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex gap-4 p-5 bg-white/5 rounded-2xl border border-white/5 backdrop-blur-md hover:bg-white/10 transition-colors group">
+                                <div className="shrink-0 bg-pink-600 p-2.5 rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform"><item.icon size={24} /></div>
+                                <p className="text-white font-black text-lg leading-tight flex items-center">{item.text}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
           </div>
         </section>
 
-        {/* O QUE VOCÊ RECEBE 📘 */}
-        <section className="py-24 bg-gray-900 text-white px-6 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent opacity-10"></div>
-          <div className="max-w-5_xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-black mb-6">Apresento: Menopausa Sob Controle</h2>
-              <p className="text-pink-400 text-xl font-bold uppercase tracking-widest">O Guia Prático da Mulher Independente</p>
+        {/* O QUE VOCÊ RECEBE - CARDS DE PRODUTO */}
+        <section className="py-32 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <span className="text-pink-600 font-black text-xs uppercase tracking-[0.4em] mb-4 block">Conteúdo Exclusivo</span>
+              <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter">Menopausa Sob Controle</h2>
+              <p className="text-slate-400 text-xl font-bold uppercase tracking-widest">O Guia Prático da Mulher Independente</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <div className="space-y-6">
-                <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10">
-                  <h3 className="text-2xl font-black mb-6 text-pink-400 flex items-center gap-2">
-                    <BookOpen /> O Que Você Descobre:
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              <div className="space-y-8">
+                <div className="bg-slate-50 p-10 rounded-[3rem] border border-slate-100 shadow-inner">
+                  <h3 className="text-3xl font-black mb-10 text-slate-900 flex items-center gap-4">
+                    <div className="bg-slate-900 p-2 rounded-xl text-white"><BookOpen /></div> O Que Você Descobre:
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-8">
                     {[
-                      { t: "O Protocolo 3-5-7", d: "Os 3 ajustes de 5 minutos que você faz em 7 dias para zerar os calorões (Página 12 - você pode começar HOJE)" },
-                      { t: "A Lista Vermelha", d: "Os 8 alimentos que você come TODO DIA e que estão jogando gasolina no fogo (Página 23)" },
-                      { t: "SOS Calorão", d: "O que fazer nos primeiros 90 segundos quando o calor chega (Página 31)" },
-                      { t: "O Segredo do Sono", d: "A rotina noturna de 7 minutos que corrige seu despertar às 3h (Página 41)" },
-                      { t: "Dose Certa de Movimento", d: "Exercícios de 5 minutos que regulam hormônios naturalmente (Página 56)" }
+                      { t: "O Protocolo 3-5-7", d: "Os 3 ajustes de 5 minutos que você faz em 7 dias para zerar os calorões (Página 12)." },
+                      { t: "A Lista Vermelha", d: "Os 8 alimentos que você come TODO DIA e que estão jogando gasolina no fogo (Página 23)." },
+                      { t: "SOS Calorão", d: "O que fazer nos primeiros 90 segundos quando o calor chega (Página 31)." },
+                      { t: "O Segredo do Sono", d: "A rotina noturna de 7 minutos que corrige seu despertar (Página 41)." },
+                      { t: "Dose Certa de Movimento", d: "Exercícios de 5 minutos que regulam hormônios naturalmente (Página 56)." }
                     ].map((item, i) => (
-                      <div key={i} className="border-b border-white/5 pb-4 last:border-0">
-                        <p className="font-black text-pink-300 mb-1">🎯 {item.t}</p>
-                        <p className="text-gray-400 text-sm leading-relaxed">{item.d}</p>
+                      <div key={i} className="flex gap-4 group">
+                        <div className="h-6 w-6 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center shrink-0 mt-1 font-black text-xs">0{i+1}</div>
+                        <div>
+                            <p className="font-black text-slate-900 text-xl mb-1 group-hover:text-pink-600 transition-colors">{item.t}</p>
+                            <p className="text-slate-500 text-lg leading-relaxed">{item.d}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <h3 className="text-2xl font-black text-center md:text-left mb-6">🎁 BÔNUS EXCLUSIVOS (Ação Imediata)</h3>
-                <div className="grid grid-cols-1 gap-4">
+              <div className="space-y-8">
+                <h3 className="text-2xl font-black text-slate-900 flex items-center gap-3 uppercase tracking-widest">
+                    <Gift className="text-pink-600" /> BÔNUS EXCLUSIVOS
+                </h3>
+                <div className="grid grid-cols-1 gap-6">
                   {[
-                    { val: "R$ 27", t: "Kit Emergência Anti-Calorão", d: "5 técnicas que funcionam em qualquer lugar em 2 min." },
+                    { val: "R$ 27", t: "Kit Emergência Anti-Calorão", d: "5 técnicas que funcionam em qualquer lugar." },
                     { val: "R$ 37", t: "Cardápio Amigo da Menopausa", d: "21 refeições simples que acalmam seu corpo." },
                     { val: "R$ 17", t: "Diário de Transformação", d: "O mapa do seu sucesso dia após dia." },
                     { val: "R$ 12", t: "Checklist de Resultados", d: "Sinais claros de que seu corpo respondeu." }
                   ].map((bonus, i) => (
-                    <div key={i} className="flex justify-between items-center bg-green-900/20 border border-green-500/30 p-4 rounded-2xl">
-                      <div>
-                        <p className="font-bold text-green-400">{bonus.t}</p>
-                        <p className="text-xs text-gray-500">{bonus.d}</p>
+                    <div key={i} className="flex justify-between items-center bg-white border-2 border-slate-100 p-6 rounded-3xl hover:border-pink-200 transition-all shadow-sm group">
+                      <div className="flex gap-4 items-center">
+                        <div className="bg-pink-50 p-3 rounded-2xl text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-all"><Check size={20} /></div>
+                        <div>
+                            <p className="font-black text-slate-900 text-lg">{bonus.t}</p>
+                            <p className="text-sm text-slate-400 font-medium">{bonus.d}</p>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <span className="text-xs text-red-400 line-through">{bonus.val}</span>
-                        <p className="font-black text-green-500">GRÁTIS</p>
+                      <div className="text-right shrink-0">
+                        <span className="text-[10px] text-slate-300 line-through font-bold">{bonus.val}</span>
+                        <p className="font-black text-green-600 text-sm uppercase tracking-widest">Grátis</p>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="bg-pink-600 p-6 rounded-2xl text-center shadow-xl">
-                  <p className="font-bold text-sm opacity-80 uppercase mb-1">Valor Total dos Bônus: R$ 93,00</p>
-                  <p className="text-2xl font-black">HOJE: GRÁTIS</p>
+                <div className="bg-pink-600 p-8 rounded-[2.5rem] text-white text-center shadow-2xl shadow-pink-600/20">
+                  <p className="font-black text-sm opacity-70 uppercase tracking-widest mb-2">Valor Total dos Bônus: R$ 93,00</p>
+                  <p className="text-3xl font-black">HOJE: GRÁTIS</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* PROVA SOCIAL ⭐ */}
-        <section className="py-24 px-6 bg-pink-50">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black mb-4">O Que Mulheres Como Você Estão Dizendo</h2>
-              <div className="flex justify-center gap-1 mb-2">
-                {[...Array(5)].map((_, i) => <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />)}
+        {/* PROVA SOCIAL ⭐ - VISUAL PREMIUM */}
+        <section className="py-32 px-6 bg-pink-50 relative overflow-hidden">
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-24 space-y-6">
+              <h2 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none">
+                Confiança de quem <br /> <span className="text-pink-600">já transformou</span> a vida.
+              </h2>
+              <div className="flex justify-center gap-1.5 text-yellow-400">
+                {[...Array(5)].map((_, i) => <Star key={i} size={32} fill="currentColor" />)}
               </div>
-              <p className="text-gray-600 font-bold">Mais de 3.127 vidas transformadas</p>
+              <p className="text-slate-500 font-black text-xl tracking-tight uppercase">Média 4.9/5 • 3.127 relatos</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {[
-                { n: "Marina Costa, 51 anos", t: "No 5º dia eu acordei e percebi: 'Espera... não tive calorão ontem!' Chorei de alívio." },
-                { n: "Roberta Almeida, 47 anos", t: "Meu marido disse que eu 'voltei'. Voltei a sorrir, voltei a ter paciência, voltei a ser EU." },
-                { n: "Cláudia Pereira, 54 anos", t: "Economizei mais de R$ 800 em consultas. E funcionou DE VERDADE." },
-                { n: "Patrícia Lima, 52 anos", t: "Na primeira semana, dormi 7h sem acordar. MILAGRE." }
+                { n: "Marina Costa, 51 anos", t: "No 5º dia eu acordei e percebi: 'Espera... não tive calorão ontem!' Chorei de alívio.", img: "32" },
+                { n: "Roberta Almeida, 47 anos", t: "Meu marido disse que eu 'voltei'. Voltei a sorrir, voltei a ter paciência, voltei a ser EU.", img: "45" },
+                { n: "Cláudia Pereira, 54 anos", t: "Economizei mais de R$ 800 em consultas. E funcionou DE VERDADE.", img: "21" },
+                { n: "Patrícia Lima, 52 anos", t: "Na primeira semana, dormi 7h sem acordar. MILAGRE.", img: "12" }
               ].map((test, i) => (
-                <div key={i} className="bg-white p-8 rounded-3xl shadow-md border border-pink-100">
-                  <p className="italic text-gray-700 mb-6 text-lg">"{test.t}"</p>
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 bg-pink-200 rounded-full"></div>
+                <div key={i} className="bg-white p-10 rounded-[3rem] shadow-xl border border-white flex flex-col gap-6 relative group transition-all hover:-translate-y-2">
+                  <div className="absolute -top-6 -left-6 text-pink-100 text-9xl font-serif select-none pointer-events-none group-hover:text-pink-200 transition-colors opacity-40">“</div>
+                  <p className="italic text-slate-600 text-xl font-medium leading-relaxed relative z-10">"{test.t}"</p>
+                  <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
+                    <img src={`https://i.pravatar.cc/150?img=${test.img}`} className="h-14 w-14 rounded-2xl object-cover shadow-lg" alt={test.n} />
                     <div>
-                      <p className="font-black text-sm">{test.n}</p>
-                      <div className="flex gap-0.5"><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /><Star size={12} className="fill-yellow-400 text-yellow-400" /></div>
+                      <p className="font-black text-slate-900 text-lg flex items-center gap-2">
+                        {test.n}
+                        <CheckCircle2 size={16} className="text-blue-500" />
+                      </p>
+                      <div className="flex gap-0.5 text-yellow-400">
+                        {[...Array(5)].map((_, idx) => <Star key={idx} size={10} fill="currentColor" />)}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -383,29 +362,29 @@ export function MenopausePage() {
           </div>
         </section>
 
-        {/* COMPARAÇÃO ⚖️ */}
-        <section className="py-24 px-6">
+        {/* COMPARAÇÃO ⚖️ - TABELA LIMPA */}
+        <section className="py-32 px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-black text-center mb-16">Por Que Outras Soluções Falharam?</h2>
-            <div className="overflow-x-auto">
+            <h2 className="text-4xl md:text-5xl font-black text-center mb-20 tracking-tighter text-slate-900 leading-tight">Por Que Outras <br /> Soluções <span className="text-red-500">Falharam?</span></h2>
+            <div className="bg-white border-[6px] border-slate-900 rounded-[3.5rem] overflow-hidden shadow-[0_48px_80px_-16px_rgba(0,0,0,0.2)]">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-50">
-                    <th className="p-4 text-left border-b border-gray-200">Solução</th>
-                    <th className="p-4 text-center border-b border-gray-200">Dificuldades</th>
-                    <th className="p-4 text-center border-b border-gray-200 bg-pink-600 text-white rounded-t-2xl">Sob Controle</th>
+                  <tr className="bg-slate-900 text-white">
+                    <th className="p-8 text-left text-xs font-black uppercase tracking-[0.3em]">Caminho</th>
+                    <th className="p-8 text-center text-xs font-black uppercase tracking-[0.3em] opacity-50">Dificuldades</th>
+                    <th className="p-8 text-center text-xs font-black uppercase tracking-[0.3em] bg-pink-600">Nosso Método</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { s: "Médico Particular", d: "R$ 400+ por consulta / Receita genérica", o: "R$ 19,90 / Você no controle" },
-                    { s: "TRH (Hormônios)", d: "Efeitos colaterais / Medo de riscos / Não trata a raiz", o: "Zero hormônios / Atua na causa" },
-                    { s: "Chás e Simpatias", d: "Inconstante / Perda de tempo / Sem base", o: "Baseado em ciência / Alívio em 7 dias" }
+                    { s: "Médico Particular", d: "R$ 400+ por consulta", o: "R$ 19,90" },
+                    { s: "TRH (Hormônios)", d: "Riscos e Colaterais", o: "Zero Hormônios" },
+                    { s: "Chás e Simpatias", d: "Sem base e Inconstante", o: "Base Científica" }
                   ].map((row, i) => (
-                    <tr key={i} className="hover:bg-gray-50 transition-colors">
-                      <td className="p-4 font-bold border-b border-gray-100">{row.s}</td>
-                      <td className="p-4 text-center text-sm text-gray-500 border-b border-gray-100">❌ {row.d}</td>
-                      <td className="p-4 text-center font-black text-pink-700 bg-pink-50 border-b border-pink-100">✅ {row.o}</td>
+                    <tr key={i} className="border-b border-slate-100 last:border-0 hover:bg-slate-50 transition-colors">
+                      <td className="p-8 font-black text-slate-900 text-lg">{row.s}</td>
+                      <td className="p-8 text-center text-slate-400 font-bold text-sm">❌ {row.d}</td>
+                      <td className="p-8 text-center font-black text-pink-700 bg-pink-50/50">✅ {row.o}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -414,69 +393,78 @@ export function MenopausePage() {
           </div>
         </section>
 
-        {/* PRECIFICAÇÃO 🔥 */}
-        <section id="pricing" className="py-24 px-6 bg-pink-600 text-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-6">OFERTA ESPECIAL</h2>
-            <p className="text-pink-200 text-xl font-bold mb-10">Expira em {formatTime(timeLeft)}</p>
+        {/* PRECIFICAÇÃO 🔥 - CARD DE ALTA CONVERSÃO */}
+        <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-transparent opacity-50"></div>
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter">OFERTA ESPECIAL</h2>
+            <p className="text-pink-400 text-xl font-bold mb-16 uppercase tracking-[0.3em] animate-pulse">Expira em {formatTime(timeLeft)}</p>
             
-            <div className="bg-white text-gray-900 rounded-[3rem] p-10 md:p-16 shadow-2xl relative">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400 px-8 py-2 rounded-full font-black text-sm tracking-widest shadow-lg">
-                OFERTA ÚNICA
+            <div className="bg-white text-slate-900 rounded-[4rem] p-10 md:p-20 shadow-[0_64px_128px_-24px_rgba(219,39,119,0.3)] relative border-[8px] border-white">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-400 px-10 py-3 rounded-full font-black text-sm tracking-[0.3em] shadow-2xl shadow-amber-400/20 border-4 border-white">
+                ÚNICA OPORTUNIDADE
               </div>
               
-              <div className="flex flex-col md:flex-row justify-center items-center gap-8 mb-12">
-                <div className="text-center md:text-right">
-                  <p className="text-gray-400 line-through text-2xl font-bold">R$ 147,00</p>
-                  <p className="text-gray-400 line-through text-xl opacity-50">R$ 47,00</p>
+              <div className="flex flex-col md:flex-row justify-center items-center gap-12 mb-16">
+                <div className="text-center md:text-right space-y-2">
+                  <p className="text-slate-300 line-through text-4xl font-black">R$ 147,00</p>
+                  <p className="text-pink-600/30 line-through text-2xl font-bold">R$ 47,00</p>
                 </div>
-                <div className="text-pink-600 text-6xl md:text-7xl font-black">
-                  <span className="text-2xl font-bold align-top mt-4 inline-block">R$</span>19,90
+                <div className="flex flex-col items-center leading-none">
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-[0.4em] mb-4">Apenas 1x de:</span>
+                    <div className="text-slate-900 text-8xl md:text-9xl font-black tracking-tighter flex items-start">
+                    <span className="text-3xl font-black mt-6 mr-2">R$</span>19<span className="text-5xl mt-6">,90</span>
+                    </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-xl mx-auto mb-10">
-                {["Guia Completo Sob Controle", "Protocolo 3-5-7 Integrado", "4 Bônus Exclusivos (R$ 93)", "Acesso Imediato", "Garantia Blindada de 7 Dias"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 font-bold text-gray-700">
-                    <Check className="text-green-500 shrink-0" size={20} />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto mb-16 bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
+                {["Guia Completo Sob Controle", "Protocolo 3-5-7 Integrado", "4 Bônus Exclusivos (R$ 93)", "Acesso Imediato", "Garantia de 7 Dias"].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 font-black text-slate-700 text-sm tracking-tight">
+                    <div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={16} /></div>
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <Button className="w-full h-20 bg-green-600 hover:bg-green-700 text-white text-xl md:text-2xl font-black rounded-[2rem] shadow-2xl mb-6">
-                <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                  QUERO MEU ACESSO AGORA!
-                </a>
-              </Button>
-              <div className="flex flex-wrap justify-center gap-6 opacity-60">
-                <div className="flex items-center gap-1 text-xs font-bold"><ShieldCheck size={16} /> COMPRA SEGURA</div>
-                <div className="flex items-center gap-1 text-xs font-bold"><Zap size={16} /> ACESSO EM 2 MIN</div>
-                <div className="flex items-center gap-1 text-xs font-bold"><CreditCard size={16} /> PIX OU CARTÃO</div>
+              <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full h-28 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-4xl font-black rounded-[2.5rem] shadow-[0_20px_40px_-10px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 group">
+                    <div className="flex flex-col items-center">
+                        <span className="flex items-center gap-4">QUERO MEU ACESSO AGORA <ArrowRight className="h-10 w-10 group-hover:translate-x-2 transition-transform" /></span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2">Acesso imediato no seu e-mail</span>
+                    </div>
+                </Button>
+              </a>
+              
+              <div className="flex flex-wrap justify-center gap-10 mt-12 opacity-30 grayscale">
+                <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={20} /> COMPRA SEGURA</div>
+                <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><Zap size={20} /> ACESSO EM 2 MIN</div>
+                <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><CreditCard size={20} /> PIX OU CARTÃO</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* GARANTIA REVERSA 🛡️ */}
-        <section className="py-24 px-6 bg-gray-50">
+        {/* GARANTIA REVERSA 🛡️ - VISUAL DE CERTIFICADO */}
+        <section className="py-32 px-6 bg-white">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white border-4 border-dashed border-pink-500 p-8 md:p-16 rounded-[3rem] text-center shadow-2xl">
-              <ShieldCheck className="mx-auto h-24 w-24 text-pink-600 mb-8" />
-              <h2 className="text-3xl md:text-4xl font-black mb-8">Risco Zero: Ou Funciona, Ou Eu Te Pago!</h2>
-              <p className="text-xl text-gray-700 leading-relaxed mb-10 max-w-2xl mx-auto">
-                Teste o <strong>Protocolo 3-5-7</strong> por 7 dias. Se você não sentir melhora, eu devolvo seus R$ 19,90 e <strong className="text-pink-600">te pago R$ 10 pelo seu tempo</strong>. Você literalmente sai no lucro se o meu método falhar.
+            <div className="bg-slate-50 border-[6px] border-dashed border-pink-500 p-12 md:p-24 rounded-[4rem] text-center shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-pink-100 rounded-full -mr-32 -mt-32 opacity-50"></div>
+              <ShieldCheck className="mx-auto h-32 w-32 text-pink-600 mb-10 drop-shadow-xl" />
+              <h2 className="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-tight text-slate-900">Risco Zero: <br /> <span className="text-pink-600">Ou Funciona, Ou Eu Te Pago!</span></h2>
+              <p className="text-2xl text-slate-600 leading-relaxed mb-12 max-w-2xl mx-auto font-medium italic">
+                Teste o <strong>Protocolo 3-5-7</strong> por 7 dias. Se você não sentir melhora, eu devolvo seus R$ 19,90 e <strong className="text-pink-600 underline decoration-pink-600/30 decoration-8 underline-offset-4">te pago R$ 10 pelo seu tempo</strong>. Você literalmente sai no lucro se o meu método falhar.
               </p>
-              <p className="text-gray-500 font-bold uppercase tracking-widest text-sm">O Único Risco É Você Não Testar</p>
+              <div className="inline-block px-8 py-2 bg-slate-900 text-white rounded-full text-xs font-black uppercase tracking-[0.4em]">Selo de Compromisso Total</div>
             </div>
           </div>
         </section>
 
-        {/* FAQ ❓ */}
-        <section className="py-24 px-6">
+        {/* FAQ ❓ - VISUAL CLEAN */}
+        <section className="py-32 px-6 bg-slate-50">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-black text-center mb-16">Perguntas Que Estão na Sua Cabeça Agora</h2>
-            <Accordion type="single" collapsible className="w-full">
+            <h2 className="text-4xl md:text-6xl font-black text-center mb-24 tracking-tighter text-slate-900">Dúvidas Frequentes</h2>
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {[
                 { q: "Isso realmente funciona ou é mais uma promessa?", a: "São R$ 19,90 com garantia TOTAL. Se não funcionar, você recebe de volta + R$ 10. Mais de 3.000 mulheres já testaram e aprovaram." },
                 { q: "Preciso de médico? Substitui meu tratamento?", a: "Não substitui nada. É um COMPLEMENTO educacional. Vai te dar autonomia enquanto busca ajuda profissional se quiser." },
@@ -484,11 +472,11 @@ export function MenopausePage() {
                 { q: "Sou péssima com tecnologia. Como acesso?", a: "É um PDF simples. Você recebe por email, clica e pronto. Se travar, nosso suporte te ajuda em menos de 1 hora." },
                 { q: "Por que tão barato? Tem pegadinha?", a: "Zero pegadinha. O preço é simbólico porque quero que TODAS tenham acesso. Quando funcionar pra você, vai recomendar pras amigas." }
               ].map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border-b-pink-100">
-                  <AccordionTrigger className="text-left font-black text-gray-800 hover:text-pink-600 text-lg">
+                <AccordionItem key={i} value={`faq-${i}`} className="border-none bg-white rounded-3xl px-8 shadow-sm hover:shadow-md transition-shadow">
+                  <AccordionTrigger className="text-left font-black text-slate-900 hover:text-pink-600 text-xl py-6 no-underline hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 text-lg leading-relaxed">
+                  <AccordionContent className="text-slate-500 text-lg leading-relaxed pb-8">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -497,57 +485,55 @@ export function MenopausePage() {
           </div>
         </section>
 
-        {/* CTA FINAL ⏰ */}
-        <section className="py-24 px-6 bg-pink-50 border-t border-pink-100">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-8">Qual caminho você escolhe?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-12">
-              <div className="p-8 bg-white rounded-3xl border border-gray-100 opacity-60">
-                <p className="font-black text-red-500 mb-4">OPÇÃO 1</p>
-                <p className="text-sm text-gray-500 italic">Continuar acordando às 3h suando, irritada, cansada e gastando fortunas em consultas sem solução.</p>
+        {/* CTA FINAL ⏰ - PRESSÃO TOTAL */}
+        <section className="py-32 px-6 bg-pink-600 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-30"></div>
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <h2 className="text-4xl md:text-7xl font-black mb-12 tracking-tighter leading-tight">Qual caminho <br /> você escolhe?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-16">
+              <div className="p-10 bg-black/10 backdrop-blur-md rounded-[3rem] border border-white/10 opacity-60">
+                <p className="font-black text-red-300 text-xs uppercase tracking-widest mb-4">OPÇÃO 01</p>
+                <p className="text-lg font-bold text-white/80 leading-relaxed italic">Continuar acordando às 3h suando, irritada, cansada e gastando fortunas em consultas sem solução definitiva.</p>
               </div>
-              <div className="p-8 bg-pink-600 text-white rounded-3xl shadow-xl scale-105 border-4 border-pink-400">
-                <p className="font-black mb-4">OPÇÃO 2</p>
-                <p className="font-bold">Investir R$ 19,90 agora, zerar os calorões em 3 dias e recuperar sua alegria de viver.</p>
+              <div className="p-10 bg-white text-pink-600 rounded-[3rem] shadow-2xl border-[6px] border-pink-400 relative overflow-hidden scale-105">
+                <div className="absolute top-0 right-0 p-4 opacity-10"><Zap size={100} /></div>
+                <p className="font-black text-xs uppercase tracking-widest mb-4">OPÇÃO 02</p>
+                <p className="text-2xl font-black leading-tight">Investir R$ 19,90 agora, zerar os calorões em 3 dias e recuperar sua alegria de viver.</p>
               </div>
             </div>
             
-            <Button className="w-full h-20 bg-green-600 hover:bg-green-700 text-white text-xl md:text-2xl font-black rounded-[2rem] shadow-2xl mb-8">
-              <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
-                QUERO MEU ACESSO POR R$ 19,90!
-              </a>
-            </Button>
+            <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer">
+                <Button className="w-full h-28 bg-white text-pink-600 text-2xl md:text-4xl font-black rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.05] active:scale-95 group">
+                <div className="flex flex-col items-center">
+                    <span className="flex items-center gap-4 uppercase tracking-tighter">QUERO MEU ACESSO POR R$ 19,90!</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2">Garantia Blindada de Satisfação</span>
+                </div>
+                </Button>
+            </a>
             
-            <div className="space-y-4 text-left max-w-xl mx-auto text-gray-600 font-medium">
+            <div className="mt-12 space-y-6 text-center max-w-xl mx-auto text-white/80 font-black text-xs uppercase tracking-[0.2em]">
               <p>P.S.: Sério, são R$ 19,90. Isso pode mudar TUDO na sua vida.</p>
-              <p>P.S.S.: Se não funcionar, você recebe o valor de volta + R$ 10. Você ganha mesmo se não gostar.</p>
-              <p>P.S.S.S.: A oferta é limitada. Quando as vagas acabarem, o preço volta para R$ 47,00.</p>
+              <p className="text-amber-400">⚠️ Vagas limitadas. O preço voltará para R$ 47 em breve.</p>
             </div>
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="py-16 bg-white border-t border-gray-100 text-center">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="flex justify-center gap-6 mb-8 text-gray-400">
-              <Lock size={20} /> <ShieldCheck size={20} /> <Users size={20} />
+        {/* FOOTER - VISUAL CORPORATIVO */}
+        <footer className="py-24 bg-white border-t border-slate-100 text-center">
+          <div className="max-w-4xl mx-auto px-6 space-y-12">
+            <div className="flex justify-center gap-12 text-slate-300">
+              <Lock size={32} strokeWidth={1} /> <ShieldCheck size={32} strokeWidth={1} /> <Users size={32} strokeWidth={1} />
             </div>
-            <p className="mb-4 text-gray-400 text-sm">© 2024 Menopausa Sob Controle. Todos os direitos reservados.</p>
-            <p className="text-gray-300 text-[10px] leading-relaxed uppercase tracking-widest max-w-2xl mx-auto">
-              AVISO LEGAL: Este conteúdo é educacional e não substitui orientação médica profissional. 
-              Consulte seu médico antes de mudanças significativas na rotina de saúde.
-            </p>
+            <div className="space-y-4">
+                <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">© 2024 Menopausa Sob Controle. Todos os direitos reservados.</p>
+                <p className="text-slate-300 text-[10px] leading-relaxed uppercase tracking-[0.15em] max-w-3xl mx-auto border-t border-slate-50 pt-8 italic">
+                AVISO LEGAL: Este conteúdo é exclusivamente educacional e informativo. Não substitui o parecer médico profissional, diagnósticos ou tratamentos. Sempre consulte seu médico antes de realizar qualquer mudança significativa na sua rotina de saúde ou suplementação natural. Os resultados podem variar de pessoa para pessoa.
+                </p>
+            </div>
           </div>
         </footer>
 
       </div>
     </>
   );
-}
-
-// Adicionando tipagem para o objeto global window
-declare global {
-  interface Window {
-    _tfa?: any[];
-  }
 }
