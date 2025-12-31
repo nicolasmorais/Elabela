@@ -431,9 +431,12 @@ export function MenopausePage() {
               </div>
 
               <a href="https://oneconversion.pro/checkout?product_id=26455e6c-ddf9-4304-a72e-66a7ffa6beac" target="_blank" rel="noopener noreferrer">
-                <Button className="w-full h-28 bg-green-600 hover:bg-green-700 text-white text-2xl md:text-4xl font-black rounded-[2.5rem] shadow-[0_20px_40px_-10px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 group">
-                    <div className="flex flex-col items-center">
-                        <span className="flex items-center gap-4">QUERO MEU ACESSO AGORA <ArrowRight className="h-10 w-10 group-hover:translate-x-2 transition-transform" /></span>
+                <Button className="w-full h-auto py-6 min-h-[112px] md:h-28 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-[0_20px_40px_-10px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
+                    <div className="flex flex-col items-center px-4">
+                        <span className="flex items-center gap-2 sm:gap-4 text-lg sm:text-xl md:text-4xl font-black">
+                          QUERO MEU ACESSO AGORA 
+                          <ArrowRight className="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 group-hover:translate-x-2 transition-transform shrink-0" />
+                        </span>
                         <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2">Acesso imediato no seu e-mail</span>
                     </div>
                 </Button>
