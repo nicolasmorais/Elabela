@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Script from 'next/script';
 import { 
   Check, 
   Star, 
@@ -105,6 +106,22 @@ export function MenopausePage() {
     <>
       <PageTracker contentId="menopausa" />
       
+      {/* Taboola Pixel Code */}
+      <Script id="taboola-pixel" strategy="afterInteractive">
+        {`
+          window._tfa = window._tfa || [];
+          window._tfa.push({notify: 'event', name: 'page_view', id: 1970176});
+          !function (t, f, a, x) {
+                 if (!document.getElementById(x)) {
+                    t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+                 }
+          }(document.createElement('script'),
+          document.getElementsByTagName('script')[0],
+          '//cdn.taboola.com/libtrc/unip/1970176/tfa.js',
+          'tb_tfa_script');
+        `}
+      </Script>
+
       <div className="bg-white text-slate-900 font-sans selection:bg-pink-100 antialiased">
         
         {/* TOP BAR URGÊNCIA */}
