@@ -29,17 +29,17 @@ import { cn } from '@/lib/utils';
 const TESTIMONIAL_VIDEOS = [
   {
     type: 'iframe',
-    url: "http://vhost-vhost-7d0xji-b4fbf4-147-93-179-152.traefik.me/video/dp-menopausa-001.mp4",
+    url: "https://vhost.onebasex.pro/video/dp1.mp4",
     poster: ""
   },
   {
     type: 'iframe',
-    url: "http://vhost-vhost-7d0xji-b4fbf4-147-93-179-152.traefik.me/video/1766972377943-DP2.mp4",
+    url: "https://vhost.onebasex.pro/video/1767243468209-DP2.mp4",
     poster: ""
   },
   {
     type: 'iframe',
-    url: "http://vhost-vhost-7d0xji-b4fbf4-147-93-179-152.traefik.me/video/1767056651115-DP3.mp4",
+    url: "https://vhost.onebasex.pro/video/1767243478738-DP3.mp4",
     poster: ""
   }
 ];
@@ -55,6 +55,7 @@ const VideoPlayer = ({ video, index }: { video: any, index: number }) => {
             height="100%" 
             frameBorder="0" 
             allowFullScreen
+            allow="autoplay; fullscreen"
             style={{ border: 'none', background: 'black', aspectRatio: '9/16' }}
           ></iframe>
         ) : (
