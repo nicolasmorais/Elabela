@@ -13,9 +13,10 @@ export default {
         sans: ["var(--font-space-grotesk)"],
         mono: ["var(--font-geist-mono)"],
         merriweather: ["var(--font-merriweather)"],
+        manrope: ["var(--font-manrope)"],
         roboto: ["var(--font-roboto)"],
         'open-sans': ["var(--font-open-sans)"],
-        graphik: ["'Graphik Trial'", "sans-serif"], // NEW
+        graphik: ["'Graphik Trial'", "sans-serif"],
       },
   		colors: {
   			background: 'hsl(var(--background))',

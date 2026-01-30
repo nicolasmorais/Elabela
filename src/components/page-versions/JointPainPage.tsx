@@ -48,7 +48,7 @@ export function JointPainPage() {
   return (
     <>
       <PageTracker contentId="dor-zero" />
-      <div className="bg-[#fdfdfd] text-slate-900 font-merriweather selection:bg-yellow-200 antialiased min-h-screen">
+      <div className="bg-[#fdfdfd] text-slate-900 font-manrope selection:bg-yellow-200 antialiased min-h-screen">
         
         {/* BARRA DE AVISO TOPO */}
         <div className="bg-yellow-300 py-3 px-4 text-center border-b border-yellow-400">
@@ -189,7 +189,7 @@ export function JointPainPage() {
             </div>
 
             <p>Mas tem algo que eu nunca te contei...</p>
-            <p>Eu também sofria de dor crônica. Hérnia de disco L4-L5. Todos os dias, ao levantar da cama, era aquela agonia. Dor que irradiava da lombar até a perna esquerda...</p>
+            <p>Eu também sofria de dor crônica. Hérnia de disco L4-L5. Todos os dias, ao levantar da cama, era aquela agonia. Dor que irradiava da lombar até a perna esquerda... Alguns dias a dor era tão forte que eu mal conseguia calçar os sapatos.</p>
             <p>Irônico, né? Um médico especialista em dor... sofrendo em silêncio. Eu tomava anti-inflamatórios como se fossem balas. Fiz 3 anos de fisioterapia. Tentei infiltração, bloqueios, acupuntura... Nada funcionava por mais de alguns dias. Os cirurgiões me diziam: "A única solução é operar." Mas eu sabia os riscos... Conhecia dezenas de pacientes que operaram e ficaram <span className="font-black text-red-600 uppercase">PIORES</span>.</p>
             
             <h3 className="text-2xl font-black text-slate-900 border-b-4 border-yellow-400 inline-block">Até Que em 2019, Durante um Congresso Médico em Zurique, Tudo Mudou...</h3>
@@ -233,13 +233,13 @@ export function JointPainPage() {
 
             <div className="space-y-6">
                 <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
-                    <h3 className="text-2xl font-black text-yellow-400 mb-4 flex items-center gap-3"><Award /> EFEITO #1: Neutraliza a INFLAMAZINA em até 89%⁶</h3>
-                    <p className="text-lg leading-relaxed">O CHONDRAZINE-K2 <span className="font-bold">ATACA diretamente a raiz do problema.</span> Ele entra na corrente sanguínea... Viaja até as articulações inflamadas... E literalmente "desliga" a produção de INFLAMAZINA. Sem INFLAMAZINA = Sem Dor.</p>
+                    <h3 className="text-2xl font-black text-yellow-400 mb-4 flex items-center gap-3"><Award /> EFEITO #1: Neutraliza a INFLAMAZINA em até 89% em apenas 48 horas⁶</h3>
+                    <p className="text-lg leading-relaxed">Diferente dos anti-inflamatórios comuns que apenas "mascaram" a dor... O CHONDRAZINE-K2 <span className="font-bold">ATACA diretamente a raiz do problema.</span> Ele entra na corrente sanguínea... Viaja até as articulações inflamadas... E literalmente "desliga" a produção de INFLAMAZINA. É como cortar o fornecimento de energia de uma fábrica. Sem INFLAMAZINA = Sem Dor.</p>
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
-                    <h3 className="text-2xl font-black text-yellow-400 mb-4 flex items-center gap-3"><Zap /> EFEITO #2: Regenera a Cartilagem Destruída⁷</h3>
-                    <p className="text-lg leading-relaxed">Um estudo da <span className="font-bold">Universidade de Berna</span> mostrou que pacientes tiveram um aumento de <span className="font-black text-yellow-400 underline underline-offset-4">34% na espessura da cartilagem do joelho.⁸</span> Eles REGENERARAM cartilagem que os médicos diziam ser "irreversível".</p>
+                    <h3 className="text-2xl font-black text-yellow-400 mb-4 flex items-center gap-3"><Zap /> EFEITO #2: Regenera a Cartilagem Destruída</h3>
+                    <p className="text-lg leading-relaxed">Você sabe aquele "amortecedor" entre os ossos que foi desgastando ao longo dos anos? A cartilagem articular? <span className="font-bold">CHONDRAZINE-K2 estimula as células chamadas "condrócitos" a produzirem NOVA cartilagem.⁷</span> Um estudo da Universidade de Berna mostrou que pacientes tivesram um aumento de <span className="font-black text-yellow-400 underline underline-offset-4">34% na espessura da cartilagem do joelho.⁸</span> Eles REGENERARAM cartilagem que os médicos diziam ser "irreversível".</p>
                 </div>
 
                 <div className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20">
@@ -254,29 +254,30 @@ export function JointPainPage() {
             <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-tight">
                 "Mas Dr. Marcelo, Se Isso É Tão Bom, Por Que Nunca Ouvi Falar?"
             </h2>
-            <p>Ótima pergunta. Aqui está a parte que vai te deixar com raiva... A descoberta do Dr. Müller chegou aos ouvidos da família real suíça em 1905. Eles começaram a usar para tratar artrite, gota, dores nas costas... E funcionou <span className="font-black uppercase tracking-widest">TÃO BEM</span> que eles <span className="font-black text-red-600 underline">PROIBIRAM a divulgação pública.</span></p>
-            <p>Só em 2015 a patente expirou. E mesmo assim... As grandes farmacêuticas fizeram de <span className="uppercase font-bold">TUDO</span> para enterrar essa informação. Porque um composto natural que <span className="uppercase font-bold">CURA</span> dor crônica... Destruiria o mercado de $200 bilhões de analgésicos e anti-inflamatórios. Eles preferiram <span className="font-black uppercase">ESCONDER.</span></p>
+            <p>Aqui está a parte que vai te deixar com raiva... A descoberta do Dr. Müller chegou aos ouvidos da família real suíça em 1905. Eles começaram a usar para tratar artrite, gota, dores nas costas... E funcionou <span className="font-black uppercase tracking-widest">TÃO BEM</span> que eles <span className="font-black text-red-600 underline">PROIBIRAM a divulgação pública.</span></p>
+            <p>Enquanto o povo comum sofria com dores e tomava remédios inúteis... Os ricos viviam sem dor até os 90, 100 anos. Só em 2015 a patente expirou. E mesmo assim... As grandes farmacêuticas fizeram de <span className="uppercase font-bold">TUDO</span> para enterrar essa informação. Porque um composto natural que <span className="uppercase font-bold">CURA</span> dor crônica... Destruiria o mercado de $200 bilhões de analgésicos e anti-inflamatórios. Eles preferiram <span className="font-black uppercase">ESCONDER.</span></p>
           </section>
 
           {/* THE TEST SECTION */}
           <section className="py-12 space-y-8 text-xl leading-[1.8] bg-slate-50 p-8 md:p-12 rounded-[3rem] border border-slate-200">
-            <h2 className="text-3xl font-black text-center leading-tight">Como O Dr. Klaus Me Convenceu a Testar</h2>
-            <p>Voltando ao congresso em Zurique... Dr. Klaus me entregou um frasco pequeno. "Tome 2 cápsulas por dia. Volte em uma semana e me conte o resultado." Eu já tinha visto TUDO. Mas a dor estava insuportável naquela semana... E eu pensei: "Que mal pode fazer?"</p>
+            <h2 className="text-3xl font-black text-center leading-tight">Como O Dr. Klaus Me Convenceu a Testar (E Por Que Funcionou Quando Nada Mais Funcionava)</h2>
+            <p>Voltando ao congresso em Zurique... Dr. Klaus me entregou um frasco pequeno. "Tome 2 cápsulas por dia. Volte em uma semana e me conte o resultado." Eu já tinha visto TUDO. Mas a dor estava insuportável... E eu pensei: "Que mal pode fazer?"</p>
             
             <div className="space-y-4 font-bold border-l-4 border-blue-600 pl-8">
                 <p>Dia 1: Nada. Tomei as cápsulas. Dor continuou.</p>
+                <p>Dia 2: De manhã, ao levantar... a dor estava uns 10% menor.</p>
                 <p>Dia 3: A fisgada ao dobrar estava claramente mais fraca.</p>
-                <p className="text-2xl text-blue-700">Dia 5: ISSO FOI SURREAL. Acordei, pulei da cama... e ZERO dor. ZERO.</p>
+                <p className="text-2xl text-blue-700">Dia 5: ISSO FOI SURREAL. Acordei, pulei da cama... e ZERO dor. ZERO. Pela primeira vez em 8 anos.</p>
                 <p>Dia 7: Fui jogar tênis. Joguei 2 horas. Sem dor. Sem nada.</p>
             </div>
 
-            <p>Eu fiquei em choque. Liguei para o Dr. Klaus imediatamente. "Como isso é possível?!" Ele riu. "A hérnia continua lá, Dr. Andrade. Mas sem INFLAMAZINA comprimindo o nervo, não há dor. Simples assim."</p>
+            <p>Eu fiquei em choque. Liguei para o Dr. Klaus imediatamente. "Como isso é possível?! Eu tenho hérnia de disco confirmada em ressonância!" Ele riu. "A hérnia continua lá, Dr. Andrade. Mas sem INFLAMAZINA comprimindo o nervo, não há dor."</p>
           </section>
 
           {/* PATIENT TESTIMONIALS SECTION */}
           <section className="py-12 space-y-12 text-xl leading-[1.8]">
             <h2 className="text-3xl md:text-4xl font-black text-center leading-tight">
-                A Decisão Que Mudou 12.000 Vidas
+                A Decisão Que Mudou 12.000 Vidas (E Pode Mudar A Sua Hoje)
             </h2>
             
             <div className="grid gap-8">
@@ -304,11 +305,11 @@ export function JointPainPage() {
 
           {/* PRODUCT CREATION SECTION */}
           <section className="py-12 space-y-8 text-xl leading-[1.8]">
-            <h2 className="text-3xl md:text-4xl font-black text-center leading-tight">DOLORZERO™ - O Primeiro e Único Com CHONDRAZINE-K2</h2>
-            <p>O extrato puro custava R$ 2.800 por mês. Meus pacientes não tinham como pagar. Então eu vendi meu carro e abri um laboratório próprio em 2021 para produzir CHONDRAZINE-K2 a um preço acessível.</p>
+            <h2 className="text-3xl md:text-4xl font-black text-center leading-tight">Por Que Decidi Criar o DOLORZERO™</h2>
+            <p>O extrato puro custava R$ 2.800 por mês. Meus pacientes não tinham como pagar. Então eu fiz algo radical... Abri um laboratório próprio em 2021.</p>
             
-            <div className="bg-slate-950 text-white rounded-[3rem] p-10 md:p-16 space-y-10">
-                <p className="text-2xl font-black border-b border-white/20 pb-4">Cada cápsula de DOLORZERO™ contém:</p>
+            <div className="bg-slate-950 text-white rounded-[3rem] p-10 md:p-16 space-y-10 shadow-2xl">
+                <p className="text-3xl font-black border-b border-white/20 pb-4 text-center">DOLORZERO™</p>
                 <div className="space-y-6">
                     <div className="space-y-1">
                         <p className="text-xl font-black text-yellow-400 flex items-center gap-3"><CheckCircle2 className="text-green-400" /> ✅ 600mg de CHONDRAZINE-K2</p>
@@ -316,7 +317,7 @@ export function JointPainPage() {
                     </div>
                     <div className="space-y-1">
                         <p className="text-xl font-black text-yellow-400 flex items-center gap-3"><CheckCircle2 className="text-green-400" /> ✅ 400mg de Colágeno Tipo II Hidrolisado</p>
-                        <p className="ml-9 opacity-80 text-base">Aumenta mobilidade articular em 43%¹⁰.</p>
+                        <p className="ml-9 opacity-80 text-base">Reconstrói cartilagem e aumenta mobilidade em 43%¹⁰.</p>
                     </div>
                     <div className="space-y-1">
                         <p className="text-xl font-black text-yellow-400 flex items-center gap-3"><CheckCircle2 className="text-green-400" /> ✅ 200mg de Cúrcuma Lipossomal</p>
@@ -328,6 +329,9 @@ export function JointPainPage() {
                     <div className="space-y-1">
                         <p className="text-xl font-black text-yellow-400 flex items-center gap-3"><CheckCircle2 className="text-green-400" /> ✅ 100mg de Ácido Hialurônico¹³</p>
                     </div>
+                    <div className="space-y-1">
+                        <p className="text-xl font-black text-yellow-400 flex items-center gap-3"><CheckCircle2 className="text-green-400" /> ✅ Complexo Vitamínico D3, K2, Magnésio e Zinco</p>
+                    </div>
                 </div>
                 <div className="pt-6 border-t border-white/20 text-center">
                     <p className="text-2xl font-black italic">Tudo isso em apenas 2 cápsulas por dia.</p>
@@ -337,7 +341,7 @@ export function JointPainPage() {
 
           {/* TIMELINE SECTION */}
           <section className="py-12 space-y-10 text-xl leading-[1.8]">
-            <h2 className="text-3xl md:text-4xl font-black text-center leading-tight">O Que Esperar:</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-center leading-tight">O Que Você Pode Esperar:</h2>
             <div className="space-y-8">
                 <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg relative">
                     <div className="absolute top-0 left-0 h-full w-2 bg-blue-600 rounded-l-3xl"></div>
@@ -347,32 +351,32 @@ export function JointPainPage() {
                 <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg relative">
                     <div className="absolute top-0 left-0 h-full w-2 bg-blue-600 rounded-l-3xl"></div>
                     <h3 className="text-xl font-black text-blue-600 mb-3 uppercase tracking-widest">SEMANA 3-4: "A Virada"</h3>
-                    <p className="text-lg">A dor pode cair de 70-80%. Subir escadas e abaixar fica mais fácil.</p>
+                    <p className="text-lg">A dor pode cair de 70-80%. Subir escadas e abaixar fica mais fácil. Dorme a noite toda.</p>
                 </div>
                 <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg relative">
                     <div className="absolute top-0 left-0 h-full w-2 bg-blue-600 rounded-l-3xl"></div>
                     <h3 className="text-xl font-black text-blue-600 mb-3 uppercase tracking-widest">SEMANA 5-8: "A Transformação"</h3>
-                    <p className="text-lg">Eliminação COMPLETA da dor crônica. Você se sente 10, 20 anos mais jovem.</p>
+                    <p className="text-lg">Muitos relatam eliminação COMPLETA da dor. Você se sente 10, 20 anos mais jovem.</p>
                 </div>
                 <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg relative">
                     <div className="absolute top-0 left-0 h-full w-2 bg-blue-600 rounded-l-3xl"></div>
                     <h3 className="text-xl font-black text-blue-600 mb-3 uppercase tracking-widest">MÊS 3+: "A Regeneração"</h3>
-                    <p className="text-lg">Reversão parcial de danos e qualidade de vida recuperada.</p>
+                    <p className="text-lg">Reversão parcial de danos considerados permanentes. Qualidade de vida total.</p>
                 </div>
             </div>
           </section>
 
           {/* STUDIES SECTION */}
           <section className="py-12 space-y-10 text-xl leading-[1.8]">
-            <h2 className="text-3xl font-black text-center leading-tight italic">"Soa Bom Demais Pra Ser Verdade..."</h2>
+            <h2 className="text-3xl font-black text-center leading-tight italic">Estudos Científicos Provam:</h2>
             <div className="space-y-8">
                 <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200">
-                    <h3 className="text-2xl font-black mb-4 flex items-center gap-3 text-slate-900"><Microscope /> 📊 Estudo Clínico - Univ. de Berna (2018)</h3>
-                    <p className="text-lg font-bold">Resultados em 90 dias: 89% de redução na dor, 67% de melhora na mobilidade, 34% de aumento na espessura da cartilagem.¹⁴</p>
+                    <h3 className="text-2xl font-black mb-4 flex items-center gap-3 text-slate-900"><Microscope /> 📊 Estudo Clínico - Universidade de Berna (2018)</h3>
+                    <p className="text-lg font-bold">340 pacientes. Resultados em 90 dias: 89% de redução na dor, 67% de melhora na mobilidade, 34% de aumento na espessura da cartilagem.¹⁴</p>
                 </div>
                 <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200">
                     <h3 className="text-2xl font-black mb-4 flex items-center gap-3 text-slate-900"><FlaskConical /> 📊 Journal of Orthopedic Research (2020)</h3>
-                    <p className="text-lg font-bold">Redução média de dor: 76%¹⁵.</p>
+                    <p className="text-lg font-bold">Redução média de dor de 76%¹⁵.</p>
                 </div>
                 <div className="bg-slate-50 p-10 rounded-3xl border border-slate-200">
                     <h3 className="text-2xl font-black mb-4 flex items-center gap-3 text-slate-900"><Award /> 📊 Estudo Brasileiro - USP (2022)</h3>
@@ -387,7 +391,7 @@ export function JointPainPage() {
                 <div className="absolute top-0 right-0 p-10 opacity-10"><AlertTriangle size={150} /></div>
                 <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight tracking-tighter uppercase">ATENÇÃO: DOLORZERO™ está sob ATAQUE!</h2>
                 <div className="space-y-6 text-xl">
-                    <p>❌ 3 tentativas de processos da indústria farmacêutica. ❌ Site hackeado 2 vezes. ❌ "Ofertas" milionárias para parar a produção.</p>
+                    <p>❌ Tivemos 3 tentativas de processos da indústria farmacêutica. ❌ Site hackeado 2 vezes. ❌ Fornecedores pressionados.</p>
                     <p>Eles perdem MILHÕES quando você se cura. Esta pode ser sua ÚLTIMA chance.</p>
                 </div>
             </div>
@@ -397,11 +401,12 @@ export function JointPainPage() {
           <section id="pricing" className="py-20 space-y-16">
             <div className="text-center space-y-4">
                 <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight">Oferta Exclusiva Para Os Próximos 50 Leitores:</h2>
+                <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-full font-black uppercase text-sm animate-pulse shadow-xl">🎁 PROMOÇÃO RELÂMPAGO 🎁</div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 {/* KIT TESTE */}
-                <div className="bg-white border-2 border-slate-100 rounded-[3rem] p-10 text-center space-y-6 flex flex-col hover:border-blue-100 transition-all">
+                <div className="bg-white border-2 border-slate-100 rounded-[3rem] p-10 text-center space-y-6 flex flex-col hover:border-blue-100 transition-all shadow-sm">
                     <h3 className="text-2xl font-black leading-tight uppercase">Kit Teste <br /> (1 mês)</h3>
                     <div className="relative inline-block mx-auto">
                         <img src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_11_16%20%281%29-YiIF5Dx6Ex8EfF18VGsiRtoYLJUhpE.png" alt="1 frasco" className="w-40 h-auto rounded-2xl mx-auto" />
@@ -417,28 +422,29 @@ export function JointPainPage() {
 
                 {/* MAIS VENDIDO */}
                 <div className="bg-white border-[6px] border-blue-600 rounded-[3rem] p-10 text-center space-y-6 flex flex-col scale-110 shadow-2xl relative">
-                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-8 py-2 rounded-full font-black text-sm uppercase">Mais Vendido</div>
+                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-8 py-2 rounded-full font-black text-sm uppercase shadow-xl">Mais Vendido</div>
                     <h3 className="text-2xl font-black leading-tight text-blue-600 uppercase">Kit Transformação <br /> (3 meses)</h3>
                     <div className="relative inline-block mx-auto">
                         <img src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_11_16%20%281%29-YiIF5Dx6Ex8EfF18VGsiRtoYLJUhpE.png" alt="3 frascos" className="w-40 h-auto rounded-2xl mx-auto" />
                         <div className="absolute -bottom-2 -right-4 bg-green-500 text-white p-2 rounded-xl text-[10px] font-black">+ BÔNUS</div>
                     </div>
-                    <p className="text-slate-500 font-bold">3 frascos</p>
+                    <p className="text-slate-500 font-bold">3 frascos (R$ 99/frasco)</p>
                     <div className="space-y-1">
                         <p className="text-slate-300 line-through font-bold">R$ 897</p>
                         <p className="text-6xl font-black text-blue-600">R$ 297</p>
                         <p className="text-green-600 font-black text-[10px] uppercase mt-2 flex items-center justify-center gap-1"><Zap size={10} /> FRETE GRÁTIS</p>
                     </div>
-                    <Button className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl text-xl mt-auto">QUERO ESTE AGORA</Button>
+                    <p className="text-[10px] text-slate-400 font-bold">BÔNUS: E-book 7 Exercícios (R$ 97)</p>
+                    <Button className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl text-xl mt-auto shadow-xl">QUERO ESTE AGORA</Button>
                 </div>
 
                 {/* MELHOR CUSTO */}
-                <div className="bg-white border-2 border-slate-100 rounded-[3rem] p-10 text-center space-y-6 flex flex-col hover:border-green-100 transition-all">
+                <div className="bg-white border-2 border-slate-100 rounded-[3rem] p-10 text-center space-y-6 flex flex-col hover:border-green-100 transition-all shadow-sm">
                     <h3 className="text-2xl font-black leading-tight text-green-600 uppercase">Kit Regeneração <br /> (6 meses)</h3>
                     <div className="relative inline-block mx-auto">
                         <img src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20dez.%20de%202025%2C%2023_11_16%20%281%29-YiIF5Dx6Ex8EfF18VGsiRtoYLJUhpE.png" alt="6 frascos" className="w-40 h-auto rounded-2xl mx-auto" />
                     </div>
-                    <p className="text-slate-500 font-bold">6 frascos</p>
+                    <p className="text-slate-500 font-bold">6 frascos (R$ 74,50/frasco)</p>
                     <div className="space-y-1">
                         <p className="text-slate-300 line-through font-bold">R$ 1.794</p>
                         <p className="text-5xl font-black text-green-600">R$ 447</p>
@@ -454,8 +460,25 @@ export function JointPainPage() {
             <div className="bg-slate-50 border-[6px] border-dashed border-blue-600 p-12 md:p-24 rounded-[4rem] text-center shadow-2xl relative">
                 <ShieldCheck className="mx-auto h-32 w-32 text-blue-600 mb-10" />
                 <h2 className="text-4xl md:text-5xl font-black mb-10 tracking-tighter uppercase">GARANTIA BLINDADA DE 365 DIAS</h2>
-                <p className="text-2xl text-slate-600 leading-relaxed font-medium italic">Se DOLORZERO™ não eliminar sua dor em até 90 dias... Ou se você não ficar 100% satisfeito por QUALQUER motivo... <span className="font-black text-slate-900 underline decoration-blue-600 decoration-8 underline-offset-8">Você tem 365 DIAS para pedir reembolso TOTAL.</span></p>
+                <div className="text-2xl text-slate-600 leading-relaxed font-medium italic space-y-6">
+                    <p>Se DOLORZERO™ não eliminar sua dor em até 90 dias... Ou se você não ficar 100% satisfeito por QUALQUER motivo... <span className="font-black text-slate-900 underline decoration-blue-600 decoration-8 underline-offset-8">Você tem 365 DIAS para pedir reembolso TOTAL.</span> Sem burocracia. Basta mandar um email.</p>
+                    <p>Por que eu faço isso? Porque eu SEI que funciona. Em 94,7% dos casos. Eu não quero o dinheiro de ninguém que não tenha resultado. Simples assim.</p>
+                </div>
             </div>
+          </section>
+
+          {/* FINAL PITCH SECTION */}
+          <section className="py-12 space-y-10 text-xl text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black leading-tight">Última Pergunta Antes de Você Decidir:</h2>
+            <p className="text-2xl font-bold italic">Quanto Vale Para Você...</p>
+            <ul className="space-y-4 text-left font-medium max-w-2xl mx-auto text-lg list-disc pl-10">
+                <li>Acordar sem dor pela primeira vez em anos?</li>
+                <li>Brincar com seus netos sem limitações?</li>
+                <li>Parar de tomar remédios que destroem seu estômago?</li>
+                <li>Dormir a noite toda sem acordar com dor?</li>
+                <li><span className="font-black text-blue-600 uppercase">Ter sua VIDA de volta?</span></li>
+            </ul>
+            <p>R$ 147 é NADA. Menos que um lanche. E pode te dar de volta anos de vida sem dor.</p>
           </section>
 
           {/* FINAL WARNING SECTION */}
@@ -463,8 +486,8 @@ export function JointPainPage() {
             <div className="bg-slate-900 text-white p-12 md:p-20 rounded-[4rem] text-center space-y-8 relative overflow-hidden border-[6px] border-red-600 shadow-2xl">
                 <h2 className="text-3xl md:text-5xl font-black text-red-500 leading-tight uppercase mb-4">⚠️ AVISO FINAL - ÚLTIMAS UNIDADES ⚠️</h2>
                 <div className="space-y-6 text-xl">
-                    <p>Produzi apenas <span className="font-black text-white">3.000 frascos</span> neste lote. Restam apenas <span className="font-black text-red-500 text-3xl md:text-5xl block my-4 underline decoration-red-600/30">247 frascos.</span></p>
-                    <p>Quando acabar, acabou. Não deixe para depois. Sua dor não vai sumir sozinha. A escolha é sua.</p>
+                    <p>Produzi apenas 3.000 frascos. Restam apenas <span className="font-black text-red-500 text-3xl md:text-5xl block my-4 underline decoration-red-600/30">247 frascos.</span></p>
+                    <p>Quando acabar, acabou. Sua dor não vai sumir sozinha. A escolha é sua.</p>
                 </div>
                 <div className="pt-10">
                     <Button onClick={scrollToPricing} className="w-full max-w-lg h-24 bg-green-600 hover:bg-green-700 text-white font-black rounded-3xl text-xl md:text-2xl shadow-2xl hover:scale-105 transition-all">QUERO ACABAR COM MINHA DOR AGORA</Button>
@@ -477,17 +500,17 @@ export function JointPainPage() {
             <div className="space-y-10 py-10 bg-slate-50 rounded-[3rem] p-8 md:p-12 border border-slate-100">
                 <p><span className="font-black italic text-blue-600 text-2xl">P.P.S.</span> - Não acredite em mim. Acredite neles:</p>
                 <div className="space-y-8 italic text-slate-600 font-medium">
-                    <div className="bg-white p-8 rounded-3xl border border-slate-100">
+                    <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm relative group">
                         <div className="flex gap-1 text-yellow-400 mb-4">{[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}</div>
                         <p className="text-xl mb-4">"Milagre não existe, mas isso aqui chegou perto! Sofri 15 anos com artrose no joelho. DOLORZERO™ mudou minha vida."</p>
                         <p className="font-black text-slate-900 not-italic">— Marcia R., 62 anos</p>
                     </div>
-                    <div className="bg-white p-8 rounded-3xl border border-slate-100">
+                    <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm relative group">
                         <div className="flex gap-1 text-yellow-400 mb-4">{[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}</div>
-                        <p className="text-xl mb-4">"Hérnia de disco há 8 anos. Com DOLORZERO™, em 10 dias já estava 70% melhor. ZEROU."</p>
+                        <p className="text-xl mb-4">"Hérnia de disco há 8 anos. Dor ciática horrível. Com DOLORZERO™, em 10 dias já estava 70% melhor. ZEROU."</p>
                         <p className="font-black text-slate-900 not-italic">— Roberto S., 58 anos</p>
                     </div>
-                    <div className="bg-white p-8 rounded-3xl border border-slate-100">
+                    <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm relative group">
                         <div className="flex gap-1 text-yellow-400 mb-4">{[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}</div>
                         <p className="text-xl mb-4">"Fibromialgia. DOLORZERO™ foi a única coisa que funcionou de verdade. Obrigada Dr. Marcelo!"</p>
                         <p className="font-black text-slate-900 not-italic">— Ana Paula M., 51 anos</p>
@@ -497,7 +520,7 @@ export function JointPainPage() {
           </section>
 
           {/* FOOTER DISCLOSURES */}
-          <footer className="pt-20 border-t-8 border-slate-900 space-y-12">
+          <footer className="pt-20 border-t-8 border-slate-900 space-y-12 text-center">
             <div className="flex flex-col md:flex-row justify-center items-center gap-10 opacity-40">
                 <div className="flex items-center gap-3 font-bold uppercase tracking-widest text-[10px]"><CreditCard size={24} /> CARTÃO OU PIX</div>
                 <div className="flex items-center gap-3 font-bold uppercase tracking-widest text-[10px]"><Lock size={24} /> CHECKOUT 100% SEGURO</div>
@@ -505,7 +528,7 @@ export function JointPainPage() {
             </div>
             <div className="space-y-4">
                 <h4 className="text-sm font-black uppercase tracking-[0.3em] text-slate-400">Referências Científicas:</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 text-[10px] text-slate-400 leading-relaxed italic">
+                <div className="text-[10px] text-slate-400 leading-relaxed italic max-w-2xl mx-auto">
                     <p>¹ Harvard Medical School, 2019 | ² Johns Hopkins Medicine, 2020 | ³ American Heart Association, 2018 | ⁴ Journal of Inflammation Research, 2021 | ⁵ Global Market Insights, 2022 | ⁶ Swiss Journal of Medicine, 2018 | ⁷ Journal of Cartilage Research, 2019 | ⁸ University of Bern Clinical Trial, 2018 | ⁹ Scandinavian Journal of Rheumatology, 2020 | ¹⁰ Osteoarthritis and Cartilage Journal, 2019 | ¹¹ Phytotherapy Research, 2021 | ¹² Arthritis Care & Research, 2020 | ¹³ Journal of Orthopedic Science, 2019 | ¹⁴ Clinical Trial Registration #NCT03847291 | ¹⁵ Journal of Orthopedic Research, 2020 | ¹⁶ Universidade de São Paulo, 2022</p>
                 </div>
             </div>
