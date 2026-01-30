@@ -30,30 +30,32 @@ services:
       MAPBOX_TOKEN: pk.eyJ1Ijoibmljb2xhc21vcmFpczE1NCIsImEiOiJjbWphOHR3M3owMmtqM2VwejlpbGQ3YXVlIn0.75I0qHVcMDeu-R5x99G3zg
       
       # Variáveis de Conexão PostgreSQL (Usadas pelo serviço 'web')
-      DATABASE_URL: postgres://user:password@db:5432/mydatabase
+      DATABASE_URL: postgresql://postgres:8zrcemo0tdetrmig@147.93.179.152:5438/postgres
       
-    # Depende do serviço de banco de dados
-    depends_on:
-      - db
+    # Removendo a dependência do serviço de banco de dados local
+    # depends_on:
+    #   - db
 
     # Política de reinicialização do contêiner
     restart: unless-stopped
 
-  db:
-    image: postgres:16-alpine
-    container_name: dyad-app-db
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydatabase
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      # Mapeia a porta do PostgreSQL para a porta 5432 do host (opcional, mas útil para ferramentas externas)
-      - "5432:5432"
+  # O serviço 'db' foi removido pois estamos usando um banco de dados externo.
+  # db:
+  #   image: postgres:16-alpine
+  #   container_name: dyad-app-db
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: mydatabase
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     # Mapeia a porta do PostgreSQL para a porta 5432 do host (opcional, mas útil para ferramentas externas)
+  #     - "5432:5432"
 
 # Define os volumes nomeados usados pelos serviços
 volumes:
   dyad_db_data:
-  postgres_data:
+  # O volume 'postgres_data' foi removido
+  # postgres_data:
