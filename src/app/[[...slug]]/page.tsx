@@ -7,10 +7,11 @@ import { V1Page } from '@/components/page-versions/V1Page';
 import { V2Page } from '@/components/page-versions/V2Page';
 import { V3Page } from '@/components/page-versions/V3Page';
 import { MenopausePage } from '@/components/page-versions/MenopausePage';
+import { JointPainPage } from '@/components/page-versions/JointPainPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero'];
 
 function ContentSwitcher({ contentId }: { contentId: string }) {
   try {
@@ -20,6 +21,7 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
       case 'v3': return <V3Page />;
       case 'ap': return <APPage />;
       case 'menopausa': return <MenopausePage />;
+      case 'dor-zero': return <JointPainPage />;
       default: return <CustomAdvertorialPage advertorialId={contentId} />;
     }
   } catch (error) {
@@ -42,7 +44,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     const resolvedParams = await params;
     const { slug } = resolvedParams;
     
-    // Página inicial padrão (V1) - Tenta renderizar sem depender de consulta complexa no DB se for a home
+    // Página inicial padrão (V1)
     if (!slug || slug.length === 0) {
       return <V1Page />;
     }
@@ -56,10 +58,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
         client = await getDb();
     } catch (dbError) {
         console.error("Erro de conexão com o banco:", dbError);
-        // Se for uma página estática conhecida, permite renderizar mesmo sem banco (fallback)
         if (STATIC_PAGE_IDS.includes(slugKey)) return <ContentSwitcher contentId={slugKey} />;
-        if (slugKey === 'menopausa') return <MenopausePage />;
-        
         throw new Error("Banco de dados inacessível");
     }
 
@@ -74,7 +73,6 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
 
     // 2. Estáticas
     if (!contentId && STATIC_PAGE_IDS.includes(slugKey)) contentId = slugKey;
-    if (!contentId && slugKey === 'menopausa') contentId = 'menopausa';
 
     // 3. Tabela de Rotas
     if (!contentId) {
@@ -90,7 +88,6 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     return <ContentSwitcher contentId={contentId} />;
   } catch (error) {
     console.error("Página Dinâmica: Erro fatal:", error);
-    // Se estivermos na home e der erro, tenta mostrar a V1 como fallback de segurança
     return <V1Page />;
   }
 }

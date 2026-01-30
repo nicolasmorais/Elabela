@@ -25,7 +25,7 @@ import {
   Filter,
   ArrowRightLeft,
   Link2,
-  LayoutGrid // Added correct icon import
+  LayoutGrid
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
@@ -55,6 +55,7 @@ const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'v3', name: 'Advertorial V3' },
     { id: 'ap', name: 'Página de Aprovação (AP)' },
     { id: 'menopausa', name: 'Menopausa Nunca Mais' },
+    { id: 'dor-zero', name: 'Dolorzero (Dor Crônica)' },
 ];
 
 export default function DashboardPage() {
