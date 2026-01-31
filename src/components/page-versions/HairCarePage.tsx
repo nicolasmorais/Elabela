@@ -421,23 +421,22 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 6. SEÇÃO: DESENVOLVIDO POR ESPECIALISTAS (BIO INSTINTO) */}
-        <section className="py-24 px-6 bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+        {/* 6. SEÇÃO: DESENVOLVIDO POR ESPECIALISTAS (BIO INSTINTO) - SUAVIZADA */}
+        <section className="py-24 px-6 bg-orange-50/50 text-slate-900 relative overflow-hidden border-y border-orange-100">
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-[10px] font-black uppercase tracking-widest">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 border border-orange-200 rounded-full text-orange-800 text-[10px] font-black uppercase tracking-widest">
                             <Microscope size={14} /> Ciência Aplicada
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">
-                            Desenvolvido por <span className="text-orange-400 italic">Especialistas.</span>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-slate-950">
+                            Desenvolvido por <span className="text-orange-700 italic">Especialistas.</span>
                         </h2>
                         <div className="space-y-6">
-                            <p className="text-xl md:text-2xl font-bold text-orange-100/90 leading-relaxed">
+                            <p className="text-xl md:text-2xl font-bold text-slate-800 leading-relaxed">
                                 Bio Instinto: 12 anos de expertise capilar
                             </p>
-                            <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
+                            <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
                                 Não é produto genérico de farmácia. É tecnologia profissional da Bio Instinto - uma das maiores indústrias de cosméticos do Brasil.
                             </p>
                         </div>
@@ -449,18 +448,18 @@ export function HairCarePage() {
                                 "Linha profissional de salão", 
                                 "Fórmulas testadas em laboratório"
                             ].map((stat, i) => (
-                                <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group">
-                                    <div className="bg-orange-500/20 p-1.5 rounded-full text-orange-400 group-hover:scale-110 transition-transform">
+                                <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-orange-100 shadow-sm hover:border-orange-300 transition-all group">
+                                    <div className="bg-orange-100 p-1.5 rounded-full text-orange-700 group-hover:scale-110 transition-transform">
                                         <Check size={16} strokeWidth={4} />
                                     </div>
-                                    <span className="font-bold text-sm text-slate-200">{stat}</span>
+                                    <span className="font-bold text-sm text-slate-800">{stat}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="bg-white text-slate-950 p-10 md:p-16 rounded-[4rem] shadow-[0_32px_64px_-16px_rgba(249,115,22,0.2)] relative border border-orange-100">
-                        <div className="absolute -top-6 -right-6 bg-orange-500 text-white w-20 h-20 rounded-full flex items-center justify-center font-black rotate-12 shadow-xl border-4 border-white">
+                    <div className="bg-white text-slate-950 p-10 md:p-16 rounded-[4rem] shadow-[0_32px_64px_-16px_rgba(249,115,22,0.1)] relative border border-orange-100">
+                        <div className="absolute -top-6 -right-6 bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center font-black rotate-12 shadow-xl border-4 border-white">
                             TOP 1
                         </div>
                         <h3 className="text-3xl font-black mb-6 leading-tight flex items-center gap-3">
@@ -481,9 +480,9 @@ export function HairCarePage() {
                                 ))}
                             </ul>
                         </div>
-                        <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 text-center">
-                            <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-2">Veredito</p>
-                            <p className="text-xl font-black text-slate-900 tracking-tight italic">"Não é promessa. É ciência aplicada."</p>
+                        <div className="p-6 bg-[#FDF8F3] rounded-3xl border border-orange-100 text-center">
+                            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] mb-2">Veredito Profissional</p>
+                            <p className="text-xl font-black text-slate-950 tracking-tight italic">"Não é promessa. É ciência aplicada."</p>
                         </div>
                     </div>
                 </div>
