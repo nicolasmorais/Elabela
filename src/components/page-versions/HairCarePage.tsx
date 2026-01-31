@@ -90,10 +90,10 @@ export function HairCarePage() {
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
-            {/* IMAGEM DO PRODUTO */}
+            {/* IMAGEM DO PRODUTO (ATUALIZADA) */}
             <div className="relative group max-w-3xl w-full">
               <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769892337933-ChatGPT-Image-31-de-jan.-de-2026,-17_44_50.png" 
                 alt="Kit Cavalo de Raça Bio Instinto" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
