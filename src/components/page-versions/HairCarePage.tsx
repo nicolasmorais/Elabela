@@ -79,8 +79,8 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
-              Recupere a força e o brilho de salão em casa com a tecnologia profissional que já transformou milhares de vidas.
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+              Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
             {/* IMAGEM DO PRODUTO */}
