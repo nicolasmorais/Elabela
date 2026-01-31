@@ -8,10 +8,11 @@ import { V2Page } from '@/components/page-versions/V2Page';
 import { V3Page } from '@/components/page-versions/V3Page';
 import { MenopausePage } from '@/components/page-versions/MenopausePage';
 import { JointPainPage } from '@/components/page-versions/JointPainPage';
+import { HairCarePage } from '@/components/page-versions/HairCarePage'; // NEW
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca'];
 
 function ContentSwitcher({ contentId }: { contentId: string }) {
   try {
@@ -22,6 +23,7 @@ function ContentSwitcher({ contentId }: { contentId: string }) {
       case 'ap': return <APPage />;
       case 'menopausa': return <MenopausePage />;
       case 'dor-zero': return <JointPainPage />;
+      case 'cavalo-de-raca': return <HairCarePage />; // NEW
       default: return <CustomAdvertorialPage advertorialId={contentId} />;
     }
   } catch (error) {

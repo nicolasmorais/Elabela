@@ -26,7 +26,7 @@ import {
   ArrowRightLeft,
   Link2,
   LayoutGrid
-} from 'lucide-react';
+} from 'lucide-center';
 import { cn } from '@/lib/utils';
 import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
 import { UTMLinkGenerator } from '@/components/dashboard/UTMLinkGenerator';
@@ -56,6 +56,7 @@ const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'ap', name: 'Página de Aprovação (AP)' },
     { id: 'menopausa', name: 'Menopausa Nunca Mais' },
     { id: 'dor-zero', name: 'Dolorzero (Dor Crônica)' },
+    { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cosméticos)' },
 ];
 
 export default function DashboardPage() {
