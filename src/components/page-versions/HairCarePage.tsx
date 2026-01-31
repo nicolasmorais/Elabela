@@ -10,7 +10,6 @@ import {
   Zap, 
   Heart, 
   Sparkles, 
-  ShoppingBag,
   Timer,
   Lock,
   CreditCard,
@@ -21,7 +20,6 @@ import {
   Trash2,
   Droplets,
   Scissors,
-  StarHalf,
   XCircle,
   AlertCircle,
   Frown,
@@ -83,7 +81,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -104,154 +102,65 @@ export function HairCarePage() {
           </div>
         </header>
 
-        {/* SECTION DOR/PROBLEMA - NOVA COPY */}
+        {/* SECTION DOR/PROBLEMA - COPY SIMPLIFICADA */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
-          <div className="max-w-4xl mx-auto space-y-16">
+          <div className="max-w-3xl mx-auto space-y-16">
             
-            {/* Bloco 1: Fundo do Poço */}
-            <div className="space-y-8 text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-red-600 leading-tight">
-                VOCÊ ESTÁ NO FUNDO DO POÇO CAPILAR. E EU SEI DISSO.
+            <div className="space-y-8 text-center">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight">
+                VOCÊ ESTÁ CANSADA DE SOFRER COM ESSE CABELO.
               </h2>
-              <div className="space-y-6 text-xl md:text-2xl text-slate-700 font-medium leading-relaxed">
-                <p>Porque eu vejo nos seus olhos toda vez que você olha no espelho.</p>
-                <p>Aquela <span className="font-black text-slate-950 underline decoration-red-200">TRISTEZA PROFUNDA</span> quando você passa a mão no cabelo e sente ele quebrando entre seus dedos.</p>
-                <p>Aquela <span className="font-black text-slate-950 underline decoration-red-200">VERGONHA QUEIMANDO</span> quando você precisa sair e a única opção é ESCONDER tudo em um coque apertado.</p>
-                <p>Aquele <span className="font-black text-slate-950 underline decoration-red-200">APERTO NO PEITO</span> quando você vê mechas inteiras no ralo do chuveiro e pensa: "Meu Deus, não vai sobrar nada..."</p>
+              <div className="bg-orange-50 p-8 md:p-12 rounded-[3rem] border border-orange-100 text-left">
+                <p className="text-xl md:text-2xl font-bold text-slate-800 mb-8">Você sabe a dor que é:</p>
+                <ul className="space-y-5 text-lg md:text-xl font-medium text-slate-700">
+                  <li className="flex gap-3"><span>😢</span> Passar a mão e sentir ele quebrando</li>
+                  <li className="flex gap-3"><span>😢</span> Ver fios no travesseiro todo dia</li>
+                  <li className="flex gap-3"><span>😢</span> Esconder em coque porque solto é vergonha</li>
+                  <li className="flex gap-3"><span>😢</span> Fugir de fotos</li>
+                  <li className="flex gap-3"><span>😢</span> Não se sentir bonita</li>
+                </ul>
               </div>
             </div>
 
-            {/* Bloco 2: O Pior não é o cabelo */}
-            <div className="p-8 md:p-12 bg-red-50 rounded-[3rem] border border-red-100 space-y-10">
-              <h3 className="text-2xl md:text-4xl font-black text-red-800 text-center uppercase tracking-tight">MAS O PIOR NÃO É O CABELO EM SI.</h3>
-              <p className="text-xl md:text-2xl text-red-900/80 font-bold text-center">O pior é o que isso fez com VOCÊ.</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-8 text-center">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight">
+                VOCÊ JÁ TENTOU DE TUDO.
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                 {[
-                  "Você DESISTIU de soltar o cabelo",
-                  "Você FOGE de fotos (ou edita até não parecer mais você)",
-                  "Você INVENTA DESCULPAS pra não sair quando o cabelo tá \"impossível\"",
-                  "Você CHORA NO CHUVEIRO vendo seu cabelo cair",
-                  "Você PERDEU A AUTOESTIMA que tinha antes",
-                  "Você NÃO SE SENTE BONITA há meses (ou anos)"
+                  "Hidratação de R$ 250 que durou 1 semana",
+                  "Shampoo \"milagroso\" de R$ 120 que não funcionou",
+                  "Receitas caseiras que só fizeram bagunça",
+                  "Ampolas caras jogadas fora"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-white/60 p-4 rounded-2xl border border-red-100">
-                    <Frown size={24} className="text-red-500 shrink-0" />
-                    <span className="font-bold text-slate-800">{item}</span>
+                  <div key={i} className="flex items-center gap-3 bg-slate-50 p-5 rounded-2xl border border-slate-200 group transition-colors">
+                    <span className="text-red-500 shrink-0">❌</span>
+                    <span className="font-bold text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
-
-              <div className="text-center space-y-4 pt-6 border-t border-red-200">
-                <p className="text-xl font-bold text-red-900">E o pior de tudo?</p>
-                <p className="text-lg text-red-800/70 italic">
-                  Você começou a ACEITAR que "é assim mesmo".<br />
-                  Que seu cabelo "não tem mais jeito".<br />
-                  Que você "já tentou de tudo".<br />
-                  Que talvez você "não nasceu pra ter cabelo bonito".
-                </p>
+              
+              <div className="bg-red-50 p-8 rounded-[2.5rem] border border-red-100 space-y-4">
+                <p className="text-2xl font-black text-red-800">Resultado?</p>
+                <div className="space-y-1 text-lg font-bold text-red-900/70 italic">
+                  <p>Dinheiro jogado fora.</p>
+                  <p>Cabelo continua fraco.</p>
+                  <p>Você continua se sentindo mal.</p>
+                </div>
               </div>
             </div>
 
-            {/* Bloco 3: Tudo Mentira */}
             <div className="space-y-8">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center">
-                MENTIRA. TUDO MENTIRA.
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center uppercase underline decoration-orange-400 decoration-8 underline-offset-8">
+                O PROBLEMA É SIMPLES:
               </h2>
-              <div className="text-center space-y-4 max-w-2xl mx-auto">
-                <p className="text-xl font-bold text-slate-600 leading-relaxed">
-                  Sabe por quê você não tem resultado? Porque você está sendo <span className="text-red-600">ENGANADA</span>.
-                </p>
-                <p className="text-lg text-slate-500">Você já desperdiçou CENTENAS (talvez MILHARES) de reais em:</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  "Hidratação de salão R$ 250-400 → Durou 1 semana e voltou tudo",
-                  "Shampoo \"milagroso\" de influencer R$ 120 → Fez zero diferença",
-                  "Ampolas \"reconstrução profunda\" R$ 35 cada → Comprou 10, jogou 9 fora",
-                  "Receitas caseiras → Babosa, abacate, ovo... que SUJEIRA pra nada",
-                  "Cronograma capilar complicado → Desistiu na segunda semana",
-                  "Máscaras \"importadas\" R$ 80-150 → Mais embalagem bonita que resultado",
-                  "Vitaminas pra crescimento → Seu bolso que ficou mais fraco"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 group hover:border-red-200 transition-colors">
-                    <XCircle size={20} className="text-red-500 shrink-0 group-hover:scale-110 transition-transform" />
-                    <span className="font-bold text-slate-700 text-sm md:text-base">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-center bg-slate-950 p-10 rounded-[3rem] text-white space-y-4 shadow-2xl">
-                <p className="text-2xl font-black text-orange-400">E CADÊ O RESULTADO?</p>
-                <p className="text-4xl font-black">NENHUM.</p>
-                <p className="text-xl opacity-80">Seu cabelo continua QUEBRADIÇO. Continua SEM VIDA. Continua TE FAZENDO SENTIR MAL.</p>
-              </div>
-            </div>
-
-            {/* Bloco 4: Esperança que morre */}
-            <div className="space-y-8 py-10">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center uppercase">
-                SABE O QUE DÓI MAIS?
-              </h2>
-              <div className="max-w-3xl mx-auto space-y-6 text-xl md:text-2xl text-center leading-relaxed font-medium text-slate-600">
-                <p>Não é o dinheiro jogado fora. Não é o tempo perdido.</p>
+              <div className="max-w-2xl mx-auto space-y-6 text-xl md:text-2xl text-center leading-relaxed font-medium text-slate-600">
+                <p>Você só teve acesso a produtos genéricos que não funcionam.</p>
                 <p className="text-slate-950 font-black text-3xl md:text-4xl tracking-tight leading-none italic">
-                    É A ESPERANÇA QUE MORRE A CADA VEZ.
+                    A solução existe.
                 </p>
-                <p>Você compra o produto CHEIO DE FÉ. "Dessa vez vai funcionar... dessa vez vai ser diferente..."</p>
-                <p>Usa. Espera. Torce. E NÃO FUNCIONA. De novo. E de novo. E de novo. Até que você para de acreditar que existe solução.</p>
-              </div>
-            </div>
-
-            {/* Bloco 5: Conformismo */}
-            <div className="bg-orange-50/50 p-10 md:p-16 rounded-[4rem] border border-orange-100 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-10 opacity-5"><Users size={200} /></div>
-                <div className="relative z-10 space-y-8">
-                    <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center">
-                        E AÍ VOCÊ SE CONFORMA.
-                    </h2>
-                    <div className="space-y-6 text-xl text-slate-700 leading-relaxed font-medium">
-                        <p>Começa a viver como "a mulher do cabelo problemático". A que SEMPRE usa coque. A que NUNCA aparece bem nas fotos. A que EVITA sair em dias de umidade. A que DESISTIU de ter aquele cabelo que sempre sonhou.</p>
-                        <p className="text-2xl font-black text-slate-950 italic">Enquanto outras mulheres ao seu redor...</p>
-                        <p>Têm cabelos LINDOS, VOLUMOSOS, BRILHANTES. Soltam o cabelo com confiança. Recebem elogios toda hora. Tiram foto e ficam INCRÍVEIS.</p>
-                        <div className="p-6 bg-white rounded-3xl border border-orange-200 text-center space-y-2">
-                            <p className="italic">"Por que comigo é diferente?"</p>
-                            <p className="italic">"Por que eu não consigo?"</p>
-                            <p className="italic">"O que tem de errado comigo?"</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Bloco 6: Não tem nada errado */}
-            <div className="space-y-12 text-center md:text-left">
-              <div className="space-y-4">
-                <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-slate-950 leading-tight">
-                    NADA. NÃO TEM NADA DE ERRADO COM VOCÊ.
-                </h2>
-                <div className="h-2 w-24 bg-green-600 rounded-full hidden md:block"></div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6 text-xl text-slate-700 leading-relaxed">
-                    <p>O problema é que você nunca teve acesso ao que <span className="font-black text-slate-950">REALMENTE FUNCIONA.</span></p>
-                    <p>Você foi enganada por:</p>
-                    <ul className="space-y-4">
-                        <li className="flex items-center gap-3"><Ban size={18} className="text-red-500 shrink-0" /> <span className="font-bold">Produtos genéricos de prateleira</span></li>
-                        <li className="flex items-center gap-3"><Ban size={18} className="text-red-500 shrink-0" /> <span className="font-bold">Marcas que investem mais em propaganda</span></li>
-                        <li className="flex items-center gap-3"><Ban size={18} className="text-red-500 shrink-0" /> <span className="font-bold">Influencers vendendo qualquer porcaria</span></li>
-                        <li className="flex items-center gap-3"><Ban size={18} className="text-red-500 shrink-0" /> <span className="font-bold">Salões que te prendem em tratamentos caros</span></li>
-                    </ul>
-                </div>
-                <div className="bg-slate-900 p-8 rounded-[3rem] text-white shadow-2xl space-y-6">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-600 rounded-full text-[10px] font-black uppercase tracking-widest">
-                        A Verdade Revelada
-                    </div>
-                    <p className="text-2xl font-black italic">A solução REAL sempre esteve disponível.</p>
-                    <p className="text-lg opacity-80 font-medium">A solução que CABELEIREIROS PROFISSIONAIS usam. A solução que REALMENTE TRANSFORMA cabelos destruídos.</p>
-                    <p className="text-xl font-bold text-orange-400">A solução que você NUNCA TEVE ACESSO... até agora.</p>
-                </div>
+                <p>É a mesma que cabeleireiros profissionais usam.</p>
+                <p className="bg-slate-950 text-orange-400 px-4 py-2 rounded-xl inline-block font-black text-xl md:text-3xl">E você nunca teve acesso... até agora.</p>
               </div>
             </div>
 
