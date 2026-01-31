@@ -45,21 +45,9 @@ const GALLERY_IMAGES = [
 ];
 
 const TIKTOK_VIDEOS = [
-  {
-    url: "https://vhost.onebasex.pro/video/1769896865284-ssstik.io_%40renatadelpasso_1769896654074.mp4",
-    user: "@renatadelpasso",
-    comment: "Chocada com o brilho desse kit! 😱✨"
-  },
-  {
-    url: "https://vhost.onebasex.pro/video/1769897057244-ssstik.io_%40donademim_pvh_1769896463897.mp4",
-    user: "@donademim_pvh",
-    comment: "Meus fios nunca foram tão fortes. Amei!"
-  },
-  {
-    url: "https://vhost.onebasex.pro/video/1769897045880-ssstik.io_%40studioestefaniribeiro_1769896850804.mp4",
-    user: "@studioestefaniribeiro",
-    comment: "A Bio Instinto entregou TUDO nesse lançamento."
-  }
+  "https://vhost.onebasex.pro/video/1769896865284-ssstik.io_%40renatadelpasso_1769896654074.mp4",
+  "https://vhost.onebasex.pro/video/1769897057244-ssstik.io_%40donademim_pvh_1769896463897.mp4",
+  "https://vhost.onebasex.pro/video/1769897045880-ssstik.io_%40studioestefaniribeiro_1769896850804.mp4"
 ];
 
 export function HairCarePage() {
@@ -411,33 +399,18 @@ export function HairCarePage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {TIKTOK_VIDEOS.map((video, i) => (
+                    {TIKTOK_VIDEOS.map((url, i) => (
                         <div key={i} className="group relative aspect-[9/16] bg-slate-950 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white transition-all hover:scale-[1.02] hover:shadow-orange-200/50">
                             <iframe 
-                                src={video.url} 
+                                src={url} 
                                 className="absolute inset-0 w-full h-full"
                                 frameBorder="0" 
                                 allowFullScreen 
                                 allow="autoplay; fullscreen"
                             ></iframe>
                             
-                            {/* Overlay de Brilho */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent z-10 pointer-events-none"></div>
-
-                            {/* Detalhes Estilo TikTok */}
-                            <div className="absolute bottom-8 left-8 z-20 space-y-2 pointer-events-none">
-                                <div className="flex items-center gap-2">
-                                    <div className="h-10 w-10 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center font-black text-orange-800">
-                                        {video.user[1].toUpperCase()}
-                                    </div>
-                                    <span className="font-bold text-white drop-shadow-md">
-                                        {video.user}
-                                    </span>
-                                </div>
-                                <p className="text-white/90 text-sm font-medium leading-snug drop-shadow-md max-w-[200px]">
-                                    {video.comment}
-                                </p>
-                            </div>
+                            {/* Overlay de Brilho sutil */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent z-10 pointer-events-none"></div>
                         </div>
                     ))}
                 </div>
