@@ -76,7 +76,7 @@ export function HairCarePage() {
             </div>
             
             <h1 className="text-4xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-8 max-w-4xl">
-              🐎 CAVALO DE RAÇA: O Fim da <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Tortura Diária de Olhar No Espelho e Sentir Vergonha do Seu Cabelo</span>
+              O Fim da <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Tortura Diária de Olhar No Espelho e Sentir Vergonha do Seu Cabelo</span>
             </h1>
             
             <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
