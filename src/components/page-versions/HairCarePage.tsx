@@ -79,14 +79,14 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
             {/* IMAGEM DO PRODUTO */}
-            <div className="relative group max-w-3xl w-full mb-12">
+            <div className="relative group max-w-3xl w-full">
               <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769841925451-ChatGPT-Image-31-de-jan.-de-2026,-03_45_16.png" 
                 alt="Kit Cavalo de Raça Bio Instinto" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
@@ -97,10 +97,6 @@ export function HairCarePage() {
                  </div>
               </div>
             </div>
-
-            <Button onClick={scrollToPricing} className="h-20 px-12 bg-slate-950 hover:bg-slate-900 text-orange-400 rounded-2xl text-xl font-black shadow-2xl transition-all hover:scale-105 active:scale-95 group">
-                QUERO TRANSFORMAR MEU CABELO AGORA <ArrowRight className="ml-4 group-hover:translate-x-2 transition-transform" />
-            </Button>
           </div>
         </header>
 
@@ -177,7 +173,7 @@ export function HairCarePage() {
                         <img 
                             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
                             alt="Kit Completo Profissional" 
-                            className="relative z-10 w-full h-auto rounded-[2rem]"
+                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
                         />
                     </div>
                 </div>
