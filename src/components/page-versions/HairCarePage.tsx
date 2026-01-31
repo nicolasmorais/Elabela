@@ -132,7 +132,122 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* SOLUÇÃO SECTION */}
+        {/* O QUE VEM NESSE KIT COMPLETO: */}
+        <section className="py-24 px-6 bg-white">
+            <div className="max-w-6xl mx-auto space-y-20">
+                <div className="text-center space-y-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
+                    <p className="text-orange-700 font-bold text-lg md:text-xl uppercase tracking-widest">
+                        🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO:
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[
+                        { 
+                          n: "1️⃣ SHAMPOO", 
+                          v: "300ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Limpa PROFUNDAMENTE sem destruir",
+                            "Espuma cremosa que você NUNCA viu igual",
+                            "Perfume viciante que dura DIAS",
+                            "Prepara o fio pra reconstrução REAL"
+                          ] 
+                        },
+                        { 
+                          n: "2️⃣ CONDICIONADOR", 
+                          v: "300ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Desembaraça na PRIMEIRA PASSADA",
+                            "Você vai sentir a diferença IMEDIATAMENTE",
+                            "Brilho absurdo, maciez de comercial",
+                            "Sela as cutículas e protege os fios"
+                          ] 
+                        },
+                        { 
+                          n: "3️⃣ MÁSCARA", 
+                          v: "250g", 
+                          t: "CONDICIONANTE", 
+                          bullets: [
+                            "Aqui é onde a MÁGICA ACONTECE",
+                            "Reconstrução PROFUNDA na fibra capilar",
+                            "Força e resistência que você VAI SENTIR",
+                            "É tipo esteróides pro seu cabelo (só que legal)"
+                          ] 
+                        },
+                        { 
+                          n: "4️⃣ CREME DE PENTEAR", 
+                          v: "200ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Finalização IMPECÁVEL",
+                            "Controla frizz, protege do calor, nutre",
+                            "Deixa aquele acabamento de salão",
+                            "Seu cabelo vai parecer de OUTRA PESSOA"
+                          ] 
+                        }
+                    ].map((item, i) => (
+                        <div key={i} className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group">
+                            <div className="space-y-4">
+                                <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
+                                <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
+                                <div className="space-y-3 pt-2">
+                                  {item.bullets.map((bullet, idx) => (
+                                    <p key={idx} className="text-slate-600 text-sm font-medium leading-snug flex items-start gap-2">
+                                      <span className="text-orange-600 shrink-0">→</span>
+                                      {bullet}
+                                    </p>
+                                  ))}
+                                </div>
+                            </div>
+                            <div className="mt-8 pt-6 border-t border-slate-200">
+                                <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* RESULTADOS SECTION */}
+                <div className="bg-slate-950 text-white rounded-[3.5rem] p-10 md:p-16 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                      <Sparkles size={200} />
+                    </div>
+                    
+                    <div className="text-center mb-12 relative z-10">
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">
+                          🔥 RESULTADOS QUE VÃO TE FAZER CHORAR:
+                        </h2>
+                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 relative z-10">
+                        {[
+                          { t: "FORÇA ABSURDA", d: "Fios que aguentam TUDO" },
+                          { t: "ZERO QUEBRA", d: "Acabou aquele cabelo no pente" },
+                          { t: "HIDRATAÇÃO REAL", d: "Não aquela ilusão temporária" },
+                          { t: "MACIEZ INSANA", d: "Você não vai parar de passar a mão" },
+                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais que você achava impossível" },
+                          { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
+                          { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
+                        ].map((res, i) => (
+                          <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                              <div className="bg-orange-600 p-1.5 rounded-full shadow-lg">
+                                <Check size={18} strokeWidth={3} />
+                              </div>
+                              <div>
+                                <span className="font-black text-orange-400 mr-2">{res.t}</span>
+                                <span className="font-medium opacity-80 text-sm">- {res.d}</span>
+                              </div>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* SOLUÇÃO SECTION - REPOSICIONADA */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -169,37 +284,6 @@ export function HairCarePage() {
                             className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
                         />
                     </div>
-                </div>
-            </div>
-        </section>
-
-        {/* O QUE TEM NO KIT (PRODUTOS) */}
-        <section className="py-24 px-6 bg-white">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">O Que Tem no Kit?</h2>
-                    <p className="text-slate-400 font-bold uppercase tracking-widest">4 Passos para o Cabelo de Rainha</p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {[
-                        { n: "1. Shampoo", v: "300ml", t: "Limpeza Profunda", d: "Remove impurezas sem ressecar e prepara para a reconstrução." },
-                        { n: "2. Condicionador", v: "300ml", t: "Sela e Brilha", d: "Desembaraça instantaneamente e deixa os fios macios como seda." },
-                        { n: "3. Máscara", v: "250g", t: "Reconstrução", d: "Penetra na fibra capilar transformando fios quebradiços em aço." },
-                        { n: "4. Creme Pentear", v: "200ml", t: "Finalização", d: "Proteção térmica e controle de frizz o dia inteiro." }
-                    ].map((item, i) => (
-                        <div key={i} className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group">
-                            <div className="space-y-4">
-                                <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.v}</div>
-                                <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.n}</h3>
-                                <p className="text-orange-700 font-bold text-sm uppercase tracking-widest">{item.t}</p>
-                                <p className="text-slate-500 text-sm leading-relaxed">{item.d}</p>
-                            </div>
-                            <div className="mt-8 pt-6 border-t border-slate-200">
-                                <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
-                            </div>
-                        </div>
-                    ))}
                 </div>
             </div>
         </section>
