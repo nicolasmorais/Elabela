@@ -302,10 +302,10 @@ export function HairCarePage() {
                     <div className="mb-12 space-y-4">
                         <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo (Shampoo + Cond. + Máscara + Creme)</p>
                         <div className="flex flex-col items-center">
-                            <span className="text-slate-300 line-through text-2xl font-bold">R$ 197,00</span>
+                            <span className="text-slate-300 line-through text-2xl font-bold">R$ 199,90</span>
                             <div className="flex items-start gap-1">
                                 <span className="text-3xl font-black mt-4">R$</span>
-                                <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-950">97<span className="text-5xl">,90</span></span>
+                                <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-950">147<span className="text-5xl">,90</span></span>
                             </div>
                             <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] mt-2">Pagamento Único • Tratamento para 3 meses</p>
                         </div>
