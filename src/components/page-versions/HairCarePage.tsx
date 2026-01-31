@@ -24,7 +24,11 @@ import {
   AlertCircle,
   Frown,
   Ban,
-  Image as ImageIcon
+  Image as ImageIcon,
+  ShoppingBag,
+  DollarSign,
+  Home,
+  Dumbbell
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -82,7 +86,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -131,42 +135,84 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO PROFISSIONAL (MOVIDA PARA CÁ) */}
+        {/* 2. SEÇÃO: SOLUÇÃO COM NOVA COPY (MOVIDA PARA CÁ) */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="flex-1 space-y-8">
-                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A Solução Profissional</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter leading-none">
-                            A Força que seus fios estavam <span className="text-orange-700">Implorando.</span>
+                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A SOLUÇÃO QUE VOCÊ PRECISAVA</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
+                            Resultado de salão. No seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
                         </h2>
-                        <p className="text-xl text-slate-600 leading-relaxed">
-                            Apresentamos o <strong>Kit Capilar Cavalo de Raça Bio Instinto</strong>. Uma solução PROFISSIONAL desenvolvida em laboratório com tecnologia brasileira.
-                        </p>
                         
-                        <div className="space-y-6">
-                            {[
-                                { t: "Ação na Raiz do Problema", d: "Não mascaramos, tratamos a fibra capilar." },
-                                { t: "Tecnologia Profissional", d: "Mesma qualidade usada pelos grandes cabeleireiros." },
-                                { t: "Resultado Imediato", d: "Sinta a diferença logo na primeira lavagem." }
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-4 group">
-                                    <div className="bg-white p-3 rounded-2xl text-orange-700 shadow-md group-hover:scale-110 transition-transform"><Check size={24} /></div>
-                                    <div>
-                                        <p className="font-black text-slate-900 text-xl">{item.t}</p>
-                                        <p className="text-slate-500 font-medium">{item.d}</p>
+                        <div className="space-y-4 text-xl text-slate-600 leading-relaxed font-medium italic border-l-4 border-orange-200 pl-6">
+                            <p>Sabe aquela hidratação de R$ 250-400 que você faz no salão?</p>
+                            <p>Aquela que toma 2 horas do seu sábado?</p>
+                            <p>Que pesa no bolso todo mês?</p>
+                            <p>E que dura no máximo 1 semana?</p>
+                            <p className="text-slate-900 font-black not-italic text-2xl mt-4">Agora você tem a mesma coisa EM CASA.</p>
+                        </div>
+
+                        <div className="p-8 bg-white rounded-[2.5rem] border border-orange-100 shadow-sm space-y-4">
+                            <h3 className="text-2xl font-black text-slate-900 flex items-center gap-2">
+                                🐎 KIT CAPILAR CAVALO DE RAÇA BIO INSTINTO
+                            </h3>
+                            <p className="text-lg text-slate-600 font-medium">
+                                O tratamento profissional feito para a vida REAL. Porque você não tem tempo de passar 2 horas no salão toda semana. Você não tem R$ 300 sobrando todo mês. Mas você MERECE ter um cabelo lindo.
+                            </p>
+                        </div>
+
+                        <div className="space-y-12 pt-8">
+                            <h4 className="text-xl font-black text-orange-800 uppercase tracking-[0.3em]">POR QUE ESSE KIT É DIFERENTE?</h4>
+                            
+                            <div className="grid grid-cols-1 gap-8">
+                                {[
+                                    { icon: Sparkles, color: 'text-yellow-500', t: "TECNOLOGIA PROFISSIONAL BIO INSTINTO", d: "O mesmo produto que seu cabeleireiro usa em você (e cobra caro). Agora direto da indústria. Sem intermediário." },
+                                    { icon: Dumbbell, color: 'text-blue-500', t: "TRATA DE VERDADE, NÃO MASCARA", d: "Não é aquele efeito fake que some na primeira lavada. Age na fibra capilar. Reconstrução REAL." },
+                                    { icon: Zap, color: 'text-orange-500', t: "RESULTADO NA PRIMEIRA APLICAÇÃO", d: "Não precisa usar 3 meses pra \"começar a ver diferença\". Você sente NA HORA. No chuveiro. Passando a mão." },
+                                    { icon: Home, color: 'text-green-500', t: "FEITO PARA SUA ROTINA", d: "15 minutos no banho. É só isso que você precisa. Sem desculpa de \"não tenho tempo\"." },
+                                    { icon: DollarSign, color: 'text-emerald-600', t: "ECONOMIA REAL", d: "1 kit = 2-3 meses de tratamento. Menos de R$ 2 por dia pra ter cabelo de salão." }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-6 group">
+                                        <div className="bg-white p-4 rounded-2xl text-orange-700 shadow-md group-hover:scale-110 transition-transform flex-shrink-0 h-fit">
+                                            <item.icon className={cn("h-6 w-6", item.color)} />
+                                        </div>
+                                        <div>
+                                            <p className="font-black text-slate-900 text-lg uppercase tracking-tight mb-1">{item.t}</p>
+                                            <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="pt-12 space-y-6">
+                            <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1">CRIADO PARA MULHERES COMO VOCÊ</h4>
+                            <p className="text-xl text-slate-600 leading-relaxed font-medium">
+                                Que trabalha. Que cuida da casa. Que tem mil coisas pra resolver. Que não tem R$ 300 livre no orçamento todo mês. Que não pode passar o sábado inteiro no salão.
+                            </p>
+                            <div className="space-y-2 text-2xl font-black text-slate-900 tracking-tight leading-none italic">
+                                <p>Mas que NÃO ABRE MÃO de se sentir bonita.</p>
+                                <p>Você merece olhar no espelho e gostar do que vê.</p>
+                                <p>Você merece receber elogios.</p>
+                                <p>Você merece se sentir confiante.</p>
+                                <p className="text-orange-800 not-italic">E você não precisa quebrar o banco pra isso.</p>
+                            </div>
                         </div>
                     </div>
-                    <div className="flex-1 relative">
-                        <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-20"></div>
+                    
+                    <div className="flex-1 lg:sticky lg:top-24 relative w-full">
+                        <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                         <img 
                             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                            alt="Kit Completo Profissional" 
-                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
+                            alt="Mulher Confiante com Cabelo Lindo" 
+                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                         />
+                        <div className="mt-8 bg-slate-950 p-10 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-6 opacity-10"><Award size={80} /></div>
+                            <p className="text-2xl font-black mb-2">Qualidade Premium</p>
+                            <p className="opacity-70 font-medium italic">"A mesma fórmula dos grandes centros de estética, agora na sua casa."</p>
+                        </div>
                     </div>
                 </div>
             </div>
