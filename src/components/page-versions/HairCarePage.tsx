@@ -86,7 +86,7 @@ export function HairCarePage() {
             {/* IMAGEM DO PRODUTO */}
             <div className="relative group max-w-3xl w-full mb-12">
               <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769841925451-ChatGPT-Image-31-de-jan.-de-2026,-03_45_16.png" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
                 alt="Kit Cavalo de Raça Bio Instinto" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
