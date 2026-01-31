@@ -44,6 +44,24 @@ const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896189867-ChatGPT-Image-31-de-jan.-de-2026,-18_49_38.png"
 ];
 
+const TIKTOK_VIDEOS = [
+  {
+    url: "https://vhost.onebasex.pro/video/1769896865284-ssstik.io_%40renatadelpasso_1769896654074.mp4",
+    user: "@renatadelpasso",
+    comment: "Chocada com o brilho desse kit! 😱✨"
+  },
+  {
+    url: "https://vhost.onebasex.pro/video/1769897057244-ssstik.io_%40donademim_pvh_1769896463897.mp4",
+    user: "@donademim_pvh",
+    comment: "Meus fios nunca foram tão fortes. Amei!"
+  },
+  {
+    url: "https://vhost.onebasex.pro/video/1769897045880-ssstik.io_%40studioestefaniribeiro_1769896850804.mp4",
+    user: "@studioestefaniribeiro",
+    comment: "A Bio Instinto entregou TUDO nesse lançamento."
+  }
+];
+
 export function HairCarePage() {
   const [timeLeft, setTimeLeft] = useState(1194); // 19:54
 
@@ -393,30 +411,31 @@ export function HairCarePage() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {[1, 2, 3].map((i) => (
+                    {TIKTOK_VIDEOS.map((video, i) => (
                         <div key={i} className="group relative aspect-[9/16] bg-slate-950 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white transition-all hover:scale-[1.02] hover:shadow-orange-200/50">
-                            {/* Overlay com botão Play falso ou Placeholder de Vídeo */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
+                            <iframe 
+                                src={video.url} 
+                                className="absolute inset-0 w-full h-full"
+                                frameBorder="0" 
+                                allowFullScreen 
+                                allow="autoplay; fullscreen"
+                            ></iframe>
                             
-                            {/* Placeholder para Vídeo (Aqui o usuário inserirá as tags <video> ou <iframe>) */}
-                            <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-white opacity-40 group-hover:opacity-100 transition-opacity">
-                                <div className="bg-orange-600/80 p-6 rounded-full shadow-2xl backdrop-blur-md group-hover:scale-110 transition-transform">
-                                    <Play size={48} fill="white" className="ml-1" />
-                                </div>
-                            </div>
+                            {/* Overlay de Brilho */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent z-10 pointer-events-none"></div>
 
                             {/* Detalhes Estilo TikTok */}
                             <div className="absolute bottom-8 left-8 z-20 space-y-2 pointer-events-none">
                                 <div className="flex items-center gap-2">
                                     <div className="h-10 w-10 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center font-black text-orange-800">
-                                        {i === 1 ? 'M' : i === 2 ? 'J' : 'C'}
+                                        {video.user[1].toUpperCase()}
                                     </div>
                                     <span className="font-bold text-white drop-shadow-md">
-                                        {i === 1 ? '@mariana_souza' : i === 2 ? '@juliana.hair' : '@carol_instinto'}
+                                        {video.user}
                                     </span>
                                 </div>
-                                <p className="text-white/90 text-sm font-medium leading-snug drop-shadow-md">
-                                    {i === 1 ? 'Chocada com o brilho desse kit! 😱✨' : i === 2 ? 'Meus fios nunca foram tão fortes. Amei!' : 'A Bio Instinto entregou TUDO nesse lançamento.'}
+                                <p className="text-white/90 text-sm font-medium leading-snug drop-shadow-md max-w-[200px]">
+                                    {video.comment}
                                 </p>
                             </div>
                         </div>
