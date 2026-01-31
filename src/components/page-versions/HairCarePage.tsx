@@ -86,7 +86,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -135,52 +135,28 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO COM A NOVA COPY */}
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="flex-1 space-y-8">
-                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">RESULTADO DE SALÃO EM CASA</span>
+                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A SOLUÇÃO QUE VOCÊ PRECISAVA</span>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
-                            Sem gastar R$ 300 todo mês. <span className="text-orange-700">Sem perder seu sábado.</span>
+                            Resultado de salão. No seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
                         </h2>
                         
                         <div className="space-y-4 text-xl text-slate-600 leading-relaxed font-medium italic border-l-4 border-orange-200 pl-6">
-                            <p>Aquela hidratação cara do salão?</p>
-                            <p className="text-slate-900 font-black not-italic text-2xl mt-4">Agora você faz em casa. Em 15 minutos.</p>
+                            <p>Sabe aquela hidratação cara do salão?</p>
+                            <p>Agora você faz em casa. Em 15 minutos.</p>
                         </div>
 
                         <div className="p-8 bg-white rounded-[2.5rem] border border-orange-100 shadow-sm space-y-4">
                             <h3 className="text-2xl font-black text-slate-900 flex items-center gap-2">
                                 🐎 KIT CAPILAR CAVALO DE RAÇA
                             </h3>
-                            <p className="text-lg text-slate-600 font-medium">
+                            <p className="text-lg text-slate-600 font-medium leading-relaxed">
                                 Tratamento profissional para quem não tem tempo nem dinheiro sobrando.
                             </p>
-                        </div>
-
-                        <div className="space-y-12 pt-8">
-                            <h4 className="text-xl font-black text-orange-800 uppercase tracking-[0.3em]">POR QUE ESSE KIT É DIFERENTE?</h4>
-                            
-                            <div className="grid grid-cols-1 gap-8">
-                                {[
-                                    { icon: Sparkles, color: 'text-yellow-500', t: "Tecnologia Bio Instinto Profissional", d: "O mesmo produto que cabeleireiros usam." },
-                                    { icon: Dumbbell, color: 'text-blue-500', t: "Trata de verdade, não mascara", d: "Reconstrução real na fibra capilar." },
-                                    { icon: Zap, color: 'text-orange-500', t: "Resultado na primeira aplicação", d: "Você sente a diferença na hora." },
-                                    { icon: Home, color: 'text-green-500', t: "15 minutos no banho", d: "Cabe na sua rotina corrida." },
-                                    { icon: DollarSign, color: 'text-emerald-600', t: "Menos de R$ 2 por dia", d: "1 kit = 2-3 meses de tratamento." }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-6 group">
-                                        <div className="bg-white p-4 rounded-2xl text-orange-700 shadow-md group-hover:scale-110 transition-transform flex-shrink-0 h-fit">
-                                            <item.icon className={cn("h-6 w-6", item.color)} />
-                                        </div>
-                                        <div>
-                                            <p className="font-black text-slate-900 text-lg uppercase tracking-tight mb-1">{item.t}</p>
-                                            <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
 
                         <div className="pt-12 space-y-6">
@@ -211,8 +187,39 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: O QUE VEM NESSE KIT COMPLETO: */}
+        {/* 3. SEÇÃO: DIFERENCIAIS (NOVA SEÇÃO CRIADA AQUI) */}
         <section className="py-24 px-6 bg-white">
+            <div className="max-w-6xl mx-auto space-y-16">
+                <div className="text-center space-y-4">
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Por que somos os melhores</span>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">POR QUE ESSE KIT É DIFERENTE?</h2>
+                    <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {[
+                        { icon: Sparkles, color: 'text-yellow-500', t: "Tecnologia Bio Instinto Profissional", d: "O mesmo produto que cabeleireiros usam." },
+                        { icon: Dumbbell, color: 'text-blue-500', t: "Trata de verdade, não mascara", d: "Reconstrução real na fibra capilar." },
+                        { icon: Zap, color: 'text-orange-500', t: "Resultado na primeira aplicação", d: "Você sente a diferença na hora." },
+                        { icon: Home, color: 'text-green-500', t: "15 minutos no banho", d: "Cabe na sua rotina corrida." },
+                        { icon: DollarSign, color: 'text-emerald-600', t: "Menos de R$ 2 por dia", d: "1 kit = 2-3 meses de tratamento." }
+                    ].map((item, i) => (
+                        <div key={i} className="flex flex-col gap-6 p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:border-orange-200 transition-all hover:-translate-y-1 group">
+                            <div className="bg-white p-4 rounded-2xl text-orange-700 shadow-sm group-hover:scale-110 transition-transform w-fit">
+                                <item.icon className={cn("h-8 w-8", item.color)} />
+                            </div>
+                            <div>
+                                <p className="font-black text-slate-900 text-xl uppercase tracking-tight mb-2 leading-tight">{item.t}</p>
+                                <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* 4. SEÇÃO: O QUE VEM NESSE KIT COMPLETO: */}
+        <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
                     <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
@@ -268,7 +275,7 @@ export function HairCarePage() {
                           ] 
                         }
                     ].map((item, i) => (
-                        <div key={i} className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group">
+                        <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group shadow-sm">
                             <div className="space-y-4">
                                 <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
                                 <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
@@ -289,7 +296,7 @@ export function HairCarePage() {
                 </div>
 
                 {/* RESULTADOS SECTION */}
-                <div className="bg-[#FFF5ED] text-slate-900 rounded-[3.5rem] p-10 md:p-16 shadow-xl relative overflow-hidden border border-orange-100">
+                <div className="bg-white text-slate-900 rounded-[3.5rem] p-10 md:p-16 shadow-xl relative overflow-hidden border border-orange-100">
                     <div className="absolute top-0 right-0 p-12 opacity-[0.15] pointer-events-none text-orange-200">
                       <Sparkles size={250} />
                     </div>
@@ -312,7 +319,7 @@ export function HairCarePage() {
                           { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
                           { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
                         ].map((res, i) => (
-                          <div key={i} className="flex items-center gap-4 bg-white/60 p-5 rounded-2xl border border-orange-100 shadow-sm hover:bg-white hover:border-orange-300 transition-all duration-300 group/item">
+                          <div key={i} className="flex items-center gap-4 bg-slate-50/80 p-5 rounded-2xl border border-orange-100 shadow-sm hover:bg-white hover:border-orange-300 transition-all duration-300 group/item">
                               <div className="bg-orange-100 text-orange-700 p-2 rounded-full group-hover/item:scale-110 transition-transform">
                                 <Check size={18} strokeWidth={4} />
                               </div>
