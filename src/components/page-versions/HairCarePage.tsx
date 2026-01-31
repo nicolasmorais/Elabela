@@ -29,7 +29,9 @@ import {
   DollarSign,
   Home,
   Dumbbell,
-  Play
+  Play,
+  Microscope,
+  FlaskConical
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -419,40 +421,70 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* BENEFÍCIOS SECTION */}
+        {/* 6. SEÇÃO: DESENVOLVIDO POR ESPECIALISTAS (BIO INSTINTO) */}
         <section className="py-24 px-6 bg-slate-950 text-white relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none">
-                            Benefícios que <span className="text-orange-400 italic">Transformam.</span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-[10px] font-black uppercase tracking-widest">
+                            <Microscope size={14} /> Ciência Aplicada
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">
+                            Desenvolvido por <span className="text-orange-400 italic">Especialistas.</span>
                         </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-6">
+                            <p className="text-xl md:text-2xl font-bold text-orange-100/90 leading-relaxed">
+                                Bio Instinto: 12 anos de expertise capilar
+                            </p>
+                            <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
+                                Não é produto genérico de farmácia. É tecnologia profissional da Bio Instinto - uma das maiores indústrias de cosméticos do Brasil.
+                            </p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                             {[
-                                "Força Real nos Fios", "Resistência Absurda", "Hidratação Intensa", 
-                                "Maciez de Comercial", "Brilho Natural", "Perfume Inesquecível", 
-                                "Crescimento Saudável", "Adeus Pontas Duplas"
-                            ].map((benef, i) => (
-                                <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
-                                    <Sparkles size={16} className="text-orange-400" />
-                                    <span className="font-bold text-sm">{benef}</span>
+                                "12 anos transformando cabelos", 
+                                "500 mil clientes ativos", 
+                                "Linha profissional de salão", 
+                                "Fórmulas testadas em laboratório"
+                            ].map((stat, i) => (
+                                <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group">
+                                    <div className="bg-orange-500/20 p-1.5 rounded-full text-orange-400 group-hover:scale-110 transition-transform">
+                                        <Check size={16} strokeWidth={4} />
+                                    </div>
+                                    <span className="font-bold text-sm text-slate-200">{stat}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div className="bg-white text-slate-950 p-10 md:p-16 rounded-[4rem] shadow-2xl relative">
-                        <div className="absolute -top-6 -right-6 bg-orange-500 text-white w-20 h-20 rounded-full flex items-center justify-center font-black rotate-12 shadow-xl">
-                            100% OK
+
+                    <div className="bg-white text-slate-950 p-10 md:p-16 rounded-[4rem] shadow-[0_32px_64px_-16px_rgba(249,115,22,0.2)] relative border border-orange-100">
+                        <div className="absolute -top-6 -right-6 bg-orange-500 text-white w-20 h-20 rounded-full flex items-center justify-center font-black rotate-12 shadow-xl border-4 border-white">
+                            TOP 1
                         </div>
-                        <h3 className="text-3xl font-black mb-8 leading-tight">Garantia Bio Instinto</h3>
-                        <p className="text-lg text-slate-600 mb-8 font-medium">A Bio Instinto é uma das maiores indústrias do Brasil. Qualidade garantida para o seu tratamento.</p>
-                        <ul className="space-y-4">
-                            {["Produto 100% Original", "Envio Direto da Fábrica", "Pronta Entrega Imediata"].map((g, i) => (
-                                <li key={i} className="flex items-center gap-3 font-bold">
-                                    <ShieldCheck className="text-orange-600" /> {g}
-                                </li>
-                            ))}
-                        </ul>
+                        <h3 className="text-3xl font-black mb-6 leading-tight flex items-center gap-3">
+                            <Award className="text-orange-600" /> Qualidade Garantida
+                        </h3>
+                        <div className="space-y-4 mb-10">
+                            <p className="text-lg text-slate-600 font-medium">O que isso significa para você?</p>
+                            <ul className="space-y-4">
+                                {[
+                                    "Você leva pra casa o mesmo produto que profissionais usam",
+                                    "O mesmo tratamento que já transformou meio milhão de cabelos",
+                                    "Direto da indústria. Sem intermediário e sem taxas extras"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                        <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 text-center">
+                            <p className="text-slate-500 font-bold uppercase tracking-widest text-xs mb-2">Veredito</p>
+                            <p className="text-xl font-black text-slate-900 tracking-tight italic">"Não é promessa. É ciência aplicada."</p>
+                        </div>
                     </div>
                 </div>
             </div>
