@@ -26,7 +26,7 @@ import {
   ArrowRightLeft,
   Link2,
   LayoutGrid
-} from 'lucide-center';
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CreateRouteDialog } from '@/components/dashboard/CreateRouteDialog';
 import { UTMLinkGenerator } from '@/components/dashboard/UTMLinkGenerator';
