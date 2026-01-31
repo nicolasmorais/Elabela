@@ -102,7 +102,7 @@ export function HairCarePage() {
           </div>
         </header>
 
-        {/* SECTION DOR/PROBLEMA - COPY SIMPLIFICADA */}
+        {/* SECTION DOR/PROBLEMA - COPY SIMPLIFICADA E INTEGRADA AO DESIGN */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-3xl mx-auto space-y-16">
             
@@ -110,19 +110,34 @@ export function HairCarePage() {
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight">
                 VOCÊ ESTÁ CANSADA DE SOFRER COM ESSE CABELO.
               </h2>
-              <div className="bg-orange-50 p-8 md:p-12 rounded-[3rem] border border-orange-100 text-left">
+              <div className="bg-orange-50 p-8 md:p-12 rounded-[3rem] border border-orange-100 text-left shadow-sm">
                 <p className="text-xl md:text-2xl font-bold text-slate-800 mb-8">Você sabe a dor que é:</p>
                 <ul className="space-y-5 text-lg md:text-xl font-medium text-slate-700">
-                  <li className="flex gap-3"><span>😢</span> Passar a mão e sentir ele quebrando</li>
-                  <li className="flex gap-3"><span>😢</span> Ver fios no travesseiro todo dia</li>
-                  <li className="flex gap-3"><span>😢</span> Esconder em coque porque solto é vergonha</li>
-                  <li className="flex gap-3"><span>😢</span> Fugir de fotos</li>
-                  <li className="flex gap-3"><span>😢</span> Não se sentir bonita</li>
+                  <li className="flex gap-4 items-center">
+                    <span className="text-2xl">😢</span> 
+                    <span>Passar a mão e sentir ele quebrando</span>
+                  </li>
+                  <li className="flex gap-4 items-center">
+                    <span className="text-2xl">😢</span> 
+                    <span>Ver fios no travesseiro todo dia</span>
+                  </li>
+                  <li className="flex gap-4 items-center">
+                    <span className="text-2xl">😢</span> 
+                    <span>Esconder em coque porque solto é vergonha</span>
+                  </li>
+                  <li className="flex gap-4 items-center">
+                    <span className="text-2xl">😢</span> 
+                    <span>Fugir de fotos</span>
+                  </li>
+                  <li className="flex gap-4 items-center">
+                    <span className="text-2xl">😢</span> 
+                    <span>Não se sentir bonita</span>
+                  </li>
                 </ul>
               </div>
             </div>
 
-            <div className="space-y-8 text-center">
+            <div className="space-y-10 text-center">
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight">
                 VOCÊ JÁ TENTOU DE TUDO.
               </h2>
@@ -133,14 +148,14 @@ export function HairCarePage() {
                   "Receitas caseiras que só fizeram bagunça",
                   "Ampolas caras jogadas fora"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-slate-50 p-5 rounded-2xl border border-slate-200 group transition-colors">
-                    <span className="text-red-500 shrink-0">❌</span>
-                    <span className="font-bold text-slate-700">{item}</span>
+                  <div key={i} className="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 group hover:border-red-200 transition-all">
+                    <span className="text-red-500 shrink-0 text-xl font-bold">❌</span>
+                    <span className="font-bold text-slate-700 leading-tight">{item}</span>
                   </div>
                 ))}
               </div>
               
-              <div className="bg-red-50 p-8 rounded-[2.5rem] border border-red-100 space-y-4">
+              <div className="bg-red-50 p-8 rounded-[2.5rem] border border-red-100 space-y-4 shadow-sm">
                 <p className="text-2xl font-black text-red-800">Resultado?</p>
                 <div className="space-y-1 text-lg font-bold text-red-900/70 italic">
                   <p>Dinheiro jogado fora.</p>
@@ -150,17 +165,21 @@ export function HairCarePage() {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-10">
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center uppercase underline decoration-orange-400 decoration-8 underline-offset-8">
                 O PROBLEMA É SIMPLES:
               </h2>
-              <div className="max-w-2xl mx-auto space-y-6 text-xl md:text-2xl text-center leading-relaxed font-medium text-slate-600">
+              <div className="max-w-2xl mx-auto space-y-8 text-xl md:text-2xl text-center leading-relaxed font-medium text-slate-600">
                 <p>Você só teve acesso a produtos genéricos que não funcionam.</p>
                 <p className="text-slate-950 font-black text-3xl md:text-4xl tracking-tight leading-none italic">
                     A solução existe.
                 </p>
                 <p>É a mesma que cabeleireiros profissionais usam.</p>
-                <p className="bg-slate-950 text-orange-400 px-4 py-2 rounded-xl inline-block font-black text-xl md:text-3xl">E você nunca teve acesso... até agora.</p>
+                <div className="pt-4">
+                  <p className="bg-slate-950 text-orange-400 px-6 py-4 rounded-2xl inline-block font-black text-xl md:text-3xl shadow-xl">
+                    E você nunca teve acesso... até agora.
+                  </p>
+                </div>
               </div>
             </div>
 
