@@ -79,7 +79,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -87,7 +87,7 @@ export function HairCarePage() {
             <div className="relative group max-w-3xl w-full mb-12">
               <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 to-amber-600 rounded-[3rem] blur-3xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
               <img 
-                src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/pasted-image-2026-01-31T00-31-16-331Z-F4Vv98z0qj7I1P2o3K4L5M6N7O8P9Q.png" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769841925451-ChatGPT-Image-31-de-jan.-de-2026,-03_45_16.png" 
                 alt="Kit Cavalo de Raça Bio Instinto" 
                 className="rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(139,94,60,0.4)] relative z-10 mx-auto"
               />
