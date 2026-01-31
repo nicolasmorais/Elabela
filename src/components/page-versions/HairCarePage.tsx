@@ -93,7 +93,7 @@ export function HairCarePage() {
             {/* IMAGEM DO PRODUTO (ATUALIZADA) */}
             <div className="relative group max-w-3xl w-full">
               <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769892337933-ChatGPT-Image-31-de-jan.-de-2026,-17_44_50.png" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769892740886-ChatGPT-Image-31-de-jan.-de-2026,-17_52_08.png" 
                 alt="Kit Cavalo de Raça Bio Instinto" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
@@ -171,7 +171,7 @@ export function HairCarePage() {
                     <div className="flex-1 lg:sticky lg:top-24 relative w-full">
                         <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                         <img 
-                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769892337933-ChatGPT-Image-31-de-jan.-de-2026,-17_44_50.png" 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769892740886-ChatGPT-Image-31-de-jan.-de-2026,-17_52_08.png" 
                             alt="Cabelo sendo tratado com profissionalismo" 
                             className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                         />
