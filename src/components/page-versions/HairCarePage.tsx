@@ -180,7 +180,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: DIFERENCIAIS (DESIGN MELHORADO) */}
+        {/* 3. SEÇÃO: DIFERENCIAIS (DESIGN MELHORADO COM CORES DA MARCA) */}
         <section className="py-32 px-6 bg-white relative">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
@@ -197,29 +197,23 @@ export function HairCarePage() {
                         {[
                             { 
                                 icon: Sparkles, 
-                                color: 'text-amber-500', 
-                                bgIcon: 'bg-amber-50',
                                 t: "Tecnologia Bio Instinto Profissional", 
                                 d: "O mesmo produto que cabeleireiros usam para entregar resultados rápidos." 
                             },
                             { 
                                 icon: Dumbbell, 
-                                color: 'text-blue-500', 
-                                bgIcon: 'bg-blue-50',
                                 t: "Trata de verdade, não mascara", 
                                 d: "Reconstrução real na fibra capilar, tratando o fio de dentro para fora." 
                             },
                             { 
                                 icon: Zap, 
-                                color: 'text-orange-500', 
-                                bgIcon: 'bg-orange-50',
                                 t: "Resultado na primeira aplicação", 
                                 d: "Você sente a diferença no toque e no brilho assim que termina o banho." 
                             }
                         ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] hover:border-orange-200 transition-all duration-500 hover:-translate-y-2 group">
-                                <div className={cn("p-5 rounded-[1.5rem] shadow-inner group-hover:scale-110 transition-transform w-fit", item.bgIcon)}>
-                                    <item.icon className={cn("h-8 w-8", item.color)} strokeWidth={2.5} />
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-[#FDF8F3] rounded-[3rem] border border-orange-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(139,94,60,0.1)] hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 group">
+                                <div className="p-5 rounded-[1.5rem] bg-white shadow-sm group-hover:scale-110 transition-transform w-fit">
+                                    <item.icon className="h-8 w-8 text-orange-700" strokeWidth={2.5} />
                                 </div>
                                 <div className="space-y-3">
                                     <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
@@ -234,22 +228,18 @@ export function HairCarePage() {
                         {[
                             { 
                                 icon: Home, 
-                                color: 'text-green-500', 
-                                bgIcon: 'bg-green-50',
                                 t: "15 minutos no banho", 
                                 d: "Desenvolvido para caber na rotina da mulher moderna que não tem tempo a perder." 
                             },
                             { 
                                 icon: DollarSign, 
-                                color: 'text-emerald-600', 
-                                bgIcon: 'bg-emerald-50',
                                 t: "Menos de R$ 2 por dia", 
                                 d: "Um único kit rende de 2 a 3 meses de tratamento completo de alto nível." 
                             }
                         ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] hover:border-orange-200 transition-all duration-500 hover:-translate-y-2 group">
-                                <div className={cn("p-5 rounded-[1.5rem] shadow-inner group-hover:scale-110 transition-transform w-fit", item.bgIcon)}>
-                                    <item.icon className={cn("h-8 w-8", item.color)} strokeWidth={2.5} />
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-[#FDF8F3] rounded-[3rem] border border-orange-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(139,94,60,0.1)] hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 group">
+                                <div className="p-5 rounded-[1.5rem] bg-white shadow-sm group-hover:scale-110 transition-transform w-fit">
+                                    <item.icon className="h-8 w-8 text-orange-700" strokeWidth={2.5} />
                                 </div>
                                 <div className="space-y-3">
                                     <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
