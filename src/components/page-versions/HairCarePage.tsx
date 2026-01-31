@@ -23,7 +23,8 @@ import {
   XCircle,
   AlertCircle,
   Frown,
-  Ban
+  Ban,
+  Image as ImageIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -81,7 +82,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -102,90 +103,32 @@ export function HairCarePage() {
           </div>
         </header>
 
-        {/* SECTION DOR/PROBLEMA - COPY SOLICITADA */}
+        {/* NOVA SEÇÃO: GALERIA DE IMAGENS */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
-          <div className="max-w-3xl mx-auto space-y-16">
-            
-            {/* Bloco 1: Cansada de sofrer */}
-            <div className="space-y-8 text-center">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight uppercase">
-                VOCÊ ESTÁ CANSADA DE SOFRER COM ESSE CABELO.
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+              <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
+                O kit mais Amado do Brasil
               </h2>
-              <div className="bg-orange-50 p-8 md:p-12 rounded-[3rem] border border-orange-100 text-left shadow-sm">
-                <p className="text-xl md:text-2xl font-bold text-slate-800 mb-8">Você sabe a dor que é:</p>
-                <ul className="space-y-5 text-lg md:text-xl font-medium text-slate-700">
-                  <li className="flex gap-4 items-center">
-                    <span className="text-2xl">😢</span> 
-                    <span>Passar a mão e sentir ele quebrando</span>
-                  </li>
-                  <li className="flex gap-4 items-center">
-                    <span className="text-2xl">😢</span> 
-                    <span>Ver fios no travesseiro todo dia</span>
-                  </li>
-                  <li className="flex gap-4 items-center">
-                    <span className="text-2xl">😢</span> 
-                    <span>Esconder em coque porque solto é vergonha</span>
-                  </li>
-                  <li className="flex gap-4 items-center">
-                    <span className="text-2xl">😢</span> 
-                    <span>Fugir de fotos</span>
-                  </li>
-                  <li className="flex gap-4 items-center">
-                    <span className="text-2xl">😢</span> 
-                    <span>Não se sentir bonita</span>
-                  </li>
-                </ul>
-              </div>
+              <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Bloco 2: Tentou de tudo */}
-            <div className="space-y-10 text-center">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight uppercase">
-                VOCÊ JÁ TENTOU DE TUDO.
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                {[
-                  "Hidratação de R$ 250 que durou 1 semana",
-                  "Shampoo \"milagroso\" de R$ 120 que não funcionou",
-                  "Receitas caseiras que só fizeram bagunça",
-                  "Ampolas caras jogadas fora"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 group transition-all">
-                    <span className="text-red-500 shrink-0 text-xl font-bold">❌</span>
-                    <span className="font-bold text-slate-700 leading-tight">{item}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="bg-red-50 p-8 md:p-12 rounded-[2.5rem] border border-red-100 space-y-4 shadow-sm">
-                <p className="text-2xl md:text-3xl font-black text-red-800">Resultado?</p>
-                <div className="space-y-2 text-xl font-bold text-red-900/70 italic">
-                  <p>Dinheiro jogado fora.</p>
-                  <p>Cabelo continua fraco.</p>
-                  <p>Você continua se sentindo mal.</p>
+            {/* Grid da Galeria (Placeholders para futuras imagens) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                <div key={i} className="aspect-square bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 group hover:border-orange-200 hover:bg-orange-50/30 transition-all cursor-pointer overflow-hidden relative shadow-sm">
+                   <ImageIcon size={40} className="mb-2 opacity-50 group-hover:scale-110 transition-transform" />
+                   <span className="text-[10px] font-black uppercase tracking-widest opacity-50">Imagem Galeria {i}</span>
+                   {/* Overlay de hover */}
+                   <div className="absolute inset-0 bg-orange-900/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
-              </div>
+              ))}
             </div>
 
-            {/* Bloco 3: Problema é simples */}
-            <div className="space-y-10">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center uppercase underline decoration-orange-400 decoration-8 underline-offset-8">
-                O PROBLEMA É SIMPLES:
-              </h2>
-              <div className="max-w-2xl mx-auto space-y-8 text-xl md:text-2xl text-center leading-relaxed font-medium text-slate-600">
-                <p>Você só teve acesso a produtos genéricos que não funcionam.</p>
-                <p className="text-slate-950 font-black text-3xl md:text-4xl tracking-tight leading-none italic">
-                    A solução existe.
-                </p>
-                <p>É a mesma que cabeleireiros profissionais usam.</p>
-                <div className="pt-4">
-                  <p className="bg-slate-950 text-orange-400 px-6 py-4 rounded-2xl inline-block font-black text-xl md:text-3xl shadow-xl">
-                    E você nunca teve acesso... até agora.
-                  </p>
-                </div>
-              </div>
+            <div className="text-center pt-8">
+              <p className="text-slate-500 font-medium italic">Milhares de mulheres compartilhando seus resultados reais todos os dias.</p>
             </div>
-
           </div>
         </section>
 
