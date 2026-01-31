@@ -86,7 +86,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -135,19 +135,25 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO */}
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO (COPY ATUALIZADA) */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="flex-1 space-y-8">
                         <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A SOLUÇÃO QUE VOCÊ PRECISAVA</span>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
-                            Resultado de salão. No seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
+                            Resultado de salão no seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
                         </h2>
                         
-                        <div className="space-y-4 text-xl text-slate-600 leading-relaxed font-medium italic border-l-4 border-orange-200 pl-6">
-                            <p>Sabe aquela hidratação cara do salão?</p>
-                            <p>Agora você faz em casa. Em 15 minutos.</p>
+                        <div className="space-y-6 text-xl text-slate-600 leading-relaxed font-medium italic border-l-4 border-orange-200 pl-6">
+                            <p>Sabe aquela hidratação cara do salão que você faz (quando dá)?</p>
+                            <p>Aquela que custa R$ 250-400, toma 2 horas do seu sábado e dura 1 semana?</p>
+                            <div className="space-y-2 text-slate-900 font-black not-italic text-2xl mt-4">
+                                <p>Agora você tem a mesma coisa em casa.</p>
+                                <p>Mesma tecnologia profissional.</p>
+                                <p>Mesmo resultado.</p>
+                                <p className="text-orange-700">15 minutos no banho.</p>
+                            </div>
                         </div>
 
                         <div className="p-8 bg-white rounded-[2.5rem] border border-orange-100 shadow-sm space-y-4">
@@ -155,17 +161,29 @@ export function HairCarePage() {
                                 🐎 KIT CAPILAR CAVALO DE RAÇA
                             </h3>
                             <p className="text-lg text-slate-600 font-medium leading-relaxed">
-                                Tratamento profissional para quem não tem tempo nem dinheiro sobrando.
+                                Tratamento profissional feito para a mulher real.
                             </p>
                         </div>
 
-                        <div className="pt-12 space-y-6">
-                            <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase">FEITO PRA VOCÊ</h4>
-                            <p className="text-xl text-slate-600 leading-relaxed font-medium">
-                                Que trabalha, tem conta pra pagar, não tem tempo livre.
-                            </p>
-                            <div className="space-y-2 text-2xl font-black text-slate-900 tracking-tight leading-none italic">
-                                <p>Mas que MERECE se sentir bonita sem quebrar o banco.</p>
+                        <div className="pt-8 space-y-6">
+                            <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
+                            <ul className="space-y-4">
+                                {[
+                                    "Trabalha, cuida da casa, tem mil coisas pra resolver",
+                                    "Não tem R$ 300 livre no orçamento todo mês",
+                                    "Não pode passar o sábado inteiro no salão",
+                                    "Não abre mão de se sentir bonita e confiante"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-700">
+                                        <div className="bg-orange-100 p-1 rounded-full text-orange-600"><Check size={16} strokeWidth={3} /></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                            
+                            <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
+                                <p>Porque você merece olhar no espelho e gostar do que vê.</p>
+                                <p className="text-orange-800 italic underline decoration-orange-300">Sem precisar escolher entre cabelo bonito ou pagar as contas.</p>
                             </div>
                         </div>
                     </div>
@@ -187,7 +205,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: DIFERENCIAIS (NOVA SEÇÃO CRIADA AQUI) */}
+        {/* 3. SEÇÃO: DIFERENCIAIS */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
