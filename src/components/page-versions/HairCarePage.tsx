@@ -47,11 +47,6 @@ export function HairCarePage() {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Cores personalizadas baseadas na imagem:
-  // Bronze/Cobre: #8B5E3C, #A67C52
-  // Fundo Suave: #FDF8F3
-  // Elétrico: #CD7F32 (Gold/Copper)
-
   return (
     <>
       <PageTracker contentId="cavalo-de-raca" />
@@ -181,9 +176,9 @@ export function HairCarePage() {
                     <div className="flex-1 relative">
                         <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-20"></div>
                         <img 
-                            src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/pasted-image-2026-01-31T00-31-16-331Z-F4Vv98z0qj7I1P2o3K4L5M6N7O8P9Q.png" 
-                            alt="Kit Completo" 
-                            className="relative z-10 w-full h-auto drop-shadow-2xl"
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                            alt="Kit Completo Profissional" 
+                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
                         />
                     </div>
                 </div>
