@@ -28,7 +28,8 @@ import {
   ShoppingBag,
   DollarSign,
   Home,
-  Dumbbell
+  Dumbbell,
+  Play
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -364,6 +365,56 @@ export function HairCarePage() {
                           </div>
                         ))}
                     </div>
+                </div>
+            </div>
+        </section>
+
+        {/* 5. SEÇÃO: GALERIA DE VÍDEOS VERTICAIS (TikTok Style) */}
+        <section className="py-24 px-6 bg-white overflow-hidden">
+            <div className="max-w-6xl mx-auto space-y-16">
+                <div className="text-center space-y-4">
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Comunidade Cavalo de Raça</span>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
+                      Aperte o Play na <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Sua Nova Versão</span> ✨
+                    </h2>
+                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Veja por que o Kit Cavalo de Raça é a maior febre do momento entre as brasileiras.</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {[1, 2, 3].map((i) => (
+                        <div key={i} className="group relative aspect-[9/16] bg-slate-950 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white transition-all hover:scale-[1.02] hover:shadow-orange-200/50">
+                            {/* Overlay com botão Play falso ou Placeholder de Vídeo */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
+                            
+                            {/* Placeholder para Vídeo (Aqui o usuário inserirá as tags <video> ou <iframe>) */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-white opacity-40 group-hover:opacity-100 transition-opacity">
+                                <div className="bg-orange-600/80 p-6 rounded-full shadow-2xl backdrop-blur-md group-hover:scale-110 transition-transform">
+                                    <Play size={48} fill="white" className="ml-1" />
+                                </div>
+                            </div>
+
+                            {/* Detalhes Estilo TikTok */}
+                            <div className="absolute bottom-8 left-8 z-20 space-y-2 pointer-events-none">
+                                <div className="flex items-center gap-2">
+                                    <div className="h-10 w-10 rounded-full border-2 border-white bg-orange-100 flex items-center justify-center font-black text-orange-800">
+                                        {i === 1 ? 'M' : i === 2 ? 'J' : 'C'}
+                                    </div>
+                                    <span className="font-bold text-white drop-shadow-md">
+                                        {i === 1 ? '@mariana_souza' : i === 2 ? '@juliana.hair' : '@carol_instinto'}
+                                    </span>
+                                </div>
+                                <p className="text-white/90 text-sm font-medium leading-snug drop-shadow-md">
+                                    {i === 1 ? 'Chocada com o brilho desse kit! 😱✨' : i === 2 ? 'Meus fios nunca foram tão fortes. Amei!' : 'A Bio Instinto entregou TUDO nesse lançamento.'}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="text-center pt-8">
+                    <Button onClick={scrollToPricing} className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-12 h-16 font-black text-lg shadow-xl shadow-orange-200 animate-pulse">
+                        QUERO TER ESSES RESULTADOS TAMBÉM
+                    </Button>
                 </div>
             </div>
         </section>
