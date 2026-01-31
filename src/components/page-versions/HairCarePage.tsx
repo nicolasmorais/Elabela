@@ -82,7 +82,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -114,13 +114,12 @@ export function HairCarePage() {
               <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Grid da Galeria (Placeholders para futuras imagens) */}
+            {/* Grid da Galeria */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                 <div key={i} className="aspect-square bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 group hover:border-orange-200 hover:bg-orange-50/30 transition-all cursor-pointer overflow-hidden relative shadow-sm">
                    <ImageIcon size={40} className="mb-2 opacity-50 group-hover:scale-110 transition-transform" />
                    <span className="text-[10px] font-black uppercase tracking-widest opacity-50">Imagem Galeria {i}</span>
-                   {/* Overlay de hover */}
                    <div className="absolute inset-0 bg-orange-900/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               ))}
@@ -209,36 +208,37 @@ export function HairCarePage() {
                     ))}
                 </div>
 
-                {/* RESULTADOS SECTION */}
-                <div className="bg-slate-950 text-white rounded-[3.5rem] p-10 md:p-16 shadow-2xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
-                      <Sparkles size={200} />
+                {/* RESULTADOS SECTION - CORES MELHORADAS */}
+                <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white rounded-[3.5rem] p-10 md:p-16 shadow-[0_40px_100px_-15px_rgba(0,0,0,0.5)] relative overflow-hidden border border-white/5">
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none animate-pulse">
+                      <Sparkles size={280} />
                     </div>
+                    <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-600/10 rounded-full blur-[100px] pointer-events-none"></div>
                     
                     <div className="text-center mb-12 relative z-10">
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-white">
                           🔥 RESULTADOS QUE VÃO TE FAZER CHORAR:
                         </h2>
-                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+                        <div className="h-1.5 w-24 bg-gradient-to-r from-orange-600 to-orange-400 mx-auto rounded-full shadow-[0_0_20px_rgba(249,115,22,0.5)]"></div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 relative z-10">
                         {[
                           { t: "FORÇA ABSURDA", d: "Fios que aguentam TUDO" },
                           { t: "ZERO QUEBRA", d: "Acabou aquele cabelo no pente" },
                           { t: "HIDRATAÇÃO REAL", d: "Não aquela ilusão temporária" },
                           { t: "MACIEZ INSANA", d: "Você não vai parar de passar a mão" },
-                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais que você achava impossível" },
+                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais impossíveis" },
                           { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
                           { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
                         ].map((res, i) => (
-                          <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
-                              <div className="bg-orange-600 p-1.5 rounded-full shadow-lg">
-                                <Check size={18} strokeWidth={3} />
+                          <div key={i} className="flex items-center gap-4 bg-white/[0.03] p-5 rounded-2xl border border-white/10 hover:bg-white/[0.07] hover:border-orange-500/30 transition-all duration-300 group/item">
+                              <div className="bg-gradient-to-tr from-orange-700 to-orange-500 p-2 rounded-full shadow-[0_0_15px_rgba(249,115,22,0.3)] group-hover/item:scale-110 transition-transform">
+                                <Check size={18} strokeWidth={4} className="text-white" />
                               </div>
                               <div>
-                                <span className="font-black text-orange-400 mr-2">{res.t}</span>
-                                <span className="font-medium opacity-80 text-sm">- {res.d}</span>
+                                <span className="font-black text-orange-400 mr-2 tracking-tight group-hover/item:text-orange-300 transition-colors uppercase text-sm">{res.t}</span>
+                                <span className="font-medium text-slate-300 text-sm">{res.d}</span>
                               </div>
                           </div>
                         ))}
