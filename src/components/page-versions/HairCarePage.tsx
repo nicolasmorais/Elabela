@@ -82,7 +82,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -103,7 +103,7 @@ export function HairCarePage() {
           </div>
         </header>
 
-        {/* NOVA SEÇÃO: GALERIA DE IMAGENS */}
+        {/* 1. SEÇÃO: GALERIA DE IMAGENS */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
@@ -131,7 +131,48 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* O QUE VEM NESSE KIT COMPLETO: */}
+        {/* 2. SEÇÃO: SOLUÇÃO PROFISSIONAL (MOVIDA PARA CÁ) */}
+        <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col lg:flex-row items-center gap-16">
+                    <div className="flex-1 space-y-8">
+                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A Solução Profissional</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter leading-none">
+                            A Força que seus fios estavam <span className="text-orange-700">Implorando.</span>
+                        </h2>
+                        <p className="text-xl text-slate-600 leading-relaxed">
+                            Apresentamos o <strong>Kit Capilar Cavalo de Raça Bio Instinto</strong>. Uma solução PROFISSIONAL desenvolvida em laboratório com tecnologia brasileira.
+                        </p>
+                        
+                        <div className="space-y-6">
+                            {[
+                                { t: "Ação na Raiz do Problema", d: "Não mascaramos, tratamos a fibra capilar." },
+                                { t: "Tecnologia Profissional", d: "Mesma qualidade usada pelos grandes cabeleireiros." },
+                                { t: "Resultado Imediato", d: "Sinta a diferença logo na primeira lavagem." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4 group">
+                                    <div className="bg-white p-3 rounded-2xl text-orange-700 shadow-md group-hover:scale-110 transition-transform"><Check size={24} /></div>
+                                    <div>
+                                        <p className="font-black text-slate-900 text-xl">{item.t}</p>
+                                        <p className="text-slate-500 font-medium">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex-1 relative">
+                        <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-20"></div>
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                            alt="Kit Completo Profissional" 
+                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* 3. SEÇÃO: O QUE VEM NESSE KIT COMPLETO: */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
@@ -208,7 +249,7 @@ export function HairCarePage() {
                     ))}
                 </div>
 
-                {/* RESULTADOS SECTION - SUAVE & PREMIUM */}
+                {/* RESULTADOS SECTION */}
                 <div className="bg-[#FFF5ED] text-slate-900 rounded-[3.5rem] p-10 md:p-16 shadow-xl relative overflow-hidden border border-orange-100">
                     <div className="absolute top-0 right-0 p-12 opacity-[0.15] pointer-events-none text-orange-200">
                       <Sparkles size={250} />
@@ -242,47 +283,6 @@ export function HairCarePage() {
                               </div>
                           </div>
                         ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        {/* SOLUÇÃO SECTION - REPOSICIONADA */}
-        <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
-            <div className="max-w-6xl mx-auto">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <div className="flex-1 space-y-8">
-                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A Solução Profissional</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter leading-none">
-                            A Força que seus fios estavam <span className="text-orange-700">Implorando.</span>
-                        </h2>
-                        <p className="text-xl text-slate-600 leading-relaxed">
-                            Apresentamos o <strong>Kit Capilar Cavalo de Raça Bio Instinto</strong>. Uma solução PROFISSIONAL desenvolvida em laboratório com tecnologia brasileira.
-                        </p>
-                        
-                        <div className="space-y-6">
-                            {[
-                                { t: "Ação na Raiz do Problema", d: "Não mascaramos, tratamos a fibra capilar." },
-                                { t: "Tecnologia Profissional", d: "Mesma qualidade usada pelos grandes cabeleireiros." },
-                                { t: "Resultado Imediato", d: "Sinta a diferença logo na primeira lavagem." }
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-4 group">
-                                    <div className="bg-white p-3 rounded-2xl text-orange-700 shadow-md group-hover:scale-110 transition-transform"><Check size={24} /></div>
-                                    <div>
-                                        <p className="font-black text-slate-900 text-xl">{item.t}</p>
-                                        <p className="text-slate-500 font-medium">{item.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="flex-1 relative">
-                        <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-20"></div>
-                        <img 
-                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                            alt="Kit Completo Profissional" 
-                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
-                        />
                     </div>
                 </div>
             </div>
