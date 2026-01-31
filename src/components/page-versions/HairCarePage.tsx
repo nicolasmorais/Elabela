@@ -175,11 +175,6 @@ export function HairCarePage() {
                             alt="Mulher Confiante com Cabelo Lindo" 
                             className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                         />
-                        <div className="mt-8 bg-slate-950 p-10 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-6 opacity-10"><Award size={80} /></div>
-                            <p className="text-2xl font-black mb-2">Qualidade Premium</p>
-                            <p className="opacity-70 font-medium italic">"A mesma fórmula dos grandes centros de estética, agora na sua casa."</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -393,7 +388,7 @@ export function HairCarePage() {
                             <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
                                 <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-black text-orange-800">{test.n[0]}</div>
                                 <div>
-                                    <p className="font-black text-slate-950">{test.n}</p>
+                                    <p className="font-black text-slate-900">{test.n}</p>
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{test.i}</p>
                                 </div>
                             </div>
