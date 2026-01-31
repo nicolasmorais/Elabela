@@ -180,33 +180,84 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: DIFERENCIAIS */}
-        <section className="py-24 px-6 bg-white">
-            <div className="max-w-6xl mx-auto space-y-16">
+        {/* 3. SEÇÃO: DIFERENCIAIS (DESIGN MELHORADO) */}
+        <section className="py-32 px-6 bg-white relative">
+            <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
-                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Por que somos os melhores</span>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">POR QUE ESSE KIT É DIFERENTE?</h2>
-                    <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
+                    <span className="inline-block text-orange-600 font-black text-[10px] md:text-xs uppercase tracking-[0.5em] mb-2">Por que somos os melhores</span>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-none">
+                        POR QUE ESSE KIT É <span className="text-orange-700">DIFERENTE?</span>
+                    </h2>
+                    <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {[
-                        { icon: Sparkles, color: 'text-yellow-500', t: "Tecnologia Bio Instinto Profissional", d: "O mesmo produto que cabeleireiros usam." },
-                        { icon: Dumbbell, color: 'text-blue-500', t: "Trata de verdade, não mascara", d: "Reconstrução real na fibra capilar." },
-                        { icon: Zap, color: 'text-orange-500', t: "Resultado na primeira aplicação", d: "Você sente a diferença na hora." },
-                        { icon: Home, color: 'text-green-500', t: "15 minutos no banho", d: "Cabe na sua rotina corrida." },
-                        { icon: DollarSign, color: 'text-emerald-600', t: "Menos de R$ 2 por dia", d: "1 kit = 2-3 meses de tratamento." }
-                    ].map((item, i) => (
-                        <div key={i} className="flex flex-col gap-6 p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:border-orange-200 transition-all hover:-translate-y-1 group">
-                            <div className="bg-white p-4 rounded-2xl text-orange-700 shadow-sm group-hover:scale-110 transition-transform w-fit">
-                                <item.icon className={cn("h-8 w-8", item.color)} />
+                <div className="space-y-10">
+                    {/* Linha de Cima: 3 Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { 
+                                icon: Sparkles, 
+                                color: 'text-amber-500', 
+                                bgIcon: 'bg-amber-50',
+                                t: "Tecnologia Bio Instinto Profissional", 
+                                d: "O mesmo produto que cabeleireiros usam para entregar resultados rápidos." 
+                            },
+                            { 
+                                icon: Dumbbell, 
+                                color: 'text-blue-500', 
+                                bgIcon: 'bg-blue-50',
+                                t: "Trata de verdade, não mascara", 
+                                d: "Reconstrução real na fibra capilar, tratando o fio de dentro para fora." 
+                            },
+                            { 
+                                icon: Zap, 
+                                color: 'text-orange-500', 
+                                bgIcon: 'bg-orange-50',
+                                t: "Resultado na primeira aplicação", 
+                                d: "Você sente a diferença no toque e no brilho assim que termina o banho." 
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] hover:border-orange-200 transition-all duration-500 hover:-translate-y-2 group">
+                                <div className={cn("p-5 rounded-[1.5rem] shadow-inner group-hover:scale-110 transition-transform w-fit", item.bgIcon)}>
+                                    <item.icon className={cn("h-8 w-8", item.color)} strokeWidth={2.5} />
+                                </div>
+                                <div className="space-y-3">
+                                    <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
+                                    <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p className="font-black text-slate-900 text-xl uppercase tracking-tight mb-2 leading-tight">{item.t}</p>
-                                <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                        ))}
+                    </div>
+
+                    {/* Linha de Baixo: 2 Cards Centralizados */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-4xl lg:mx-auto">
+                        {[
+                            { 
+                                icon: Home, 
+                                color: 'text-green-500', 
+                                bgIcon: 'bg-green-50',
+                                t: "15 minutos no banho", 
+                                d: "Desenvolvido para caber na rotina da mulher moderna que não tem tempo a perder." 
+                            },
+                            { 
+                                icon: DollarSign, 
+                                color: 'text-emerald-600', 
+                                bgIcon: 'bg-emerald-50',
+                                t: "Menos de R$ 2 por dia", 
+                                d: "Um único kit rende de 2 a 3 meses de tratamento completo de alto nível." 
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.08)] hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)] hover:border-orange-200 transition-all duration-500 hover:-translate-y-2 group">
+                                <div className={cn("p-5 rounded-[1.5rem] shadow-inner group-hover:scale-110 transition-transform w-fit", item.bgIcon)}>
+                                    <item.icon className={cn("h-8 w-8", item.color)} strokeWidth={2.5} />
+                                </div>
+                                <div className="space-y-3">
+                                    <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
+                                    <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
