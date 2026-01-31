@@ -8,12 +8,22 @@ import {
   ShieldCheck, 
   ArrowRight, 
   Zap, 
+  Heart, 
   Sparkles, 
   Timer,
   Lock,
   CreditCard,
+  ChevronRight,
   Award,
+  Users,
   CheckCircle2,
+  Trash2,
+  Droplets,
+  Scissors,
+  XCircle,
+  AlertCircle,
+  Frown,
+  Ban,
   Image as ImageIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,92 +46,103 @@ export function HairCarePage() {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const scrollToPricing = () => {
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <PageTracker contentId="cavalo-de-raca" />
-      <div className="bg-[#FDF9F6] text-slate-800 font-sans selection:bg-orange-100 antialiased min-h-screen">
+      <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE URGÊNCIA SUAVE */}
-        <div className="bg-[#1E293B] py-2 px-4 text-center border-b border-orange-900/10 sticky top-0 z-50">
+        {/* BARRA DE URGÊNCIA */}
+        <div className="bg-slate-950 py-2 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-4 md:gap-8">
             <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-orange-200 flex items-center gap-2">
-                <div className="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
                 Promoção Exclusiva Direto da Indústria
             </p>
-            <div className="hidden md:flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest bg-white/5 px-4 py-1 rounded-full border border-white/10">
-              <Clock size={12} className="text-orange-300" />
-              Oferta termina em: <span className="font-mono text-orange-300">{formatTime(timeLeft)}</span>
+            <div className="hidden md:flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest bg-orange-900/40 px-4 py-1 rounded-full border border-orange-500/20">
+              <Clock size={12} className="text-orange-400" />
+              Oferta termina em: <span className="font-mono text-orange-400">{formatTime(timeLeft)}</span>
             </div>
           </div>
         </div>
 
         {/* HERO SECTION */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/40 via-transparent to-transparent pointer-events-none"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#334155] text-orange-300 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-white/10 shadow-lg">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-orange-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-orange-500/30 shadow-2xl">
                 <Award size={14} /> Tecnologia Bio Instinto
             </div>
             
-            <h1 className="text-4xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 mb-8 max-w-4xl">
-              Finalmente Solte Esse Cabelo <span className="text-orange-700 italic underline decoration-orange-400/30 underline-offset-8">Sem Medo, Sem Vergonha</span>
+            <h1 className="text-4xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-8 max-w-4xl">
+              Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-500 mb-12 font-medium max-w-2xl leading-relaxed">
-              Recupere em 7 dias a força e o brilho com tecnologia profissional, sem precisar gastar fortunas em sessões de salão.
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
+              Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
-            <div className="relative group max-w-2xl w-full">
+            {/* IMAGEM DO PRODUTO */}
+            <div className="relative group max-w-3xl w-full">
               <img 
                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
                 alt="Kit Cavalo de Raça Bio Instinto" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
-              <div className="absolute -bottom-4 -right-4 bg-white p-5 rounded-2xl shadow-xl border border-orange-100 hidden md:block animate-in fade-in zoom-in duration-1000 delay-500">
-                <div className="flex gap-1 text-orange-400 mb-1">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
-                </div>
-                <p className="text-xs font-black text-slate-800 uppercase tracking-widest">Aprovado por Milhares</p>
+              <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 hidden lg:flex flex-col gap-4 z-20">
+                 <div className="bg-white p-4 rounded-2xl shadow-xl border border-orange-100 animate-bounce">
+                    <p className="text-[10px] font-black text-orange-800 uppercase tracking-widest mb-1">Resultados</p>
+                    <p className="text-sm font-bold text-slate-700">Na 1ª Aplicação ✨</p>
+                 </div>
               </div>
             </div>
           </div>
         </header>
 
-        {/* GALERIA SUAVE */}
-        <section className="py-24 px-6 bg-white border-y border-orange-50">
+        {/* NOVA SEÇÃO: GALERIA DE IMAGENS */}
+        <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
-              <span className="inline-block text-orange-600/70 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 uppercase">
+              <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
                 O kit mais Amado do Brasil
               </h2>
-              <div className="h-1 w-24 bg-orange-200 mx-auto rounded-full"></div>
+              <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Grid da Galeria (Placeholders para futuras imagens) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="aspect-square bg-[#FDF9F6] rounded-[2.5rem] border border-orange-100 flex flex-col items-center justify-center text-orange-200 group hover:border-orange-300 transition-all cursor-pointer overflow-hidden relative shadow-sm">
-                   <ImageIcon size={32} className="mb-2 opacity-40 group-hover:scale-110 transition-transform" />
-                   <span className="text-[10px] font-black uppercase tracking-widest opacity-40">Em breve</span>
-                   <div className="absolute inset-0 bg-orange-900/[0.02] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div key={i} className="aspect-square bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 group hover:border-orange-200 hover:bg-orange-50/30 transition-all cursor-pointer overflow-hidden relative shadow-sm">
+                   <ImageIcon size={40} className="mb-2 opacity-50 group-hover:scale-110 transition-transform" />
+                   <span className="text-[10px] font-black uppercase tracking-widest opacity-50">Imagem Galeria {i}</span>
+                   {/* Overlay de hover */}
+                   <div className="absolute inset-0 bg-orange-900/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               ))}
+            </div>
+
+            <div className="text-center pt-8">
+              <p className="text-slate-500 font-medium italic">Milhares de mulheres compartilhando seus resultados reais todos os dias.</p>
             </div>
           </div>
         </section>
 
-        {/* O QUE VEM NO KIT - DESIGN SUAVE */}
-        <section className="py-24 px-6">
+        {/* O QUE VEM NESSE KIT COMPLETO: */}
+        <section className="py-24 px-6 bg-white">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
-                    <p className="text-orange-700/70 font-bold text-sm md:text-base uppercase tracking-widest">
-                        🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
+                    <p className="text-orange-700 font-bold text-lg md:text-xl uppercase tracking-widest">
+                        🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO:
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[
                         { 
                           n: "1️⃣ SHAMPOO", 
@@ -129,9 +150,9 @@ export function HairCarePage() {
                           t: "CAVALO DE RAÇA", 
                           bullets: [
                             "Limpa PROFUNDAMENTE sem destruir",
-                            "Espuma cremosa incomparável",
+                            "Espuma cremosa que você NUNCA viu igual",
                             "Perfume viciante que dura DIAS",
-                            "Prepara para reconstrução REAL"
+                            "Prepara o fio pra reconstrução REAL"
                           ] 
                         },
                         { 
@@ -140,9 +161,9 @@ export function HairCarePage() {
                           t: "CAVALO DE RAÇA", 
                           bullets: [
                             "Desembaraça na PRIMEIRA PASSADA",
-                            "Sinta a diferença IMEDIATAMENTE",
-                            "Brilho absurdo, maciez real",
-                            "Sela as cutículas e protege"
+                            "Você vai sentir a diferença IMEDIATAMENTE",
+                            "Brilho absurdo, maciez de comercial",
+                            "Sela as cutículas e protege os fios"
                           ] 
                         },
                         { 
@@ -150,10 +171,10 @@ export function HairCarePage() {
                           v: "250g", 
                           t: "CONDICIONANTE", 
                           bullets: [
-                            "Onde a MÁGICA ACONTECE",
-                            "Reconstrução PROFUNDA na fibra",
-                            "Força e resistência visível",
-                            "Tratamento de choque positivo"
+                            "Aqui é onde a MÁGICA ACONTECE",
+                            "Reconstrução PROFUNDA na fibra capilar",
+                            "Força e resistência que você VAI SENTIR",
+                            "É tipo esteróides pro seu cabelo (só que legal)"
                           ] 
                         },
                         { 
@@ -162,62 +183,62 @@ export function HairCarePage() {
                           t: "CAVALO DE RAÇA", 
                           bullets: [
                             "Finalização IMPECÁVEL",
-                            "Controla frizz e protege do calor",
-                            "Acabamento luxuoso de salão",
-                            "Fios nutridos e alinhados"
+                            "Controla frizz, protege do calor, nutre",
+                            "Deixa aquele acabamento de salão",
+                            "Seu cabelo vai parecer de OUTRA PESSOA"
                           ] 
                         }
                     ].map((item, i) => (
-                        <div key={i} className="bg-white p-8 rounded-[3rem] border border-orange-100 flex flex-col justify-between hover:shadow-xl hover:shadow-orange-900/5 transition-all group">
+                        <div key={i} className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group">
                             <div className="space-y-4">
-                                <div className="text-orange-800/60 font-black text-[10px] uppercase tracking-widest">{item.n} ({item.v})</div>
-                                <h3 className="text-xl font-black text-slate-900 leading-tight">{item.t}</h3>
+                                <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
+                                <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
                                 <div className="space-y-3 pt-2">
                                   {item.bullets.map((bullet, idx) => (
-                                    <p key={idx} className="text-slate-500 text-sm font-medium leading-snug flex items-start gap-2">
-                                      <Check size={14} className="text-orange-500 shrink-0 mt-0.5" />
+                                    <p key={idx} className="text-slate-600 text-sm font-medium leading-snug flex items-start gap-2">
+                                      <span className="text-orange-600 shrink-0">→</span>
                                       {bullet}
                                     </p>
                                   ))}
                                 </div>
                             </div>
-                            <div className="mt-8 pt-6 border-t border-orange-50">
-                                <div className="h-1 w-8 bg-orange-200 rounded-full group-hover:w-full transition-all duration-700"></div>
+                            <div className="mt-8 pt-6 border-t border-slate-200">
+                                <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* RESULTADOS - DESIGN SUAVE E ELEGANTE */}
-                <div className="bg-[#FFF7F0] rounded-[4rem] p-10 md:p-20 border border-orange-100 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
-                      <Sparkles size={240} className="text-orange-300" />
+                {/* RESULTADOS SECTION */}
+                <div className="bg-slate-950 text-white rounded-[3.5rem] p-10 md:p-16 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                      <Sparkles size={200} />
                     </div>
                     
-                    <div className="text-center mb-16 relative z-10">
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase text-slate-900 mb-4">
-                          ✨ RESULTADOS QUE VÃO TE ENCANTAR:
+                    <div className="text-center mb-12 relative z-10">
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">
+                          🔥 RESULTADOS QUE VÃO TE FAZER CHORAR:
                         </h2>
-                        <div className="h-1 w-24 bg-orange-400/30 mx-auto rounded-full"></div>
+                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 relative z-10">
                         {[
-                          { t: "FORÇA ABSURDA", d: "Fios que aguentam o dia a dia" },
-                          { t: "ZERO QUEBRA", d: "Cabelo forte da raiz às pontas" },
-                          { t: "HIDRATAÇÃO REAL", d: "Nutrição profunda e duradoura" },
-                          { t: "MACIEZ INSANA", d: "Toque sedoso e aveludado" },
-                          { t: "BRILHO DE REVISTA", d: "Luminosidade natural e intensa" },
-                          { t: "CRESCIMENTO", d: "Fios saudáveis crescem melhor" },
-                          { t: "AUTOESTIMA", d: "Sinta-se linda todos os dias" }
+                          { t: "FORÇA ABSURDA", d: "Fios que aguentam TUDO" },
+                          { t: "ZERO QUEBRA", d: "Acabou aquele cabelo no pente" },
+                          { t: "HIDRATAÇÃO REAL", d: "Não aquela ilusão temporária" },
+                          { t: "MACIEZ INSANA", d: "Você não vai parar de passar a mão" },
+                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais que você achava impossível" },
+                          { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
+                          { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
                         ].map((res, i) => (
-                          <div key={i} className="flex items-center gap-4 bg-white/60 backdrop-blur-sm p-5 rounded-2xl border border-white shadow-sm hover:bg-white transition-colors group">
-                              <div className="bg-orange-100 p-2 rounded-full text-orange-700 group-hover:scale-110 transition-transform">
-                                <CheckCircle2 size={20} />
+                          <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                              <div className="bg-orange-600 p-1.5 rounded-full shadow-lg">
+                                <Check size={18} strokeWidth={3} />
                               </div>
                               <div>
-                                <span className="font-black text-orange-800 text-sm tracking-tight mr-2">{res.t}</span>
-                                <span className="font-medium text-slate-500 text-sm">- {res.d}</span>
+                                <span className="font-black text-orange-400 mr-2">{res.t}</span>
+                                <span className="font-medium opacity-80 text-sm">- {res.d}</span>
                               </div>
                           </div>
                         ))}
@@ -226,83 +247,199 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* PRICING - CORES MAIS SUAVES */}
-        <section id="pricing" className="py-24 px-6 bg-[#FDF9F6]">
-            <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-16 tracking-tighter leading-none">
-                    Recupere seu brilho <br /> <span className="text-orange-700 underline decoration-orange-200">daqui a 7 dias.</span>
+        {/* SOLUÇÃO SECTION - REPOSICIONADA */}
+        <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col lg:flex-row items-center gap-16">
+                    <div className="flex-1 space-y-8">
+                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A Solução Profissional</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter leading-none">
+                            A Força que seus fios estavam <span className="text-orange-700">Implorando.</span>
+                        </h2>
+                        <p className="text-xl text-slate-600 leading-relaxed">
+                            Apresentamos o <strong>Kit Capilar Cavalo de Raça Bio Instinto</strong>. Uma solução PROFISSIONAL desenvolvida em laboratório com tecnologia brasileira.
+                        </p>
+                        
+                        <div className="space-y-6">
+                            {[
+                                { t: "Ação na Raiz do Problema", d: "Não mascaramos, tratamos a fibra capilar." },
+                                { t: "Tecnologia Profissional", d: "Mesma qualidade usada pelos grandes cabeleireiros." },
+                                { t: "Resultado Imediato", d: "Sinta a diferença logo na primeira lavagem." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4 group">
+                                    <div className="bg-white p-3 rounded-2xl text-orange-700 shadow-md group-hover:scale-110 transition-transform"><Check size={24} /></div>
+                                    <div>
+                                        <p className="font-black text-slate-900 text-xl">{item.t}</p>
+                                        <p className="text-slate-500 font-medium">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex-1 relative">
+                        <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-20"></div>
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                            alt="Kit Completo Profissional" 
+                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[2rem]"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* BENEFÍCIOS SECTION */}
+        <section className="py-24 px-6 bg-slate-950 text-white relative overflow-hidden">
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="space-y-8">
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none">
+                            Benefícios que <span className="text-orange-400 italic">Transformam.</span>
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {[
+                                "Força Real nos Fios", "Resistência Absurda", "Hidratação Intensa", 
+                                "Maciez de Comercial", "Brilho Natural", "Perfume Inesquecível", 
+                                "Crescimento Saudável", "Adeus Pontas Duplas"
+                            ].map((benef, i) => (
+                                <div key={i} className="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/10">
+                                    <Sparkles size={16} className="text-orange-400" />
+                                    <span className="font-bold text-sm">{benef}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="bg-white text-slate-950 p-10 md:p-16 rounded-[4rem] shadow-2xl relative">
+                        <div className="absolute -top-6 -right-6 bg-orange-500 text-white w-20 h-20 rounded-full flex items-center justify-center font-black rotate-12 shadow-xl">
+                            100% OK
+                        </div>
+                        <h3 className="text-3xl font-black mb-8 leading-tight">Garantia Bio Instinto</h3>
+                        <p className="text-lg text-slate-600 mb-8 font-medium">A Bio Instinto é uma das maiores indústrias do Brasil. Qualidade garantida para o seu tratamento.</p>
+                        <ul className="space-y-4">
+                            {["Produto 100% Original", "Envio Direto da Fábrica", "Pronta Entrega Imediata"].map((g, i) => (
+                                <li key={i} className="flex items-center gap-3 font-bold">
+                                    <ShieldCheck className="text-orange-600" /> {g}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* TESTEMUNHOS */}
+        <section className="py-24 px-6">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-20 space-y-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">Mulheres Reais</h2>
+                    <div className="flex justify-center gap-1 text-orange-500">
+                        {[...Array(5)].map((_, i) => <Star key={i} size={24} fill="currentColor" />)}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { n: "Mariana R.", i: "34 anos", t: "Chorei na primeira vez que usei. Eu não acreditava que meu cabelo pudesse voltar a ser assim." },
+                        { n: "Juliana S.", i: "29 anos", t: "Meu marido perguntou se eu tinha ido ao salão. O perfume é incrível e o brilho é absurdo!" },
+                        { n: "Camila F.", i: "41 anos", t: "Gastava R$200 todo mês no salão. Esse kit me deu resultado profissional em casa por muito menos." }
+                    ].map((test, i) => (
+                        <div key={i} className="bg-white p-10 rounded-[3rem] border border-orange-100 shadow-xl relative group hover:-translate-y-2 transition-all">
+                            <div className="absolute -top-6 -left-4 text-orange-100 text-9xl font-serif select-none pointer-events-none group-hover:text-orange-200 transition-colors opacity-50">“</div>
+                            <p className="italic text-slate-700 text-lg font-medium leading-relaxed relative z-10 mb-8">"{test.t}"</p>
+                            <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
+                                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-black text-orange-800">{test.n[0]}</div>
+                                <div>
+                                    <p className="font-black text-slate-950">{test.n}</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{test.i}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* PRICING & OFFER */}
+        <section id="pricing" className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+                <h2 className="text-4xl md:text-7xl font-black text-slate-950 mb-16 tracking-tighter leading-none">
+                    Qual dessas mulheres você quer ser <br /> <span className="text-orange-700 underline decoration-orange-300">daqui a 7 dias?</span>
                 </h2>
 
-                <div className="bg-white rounded-[4rem] p-10 md:p-20 shadow-[0_40px_100px_-20px_rgba(234,179,8,0.1)] relative border border-orange-100">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#334155] text-orange-200 px-8 py-3 rounded-full font-black text-[10px] tracking-[0.3em] shadow-xl border-4 border-white">
-                        OFERTA EXCLUSIVA DIRETO DA FÁBRICA
+                <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-950 text-orange-400 px-10 py-3 rounded-full font-black text-sm tracking-[0.3em] shadow-2xl border-4 border-white">
+                        OFERTA ESPECIAL DIRETO DA INDÚSTRIA
                     </div>
 
                     <div className="mb-12 space-y-4">
+                        <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo (Shampoo + Cond. + Máscara + Creme)</p>
                         <div className="flex flex-col items-center">
-                            <span className="text-slate-300 line-through text-xl font-bold">R$ 199,90</span>
+                            <span className="text-slate-300 line-through text-2xl font-bold">R$ 199,90</span>
                             <div className="flex items-start gap-1">
-                                <span className="text-2xl font-black mt-4 text-slate-400">R$</span>
-                                <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-900">147<span className="text-4xl text-slate-400">,90</span></span>
+                                <span className="text-3xl font-black mt-4">R$</span>
+                                <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-950">147<span className="text-5xl">,90</span></span>
                             </div>
-                            <p className="text-orange-700/60 font-black text-xs uppercase tracking-[0.2em] mt-4 italic">Pagamento Único • Kit Completo 4 Itens</p>
+                            <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] mt-2">Pagamento Único • Tratamento para 3 meses</p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-xl mx-auto mb-12 bg-orange-50/30 p-8 rounded-[2.5rem] border border-orange-100/50">
-                        {["Kit Completo 4 Passos", "Frascos de 300ml/250g", "Qualidade Profissional", "Envio Direto Bio Instinto", "Garantia de 7 Dias"].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 font-bold text-slate-600 text-sm">
-                                <Check size={16} className="text-orange-500" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-12 bg-[#FDF8F3] p-8 rounded-[2.5rem] border border-orange-100">
+                        {["Kit Completo 4 Passos", "Frascos de Tamanho Profissional", "Menos de R$ 2 por dia", "Envio Imediato", "Garantia de 7 Dias"].map((item, i) => (
+                            <div key={i} className="flex items-center gap-3 font-bold text-slate-700 text-sm">
+                                <div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={16} /></div>
                                 <span>{item}</span>
                             </div>
                         ))}
                     </div>
 
-                    <Button className="w-full h-24 bg-[#1E293B] hover:bg-[#0F172A] text-orange-300 rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.02] group overflow-hidden">
+                    <Button className="w-full h-24 bg-slate-950 hover:bg-slate-900 text-orange-400 rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
                         <div className="flex flex-col items-center">
                             <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
-                                ✨ QUERO MEU KIT AGORA ✨ 
+                                ✨ QUERO MEU CABELO LINDO AGORA ✨ 
                                 <ArrowRight className="group-hover:translate-x-2 transition-transform" />
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-40 mt-2 text-white">Últimas unidades em estoque</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Compra 100% Segura - Últimas unidades!</span>
                         </div>
                     </Button>
 
                     <div className="flex flex-wrap justify-center gap-8 mt-12 opacity-30 grayscale">
-                        <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={18} /> ORIGINAL</div>
-                        <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><Zap size={18} /> ENVIO EXPRESS</div>
-                        <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><CreditCard size={18} /> PIX / CARTÃO</div>
+                        <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={20} /> ORIGINAL</div>
+                        <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><Zap size={20} /> ENVIO EXPRESS</div>
+                        <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><CreditCard size={20} /> PIX / CARTÃO</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        {/* GARANTIA SUAVE */}
+        {/* GARANTIA */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
-                <div className="bg-[#FDF9F6] border-4 border-dashed border-orange-200/50 p-12 md:p-20 rounded-[4rem] relative">
-                    <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-10 shadow-sm border border-orange-100">
-                      <ShieldCheck className="text-orange-700" size={40} />
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-900">7 Dias de Satisfação</h2>
-                    <p className="text-xl text-slate-500 leading-relaxed font-medium italic mb-10">
-                        Use o Kit Cavalo de Raça. Se você não sentir seu cabelo mais forte e macio, nós devolvemos o valor investido. Temos total confiança na nossa tecnologia profissional.
+                <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
+                    <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
+                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
-                    <div className="inline-block px-8 py-2 bg-[#334155] text-orange-200 rounded-full text-[10px] font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
+                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                 </div>
             </div>
         </section>
 
-        {/* FOOTER DISCRETO */}
-        <footer className="py-24 bg-[#1E293B] text-center">
+        {/* FOOTER */}
+        <footer className="py-24 bg-slate-950 text-center border-t border-white/5">
           <div className="max-w-4xl mx-auto px-6 space-y-12">
-            <div className="flex justify-center gap-8 text-white/10">
-              <Lock size={20} /> <ShieldCheck size={20} /> <CreditCard size={20} />
+            <img 
+                src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png" 
+                alt="PageShift Logo" 
+                className="h-8 mx-auto brightness-200 opacity-50"
+            />
+            <div className="flex justify-center gap-8 text-white/20">
+              <Lock size={24} /> <ShieldCheck size={24} /> <CreditCard size={24} />
             </div>
             <div className="space-y-4">
-                <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest">© 2024 Cavalo de Raça - Bio Instinto Profissional</p>
-                <p className="text-white/10 text-[9px] leading-relaxed uppercase tracking-[0.15em] max-w-2xl mx-auto border-t border-white/5 pt-8 italic">
-                IMPORTANTE: Os resultados podem variar de pessoa para pessoa. Este produto é um cosmético de uso externo. Bio Instinto Indústria Cosmética Ltda.
+                <p className="text-white/40 text-xs font-bold uppercase tracking-widest">© 2024 Cavalo de Raça - Bio Instinto. Todos os direitos reservados.</p>
+                <p className="text-white/20 text-[10px] leading-relaxed uppercase tracking-[0.15em] max-w-3xl mx-auto border-t border-white/5 pt-8 italic">
+                IMPORTANTE: Os resultados podem variar de pessoa para pessoa. Este produto é um cosmético de uso externo. Em caso de irritação, suspenda o uso e procure orientação médica.
                 </p>
             </div>
           </div>
