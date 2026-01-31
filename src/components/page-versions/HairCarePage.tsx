@@ -37,6 +37,13 @@ import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
 import { cn } from '@/lib/utils';
 
+const GALLERY_IMAGES = [
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896113265-ChatGPT-Image-31-de-jan.-de-2026,-18_44_47.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896125840-Gemini_Generated_Image_kw7t7bkw7t7bkw7t-(1).png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896189867-ChatGPT-Image-31-de-jan.-de-2026,-18_49_38.png"
+];
+
 export function HairCarePage() {
   const [timeLeft, setTimeLeft] = useState(1194); // 19:54
 
@@ -122,12 +129,15 @@ export function HairCarePage() {
             </div>
 
             {/* Grid da Galeria */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="aspect-square bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-300 group hover:border-orange-200 hover:bg-orange-50/30 transition-all cursor-pointer overflow-hidden relative shadow-sm">
-                   <ImageIcon size={40} className="mb-2 opacity-50 group-hover:scale-110 transition-transform" />
-                   <span className="text-[10px] font-black uppercase tracking-widest opacity-50">Imagem Galeria {i}</span>
-                   <div className="absolute inset-0 bg-orange-900/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {GALLERY_IMAGES.map((url, i) => (
+                <div key={i} className="group relative aspect-square rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
+                   <img 
+                      src={url} 
+                      alt={`Imagem da Galeria ${i + 1}`} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               ))}
             </div>
