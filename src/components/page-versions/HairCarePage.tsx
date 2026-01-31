@@ -103,7 +103,7 @@ export function HairCarePage() {
           </div>
         </header>
 
-        {/* GALERIA DE IMAGENS */}
+        {/* NOVA SEÇÃO: GALERIA DE IMAGENS */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
@@ -131,11 +131,84 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* CONTEÚDO PRINCIPAL - KIT E RESULTADOS */}
+        {/* O QUE VEM NESSE KIT COMPLETO: */}
         <section className="py-24 px-6 bg-white">
-            <div className="max-w-6xl mx-auto space-y-24">
-                
-                {/* RESULTADOS SECTION - REPOSICIONADA PARA CIMA */}
+            <div className="max-w-6xl mx-auto space-y-20">
+                <div className="text-center space-y-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
+                    <p className="text-orange-700 font-bold text-lg md:text-xl uppercase tracking-widest">
+                        🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO:
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[
+                        { 
+                          n: "1️⃣ SHAMPOO", 
+                          v: "300ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Limpa PROFUNDAMENTE sem destruir",
+                            "Espuma cremosa que você NUNCA viu igual",
+                            "Perfume viciante que dura DIAS",
+                            "Prepara o fio pra reconstrução REAL"
+                          ] 
+                        },
+                        { 
+                          n: "2️⃣ CONDICIONADOR", 
+                          v: "300ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Desembaraça na PRIMEIRA PASSADA",
+                            "Você vai sentir a diferença IMEDIATAMENTE",
+                            "Brilho absurdo, maciez de comercial",
+                            "Sela as cutículas e protege os fios"
+                          ] 
+                        },
+                        { 
+                          n: "3️⃣ MÁSCARA", 
+                          v: "250g", 
+                          t: "CONDICIONANTE", 
+                          bullets: [
+                            "Aqui é onde a MÁGICA ACONTECE",
+                            "Reconstrução PROFUNDA na fibra capilar",
+                            "Força e resistência que você VAI SENTIR",
+                            "É tipo esteróides pro seu cabelo (só que legal)"
+                          ] 
+                        },
+                        { 
+                          n: "4️⃣ CREME DE PENTEAR", 
+                          v: "200ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Finalização IMPECÁVEL",
+                            "Controla frizz, protege do calor, nutre",
+                            "Deixa aquele acabamento de salão",
+                            "Seu cabelo vai parecer de OUTRA PESSOA"
+                          ] 
+                        }
+                    ].map((item, i) => (
+                        <div key={i} className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group">
+                            <div className="space-y-4">
+                                <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
+                                <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
+                                <div className="space-y-3 pt-2">
+                                  {item.bullets.map((bullet, idx) => (
+                                    <p key={idx} className="text-slate-600 text-sm font-medium leading-snug flex items-start gap-2">
+                                      <span className="text-orange-600 shrink-0">→</span>
+                                      {bullet}
+                                    </p>
+                                  ))}
+                                </div>
+                            </div>
+                            <div className="mt-8 pt-6 border-t border-slate-200">
+                                <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* RESULTADOS SECTION - SUAVE & PREMIUM */}
                 <div className="bg-[#FFF5ED] text-slate-900 rounded-[3.5rem] p-10 md:p-16 shadow-xl relative overflow-hidden border border-orange-100">
                     <div className="absolute top-0 right-0 p-12 opacity-[0.15] pointer-events-none text-orange-200">
                       <Sparkles size={250} />
@@ -155,7 +228,7 @@ export function HairCarePage() {
                           { t: "ZERO QUEBRA", d: "Acabou aquele cabelo no pente" },
                           { t: "HIDRATAÇÃO REAL", d: "Não aquela ilusão temporária" },
                           { t: "MACIEZ INSANA", d: "Você não vai parar de passar a mão" },
-                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais que você achava impossível" },
+                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais impossíveis" },
                           { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
                           { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
                         ].map((res, i) => (
@@ -171,87 +244,10 @@ export function HairCarePage() {
                         ))}
                     </div>
                 </div>
-
-                {/* O QUE VEM NESSE KIT COMPLETO: */}
-                <div className="space-y-12">
-                    <div className="text-center space-y-4">
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
-                        <p className="text-orange-700 font-bold text-lg md:text-xl uppercase tracking-widest">
-                            🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO:
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            { 
-                              n: "1️⃣ SHAMPOO", 
-                              v: "300ml", 
-                              t: "CAVALO DE RAÇA", 
-                              bullets: [
-                                "Limpa PROFUNDAMENTE sem destruir",
-                                "Espuma cremosa que você NUNCA viu igual",
-                                "Perfume viciante que dura DIAS",
-                                "Prepara o fio pra reconstrução REAL"
-                              ] 
-                            },
-                            { 
-                              n: "2️⃣ CONDICIONADOR", 
-                              v: "300ml", 
-                              t: "CAVALO DE RAÇA", 
-                              bullets: [
-                                "Desembaraça na PRIMEIRA PASSADA",
-                                "Você vai sentir a diferença IMEDIATAMENTE",
-                                "Brilho absurdo, maciez de comercial",
-                                "Sela as cutículas e protege os fios"
-                              ] 
-                            },
-                            { 
-                              n: "3️⃣ MÁSCARA", 
-                              v: "250g", 
-                              t: "CONDICIONANTE", 
-                              bullets: [
-                                "Aqui é onde a MÁGICA ACONTECE",
-                                "Reconstrução PROFUNDA na fibra capilar",
-                                "Força e resistência que você VAI SENTIR",
-                                "É tipo esteróides pro seu cabelo (só que legal)"
-                              ] 
-                            },
-                            { 
-                              n: "4️⃣ CREME DE PENTEAR", 
-                              v: "200ml", 
-                              t: "CAVALO DE RAÇA", 
-                              bullets: [
-                                "Finalização IMPECÁVEL",
-                                "Controla frizz, protege do calor, nutre",
-                                "Deixa aquele acabamento de salão",
-                                "Seu cabelo vai parecer de OUTRA PESSOA"
-                              ] 
-                            }
-                        ].map((item, i) => (
-                            <div key={i} className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group">
-                                <div className="space-y-4">
-                                    <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
-                                    <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
-                                    <div className="space-y-3 pt-2">
-                                      {item.bullets.map((bullet, idx) => (
-                                        <p key={idx} className="text-slate-600 text-sm font-medium leading-snug flex items-start gap-2">
-                                          <span className="text-orange-600 shrink-0">→</span>
-                                          {bullet}
-                                        </p>
-                                      ))}
-                                    </div>
-                                </div>
-                                <div className="mt-8 pt-6 border-t border-slate-200">
-                                    <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
             </div>
         </section>
 
-        {/* SOLUÇÃO SECTION */}
+        {/* SOLUÇÃO SECTION - REPOSICIONADA */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-center gap-16">
