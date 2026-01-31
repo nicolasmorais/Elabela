@@ -171,8 +171,8 @@ export function HairCarePage() {
                     <div className="flex-1 lg:sticky lg:top-24 relative w-full">
                         <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                         <img 
-                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                            alt="Mulher Confiante com Cabelo Lindo" 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769892337933-ChatGPT-Image-31-de-jan.-de-2026,-17_44_50.png" 
+                            alt="Cabelo sendo tratado com profissionalismo" 
                             className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                         />
                     </div>
