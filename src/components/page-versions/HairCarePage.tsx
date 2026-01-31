@@ -135,7 +135,7 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO (COPY ATUALIZADA) */}
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO (COPY SIMPLIFICADA) */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -144,26 +144,6 @@ export function HairCarePage() {
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
                             Resultado de salão no seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
                         </h2>
-                        
-                        <div className="space-y-6 text-xl text-slate-600 leading-relaxed font-medium italic border-l-4 border-orange-200 pl-6">
-                            <p>Sabe aquela hidratação cara do salão que você faz (quando dá)?</p>
-                            <p>Aquela que custa R$ 250-400, toma 2 horas do seu sábado e dura 1 semana?</p>
-                            <div className="space-y-2 text-slate-900 font-black not-italic text-2xl mt-4">
-                                <p>Agora você tem a mesma coisa em casa.</p>
-                                <p>Mesma tecnologia profissional.</p>
-                                <p>Mesmo resultado.</p>
-                                <p className="text-orange-700">15 minutos no banho.</p>
-                            </div>
-                        </div>
-
-                        <div className="p-8 bg-white rounded-[2.5rem] border border-orange-100 shadow-sm space-y-4">
-                            <h3 className="text-2xl font-black text-slate-900 flex items-center gap-2">
-                                🐎 KIT CAPILAR CAVALO DE RAÇA
-                            </h3>
-                            <p className="text-lg text-slate-600 font-medium leading-relaxed">
-                                Tratamento profissional feito para a mulher real.
-                            </p>
-                        </div>
 
                         <div className="pt-8 space-y-6">
                             <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
