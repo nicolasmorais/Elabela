@@ -81,7 +81,7 @@ export function HairCarePage() {
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
 
@@ -102,12 +102,13 @@ export function HairCarePage() {
           </div>
         </header>
 
-        {/* SECTION DOR/PROBLEMA - COPY SIMPLIFICADA E INTEGRADA AO DESIGN */}
+        {/* SECTION DOR/PROBLEMA - COPY SOLICITADA */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-3xl mx-auto space-y-16">
             
+            {/* Bloco 1: Cansada de sofrer */}
             <div className="space-y-8 text-center">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight uppercase">
                 VOCÊ ESTÁ CANSADA DE SOFRER COM ESSE CABELO.
               </h2>
               <div className="bg-orange-50 p-8 md:p-12 rounded-[3rem] border border-orange-100 text-left shadow-sm">
@@ -137,8 +138,9 @@ export function HairCarePage() {
               </div>
             </div>
 
+            {/* Bloco 2: Tentou de tudo */}
             <div className="space-y-10 text-center">
-              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 leading-tight uppercase">
                 VOCÊ JÁ TENTOU DE TUDO.
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -148,16 +150,16 @@ export function HairCarePage() {
                   "Receitas caseiras que só fizeram bagunça",
                   "Ampolas caras jogadas fora"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 group hover:border-red-200 transition-all">
+                  <div key={i} className="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 group transition-all">
                     <span className="text-red-500 shrink-0 text-xl font-bold">❌</span>
                     <span className="font-bold text-slate-700 leading-tight">{item}</span>
                   </div>
                 ))}
               </div>
               
-              <div className="bg-red-50 p-8 rounded-[2.5rem] border border-red-100 space-y-4 shadow-sm">
-                <p className="text-2xl font-black text-red-800">Resultado?</p>
-                <div className="space-y-1 text-lg font-bold text-red-900/70 italic">
+              <div className="bg-red-50 p-8 md:p-12 rounded-[2.5rem] border border-red-100 space-y-4 shadow-sm">
+                <p className="text-2xl md:text-3xl font-black text-red-800">Resultado?</p>
+                <div className="space-y-2 text-xl font-bold text-red-900/70 italic">
                   <p>Dinheiro jogado fora.</p>
                   <p>Cabelo continua fraco.</p>
                   <p>Você continua se sentindo mal.</p>
@@ -165,6 +167,7 @@ export function HairCarePage() {
               </div>
             </div>
 
+            {/* Bloco 3: Problema é simples */}
             <div className="space-y-10">
               <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-slate-950 text-center uppercase underline decoration-orange-400 decoration-8 underline-offset-8">
                 O PROBLEMA É SIMPLES:
