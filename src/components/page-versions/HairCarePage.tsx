@@ -528,18 +528,28 @@ export function HairCarePage() {
                 <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white">
                     <div className="mb-12 space-y-4">
                         <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo Bio Instinto (4 Passos)</p>
-                        <div className="flex flex-col items-center">
-                            <span className="text-slate-300 line-through text-2xl font-bold">R$ 157,00</span>
+                        <div className="flex flex-col items-center gap-6">
+                            {/* Card Price */}
+                            <div className="bg-slate-50 px-8 py-3 rounded-2xl border border-slate-100">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Preço no Cartão</p>
+                                <p className="text-3xl font-black text-slate-900">R$ 157,00</p>
+                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">Em até 12x sem juros</p>
+                            </div>
+
+                            {/* PIX Price */}
                             <div className="flex flex-col items-center gap-1">
                                 <div className="flex items-start gap-1">
-                                    <span className="text-3xl font-black mt-4">R$</span>
-                                    <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-950">97<span className="text-5xl">,00</span></span>
+                                    <span className="text-3xl font-black mt-4 text-orange-800">R$</span>
+                                    <span className="text-8xl md:text-9xl font-black tracking-tighter text-orange-800">97<span className="text-5xl">,00</span></span>
                                 </div>
-                                <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Oferta Exclusiva no PIX</span>
+                                <span className="bg-orange-100 text-orange-800 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-sm">
+                                  🔥 Desconto Exclusivo no PIX
+                                </span>
                             </div>
-                            <div className="flex items-center gap-4 mt-4">
-                                <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1"><Truck size={16} /> FRETE GRÁTIS</p>
-                                <p className="text-blue-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1"><Zap size={16} /> ENVIO IMEDIATO</p>
+                            
+                            <div className="flex flex-wrap justify-center items-center gap-4 mt-2">
+                                <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1.5"><Truck size={18} /> FRETE GRÁTIS</p>
+                                <p className="text-blue-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1.5"><Zap size={18} /> ENVIO IMEDIATO</p>
                             </div>
                         </div>
                     </div>
