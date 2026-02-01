@@ -122,7 +122,7 @@ export default function SettingsPage() {
               {isLoading ? "Atualizando..." : "Atualizar"}
             </Button>
             <Link href="/dashboard/db-test">
-              <Button className="bg-[#6B16ED] hover:bg-[#5512C7] text-white">
+              <Button className="bg-[#0061FF] hover:bg-[#0050D1] text-white">
                 <Database className="mr-2 h-4 w-4" />
                 Teste de Banco
               </Button>
@@ -184,7 +184,7 @@ export default function SettingsPage() {
                         <p className="text-4xl font-bold">{safeStatus.metrics?.routes || 0}</p>
                     </div>
                     <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-lg font-semibold text-purple-500"><LayoutGrid className="h-5 w-5" /> Advertoriais Dinâmicos</div>
+                        <div className="flex items-center gap-2 text-lg font-semibold text-blue-500"><LayoutGrid className="h-5 w-5" /> Advertoriais Dinâmicos</div>
                         <p className="text-4xl font-bold">{safeStatus.metrics?.advertorials || 0}</p>
                     </div>
                     <div className="space-y-1">

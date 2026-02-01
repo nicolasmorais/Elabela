@@ -54,12 +54,12 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
     <div className="bg-slate-50/50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 rounded-2xl p-5 space-y-4 transition-all hover:border-slate-200 dark:hover:border-slate-700 group">
       <div className="flex items-center justify-between gap-2 mb-2">
         <div className="flex items-center gap-2 overflow-hidden">
-            <Globe className="h-4 w-4 text-[#6B16ED] shrink-0" />
+            <Globe className="h-4 w-4 text-[#0061FF] shrink-0" />
             <span className="font-mono text-xs font-bold text-slate-500 truncate">{route.path}</span>
         </div>
         <div className="flex items-center gap-1">
             <Link href={route.path} target="_blank">
-                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#6B16ED]">
+                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#0061FF]">
                     <ExternalLink className="h-4 w-4" />
                 </Button>
             </Link>
@@ -98,7 +98,7 @@ export function RouteCard({ route, onSave, onDelete, contentOptions }: RouteCard
         <Button 
           onClick={handleSave} 
           disabled={isSaving}
-          className="w-full h-10 bg-[#6B16ED] hover:bg-[#5512C7] text-white rounded-xl font-bold text-xs animate-in slide-in-from-top-2"
+          className="w-full h-10 bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-xl font-bold text-xs animate-in slide-in-from-top-2"
         >
           {isSaving ? "Salvando..." : "Salvar Alterações"}
         </Button>

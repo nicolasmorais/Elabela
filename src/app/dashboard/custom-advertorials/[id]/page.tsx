@@ -202,7 +202,7 @@ export default function CustomAdvertorialEditor() {
                         <Button 
                             onClick={handleSave} 
                             disabled={isSaving} 
-                            className="bg-[#6B16ED] hover:bg-[#5512C7] text-white rounded-xl font-bold h-11 px-6 shadow-lg shadow-purple-500/20"
+                            className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-xl font-bold h-11 px-6 shadow-lg shadow-blue-500/20"
                         >
                             {isSaving ? (
                                 <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -261,7 +261,7 @@ export default function CustomAdvertorialEditor() {
                             onClick={handleSave} 
                             disabled={isSaving} 
                             size="lg"
-                            className="bg-[#6B16ED] hover:bg-[#5512C7] text-white rounded-2xl font-black h-16 px-12 shadow-xl shadow-purple-500/30 text-xl transition-all hover:scale-105 active:scale-95"
+                            className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-2xl font-black h-16 px-12 shadow-xl shadow-blue-500/30 text-xl transition-all hover:scale-105 active:scale-95"
                         >
                             {isSaving ? <Loader2 className="h-6 w-6 animate-spin mr-3" /> : <Save className="h-6 w-6 mr-3" />}
                             {isSaving ? "SALVANDO..." : "CONCLUIR E SALVAR"}

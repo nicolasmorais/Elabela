@@ -70,8 +70,8 @@ export default function CustomAdvertorialsPage() {
     adv.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Cores do Projeto
-  const primaryColor = '#6B16ED';
+  // Cores do Projeto (Azul Dropbox)
+  const primaryColor = '#0061FF';
 
   return (
     <>
@@ -84,7 +84,7 @@ export default function CustomAdvertorialsPage() {
           <p className="text-slate-500 dark:text-slate-400 font-medium">Crie e gerencie conteúdos dinâmicos com facilidade.</p>
         </div>
         <Link href="/dashboard/custom-advertorials/new">
-          <Button className={cn("h-12 px-6 rounded-xl font-bold shadow-lg shadow-purple-500/20 transition-all hover:scale-[1.02] active:scale-95 text-white")} style={{ backgroundColor: primaryColor }}>
+          <Button className={cn("h-12 px-6 rounded-xl font-bold shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95 text-white")} style={{ backgroundColor: primaryColor }}>
             <Plus className="mr-2 h-5 w-5" />
             Novo Advertorial
           </Button>
@@ -144,7 +144,7 @@ export default function CustomAdvertorialsPage() {
                     <div className="flex flex-col items-center justify-center space-y-3 opacity-50">
                         <FileText className="h-12 w-12 text-slate-400" />
                         <p className="text-slate-500 font-medium">Nenhum advertorial encontrado.</p>
-                        <Button variant="link" onClick={() => setSearchTerm('')} className="text-purple-600 font-bold">Limpar filtros</Button>
+                        <Button variant="link" onClick={() => setSearchTerm('')} className="text-blue-600 font-bold">Limpar filtros</Button>
                     </div>
                   </TableCell>
                 </TableRow>
@@ -152,7 +152,7 @@ export default function CustomAdvertorialsPage() {
                 filteredAdvertorials.map((adv) => (
                   <TableRow key={adv.id} className="group hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors border-slate-50 dark:border-slate-800">
                     <TableCell className="py-4 pl-6">
-                      <div className="font-bold text-slate-900 dark:text-white group-hover:text-purple-600 transition-colors">{adv.name}</div>
+                      <div className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">{adv.name}</div>
                     </TableCell>
                     <TableCell>
                       <code className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold border border-slate-200 dark:border-slate-700">
@@ -161,7 +161,7 @@ export default function CustomAdvertorialsPage() {
                     </TableCell>
                     <TableCell className="text-right pr-6 space-x-2">
                       <Link href={`/dashboard/custom-advertorials/${adv.id}`}>
-                        <Button variant="ghost" size="sm" className="h-10 px-4 rounded-xl font-bold hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:text-purple-600 transition-all">
+                        <Button variant="ghost" size="sm" className="h-10 px-4 rounded-xl font-bold hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-all">
                           <Edit className="h-4 w-4 mr-2" />
                           Editar
                         </Button>

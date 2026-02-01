@@ -65,7 +65,7 @@ export default function InitDatabasePage() {
             <Button 
               onClick={handleInit} 
               disabled={isInitializing}
-              className="w-full h-12 bg-[#6B16ED] hover:bg-[#5512C7] text-white text-lg font-bold"
+              className="w-full h-12 bg-[#0061FF] hover:bg-[#0050D1] text-white text-lg font-bold"
             >
               {isInitializing ? (
                 <>

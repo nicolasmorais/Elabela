@@ -99,15 +99,15 @@ export default {
             'pulse': {
                 '0%': { 
                     transform: 'scale(0.9)',
-                    'box-shadow': '0 0 0 0 rgba(107, 22, 237, 0.7)',
+                    'box-shadow': '0 0 0 0 rgba(0, 97, 255, 0.7)',
                 },
                 '70%': { 
                     transform: 'scale(1)',
-                    'box-shadow': '0 0 0 10px rgba(107, 22, 237, 0)',
+                    'box-shadow': '0 0 0 10px rgba(0, 97, 255, 0)',
                 },
                 '100%': { 
                     transform: 'scale(0.9)',
-                    'box-shadow': '0 0 0 0 rgba(107, 22, 237, 0)',
+                    'box-shadow': '0 0 0 0 rgba(0, 97, 255, 0)',
                 }
             }
   		},

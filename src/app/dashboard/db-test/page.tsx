@@ -106,7 +106,7 @@ export default function DbTestPage() {
               <Button 
                 onClick={runTest} 
                 disabled={isLoading}
-                className="bg-[#6B16ED] hover:bg-[#5512C7] text-white"
+                className="bg-[#0061FF] hover:bg-[#0050D1] text-white"
               >
                 <Database className="mr-2 h-4 w-4" />
                 {isLoading ? "Testando..." : "Testar Conexão"}
