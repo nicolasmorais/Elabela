@@ -528,41 +528,42 @@ export function HairCarePage() {
                 <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white space-y-12">
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                        {/* OPÇÃO CARTÃO (AMARELO DA PALETA) */}
-                        <div className="bg-amber-400 p-10 rounded-[3rem] border-4 border-white shadow-xl flex flex-col justify-center gap-4 group">
-                            <div className="flex items-center justify-center gap-2 text-slate-900 font-black text-xs md:text-sm uppercase tracking-[0.3em] opacity-80">
-                                <CreditCard size={18} /> Pagamento no Cartão
+                        {/* OPÇÃO CARTÃO (AMARELO) */}
+                        <div className="bg-amber-400 p-10 rounded-[3.5rem] border-4 border-white shadow-xl flex flex-col justify-center gap-6 group hover:scale-[1.02] transition-all">
+                            <div className="flex items-center justify-center gap-3 text-slate-900 font-black text-xs md:text-sm uppercase tracking-[0.3em]">
+                                <CreditCard size={20} /> Pagamento no Cartão
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-2">
+                                <p className="text-slate-700/60 line-through text-2xl font-black">R$ 297,00</p>
                                 <p className="text-5xl md:text-6xl font-black text-slate-950 tracking-tighter">R$ 157,00</p>
-                                <p className="text-sm md:text-base font-black text-slate-900/60 uppercase tracking-widest">Em até 12x sem juros</p>
+                                <p className="text-sm font-black text-slate-800 uppercase tracking-widest bg-white/40 py-1 rounded-full px-4 inline-block">Em até 12x sem juros</p>
                             </div>
                         </div>
 
                         {/* OPÇÃO PIX (VERDE) */}
-                        <div className="bg-emerald-600 p-10 rounded-[3rem] border-4 border-white shadow-2xl flex flex-col justify-center gap-4 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 p-4 opacity-10 text-white group-hover:scale-110 transition-transform">
-                                <Zap size={80} />
+                        <div className="bg-emerald-600 p-10 rounded-[3.5rem] border-4 border-white shadow-2xl flex flex-col justify-center gap-6 relative overflow-hidden group hover:scale-[1.05] transition-all">
+                            <div className="absolute top-0 right-0 p-6 opacity-10 text-white group-hover:rotate-12 transition-transform">
+                                <Zap size={100} fill="currentColor" />
                             </div>
-                            <div className="flex items-center justify-center gap-2 text-white font-black text-xs md:text-sm uppercase tracking-[0.3em] relative z-10">
-                                <Zap size={14} fill="currentColor" /> Desconto Exclusivo PIX
+                            <div className="flex items-center justify-center gap-3 text-white font-black text-xs md:text-sm uppercase tracking-[0.3em] relative z-10">
+                                <Zap size={20} fill="currentColor" /> Desconto Exclusivo PIX
                             </div>
-                            <div className="space-y-1 relative z-10">
+                            <div className="space-y-1 relative z-10 text-white">
                                 <div className="flex items-start justify-center gap-1">
-                                    <span className="text-2xl font-black text-emerald-100 mt-4">R$</span>
-                                    <span className="text-7xl md:text-8xl font-black text-white tracking-tighter">97<span className="text-4xl">,00</span></span>
+                                    <span className="text-3xl font-black mt-6 mr-1 opacity-80">R$</span>
+                                    <span className="text-8xl md:text-[10rem] font-black tracking-tighter leading-none">97<span className="text-5xl">,00</span></span>
                                 </div>
-                                <p className="text-xs md:text-sm font-black text-emerald-100 uppercase tracking-widest bg-black/10 py-1 rounded-full px-4 inline-block">À vista no PIX</p>
+                                <p className="text-sm font-black text-emerald-100 uppercase tracking-[0.4em] bg-black/20 py-2 rounded-full mt-4">Pague à vista e economize</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap justify-center items-center gap-8 py-6 border-y border-slate-100">
-                        <p className="text-green-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] flex items-center gap-2">
-                            <Truck size={18} /> Frete Grátis Para Todo Brasil
+                    <div className="flex flex-wrap justify-center items-center gap-8 py-8 border-y border-slate-100">
+                        <p className="text-green-600 font-black text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Truck size={22} /> Frete Grátis Para Todo Brasil
                         </p>
-                        <p className="text-blue-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] flex items-center gap-2">
-                            <Zap size={18} /> Envio Imediato em 24h
+                        <p className="text-blue-600 font-black text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Zap size={22} /> Envio Imediato em 24h
                         </p>
                     </div>
 
@@ -575,16 +576,16 @@ export function HairCarePage() {
                         ))}
                     </div>
 
-                    <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
+                    <Button className="w-full h-28 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl shadow-green-600/20 transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
                         <div className="flex flex-col items-center">
-                            <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
-                                <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
+                            <span className="flex items-center gap-4 text-2xl md:text-4xl font-black">
+                                <ShoppingBag className="h-8 w-8 md:h-12 md:w-12 group-hover:scale-110 transition-transform" />
                                 COMPRAR AGORA
                             </span>
                         </div>
                     </Button>
 
-                    <div className="flex flex-wrap justify-center gap-8 opacity-30 grayscale">
+                    <div className="flex flex-wrap justify-center gap-8 mt-12 opacity-30 grayscale">
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={20} /> ORIGINAL</div>
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><Zap size={20} /> ENVIO EXPRESS</div>
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><CreditCard size={20} /> PIX / CARTÃO</div>
@@ -608,8 +609,8 @@ export function HairCarePage() {
         </section>
 
         {/* FOOTER PROFISSIONALIZADO */}
-        <footer className="py-20 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-50"></div>
+        <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
           
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
@@ -617,57 +618,57 @@ export function HairCarePage() {
               {/* Coluna 1: Logo e Empresa */}
               <div className="space-y-6 text-center md:text-left">
                 <img 
-                    src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png" 
+                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
                     alt="Bio Instinto Logo" 
-                    className="h-10 mx-auto md:mx-0 brightness-200"
+                    className="h-14 mx-auto md:mx-0"
                 />
                 <div className="space-y-2">
-                    <p className="text-sm font-black text-orange-400 uppercase tracking-widest">Bio Instinto Indústria de Cosméticos</p>
-                    <p className="text-xs text-white/50 leading-relaxed">
+                    <p className="text-sm font-black text-orange-800 uppercase tracking-widest">Bio Instinto Indústria de Cosméticos</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">
                         Rua das Indústrias, 452 - Distrito Industrial<br />
                         Anápolis - GO | CEP: 75132-000<br />
                         CNPJ: 14.562.947/0001-20
                     </p>
                 </div>
-                <div className="flex justify-center md:justify-start gap-4 text-white/20">
+                <div className="flex justify-center md:justify-start gap-4 text-slate-300">
                     <Lock size={18} /> <ShieldCheck size={18} /> <CreditCard size={18} /> <Truck size={18} />
                 </div>
               </div>
 
               {/* Coluna 2: Links e Políticas */}
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/80">Links Úteis</p>
-                <nav className="flex flex-col gap-4 text-xs font-bold text-white/40 uppercase tracking-widest">
-                    <button className="hover:text-orange-400 transition-colors text-left">Termos de Uso</button>
-                    <button className="hover:text-orange-400 transition-colors text-left">Política de Privacidade</button>
-                    <button className="hover:text-orange-400 transition-colors text-left">Aviso de Reembolso</button>
-                    <button className="hover:text-orange-400 transition-colors text-left">Rastrear Pedido</button>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                    <button className="hover:text-orange-600 transition-colors text-left">Termos de Uso</button>
+                    <button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button>
+                    <button className="hover:text-orange-600 transition-colors text-left">Aviso de Reembolso</button>
+                    <button className="hover:text-orange-600 transition-colors text-left">Rastrear Pedido</button>
                 </nav>
               </div>
 
               {/* Coluna 3: Atendimento */}
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/80">Precisa de Ajuda?</p>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
                 <div className="space-y-4">
-                    <p className="text-xs text-white/50 font-medium leading-relaxed">
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
                         Nossa equipe de suporte está pronta para te atender de Segunda a Sexta, das 09h às 18h.
                     </p>
-                    <div className="inline-block p-4 rounded-2xl bg-white/5 border border-white/10 w-full">
-                        <p className="text-[10px] font-black uppercase text-orange-400 mb-1">E-mail de Suporte</p>
-                        <p className="text-sm font-bold">contato@cavalo-de-raca.pro</p>
+                    <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
+                        <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
+                        <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
                     </div>
                 </div>
               </div>
             </div>
 
             {/* Disclaimer Legal */}
-            <div className="pt-12 border-t border-white/5 space-y-8">
+            <div className="pt-12 border-t border-slate-200 space-y-8">
                 <div className="max-w-4xl mx-auto space-y-6">
-                    <p className="text-[10px] text-white/20 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
                         <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa. Este produto é um cosmético de uso externo e não garante cura de condições patológicas pré-existentes. Em caso de irritação, suspenda o uso e procure orientação médica. As informações contidas neste site são apenas para fins informativos.
                     </p>
                     <div className="flex flex-col items-center gap-4">
-                        <p className="text-[10px] text-white/40 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
                         <div className="h-1 w-12 bg-orange-600/30 rounded-full"></div>
                     </div>
                 </div>
