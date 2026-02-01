@@ -525,37 +525,49 @@ export function HairCarePage() {
                     Qual dessas mulheres você quer ser <br /> <span className="text-orange-700 underline decoration-orange-300">daqui a 7 dias?</span>
                 </h2>
 
-                <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white">
-                    <div className="mb-12 space-y-4">
-                        <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo Bio Instinto (4 Passos)</p>
-                        <div className="flex flex-col items-center gap-6">
-                            {/* Card Price */}
-                            <div className="bg-slate-50 px-8 py-3 rounded-2xl border border-slate-100">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Preço no Cartão</p>
-                                <p className="text-3xl font-black text-slate-900">R$ 157,00</p>
-                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">Em até 12x sem juros</p>
+                <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white space-y-12">
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                        {/* OPÇÃO CARTÃO */}
+                        <div className="bg-[#FDF8F3] p-10 rounded-[3rem] border border-slate-100 flex flex-col justify-center gap-4 group">
+                            <div className="flex items-center justify-center gap-2 text-slate-400 font-black text-[10px] uppercase tracking-[0.3em]">
+                                <CreditCard size={14} /> Pagamento no Cartão
                             </div>
+                            <div className="space-y-1">
+                                <p className="text-4xl font-black text-slate-900 tracking-tight">R$ 157,00</p>
+                                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Em até 12x sem juros</p>
+                            </div>
+                        </div>
 
-                            {/* PIX Price */}
-                            <div className="flex flex-col items-center gap-1">
-                                <div className="flex items-start gap-1">
-                                    <span className="text-3xl font-black mt-4 text-orange-800">R$</span>
-                                    <span className="text-8xl md:text-9xl font-black tracking-tighter text-orange-800">97<span className="text-5xl">,00</span></span>
-                                </div>
-                                <span className="bg-orange-100 text-orange-800 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-sm">
-                                  🔥 Desconto Exclusivo no PIX
-                                </span>
+                        {/* OPÇÃO PIX (A ESTRELA) */}
+                        <div className="bg-slate-950 p-10 rounded-[3rem] border-4 border-orange-500 shadow-2xl flex flex-col justify-center gap-4 relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 p-4 opacity-10 text-orange-400 group-hover:scale-110 transition-transform">
+                                <Zap size={80} />
                             </div>
-                            
-                            <div className="flex flex-wrap justify-center items-center gap-4 mt-2">
-                                <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1.5"><Truck size={18} /> FRETE GRÁTIS</p>
-                                <p className="text-blue-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1.5"><Zap size={18} /> ENVIO IMEDIATO</p>
+                            <div className="flex items-center justify-center gap-2 text-orange-400 font-black text-[10px] uppercase tracking-[0.3em] relative z-10">
+                                <Zap size={14} fill="currentColor" /> Desconto Exclusivo PIX
+                            </div>
+                            <div className="space-y-1 relative z-10">
+                                <div className="flex items-start justify-center gap-1">
+                                    <span className="text-2xl font-black text-orange-500 mt-4">R$</span>
+                                    <span className="text-7xl md:text-8xl font-black text-white tracking-tighter">97<span className="text-4xl">,00</span></span>
+                                </div>
+                                <p className="text-xs font-bold text-orange-500/80 uppercase tracking-widest">À vista no PIX</p>
                             </div>
                         </div>
                     </div>
 
+                    <div className="flex flex-wrap justify-center items-center gap-8 py-6 border-y border-slate-100">
+                        <p className="text-green-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Truck size={18} /> Frete Grátis Para Todo Brasil
+                        </p>
+                        <p className="text-blue-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Zap size={18} /> Envio Imediato em 24h
+                        </p>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-12 bg-[#FDF8F3] p-8 rounded-[2.5rem] border border-orange-100">
-                        {["Kit Completo 4 Passos", "Frascos de Tamanho Profissional", "Tratamento para 3 meses", "Garantia Total de 7 Dias", "Envio Expresso"].map((item, i) => (
+                        {["Kit Completo 4 Passos", "Frascos de Tamanho Profissional", "Tratamento para 3 meses", "Garantia Total de 7 Dias", "Bio Instinto Original"].map((item, i) => (
                             <div key={i} className="flex items-center gap-3 font-bold text-slate-700 text-sm">
                                 <div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={16} /></div>
                                 <span>{item}</span>
@@ -569,11 +581,11 @@ export function HairCarePage() {
                                 <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
                                 COMPRAR AGORA
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Pagamento Seguro via PIX ou Cartão</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Pagamento 100% Seguro e Criptografado</span>
                         </div>
                     </Button>
 
-                    <div className="flex flex-wrap justify-center gap-8 mt-12 opacity-30 grayscale">
+                    <div className="flex flex-wrap justify-center gap-8 opacity-30 grayscale">
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={20} /> ORIGINAL</div>
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><Zap size={20} /> ENVIO EXPRESS</div>
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><CreditCard size={20} /> PIX / CARTÃO</div>
