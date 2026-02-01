@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function LoginPage() {
-  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
+  // URL Corrigida (usando a mesma dos ícones que está funcionando)
+  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png";
 
   return (
     <>
@@ -29,13 +30,10 @@ export default function LoginPage() {
             
             {/* Logo Area */}
             <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
-                <Image
+                <img
                   src={logoUrl}
                   alt="Elabela Logo"
-                  width={180}
-                  height={60}
                   className="h-14 w-auto drop-shadow-sm"
-                  priority
                 />
             </div>
 
