@@ -42,13 +42,16 @@ const openSans = Open_Sans({
   weight: ["400", "700"],
 });
 
+// Ícone de raio em SVG com a cor de destaque #0061FF
+const faviconSvg = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%230061FF%22><path d=%22M13 2L3 14h9l-1 8 10-12h-9l1-8z%22/></svg>`;
+
 export const metadata: Metadata = {
   title: "Elabela | Control Pages",
   description: "Plataforma completa para gerenciar e otimizar seus advertoriais dinamicamente.",
   icons: {
-    icon: 'https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png',
-    shortcut: 'https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png',
-    apple: 'https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png',
+    icon: faviconSvg,
+    shortcut: faviconSvg,
+    apple: faviconSvg,
   },
 };
 

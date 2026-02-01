@@ -17,8 +17,8 @@ export const Logo = ({ className, iconOnly = false }: LogoProps) => {
         src={logoUrl} 
         alt="Control Pages Logo" 
         className={cn(
-          "h-16 w-auto object-contain", // Aumentado de h-12 para h-16
-          iconOnly && "h-12 w-12"
+          "h-20 w-auto object-contain", // Aumentado de h-16 para h-20
+          iconOnly && "h-14 w-14"
         )}
       />
     </div>
