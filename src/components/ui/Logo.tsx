@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface LogoProps {
   className?: string;
-  iconOnly?: boolean; // Mantido para compatibilidade, mas a imagem atual costuma conter o logo completo
+  iconOnly?: boolean; 
 }
 
 export const Logo = ({ className, iconOnly = false }: LogoProps) => {
@@ -17,8 +17,8 @@ export const Logo = ({ className, iconOnly = false }: LogoProps) => {
         src={logoUrl} 
         alt="Control Pages Logo" 
         className={cn(
-          "h-12 w-auto object-contain",
-          iconOnly && "h-10 w-10" // Ajuste simples se for apenas ícone, embora a imagem pareça ser o logo completo
+          "h-16 w-auto object-contain", // Aumentado de h-12 para h-16
+          iconOnly && "h-12 w-12"
         )}
       />
     </div>
