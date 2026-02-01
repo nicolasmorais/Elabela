@@ -70,8 +70,8 @@ export const Sidebar = () => {
     <aside className={cn(
       "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-[#020617] border-slate-200 dark:border-slate-800 sm:flex"
     )}>
-      {/* Logo Section */}
-      <div className="flex h-24 items-center px-6">
+      {/* Logo Section - Aumentado para h-40 para caber a logo gigante */}
+      <div className="flex h-40 items-center px-4 justify-center">
         <Link href="/dashboard" className="transition-opacity hover:opacity-80">
           <Logo />
         </Link>
