@@ -415,12 +415,6 @@ export function HairCarePage() {
                         </div>
                     ))}
                 </div>
-
-                <div className="text-center pt-8">
-                    <Button onClick={scrollToPricing} className="bg-orange-600 hover:bg-orange-700 text-white rounded-full px-12 h-16 font-black text-lg shadow-xl shadow-orange-200 animate-pulse">
-                        QUERO TER ESSES RESULTADOS TAMBÉM
-                    </Button>
-                </div>
             </div>
         </section>
 
@@ -590,7 +584,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* FOOTER MELHORADO */}
+        {/* FOOTER PROFISSIONALIZADO */}
         <footer className="py-20 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-50"></div>
           
@@ -621,10 +615,10 @@ export function HairCarePage() {
               <div className="space-y-6 text-center md:text-left">
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-white/80">Links Úteis</p>
                 <nav className="flex flex-col gap-4 text-xs font-bold text-white/40 uppercase tracking-widest">
-                    <button className="hover:text-orange-400 transition-colors">Termos de Uso</button>
-                    <button className="hover:text-orange-400 transition-colors">Política de Privacidade</button>
-                    <button className="hover:text-orange-400 transition-colors">Aviso de Reembolso</button>
-                    <button className="hover:text-orange-400 transition-colors">Rastrear Pedido</button>
+                    <button className="hover:text-orange-400 transition-colors text-left">Termos de Uso</button>
+                    <button className="hover:text-orange-400 transition-colors text-left">Política de Privacidade</button>
+                    <button className="hover:text-orange-400 transition-colors text-left">Aviso de Reembolso</button>
+                    <button className="hover:text-orange-400 transition-colors text-left">Rastrear Pedido</button>
                 </nav>
               </div>
 
