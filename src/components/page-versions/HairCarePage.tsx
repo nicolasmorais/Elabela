@@ -528,41 +528,42 @@ export function HairCarePage() {
                 <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white space-y-12">
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                        {/* OPÇÃO CARTÃO */}
-                        <div className="bg-[#FDF8F3] p-10 rounded-[3rem] border border-slate-100 flex flex-col justify-center gap-4 group">
-                            <div className="flex items-center justify-center gap-2 text-slate-400 font-black text-[10px] uppercase tracking-[0.3em]">
-                                <CreditCard size={14} /> Pagamento no Cartão
+                        {/* OPÇÃO CARTÃO (AMARELO) */}
+                        <div className="bg-amber-400 p-10 rounded-[3.5rem] border-4 border-white shadow-xl flex flex-col justify-center gap-6 group hover:scale-[1.02] transition-all">
+                            <div className="flex items-center justify-center gap-3 text-slate-900 font-black text-xs md:text-sm uppercase tracking-[0.3em]">
+                                <CreditCard size={20} /> Pagamento no Cartão
                             </div>
-                            <div className="space-y-1">
-                                <p className="text-4xl font-black text-slate-900 tracking-tight">R$ 157,00</p>
-                                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Em até 12x sem juros</p>
+                            <div className="space-y-2">
+                                <p className="text-slate-700/60 line-through text-2xl font-black">R$ 297,00</p>
+                                <p className="text-5xl md:text-6xl font-black text-slate-950 tracking-tighter">R$ 157,00</p>
+                                <p className="text-sm font-black text-slate-800 uppercase tracking-widest bg-white/40 py-1 rounded-full px-4 inline-block">Em até 12x sem juros</p>
                             </div>
                         </div>
 
-                        {/* OPÇÃO PIX (A ESTRELA) */}
-                        <div className="bg-slate-950 p-10 rounded-[3rem] border-4 border-orange-500 shadow-2xl flex flex-col justify-center gap-4 relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 p-4 opacity-10 text-orange-400 group-hover:scale-110 transition-transform">
-                                <Zap size={80} />
+                        {/* OPÇÃO PIX (VERDE) */}
+                        <div className="bg-emerald-600 p-10 rounded-[3.5rem] border-4 border-white shadow-2xl flex flex-col justify-center gap-6 relative overflow-hidden group hover:scale-[1.05] transition-all">
+                            <div className="absolute top-0 right-0 p-6 opacity-10 text-white group-hover:rotate-12 transition-transform">
+                                <Zap size={100} fill="currentColor" />
                             </div>
-                            <div className="flex items-center justify-center gap-2 text-orange-400 font-black text-[10px] uppercase tracking-[0.3em] relative z-10">
-                                <Zap size={14} fill="currentColor" /> Desconto Exclusivo PIX
+                            <div className="flex items-center justify-center gap-3 text-white font-black text-xs md:text-sm uppercase tracking-[0.3em] relative z-10">
+                                <Zap size={20} fill="currentColor" /> Desconto Exclusivo PIX
                             </div>
-                            <div className="space-y-1 relative z-10">
+                            <div className="space-y-1 relative z-10 text-white">
                                 <div className="flex items-start justify-center gap-1">
-                                    <span className="text-2xl font-black text-orange-500 mt-4">R$</span>
-                                    <span className="text-7xl md:text-8xl font-black text-white tracking-tighter">97<span className="text-4xl">,00</span></span>
+                                    <span className="text-3xl font-black mt-6 mr-1 opacity-80">R$</span>
+                                    <span className="text-8xl md:text-[10rem] font-black tracking-tighter leading-none">97<span className="text-5xl">,00</span></span>
                                 </div>
-                                <p className="text-xs font-bold text-orange-500/80 uppercase tracking-widest">À vista no PIX</p>
+                                <p className="text-sm font-black text-emerald-100 uppercase tracking-[0.4em] bg-black/20 py-2 rounded-full mt-4">Pague à vista e economize</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-wrap justify-center items-center gap-8 py-6 border-y border-slate-100">
-                        <p className="text-green-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] flex items-center gap-2">
-                            <Truck size={18} /> Frete Grátis Para Todo Brasil
+                    <div className="flex flex-wrap justify-center items-center gap-8 py-8 border-y border-slate-100">
+                        <p className="text-green-600 font-black text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Truck size={22} /> Frete Grátis Para Todo Brasil
                         </p>
-                        <p className="text-blue-600 font-black text-xs md:text-sm uppercase tracking-[0.2em] flex items-center gap-2">
-                            <Zap size={18} /> Envio Imediato em 24h
+                        <p className="text-blue-600 font-black text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-2">
+                            <Zap size={22} /> Envio Imediato em 24h
                         </p>
                     </div>
 
@@ -575,17 +576,17 @@ export function HairCarePage() {
                         ))}
                     </div>
 
-                    <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
+                    <Button className="w-full h-28 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl shadow-green-600/20 transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
                         <div className="flex flex-col items-center">
-                            <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
-                                <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
+                            <span className="flex items-center gap-4 text-2xl md:text-4xl font-black">
+                                <ShoppingBag className="h-8 w-8 md:h-12 md:w-12 group-hover:scale-110 transition-transform" />
                                 COMPRAR AGORA
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Pagamento 100% Seguro e Criptografado</span>
+                            <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Pagamento 100% Seguro e Criptografado</span>
                         </div>
                     </Button>
 
-                    <div className="flex flex-wrap justify-center gap-8 opacity-30 grayscale">
+                    <div className="flex flex-wrap justify-center gap-8 mt-12 opacity-30 grayscale">
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={20} /> ORIGINAL</div>
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><Zap size={20} /> ENVIO EXPRESS</div>
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><CreditCard size={20} /> PIX / CARTÃO</div>
