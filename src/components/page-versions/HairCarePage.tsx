@@ -507,7 +507,6 @@ export function HairCarePage() {
                             <p className="italic text-slate-700 text-lg font-medium leading-relaxed relative z-10 mb-8">"{test.t}"</p>
                             <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
                                 <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-black text-orange-800">{test.n[0]}</div>
-                                ---
                                 <div>
                                     <p className="font-black text-slate-900">{test.n}</p>
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{test.i}</p>
@@ -528,19 +527,25 @@ export function HairCarePage() {
 
                 <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white">
                     <div className="mb-12 space-y-4">
-                        <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo (Shampoo + Cond. + Máscara + Creme)</p>
+                        <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo Bio Instinto (4 Passos)</p>
                         <div className="flex flex-col items-center">
-                            <span className="text-slate-300 line-through text-2xl font-bold">R$ 199,90</span>
-                            <div className="flex items-start gap-1">
-                                <span className="text-3xl font-black mt-4">R$</span>
-                                <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-950">147<span className="text-5xl">,90</span></span>
+                            <span className="text-slate-300 line-through text-2xl font-bold">R$ 157,00</span>
+                            <div className="flex flex-col items-center gap-1">
+                                <div className="flex items-start gap-1">
+                                    <span className="text-3xl font-black mt-4">R$</span>
+                                    <span className="text-8xl md:text-9xl font-black tracking-tighter text-slate-950">97<span className="text-5xl">,00</span></span>
+                                </div>
+                                <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest">Oferta Exclusiva no PIX</span>
                             </div>
-                            <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] mt-2">Pagamento Único • Tratamento para 3 meses</p>
+                            <div className="flex items-center gap-4 mt-4">
+                                <p className="text-green-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1"><Truck size={16} /> FRETE GRÁTIS</p>
+                                <p className="text-blue-600 font-black text-sm uppercase tracking-[0.2em] flex items-center gap-1"><Zap size={16} /> ENVIO IMEDIATO</p>
+                            </div>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-12 bg-[#FDF8F3] p-8 rounded-[2.5rem] border border-orange-100">
-                        {["Kit Completo 4 Passos", "Frascos de Tamanho Profissional", "Menos de R$ 2 por dia", "Envio Imediato", "Garantia de 7 Dias"].map((item, i) => (
+                        {["Kit Completo 4 Passos", "Frascos de Tamanho Profissional", "Tratamento para 3 meses", "Garantia Total de 7 Dias", "Envio Expresso"].map((item, i) => (
                             <div key={i} className="flex items-center gap-3 font-bold text-slate-700 text-sm">
                                 <div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={16} /></div>
                                 <span>{item}</span>
@@ -554,7 +559,7 @@ export function HairCarePage() {
                                 <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
                                 COMPRAR AGORA
                             </span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Compra 100% Segura - Últimas unidades!</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Pagamento Seguro via PIX ou Cartão</span>
                         </div>
                     </Button>
 
