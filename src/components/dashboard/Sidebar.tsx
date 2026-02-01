@@ -49,7 +49,7 @@ const systemNavItems = [
 
 export const Sidebar = () => {
   const pathname = usePathname();
-  const LOGO_URL = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
+  const LOGO_URL = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
 
   const getLinkClasses = (href: string) => {
     const isActive = pathname === href;
@@ -60,8 +60,8 @@ export const Sidebar = () => {
         "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100",
         // Estilos Ativos
         isActive && [
-            "bg-slate-50 text-[#6B16ED] dark:bg-slate-900/50 dark:text-[#6B16ED]",
-            "after:absolute after:left-0 after:h-5 after:w-1 after:rounded-full after:bg-[#6B16ED]"
+            "bg-blue-50/50 text-[#0061FF] dark:bg-blue-900/10 dark:text-[#0061FF]",
+            "after:absolute after:left-0 after:h-5 after:w-1 after:rounded-full after:bg-[#0061FF]"
         ]
     );
   };
@@ -99,7 +99,7 @@ export const Sidebar = () => {
                 >
                   <item.icon className={cn(
                     "h-5 w-5 transition-colors",
-                    pathname === item.href ? "text-[#6B16ED]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
+                    pathname === item.href ? "text-[#0061FF]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
                   )} />
                   {item.label}
                 </Link>
@@ -121,7 +121,7 @@ export const Sidebar = () => {
                 >
                   <item.icon className={cn(
                     "h-5 w-5 transition-colors",
-                    pathname === item.href ? "text-[#6B16ED]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
+                    pathname === item.href ? "text-[#0061FF]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
                   )} />
                   {item.label}
                 </Link>

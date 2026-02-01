@@ -143,7 +143,7 @@ export default function DashboardPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-200 dark:border-slate-800 pb-8">
           <div>
             <div className="flex items-center gap-2 mb-1">
-                <div className="p-2 bg-purple-600 rounded-lg text-white">
+                <div className="p-2 bg-[#0061FF] rounded-lg text-white">
                     <Settings2 size={20} />
                 </div>
                 <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
@@ -176,7 +176,7 @@ export default function DashboardPage() {
             {[
                 { label: 'Rotas Fixas', val: existingRoutes.length, icon: Globe, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
                 { label: 'Redirecionamentos', val: Object.keys(autoRoutes).length, icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
-                { label: 'Conteúdos', val: allContentOptions.length, icon: LayoutGrid, color: 'text-purple-600', bg: 'bg-purple-50 dark:bg-purple-900/20' },
+                { label: 'Conteúdos', val: allContentOptions.length, icon: LayoutGrid, color: 'text-[#0061FF]', bg: 'bg-blue-50 dark:bg-blue-900/20' },
                 { label: 'Status BD', val: 'Online', icon: Activity, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
             ].map((stat, i) => (
                 <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-sm">
@@ -230,7 +230,7 @@ export default function DashboardPage() {
                         <Globe size={48} className="mx-auto text-slate-300 mb-4" />
                         <h3 className="text-lg font-bold text-slate-900 dark:text-white">Nenhuma rota encontrada</h3>
                         <p className="text-slate-500 max-w-xs mx-auto mt-2">Crie uma nova rota fixa para começar a direcionar tráfego.</p>
-                        <Button variant="link" onClick={() => setSearchQuery('')} className="text-purple-600 font-bold mt-2">Limpar filtros</Button>
+                        <Button variant="link" onClick={() => setSearchQuery('')} className="text-[#0061FF] font-bold mt-2">Limpar filtros</Button>
                     </div>
                 ) : (
                     filteredRoutes.map((route) => (

@@ -49,13 +49,13 @@ export const LoginFormOffline = () => {
           Senha mestra
         </label>
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400 group-focus-within:text-[#6B16ED] transition-colors">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400 group-focus-within:text-[#0061FF] transition-colors">
             <Lock size={18} />
           </div>
           <Input
             className={cn(
                 "h-14 pl-11 pr-12 text-lg rounded-2xl border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 transition-all",
-                "focus:ring-4 focus:ring-[#6B16ED]/10 focus:border-[#6B16ED] placeholder:text-slate-400"
+                "focus:ring-4 focus:ring-[#0061FF]/10 focus:border-[#0061FF] placeholder:text-slate-400"
             )}
             placeholder="••••••••"
             type={showPassword ? 'text' : 'password'}
@@ -77,8 +77,8 @@ export const LoginFormOffline = () => {
       <Button
         type="submit"
         className={cn(
-          "h-14 text-lg font-bold rounded-2xl transition-all shadow-xl shadow-[#6B16ED]/20 hover:shadow-[#6B16ED]/30",
-          "bg-[#6B16ED] hover:bg-[#5512C7] text-white",
+          "h-14 text-lg font-bold rounded-2xl transition-all shadow-xl shadow-[#0061FF]/20 hover:shadow-[#0061FF]/30",
+          "bg-[#0061FF] hover:bg-[#0050D1] text-white",
           isSubmitting && "opacity-80 scale-[0.98]"
         )}
         disabled={isSubmitting}

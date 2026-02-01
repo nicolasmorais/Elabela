@@ -111,7 +111,7 @@ export default function ApprovalPageEditor() {
   const cardBg = 'bg-white dark:bg-[#1e293b]';
   const borderColor = 'border-gray-200 dark:border-[#334155]';
   const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
-  const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
+  const primaryButtonClasses = 'bg-[#0061FF] hover:bg-[#0050D1] text-white';
   const textColor = 'text-gray-900 dark:text-white';
   const labelColor = 'text-gray-600 dark:text-zinc-300';
   const descriptionColor = 'text-gray-500 dark:text-zinc-400';
@@ -157,7 +157,7 @@ export default function ApprovalPageEditor() {
         
         {/* PIXEL CONFIGURATION CARD */}
         <Card className={cn(cardBg, borderColor, textColor)}>
-            <CardHeader><CardTitle className="flex items-center gap-2"><Zap className="h-5 w-5 text-blue-500" /> Rastreamento (Pixels)</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Zap className="h-5 w-5 text-[#0061FF]" /> Rastreamento (Pixels)</CardTitle></CardHeader>
             <CardContent className="space-y-4">
                 <div className={cn("flex items-center justify-between p-3 rounded-md", borderColor, "border bg-gray-50 dark:bg-[#0f172a]")}>
                     <Label className={labelColor}>Usar Configurações Globais?</Label>
