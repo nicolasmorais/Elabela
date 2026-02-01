@@ -53,12 +53,12 @@ export function RouteLinkBuilder({ contentOptions }: RouteLinkBuilderProps) {
     utm_medium: true,
   });
 
-  // Cores Dinâmicas
+  // Cores Dinâmicas - ATUALIZADO PARA AZUL DROPBOX
   const cardBg = 'bg-white dark:bg-[#1e293b]';
   const borderColor = 'border-gray-200 dark:border-[#334155]';
   const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
   const selectContentBg = 'bg-white dark:bg-[#1e293b]'; 
-  const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
+  const primaryButtonClasses = 'bg-[#0061FF] hover:bg-[#0050D1] text-white';
   const textColor = 'text-gray-900 dark:text-white';
   const labelColor = 'text-gray-600 dark:text-zinc-300';
 
@@ -99,7 +99,7 @@ export function RouteLinkBuilder({ contentOptions }: RouteLinkBuilderProps) {
       }
     });
 
-    // Retorna a URL como string, removendo o '?' se não houver parâmetros além do adv_id
+    // Retorna a URL como string, garantindo que as macros não sejam codificadas
     let finalUrl = url.toString();
     
     // Se o link base original não tinha search params, e o novo só tem o adv_id, 

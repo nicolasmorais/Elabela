@@ -89,9 +89,9 @@ export const BlockRenderer = ({ block }: BlockRendererProps) => {
         }
     }, [block, searchParams]);
 
-    // Cores Dinâmicas
+    // Cores Dinâmicas - ATUALIZADO PARA AZUL DROPBOX
     const textColor = 'text-gray-900 dark:text-white';
-    const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
+    const primaryButtonClasses = 'bg-[#0061FF] hover:bg-[#0050D1] text-white';
 
     switch (block.type) {
         case 'text':

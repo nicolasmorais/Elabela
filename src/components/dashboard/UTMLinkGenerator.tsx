@@ -46,11 +46,11 @@ export function UTMLinkGenerator({ }: UTMLinkGeneratorProps) {
     utm_medium: true,
   });
 
-  // Cores Dinâmicas
+  // Cores Dinâmicas - ATUALIZADO PARA AZUL DROPBOX
   const cardBg = 'bg-white dark:bg-[#1e293b]';
   const borderColor = 'border-gray-200 dark:border-[#334155]';
   const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
-  const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
+  const primaryButtonClasses = 'bg-[#0061FF] hover:bg-[#0050D1] text-white';
   const textColor = 'text-gray-900 dark:text-white';
   const labelColor = 'text-gray-600 dark:text-zinc-300';
 

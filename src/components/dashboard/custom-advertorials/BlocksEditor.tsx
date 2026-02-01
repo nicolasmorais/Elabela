@@ -40,12 +40,12 @@ export const BlocksEditor = ({ blocks, setBlocks, onSave, isSaving, name }: Bloc
         setBlocks(items);
     };
 
-    // Cores Dinâmicas
+    // Cores Dinâmicas - ATUALIZADO PARA AZUL DROPBOX
     const cardBg = 'bg-white dark:bg-[#1e293b]';
     const borderColor = 'border-gray-200 dark:border-[#334155]';
     const blockBg = 'bg-gray-50 dark:bg-[#0f172a]'; // Fundo do bloco interno
     const secondaryButtonClasses = 'text-gray-900 bg-gray-200 hover:bg-gray-300 dark:text-white dark:bg-[#334155] dark:hover:bg-[#475569]'; 
-    const primaryButtonClasses = 'bg-[#6B16ED] hover:bg-[#5512C7] text-white';
+    const primaryButtonClasses = 'bg-[#0061FF] hover:bg-[#0050D1] text-white';
     const textColor = 'text-gray-900 dark:text-white';
 
     return (
