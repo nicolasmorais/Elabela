@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "use client";
-
 import Link from "next/link";
 import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
