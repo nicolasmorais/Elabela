@@ -31,7 +31,8 @@ import {
   Dumbbell,
   Play,
   Microscope,
-  FlaskConical
+  FlaskConical,
+  Truck
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -589,22 +590,70 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="py-24 bg-slate-950 text-center border-t border-white/5">
-          <div className="max-w-4xl mx-auto px-6 space-y-12">
-            <img 
-                src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png" 
-                alt="PageShift Logo" 
-                className="h-8 mx-auto brightness-200 opacity-50"
-            />
-            <div className="flex justify-center gap-8 text-white/20">
-              <Lock size={24} /> <ShieldCheck size={24} /> <CreditCard size={24} />
+        {/* FOOTER MELHORADO */}
+        <footer className="py-20 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-50"></div>
+          
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
+              
+              {/* Coluna 1: Logo e Empresa */}
+              <div className="space-y-6 text-center md:text-left">
+                <img 
+                    src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png" 
+                    alt="Bio Instinto Logo" 
+                    className="h-10 mx-auto md:mx-0 brightness-200"
+                />
+                <div className="space-y-2">
+                    <p className="text-sm font-black text-orange-400 uppercase tracking-widest">Bio Instinto Indústria de Cosméticos</p>
+                    <p className="text-xs text-white/50 leading-relaxed">
+                        Rua das Indústrias, 452 - Distrito Industrial<br />
+                        Anápolis - GO | CEP: 75132-000<br />
+                        CNPJ: 14.562.947/0001-20
+                    </p>
+                </div>
+                <div className="flex justify-center md:justify-start gap-4 text-white/20">
+                    <Lock size={18} /> <ShieldCheck size={18} /> <CreditCard size={18} /> <Truck size={18} />
+                </div>
+              </div>
+
+              {/* Coluna 2: Links e Políticas */}
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/80">Links Úteis</p>
+                <nav className="flex flex-col gap-4 text-xs font-bold text-white/40 uppercase tracking-widest">
+                    <button className="hover:text-orange-400 transition-colors">Termos de Uso</button>
+                    <button className="hover:text-orange-400 transition-colors">Política de Privacidade</button>
+                    <button className="hover:text-orange-400 transition-colors">Aviso de Reembolso</button>
+                    <button className="hover:text-orange-400 transition-colors">Rastrear Pedido</button>
+                </nav>
+              </div>
+
+              {/* Coluna 3: Atendimento */}
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/80">Precisa de Ajuda?</p>
+                <div className="space-y-4">
+                    <p className="text-xs text-white/50 font-medium leading-relaxed">
+                        Nossa equipe de suporte está pronta para te atender de Segunda a Sexta, das 09h às 18h.
+                    </p>
+                    <div className="inline-block p-4 rounded-2xl bg-white/5 border border-white/10 w-full">
+                        <p className="text-[10px] font-black uppercase text-orange-400 mb-1">E-mail de Suporte</p>
+                        <p className="text-sm font-bold">contato@cavalo-de-raca.pro</p>
+                    </div>
+                </div>
+              </div>
             </div>
-            <div className="space-y-4">
-                <p className="text-white/40 text-xs font-bold uppercase tracking-widest">© 2024 Cavalo de Raça - Bio Instinto. Todos os direitos reservados.</p>
-                <p className="text-white/20 text-[10px] leading-relaxed uppercase tracking-[0.15em] max-w-3xl mx-auto border-t border-white/5 pt-8 italic">
-                IMPORTANTE: Os resultados podem variar de pessoa para pessoa. Este produto é um cosmético de uso externo. Em caso de irritação, suspenda o uso e procure orientação médica.
-                </p>
+
+            {/* Disclaimer Legal */}
+            <div className="pt-12 border-t border-white/5 space-y-8">
+                <div className="max-w-4xl mx-auto space-y-6">
+                    <p className="text-[10px] text-white/20 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa. Este produto é um cosmético de uso externo e não garante cura de condições patológicas pré-existentes. Em caso de irritação, suspenda o uso e procure orientação médica. As informações contidas neste site são apenas para fins informativos.
+                    </p>
+                    <div className="flex flex-col items-center gap-4">
+                        <p className="text-[10px] text-white/40 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                        <div className="h-1 w-12 bg-orange-600/30 rounded-full"></div>
+                    </div>
+                </div>
             </div>
           </div>
         </footer>
