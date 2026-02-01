@@ -5,12 +5,12 @@ import { Toaster } from 'sonner';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Login - PageShift',
+  title: 'Login - Elabela | Control Pages',
   description: 'Acesse o painel de gerenciamento de advertoriais',
 };
 
 export default function LoginPage() {
-  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
+  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-cWKpykzfXjyKf02ITuUtmE2iq5JYZn.png";
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function LoginPage() {
             <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
                 <Image
                   src={logoUrl}
-                  alt="PageShift Logo"
+                  alt="Elabela Logo"
                   width={180}
                   height={60}
                   className="h-14 w-auto drop-shadow-sm"
@@ -54,7 +54,7 @@ export default function LoginPage() {
                 
                 <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/50 text-center">
                     <p className="text-xs text-slate-400 font-medium uppercase tracking-widest">
-                        PageShift • Enterprise v2.0
+                        Elabela | Control Pages • v2.0
                     </p>
                 </div>
             </div>

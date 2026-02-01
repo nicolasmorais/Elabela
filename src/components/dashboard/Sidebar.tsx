@@ -75,7 +75,7 @@ export const Sidebar = () => {
         <Link href="/dashboard" className="transition-opacity hover:opacity-80">
           <img
             src={LOGO_URL}
-            alt="PageShift Logo"
+            alt="Elabela Logo"
             className="h-10 w-auto"
           />
         </Link>

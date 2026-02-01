@@ -43,7 +43,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "PageShift - Gerenciamento de Advertoriais",
+  title: "Elabela | Control Pages",
   description: "Plataforma completa para gerenciar e otimizar seus advertoriais dinamicamente.",
   icons: {
     icon: 'https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png',
