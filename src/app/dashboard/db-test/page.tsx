@@ -176,11 +176,10 @@ export default function DbTestPage() {
               <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-500 p-4 rounded-lg">
                 <h3 className="font-semibold text-yellow-800 dark:text-yellow-200 mb-2">Possíveis Soluções:</h3>
                 <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
-                  <li>• Verifique se a porta está correta (geralmente 5432 para PostgreSQL)</li>
-                  <li>• Confirme se o IP 147.93.179.152 permite conexões externas</li>
-                  <li>• Verifique se o firewall está bloqueando a porta</li>
-                  <li>• Confirme se as credenciais (usuário/senha) estão corretas</li>
-                  <li>• Tente habilitar SSL se o banco exigir (mudar ssl: false para true)</li>
+                  <li>• Verifique se a porta **5441** é realmente a correta para o IP 147.93.179.152</li>
+                  <li>• Confirme se o servidor de banco de dados está online</li>
+                  <li>• Verifique se as variáveis de ambiente na interface do Dyad estão atualizadas</li>
+                  <li>• Confirme se o firewall do seu servidor permite conexões externas nesta porta</li>
                 </ul>
               </div>
             )}
