@@ -551,7 +551,7 @@ export function HairCarePage() {
                         ))}
                     </div>
 
-                    <Button className="w-full h-24 bg-slate-950 hover:bg-slate-900 text-orange-400 rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
+                    <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
                         <div className="flex flex-col items-center">
                             <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
                                 <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
