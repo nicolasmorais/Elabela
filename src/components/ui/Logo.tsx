@@ -1,32 +1,26 @@
 "use client";
 
 import React from 'react';
-import { LayoutDashboard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
   className?: string;
-  iconOnly?: boolean;
+  iconOnly?: boolean; // Mantido para compatibilidade, mas a imagem atual costuma conter o logo completo
 }
 
 export const Logo = ({ className, iconOnly = false }: LogoProps) => {
+  const logoUrl = "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png";
+
   return (
-    <div className={cn("flex items-center gap-3 select-none", className)}>
-      {/* Icon Wrapper */}
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0061FF] text-white shadow-lg shadow-blue-500/20">
-        <LayoutDashboard size={24} strokeWidth={2.5} />
-      </div>
-      
-      {!iconOnly && (
-        <div className="flex flex-col leading-none">
-          <span className="text-lg font-black tracking-tighter text-slate-900 dark:text-white uppercase">
-            Elabela
-          </span>
-          <span className="text-[10px] font-bold tracking-[0.2em] text-[#0061FF] uppercase">
-            Control Pages
-          </span>
-        </div>
-      )}
+    <div className={cn("flex items-center select-none", className)}>
+      <img 
+        src={logoUrl} 
+        alt="Control Pages Logo" 
+        className={cn(
+          "h-12 w-auto object-contain",
+          iconOnly && "h-10 w-10" // Ajuste simples se for apenas ícone, embora a imagem pareça ser o logo completo
+        )}
+      />
     </div>
   );
 };
