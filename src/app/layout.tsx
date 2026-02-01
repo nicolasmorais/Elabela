@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   title: "Elabela | Control Pages",
   description: "Plataforma completa para gerenciar e otimizar seus advertoriais dinamicamente.",
   icons: {
-    icon: 'https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png',
-    shortcut: 'https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png',
-    apple: 'https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png',
+    icon: 'https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png',
+    shortcut: 'https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png',
+    apple: 'https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769936507532-ChatGPT-Image-1-de-fev.-de-2026,-05_59_37-(1).png',
   },
 };
 
