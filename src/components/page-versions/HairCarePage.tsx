@@ -507,6 +507,7 @@ export function HairCarePage() {
                             <p className="italic text-slate-700 text-lg font-medium leading-relaxed relative z-10 mb-8">"{test.t}"</p>
                             <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
                                 <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-black text-orange-800">{test.n[0]}</div>
+                                ---
                                 <div>
                                     <p className="font-black text-slate-900">{test.n}</p>
                                     <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{test.i}</p>
@@ -526,10 +527,6 @@ export function HairCarePage() {
                 </h2>
 
                 <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-950 text-orange-400 px-10 py-3 rounded-full font-black text-sm tracking-[0.3em] shadow-2xl border-4 border-white">
-                        OFERTA ESPECIAL DIRETO DA INDÚSTRIA
-                    </div>
-
                     <div className="mb-12 space-y-4">
                         <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Kit Completo (Shampoo + Cond. + Máscara + Creme)</p>
                         <div className="flex flex-col items-center">
