@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle } from "lucide-react";
+import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton";
@@ -11,6 +11,11 @@ const mainNavItems = [
     href: "/dashboard",
     icon: Settings,
     label: "Route Control",
+  },
+  {
+    href: "/dashboard/sales-pages",
+    icon: ShoppingBag,
+    label: "Páginas de Vendas",
   },
   {
     href: "/dashboard/custom-advertorials",

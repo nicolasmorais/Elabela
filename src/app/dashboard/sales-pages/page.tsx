@@ -1,0 +1,163 @@
+"use client";
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Button } from '@/components/ui/button';
+import { Toaster, toast } from "sonner";
+import { Skeleton } from '@/components/ui/skeleton';
+import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+
+interface CustomAdvertorial {
+  id: string;
+  name: string;
+}
+
+const STATIC_PAGES = [
+  { id: 'v1', name: 'Advertorial Principal V1', type: 'Estática', icon: Flame, color: 'text-orange-500', bg: 'bg-orange-50 dark:bg-orange-950/20' },
+  { id: 'v2', name: 'Advertorial Japonês V2', type: 'Estática', icon: Layout, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-950/20' },
+  { id: 'v3', name: 'Advertorial Editorial V3', type: 'Estática', icon: Layout, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-950/20' },
+  { id: 'ap', name: 'Página de Aprovação (AP)', type: 'Sistema', icon: Info, color: 'text-green-500', bg: 'bg-green-50 dark:bg-green-950/20' },
+  { id: 'menopausa', name: 'Menopausa Nunca Mais', type: 'Vendas', icon: ShoppingBag, color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-950/20' },
+  { id: 'dor-zero', name: 'Dolorzero (Articulações)', type: 'Vendas', icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-950/20' },
+  { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', type: 'Vendas', icon: Heart, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-950/20' },
+];
+
+export default function SalesPagesListPage() {
+  const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    fetch('/api/custom-advertorials')
+      .then((res) => res.json())
+      .then((data) => {
+        setAdvertorials(Array.isArray(data) ? data : []);
+      })
+      .catch(() => {
+        toast.error("Erro ao carregar conteúdos dinâmicos.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  const dynamicPages = advertorials.map(adv => ({
+    id: adv.id,
+    name: adv.name,
+    type: 'Dinâmica',
+    icon: Layout,
+    color: 'text-slate-600',
+    bg: 'bg-slate-50 dark:bg-slate-800/50'
+  }));
+
+  const allPages = [...STATIC_PAGES, ...dynamicPages];
+
+  const filteredPages = allPages.filter(p => 
+    p.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    p.id.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <>
+      <Toaster richColors />
+      
+      <div className="flex flex-col gap-8">
+        <div>
+          <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Páginas de Vendas</h1>
+          <p className="text-slate-500 dark:text-slate-400 font-medium">Visualize e acesse todos os seus links de destino ativos.</p>
+        </div>
+
+        <div className="relative w-full md:w-96">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Input 
+                placeholder="Filtrar por nome ou ID..." 
+                className="pl-10 h-12 rounded-2xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+        </div>
+
+        <Card className="border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-sm">
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader className="bg-slate-50/50 dark:bg-slate-900/50">
+                <TableRow className="hover:bg-transparent border-slate-100 dark:border-slate-800 h-14">
+                  <TableHead className="font-black text-slate-400 uppercase text-[10px] tracking-[0.2em] pl-8">Conteúdo</TableHead>
+                  <TableHead className="font-black text-slate-400 uppercase text-[10px] tracking-[0.2em]">Tipo</TableHead>
+                  <TableHead className="font-black text-slate-400 uppercase text-[10px] tracking-[0.2em]">Caminho / ID</TableHead>
+                  <TableHead className="text-right font-black text-slate-400 uppercase text-[10px] tracking-[0.2em] pr-8">Ação</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {isLoading ? (
+                  Array.from({ length: 5 }).map((_, i) => (
+                    <TableRow key={i} className="border-slate-50 dark:border-slate-800 h-20">
+                      <TableCell className="pl-8"><Skeleton className="h-6 w-48 rounded-md" /></TableCell>
+                      <TableCell><Skeleton className="h-6 w-20 rounded-md" /></TableCell>
+                      <TableCell><Skeleton className="h-6 w-32 rounded-md" /></TableCell>
+                      <TableCell className="text-right pr-8"><Skeleton className="h-10 w-32 ml-auto rounded-xl" /></TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  filteredPages.map((page) => (
+                    <TableRow key={page.id} className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors border-slate-50 dark:border-slate-800 h-20">
+                      <TableCell className="pl-8">
+                        <div className="flex items-center gap-4">
+                            <div className={cn("p-2.5 rounded-xl", page.bg, page.color)}>
+                                <page.icon size={20} />
+                            </div>
+                            <div className="font-bold text-slate-900 dark:text-white">{page.name}</div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant="outline" className={cn(
+                            "rounded-full px-3 py-0.5 border-none font-bold text-[10px] uppercase tracking-widest",
+                            page.type === 'Vendas' ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/30" : 
+                            page.type === 'Dinâmica' ? "bg-blue-50 text-blue-600 dark:bg-blue-950/30" : 
+                            "bg-slate-100 text-slate-500 dark:bg-slate-800"
+                        )}>
+                            {page.type}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <code className="bg-slate-100 dark:bg-slate-800 text-slate-500 px-3 py-1.5 rounded-lg text-xs font-mono">
+                          /{page.id}
+                        </code>
+                      </TableCell>
+                      <TableCell className="text-right pr-8">
+                        <Link href={`/${page.id}`} target="_blank">
+                          <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold h-10 px-4 group/btn">
+                            Acessar Página
+                            <ExternalLink size={14} className="ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                          </Button>
+                        </Link>
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
+    </>
+  );
+}
