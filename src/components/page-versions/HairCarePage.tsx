@@ -554,8 +554,8 @@ export function HairCarePage() {
                     <Button className="w-full h-24 bg-slate-950 hover:bg-slate-900 text-orange-400 rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
                         <div className="flex flex-col items-center">
                             <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
-                                ✨ QUERO MEU CABELO LINDO AGORA ✨ 
-                                <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                                <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
+                                COMPRAR AGORA
                             </span>
                             <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-2 text-white">Compra 100% Segura - Últimas unidades!</span>
                         </div>
