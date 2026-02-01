@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "use client";
+
 import Link from "next/link";
 import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton";
+import { Logo } from "@/components/ui/Logo";
 
 const mainNavItems = [
   {
@@ -49,8 +52,6 @@ const systemNavItems = [
 
 export const Sidebar = () => {
   const pathname = usePathname();
-  // URL Corrigida
-  const LOGO_URL = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png";
 
   const getLinkClasses = (href: string) => {
     const isActive = pathname === href;
@@ -72,13 +73,9 @@ export const Sidebar = () => {
       "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-[#020617] border-slate-200 dark:border-slate-800 sm:flex"
     )}>
       {/* Logo Section */}
-      <div className="flex h-24 items-center px-8">
+      <div className="flex h-24 items-center px-6">
         <Link href="/dashboard" className="transition-opacity hover:opacity-80">
-          <img
-            src={LOGO_URL}
-            alt="Elabela Logo"
-            className="h-10 w-auto"
-          />
+          <Logo />
         </Link>
       </div>
 

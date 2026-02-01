@@ -2,7 +2,7 @@ import { LoginFormOffline } from '@/components/auth/LoginFormOffline';
 import { Metadata } from 'next';
 import { cn } from '@/lib/utils';
 import { Toaster } from 'sonner';
-import Image from 'next/image';
+import { Logo } from '@/components/ui/Logo';
 
 export const metadata: Metadata = {
   title: 'Login - Elabela | Control Pages',
@@ -10,9 +10,6 @@ export const metadata: Metadata = {
 };
 
 export default function LoginPage() {
-  // URL Corrigida (usando a mesma dos ícones que está funcionando)
-  const logoUrl = "https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/94e94392-0815-4bb4-9cfa-ca4362c3495f%20%281%29%20%281%29%20%281%29-3fiBqRARoxDTImBJrinAorCbtuk9as.png";
-
   return (
     <>
       <Toaster richColors position="top-center" />
@@ -30,11 +27,7 @@ export default function LoginPage() {
             
             {/* Logo Area */}
             <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
-                <img
-                  src={logoUrl}
-                  alt="Elabela Logo"
-                  className="h-14 w-auto drop-shadow-sm"
-                />
+                <Logo className="scale-125" />
             </div>
 
             {/* Form Card */}
