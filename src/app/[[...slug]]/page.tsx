@@ -47,7 +47,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     const resolvedParams = await params;
     const slug = resolvedParams?.slug;
     
-    // Página inicial padrão (Agora exibe a página de desativado)
+    // Página inicial padrão
     if (!slug || slug.length === 0) {
       return <DeactivatedPage />;
     }
@@ -55,20 +55,19 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     const slugKey = slug.join('/');
     const path = `/${slugKey}`;
 
-    // Tenta conectar ao banco
+    // Conectar ao banco
     let client: Client;
     try {
         client = await getDb();
     } catch (dbError) {
         console.error("Erro de conexão com o banco na página dinâmica:", dbError);
-        // Se o banco falhar, ainda tentamos carregar as páginas estáticas conhecidas
         if (STATIC_PAGE_IDS.includes(slugKey)) return <ContentSwitcher contentId={slugKey} />;
         return notFound();
     }
 
     let contentId: string | null = null;
 
-    // 1. Verificar Auto Routes na tabela settings
+    // 1. PRIORIDADE MÁXIMA: Auto Routes (Redirecionamentos Rápidos)
     try {
         const autoRoutesResult = await client.query('SELECT value FROM settings WHERE key = $1', ['autoRoutes']);
         if (autoRoutesResult.rows.length > 0) {
@@ -78,15 +77,10 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
             }
         }
     } catch (e) {
-        console.warn("Aviso: Falha ao buscar autoRoutes, a tabela settings pode não estar pronta.");
+        console.warn("Aviso: Falha ao buscar autoRoutes.");
     }
 
-    // 2. Verificar se é uma rota estática direta
-    if (!contentId && STATIC_PAGE_IDS.includes(slugKey)) {
-        contentId = slugKey;
-    }
-
-    // 3. Verificar Tabela de Rotas Fixas
+    // 2. SEGUNDA PRIORIDADE: Tabela de Rotas Fixas (Route Control)
     if (!contentId) {
         try {
             const routeResult = await client.query('SELECT content_id as "contentId" FROM routes WHERE path = $1', [path]);
@@ -98,7 +92,13 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
         }
     }
 
-    // 4. Verificar se o slug é um UUID direto de um advertorial dinâmico
+    // 3. TERCEIRA PRIORIDADE: Slug estático direto (Comportamento Nativo)
+    // Se não houver nada no banco para esse caminho, ele tenta carregar a página nativa pelo nome.
+    if (!contentId && STATIC_PAGE_IDS.includes(slugKey)) {
+        contentId = slugKey;
+    }
+
+    // 4. QUARTA PRIORIDADE: UUID direto (Advertoriais Dinâmicos)
     if (!contentId && isUUID(slugKey)) {
         contentId = slugKey;
     }
@@ -110,7 +110,6 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     return <ContentSwitcher contentId={contentId} />;
   } catch (error) {
     console.error("Página Dinâmica: Erro fatal inesperado:", error);
-    // Em caso de erro crítico, redireciona para a home (desativada)
     return <DeactivatedPage />;
   }
 }
