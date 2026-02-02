@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag } from "lucide-react";
+import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag, Zap } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton";
@@ -31,6 +31,11 @@ const mainNavItems = [
 ];
 
 const systemNavItems = [
+  {
+    href: "/dashboard/pixels/taboola",
+    icon: Zap,
+    label: "Pixel Taboola",
+  },
   {
     href: "/dashboard/status",
     icon: CheckCircle,
@@ -70,7 +75,7 @@ export const Sidebar = () => {
     <aside className={cn(
       "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-[#020617] border-slate-200 dark:border-slate-800 sm:flex"
     )}>
-      {/* Logo Section - Aumentado para 1.3x e altura ajustada para h-20 */}
+      {/* Logo Section */}
       <div className="flex h-20 items-center px-4 justify-center mt-2">
         <Link href="/dashboard" className="transition-opacity hover:opacity-80 scale-[1.3]">
           <Logo />

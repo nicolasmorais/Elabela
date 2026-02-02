@@ -1,42 +1,51 @@
 import { getDb } from '@/lib/database';
 import { GlobalPixelConfig, PagePixelConfig } from '@/lib/advertorial-types';
 import { Client } from 'pg';
-import Head from 'next/head'; // Importando o Head do Next.js
 
 interface PixelInjectorProps {
-    pagePixels: PagePixelConfig;
+    pagePixels?: PagePixelConfig;
+    forcePageId?: string;
 }
 
-// Função auxiliar para buscar a configuração global de pixels
+async function fetchTaboolaCentralConfig(db: Client) {
+    const result = await db.query('SELECT value FROM settings WHERE key = $1', ['taboolaConfig']);
+    return result.rows.length > 0 ? result.rows[0].value : { globalId: '', pageOverrides: {} };
+}
+
 async function fetchGlobalPixelConfig(db: Client): Promise<GlobalPixelConfig> {
     const result = await db.query('SELECT value FROM settings WHERE key = $1', ['pixelConfig']);
     if (result.rows.length === 0) {
-        // Retorna um objeto vazio se não for encontrado
         return { metaPixelId: '', taboolaPixelId: '', globalScripts: '' };
     }
     return result.rows[0].value as GlobalPixelConfig;
 }
 
-// Componente para injetar scripts de rastreamento no head
-export async function PixelInjector({ pagePixels }: PixelInjectorProps): Promise<React.ReactNode> {
+export async function PixelInjector({ pagePixels, forcePageId }: PixelInjectorProps): Promise<React.ReactNode> {
+  const db = await getDb();
+  const globalConfig: GlobalPixelConfig = await fetchGlobalPixelConfig(db);
+  const taboolaCentral = await fetchTaboolaCentralConfig(db);
   
-  let metaPixelId: string = pagePixels.metaPixelId;
-  let taboolaPixelId: string = pagePixels.taboolaPixelId;
-  let customScripts: string = pagePixels.customScripts;
+  // 1. Lógica do Taboola (Prioridade: Override Central -> Local da Página -> Global Central)
+  let taboolaId = '';
+  if (forcePageId && taboolaCentral.pageOverrides[forcePageId]) {
+    taboolaId = taboolaCentral.pageOverrides[forcePageId];
+  } else if (pagePixels?.taboolaPixelId) {
+    taboolaId = pagePixels.taboolaPixelId;
+  } else {
+    taboolaId = taboolaCentral.globalId;
+  }
 
-  if (pagePixels.useGlobalPixels) {
-    const db = await getDb();
-    const globalConfig: GlobalPixelConfig = await fetchGlobalPixelConfig(db);
-    
-    // Se usar global, os IDs globais substituem os locais se estes estiverem vazios
+  // 2. Lógica do Meta
+  let metaPixelId = pagePixels?.metaPixelId || '';
+  let customScripts = pagePixels?.customScripts || '';
+
+  if (pagePixels?.useGlobalPixels !== false) {
     metaPixelId = metaPixelId || globalConfig.metaPixelId;
-    taboolaPixelId = taboolaPixelId || globalConfig.taboolaPixelId;
     customScripts = customScripts || globalConfig.globalScripts;
   }
 
-  // 1. Meta Pixel Script (PageView padrão)
-  const metaScript: string = metaPixelId ? `
-    <!-- Meta Pixel Code -->
+  // Scripts
+  const metaScript = metaPixelId ? `
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -49,38 +58,26 @@ export async function PixelInjector({ pagePixels }: PixelInjectorProps): Promise
       fbq('init', '${metaPixelId}');
       fbq('track', 'PageView');
     </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-           src="https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1"/></noscript>
   ` : '';
 
-  // 2. Taboola Pixel Script (PageView padrão) - CORRIGIDO
-  const taboolaScript: string = taboolaPixelId ? `
-    <!-- Taboola Pixel Code -->
+  const taboolaScript = taboolaId ? `
     <script type="text/javascript">
       window._tfa = window._tfa || [];
-      window._tfa.push({notify: 'event', name: 'page_view', id: '${taboolaPixelId}'});
+      window._tfa.push({notify: 'event', name: 'page_view', id: '${taboolaId}'});
       !function (t, f, a, x) {
         if (!document.getElementById(x)) {
           t.async = 1;t.src = a;t.id = x;f.parentNode.insertBefore(t, f);
         }
       }(document.createElement('script'),
       document.getElementsByTagName('script')[0],
-      '//cdn.taboola.com/libtrc/unip/${taboolaPixelId}/tfa.js',
+      '//cdn.taboola.com/libtrc/unip/${taboolaId}/tfa.js',
       'tb_tfa_script');
     </script>
-    <!-- End Taboola Pixel Code -->
   ` : '';
 
-  // 3. Global Scripts (Injetado como HTML puro)
-  const combinedScripts: string = metaScript + taboolaScript + customScripts;
+  const combinedScripts = metaScript + taboolaScript + customScripts;
+  if (!combinedScripts) return null;
 
-  if (!combinedScripts) {
-    return null;
-  }
-
-  // Retorna o HTML para ser injetado
   return combinedScripts;
 }
