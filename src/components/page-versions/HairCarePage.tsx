@@ -37,6 +37,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896113265-ChatGPT-Image-31-de-jan.-de-2026,-18_44_47.png",
@@ -53,11 +54,25 @@ const TIKTOK_VIDEOS = [
 
 export function HairCarePage() {
   const [timeLeft, setTimeLeft] = useState(1194); // 19:54
+  
+  // ESTADO DOS DADOS DINÂMICOS
+  const [config, setConfig] = useState({
+      priceCard: 'R$ 157,00',
+      pricePix: '97,00',
+      checkoutUrl: '#'
+  });
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
     }, 1000);
+    
+    // Busca configurações do banco
+    fetch('/api/page-settings/cavalo-de-raca')
+        .then(res => res.json())
+        .then(data => setConfig(data))
+        .catch(e => console.error("Erro ao carregar preços."));
+
     return () => clearInterval(timer);
   }, []);
 
@@ -155,7 +170,7 @@ export function HairCarePage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO (COPY SIMPLIFICADA) */}
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -200,7 +215,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: DIFERENCIAIS (DESIGN MELHORADO COM CORES DA MARCA) */}
+        {/* 3. SEÇÃO: DIFERENCIAIS */}
         <section className="py-32 px-6 bg-white relative">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
@@ -212,7 +227,6 @@ export function HairCarePage() {
                 </div>
 
                 <div className="space-y-10">
-                    {/* Linha de Cima: 3 Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             { 
@@ -243,7 +257,6 @@ export function HairCarePage() {
                         ))}
                     </div>
 
-                    {/* Linha de Baixo: 2 Cards Centralizados */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-4xl lg:mx-auto">
                         {[
                             { 
@@ -272,7 +285,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 4. SEÇÃO: O QUE VEM NESSE KIT COMPLETO: */}
+        {/* 4. SEÇÃO: O QUE VEM NESSE KIT COMPLETO */}
         <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
             <div className="max-w-6xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
@@ -388,7 +401,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 5. SEÇÃO: GALERIA DE VÍDEOS VERTICAIS (TikTok Style) */}
+        {/* 5. SEÇÃO: GALERIA DE VÍDEOS */}
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
@@ -409,8 +422,6 @@ export function HairCarePage() {
                                 allowFullScreen 
                                 allow="autoplay; fullscreen"
                             ></iframe>
-                            
-                            {/* Overlay de Brilho sutil */}
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent z-10 pointer-events-none"></div>
                         </div>
                     ))}
@@ -418,7 +429,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* 6. SEÇÃO: DESENVOLVIDO POR ESPECIALISTAS (BIO INSTINTO) - SUAVIZADA */}
+        {/* 6. SEÇÃO: BIO INSTINTO */}
         <section className="py-24 px-6 bg-orange-50/50 text-slate-900 relative overflow-hidden border-y border-orange-100">
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -518,7 +529,7 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* PRICING & OFFER */}
+        {/* PRICING & OFFER (ATUALIZADO COM DADOS DINÂMICOS) */}
         <section id="pricing" className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-4xl mx-auto text-center relative z-10">
                 <h2 className="text-4xl md:text-7xl font-black text-slate-950 mb-16 tracking-tighter leading-none">
@@ -528,18 +539,20 @@ export function HairCarePage() {
                 <div className="bg-white rounded-[4rem] p-8 md:p-16 shadow-[0_64px_128px_-24px_rgba(139,94,60,0.3)] relative border-[6px] border-white space-y-12">
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                        {/* OPÇÃO CARTÃO (AMARELO DA PALETA) */}
+                        {/* OPÇÃO CARTÃO */}
                         <div className="bg-amber-400 p-10 rounded-[3rem] border-4 border-white shadow-xl flex flex-col justify-center gap-4 group">
                             <div className="flex items-center justify-center gap-2 text-slate-900 font-black text-xs md:text-sm uppercase tracking-[0.3em] opacity-80">
                                 <CreditCard size={18} /> Pagamento no Cartão
                             </div>
                             <div className="space-y-1">
-                                <p className="text-5xl md:text-6xl font-black text-slate-950 tracking-tighter">R$ 157,00</p>
+                                <p className="text-5xl md:text-6xl font-black text-slate-950 tracking-tighter">
+                                    {config.priceCard}
+                                </p>
                                 <p className="text-sm md:text-base font-black text-slate-900/60 uppercase tracking-widest">Em até 12x sem juros</p>
                             </div>
                         </div>
 
-                        {/* OPÇÃO PIX (VERDE) */}
+                        {/* OPÇÃO PIX */}
                         <div className="bg-emerald-600 p-10 rounded-[3rem] border-4 border-white shadow-2xl flex flex-col justify-center gap-4 relative overflow-hidden group">
                             <div className="absolute top-0 right-0 p-4 opacity-10 text-white group-hover:scale-110 transition-transform">
                                 <Zap size={80} />
@@ -550,7 +563,9 @@ export function HairCarePage() {
                             <div className="space-y-1 relative z-10">
                                 <div className="flex items-start justify-center gap-1">
                                     <span className="text-2xl font-black text-emerald-100 mt-4">R$</span>
-                                    <span className="text-7xl md:text-8xl font-black text-white tracking-tighter">97<span className="text-4xl">,00</span></span>
+                                    <span className="text-7xl md:text-8xl font-black text-white tracking-tighter">
+                                        {config.pricePix.split(',')[0]}<span className="text-4xl">,{config.pricePix.split(',')[1] || '00'}</span>
+                                    </span>
                                 </div>
                                 <p className="text-xs md:text-sm font-black text-emerald-100 uppercase tracking-widest bg-black/10 py-1 rounded-full px-4 inline-block">À vista no PIX</p>
                             </div>
@@ -575,14 +590,16 @@ export function HairCarePage() {
                         ))}
                     </div>
 
-                    <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
-                        <div className="flex flex-col items-center">
-                            <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
-                                <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
-                                COMPRAR AGORA
-                            </span>
-                        </div>
-                    </Button>
+                    <Link href={config.checkoutUrl || '#'} target="_blank" rel="noopener noreferrer">
+                        <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
+                            <div className="flex flex-col items-center">
+                                <span className="flex items-center gap-4 text-xl md:text-3xl font-black">
+                                    <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover:scale-110 transition-transform" />
+                                    COMPRAR AGORA
+                                </span>
+                            </div>
+                        </Button>
+                    </Link>
 
                     <div className="flex flex-wrap justify-center gap-8 opacity-30 grayscale">
                         <div className="flex items-center gap-2 text-[10px] font-black tracking-widest"><ShieldCheck size={20} /> ORIGINAL</div>
@@ -607,14 +624,11 @@ export function HairCarePage() {
             </div>
         </section>
 
-        {/* FOOTER PROFISSIONALIZADO */}
+        {/* FOOTER */}
         <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
-          
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
-              
-              {/* Coluna 1: Logo e Empresa */}
               <div className="space-y-6 text-center md:text-left">
                 <img 
                     src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
@@ -628,29 +642,18 @@ export function HairCarePage() {
                         CNPJ: 60.357.932/0001-18
                     </p>
                 </div>
-                <div className="flex justify-center md:justify-start gap-4 text-slate-300">
-                    <Lock size={18} /> <ShieldCheck size={18} /> <CreditCard size={18} /> <Truck size={18} />
-                </div>
               </div>
-
-              {/* Coluna 2: Links e Políticas */}
               <div className="space-y-6 text-center md:text-left">
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
                 <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
                     <button className="hover:text-orange-600 transition-colors text-left">Termos de Uso</button>
                     <button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button>
                     <button className="hover:text-orange-600 transition-colors text-left">Aviso de Reembolso</button>
-                    <button className="hover:text-orange-600 transition-colors text-left">Rastrear Pedido</button>
                 </nav>
               </div>
-
-              {/* Coluna 3: Atendimento */}
               <div className="space-y-6 text-center md:text-left">
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
                 <div className="space-y-4">
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
-                        Nossa equipe de suporte está pronta para te atender de Segunda a Sexta, das 09h às 18h.
-                    </p>
                     <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
                         <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
                         <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
@@ -658,22 +661,18 @@ export function HairCarePage() {
                 </div>
               </div>
             </div>
-
-            {/* Disclaimer Legal */}
             <div className="pt-12 border-t border-slate-200 space-y-8">
                 <div className="max-w-4xl mx-auto space-y-6">
                     <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
-                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa. Este produto é um cosmético de uso externo e não garante cura de condições patológicas pré-existentes. Em caso de irritação, suspenda o uso e procure orientação médica. As informações contidas neste site são apenas para fins informativos.
+                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
                     </p>
                     <div className="flex flex-col items-center gap-4">
                         <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
-                        <div className="h-1 w-12 bg-orange-600/30 rounded-full"></div>
                     </div>
                 </div>
             </div>
           </div>
         </footer>
-
       </div>
     </>
   );

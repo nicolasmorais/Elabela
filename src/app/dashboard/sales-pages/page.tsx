@@ -16,14 +16,29 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/table";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu";
+  import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+  } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info } from 'lucide-react';
+import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
 
 interface CustomAdvertorial {
   id: string;
@@ -44,6 +59,15 @@ export default function SalesPagesListPage() {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState('');
+  
+  // State para o Editor do Cavalo de Raça
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isSavingConfig, setIsSavingConfig] = useState(false);
+  const [pageConfig, setPageConfig] = useState({
+      priceCard: 'R$ 157,00',
+      pricePix: '97,00',
+      checkoutUrl: ''
+  });
 
   useEffect(() => {
     fetch('/api/custom-advertorials')
@@ -58,6 +82,36 @@ export default function SalesPagesListPage() {
         setIsLoading(false);
       });
   }, []);
+
+  const openEditDialog = async (slug: string) => {
+      try {
+          const res = await fetch(`/api/page-settings/${slug}`);
+          const data = await res.json();
+          setPageConfig(data);
+          setIsEditDialogOpen(true);
+      } catch (e) {
+          toast.error("Erro ao carregar configurações.");
+      }
+  };
+
+  const handleSaveConfig = async () => {
+      setIsSavingConfig(true);
+      try {
+          const res = await fetch(`/api/page-settings/cavalo-de-raca`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(pageConfig)
+          });
+          if (res.ok) {
+              toast.success("Preços e link atualizados!");
+              setIsEditDialogOpen(false);
+          }
+      } catch (e) {
+          toast.error("Erro ao salvar.");
+      } finally {
+          setIsSavingConfig(false);
+      }
+  };
 
   const dynamicPages = advertorials.map(adv => ({
     id: adv.id,
@@ -143,12 +197,30 @@ export default function SalesPagesListPage() {
                         </code>
                       </TableCell>
                       <TableCell className="text-right pr-8">
-                        <Link href={`/${page.id}`} target="_blank">
-                          <Button className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold h-10 px-4 group/btn">
-                            Acessar Página
-                            <ExternalLink size={14} className="ml-2 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                          </Button>
-                        </Link>
+                        <div className="flex items-center justify-end gap-2">
+                            <Link href={`/${page.id}`} target="_blank">
+                            <Button variant="ghost" size="sm" className="rounded-xl font-bold h-10 px-4">
+                                <ExternalLink size={14} className="mr-2" />
+                                Ver Página
+                            </Button>
+                            </Link>
+
+                            {page.id === 'cavalo-de-raca' && (
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl">
+                                            <MoreVertical size={18} />
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end" className="w-48 rounded-xl">
+                                        <DropdownMenuItem onClick={() => openEditDialog('cavalo-de-raca')} className="font-bold gap-2 cursor-pointer">
+                                            <Settings2 size={16} />
+                                            Editar Preços/Link
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            )}
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))
@@ -158,6 +230,63 @@ export default function SalesPagesListPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Popup de Edição Dinâmica */}
+      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+        <DialogContent className="sm:max-w-[425px] rounded-[2rem]">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+                <Heart className="text-red-500" /> Kit Cavalo de Raça
+            </DialogTitle>
+            <DialogDescription>
+              Edite as informações de vendas sem alterar o código.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid gap-6 py-4">
+            <div className="space-y-2">
+              <Label className="text-xs font-black uppercase text-slate-400">Preço Cartão (Texto Livre)</Label>
+              <Input 
+                value={pageConfig.priceCard} 
+                onChange={e => setPageConfig({...pageConfig, priceCard: e.target.value})}
+                placeholder="Ex: R$ 157,00"
+                className="rounded-xl h-12"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label className="text-xs font-black uppercase text-slate-400">Preço Pix (Apenas Números)</Label>
+              <Input 
+                value={pageConfig.pricePix} 
+                onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
+                placeholder="Ex: 97,00"
+                className="rounded-xl h-12"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs font-black uppercase text-slate-400">Link de Checkout</Label>
+              <Input 
+                value={pageConfig.checkoutUrl} 
+                onChange={e => setPageConfig({...pageConfig, checkoutUrl: e.target.value})}
+                placeholder="https://..."
+                className="rounded-xl h-12"
+              />
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button 
+                onClick={handleSaveConfig} 
+                disabled={isSavingConfig}
+                className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-xl font-bold w-full h-12"
+            >
+              {isSavingConfig ? <Loader2 className="animate-spin mr-2" /> : <Save className="mr-2" />}
+              Salvar Alterações
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
