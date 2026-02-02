@@ -23,11 +23,11 @@ export default function LoginPage() {
         </div>
 
         <div className="relative z-10 w-full max-w-md px-6">
-          <div className="flex flex-col items-center text-center space-y-8">
+          <div className="flex flex-col items-center text-center space-y-0"> {/* Reduzido de space-y-8 para 0 */}
             
             {/* Logo Area */}
-            <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
-                <Logo className="scale-125" />
+            <div className="animate-in fade-in slide-in-from-top-4 duration-1000 -mb-4"> {/* Adicionado margem negativa inferior para puxar o card */}
+                <Logo />
             </div>
 
             {/* Form Card */}
