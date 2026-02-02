@@ -28,7 +28,8 @@ export const LoginFormOffline = () => {
       if (response.ok) {
         const data = await response.json();
         toast.success(data.message);
-        router.push('/dashboard');
+        // Usamos window.location para garantir que o middleware reconheça o novo cookie
+        window.location.href = '/dashboard';
       } else {
         const errorData = await response.json();
         toast.error(errorData.message || "Acesso negado.");
