@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag, Zap } from "lucide-react";
+import { Settings, Wand2, LayoutGrid, Database, Monitor, CheckCircle, ShoppingBag, Zap, Heart } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoutButton } from "@/components/auth/LogoutButton";
@@ -28,6 +28,14 @@ const mainNavItems = [
     icon: Wand2,
     label: "Página de Aprovação",
   },
+];
+
+const productNavItems = [
+    {
+      href: "/dashboard/hair-care",
+      icon: Heart,
+      label: "Kit Cavalo de Raça",
+    },
 ];
 
 const systemNavItems = [
@@ -93,6 +101,28 @@ export const Sidebar = () => {
             </h3>
             <nav className="space-y-0.5">
               {mainNavItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={getLinkClasses(item.href)}
+                >
+                  <item.icon className={cn(
+                    "h-5 w-5 transition-colors",
+                    pathname === item.href ? "text-[#0061FF]" : "text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300"
+                  )} />
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Menu Produtos Específicos */}
+          <div className="space-y-1">
+            <h3 className="px-4 text-[9px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500 mb-1">
+              Páginas de Alta Conversão
+            </h3>
+            <nav className="space-y-0.5">
+              {productNavItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
