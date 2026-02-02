@@ -9,6 +9,7 @@ import { V3Page } from '@/components/page-versions/V3Page';
 import { MenopausePage } from '@/components/page-versions/MenopausePage';
 import { JointPainPage } from '@/components/page-versions/JointPainPage';
 import { HairCarePage } from '@/components/page-versions/HairCarePage';
+import { DeactivatedPage } from '@/components/page-versions/DeactivatedPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 
@@ -46,9 +47,9 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     const resolvedParams = await params;
     const slug = resolvedParams?.slug;
     
-    // Página inicial padrão (V1)
+    // Página inicial padrão (Agora exibe a página de desativado)
     if (!slug || slug.length === 0) {
-      return <V1Page />;
+      return <DeactivatedPage />;
     }
     
     const slugKey = slug.join('/');
@@ -109,7 +110,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     return <ContentSwitcher contentId={contentId} />;
   } catch (error) {
     console.error("Página Dinâmica: Erro fatal inesperado:", error);
-    // Em caso de erro crítico, redireciona para a home em vez de quebrar
-    return <V1Page />;
+    // Em caso de erro crítico, redireciona para a home (desativada)
+    return <DeactivatedPage />;
   }
 }
