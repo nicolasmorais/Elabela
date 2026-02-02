@@ -70,14 +70,14 @@ export const Sidebar = () => {
     <aside className={cn(
       "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-[#020617] border-slate-200 dark:border-slate-800 sm:flex"
     )}>
-      {/* Logo Section - Reduzido para h-14 e removido padding inferior */}
-      <div className="flex h-14 items-center px-4 justify-center mt-2">
-        <Link href="/dashboard" className="transition-opacity hover:opacity-80 scale-75">
+      {/* Logo Section - Aumentado para 1.3x e altura ajustada para h-20 */}
+      <div className="flex h-20 items-center px-4 justify-center mt-2">
+        <Link href="/dashboard" className="transition-opacity hover:opacity-80 scale-[1.3]">
           <Logo />
         </Link>
       </div>
 
-      {/* Navigation Section - Removido padding superior excessivo */}
+      {/* Navigation Section */}
       <div className="flex flex-1 flex-col overflow-y-auto px-4 pt-2 pb-4 scrollbar-none">
         <div className="space-y-6">
           
