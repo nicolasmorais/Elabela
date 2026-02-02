@@ -70,23 +70,23 @@ export const Sidebar = () => {
     <aside className={cn(
       "fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r bg-white dark:bg-[#020617] border-slate-200 dark:border-slate-800 sm:flex"
     )}>
-      {/* Logo Section - Reduzido drasticamente para h-20 */}
-      <div className="flex h-20 items-center px-4 justify-center">
-        <Link href="/dashboard" className="transition-opacity hover:opacity-80 scale-90">
+      {/* Logo Section - Reduzido para h-14 e removido padding inferior */}
+      <div className="flex h-14 items-center px-4 justify-center mt-2">
+        <Link href="/dashboard" className="transition-opacity hover:opacity-80 scale-75">
           <Logo />
         </Link>
       </div>
 
-      {/* Navigation Section */}
-      <div className="flex flex-1 flex-col overflow-y-auto px-4 py-4 scrollbar-none">
-        <div className="space-y-8">
+      {/* Navigation Section - Removido padding superior excessivo */}
+      <div className="flex flex-1 flex-col overflow-y-auto px-4 pt-2 pb-4 scrollbar-none">
+        <div className="space-y-6">
           
           {/* Menu Principal */}
-          <div className="space-y-2">
-            <h3 className="px-4 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
+          <div className="space-y-1">
+            <h3 className="px-4 text-[9px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500 mb-1">
               Gestão de Conteúdo
             </h3>
-            <nav className="space-y-1">
+            <nav className="space-y-0.5">
               {mainNavItems.map((item) => (
                 <Link
                   key={item.href}
@@ -104,11 +104,11 @@ export const Sidebar = () => {
           </div>
 
           {/* Menu Sistema */}
-          <div className="space-y-2">
-            <h3 className="px-4 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500">
+          <div className="space-y-1">
+            <h3 className="px-4 text-[9px] font-black uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500 mb-1">
               Monitoramento
             </h3>
-            <nav className="space-y-1">
+            <nav className="space-y-0.5">
               {systemNavItems.map((item) => (
                 <Link
                   key={item.href}
