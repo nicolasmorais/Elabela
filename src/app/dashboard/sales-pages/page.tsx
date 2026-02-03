@@ -66,6 +66,7 @@ export default function SalesPagesListPage() {
   const [pageConfig, setPageConfig] = useState({
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
+      installmentText: 'Em até 12x sem juros',
       checkoutUrl: ''
   });
 
@@ -87,7 +88,10 @@ export default function SalesPagesListPage() {
       try {
           const res = await fetch(`/api/page-settings/${slug}`);
           const data = await res.json();
-          setPageConfig(data);
+          setPageConfig({
+              ...data,
+              installmentText: data.installmentText || 'Em até 12x sem juros'
+          });
           setIsEditDialogOpen(true);
       } catch (e) {
           toast.error("Erro ao carregar configurações.");
@@ -103,7 +107,7 @@ export default function SalesPagesListPage() {
               body: JSON.stringify(pageConfig)
           });
           if (res.ok) {
-              toast.success("Preços e link atualizados!");
+              toast.success("Configurações atualizadas!");
               setIsEditDialogOpen(false);
           }
       } catch (e) {
@@ -215,7 +219,7 @@ export default function SalesPagesListPage() {
                                     <DropdownMenuContent align="end" className="w-48 rounded-xl">
                                         <DropdownMenuItem onClick={() => openEditDialog('cavalo-de-raca')} className="font-bold gap-2 cursor-pointer">
                                             <Settings2 size={16} />
-                                            Editar Preços/Link
+                                            Editar Oferta
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -235,42 +239,52 @@ export default function SalesPagesListPage() {
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent className="sm:max-w-[425px] rounded-[2rem]">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-                <Heart className="text-red-500" /> Kit Cavalo de Raça
+            <DialogTitle className="flex items-center gap-2 text-xl font-black">
+                <Heart className="text-red-500" /> Oferta Cavalo de Raça
             </DialogTitle>
             <DialogDescription>
-              Edite as informações de vendas sem alterar o código.
+              Ajuste preços, parcelamento e link de checkout.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="grid gap-6 py-4">
+          <div className="grid gap-5 py-4">
             <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Preço Cartão (Texto Livre)</Label>
+              <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Preço Cartão (Texto)</Label>
               <Input 
                 value={pageConfig.priceCard} 
                 onChange={e => setPageConfig({...pageConfig, priceCard: e.target.value})}
                 placeholder="Ex: R$ 157,00"
-                className="rounded-xl h-12"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Preço Pix (Apenas Números)</Label>
-              <Input 
-                value={pageConfig.pricePix} 
-                onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
-                placeholder="Ex: 97,00"
-                className="rounded-xl h-12"
+                className="rounded-xl h-12 bg-slate-50 border-slate-200"
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Link de Checkout</Label>
+              <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Texto de Parcelamento</Label>
+              <Input 
+                value={pageConfig.installmentText} 
+                onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
+                placeholder="Ex: Em até 12x sem juros"
+                className="rounded-xl h-12 bg-slate-50 border-slate-200"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Preço Pix (Apenas Números)</Label>
+              <Input 
+                value={pageConfig.pricePix} 
+                onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
+                placeholder="Ex: 97,00"
+                className="rounded-xl h-12 bg-slate-50 border-slate-200"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1">Link de Checkout</Label>
               <Input 
                 value={pageConfig.checkoutUrl} 
                 onChange={e => setPageConfig({...pageConfig, checkoutUrl: e.target.value})}
                 placeholder="https://..."
-                className="rounded-xl h-12"
+                className="rounded-xl h-12 bg-slate-50 border-slate-200"
               />
             </div>
           </div>
@@ -279,10 +293,10 @@ export default function SalesPagesListPage() {
             <Button 
                 onClick={handleSaveConfig} 
                 disabled={isSavingConfig}
-                className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-xl font-bold w-full h-12"
+                className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-xl font-bold w-full h-12 shadow-lg shadow-blue-500/20"
             >
               {isSavingConfig ? <Loader2 className="animate-spin mr-2" /> : <Save className="mr-2" />}
-              Salvar Alterações
+              Aplicar Alterações
             </Button>
           </DialogFooter>
         </DialogContent>
