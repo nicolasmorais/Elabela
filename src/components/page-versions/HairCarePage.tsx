@@ -70,6 +70,7 @@ export function HairCarePage() {
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
       installmentText: 'Parcelamento em até 12x',
+      buttonText: 'COMPRAR AGORA',
       checkoutUrl: '#'
   });
 
@@ -87,6 +88,7 @@ export function HairCarePage() {
                     priceCard: data.priceCard || 'R$ 157,00',
                     pricePix: data.pricePix || '97,00',
                     installmentText: data.installmentText || 'Parcelamento em até 12x',
+                    buttonText: data.buttonText || 'COMPRAR AGORA',
                     checkoutUrl: data.checkoutUrl || '#'
                 });
             }
@@ -497,7 +499,7 @@ export function HairCarePage() {
                             <p className="text-lg text-slate-600 font-medium">O que isso significa para você?</p>
                             <ul className="space-y-4">
                                 {[
-                                    "Você leva pra casa o mesmo profissional que cabeleireiros usam",
+                                    "Você leva pra casa o mesmo produto que profissionais usam",
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
@@ -631,7 +633,7 @@ export function HairCarePage() {
                             <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
                                 <span className="flex items-center gap-4 text-xl md:text-3xl font-black uppercase tracking-tight">
                                     <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover/btn:scale-110 transition-transform" />
-                                    Quero meus 35% de Desconto
+                                    {config.buttonText}
                                 </span>
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Acesso 100% Seguro e Original Bio Instinto</span>
                             </Button>

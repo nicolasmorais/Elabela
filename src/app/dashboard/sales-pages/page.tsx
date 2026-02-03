@@ -67,6 +67,7 @@ export default function SalesPagesListPage() {
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
       installmentText: 'Parcelamento em até 12x',
+      buttonText: 'COMPRAR AGORA',
       checkoutUrl: ''
   });
 
@@ -92,6 +93,7 @@ export default function SalesPagesListPage() {
               priceCard: data.priceCard || 'R$ 157,00',
               pricePix: data.pricePix || '97,00',
               installmentText: data.installmentText || 'Parcelamento em até 12x',
+              buttonText: data.buttonText || 'COMPRAR AGORA',
               checkoutUrl: data.checkoutUrl || ''
           });
           setIsEditDialogOpen(true);
@@ -276,6 +278,16 @@ export default function SalesPagesListPage() {
                 value={pageConfig.installmentText} 
                 onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
                 placeholder="Ex: Parcelamento em até 12x"
+                className="rounded-xl h-12"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs font-black uppercase text-slate-400">Texto do Botão</Label>
+              <Input 
+                value={pageConfig.buttonText} 
+                onChange={e => setPageConfig({...pageConfig, buttonText: e.target.value})}
+                placeholder="Ex: COMPRAR AGORA ou FAZER PEDIDO"
                 className="rounded-xl h-12"
               />
             </div>
