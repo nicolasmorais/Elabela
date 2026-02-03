@@ -66,6 +66,7 @@ export default function SalesPagesListPage() {
   const [pageConfig, setPageConfig] = useState({
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
+      installmentText: 'Em até 12x sem juros',
       checkoutUrl: ''
   });
 
@@ -87,7 +88,13 @@ export default function SalesPagesListPage() {
       try {
           const res = await fetch(`/api/page-settings/${slug}`);
           const data = await res.json();
-          setPageConfig(data);
+          // Garante valores padrão caso não existam
+          setPageConfig({
+              priceCard: data.priceCard || 'R$ 157,00',
+              pricePix: data.pricePix || '97,00',
+              installmentText: data.installmentText || 'Em até 12x sem juros',
+              checkoutUrl: data.checkoutUrl || ''
+          });
           setIsEditDialogOpen(true);
       } catch (e) {
           toast.error("Erro ao carregar configurações.");
@@ -103,7 +110,7 @@ export default function SalesPagesListPage() {
               body: JSON.stringify(pageConfig)
           });
           if (res.ok) {
-              toast.success("Preços e link atualizados!");
+              toast.success("Configurações atualizadas!");
               setIsEditDialogOpen(false);
           }
       } catch (e) {
@@ -260,6 +267,16 @@ export default function SalesPagesListPage() {
                 value={pageConfig.pricePix} 
                 onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
                 placeholder="Ex: 97,00"
+                className="rounded-xl h-12"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs font-black uppercase text-slate-400">Texto de Parcelamento</Label>
+              <Input 
+                value={pageConfig.installmentText} 
+                onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
+                placeholder="Ex: Em até 12x sem juros"
                 className="rounded-xl h-12"
               />
             </div>
