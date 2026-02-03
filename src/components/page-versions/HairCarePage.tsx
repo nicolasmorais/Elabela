@@ -635,7 +635,6 @@ export function HairCarePage() {
                                     <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover/btn:scale-110 transition-transform" />
                                     {config.buttonText}
                                 </span>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Acesso 100% Seguro e Original Bio Instinto</span>
                             </Button>
                         </Link>
 
