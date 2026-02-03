@@ -66,7 +66,7 @@ export default function SalesPagesListPage() {
   const [pageConfig, setPageConfig] = useState({
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
-      installmentText: 'Em até 12x sem juros',
+      installmentText: 'Parcelamento em até 12x',
       checkoutUrl: ''
   });
 
@@ -88,11 +88,10 @@ export default function SalesPagesListPage() {
       try {
           const res = await fetch(`/api/page-settings/${slug}`);
           const data = await res.json();
-          // Garante valores padrão caso não existam
           setPageConfig({
               priceCard: data.priceCard || 'R$ 157,00',
               pricePix: data.pricePix || '97,00',
-              installmentText: data.installmentText || 'Em até 12x sem juros',
+              installmentText: data.installmentText || 'Parcelamento em até 12x',
               checkoutUrl: data.checkoutUrl || ''
           });
           setIsEditDialogOpen(true);
@@ -276,7 +275,7 @@ export default function SalesPagesListPage() {
               <Input 
                 value={pageConfig.installmentText} 
                 onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
-                placeholder="Ex: Em até 12x sem juros"
+                placeholder="Ex: Parcelamento em até 12x"
                 className="rounded-xl h-12"
               />
             </div>

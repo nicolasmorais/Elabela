@@ -69,7 +69,7 @@ export function HairCarePage() {
   const [config, setConfig] = useState({
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
-      installmentText: 'Em até 12x sem juros',
+      installmentText: 'Parcelamento em até 12x',
       checkoutUrl: '#'
   });
 
@@ -86,7 +86,7 @@ export function HairCarePage() {
                 setConfig({
                     priceCard: data.priceCard || 'R$ 157,00',
                     pricePix: data.pricePix || '97,00',
-                    installmentText: data.installmentText || 'Em até 12x sem juros',
+                    installmentText: data.installmentText || 'Parcelamento em até 12x',
                     checkoutUrl: data.checkoutUrl || '#'
                 });
             }
@@ -603,7 +603,7 @@ export function HairCarePage() {
                                         </span>
                                     </div>
                                 </div>
-                                <p className="text-slate-500 font-bold uppercase text-[10px] md:text-xs tracking-widest">{config.installmentText} no Cartão</p>
+                                <p className="text-slate-500 font-bold uppercase text-[10px] md:text-xs tracking-widest">{config.installmentText}</p>
                             </div>
                         </div>
 
@@ -714,7 +714,7 @@ export function HairCarePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Políticas do Site</p>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
                 <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
                     
                     <Dialog>
