@@ -63,8 +63,6 @@ const TIKTOK_VIDEOS = [
 ];
 
 export function HairCarePage() {
-  const [timeLeft, setTimeLeft] = useState(1194); // 19:54
-  
   // ESTADO DOS DADOS DINÂMICOS
   const [config, setConfig] = useState({
       priceCard: 'R$ 157,00',
@@ -75,10 +73,6 @@ export function HairCarePage() {
   });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
-    }, 1000);
-    
     // Busca configurações do banco
     fetch('/api/page-settings/cavalo-de-raca')
         .then(res => res.json())
@@ -94,15 +88,7 @@ export function HairCarePage() {
             }
         })
         .catch(e => console.error("Erro ao carregar preços."));
-
-    return () => clearInterval(timer);
   }, []);
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -113,17 +99,13 @@ export function HairCarePage() {
       <PageTracker contentId="cavalo-de-raca" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE URGÊNCIA */}
+        {/* BARRA DE AVISO (Sem Relógio) */}
         <div className="bg-slate-950 py-2 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-4 md:gap-8">
             <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-orange-200 flex items-center gap-2">
                 <div className="w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
                 Promoção Exclusiva Direto da Indústria
             </p>
-            <div className="hidden md:flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest bg-orange-900/40 px-4 py-1 rounded-full border border-orange-500/20">
-              <Clock size={12} className="text-orange-400" />
-              Oferta termina em: <span className="font-mono text-orange-400">{formatTime(timeLeft)}</span>
-            </div>
           </div>
         </div>
 
@@ -563,9 +545,6 @@ export function HairCarePage() {
                         SUA ÚLTIMA CHANCE DE <br /> <span className="text-orange-500 italic">SOLTAR O CABELO</span> ✨
                     </h2>
                     <div className="flex flex-col items-center gap-2">
-                        <div className="bg-red-600 text-white px-6 py-1.5 rounded-full text-xs font-black uppercase tracking-widest animate-pulse shadow-xl shadow-red-900/20">
-                           ⏳ Oferta Limitada: {formatTime(timeLeft)}
-                        </div>
                         <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Enviamos para todo o Brasil com Seguro e Rastreio</p>
                     </div>
                 </div>
