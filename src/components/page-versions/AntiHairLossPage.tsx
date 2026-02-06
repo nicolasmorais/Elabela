@@ -97,17 +97,16 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE AVISO DINÂMICA - REFINADA MOBILE */}
-        <div className="bg-[#0C0A09] py-2.5 px-4 text-center border-b border-orange-500/10 sticky top-0 z-50 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.6)]">
+        {/* BARRA DE AVISO - CORES VIVAS (PRETO + VERDE ESMERALDA) */}
+        <div className="bg-black py-3 px-4 text-center border-b border-orange-500/20 sticky top-0 z-50 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.5)]">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-3">
-            {/* Ponto de Alerta Estilizado */}
-            <div className="relative flex h-2 w-2 shrink-0">
+            <div className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.8)]"></span>
             </div>
             
-            <p className="text-[9px] md:text-xs font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-orange-200/90 leading-tight">
-                Mais de 4.000 mulheres de <span className="text-white border-b border-emerald-500/60 pb-0.5 mx-0.5 transition-all">{city ? city : 'sua região'}</span> e região já compraram nosso kit
+            <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.15em] text-white leading-tight">
+                Mais de 4.000 mulheres de <span className="text-emerald-400 border-b-2 border-emerald-400/30 pb-0.5 mx-0.5">{city ? city : 'sua região'}</span> já estancaram a queda com este kit
             </p>
           </div>
         </div>
@@ -118,19 +117,19 @@ export function AntiHairLossPage() {
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_var(--tw-gradient-stops))] from-orange-100/40 via-white to-white pointer-events-none"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
-            {/* Authority Badge Central */}
+            {/* Badge de Autoridade - CORES MAIS VIVAS */}
             <div className="flex justify-center mb-10">
-                <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#1A120B] text-orange-200 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] border border-orange-800/40 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-1000">
-                    <Award size={14} className="text-orange-500 animate-pulse" />
-                    <span>Protocolo Antiqueda Verificado Bio Instinto</span>
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#0F0D0C] text-orange-400 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] border-2 border-orange-500/20 shadow-[0_25px_50px_-12px_rgba(249,115,22,0.4)] animate-in fade-in slide-in-from-top-4 duration-1000">
+                    <Award size={16} className="text-orange-500 animate-pulse" />
+                    <span className="text-white">Protocolo Antiqueda <span className="text-orange-500">Bio Instinto</span></span>
                 </div>
             </div>
             
-            {/* Headline Central de Alto Impacto */}
+            {/* Headline Central - CORES MAIS VIVAS */}
             <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-black leading-[0.95] tracking-tighter text-slate-950 max-w-5xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-200">
                   "Todo Dia Era um Bolo de Cabelo no Pente... 🪮 <br /> 
-                  <span className="text-orange-900 italic relative inline-block mt-2">
+                  <span className="text-orange-600 italic relative inline-block mt-2">
                     Hoje Não Cai Quase Nada."
                     <span className="absolute -bottom-2 left-0 w-full h-[12px] bg-orange-100 -z-10 rounded-full"></span>
                   </span> 😱✨
@@ -140,7 +139,7 @@ export function AntiHairLossPage() {
             {/* COMPOSIÇÃO INTEGRADA (EVIDENCE + IMAGE) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-12 md:mt-20">
                 
-                {/* LADO ESQUERDO: EVIDENCE BOX (DESIGN DE LAUDO/PROVA) */}
+                {/* LADO ESQUERDO: EVIDENCE BOX */}
                 <div className="lg:col-span-5 order-2 lg:order-1 relative z-20">
                     <div className="relative group p-8 md:p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_40px_80px_-20px_rgba(249,115,22,0.15)] overflow-hidden transition-all duration-700 hover:shadow-[0_50px_100px_-20px_rgba(249,115,22,0.2)] animate-in fade-in slide-in-from-left-6 duration-1000 delay-500">
                         {/* Status Label */}
@@ -182,9 +181,8 @@ export function AntiHairLossPage() {
                     </div>
                 </div>
 
-                {/* LADO DIREITO: PRODUCT IMAGE (GRANDE E INTEGRADA) */}
+                {/* LADO DIREITO: PRODUCT IMAGE */}
                 <div className="lg:col-span-7 order-1 lg:order-2 relative lg:-ml-16 animate-in fade-in slide-in-from-right-6 duration-1000 delay-700">
-                    {/* Background Blob para "Casar" o elemento */}
                     <div className="absolute inset-0 bg-orange-400/10 blur-[100px] rounded-full scale-110 pointer-events-none transform translate-x-12 translate-y-12 opacity-70"></div>
                     
                     <div className="relative group">
@@ -194,7 +192,6 @@ export function AntiHairLossPage() {
                             className="relative z-10 w-full h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:scale-[1.02] transition-transform duration-1000"
                         />
                         
-                        {/* Floating Feature Pop-up flutuando próximo ao produto */}
                         <div className="absolute -top-4 md:top-20 -right-4 md:right-0 z-30 animate-bounce delay-700">
                             <div className="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-[2rem] shadow-2xl border border-orange-100/50 flex flex-col items-center">
                                 <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-1">Resultados</p>
@@ -701,7 +698,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* GARANTIA SECTION */}
+        {/* GARANTIA */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
