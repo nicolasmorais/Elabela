@@ -10,31 +10,17 @@ import {
   Zap, 
   Heart, 
   Sparkles, 
-  Timer,
-  Lock,
-  CreditCard,
-  ChevronRight,
   Award,
-  Users,
-  CheckCircle2,
-  Trash2,
-  Droplets,
-  Scissors,
-  XCircle,
-  AlertCircle,
-  Frown,
-  Ban,
-  Image as ImageIcon,
+  Truck,
+  Verified,
+  ShieldAlert,
   ShoppingBag,
   DollarSign,
   Home,
   Dumbbell,
-  Play,
   Microscope,
-  FlaskConical,
-  Truck,
-  Verified,
-  ShieldAlert
+  Lock,
+  CreditCard
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -99,7 +85,7 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE AVISO (Sem Relógio conforme pedido anterior) */}
+        {/* BARRA DE AVISO */}
         <div className="bg-slate-950 py-2 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-4 md:gap-8">
             <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-orange-200 flex items-center gap-2">
@@ -109,7 +95,7 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
-        {/* HERO SECTION */}
+        {/* HERO SECTION - ATUALIZADA COM NOVA COPY ANTIQUEDA */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
@@ -118,12 +104,17 @@ export function AntiHairLossPage() {
                 <Award size={14} /> Tecnologia Bio Instinto
             </div>
             
-            <h1 className="text-4xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-8 max-w-4xl">
-              Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
+            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-4 max-w-5xl">
+              "Via Montes de Cabelo no Ralo Todo Dia... <br /> 
+              <span className="text-orange-800 italic">Hoje Não Cai Quase Nada. Eu Não Acreditei."</span>
             </h1>
+
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">
+               — Depoimento de Ana Júlia, 41 anos, Brasília
+            </p>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
-              Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
+            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
+              O Kit Bio Instinto que Ana usou estanca 87% da queda em 7 dias reconstruindo a raiz que shampoos comuns destroem...
             </p>
 
             {/* IMAGEM DO PRODUTO */}
@@ -485,7 +476,7 @@ export function AntiHairLossPage() {
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
-                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
                                         <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
                                         {item}
                                     </li>
