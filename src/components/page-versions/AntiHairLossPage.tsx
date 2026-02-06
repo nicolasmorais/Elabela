@@ -129,10 +129,10 @@ export function AntiHairLossPage() {
               O Kit Bio Instinto que Ana usou estanca 87% da queda em 7 dias reconstruindo a raiz que shampoos comuns destroem...
             </p>
 
-            {/* IMAGEM DO PRODUTO */}
+            {/* IMAGEM DO PRODUTO ATUALIZADA */}
             <div className="relative group max-w-3xl w-full">
               <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770412748207-ChatGPT-Image-6-de-fev.-de-2026,-18_17_17.png" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg" 
                 alt="Kit Bio Instinto Antiqueda" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
@@ -487,7 +487,7 @@ export function AntiHairLossPage() {
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
                                         <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
                                         {item}
                                     </li>
@@ -673,7 +673,7 @@ export function AntiHairLossPage() {
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                            <p>O uso de qualquer produto natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
                         </div>
                     </div>
                 </div>
