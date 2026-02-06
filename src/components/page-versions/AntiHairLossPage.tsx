@@ -100,8 +100,10 @@ export function AntiHairLossPage() {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-orange-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-orange-500/30 shadow-2xl">
-                <Award size={14} /> +12.847 Mulheres Estancaram a Queda em 1 Semana
+            {/* BADGE SUPERIOR COM CORES MELHORADAS */}
+            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#2D1B0F] text-orange-100 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-8 border border-orange-800/40 shadow-xl shadow-orange-950/20">
+                <Award size={16} className="text-orange-400" /> 
+                <span>+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
             </div>
             
             <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-4 max-w-5xl">
