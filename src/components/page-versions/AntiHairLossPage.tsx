@@ -106,39 +106,65 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
-        {/* HERO SECTION */}
-        <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
+        {/* HERO SECTION - REFINED DESIGN */}
+        <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden bg-white">
+          {/* Subtle Background Elements */}
+          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_20%,_var(--tw-gradient-stops))] from-orange-50/60 via-transparent to-transparent pointer-events-none"></div>
+          <div className="absolute top-[10%] left-[-5%] w-[30%] h-[40%] bg-orange-100/30 blur-[120px] rounded-full pointer-events-none"></div>
           
-          <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
-            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#2D1B0F] text-orange-100 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-8 border border-orange-800/40 shadow-xl shadow-orange-950/20">
-                <Award size={16} className="text-orange-400" /> 
-                <span>+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
+          <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
+            {/* Authority Badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#1A120B] text-orange-200 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] mb-10 border border-orange-800/30 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.2)] animate-in fade-in slide-in-from-top-4 duration-1000">
+                <div className="bg-orange-600 p-1 rounded-full text-white">
+                    <Award size={14} fill="currentColor" />
+                </div>
+                <span className="drop-shadow-sm">+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
             </div>
             
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-4 max-w-5xl">
+            {/* Headline with dynamic highlighting */}
+            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-slate-950 mb-6 max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
               "Via Montes de Cabelo no Ralo Todo Dia... 🚿 <br /> 
-              <span className="text-orange-800 italic">Hoje Não Cai Quase Nada. Eu Não Acreditei." 😱✨</span>
+              <span className="text-orange-800 italic relative inline-block">
+                Hoje Não Cai Quase Nada. Eu Não Acreditei."
+                <span className="absolute bottom-1 left-0 w-full h-[6px] bg-orange-200/50 -z-10 rounded-full"></span>
+              </span> 😱✨
             </h1>
 
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">
-               — Depoimento de Ana Júlia, 41 anos, Brasília
-            </p>
+            {/* Testimonial Author Citation */}
+            <div className="flex items-center gap-3 mb-12 animate-in fade-in duration-1000 delay-500">
+                <div className="h-[1px] w-8 bg-slate-200"></div>
+                <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">
+                   Ana Júlia, 41 anos, Brasília
+                </p>
+                <div className="h-[1px] w-8 bg-slate-200"></div>
+            </div>
             
-            <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl leading-relaxed">
-              O Kit Bio Instinto que Ana usou estanca 87% da queda em 7 dias reconstruindo a raiz que shampoos comuns destroem...
-            </p>
+            {/* Descriptive Sub-headline */}
+            <div className="bg-orange-50/50 backdrop-blur-sm px-8 py-4 rounded-3xl border border-orange-100/50 mb-16 animate-in fade-in slide-in-from-bottom-2 duration-1000 delay-700">
+                <p className="text-lg md:text-2xl text-slate-700 font-medium max-w-3xl leading-relaxed">
+                  O Kit Bio Instinto que Ana usou estanca <strong className="text-orange-900 font-black">87% da queda em 7 dias</strong> reconstruindo a raiz que shampoos comuns destroem...
+                </p>
+            </div>
 
-            {/* IMAGEM DO PRODUTO ATUALIZADA */}
-            <div className="relative group max-w-3xl w-full">
-              <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
-                alt="Kit Bio Instinto Antiqueda" 
-                className="rounded-[3rem] relative z-10 mx-auto"
-              />
-              <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 hidden lg:flex flex-col gap-4 z-20">
-                 <div className="bg-white p-4 rounded-2xl shadow-xl border border-orange-100 animate-bounce">
-                    <p className="text-[10px] font-black text-orange-800 uppercase tracking-widest mb-1">Resultados</p>
+            {/* PRODUCT IMAGE WITH ENHANCED VISUALS */}
+            <div className="relative group max-w-4xl w-full animate-in zoom-in-95 duration-1000 delay-1000">
+              {/* Image Glow */}
+              <div className="absolute inset-0 bg-orange-400/10 blur-[80px] rounded-full scale-75 group-hover:bg-orange-400/20 transition-all duration-700"></div>
+              
+              <div className="relative z-10 p-2 bg-gradient-to-b from-white via-white to-orange-50/30 rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)]">
+                  <img 
+                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
+                    alt="Kit Bio Instinto Antiqueda" 
+                    className="rounded-[3.5rem] mx-auto w-full h-auto"
+                  />
+              </div>
+
+              {/* Floating Performance Badge */}
+              <div className="absolute -top-6 -right-4 md:right-0 transform lg:translate-x-1/2 z-20">
+                 <div className="bg-white p-5 rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border-2 border-orange-100 flex flex-col items-center gap-1 animate-bounce">
+                    <Sparkles className="text-orange-500 h-6 w-6" fill="currentColor" />
+                    <p className="text-[10px] font-black text-orange-800 uppercase tracking-widest leading-none">Resultados</p>
+                    <p className="text-xs font-bold text-slate-500">Comprovados</p>
                  </div>
               </div>
             </div>
@@ -487,7 +513,7 @@ export function AntiHairLossPage() {
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
                                         <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
                                         {item}
                                     </li>
