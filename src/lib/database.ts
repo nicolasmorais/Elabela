@@ -73,6 +73,7 @@ async function insertDefaultData(client: Client): Promise<void> {
         { path: '/v3', name: 'Rota do Advertorial V3', content_id: 'v3' },
         { path: '/aprovado', name: 'Página de Aprovação (Preview)', content_id: 'ap' },
         { path: '/menopausa', name: 'Vendas: Menopausa Nunca Mais', content_id: 'menopausa' },
+        { path: '/antiqueda', name: 'Vendas: Tratamento Antiqueda', content_id: 'antiqueda' },
     ];
 
     for (const route of defaultRoutes) {

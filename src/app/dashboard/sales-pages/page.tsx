@@ -34,7 +34,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2 } from 'lucide-react';
+import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -53,6 +53,7 @@ const STATIC_PAGES = [
   { id: 'menopausa', name: 'Menopausa Nunca Mais', type: 'Vendas', icon: ShoppingBag, color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-950/20' },
   { id: 'dor-zero', name: 'Dolorzero (Articulações)', type: 'Vendas', icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-950/20' },
   { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', type: 'Vendas', icon: Heart, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-950/20' },
+  { id: 'antiqueda', name: 'Tratamento Antiqueda', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
 ];
 
 export default function SalesPagesListPage() {
@@ -60,9 +61,10 @@ export default function SalesPagesListPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState('');
   
-  // State para o Editor do Cavalo de Raça
+  // State para o Editor
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isSavingConfig, setIsSavingConfig] = useState(false);
+  const [activeSlug, setActiveSlug] = useState('');
   const [pageConfig, setPageConfig] = useState({
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
@@ -86,6 +88,7 @@ export default function SalesPagesListPage() {
   }, []);
 
   const openEditDialog = async (slug: string) => {
+      setActiveSlug(slug);
       try {
           const res = await fetch(`/api/page-settings/${slug}`);
           const data = await res.json();
@@ -105,7 +108,7 @@ export default function SalesPagesListPage() {
   const handleSaveConfig = async () => {
       setIsSavingConfig(true);
       try {
-          const res = await fetch(`/api/page-settings/cavalo-de-raca`, {
+          const res = await fetch(`/api/page-settings/${activeSlug}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(pageConfig)
@@ -213,7 +216,7 @@ export default function SalesPagesListPage() {
                             </Button>
                             </Link>
 
-                            {page.id === 'cavalo-de-raca' && (
+                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda') && (
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl">
@@ -221,7 +224,7 @@ export default function SalesPagesListPage() {
                                         </Button>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="end" className="w-48 rounded-xl">
-                                        <DropdownMenuItem onClick={() => openEditDialog('cavalo-de-raca')} className="font-bold gap-2 cursor-pointer">
+                                        <DropdownMenuItem onClick={() => openEditDialog(page.id)} className="font-bold gap-2 cursor-pointer">
                                             <Settings2 size={16} />
                                             Editar Preços/Link
                                         </DropdownMenuItem>
@@ -244,10 +247,10 @@ export default function SalesPagesListPage() {
         <DialogContent className="sm:max-w-[425px] rounded-[2rem]">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-                <Heart className="text-red-500" /> Kit Cavalo de Raça
+                <Settings2 className="text-[#0061FF]" /> Configurações de Venda
             </DialogTitle>
             <DialogDescription>
-              Edite as informações de vendas sem alterar o código.
+              Edite as informações da página <strong>/{activeSlug}</strong>.
             </DialogDescription>
           </DialogHeader>
           
@@ -287,7 +290,7 @@ export default function SalesPagesListPage() {
               <Input 
                 value={pageConfig.buttonText} 
                 onChange={e => setPageConfig({...pageConfig, buttonText: e.target.value})}
-                placeholder="Ex: COMPRAR AGORA ou FAZER PEDIDO"
+                placeholder="Ex: COMPRAR AGORA"
                 className="rounded-xl h-12"
               />
             </div>
