@@ -95,7 +95,7 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
-        {/* HERO SECTION - ATUALIZADA COM NOVA COPY ANTIQUEDA */}
+        {/* HERO SECTION - ATUALIZADA COM EMOJIS */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
@@ -105,8 +105,8 @@ export function AntiHairLossPage() {
             </div>
             
             <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-4 max-w-5xl">
-              "Via Montes de Cabelo no Ralo Todo Dia... <br /> 
-              <span className="text-orange-800 italic">Hoje Não Cai Quase Nada. Eu Não Acreditei."</span>
+              "Via Montes de Cabelo no Ralo Todo Dia... 🚿 <br /> 
+              <span className="text-orange-800 italic">Hoje Não Cai Quase Nada. Eu Não Acreditei." 😱✨</span>
             </h1>
 
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">
@@ -718,7 +718,7 @@ export function AntiHairLossPage() {
                         <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
                             <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
                             <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
-                                <p>Por se tratar de um produto digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                <p>Por se tratar de um product digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
                                 <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
                                 <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
                                 <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
