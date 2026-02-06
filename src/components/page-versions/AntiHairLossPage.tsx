@@ -49,6 +49,9 @@ const TIKTOK_VIDEOS = [
 ];
 
 export function AntiHairLossPage() {
+  // ESTADO DA LOCALIZAÇÃO
+  const [city, setCity] = useState('');
+
   // ESTADO DOS DADOS DINÂMICOS
   const [config, setConfig] = useState({
       priceCard: 'R$ 157,00',
@@ -59,7 +62,15 @@ export function AntiHairLossPage() {
   });
 
   useEffect(() => {
-    // Busca configurações do banco específicas para antiqueda
+    // Busca a cidade da usuária
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        if (data.city) setCity(data.city);
+      })
+      .catch(() => console.log("Não foi possível detectar a cidade."));
+
+    // Busca configurações do banco
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
@@ -85,12 +96,12 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE AVISO */}
-        <div className="bg-slate-950 py-2 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto flex justify-center items-center gap-4 md:gap-8">
-            <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-orange-200 flex items-center gap-2">
-                <div className="w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
-                Promoção Exclusiva Direto da Indústria
+        {/* BARRA DE AVISO DINÂMICA */}
+        <div className="bg-slate-950 py-3 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50 shadow-xl">
+          <div className="max-w-6xl mx-auto flex justify-center items-center">
+            <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-orange-200 flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping shrink-0"></div>
+                Mais de 4.000 mulheres de {city ? city : 'sua região'} e região já compraram nosso kit
             </p>
           </div>
         </div>
@@ -100,7 +111,6 @@ export function AntiHairLossPage() {
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
-            {/* BADGE SUPERIOR COM CORES MELHORADAS */}
             <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#2D1B0F] text-orange-100 text-[10px] md:text-xs font-black uppercase tracking-[0.2em] mb-8 border border-orange-800/40 shadow-xl shadow-orange-950/20">
                 <Award size={16} className="text-orange-400" /> 
                 <span>+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
@@ -119,7 +129,7 @@ export function AntiHairLossPage() {
               O Kit Bio Instinto que Ana usou estanca 87% da queda em 7 dias reconstruindo a raiz que shampoos comuns destroem...
             </p>
 
-            {/* IMAGEM DO PRODUTO ATUALIZADA */}
+            {/* IMAGEM DO PRODUTO */}
             <div className="relative group max-w-3xl w-full">
               <img 
                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770412748207-ChatGPT-Image-6-de-fev.-de-2026,-18_17_17.png" 
