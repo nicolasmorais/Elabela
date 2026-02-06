@@ -204,7 +204,7 @@ export function AntiHairLossPage() {
           </div>
         </header>
 
-        {/* 1. SEÇÃO: GALERIA DE IMAGENS */}
+        {/* 1. SEÇÃO: GALERIA DE IMAGENS - AJUSTADA PARA 16:9 */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
@@ -215,10 +215,10 @@ export function AntiHairLossPage() {
               <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Grid da Galeria */}
+            {/* Grid da Galeria - Agora com aspect-video (16:9) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {GALLERY_IMAGES.map((url, i) => (
-                <div key={i} className="group relative aspect-square rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
+                <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
                    <img 
                       src={url} 
                       alt={`Imagem da Galeria ${i + 1}`} 
@@ -705,7 +705,7 @@ export function AntiHairLossPage() {
                     <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
                     <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
-                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
+                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o result, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
                     <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                 </div>
