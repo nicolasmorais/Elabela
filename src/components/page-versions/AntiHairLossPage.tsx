@@ -95,7 +95,7 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
-        {/* HERO SECTION - ATUALIZADA COM EMOJIS */}
+        {/* HERO SECTION - ATUALIZADA COM NOVA IMAGEM */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
@@ -117,11 +117,11 @@ export function AntiHairLossPage() {
               O Kit Bio Instinto que Ana usou estanca 87% da queda em 7 dias reconstruindo a raiz que shampoos comuns destroem...
             </p>
 
-            {/* IMAGEM DO PRODUTO */}
+            {/* IMAGEM DO PRODUTO ATUALIZADA */}
             <div className="relative group max-w-3xl w-full">
               <img 
-                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
-                alt="Kit Cavalo de Raça Bio Instinto" 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770412748207-ChatGPT-Image-6-de-fev.-de-2026,-18_17_17.png" 
+                alt="Kit Bio Instinto Antiqueda" 
                 className="rounded-[3rem] relative z-10 mx-auto"
               />
               <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 hidden lg:flex flex-col gap-4 z-20">
@@ -654,7 +654,7 @@ export function AntiHairLossPage() {
                     <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
-                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
