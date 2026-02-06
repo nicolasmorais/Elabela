@@ -112,67 +112,97 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
-        {/* HERO SECTION - REFINED TOP AREA */}
-        <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden bg-white">
-          {/* Subtle Background Elements */}
-          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_20%,_var(--tw-gradient-stops))] from-orange-50/60 via-transparent to-transparent pointer-events-none"></div>
+        {/* HERO SECTION - REDESENHADA PARA MÁXIMA HARMONIA */}
+        <header className="relative pt-12 md:pt-20 pb-16 md:pb-24 px-6 overflow-hidden bg-white">
+          {/* Decorative Mesh Background */}
+          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_var(--tw-gradient-stops))] from-orange-100/40 via-white to-white pointer-events-none"></div>
           
-          <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
-            {/* Authority Badge */}
-            <div className="order-1 inline-flex items-center gap-3 px-7 py-3 rounded-full bg-[#1A120B] text-orange-200 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] mb-12 border border-orange-800/40 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] group hover:border-orange-500/50 transition-colors duration-500 animate-in fade-in slide-in-from-top-4 duration-1000">
-                <div className="bg-gradient-to-br from-orange-400 to-orange-700 p-1.5 rounded-full text-white shadow-inner group-hover:rotate-12 transition-transform duration-500">
-                    <Award size={14} fill="currentColor" />
+          <div className="max-w-6xl mx-auto relative z-10">
+            {/* Authority Badge Central */}
+            <div className="flex justify-center mb-10">
+                <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#1A120B] text-orange-200 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] border border-orange-800/40 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-1000">
+                    <Award size={14} className="text-orange-500 animate-pulse" />
+                    <span>Protocolo Antiqueda Verificado Bio Instinto</span>
                 </div>
-                <span className="drop-shadow-sm">+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
             </div>
             
-            {/* Headline */}
-            <h1 className="order-2 text-3xl md:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tighter text-slate-950 mb-8 max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-              "Todo Dia Era um Bolo de Cabelo no Pente... 🪮 <br /> 
-              <span className="text-orange-900 italic relative inline-block">
-                Hoje Não Cai Quase Nada. Eu Ainda Não Acredito."
-                <span className="absolute -bottom-1 left-0 w-full h-[8px] bg-orange-200/40 -z-10 rounded-full blur-[1px]"></span>
-              </span> 😱✨
-            </h1>
-
-            {/* Testimonial Author Citation */}
-            <div className="order-3 flex items-center gap-4 mb-14 animate-in fade-in duration-1000 delay-500">
-                <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-slate-200"></div>
-                <p className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] drop-shadow-sm">
-                   Ana Júlia, 41 anos, Brasília
-                </p>
-                <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-slate-200"></div>
+            {/* Headline Central de Alto Impacto */}
+            <div className="text-center mb-16">
+                <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-black leading-[0.95] tracking-tighter text-slate-950 max-w-5xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-200">
+                  "Todo Dia Era um Bolo de Cabelo no Pente... 🪮 <br /> 
+                  <span className="text-orange-900 italic relative inline-block mt-2">
+                    Hoje Não Cai Quase Nada."
+                    <span className="absolute -bottom-2 left-0 w-full h-[12px] bg-orange-100 -z-10 rounded-full"></span>
+                  </span> 😱✨
+                </h1>
             </div>
-            
-            {/* Sub-headline - NEW SURPRISING DESIGN */}
-            <div className="order-5 md:order-4 mt-12 md:mt-0 mb-0 md:mb-16 w-full max-w-3xl px-4 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-700">
-                <div className="relative p-8 md:p-12 bg-white rounded-[2.5rem] border-2 border-orange-100 shadow-[0_30px_60px_-15px_rgba(249,115,22,0.12)] overflow-hidden group">
-                    {/* Lateral Accent */}
-                    <div className="absolute top-0 left-0 w-2 h-full bg-orange-600 shadow-[2px_0_10px_rgba(234,88,12,0.3)]"></div>
-                    
-                    <p className="text-xl md:text-3xl text-slate-800 leading-[1.4] font-medium text-left md:text-center">
-                        <span className="text-slate-400 italic block mb-4 text-xs md:text-sm uppercase tracking-[0.3em] font-black opacity-70">Transformação em Tempo Recorde:</span>
-                        O cabelo de Ana estava <span className="text-red-500 font-black italic relative px-1">cedendo<span className="absolute bottom-0 left-0 w-full h-0.5 bg-red-200 -z-10"></span></span>. 
-                        Em apenas 7 dias, o Kit Cavalo de Raça <strong className="text-orange-900 font-black underline decoration-orange-300 underline-offset-4">reconstruiu a raiz</strong> e reduziu <strong className="text-emerald-600 font-black bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-100 inline-block mt-1 md:mt-0">87% da queda</strong>.
-                    </p>
 
-                    {/* Subtle Background Icon */}
-                    <div className="absolute -bottom-4 -right-4 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
-                        <CheckCircle2 size={120} className="text-orange-600" />
+            {/* COMPOSIÇÃO INTEGRADA (EVIDENCE + IMAGE) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-12 md:mt-20">
+                
+                {/* LADO ESQUERDO: EVIDENCE BOX (DESIGN DE LAUDO/PROVA) */}
+                <div className="lg:col-span-5 order-2 lg:order-1 relative z-20">
+                    <div className="relative group p-8 md:p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_40px_80px_-20px_rgba(249,115,22,0.15)] overflow-hidden transition-all duration-700 hover:shadow-[0_50px_100px_-20px_rgba(249,115,22,0.2)] animate-in fade-in slide-in-from-left-6 duration-1000 delay-500">
+                        {/* Status Label */}
+                        <div className="flex items-center gap-2 mb-8">
+                            <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Caso Real #12.847</span>
+                        </div>
+
+                        {/* Content */}
+                        <div className="space-y-6">
+                            <p className="text-2xl md:text-3xl font-black text-slate-950 leading-tight">
+                                O cabelo de Ana estava <span className="text-red-500 italic relative px-1">cedendo.<span className="absolute bottom-0 left-0 w-full h-1 bg-red-100 -z-10"></span></span>
+                            </p>
+                            
+                            <div className="flex items-start gap-4 py-6 border-y border-slate-50">
+                                <div className="p-3 bg-orange-600 text-white rounded-2xl shadow-lg shadow-orange-200 shrink-0">
+                                    <Zap size={24} fill="currentColor" />
+                                </div>
+                                <p className="text-lg md:text-xl text-slate-700 font-medium leading-relaxed">
+                                    Em <strong className="text-orange-900 font-black">7 dias</strong>, o Kit Cavalo de Raça reconstruiu a raiz e reduziu <strong className="text-emerald-600 font-black bg-emerald-50 px-2 rounded-lg border border-emerald-100">87% da queda</strong>.
+                                </p>
+                            </div>
+
+                            <div className="pt-4 flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-1 w-8 bg-orange-600 rounded-full"></div>
+                                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest italic">Ass: Ana Júlia, Brasília</span>
+                                </div>
+                                <div className="flex gap-1 text-orange-400">
+                                    {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Background Decoration */}
+                        <div className="absolute -top-12 -right-12 opacity-[0.03] group-hover:rotate-12 transition-transform duration-1000">
+                            <Sparkles size={200} className="text-orange-600" />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {/* PRODUCT IMAGE BLOCK */}
-            <div className="order-4 md:order-5 relative group max-w-4xl w-full">
-              <div className="absolute inset-0 bg-orange-400/10 blur-[80px] rounded-full scale-75 pointer-events-none"></div>
-              <div className="relative z-10 p-2 bg-gradient-to-b from-white via-white to-orange-50/30 rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)]">
-                  <img 
-                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
-                    alt="Kit Bio Instinto Antiqueda" 
-                    className="rounded-[3.5rem] mx-auto w-full h-auto"
-                  />
-              </div>
+                {/* LADO DIREITO: PRODUCT IMAGE (GRANDE E INTEGRADA) */}
+                <div className="lg:col-span-7 order-1 lg:order-2 relative lg:-ml-16 animate-in fade-in slide-in-from-right-6 duration-1000 delay-700">
+                    {/* Background Blob para "Casar" o elemento */}
+                    <div className="absolute inset-0 bg-orange-400/10 blur-[100px] rounded-full scale-110 pointer-events-none transform translate-x-12 translate-y-12 opacity-70"></div>
+                    
+                    <div className="relative group">
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
+                            alt="Kit Bio Instinto Antiqueda" 
+                            className="relative z-10 w-full h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:scale-[1.02] transition-transform duration-1000"
+                        />
+                        
+                        {/* Floating Feature Pop-up flutuando próximo ao produto */}
+                        <div className="absolute -top-4 md:top-20 -right-4 md:right-0 z-30 animate-bounce delay-700">
+                            <div className="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-[2rem] shadow-2xl border border-orange-100/50 flex flex-col items-center">
+                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-1">Resultados</p>
+                                <p className="text-sm md:text-lg font-black text-slate-900">Na 1ª Semana ✨</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </header>
@@ -671,7 +701,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* GARANTIA */}
+        {/* GARANTIA SECTION */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
