@@ -139,7 +139,6 @@ export function AntiHairLossPage() {
               <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 hidden lg:flex flex-col gap-4 z-20">
                  <div className="bg-white p-4 rounded-2xl shadow-xl border border-orange-100 animate-bounce">
                     <p className="text-[10px] font-black text-orange-800 uppercase tracking-widest mb-1">Resultados</p>
-                    <p className="text-sm font-bold text-slate-700">Na 1ª Aplicação ✨</p>
                  </div>
               </div>
             </div>
@@ -734,7 +733,7 @@ export function AntiHairLossPage() {
                                 <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
                                 <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
                                 <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
-                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao produto digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao product digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
                                 <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
                                 <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
                             </ScrollArea>
