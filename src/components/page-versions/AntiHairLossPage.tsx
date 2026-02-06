@@ -95,13 +95,13 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
-        {/* HERO SECTION - ATUALIZADA COM NOVA IMAGEM */}
+        {/* HERO SECTION */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
           
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-orange-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-orange-500/30 shadow-2xl">
-                <Award size={14} /> Tecnologia Bio Instinto
+                <Award size={14} /> +12.847 Mulheres Estancaram a Queda em 1 Semana
             </div>
             
             <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-4 max-w-5xl">
