@@ -204,7 +204,7 @@ export function AntiHairLossPage() {
           </div>
         </header>
 
-        {/* 1. SEÇÃO: GALERIA DE IMAGENS - AJUSTADA PARA 16:9 */}
+        {/* 1. SEÇÃO: GALERIA DE IMAGENS - AJUSTADA PARA 2 COLUNAS NO DESKTOP */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
@@ -215,8 +215,8 @@ export function AntiHairLossPage() {
               <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Grid da Galeria - Agora com aspect-video (16:9) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Grid da Galeria - Alterado para md:grid-cols-2 para imagens maiores */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
               {GALLERY_IMAGES.map((url, i) => (
                 <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
                    <img 
