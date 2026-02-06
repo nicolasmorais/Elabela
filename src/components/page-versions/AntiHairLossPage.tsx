@@ -20,7 +20,8 @@ import {
   Dumbbell,
   Microscope,
   Lock,
-  CreditCard
+  CreditCard,
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -143,11 +144,23 @@ export function AntiHairLossPage() {
                 <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-slate-200"></div>
             </div>
             
-            {/* Sub-headline - MOVED BELOW IMAGE ON MOBILE */}
-            <div className="order-5 md:order-4 bg-orange-50/50 backdrop-blur-sm px-8 py-4 rounded-3xl border border-orange-100/50 mb-0 md:mb-16 mt-12 md:mt-0">
-                <p className="text-lg md:text-2xl text-slate-700 font-medium max-w-3xl leading-relaxed">
-                  O Kit Bio Instinto que Ana usou estanca <strong className="text-orange-900 font-black">87% da queda em 7 dias</strong> reconstruindo a raiz que shampoos comuns destroem...
-                </p>
+            {/* Sub-headline - NEW SURPRISING DESIGN */}
+            <div className="order-5 md:order-4 mt-12 md:mt-0 mb-0 md:mb-16 w-full max-w-3xl px-4 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-700">
+                <div className="relative p-8 md:p-12 bg-white rounded-[2.5rem] border-2 border-orange-100 shadow-[0_30px_60px_-15px_rgba(249,115,22,0.12)] overflow-hidden group">
+                    {/* Lateral Accent */}
+                    <div className="absolute top-0 left-0 w-2 h-full bg-orange-600 shadow-[2px_0_10px_rgba(234,88,12,0.3)]"></div>
+                    
+                    <p className="text-xl md:text-3xl text-slate-800 leading-[1.4] font-medium text-left md:text-center">
+                        <span className="text-slate-400 italic block mb-4 text-xs md:text-sm uppercase tracking-[0.3em] font-black opacity-70">Transformação em Tempo Recorde:</span>
+                        O cabelo de Ana estava <span className="text-red-500 font-black italic relative px-1">cedendo<span className="absolute bottom-0 left-0 w-full h-0.5 bg-red-200 -z-10"></span></span>. 
+                        Em apenas 7 dias, o Kit Cavalo de Raça <strong className="text-orange-900 font-black underline decoration-orange-300 underline-offset-4">reconstruiu a raiz</strong> e reduziu <strong className="text-emerald-600 font-black bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-100 inline-block mt-1 md:mt-0">87% da queda</strong>.
+                    </p>
+
+                    {/* Subtle Background Icon */}
+                    <div className="absolute -bottom-4 -right-4 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-700">
+                        <CheckCircle2 size={120} className="text-orange-600" />
+                    </div>
+                </div>
             </div>
 
             {/* PRODUCT IMAGE BLOCK */}
