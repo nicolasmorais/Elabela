@@ -519,7 +519,7 @@ export function AntiHairLossPage() {
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
-                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
                                         <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
                                         {item}
                                     </li>
@@ -671,7 +671,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* GARANTIA SECTION */}
+        {/* GARANTIA */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
