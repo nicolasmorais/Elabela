@@ -96,61 +96,61 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE AVISO DINÂMICA */}
-        <div className="bg-slate-950 py-3 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50 shadow-xl">
+        {/* BARRA DE AVISO DINÂMICA - REFINADA */}
+        <div className="bg-[#0C0A09] py-3 px-4 text-center border-b border-orange-500/20 sticky top-0 z-50 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
           <div className="max-w-6xl mx-auto flex justify-center items-center">
-            <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-orange-200 flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping shrink-0"></div>
-                Mais de 4.000 mulheres de {city ? city : 'sua região'} e região já compraram nosso kit
+            <p className="text-[10px] md:text-[13px] font-black uppercase tracking-[0.15em] md:tracking-[0.25em] text-orange-200 flex items-center gap-2.5">
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                Mais de 4.000 mulheres de <span className="text-white underline decoration-emerald-500/50 underline-offset-4">{city ? city : 'sua região'}</span> e região já compraram nosso kit
             </p>
           </div>
         </div>
 
-        {/* HERO SECTION - REFINED DESIGN */}
+        {/* HERO SECTION - REFINED TOP AREA */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden bg-white">
           {/* Subtle Background Elements */}
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_20%,_var(--tw-gradient-stops))] from-orange-50/60 via-transparent to-transparent pointer-events-none"></div>
-          <div className="absolute top-[10%] left-[-5%] w-[30%] h-[40%] bg-orange-100/30 blur-[120px] rounded-full pointer-events-none"></div>
           
           <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
-            {/* Authority Badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-[#1A120B] text-orange-200 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] mb-10 border border-orange-800/30 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.2)] animate-in fade-in slide-in-from-top-4 duration-1000">
-                <div className="bg-orange-600 p-1 rounded-full text-white">
+            {/* Authority Badge - Refined with Gold Glow */}
+            <div className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-[#1A120B] text-orange-200 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] mb-12 border border-orange-800/40 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] group hover:border-orange-500/50 transition-colors duration-500 animate-in fade-in slide-in-from-top-4 duration-1000">
+                <div className="bg-gradient-to-br from-orange-400 to-orange-700 p-1.5 rounded-full text-white shadow-inner group-hover:rotate-12 transition-transform duration-500">
                     <Award size={14} fill="currentColor" />
                 </div>
                 <span className="drop-shadow-sm">+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
             </div>
             
-            {/* Headline with dynamic highlighting */}
-            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-slate-950 mb-6 max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
+            {/* Headline - Enhanced Contrast and Impact */}
+            <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tighter text-slate-950 mb-8 max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
               "Via Montes de Cabelo no Ralo Todo Dia... 🚿 <br /> 
-              <span className="text-orange-800 italic relative inline-block">
+              <span className="text-orange-900 italic relative inline-block">
                 Hoje Não Cai Quase Nada. Eu Não Acreditei."
-                <span className="absolute bottom-1 left-0 w-full h-[6px] bg-orange-200/50 -z-10 rounded-full"></span>
+                <span className="absolute -bottom-1 left-0 w-full h-[8px] bg-orange-200/40 -z-10 rounded-full blur-[1px]"></span>
               </span> 😱✨
             </h1>
 
-            {/* Testimonial Author Citation */}
-            <div className="flex items-center gap-3 mb-12 animate-in fade-in duration-1000 delay-500">
-                <div className="h-[1px] w-8 bg-slate-200"></div>
-                <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">
+            {/* Testimonial Author Citation - Keep same position but refine typography */}
+            <div className="flex items-center gap-4 mb-14 animate-in fade-in duration-1000 delay-500">
+                <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-slate-200"></div>
+                <p className="text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] drop-shadow-sm">
                    Ana Júlia, 41 anos, Brasília
                 </p>
-                <div className="h-[1px] w-8 bg-slate-200"></div>
+                <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-slate-200"></div>
             </div>
             
-            {/* Descriptive Sub-headline */}
-            <div className="bg-orange-50/50 backdrop-blur-sm px-8 py-4 rounded-3xl border border-orange-100/50 mb-16 animate-in fade-in slide-in-from-bottom-2 duration-1000 delay-700">
+            {/* Sub-headline - PRESERVED AS REQUESTED */}
+            <div className="bg-orange-50/50 backdrop-blur-sm px-8 py-4 rounded-3xl border border-orange-100/50 mb-16">
                 <p className="text-lg md:text-2xl text-slate-700 font-medium max-w-3xl leading-relaxed">
                   O Kit Bio Instinto que Ana usou estanca <strong className="text-orange-900 font-black">87% da queda em 7 dias</strong> reconstruindo a raiz que shampoos comuns destroem...
                 </p>
             </div>
 
-            {/* PRODUCT IMAGE WITH ENHANCED VISUALS */}
-            <div className="relative group max-w-4xl w-full animate-in zoom-in-95 duration-1000 delay-1000">
-              {/* Image Glow */}
-              <div className="absolute inset-0 bg-orange-400/10 blur-[80px] rounded-full scale-75 group-hover:bg-orange-400/20 transition-all duration-700"></div>
-              
+            {/* PRODUCT IMAGE BLOCK - PRESERVED AS REQUESTED */}
+            <div className="relative group max-w-4xl w-full">
+              <div className="absolute inset-0 bg-orange-400/10 blur-[80px] rounded-full scale-75 pointer-events-none"></div>
               <div className="relative z-10 p-2 bg-gradient-to-b from-white via-white to-orange-50/30 rounded-[4rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)]">
                   <img 
                     src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
@@ -159,7 +159,6 @@ export function AntiHairLossPage() {
                   />
               </div>
 
-              {/* Floating Performance Badge */}
               <div className="absolute -top-6 -right-4 md:right-0 transform lg:translate-x-1/2 z-20">
                  <div className="bg-white p-5 rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border-2 border-orange-100 flex flex-col items-center gap-1 animate-bounce">
                     <Sparkles className="text-orange-500 h-6 w-6" fill="currentColor" />
@@ -513,7 +512,7 @@ export function AntiHairLossPage() {
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
-                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
                                         <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
                                         {item}
                                     </li>
