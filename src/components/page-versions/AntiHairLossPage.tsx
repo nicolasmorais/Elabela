@@ -10,20 +10,35 @@ import {
   Zap, 
   Heart, 
   Sparkles, 
+  Timer,
+  Lock,
+  CreditCard,
+  ChevronRight,
   Award,
-  Truck,
-  Verified,
-  ShieldAlert,
+  Users,
+  CheckCircle2,
+  Trash2,
+  Droplets,
+  Scissors,
+  XCircle,
+  AlertCircle,
+  Frown,
+  Ban,
+  Image as ImageIcon,
   ShoppingBag,
   DollarSign,
   Home,
   Dumbbell,
+  Play,
   Microscope,
-  Lock,
-  CreditCard
+  FlaskConical,
+  Truck,
+  Verified,
+  ShieldAlert
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import {
   Dialog,
@@ -48,6 +63,7 @@ const TIKTOK_VIDEOS = [
 ];
 
 export function AntiHairLossPage() {
+  // ESTADO DOS DADOS DINÂMICOS
   const [config, setConfig] = useState({
       priceCard: 'R$ 157,00',
       pricePix: '97,00',
@@ -57,6 +73,7 @@ export function AntiHairLossPage() {
   });
 
   useEffect(() => {
+    // Busca configurações do banco específicas para antiqueda
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
@@ -70,14 +87,19 @@ export function AntiHairLossPage() {
                 });
             }
         })
-        .catch(e => console.error("Erro ao carregar configurações."));
+        .catch(e => console.error("Erro ao carregar preços."));
   }, []);
+
+  const scrollToPricing = () => {
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
+        {/* BARRA DE AVISO (Sem Relógio conforme pedido anterior) */}
         <div className="bg-slate-950 py-2 px-4 text-center border-b border-orange-900/20 sticky top-0 z-50">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-4 md:gap-8">
             <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-orange-200 flex items-center gap-2">
@@ -87,62 +109,669 @@ export function AntiHairLossPage() {
           </div>
         </div>
 
+        {/* HERO SECTION */}
         <header className="relative pt-12 md:pt-24 pb-20 px-6 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-orange-100/50 via-transparent to-transparent pointer-events-none"></div>
+          
           <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-orange-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-orange-500/30 shadow-2xl">
                 <Award size={14} /> Tecnologia Bio Instinto
             </div>
+            
             <h1 className="text-4xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-950 mb-8 max-w-4xl">
               Finalmente Solte Esse Cabelo <span className="text-orange-800 italic underline decoration-orange-500/30 underline-offset-8">Sem Medo, Sem Vergonha, Sem Desculpas</span>
             </h1>
+            
             <p className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-2xl leading-relaxed">
               Recupere em 7 dias a força, o brilho e a autoestima que você perdeu - com a mesma tecnologia profissional que salões cobram R$ 500 por sessão.
             </p>
+
+            {/* IMAGEM DO PRODUTO */}
             <div className="relative group max-w-3xl w-full">
-              <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" alt="Produto" className="rounded-[3rem] relative z-10 mx-auto" />
+              <img 
+                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
+                alt="Kit Cavalo de Raça Bio Instinto" 
+                className="rounded-[3rem] relative z-10 mx-auto"
+              />
+              <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 hidden lg:flex flex-col gap-4 z-20">
+                 <div className="bg-white p-4 rounded-2xl shadow-xl border border-orange-100 animate-bounce">
+                    <p className="text-[10px] font-black text-orange-800 uppercase tracking-widest mb-1">Resultados</p>
+                    <p className="text-sm font-bold text-slate-700">Na 1ª Aplicação ✨</p>
+                 </div>
+              </div>
             </div>
           </div>
         </header>
 
+        {/* 1. SEÇÃO: GALERIA DE IMAGENS */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
-          <div className="max-w-6xl mx-auto space-y-16 text-center">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">O kit mais Amado do Brasil</h2>
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+              <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
+                O kit mais Amado do Brasil
+              </h2>
+              <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
+            </div>
+
+            {/* Grid da Galeria */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {GALLERY_IMAGES.map((url, i) => (
-                <div key={i} className="aspect-square rounded-[2rem] overflow-hidden shadow-md border border-orange-100">
-                   <img src={url} alt="Galeria" className="w-full h-full object-cover" />
+                <div key={i} className="group relative aspect-square rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
+                   <img 
+                      src={url} 
+                      alt={`Imagem da Galeria ${i + 1}`} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               ))}
+            </div>
+
+            <div className="text-center pt-8">
+              <p className="text-slate-500 font-medium italic">Milhares de mulheres compartilhando seus resultados reais todos os dias.</p>
             </div>
           </div>
         </section>
 
-        <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
-            <div className="max-w-4xl mx-auto relative z-10">
-                <div className="bg-white rounded-[4rem] p-6 md:p-12 shadow-[0_64px_128px_-24px_rgba(249,115,22,0.4)] relative border-[8px] border-white text-center space-y-10">
-                    <h3 className="text-3xl md:text-5xl font-black text-slate-900 uppercase">Kit Completo 4 Passos</h3>
-                    <div className="bg-emerald-50 p-8 md:p-12 rounded-[3rem] w-full">
-                        <p className="text-slate-400 line-through font-bold text-lg mb-2">{config.priceCard}</p>
-                        <div className="flex items-start justify-center text-slate-950 font-black tracking-tighter">
-                            <span className="text-3xl md:text-4xl mt-4 mr-2">R$</span>
-                            <span className="text-8xl md:text-[10rem] leading-none">
-                                {config.pricePix.split(',')[0]}<span className="text-5xl md:text-6xl">,{config.pricePix.split(',')[1] || '00'}</span>
-                            </span>
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO */}
+        <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col lg:flex-row items-start gap-16">
+                    <div className="flex-1 space-y-8">
+                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A SOLUÇÃO QUE VOCÊ PRECISAVA</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
+                            Resultado de salão no seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
+                        </h2>
+
+                        <div className="pt-8 space-y-6">
+                            <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
+                            <ul className="space-y-4">
+                                {[
+                                    "Trabalha, cuida da casa, tem mil coisas pra resolver",
+                                    "Não tem R$ 300 livre no orçamento todo mês",
+                                    "Não pode passar o sábado inteiro no salão",
+                                    "Não abre mão de se sentir bonita e confiante"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-700">
+                                        <div className="bg-orange-100 p-1 rounded-full text-orange-600"><Check size={16} strokeWidth={3} /></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                            
+                            <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
+                                <p>Porque você merece olhar no espelho e gostar do que vê.</p>
+                                <p className="text-orange-800 italic underline decoration-orange-300">Sem precisar escolher entre cabelo bonito ou pagar as contas.</p>
+                            </div>
                         </div>
-                        <p className="text-slate-500 font-bold uppercase text-xs tracking-widest mt-4">{config.installmentText}</p>
                     </div>
-                    <Link href={config.checkoutUrl || '#'} className="w-full max-w-xl mx-auto block" target="_blank">
-                        <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] text-xl md:text-3xl font-black uppercase">
-                            <ShoppingBag className="mr-4" /> {config.buttonText}
-                        </Button>
-                    </Link>
+                    
+                    <div className="flex-1 lg:sticky lg:top-24 relative w-full">
+                        <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                            alt="Mulher Confiante com Cabelo Lindo" 
+                            className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
+                        />
+                    </div>
                 </div>
             </div>
         </section>
 
-        <footer className="py-20 bg-[#FDF8F3] text-center border-t border-slate-200">
-          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+        {/* 3. SEÇÃO: DIFERENCIAIS */}
+        <section className="py-32 px-6 bg-white relative">
+            <div className="max-w-6xl mx-auto space-y-20">
+                <div className="text-center space-y-4">
+                    <span className="inline-block text-orange-600 font-black text-[10px] md:text-xs uppercase tracking-[0.5em] mb-2">Por que somos os melhores</span>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-none">
+                        POR QUE ESSE KIT É <span className="text-orange-700">DIFERENTE?</span>
+                    </h2>
+                    <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div className="space-y-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {[
+                            { 
+                                icon: Sparkles, 
+                                t: "Tecnologia Bio Instinto Profissional", 
+                                d: "O mesmo produto que cabeleireiros usam para entregar resultados rápidos." 
+                            },
+                            { 
+                                icon: Dumbbell, 
+                                t: "Trata de verdade, não mascara", 
+                                d: "Reconstrução real na fibra capilar, tratando o fio de dentro para fora." 
+                            },
+                            { 
+                                icon: Zap, 
+                                t: "Resultado na primeira aplicação", 
+                                d: "Você sente a diferença no toque e no brilho assim que termina o banho." 
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-[#FDF8F3] rounded-[3rem] border border-orange-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(139,94,60,0.1)] hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 group">
+                                <div className="p-5 rounded-[1.5rem] bg-white shadow-sm group-hover:scale-110 transition-transform w-fit">
+                                    <item.icon className="h-8 w-8 text-orange-700" strokeWidth={2.5} />
+                                </div>
+                                <div className="space-y-3">
+                                    <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
+                                    <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-4xl lg:mx-auto">
+                        {[
+                            { 
+                                icon: Home, 
+                                t: "15 minutos no banho", 
+                                d: "Desenvolvido para caber na rotina da mulher moderna que não tem tempo a perder." 
+                            },
+                            { 
+                                icon: DollarSign, 
+                                t: "Menos de R$ 2 por dia", 
+                                d: "Um único kit rende de 2 a 3 meses de tratamento completo de alto nível." 
+                            }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col gap-6 p-10 bg-[#FDF8F3] rounded-[3rem] border border-orange-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(139,94,60,0.1)] hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 group">
+                                <div className="p-5 rounded-[1.5rem] bg-white shadow-sm group-hover:scale-110 transition-transform w-fit">
+                                    <item.icon className="h-8 w-8 text-orange-700" strokeWidth={2.5} />
+                                </div>
+                                <div className="space-y-3">
+                                    <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
+                                    <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* 4. SEÇÃO: O QUE VEM NESSE KIT COMPLETO */}
+        <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
+            <div className="max-w-6xl mx-auto space-y-20">
+                <div className="text-center space-y-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
+                    <p className="text-orange-700 font-bold text-lg md:text-xl uppercase tracking-widest">
+                        🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO:
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {[
+                        { 
+                          n: "1️⃣ SHAMPOO", 
+                          v: "300ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Limpa PROFUNDAMENTE sem destruir",
+                            "Espuma cremosa que você NUNCA viu igual",
+                            "Perfume viciante que dura DIAS",
+                            "Prepara o fio pra reconstrução REAL"
+                          ] 
+                        },
+                        { 
+                          n: "2️⃣ CONDICIONADOR", 
+                          v: "300ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Desembaraça na PRIMEIRA PASSADA",
+                            "Você vai sentir a diferença IMEDIATAMENTE",
+                            "Brilho absurdo, maciez de comercial",
+                            "Sela as cutículas e protege os fios"
+                          ] 
+                        },
+                        { 
+                          n: "3️⃣ MÁSCARA", 
+                          v: "250g", 
+                          t: "MÁSCARA CAPILAR", 
+                          bullets: [
+                            "Aqui é onde a MÁGICA ACONTECE",
+                            "Reconstrução PROFUNDA na fibra capilar",
+                            "Força e resistência que você VAI SENTIR",
+                            "É tipo esteróides pro seu cabelo (só que legal)"
+                          ] 
+                        },
+                        { 
+                          n: "4️⃣ CREME DE PENTEAR", 
+                          v: "200ml", 
+                          t: "CAVALO DE RAÇA", 
+                          bullets: [
+                            "Finalização IMPECÁVEL",
+                            "Controla frizz, protege do calor, nutre",
+                            "Deixa aquele acabamento de salão",
+                            "Seu cabelo vai parecer de OUTRA PESSOA"
+                          ] 
+                        }
+                    ].map((item, i) => (
+                        <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group shadow-sm">
+                            <div className="space-y-4">
+                                <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
+                                <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
+                                <div className="space-y-3 pt-2">
+                                  {item.bullets.map((bullet, idx) => (
+                                    <p key={idx} className="text-slate-600 text-sm font-medium leading-snug flex items-start gap-2">
+                                      <span className="text-orange-600 shrink-0">→</span>
+                                      {bullet}
+                                    </p>
+                                  ))}
+                                </div>
+                            </div>
+                            <div className="mt-8 pt-6 border-t border-slate-200">
+                                <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* RESULTADOS SECTION */}
+                <div className="bg-white text-slate-900 rounded-[3.5rem] p-10 md:p-16 shadow-xl relative overflow-hidden border border-orange-100">
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.15] pointer-events-none text-orange-200">
+                      <Sparkles size={250} />
+                    </div>
+                    <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-200/20 rounded-full blur-[80px] pointer-events-none"></div>
+                    
+                    <div className="text-center mb-12 relative z-10">
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-orange-950">
+                          🔥 RESULTADOS QUE VÃO TE FAZER CHORAR:
+                        </h2>
+                        <div className="h-1.5 w-24 bg-orange-400 mx-auto rounded-full shadow-sm"></div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 relative z-10">
+                        {[
+                          { t: "FORÇA ABSURDA", d: "Fios que aguentam TUDO" },
+                          { t: "ZERO QUEBRA", d: "Acabou aquele cabelo no pente" },
+                          { t: "HIDRATAÇÃO REAL", d: "Não aquela ilusão temporária" },
+                          { t: "MACIEZ INSANA", d: "Você não vai parar de passar a mão" },
+                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais impossíveis" },
+                          { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
+                          { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
+                        ].map((res, i) => (
+                          <div key={i} className="flex items-center gap-4 bg-slate-50/80 p-5 rounded-2xl border border-orange-100 shadow-sm hover:bg-white hover:border-orange-300 transition-all duration-300 group/item">
+                              <div className="bg-orange-100 text-orange-700 p-2 rounded-full group-hover/item:scale-110 transition-transform">
+                                <Check size={18} strokeWidth={4} />
+                              </div>
+                              <div>
+                                <span className="font-black text-orange-900 mr-1 tracking-tight uppercase text-sm">{res.t}</span>
+                                <span className="font-medium text-slate-500 text-sm">- {res.d}</span>
+                              </div>
+                          </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* 5. SEÇÃO: GALERIA DE VÍDEOS */}
+        <section className="py-24 px-6 bg-white overflow-hidden">
+            <div className="max-w-6xl mx-auto space-y-16">
+                <div className="text-center space-y-4">
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Comunidade Cavalo de Raça</span>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
+                      Aperte o Play na <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Sua Nova Versão</span> ✨
+                    </h2>
+                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Veja por que o Kit Cavalo de Raça é a maior febre do momento entre as brasileiras.</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {TIKTOK_VIDEOS.map((url, i) => (
+                        <div key={i} className="group relative aspect-[9/16] bg-slate-950 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white transition-all hover:scale-[1.02] hover:shadow-orange-200/50">
+                            <iframe 
+                                src={url} 
+                                className="absolute inset-0 w-full h-full"
+                                frameBorder="0" 
+                                allowFullScreen 
+                                allow="autoplay; fullscreen"
+                            ></iframe>
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* 6. SEÇÃO: BIO INSTINTO */}
+        <section className="py-24 px-6 bg-orange-50/50 text-slate-900 relative overflow-hidden border-y border-orange-100">
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="space-y-8">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 border border-orange-200 rounded-full text-orange-800 text-[10px] font-black uppercase tracking-widest">
+                            <Microscope size={14} /> Ciência Aplicada
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-slate-950">
+                            Desenvolvido por <span className="text-orange-700 italic">Especialistas.</span>
+                        </h2>
+                        <div className="space-y-6">
+                            <p className="text-xl md:text-2xl font-bold text-slate-800 leading-relaxed">
+                                Bio Instinto: 12 anos de expertise capilar
+                            </p>
+                            <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
+                                Não é produto genérico de farmácia. É tecnologia profissional da Bio Instinto - uma das maiores indústrias de cosméticos do Brasil.
+                            </p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                            {[
+                                "12 anos transformando cabelos", 
+                                "500 mil clientes ativos", 
+                                "Linha profissional de salão", 
+                                "Fórmulas testadas em laboratório"
+                            ].map((stat, i) => (
+                                <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-orange-100 shadow-sm hover:border-orange-300 transition-all group">
+                                    <div className="bg-orange-100 p-1.5 rounded-full text-orange-700 group-hover:scale-110 transition-transform">
+                                        <Check size={16} strokeWidth={4} />
+                                    </div>
+                                    <span className="font-bold text-sm text-slate-800">{stat}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="bg-white text-slate-950 p-10 md:p-16 rounded-[4rem] shadow-[0_32px_64px_-16px_rgba(249,115,22,0.1)] relative border border-orange-100">
+                        <div className="absolute -top-6 -right-6 bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center font-black rotate-12 shadow-xl border-4 border-white">
+                            TOP 1
+                        </div>
+                        <h3 className="text-3xl font-black mb-6 leading-tight flex items-center gap-3">
+                            <Award className="text-orange-600" /> Qualidade Garantida
+                        </h3>
+                        <div className="space-y-4 mb-10">
+                            <p className="text-lg text-slate-600 font-medium">O que isso significa para você?</p>
+                            <ul className="space-y-4">
+                                {[
+                                    "Você leva pra casa o mesmo produto que profissionais usam",
+                                    "O mesmo tratamento que já transformou meio milhão de cabelos",
+                                    "Direto da indústria. Sem intermediário e sem taxas extras"
+                                ].map((item, i) => (
+                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                        <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="p-6 bg-[#FDF8F3] rounded-3xl border border-orange-100 text-center">
+                            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] mb-2">Veredito Profissional</p>
+                            <p className="text-xl font-black text-slate-950 tracking-tight italic">"Não é promessa. É ciência aplicada."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* TESTEMUNHOS */}
+        <section className="py-24 px-6">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-20 space-y-4">
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">Mulheres Reais</h2>
+                    <div className="flex justify-center gap-1 text-orange-500">
+                        {[...Array(5)].map((_, i) => <Star key={i} size={24} fill="currentColor" />)}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { n: "Mariana R.", i: "34 anos", t: "Chorei na primeira vez que usei. Eu não acreditava que meu cabelo pudesse voltar a ser assim." },
+                        { n: "Juliana S.", i: "29 anos", t: "Meu marido perguntou se eu tinha ido ao salão. O perfume é incrível e o brilho é absurdo!" },
+                        { n: "Camila F.", i: "41 anos", t: "Gastava R$200 todo mês no salão. Esse kit me deu resultado profissional em casa por muito menos." }
+                    ].map((test, i) => (
+                        <div key={i} className="bg-white p-10 rounded-[3rem] border border-orange-100 shadow-xl relative group hover:-translate-y-2 transition-all">
+                            <div className="absolute -top-6 -left-4 text-orange-100 text-9xl font-serif select-none pointer-events-none group-hover:text-orange-200 transition-colors opacity-50">“</div>
+                            <p className="italic text-slate-700 text-lg font-medium leading-relaxed relative z-10 mb-8">"{test.t}"</p>
+                            <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
+                                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-black text-orange-800">{test.n[0]}</div>
+                                <div>
+                                    <p className="font-black text-slate-900">{test.n}</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{test.i}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* 🚀 NOVA SEÇÃO DE OFERTA ULTRA CONVERSÃO 🚀 */}
+        <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-600/10 via-transparent to-transparent"></div>
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px]"></div>
+            
+            <div className="max-w-4xl mx-auto relative z-10">
+                <div className="text-center mb-16 space-y-6">
+                    <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-tight">
+                        SUA ÚLTIMA CHANCE DE <br /> <span className="text-orange-500 italic">SOLTAR O CABELO</span> ✨
+                    </h2>
+                    <div className="flex flex-col items-center gap-2">
+                        <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Enviamos para todo o Brasil com Seguro e Rastreio</p>
+                    </div>
+                </div>
+
+                <div className="bg-white rounded-[4rem] p-6 md:p-12 shadow-[0_64px_128px_-24px_rgba(249,115,22,0.4)] relative border-[8px] border-white group overflow-hidden">
+                    
+                    {/* Badge 35% OFF */}
+                    <div className="absolute top-6 right-6 md:top-10 md:right-10 bg-orange-600 text-white w-20 h-20 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center font-black rotate-12 shadow-2xl border-4 border-white z-20 group-hover:scale-110 transition-transform">
+                        <span className="text-xl md:text-3xl">35%</span>
+                        <span className="text-[10px] md:text-sm uppercase leading-none">OFF</span>
+                    </div>
+
+                    <div className="flex flex-col items-center text-center space-y-10 relative z-10">
+                        
+                        {/* Header Oferta */}
+                        <div className="space-y-2">
+                            <span className="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">Oferta Direto da Fábrica</span>
+                            <h3 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">Kit Completo 4 Passos</h3>
+                        </div>
+
+                        {/* Preço Principal (PIX) */}
+                        <div className="bg-emerald-50 border-2 border-emerald-500/20 p-8 md:p-12 rounded-[3rem] w-full max-w-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-4 text-emerald-100">
+                                <Zap size={100} fill="currentColor" />
+                            </div>
+                            
+                            <div className="space-y-4 relative z-10">
+                                <div className="flex flex-col items-center leading-none">
+                                    <p className="text-slate-400 line-through font-bold text-lg mb-2">{config.priceCard}</p>
+                                    <p className="text-emerald-600 font-black text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                                        <Zap size={14} fill="currentColor" /> Exclusivo no PIX
+                                    </p>
+                                    <div className="flex items-start justify-center text-slate-950 font-black tracking-tighter">
+                                        <span className="text-3xl md:text-4xl mt-4 mr-2">R$</span>
+                                        <span className="text-8xl md:text-[10rem] leading-none">
+                                            {config.pricePix.split(',')[0]}<span className="text-5xl md:text-6xl">,{config.pricePix.split(',')[1] || '00'}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p className="text-slate-500 font-bold uppercase text-[10px] md:text-xs tracking-widest">{config.installmentText}</p>
+                            </div>
+                        </div>
+
+                        {/* Benefícios de Entrega */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl border-y border-slate-100 py-8">
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><Truck size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Frete Grátis</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Todo Brasil</p>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl"><Verified size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Entrega Garantida</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Com Seguro</p>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-orange-50 text-orange-600 rounded-2xl"><Zap size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Envio Imediato</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Em 24 horas</p>
+                            </div>
+                        </div>
+
+                        {/* CTA Button */}
+                        <Link href={config.checkoutUrl || '#'} className="w-full max-w-xl group/btn" target="_blank" rel="noopener noreferrer">
+                            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
+                                <span className="flex items-center gap-4 text-xl md:text-3xl font-black uppercase tracking-tight">
+                                    <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover/btn:scale-110 transition-transform" />
+                                    {config.buttonText}
+                                </span>
+                            </Button>
+                        </Link>
+
+                        {/* Segurança Badges */}
+                        <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={18} /> Original</div>
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Lock size={18} /> SSL Seguro</div>
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Zap size={18} /> PIX Prioritário</div>
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><CreditCard size={18} /> Cartão</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Scarcity Note */}
+                <div className="mt-12 text-center">
+                    <p className="text-white/60 font-medium text-sm flex items-center justify-center gap-2">
+                        <ShieldAlert size={16} className="text-orange-500" /> 
+                        Devido à alta procura, restam apenas <strong>14 unidades</strong> com este desconto promocional.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {/* GARANTIA */}
+        <section className="py-24 px-6 bg-white">
+            <div className="max-w-4xl mx-auto text-center">
+                <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
+                    <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
+                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
+                    </p>
+                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
+                </div>
+            </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
+          <div className="max-w-6xl mx-auto px-6">
+            
+            {/* SEÇÃO JURÍDICA SUPERIOR */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
+                <div className="space-y-4">
+                    <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
+                    <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
+                            <p>Conteúdo destinado a maiores de 18 anos.</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
+                            <p>O uso de qualquer produto natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="space-y-6 text-center md:text-left">
+                    <img 
+                        src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
+                        alt="OneBase Logo" 
+                        className="h-14 mx-auto md:mx-0"
+                    />
+                    <div className="space-y-2">
+                        <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
+                        <p className="text-xs text-slate-500 leading-relaxed">
+                            E-Business Rio Verde | Aparecida de Goiania - GO<br />
+                            CNPJ: 60.357.932/0001-18
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                    
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
+                                <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
+                                <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p><br/>
+                                <p>O uso dos produtos adquiridos é de responsabilidade do consumidor, que deve sempre seguir as orientações descritas na embalagem ou no material que acompanha o produto.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário — como nome, e-mail ou dados inseridos em formulários — são utilizadas apenas para fins de atendimento, envio de comunicações solicitadas ou suporte relacionado aos produtos oferecidos.</p><br/>
+                                <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p><br/>
+                                <p>O usuário pode solicitar a remoção ou alteração de seus dados a qualquer momento por meio de nossos canais de suporte. Consulte esta página regularmente, pois nossa Política de Privacidade pode ser atualizada conforme necessário.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
+                                <p>Por se tratar de um produto digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
+                                <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
+                                <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
+                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao produto digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
+                                <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                </nav>
+              </div>
+
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
+                <div className="space-y-4">
+                    <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
+                        <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
+                        <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
+                    </div>
+                </div>
+              </div>
+
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
+                <div className="flex justify-center md:justify-start gap-4 opacity-50">
+                    <ShieldCheck size={40} strokeWidth={1} />
+                    <Lock size={40} strokeWidth={1} />
+                    <CreditCard size={40} strokeWidth={1} />
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-12 border-t border-slate-200 space-y-8">
+                <div className="max-w-4xl mx-auto space-y-6">
+                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
+                    </p>
+                    <div className="flex flex-col items-center gap-4">
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                    </div>
+                </div>
+            </div>
+          </div>
         </footer>
       </div>
     </>
