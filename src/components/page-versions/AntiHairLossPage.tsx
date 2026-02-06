@@ -125,11 +125,11 @@ export function AntiHairLossPage() {
                 <span className="drop-shadow-sm">+12.847 Mulheres Estancaram a Queda em 1 Semana</span>
             </div>
             
-            {/* Headline - Enhanced Contrast and Impact */}
+            {/* Headline - Updated with requested text */}
             <h1 className="text-3xl md:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tighter text-slate-950 mb-8 max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-              "Via Montes de Cabelo no Ralo Todo Dia... 🚿 <br /> 
-              <span className="text-orange-800 italic relative inline-block">
-                Hoje Não Cai Quase Nada. Eu Não Acreditei."
+              "Todo Dia Era um Bolo de Cabelo no Pente... 🪮 <br /> 
+              <span className="text-orange-900 italic relative inline-block">
+                Hoje Não Cai Quase Nada. Eu Ainda Não Acredito."
                 <span className="absolute -bottom-1 left-0 w-full h-[8px] bg-orange-200/40 -z-10 rounded-full blur-[1px]"></span>
               </span> 😱✨
             </h1>
@@ -172,7 +172,6 @@ export function AntiHairLossPage() {
           </div>
         </header>
 
-        {/* ... restante do componente continua exatamente igual ... */}
         {/* 1. SEÇÃO: GALERIA DE IMAGENS */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
@@ -563,7 +562,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 🚀 OFERTA FINAL 🚀 */}
+        {/* 🚀 NOVA SEÇÃO DE OFERTA ULTRA CONVERSÃO 🚀 */}
         <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
             {/* Background Effects */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-600/10 via-transparent to-transparent"></div>
@@ -574,45 +573,80 @@ export function AntiHairLossPage() {
                     <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-tight">
                         SUA ÚLTIMA CHANCE DE <br /> <span className="text-orange-500 italic">SOLTAR O CABELO</span> ✨
                     </h2>
+                    <div className="flex flex-col items-center gap-2">
+                        <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Enviamos para todo o Brasil com Seguro e Rastreio</p>
+                    </div>
                 </div>
 
-                <div className="bg-white rounded-[4rem] p-6 md:p-12 shadow-[0_64px_128px_-24px_rgba(249,115,22,0.4)] relative border-[8px] border-white group overflow-hidden text-center">
+                <div className="bg-white rounded-[4rem] p-6 md:p-12 shadow-[0_64px_128px_-24px_rgba(249,115,22,0.4)] relative border-[8px] border-white group overflow-hidden">
+                    
+                    {/* Badge 35% OFF */}
                     <div className="absolute top-6 right-6 md:top-10 md:right-10 bg-orange-600 text-white w-20 h-20 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center font-black rotate-12 shadow-2xl border-4 border-white z-20 group-hover:scale-110 transition-transform">
                         <span className="text-xl md:text-3xl">35%</span>
                         <span className="text-[10px] md:text-sm uppercase leading-none">OFF</span>
                     </div>
 
-                    <div className="flex flex-col items-center space-y-10 relative z-10">
+                    <div className="flex flex-col items-center text-center space-y-10 relative z-10">
+                        
+                        {/* Header Oferta */}
                         <div className="space-y-2">
                             <span className="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">Oferta Direto da Fábrica</span>
                             <h3 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">Kit Completo 4 Passos</h3>
                         </div>
 
+                        {/* Preço Principal (PIX) */}
                         <div className="bg-emerald-50 border-2 border-emerald-500/20 p-8 md:p-12 rounded-[3rem] w-full max-w-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-4 text-emerald-100">
+                                <Zap size={100} fill="currentColor" />
+                            </div>
+                            
                             <div className="space-y-4 relative z-10">
-                                <p className="text-slate-400 line-through font-bold text-lg mb-2">{config.priceCard}</p>
-                                <p className="text-emerald-600 font-black text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-2 justify-center">
-                                    <Zap size={14} fill="currentColor" /> Exclusivo no PIX
-                                </p>
-                                <div className="flex items-start justify-center text-slate-950 font-black tracking-tighter">
-                                    <span className="text-3xl md:text-4xl mt-4 mr-2">R$</span>
-                                    <span className="text-8xl md:text-[10rem] leading-none">
-                                        {config.pricePix.split(',')[0]}<span className="text-5xl md:text-6xl">,{config.pricePix.split(',')[1] || '00'}</span>
-                                    </span>
+                                <div className="flex flex-col items-center leading-none">
+                                    <p className="text-slate-400 line-through font-bold text-lg mb-2">{config.priceCard}</p>
+                                    <p className="text-emerald-600 font-black text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                                        <Zap size={14} fill="currentColor" /> Exclusivo no PIX
+                                    </p>
+                                    <div className="flex items-start justify-center text-slate-950 font-black tracking-tighter">
+                                        <span className="text-3xl md:text-4xl mt-4 mr-2">R$</span>
+                                        <span className="text-8xl md:text-[10rem] leading-none">
+                                            {config.pricePix.split(',')[0]}<span className="text-5xl md:text-6xl">,{config.pricePix.split(',')[1] || '00'}</span>
+                                        </span>
+                                    </div>
                                 </div>
                                 <p className="text-slate-500 font-bold uppercase text-[10px] md:text-xs tracking-widest">{config.installmentText}</p>
                             </div>
                         </div>
 
-                        <Link href={config.checkoutUrl || '#'} className="w-full max-w-xl" target="_blank" rel="noopener noreferrer">
+                        {/* Benefícios de Entrega */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl border-y border-slate-100 py-8">
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><Truck size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Frete Grátis</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Todo Brasil</p>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl"><Verified size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Entrega Garantida</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Com Seguro</p>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-orange-50 text-orange-600 rounded-2xl"><Zap size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Envio Imediato</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Em 24 horas</p>
+                            </div>
+                        </div>
+
+                        {/* CTA Button */}
+                        <Link href={config.checkoutUrl || '#'} className="w-full max-w-xl group/btn" target="_blank" rel="noopener noreferrer">
                             <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
                                 <span className="flex items-center gap-4 text-xl md:text-3xl font-black uppercase tracking-tight">
-                                    <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover:scale-110 transition-transform" />
+                                    <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover/btn:scale-110 transition-transform" />
                                     {config.buttonText}
                                 </span>
                             </Button>
                         </Link>
 
+                        {/* Segurança Badges */}
                         <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
                             <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={18} /> Original</div>
                             <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Lock size={18} /> SSL Seguro</div>
@@ -621,23 +655,151 @@ export function AntiHairLossPage() {
                         </div>
                     </div>
                 </div>
+
+                {/* Scarcity Note */}
+                <div className="mt-12 text-center">
+                    <p className="text-white/60 font-medium text-sm flex items-center justify-center gap-2">
+                        <ShieldAlert size={16} className="text-orange-500" /> 
+                        Devido à alta procura, restam apenas <strong>14 unidades</strong> com este desconto promocional.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {/* GARANTIA */}
+        <section className="py-24 px-6 bg-white">
+            <div className="max-w-4xl mx-auto text-center">
+                <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
+                    <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
+                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
+                    </p>
+                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
+                </div>
             </div>
         </section>
 
         {/* FOOTER */}
-        <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
-          <div className="max-w-6xl mx-auto px-6 text-center">
+        <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
+          <div className="max-w-6xl mx-auto px-6">
+            
+            {/* SEÇÃO JURÍDICA SUPERIOR */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
-                <div className="space-y-4 text-left">
-                    <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed">Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta ou rotina de bem-estar.</p>
+                <div className="space-y-4">
+                    <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
+                    <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
+                            <p>Conteúdo destinado a maiores de 18 anos.</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
+                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="space-y-6 text-center md:text-right">
-                    <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
-                    <p className="text-xs text-slate-500">CNPJ: 60.357.932/0001-18</p>
+
+                <div className="space-y-6 text-center md:text-left">
+                    <img 
+                        src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
+                        alt="OneBase Logo" 
+                        className="h-14 mx-auto md:mx-0"
+                    />
+                    <div className="space-y-2">
+                        <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
+                        <p className="text-xs text-slate-500 leading-relaxed">
+                            E-Business Rio Verde | Aparecida de Goiania - GO<br />
+                            CNPJ: 60.357.932/0001-18
+                        </p>
+                    </div>
                 </div>
             </div>
-            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Bio Instinto Original</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                    
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
+                                <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
+                                <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p><br/>
+                                <p>O uso dos produtos adquiridos é de responsabilidade do consumidor, que deve sempre seguir as orientações descritas na embalagem ou no material que acompanha o produto.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário — como nome, e-mail ou dados inseridos em formulários — são utilizadas apenas para fins de atendimento, envio de comunicações solicitadas ou suporte relacionado aos produtos oferecidos.</p><br/>
+                                <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p><br/>
+                                <p>O usuário pode solicitar a remoção ou alteração de seus dados a qualquer momento por meio de nossos canais de suporte. Consulte esta página regularmente, pois nossa Política de Privacidade pode ser atualizada conforme necessário.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
+                                <p>Por se tratar de um product digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
+                                <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
+                                <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
+                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao product digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
+                                <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                </nav>
+              </div>
+
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
+                <div className="space-y-4">
+                    <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
+                        <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
+                        <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
+                    </div>
+                </div>
+              </div>
+
+              <div className="space-y-6 text-center md:text-left">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
+                <div className="flex justify-center md:justify-start gap-4 opacity-50">
+                    <ShieldCheck size={40} strokeWidth={1} />
+                    <Lock size={40} strokeWidth={1} />
+                    <CreditCard size={40} strokeWidth={1} />
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-12 border-t border-slate-200 space-y-8">
+                <div className="max-w-4xl mx-auto space-y-6">
+                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
+                    </p>
+                    <div className="flex flex-col items-center gap-4">
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                    </div>
+                </div>
+            </div>
           </div>
         </footer>
       </div>
