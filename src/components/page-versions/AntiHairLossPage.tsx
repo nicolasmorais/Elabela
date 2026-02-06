@@ -160,14 +160,6 @@ export function AntiHairLossPage() {
                     className="rounded-[3.5rem] mx-auto w-full h-auto"
                   />
               </div>
-
-              <div className="absolute -top-6 -right-4 md:right-0 transform lg:translate-x-1/2 z-20">
-                 <div className="bg-white p-5 rounded-[2rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border-2 border-orange-100 flex flex-col items-center gap-1 animate-bounce">
-                    <Sparkles className="text-orange-500 h-6 w-6" fill="currentColor" />
-                    <p className="text-[10px] font-black text-orange-800 uppercase tracking-widest leading-none">Resultados</p>
-                    <p className="text-xs font-bold text-slate-500">Comprovados</p>
-                 </div>
-              </div>
             </div>
           </div>
         </header>
@@ -514,7 +506,7 @@ export function AntiHairLossPage() {
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
+                                    <li key={item} className="flex items-start gap-3 font-bold text-slate-800 leading-snug">
                                         <div className="mt-1 text-orange-600"><Check size={18} strokeWidth={3} /></div>
                                         {item}
                                     </li>
@@ -666,7 +658,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* GARANTIA */}
+        {/* GARANTIA SECTION */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
