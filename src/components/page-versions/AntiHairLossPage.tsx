@@ -21,7 +21,14 @@ import {
   Microscope,
   Lock,
   CreditCard,
-  CheckCircle2
+  CheckCircle2,
+  Anchor,
+  Layers,
+  Settings2,
+  Activity,
+  FileCheck,
+  ClipboardList,
+  AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -190,7 +197,7 @@ export function AntiHairLossPage() {
           </div>
         </header>
 
-        {/* 1. SEÇÃO: GALERIA DE IMAGENS - AJUSTADA PARA 2 COLUNAS NO DESKTOP */}
+        {/* 1. SEÇÃO: GALERIA DE IMAGENS */}
         <section className="py-24 px-6 bg-white border-y border-orange-100">
           <div className="max-w-6xl mx-auto space-y-16">
             <div className="text-center space-y-4">
@@ -201,7 +208,7 @@ export function AntiHairLossPage() {
               <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Grid da Galeria - Alterado para md:grid-cols-2 para imagens maiores */}
+            {/* Grid da Galeria */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
               {GALLERY_IMAGES.map((url, i) => (
                 <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
@@ -221,7 +228,7 @@ export function AntiHairLossPage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO (ATUALIZADA) */}
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -269,71 +276,239 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: DIFERENCIAIS */}
-        <section className="py-32 px-6 bg-white relative">
-            <div className="max-w-6xl mx-auto space-y-20">
-                <div className="text-center space-y-4">
-                    <span className="inline-block text-orange-600 font-black text-[10px] md:text-xs uppercase tracking-[0.5em] mb-2">Por que somos os melhores</span>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-none">
-                        POR QUE ESSE KIT É <span className="text-orange-700">DIFERENTE?</span>
+        {/* 3. SEÇÃO: TRIPLA ANCORAGEM - DESIGN ULTRA REFINADO */}
+        <section className="py-32 px-6 bg-white relative overflow-hidden">
+            <div className="max-w-6xl mx-auto space-y-24">
+                
+                {/* Header da Seção */}
+                <div className="text-center space-y-6 max-w-4xl mx-auto">
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Bio Instinto</span>
+                    <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
+                        POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-600">7 DIAS?</span>
                     </h2>
-                    <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+                    <p className="text-xl md:text-2xl font-bold text-slate-500 uppercase tracking-tight">
+                        TECNOLOGIA TRIPLA ANCORAGEM™
+                    </p>
+                    <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto italic">
+                        O Único Sistema Que Reconstrói, Fortalece e ANCORA o Fio no Folículo em 3 Camadas Simultâneas.
+                    </p>
                 </div>
 
-                <div className="space-y-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Bloco: Como Funciona */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-8">
+                        <div className="flex items-center gap-3">
+                            <div className="p-3 bg-slate-900 text-white rounded-2xl shadow-xl">
+                                <Microscope size={24} />
+                            </div>
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">COMO FUNCIONA (Ciência Simples)</h3>
+                        </div>
+                        
+                        <p className="text-xl text-slate-700 font-medium leading-relaxed">
+                            Seu cabelo cai por <span className="text-red-500 font-black">3 MOTIVOS</span> que shampoos comuns fingem que não existem:
+                        </p>
+
+                        <div className="space-y-4">
+                            {[
+                                { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
+                                { n: "2", t: "FIBRA QUEBRADA", d: "O fio está tão seco que parte ao meio antes mesmo de cair." },
+                                { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio solto e vulnerável." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all duration-300">
+                                    <div className="h-8 w-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-black shrink-0">{item.n}</div>
+                                    <div>
+                                        <p className="font-black text-slate-900 uppercase text-sm tracking-widest mb-1">{item.t}</p>
+                                        <p className="text-slate-500 font-medium text-sm">{item.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="p-6 bg-orange-50 border-l-4 border-orange-500 rounded-r-2xl italic text-orange-800 font-bold">
+                            "É por isso que você continua vendo cabelo no ralo. O Kit Bio Instinto resolve a CAUSA, não apenas limpa."
+                        </div>
+                    </div>
+
+                    {/* Lado Visual: O Kit e as Camadas */}
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
+                            alt="Tecnologia Tripla Ancoragem" 
+                            className="relative z-10 w-full h-auto drop-shadow-2xl"
+                        />
+                    </div>
+                </div>
+
+                {/* Grid das 3 Camadas */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[
+                        { 
+                            icon: Anchor, 
+                            title: "CAMADA 1: ANCORA A RAIZ", 
+                            prod: "Shampoo Reconstrutor",
+                            desc: "Remove resíduos químicos que DISSOLVEM a proteção da raiz e deposita aminoácidos que RECONSTROEM a bainha folicular.",
+                            feels: ["1ª lavada: Couro cabeludo respira", "3 dias: Fios param de soltar", "7 dias: Raiz firme (Zero quebra)"],
+                            analogia: "É como cimentar um poste que estava solto no chão. O fio PARA de cair porque ele está PRESO de verdade."
+                        },
+                        { 
+                            icon: Layers, 
+                            title: "CAMADA 2: RECONSTRÓI A FIBRA", 
+                            prod: "Máscara Intensiva",
+                            desc: "Penetra na ESTRUTURA INTERNA do fio com queratina biomimética, unindo pontas quebradas como se fossem soldar.",
+                            feels: ["1ª aplicação: Fio fica encorpado", "1 semana: Sem fios partidos", "2 semanas: Fio dobra sem quebrar"],
+                            analogia: "É como consertar rachaduras numa parede. Não adianta pintar. Tem que TAPAR o buraco com material novo."
+                        },
+                        { 
+                            icon: ShieldCheck, 
+                            title: "CAMADA 3: SELA E PROTEGE", 
+                            prod: "Condicionador + Leave-in",
+                            desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: Zero frizz/estática", "1 semana: Escova sem fios no chão"],
+                            analogia: "É como envernizar madeira. Protege de água, sol e atrito. O brilho e a força duram MUITO mais."
+                        }
+                    ].map((step, i) => (
+                        <div key={i} className="flex flex-col p-8 md:p-10 bg-[#FDF8F3] rounded-[3.5rem] border border-orange-100 shadow-sm hover:shadow-xl hover:bg-white hover:border-orange-300 transition-all duration-500 group">
+                            <div className="p-4 bg-white rounded-2xl shadow-sm w-fit mb-8 group-hover:scale-110 transition-transform">
+                                <step.icon className="h-8 w-8 text-orange-700" />
+                            </div>
+                            <div className="space-y-6 flex-1">
+                                <div className="space-y-2">
+                                    <h4 className="text-xl font-black text-slate-950 uppercase tracking-tight leading-tight">{step.title}</h4>
+                                    <p className="text-xs font-black text-orange-600 uppercase tracking-widest">({step.prod})</p>
+                                </div>
+                                <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.desc}</p>
+                                
+                                <div className="space-y-3 pt-4 border-t border-orange-100">
+                                    <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest">O que você sente:</p>
+                                    {step.feels.map((feel, idx) => (
+                                        <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                                            <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
+                                            {feel}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="mt-auto pt-6">
+                                    <div className="p-5 bg-white rounded-3xl border border-orange-100 text-xs text-slate-500 italic leading-relaxed">
+                                        <span className="font-black text-slate-900 not-italic uppercase block mb-1">Analogia:</span>
+                                        {step.analogia}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Seção: Linha do Tempo Real */}
+                <div className="bg-slate-950 text-white rounded-[4rem] p-10 md:p-20 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none text-white">
+                        <Activity size={300} />
+                    </div>
+                    
+                    <div className="text-center mb-16 relative z-10 space-y-4">
+                        <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">📊 LINHA DO TEMPO REAL</h3>
+                        <p className="text-orange-400 font-bold text-lg uppercase tracking-widest">Acompanhe a sua transformação semana a semana</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                         {[
                             { 
-                                icon: Sparkles, 
-                                t: "Tecnologia Bio Instinto Profissional", 
-                                d: "O mesmo produto que cabeleireiros usam para entregar resultados rápidos." 
+                                t: "SEMANA 1", 
+                                steps: ["Fio mais denso ao toque", "Queda reduz 50%", "80-90% menos fios no ralo"] 
                             },
                             { 
-                                icon: Dumbbell, 
-                                t: "Trata de verdade, não mascara", 
-                                d: "Reconstrução real na fibra capilar, tratando o fio de dentro para fora." 
+                                t: "SEMANA 2", 
+                                steps: ["Zero quebra ao pentear", "Couro cabeludo mais cheio", "Raiz visivelmente firme"] 
                             },
                             { 
-                                icon: Zap, 
-                                t: "Resultado na primeira aplicação", 
-                                d: "Você sente a diferença no toque e no brilho assim que termina o banho." 
+                                t: "SEMANA 3-4", 
+                                steps: ["Novos fios nascendo", "Volume aumenta 2x", "Elogios de amigas"] 
+                            },
+                            { 
+                                t: "MÊS 2-3", 
+                                steps: ["Densidade restaurada", "Crescimento acelerado", "Autoestima recuperada"] 
                             }
-                        ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-6 p-10 bg-[#FDF8F3] rounded-[3rem] border border-orange-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(139,94,60,0.1)] hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 group">
-                                <div className="p-5 rounded-[1.5rem] bg-white shadow-sm group-hover:scale-110 transition-transform w-fit">
-                                    <item.icon className="h-8 w-8 text-orange-700" strokeWidth={2.5} />
+                        ].map((week, i) => (
+                            <div key={i} className="space-y-6">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-10 w-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-black shadow-lg shadow-orange-900/40">{i+1}</div>
+                                    <p className="font-black text-xl tracking-tight">{week.t}</p>
                                 </div>
-                                <div className="space-y-3">
-                                    <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
-                                    <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                                <div className="space-y-4">
+                                    {week.steps.map((step, idx) => (
+                                        <div key={idx} className="flex items-start gap-3">
+                                            <div className="mt-1 h-4 w-4 rounded border-2 border-white/20 flex items-center justify-center bg-white/5">
+                                                <Check size={10} strokeWidth={4} />
+                                            </div>
+                                            <p className="text-sm font-medium text-white/70">{step}</p>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         ))}
                     </div>
+                </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-4xl lg:mx-auto">
-                        {[
-                            { 
-                                icon: Home, 
-                                t: "15 minutos no banho", 
-                                d: "Desenvolvido para caber na rotina da mulher moderna que não tem tempo a perder." 
-                            },
-                            { 
-                                icon: DollarSign, 
-                                t: "Menos de R$ 2 por dia", 
-                                d: "Um único kit rende de 2 a 3 meses de tratamento completo de alto nível." 
-                            }
-                        ].map((item, i) => (
-                            <div key={i} className="flex flex-col gap-6 p-10 bg-[#FDF8F3] rounded-[3rem] border border-orange-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_25px_60px_-15px_rgba(139,94,60,0.1)] hover:border-orange-300 transition-all duration-500 hover:-translate-y-2 group">
-                                <div className="p-5 rounded-[1.5rem] bg-white shadow-sm group-hover:scale-110 transition-transform w-fit">
-                                    <item.icon className="h-8 w-8 text-orange-700" strokeWidth={2.5} />
-                                </div>
-                                <div className="space-y-3">
-                                    <p className="font-black text-slate-900 text-xl uppercase tracking-tight leading-tight">{item.t}</p>
-                                    <p className="text-slate-500 font-medium leading-relaxed">{item.d}</p>
-                                </div>
+                {/* Por que Funciona Tão Rápido? */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-12">
+                    <div className="space-y-8">
+                        <div className="flex items-center gap-3">
+                            <div className="p-3 bg-emerald-100 text-emerald-700 rounded-2xl shadow-sm">
+                                <Zap size={24} fill="currentColor" />
                             </div>
-                        ))}
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">POR QUE FUNCIONA TÃO RÁPIDO?</h3>
+                        </div>
+                        <p className="text-xl text-slate-600 font-medium leading-relaxed">
+                            A matemática é simples: o shampoo comum só limpa. O Kit Bio Instinto reconstrói <span className="text-slate-950 font-black underline decoration-emerald-300">por dentro e por fora</span> ao mesmo tempo.
+                        </p>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 space-y-2">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Shampoo Comum</p>
+                                <p className="text-lg font-black text-slate-400">Só Limpa</p>
+                            </div>
+                            <div className="p-6 bg-emerald-50 rounded-3xl border border-emerald-100 space-y-2">
+                                <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Shampoo Bio Instinto</p>
+                                <p className="text-lg font-black text-emerald-800">Limpa + ANCORA a raiz</p>
+                            </div>
+                            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 space-y-2">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Máscara Comum</p>
+                                <p className="text-lg font-black text-slate-400">Hidrata Superfície</p>
+                            </div>
+                            <div className="p-6 bg-emerald-50 rounded-3xl border border-emerald-100 space-y-2">
+                                <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Máscara Bio Instinto</p>
+                                <p className="text-lg font-black text-emerald-800">RECONSTRÓI fibra interna</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Resumo Técnico (Bento Grid Style) */}
+                    <div className="bg-white p-8 md:p-12 rounded-[4rem] border-4 border-slate-950 shadow-2xl space-y-10">
+                        <div className="flex items-center gap-3">
+                            <FileCheck className="text-slate-950" size={32} />
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">RESUMO TÉCNICO</h3>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { l: "PROBLEMA", v: "Raiz fraca + Fibra quebrada" },
+                                { l: "SOLUÇÃO", v: "Tecnologia Tripla Ancoragem™" },
+                                { l: "RESULTADO", v: "87% Menos Queda em 7 Dias" },
+                                { l: "DIFERENCIAL", v: "RECONSTRÓI (Não Mascara)" },
+                                { l: "TEMPO", v: "15 min no banho normal" },
+                                { l: "PREÇO", v: "R$ 1,61 por dia" }
+                            ].map((item, i) => (
+                                <div key={i} className="p-4 bg-slate-50 rounded-2xl space-y-1">
+                                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{item.l}</p>
+                                    <p className="text-sm font-black text-slate-900 leading-tight">{item.v}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <Button onClick={scrollToPricing} className="w-full h-16 bg-slate-950 hover:bg-slate-800 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] active:scale-95">
+                            QUERO ESTANCAR MINHA QUEDA AGORA
+                        </Button>
                     </div>
                 </div>
             </div>
