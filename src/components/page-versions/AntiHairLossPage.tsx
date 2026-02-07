@@ -121,11 +121,11 @@ export function AntiHairLossPage() {
             {/* Headline Central - CORES MAIS VIVAS */}
             <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-black leading-[0.95] tracking-tighter text-slate-950 max-w-5xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-200">
-                  "Todo Dia Era um Bolo de Cabelo no Pente... 🪮 <br /> 
+                  "Todo Dia Era um Bolo de Cabelo no Pente... <br /> 
                   <span className="text-orange-600 italic relative inline-block mt-2">
                     Hoje Não Cai Quase Nada."
                     <span className="absolute -bottom-2 left-0 w-full h-[12px] bg-orange-100 -z-10 rounded-full"></span>
-                  </span> 😱✨
+                  </span>
                 </h1>
             </div>
 
@@ -725,7 +725,7 @@ export function AntiHairLossPage() {
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            <p>O uso de any product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
                         </div>
                     </div>
                 </div>
