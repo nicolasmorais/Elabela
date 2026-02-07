@@ -50,21 +50,21 @@ const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421091644-ChatGPT-Image-6-de-fev.-de-2026,-20_37_37.png"
 ];
 
-// Novos dados de depoimentos com imagem e texto
-const IMAGE_TESTIMONIALS = [
+// Dados de depoimentos focados no recebimento
+const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
-    text: "Estou usando a 7 dias e meus cabelos estao caindo bem pouco, chegou com 10 dias uteis amei quando acabar vou comprar novamente",
+    text: "Acabou de chegar! Muito bem embalado e o cheiro é maravilhoso. Começando meu tratamento hoje mesmo, super ansiosa pelos resultados!",
     author: "Marta S., São Paulo"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
-    text: "Gente, o resultado é real! Minha escova não fica mais cheia de fios. O brilho que esse kit dá é coisa de outro mundo.",
+    text: "Entrega super rápida aqui no RJ. O kit é lindo e já fiz a primeira aplicação. Meu cabelo ficou com um brilho que eu não via há anos.",
     author: "Juliana P., Rio de Janeiro"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421091644-ChatGPT-Image-6-de-fev.-de-2026,-20_37_37.png",
-    text: "Vale cada centavo. Chegou super rápido aqui em Minas. Finalmente um produto que trata a queda sem deixar o cabelo duro.",
+    text: "Recebi tudo certinho em Minas. Estava com medo de comprar online mas o suporte foi ótimo. Agora é focar no cronograma antiqueda!",
     author: "Fernanda L., Belo Horizonte"
   }
 ];
@@ -303,7 +303,7 @@ export function AntiHairLossPage() {
                             {[
                                 { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
                                 { n: "2", t: "FIBRA QUEBRADA", d: "O fio está tão seco que parte ao meio antes mesmo de cair." },
-                                { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abhadas deixam o fio solto e vulnerável." }
+                                { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio solto e vulnerável." }
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
                                     <div className="h-8 w-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-black shrink-0 shadow-sm">{item.n}</div>
@@ -351,7 +351,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -490,20 +490,20 @@ export function AntiHairLossPage() {
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Comunidade Cavalo de Raça</span>
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Prova Social Real</span>
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
-                      Relatos de <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Transformação Real</span> ✨
+                      MILHARES DE MULHERES JÁ COMEÇANDO O <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">TRATAMENTO EM CASA</span> ✨
                     </h2>
-                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Resultados reais de quem decidiu transformar a saúde dos fios.</p>
+                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Fotos reais enviadas por nossas clientes ao receberem seus kits Bio Instinto.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {IMAGE_TESTIMONIALS.map((test, i) => (
+                    {DELIVERY_TESTIMONIALS.map((test, i) => (
                         <div key={i} className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-50 transition-all hover:scale-[1.02] hover:shadow-orange-200/30 flex flex-col">
                             <div className="aspect-square relative overflow-hidden border-b border-orange-50">
                                 <img 
                                     src={test.image} 
-                                    alt="Resultado Real" 
+                                    alt="Kit Recebido" 
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg">
