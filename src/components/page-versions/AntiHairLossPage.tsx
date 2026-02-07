@@ -128,7 +128,6 @@ export function AntiHairLossPage() {
                   "Todo Dia Era um Bolo de Cabelo no Pente... <br /> 
                   <span className="text-orange-600 italic relative inline-block mt-2">
                     Hoje Não Cai Quase Nada."
-                    <span className="absolute -bottom-2 left-0 w-full h-[12px] bg-orange-100 -z-10 rounded-full"></span>
                   </span>
                 </h1>
             </div>
@@ -339,7 +338,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -518,7 +517,7 @@ export function AntiHairLossPage() {
                                 Bio Instinto: 12 anos de expertise capilar
                             </p>
                             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-                                Não é produto genérico de farmácia. É tecnologia profissional da Bio Instinto - uma das maiores indústrias de cosméticos do Brasil.
+                                Não é product genérico de farmácia. É tecnologia profissional da Bio Instinto - uma das maiores indústrias de cosméticos do Brasil.
                             </p>
                         </div>
                         
@@ -550,7 +549,7 @@ export function AntiHairLossPage() {
                             <p className="text-lg text-slate-600 font-medium">O que isso significa para você?</p>
                             <ul className="space-y-4">
                                 {[
-                                    "Você leva pra casa o mesmo produto que profissionais usam",
+                                    "Você leva pra casa o mesmo product que profissionais usam",
                                     "O mesmo tratamento que já transformou meio milhão de cabelos",
                                     "Direto da indústria. Sem intermediário e sem taxas extras"
                                 ].map((item, i) => (
@@ -706,7 +705,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* GARANTIA */}
+        {/* GARANTIA SECTION */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
