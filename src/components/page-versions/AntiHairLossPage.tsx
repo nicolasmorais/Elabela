@@ -339,7 +339,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -429,7 +429,7 @@ export function AntiHairLossPage() {
                             <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
                                 <Zap size={24} fill="currentColor" />
                             </div>
-                            <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🧪 POR QUE FUNCIONA TÃO RÁPIDO?</h3>
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">🧪 POR QUE FUNCIONA TÃO RÁPIDO?</h3>
                         </div>
                         <p className="text-xl text-slate-600 font-medium leading-relaxed">
                             Porque age nas <span className="text-orange-700 font-black underline decoration-orange-200">3 CAUSAS</span> ao mesmo tempo. É matemática pura.
@@ -473,122 +473,6 @@ export function AntiHairLossPage() {
                         <Button onClick={scrollToPricing} className="w-full h-16 bg-orange-600 hover:bg-orange-700 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] active:scale-95">
                             QUERO ESTANCAR MINHA QUEDA AGORA
                         </Button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        {/* 4. SEÇÃO: O QUE VEM NESSE KIT COMPLETO */}
-        <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
-            <div className="max-w-6xl mx-auto space-y-20">
-                <div className="text-center space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase">O QUE VEM NESSE KIT COMPLETO:</h2>
-                    <p className="text-orange-700 font-bold text-lg md:text-xl uppercase tracking-widest">
-                        🧴 4 PRODUTOS PROFISSIONAIS QUE VÃO RESSUSCITAR SEU CABELO:
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {[
-                        { 
-                          n: "1️⃣ SHAMPOO", 
-                          v: "300ml", 
-                          t: "CAVALO DE RAÇA", 
-                          bullets: [
-                            "Limpa PROFUNDAMENTE sem destruir",
-                            "Espuma cremosa que você NUNCA viu igual",
-                            "Perfume viciante que dura DIAS",
-                            "Prepara o fio pra reconstrução REAL"
-                          ] 
-                        },
-                        { 
-                          n: "2️⃣ CONDICIONADOR", 
-                          v: "300ml", 
-                          t: "CAVALO DE RAÇA", 
-                          bullets: [
-                            "Desembaraça na PRIMEIRA PASSADA",
-                            "Você vai sentir a diferença IMEDIATAMENTE",
-                            "Brilho absurdo, maciez de comercial",
-                            "Sela as cutículas e protege os fios"
-                          ] 
-                        },
-                        { 
-                          n: "3️⃣ MÁSCARA", 
-                          v: "250g", 
-                          t: "MÁSCARA CAPILAR", 
-                          bullets: [
-                            "Aqui é onde a MÁGICA ACONTECE",
-                            "Reconstrução PROFUNDA na fibra capilar",
-                            "Força e resistência que você VAI SENTIR",
-                            "É tipo esteróides pro seu cabelo (só que legal)"
-                          ] 
-                        },
-                        { 
-                          n: "4️⃣ CREME DE PENTEAR", 
-                          v: "200ml", 
-                          t: "CAVALO DE RAÇA", 
-                          bullets: [
-                            "Finalização IMPECÁVEL",
-                            "Controla frizz, protege do calor, nutre",
-                            "Deixa aquele acabamento de salão",
-                            "Seu cabelo vai parecer de OUTRA PESSOA"
-                          ] 
-                        }
-                    ].map((item, i) => (
-                        <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:border-orange-200 transition-all hover:-translate-y-2 group shadow-sm">
-                            <div className="space-y-4">
-                                <div className="text-orange-800 font-black text-xs uppercase tracking-widest">{item.n} ({item.v})</div>
-                                <h3 className="text-2xl font-black text-slate-900 leading-tight">{item.t}</h3>
-                                <div className="space-y-3 pt-2">
-                                  {item.bullets.map((bullet, idx) => (
-                                    <p key={idx} className="text-slate-600 text-sm font-medium leading-snug flex items-start gap-2">
-                                      <span className="text-orange-600 shrink-0">→</span>
-                                      {bullet}
-                                    </p>
-                                  ))}
-                                </div>
-                            </div>
-                            <div className="mt-8 pt-6 border-t border-slate-200">
-                                <div className="h-2 w-12 bg-orange-600 rounded-full group-hover:w-full transition-all duration-500"></div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* RESULTADOS SECTION */}
-                <div className="bg-white text-slate-900 rounded-[3.5rem] p-10 md:p-16 shadow-xl relative overflow-hidden border border-orange-100">
-                    <div className="absolute top-0 right-0 p-12 opacity-[0.15] pointer-events-none text-orange-200">
-                      <Sparkles size={250} />
-                    </div>
-                    <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-orange-200/20 rounded-full blur-[80px] pointer-events-none"></div>
-                    
-                    <div className="text-center mb-12 relative z-10">
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-orange-950">
-                          🔥 RESULTADOS QUE VÃO TE FAZER CHORAR:
-                        </h2>
-                        <div className="h-1.5 w-24 bg-orange-400 mx-auto rounded-full shadow-sm"></div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 relative z-10">
-                        {[
-                          { t: "FORÇA ABSURDA", d: "Fios que aguentam TUDO" },
-                          { t: "ZERO QUEBRA", d: "Acabou aquele cabelo no pente" },
-                          { t: "HIDRATAÇÃO REAL", d: "Não aquela ilusão temporária" },
-                          { t: "MACIEZ INSANA", d: "Você não vai parar de passar a mão" },
-                          { t: "BRILHO DE REVISTA", d: "Tipo aqueles comerciais impossíveis" },
-                          { t: "CRESCIMENTO ACELERADO", d: "Fios fortes crescem RÁPIDO" },
-                          { t: "AUTOESTIMA LÁ EM CIMA", d: "Isso não tem preço" }
-                        ].map((res, i) => (
-                          <div key={i} className="flex items-center gap-4 bg-slate-50/80 p-5 rounded-2xl border border-orange-100 shadow-sm hover:bg-white hover:border-orange-300 transition-all duration-300 group/item">
-                              <div className="bg-orange-100 text-orange-700 p-2 rounded-full group-hover/item:scale-110 transition-transform">
-                                <Check size={18} strokeWidth={4} />
-                              </div>
-                              <div>
-                                <span className="font-black text-orange-900 mr-1 tracking-tight uppercase text-sm">{res.t}</span>
-                                <span className="font-medium text-slate-500 text-sm">- {res.d}</span>
-                              </div>
-                          </div>
-                        ))}
                     </div>
                 </div>
             </div>
@@ -826,14 +710,14 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* GARANTIA SECTION */}
+        {/* GARANTIA */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
                     <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
                     <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
-                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o result, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
+                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
                     <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                 </div>
@@ -852,7 +736,7 @@ export function AntiHairLossPage() {
                     <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
-                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
@@ -860,7 +744,7 @@ export function AntiHairLossPage() {
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                            <p>O uso de any product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            <p>O uso de qualquer produto natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
                         </div>
                     </div>
                 </div>
@@ -916,11 +800,11 @@ export function AntiHairLossPage() {
                         <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
                             <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
                             <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
-                                <p>Por se tratar de um product digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                <p>Por se tratar de um produto digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
                                 <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
                                 <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
                                 <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
-                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao product digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao produto digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
                                 <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
                                 <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
                             </ScrollArea>
