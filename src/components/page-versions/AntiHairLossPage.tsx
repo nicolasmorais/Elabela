@@ -469,10 +469,6 @@ export function AntiHairLossPage() {
                                 </div>
                             ))}
                         </div>
-
-                        <Button onClick={scrollToPricing} className="w-full h-16 bg-orange-600 hover:bg-orange-700 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] active:scale-95">
-                            QUERO ESTANCAR MINHA QUEDA AGORA
-                        </Button>
                     </div>
                 </div>
             </div>
