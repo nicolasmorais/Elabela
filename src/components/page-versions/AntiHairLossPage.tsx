@@ -303,7 +303,7 @@ export function AntiHairLossPage() {
                             {[
                                 { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
                                 { n: "2", t: "FIBRA QUEBRADA", d: "O fio está tão seco que parte ao meio antes mesmo de cair." },
-                                { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio solto e vulnerável." }
+                                { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abhadas deixam o fio solto e vulnerável." }
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
                                     <div className="h-8 w-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-black shrink-0 shadow-sm">{item.n}</div>
@@ -351,7 +351,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -492,7 +492,7 @@ export function AntiHairLossPage() {
                 <div className="text-center space-y-4">
                     <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Comunidade Cavalo de Raça</span>
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
-                      Aperte o Play na <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Sua Nova Versão</span> ✨
+                      Relatos de <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Transformação Real</span> ✨
                     </h2>
                     <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Resultados reais de quem decidiu transformar a saúde dos fios.</p>
                 </div>
@@ -500,7 +500,7 @@ export function AntiHairLossPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {IMAGE_TESTIMONIALS.map((test, i) => (
                         <div key={i} className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-50 transition-all hover:scale-[1.02] hover:shadow-orange-200/30 flex flex-col">
-                            <div className="aspect-[4/5] relative overflow-hidden border-b border-orange-50">
+                            <div className="aspect-square relative overflow-hidden border-b border-orange-50">
                                 <img 
                                     src={test.image} 
                                     alt="Resultado Real" 
