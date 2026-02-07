@@ -185,7 +185,7 @@ export function AntiHairLossPage() {
                     <div className="relative group">
                         <img 
                             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
-                            alt="Kit Bio Instinto Antiqueda" 
+                            alt="Kit Cavalo de Raça Antiqueda" 
                             className="relative z-10 w-full h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:scale-[1.02] transition-transform duration-1000"
                         />
                     </div>
@@ -273,7 +273,7 @@ export function AntiHairLossPage() {
                 
                 {/* Header da Seção */}
                 <div className="text-center space-y-6 max-w-4xl mx-auto">
-                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Bio Instinto</span>
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
                     <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
                         POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-600">7 DIAS?</span>
                     </h2>
@@ -351,7 +351,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -453,7 +453,7 @@ export function AntiHairLossPage() {
                                 <p className="text-lg font-black text-slate-400">Só Limpa</p>
                             </div>
                             <div className="p-6 bg-white rounded-3xl border-2 border-orange-500/20 shadow-sm space-y-2">
-                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Kit Bio Instinto</p>
+                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Kit Cavalo de Raça</p>
                                 <p className="text-lg font-black text-orange-800">Limpa + ANCORA + RECONSTRÓI</p>
                             </div>
                         </div>
@@ -490,11 +490,11 @@ export function AntiHairLossPage() {
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Prova Social Real</span>
+                    <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Comunidade Cavalo de Raça</span>
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
-                      MILHARES DE MULHERES JÁ COMEÇANDO O <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">TRATAMENTO EM CASA</span> ✨
+                      Relatos de <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Transformação Real</span> ✨
                     </h2>
-                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Fotos reais enviadas por nossas clientes ao receberem seus kits Bio Instinto.</p>
+                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Resultados reais de quem decidiu transformar a saúde dos fios.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -503,7 +503,7 @@ export function AntiHairLossPage() {
                             <div className="aspect-square relative overflow-hidden border-b border-orange-50">
                                 <img 
                                     src={test.image} 
-                                    alt="Kit Recebido" 
+                                    alt="Resultado Real" 
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg">
@@ -529,7 +529,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 6. SEÇÃO: BIO INSTINTO */}
+        {/* 6. SEÇÃO: CAVALO DE RAÇA */}
         <section className="py-24 px-6 bg-orange-50/50 text-slate-900 relative overflow-hidden border-y border-orange-100">
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -542,10 +542,10 @@ export function AntiHairLossPage() {
                         </h2>
                         <div className="space-y-6">
                             <p className="text-xl md:text-2xl font-bold text-slate-800 leading-relaxed">
-                                Bio Instinto: 12 anos de expertise capilar
+                                Cavalo de Raça: 12 anos de expertise capilar
                             </p>
                             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-                                Não é product genérico de farmácia. É tecnologia profissional da Bio Instinto - uma das maiores indústrias de cosméticos do Brasil.
+                                Não é product genérico de farmácia. É tecnologia profissional do Cavalo de Raça - uma das maiores tecnologias de cosméticos do Brasil.
                             </p>
                         </div>
                         
@@ -742,7 +742,7 @@ export function AntiHairLossPage() {
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
                         Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
-                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
+                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Cavalo de Raça</div>
                 </div>
             </div>
         </section>
@@ -767,7 +767,7 @@ export function AntiHairLossPage() {
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                            <p>O uso de qualquer produto natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
                         </div>
                     </div>
                 </div>
@@ -863,7 +863,7 @@ export function AntiHairLossPage() {
                         <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
                     </p>
                     <div className="flex flex-col items-center gap-4">
-                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Cavalo de Raça</p>
                     </div>
                 </div>
             </div>
