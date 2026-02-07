@@ -221,35 +221,38 @@ export function AntiHairLossPage() {
           </div>
         </section>
 
-        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO */}
+        {/* 2. SEÇÃO: SOLUÇÃO E PÚBLICO-ALVO (ATUALIZADA) */}
         <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row items-start gap-16">
                     <div className="flex-1 space-y-8">
-                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">A SOLUÇÃO QUE VOCÊ PRECISAVA</span>
+                        <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
-                            Resultado de salão no seu chuveiro. <span className="text-orange-700">Sem gastar R$ 300 todo mês.</span>
+                            O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 97.</span>
                         </h2>
 
                         <div className="pt-8 space-y-6">
                             <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
                             <ul className="space-y-4">
                                 {[
-                                    "Trabalha, cuida da casa, tem mil coisas pra resolver",
-                                    "Não tem R$ 300 livre no orçamento todo mês",
-                                    "Não pode passar o sábado inteiro no salão",
-                                    "Não abre mão de se sentir bonita e confiante"
+                                    "💔 Chora vendo tanto cabelo caindo no ralo",
+                                    "💔 Evita passar a mão no cabelo com medo que caia mais",
+                                    "💔 Já escondeu o couro cabeludo com truques de penteado",
+                                    "💔 Não pode (ou não quer) gastar R$ 500 em dermatologista",
+                                    "💔 Trabalha, cuida da casa e não tem tempo para salão toda semana"
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-700">
-                                        <div className="bg-orange-100 p-1 rounded-full text-orange-600"><Check size={16} strokeWidth={3} /></div>
                                         {item}
                                     </li>
                                 ))}
                             </ul>
                             
                             <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
-                                <p>Porque você merece olhar no espelho e gostar do que vê.</p>
-                                <p className="text-orange-800 italic underline decoration-orange-300">Sem precisar escolher entre cabelo bonito ou pagar as contas.</p>
+                                <p>Porque você merece acordar SEM cabelo no travesseiro.</p>
+                                <p className="text-orange-800 italic underline decoration-orange-300">
+                                    Sem precisar escolher entre: <br />
+                                    Tratar a queda OU ter dinheiro no final do mês.
+                                </p>
                             </div>
                         </div>
                     </div>
