@@ -50,10 +50,23 @@ const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421091644-ChatGPT-Image-6-de-fev.-de-2026,-20_37_37.png"
 ];
 
-const TIKTOK_VIDEOS = [
-  "https://vhost.onebasex.pro/video/1769896865284-ssstik.io_%40renatadelpasso_1769896654074.mp4",
-  "https://vhost.onebasex.pro/video/1769897057244-ssstik.io_%40donademim_pvh_1769896463897.mp4",
-  "https://vhost.onebasex.pro/video/1769897045880-ssstik.io_%40studioestefaniribeiro_1769896850804.mp4"
+// Novos dados de depoimentos com imagem e texto
+const IMAGE_TESTIMONIALS = [
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
+    text: "Estou usando a 7 dias e meus cabelos estao caindo bem pouco, chegou com 10 dias uteis amei quando acabar vou comprar novamente",
+    author: "Marta S., São Paulo"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
+    text: "Gente, o resultado é real! Minha escova não fica mais cheia de fios. O brilho que esse kit dá é coisa de outro mundo.",
+    author: "Juliana P., Rio de Janeiro"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421091644-ChatGPT-Image-6-de-fev.-de-2026,-20_37_37.png",
+    text: "Vale cada centavo. Chegou super rápido aqui em Minas. Finalmente um produto que trata a queda sem deixar o cabelo duro.",
+    author: "Fernanda L., Belo Horizonte"
+  }
 ];
 
 export function AntiHairLossPage() {
@@ -338,7 +351,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -473,7 +486,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 5. SEÇÃO: GALERIA DE VÍDEOS */}
+        {/* 5. SEÇÃO: DEPOIMENTOS COM IMAGEM E TEXTO ✨ */}
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
@@ -481,20 +494,35 @@ export function AntiHairLossPage() {
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
                       Aperte o Play na <span className="text-orange-700 underline decoration-orange-300 decoration-8 underline-offset-8">Sua Nova Versão</span> ✨
                     </h2>
-                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Veja por que o Kit Cavalo de Raça é a maior febre do momento entre as brasileiras.</p>
+                    <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Resultados reais de quem decidiu transformar a saúde dos fios.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {TIKTOK_VIDEOS.map((url, i) => (
-                        <div key={i} className="group relative aspect-[9/16] bg-slate-950 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white transition-all hover:scale-[1.02] hover:shadow-orange-200/50">
-                            <iframe 
-                                src={url} 
-                                className="absolute inset-0 w-full h-full"
-                                frameBorder="0" 
-                                allowFullScreen 
-                                allow="autoplay; fullscreen"
-                            ></iframe>
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent z-10 pointer-events-none"></div>
+                    {IMAGE_TESTIMONIALS.map((test, i) => (
+                        <div key={i} className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-50 transition-all hover:scale-[1.02] hover:shadow-orange-200/30 flex flex-col">
+                            <div className="aspect-[4/5] relative overflow-hidden border-b border-orange-50">
+                                <img 
+                                    src={test.image} 
+                                    alt="Resultado Real" 
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg">
+                                    <Verified size={20} />
+                                </div>
+                            </div>
+                            <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                                <div className="space-y-4">
+                                    <div className="flex gap-1 text-orange-400">
+                                        {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
+                                    </div>
+                                    <p className="text-slate-600 font-medium leading-relaxed italic text-lg">
+                                        "{test.text}"
+                                    </p>
+                                </div>
+                                <div className="pt-6 border-t border-orange-50">
+                                    <p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -795,11 +823,11 @@ export function AntiHairLossPage() {
                         <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
                             <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
                             <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
-                                <p>Por se tratar de um produto digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                <p>Por se tratar de um product digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
                                 <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
                                 <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
                                 <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
-                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao produto digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao product digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
                                 <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
                                 <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
                             </ScrollArea>
