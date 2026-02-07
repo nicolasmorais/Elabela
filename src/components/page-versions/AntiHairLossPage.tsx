@@ -210,7 +210,7 @@ export function AntiHairLossPage() {
             <div className="text-center space-y-4">
               <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
-                O kit mais Amado do Brasil
+                Resultados Reais, Mulheres Reais
               </h2>
               <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
@@ -732,7 +732,7 @@ export function AntiHairLossPage() {
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            <p>O uso de any product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
                         </div>
                     </div>
                 </div>
