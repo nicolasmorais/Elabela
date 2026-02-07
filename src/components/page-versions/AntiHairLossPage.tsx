@@ -104,28 +104,25 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* BARRA DE AVISO - CORES VIVAS (PRETO + VERDE ESMERALDA) */}
-        <div className="bg-black py-3 px-4 text-center border-b border-orange-500/20 sticky top-0 z-50 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.5)]">
+        {/* BARRA DE AVISO - SUAVIZADA */}
+        <div className="bg-slate-900 py-3 px-4 text-center border-b border-orange-500/20 sticky top-0 z-50 shadow-lg">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-3">
             <div className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.8)]"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
             </div>
             
             <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.15em] text-white leading-tight">
-                Mais de 4.000 mulheres de <span className="text-emerald-400 border-b-2 border-emerald-400/30 pb-0.5 mx-0.5">{city ? city : 'sua região'}</span> já estancaram a queda com este kit
+                Mais de 4.000 mulheres de <span className="text-emerald-400 border-b border-emerald-400/30 pb-0.5 mx-0.5">{city ? city : 'sua região'}</span> já estancaram a queda com este kit
             </p>
           </div>
         </div>
 
-        {/* HERO SECTION - REDESENHADA PARA MÁXIMA HARMONIA */}
+        {/* HERO SECTION */}
         <header className="relative pt-12 md:pt-20 pb-16 md:pb-24 px-6 overflow-hidden bg-white">
-          {/* Decorative Mesh Background */}
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_var(--tw-gradient-stops))] from-orange-100/40 via-white to-white pointer-events-none"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
-            
-            {/* Headline Central - CORES MAIS VIVAS */}
             <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-black leading-[0.95] tracking-tighter text-slate-950 max-w-5xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-200">
                   "Todo Dia Era um Bolo de Cabelo no Pente... <br /> 
@@ -136,24 +133,17 @@ export function AntiHairLossPage() {
                 </h1>
             </div>
 
-            {/* COMPOSIÇÃO INTEGRADA (EVIDENCE + IMAGE) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-12 md:mt-20">
-                
-                {/* LADO ESQUERDO: EVIDENCE BOX */}
                 <div className="lg:col-span-5 order-2 lg:order-1 relative z-20">
                     <div className="relative group p-8 md:p-10 bg-white rounded-[3rem] border border-slate-100 shadow-[0_40px_80px_-20px_rgba(249,115,22,0.15)] overflow-hidden transition-all duration-700 hover:shadow-[0_50px_100px_-20px_rgba(249,115,22,0.2)] animate-in fade-in slide-in-from-left-6 duration-1000 delay-500">
-                        {/* Status Label */}
                         <div className="flex items-center gap-2 mb-8">
                             <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Caso Real #12.847</span>
                         </div>
-
-                        {/* Content */}
                         <div className="space-y-6">
                             <p className="text-2xl md:text-3xl font-black text-slate-950 leading-tight">
                                 O cabelo de Ana estava <span className="text-red-500 italic relative px-1">cedendo.<span className="absolute bottom-0 left-0 w-full h-1 bg-red-100 -z-10"></span></span>
                             </p>
-                            
                             <div className="flex items-start gap-4 py-6 border-y border-slate-50">
                                 <div className="p-3 bg-orange-600 text-white rounded-2xl shadow-lg shadow-orange-200 shrink-0">
                                     <Zap size={24} fill="currentColor" />
@@ -162,7 +152,6 @@ export function AntiHairLossPage() {
                                     Em <strong className="text-orange-900 font-black">7 dias</strong>, o Kit Cavalo de Raça reconstruiu a raiz e reduziu <strong className="text-emerald-600 font-black bg-emerald-50 px-2 rounded-lg border border-emerald-100">87% da queda</strong>.
                                 </p>
                             </div>
-
                             <div className="pt-4 flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <div className="h-1 w-8 bg-orange-600 rounded-full"></div>
@@ -173,18 +162,14 @@ export function AntiHairLossPage() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Background Decoration */}
                         <div className="absolute -top-12 -right-12 opacity-[0.03] group-hover:rotate-12 transition-transform duration-1000">
                             <Sparkles size={200} className="text-orange-600" />
                         </div>
                     </div>
                 </div>
 
-                {/* LADO DIREITO: PRODUCT IMAGE */}
                 <div className="lg:col-span-7 order-1 lg:order-2 relative lg:-ml-16 animate-in fade-in slide-in-from-right-6 duration-1000 delay-700">
                     <div className="absolute inset-0 bg-orange-400/10 blur-[100px] rounded-full scale-110 pointer-events-none transform translate-x-12 translate-y-12 opacity-70"></div>
-                    
                     <div className="relative group">
                         <img 
                             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
@@ -207,8 +192,6 @@ export function AntiHairLossPage() {
               </h2>
               <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
             </div>
-
-            {/* Grid da Galeria */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
               {GALLERY_IMAGES.map((url, i) => (
                 <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
@@ -221,7 +204,6 @@ export function AntiHairLossPage() {
                 </div>
               ))}
             </div>
-
             <div className="text-center pt-8">
               <p className="text-slate-500 font-medium italic">Milhares de mulheres compartilhando seus resultados reais todos os dias.</p>
             </div>
@@ -237,7 +219,6 @@ export function AntiHairLossPage() {
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
                             O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 97.</span>
                         </h2>
-
                         <div className="pt-8 space-y-6">
                             <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
                             <ul className="space-y-4">
@@ -253,7 +234,6 @@ export function AntiHairLossPage() {
                                     </li>
                                 ))}
                             </ul>
-                            
                             <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
                                 <p>Porque você merece acordar SEM cabelo no travesseiro.</p>
                                 <p className="text-orange-800 italic underline decoration-orange-300">
@@ -263,7 +243,6 @@ export function AntiHairLossPage() {
                             </div>
                         </div>
                     </div>
-                    
                     <div className="flex-1 lg:sticky lg:top-24 relative w-full">
                         <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                         <img 
@@ -276,7 +255,7 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: TRIPLA ANCORAGEM - DESIGN ULTRA REFINADO */}
+        {/* 3. SEÇÃO: TRIPLA ANCORAGEM - DESIGN SUAVIDADE TOTAL */}
         <section className="py-32 px-6 bg-white relative overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-24">
                 
@@ -286,7 +265,7 @@ export function AntiHairLossPage() {
                     <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
                         POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-600">7 DIAS?</span>
                     </h2>
-                    <p className="text-xl md:text-2xl font-bold text-slate-500 uppercase tracking-tight">
+                    <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
                         TECNOLOGIA TRIPLA ANCORAGEM™
                     </p>
                     <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto italic">
@@ -298,14 +277,14 @@ export function AntiHairLossPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
                         <div className="flex items-center gap-3">
-                            <div className="p-3 bg-slate-900 text-white rounded-2xl shadow-xl">
+                            <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
                                 <Microscope size={24} />
                             </div>
-                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">COMO FUNCIONA (Ciência Simples)</h3>
+                            <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
                         </div>
                         
                         <p className="text-xl text-slate-700 font-medium leading-relaxed">
-                            Seu cabelo cai por <span className="text-red-500 font-black">3 MOTIVOS</span> que shampoos comuns fingem que não existem:
+                            Seu cabelo cai por <span className="text-orange-600 font-black">3 MOTIVOS:</span>
                         </p>
 
                         <div className="space-y-4">
@@ -314,22 +293,18 @@ export function AntiHairLossPage() {
                                 { n: "2", t: "FIBRA QUEBRADA", d: "O fio está tão seco que parte ao meio antes mesmo de cair." },
                                 { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio solto e vulnerável." }
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-4 p-5 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:shadow-lg transition-all duration-300">
-                                    <div className="h-8 w-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-black shrink-0">{item.n}</div>
+                                <div key={i} className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
+                                    <div className="h-8 w-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-black shrink-0 shadow-sm">{item.n}</div>
                                     <div>
-                                        <p className="font-black text-slate-900 uppercase text-sm tracking-widest mb-1">{item.t}</p>
+                                        <p className="font-black text-orange-950 uppercase text-sm tracking-widest mb-1">{item.t}</p>
                                         <p className="text-slate-500 font-medium text-sm">{item.d}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
-                        
-                        <div className="p-6 bg-orange-50 border-l-4 border-orange-500 rounded-r-2xl italic text-orange-800 font-bold">
-                            "É por isso que você continua vendo cabelo no ralo. O Kit Bio Instinto resolve a CAUSA, não apenas limpa."
-                        </div>
+                        <p className="text-slate-400 font-bold text-sm italic">Shampoos comuns tratam ZERO desses problemas.</p>
                     </div>
 
-                    {/* Lado Visual: O Kit e as Camadas */}
                     <div className="relative">
                         <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                         <img 
@@ -356,20 +331,20 @@ export function AntiHairLossPage() {
                             title: "CAMADA 2: RECONSTRÓI A FIBRA", 
                             prod: "Máscara Intensiva",
                             desc: "Penetra na ESTRUTURA INTERNA do fio com queratina biomimética, unindo pontas quebradas como se fossem soldar.",
-                            feels: ["1ª aplicação: Fio fica encorpado", "1 semana: Sem fios partidos", "2 semanas: Fio dobra sem quebrar"],
-                            analogia: "É como consertar rachaduras numa parede. Não adianta pintar. Tem que TAPAR o buraco com material novo."
+                            feels: ["1ª aplicação: Fio fica pesado", "1 semana: Para de ver fios partidos", "2 semanas: Fio DOBRA sem quebrar"],
+                            analogia: "É como consertar rachaduras numa parede. Não adianta pintar. Tem que TAPAR o buraco."
                         },
                         { 
                             icon: ShieldCheck, 
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: Zero frizz/estática", "1 semana: Escova sem fios no chão"],
-                            analogia: "É como envernizar madeira. Protege de água, sol e atrito. O brilho e a força duram MUITO mais."
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
-                        <div key={i} className="flex flex-col p-8 md:p-10 bg-[#FDF8F3] rounded-[3.5rem] border border-orange-100 shadow-sm hover:shadow-xl hover:bg-white hover:border-orange-300 transition-all duration-500 group">
-                            <div className="p-4 bg-white rounded-2xl shadow-sm w-fit mb-8 group-hover:scale-110 transition-transform">
+                        <div key={i} className="flex flex-col p-8 md:p-10 bg-white rounded-[3.5rem] border border-orange-100 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all duration-500 group">
+                            <div className="p-4 bg-[#FDF8F3] rounded-2xl shadow-sm w-fit mb-8 group-hover:scale-110 transition-transform">
                                 <step.icon className="h-8 w-8 text-orange-700" />
                             </div>
                             <div className="space-y-6 flex-1">
@@ -379,18 +354,17 @@ export function AntiHairLossPage() {
                                 </div>
                                 <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.desc}</p>
                                 
-                                <div className="space-y-3 pt-4 border-t border-orange-100">
-                                    <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest">O que você sente:</p>
+                                <div className="space-y-3 pt-4 border-t border-orange-50">
                                     {step.feels.map((feel, idx) => (
                                         <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
-                                            <div className="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
+                                            <div className="h-1.5 w-1.5 rounded-full bg-orange-400"></div>
                                             {feel}
                                         </div>
                                     ))}
                                 </div>
 
                                 <div className="mt-auto pt-6">
-                                    <div className="p-5 bg-white rounded-3xl border border-orange-100 text-xs text-slate-500 italic leading-relaxed">
+                                    <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-50 text-xs text-slate-500 italic leading-relaxed">
                                         <span className="font-black text-slate-900 not-italic uppercase block mb-1">Analogia:</span>
                                         {step.analogia}
                                     </div>
@@ -400,48 +374,46 @@ export function AntiHairLossPage() {
                     ))}
                 </div>
 
-                {/* Seção: Linha do Tempo Real */}
-                <div className="bg-slate-950 text-white rounded-[4rem] p-10 md:p-20 shadow-2xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none text-white">
+                {/* Seção: Linha do Tempo Real - SUAVIZADA (Removido Preto) */}
+                <div className="bg-white border-4 border-orange-100 text-slate-900 rounded-[4rem] p-10 md:p-20 shadow-xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.05] pointer-events-none text-orange-500">
                         <Activity size={300} />
                     </div>
                     
                     <div className="text-center mb-16 relative z-10 space-y-4">
-                        <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4">📊 LINHA DO TEMPO REAL</h3>
-                        <p className="text-orange-400 font-bold text-lg uppercase tracking-widest">Acompanhe a sua transformação semana a semana</p>
+                        <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-orange-900">📊 LINHA DO TEMPO REAL</h3>
+                        <p className="text-orange-600 font-bold text-lg uppercase tracking-widest">(O Que Acontece Semana a Semana)</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                         {[
                             { 
                                 t: "SEMANA 1", 
-                                steps: ["Fio mais denso ao toque", "Queda reduz 50%", "80-90% menos fios no ralo"] 
+                                steps: ["Fio mais denso ao toque", "Queda reduz 50%", "Estanca 80-90% no 7º dia"] 
                             },
                             { 
                                 t: "SEMANA 2", 
-                                steps: ["Zero quebra ao pentear", "Couro cabeludo mais cheio", "Raiz visivelmente firme"] 
+                                steps: ["Fios param de quebrar", "Couro cabeludo fecha", "Raiz visivelmente firme"] 
                             },
                             { 
                                 t: "SEMANA 3-4", 
-                                steps: ["Novos fios nascendo", "Volume aumenta 2x", "Elogios de amigas"] 
+                                steps: ["Bebês nascem (1-2cm)", "Volume aumenta 2x", "Elogios de amigas"] 
                             },
                             { 
                                 t: "MÊS 2-3", 
-                                steps: ["Densidade restaurada", "Crescimento acelerado", "Autoestima recuperada"] 
+                                steps: ["Densidade restaurada", "Cresce 2x mais rápido", "Zero queda residual"] 
                             }
                         ].map((week, i) => (
-                            <div key={i} className="space-y-6">
+                            <div key={i} className="space-y-6 bg-orange-50/50 p-6 rounded-[2.5rem] border border-orange-100">
                                 <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-black shadow-lg shadow-orange-900/40">{i+1}</div>
-                                    <p className="font-black text-xl tracking-tight">{week.t}</p>
+                                    <div className="h-10 w-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-black shadow-md">{i+1}</div>
+                                    <p className="font-black text-xl tracking-tight text-orange-950">{week.t}</p>
                                 </div>
                                 <div className="space-y-4">
                                     {week.steps.map((step, idx) => (
                                         <div key={idx} className="flex items-start gap-3">
-                                            <div className="mt-1 h-4 w-4 rounded border-2 border-white/20 flex items-center justify-center bg-white/5">
-                                                <Check size={10} strokeWidth={4} />
-                                            </div>
-                                            <p className="text-sm font-medium text-white/70">{step}</p>
+                                            <CheckCircle2 size={16} className="text-orange-600 shrink-0 mt-0.5" />
+                                            <p className="text-sm font-bold text-slate-600">{step}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -450,44 +422,36 @@ export function AntiHairLossPage() {
                     </div>
                 </div>
 
-                {/* Por que Funciona Tão Rápido? */}
+                {/* Por que Funciona Tão Rápido? - SUAVIZADO */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-12">
                     <div className="space-y-8">
                         <div className="flex items-center gap-3">
-                            <div className="p-3 bg-emerald-50/50 text-emerald-700 rounded-2xl shadow-sm border border-emerald-100">
+                            <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
                                 <Zap size={24} fill="currentColor" />
                             </div>
-                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">POR QUE FUNCIONA TÃO RÁPIDO?</h3>
+                            <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🧪 POR QUE FUNCIONA TÃO RÁPIDO?</h3>
                         </div>
                         <p className="text-xl text-slate-600 font-medium leading-relaxed">
-                            A matemática é simples: o shampoo comum só limpa. O Kit Bio Instinto reconstrói <span className="text-slate-950 font-black underline decoration-emerald-300">por dentro e por fora</span> ao mesmo tempo.
+                            Porque age nas <span className="text-orange-700 font-black underline decoration-orange-200">3 CAUSAS</span> ao mesmo tempo. É matemática pura.
                         </p>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="p-6 bg-slate-50/60 rounded-3xl border border-slate-100 space-y-2">
-                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Shampoo Comum</p>
+                            <div className="p-6 bg-[#FDF8F3] rounded-3xl border border-orange-100 space-y-2">
+                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest">Shampoo Comum</p>
                                 <p className="text-lg font-black text-slate-400">Só Limpa</p>
                             </div>
-                            <div className="p-6 bg-emerald-50/60 rounded-3xl border border-emerald-100 space-y-2">
-                                <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Shampoo Bio Instinto</p>
-                                <p className="text-lg font-black text-emerald-800">Limpa + ANCORA a raiz</p>
-                            </div>
-                            <div className="p-6 bg-slate-50/60 rounded-3xl border border-slate-100 space-y-2">
-                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Máscara Comum</p>
-                                <p className="text-lg font-black text-slate-400">Hidrata Superfície</p>
-                            </div>
-                            <div className="p-6 bg-emerald-50/60 rounded-3xl border border-emerald-100 space-y-2">
-                                <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Máscara Bio Instinto</p>
-                                <p className="text-lg font-black text-emerald-800">RECONSTRÓI fibra interna</p>
+                            <div className="p-6 bg-white rounded-3xl border-2 border-orange-500/20 shadow-sm space-y-2">
+                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Kit Bio Instinto</p>
+                                <p className="text-lg font-black text-orange-800">Limpa + ANCORA + RECONSTRÓI</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Resumo Técnico (Bento Grid Style) */}
-                    <div className="bg-white p-8 md:p-12 rounded-[4rem] border-4 border-slate-950 shadow-2xl space-y-10">
+                    {/* Resumo Técnico (Bento Grid Style) - SUAVIZADO */}
+                    <div className="bg-white p-8 md:p-12 rounded-[4rem] border-2 border-orange-200 shadow-2xl space-y-10">
                         <div className="flex items-center gap-3">
-                            <FileCheck className="text-slate-950" size={32} />
-                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">RESUMO TÉCNICO</h3>
+                            <div className="p-2 bg-orange-100 rounded-xl"><FileCheck className="text-orange-700" size={24} /></div>
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">💡 RESUMO TÉCNICO</h3>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
@@ -499,14 +463,14 @@ export function AntiHairLossPage() {
                                 { l: "TEMPO", v: "15 min no banho normal" },
                                 { l: "PREÇO", v: "R$ 1,61 por dia" }
                             ].map((item, i) => (
-                                <div key={i} className="p-4 bg-slate-50 rounded-2xl space-y-1">
-                                    <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">{item.l}</p>
+                                <div key={i} className="p-4 bg-[#FDF8F3] rounded-2xl border border-orange-50 space-y-1">
+                                    <p className="text-[8px] font-black text-orange-400 uppercase tracking-widest">{item.l}</p>
                                     <p className="text-sm font-black text-slate-900 leading-tight">{item.v}</p>
                                 </div>
                             ))}
                         </div>
 
-                        <Button onClick={scrollToPricing} className="w-full h-16 bg-slate-950 hover:bg-slate-800 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] active:scale-95">
+                        <Button onClick={scrollToPricing} className="w-full h-16 bg-orange-600 hover:bg-orange-700 text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-[1.02] active:scale-95">
                             QUERO ESTANCAR MINHA QUEDA AGORA
                         </Button>
                     </div>
