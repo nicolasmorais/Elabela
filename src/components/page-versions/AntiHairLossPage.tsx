@@ -184,13 +184,6 @@ export function AntiHairLossPage() {
                             alt="Kit Bio Instinto Antiqueda" 
                             className="relative z-10 w-full h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.15)] group-hover:scale-[1.02] transition-transform duration-1000"
                         />
-                        
-                        <div className="absolute -top-4 md:top-20 -right-4 md:right-0 z-30 animate-bounce delay-700">
-                            <div className="bg-white/90 backdrop-blur-md p-4 md:p-6 rounded-[2rem] shadow-2xl border border-orange-100/50 flex flex-col items-center">
-                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-1">Resultados</p>
-                                <p className="text-sm md:text-lg font-black text-slate-900">Na 1ª Semana ✨</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
