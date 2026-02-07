@@ -454,7 +454,7 @@ export function AntiHairLossPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-12">
                     <div className="space-y-8">
                         <div className="flex items-center gap-3">
-                            <div className="p-3 bg-emerald-100 text-emerald-700 rounded-2xl shadow-sm">
+                            <div className="p-3 bg-emerald-50/50 text-emerald-700 rounded-2xl shadow-sm border border-emerald-100">
                                 <Zap size={24} fill="currentColor" />
                             </div>
                             <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">POR QUE FUNCIONA TÃO RÁPIDO?</h3>
@@ -464,19 +464,19 @@ export function AntiHairLossPage() {
                         </p>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 space-y-2">
+                            <div className="p-6 bg-slate-50/60 rounded-3xl border border-slate-100 space-y-2">
                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Shampoo Comum</p>
                                 <p className="text-lg font-black text-slate-400">Só Limpa</p>
                             </div>
-                            <div className="p-6 bg-emerald-50 rounded-3xl border border-emerald-100 space-y-2">
+                            <div className="p-6 bg-emerald-50/60 rounded-3xl border border-emerald-100 space-y-2">
                                 <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Shampoo Bio Instinto</p>
                                 <p className="text-lg font-black text-emerald-800">Limpa + ANCORA a raiz</p>
                             </div>
-                            <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100 space-y-2">
+                            <div className="p-6 bg-slate-50/60 rounded-3xl border border-slate-100 space-y-2">
                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Máscara Comum</p>
                                 <p className="text-lg font-black text-slate-400">Hidrata Superfície</p>
                             </div>
-                            <div className="p-6 bg-emerald-50 rounded-3xl border border-emerald-100 space-y-2">
+                            <div className="p-6 bg-emerald-50/60 rounded-3xl border border-emerald-100 space-y-2">
                                 <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Máscara Bio Instinto</p>
                                 <p className="text-lg font-black text-emerald-800">RECONSTRÓI fibra interna</p>
                             </div>
