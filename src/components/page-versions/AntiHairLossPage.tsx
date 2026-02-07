@@ -117,13 +117,6 @@ export function AntiHairLossPage() {
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_var(--tw-gradient-stops))] from-orange-100/40 via-white to-white pointer-events-none"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
-            {/* Badge de Autoridade - CORES MAIS VIVAS */}
-            <div className="flex justify-center mb-10">
-                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#0F0D0C] text-orange-400 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] border-2 border-orange-500/20 shadow-[0_25px_50px_-12px_rgba(249,115,22,0.4)] animate-in fade-in slide-in-from-top-4 duration-1000">
-                    <Award size={16} className="text-orange-500 animate-pulse" />
-                    <span className="text-white">Protocolo Antiqueda <span className="text-orange-500">Bio Instinto</span></span>
-                </div>
-            </div>
             
             {/* Headline Central - CORES MAIS VIVAS */}
             <div className="text-center mb-16">
@@ -732,7 +725,7 @@ export function AntiHairLossPage() {
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                            <p>O uso de any product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
                         </div>
                     </div>
                 </div>
