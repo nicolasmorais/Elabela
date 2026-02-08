@@ -12,10 +12,11 @@ export async function GET(
     const result = await client.query('SELECT value FROM settings WHERE key = $1', [`pageConfig_${slug}`]);
     
     if (result.rows.length === 0) {
-      // Retorna valores padrão se não existir no banco
+      // Retorna valores padrão se não existir no banco (ATUALIZADO PARA 147)
       return NextResponse.json({ 
-        priceCard: 'R$ 157,00', 
-        pricePix: '97,00', 
+        priceCard: 'R$ 187,00', 
+        pricePix: '147,00', 
+        installmentText: '12x de R$ 14,96',
         checkoutUrl: '#' 
       });
     }
