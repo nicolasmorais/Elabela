@@ -15,7 +15,8 @@ import {
   Heart,
   Sparkles,
   Droplets,
-  ZapIcon
+  ZapIcon,
+  ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -180,11 +181,16 @@ export function AntiHairLossPageV2() {
                         </p>
                     </div>
 
-                    {/* BOTÃO COMPRAR AGORA */}
+                    {/* BOTÃO COMPRAR AGORA MELHORADO */}
                     <div className="space-y-4 pt-4">
                         <Link href={selectedKit.checkoutUrl} target="_blank">
-                            <Button className="w-full h-20 bg-slate-950 hover:bg-slate-900 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99]">
+                            <Button 
+                                className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group"
+                                style={{ backgroundColor: '#35c867' }}
+                            >
+                                <ShoppingBag size={28} />
                                 Comprar agora
+                                <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
                             </Button>
                         </Link>
                         
