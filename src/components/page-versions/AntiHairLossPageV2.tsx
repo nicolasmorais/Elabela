@@ -30,6 +30,7 @@ import {
   ClipboardList,
   AlertCircle,
   ChevronRight,
+  ChevronLeft,
   Droplets,
   FlaskConical,
   Beaker,
@@ -134,8 +135,7 @@ const KITS = [
 export function AntiHairLossPageV2() {
   const [city, setCity] = useState('');
   const [timeLeft, setTimeLeft] = useState(38010); // ~10h 33min
-  const [activeImage, setActiveImage] = useState(GALLERY_IMAGES[0]);
-  const [selectedKitId, setSelectedKitId] = useState('3-unidades');
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const [config, setConfig] = useState({
       priceCard: 'R$ 497,00',
@@ -179,7 +179,13 @@ export function AntiHairLossPageV2() {
     return `${h}h ${m} min`;
   };
 
-  const selectedKit = KITS.find(k => k.id === selectedKitId) || KITS[1];
+  const nextImage = () => {
+    setActiveImageIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
+  };
+
+  const prevImage = () => {
+    setActiveImageIndex((prev) => (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+  };
 
   return (
     <>
@@ -200,22 +206,52 @@ export function AntiHairLossPageV2() {
         <main className="max-w-7xl mx-auto px-6 py-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
-                {/* ESQUERDA: GALERIA (50%) */}
-                <div className="lg:col-span-6 space-y-4">
-                    <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 relative group">
-                        <img src={activeImage} alt="Produto Principal" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
+                {/* ESQUERDA: GALERIA (50%) - DESIGN MELHORADO */}
+                <div className="lg:col-span-6 space-y-6">
+                    <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.08)] group">
+                        <img 
+                          src={GALLERY_IMAGES[activeImageIndex]} 
+                          alt="Produto Principal" 
+                          className="w-full h-full object-contain p-4 transition-all duration-700 group-hover:scale-[1.02]" 
+                        />
+                        
+                        {/* Botões de Navegação Lateral (Desktop Only) */}
+                        <button 
+                          onClick={prevImage}
+                          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg border border-slate-100 text-slate-400 hover:text-orange-600 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 hidden md:block"
+                        >
+                          <ChevronLeft size={24} />
+                        </button>
+                        <button 
+                          onClick={nextImage}
+                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg border border-slate-100 text-slate-400 hover:text-orange-600 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 hidden md:block"
+                        >
+                          <ChevronRight size={24} />
+                        </button>
+                        
+                        {/* Contador Visual */}
+                        <div className="absolute bottom-6 right-6 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
+                          {activeImageIndex + 1} / {GALLERY_IMAGES.length}
+                        </div>
                     </div>
-                    <div className="grid grid-cols-4 gap-4">
+
+                    {/* Thumbnails Estilizados */}
+                    <div className="grid grid-cols-4 gap-4 px-2">
                         {GALLERY_IMAGES.map((img, i) => (
                             <button 
                                 key={i} 
-                                onClick={() => setActiveImage(img)}
+                                onClick={() => setActiveImageIndex(i)}
                                 className={cn(
-                                    "aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300",
-                                    activeImage === img ? "border-orange-500 shadow-lg scale-105" : "border-slate-100 opacity-60 hover:opacity-100"
+                                    "aspect-square rounded-2xl overflow-hidden border-2 transition-all duration-300 relative group",
+                                    activeImageIndex === i 
+                                      ? "border-orange-500 shadow-[0_0_0_4px_rgba(249,115,22,0.1)] scale-105" 
+                                      : "border-slate-100 opacity-60 hover:opacity-100 hover:border-slate-300"
                                 )}
                             >
-                                <img src={img} alt="Thumb" className="w-full h-full object-cover" />
+                                <img src={img} alt="Thumb" className="w-full h-full object-cover p-1" />
+                                {activeImageIndex === i && (
+                                  <div className="absolute inset-0 bg-orange-500/5 pointer-events-none"></div>
+                                )}
                             </button>
                         ))}
                     </div>
@@ -504,6 +540,53 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
+            {/* SEÇÃO: O QUE VEM NO KIT (DETALHADA) */}
+            <section className="py-24 px-6 bg-[#FDF8F3] border-b border-orange-100">
+                <div className="max-w-5xl mx-auto">
+                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
+                        <div className="space-y-12">
+                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
+                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
+                                    <ShoppingBag size={24} />
+                                </div>
+                                VOCÊ RECEBE O KIT COMPLETO:
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                                {[
+                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-5 group">
+                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
+                                            <span className="text-3xl">🧴</span>
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
+                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* 🆕 SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? 🆕 */}
             <section className="py-32 px-6 bg-white overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto">
@@ -738,47 +821,6 @@ export function AntiHairLossPageV2() {
                                 </div>
                                 <div className="pt-4 border-t border-slate-200 text-center">
                                     <p className="text-sm font-black text-slate-900 uppercase tracking-tight">Não tem segredo. É seu banho normal + resultado profissional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* VOCÊ RECEBE O KIT COMPLETO CARD */}
-                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
-                        <div className="space-y-12">
-                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
-                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
-                                    <ShoppingBag size={24} />
-                                </div>
-                                VOCÊ RECEBE O KIT COMPLETO:
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                                {[
-                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
-                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
-                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
-                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-5 group">
-                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
-                                            <span className="text-3xl">🧴</span>
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
-                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
                                 </div>
                             </div>
                         </div>
