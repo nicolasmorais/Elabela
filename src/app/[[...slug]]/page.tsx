@@ -11,15 +11,15 @@ import { MenopausePage } from '@/components/page-versions/MenopausePage';
 import { JointPainPage } from '@/components/page-versions/JointPainPage';
 import { HairCarePage } from '@/components/page-versions/HairCarePage';
 import { AntiHairLossPage } from '@/components/page-versions/AntiHairLossPage';
+import { AntiHairLossPageV2 } from '@/components/page-versions/AntiHairLossPageV2';
 import { DeactivatedPage } from '@/components/page-versions/DeactivatedPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2'];
 
 async function ContentSwitcher({ contentId }: { contentId: string }) {
-  // Injeta o Pixel centralizado para páginas estáticas também
   const pixelScripts = await PixelInjector({ forcePageId: contentId });
 
   return (
@@ -35,6 +35,7 @@ async function ContentSwitcher({ contentId }: { contentId: string }) {
             case 'dor-zero': return <JointPainPage />;
             case 'cavalo-de-raca': return <HairCarePage />;
             case 'antiqueda': return <AntiHairLossPage />;
+            case 'antiqueda2': return <AntiHairLossPageV2 />;
             default: return <CustomAdvertorialPage advertorialId={contentId} />;
           }
       })()}
