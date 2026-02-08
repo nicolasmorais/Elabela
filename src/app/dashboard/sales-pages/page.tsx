@@ -61,14 +61,14 @@ export default function SalesPagesListPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState('');
   
-  // State para o Editor (ATUALIZADO PARA 147)
+  // State para o Editor
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isSavingConfig, setIsSavingConfig] = useState(false);
   const [activeSlug, setActiveSlug] = useState('');
   const [pageConfig, setPageConfig] = useState({
       priceCard: 'R$ 187,00',
       pricePix: '147,00',
-      installmentText: '12x de R$ 14,96',
+      installmentText: '12x de 14,96 no Cartão',
       buttonText: 'COMPRAR AGORA',
       checkoutUrl: ''
   });
@@ -95,7 +95,7 @@ export default function SalesPagesListPage() {
           setPageConfig({
               priceCard: data.priceCard || 'R$ 187,00',
               pricePix: data.pricePix || '147,00',
-              installmentText: data.installmentText || '12x de R$ 14,96',
+              installmentText: data.installmentText || '12x de 14,96 no Cartão',
               buttonText: data.buttonText || 'COMPRAR AGORA',
               checkoutUrl: data.checkoutUrl || ''
           });
@@ -280,7 +280,7 @@ export default function SalesPagesListPage() {
               <Input 
                 value={pageConfig.installmentText} 
                 onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
-                placeholder="Ex: 12x de R$ 14,96"
+                placeholder="Ex: 12x de 14,96 no Cartão"
                 className="rounded-xl h-12"
               />
             </div>

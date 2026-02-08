@@ -107,7 +107,7 @@ export function AntiHairLossPageV2() {
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
       pricePix: '147,00',
-      installmentText: '12x de R$ 14,96',
+      installmentText: '12x de 14,96 no Cartão',
       buttonText: 'Comprar agora',
       checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
   });
@@ -129,7 +129,7 @@ export function AntiHairLossPageV2() {
                 setConfig({
                     priceCard: data.priceCard || 'R$ 187,00',
                     pricePix: data.pricePix || '147,00',
-                    installmentText: data.installmentText || '12x de R$ 14,96',
+                    installmentText: data.installmentText || '12x de 14,96 no Cartão',
                     buttonText: data.buttonText || 'Comprar agora',
                     checkoutUrl: data.checkoutUrl || 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
                 });
@@ -343,7 +343,6 @@ export function AntiHairLossPageV2() {
                         </h2>
                         <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">TECNOLOGIA TRIPLA ANCORAGEM™</p>
                     </div>
-                    {/* ... (rest of the sections remain same but with prices updated below) ... */}
                 </div>
             </section>
 
@@ -394,7 +393,7 @@ export function AntiHairLossPageV2() {
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
                                     { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Preço normal em salões: R$ 297,00" },
-                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96. Ou R$ 147,00 à vista via PIX ou Cartão." },
+                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de 14,96 no Cartão. Ou R$ 147,00 à vista via PIX ou Cartão." },
                                     { q: "❓ E se não funcionar?", a: "GARANTIA DE 7 DIAS. Use por 1 semana. Não funcionou? Devolvemos 100% do valor de R$ 147,00." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
@@ -429,7 +428,7 @@ export function AntiHairLossPageV2() {
 
         {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText="12x de 14,96"
+          installmentText="12x de 14,96 no Cartão"
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
         />
