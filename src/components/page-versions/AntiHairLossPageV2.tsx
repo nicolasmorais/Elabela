@@ -138,11 +138,11 @@ export function AntiHairLossPageV2() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const [config, setConfig] = useState({
-      priceCard: 'R$ 497,00',
-      pricePix: '297,00',
-      installmentText: 'Em até 12x de R$ 14,96 sem juros',
+      priceCard: 'R$ 187,00',
+      pricePix: '147,00',
+      installmentText: '12x de R$ 14,96',
       buttonText: 'Comprar agora',
-      checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=3'
+      checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
   });
 
   useEffect(() => {
@@ -160,11 +160,11 @@ export function AntiHairLossPageV2() {
         .then(data => {
             if (data) {
                 setConfig({
-                    priceCard: data.priceCard || 'R$ 497,00',
-                    pricePix: data.pricePix || '297,00',
-                    installmentText: data.installmentText || 'Em até 12x de R$ 14,96 sem juros',
+                    priceCard: data.priceCard || 'R$ 187,00',
+                    pricePix: data.pricePix || '147,00',
+                    installmentText: data.installmentText || '12x de R$ 14,96',
                     buttonText: data.buttonText || 'Comprar agora',
-                    checkoutUrl: data.checkoutUrl || 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=3'
+                    checkoutUrl: data.checkoutUrl || 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
                 });
             }
         })
@@ -286,7 +286,7 @@ export function AntiHairLossPageV2() {
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
-                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">40% OFF</span>
+                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">21% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
                             <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
@@ -394,7 +394,7 @@ export function AntiHairLossPageV2() {
                         <div className="flex-1 space-y-8">
                             <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCINA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
-                                O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 147.</span>
+                                O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 147,00.</span>
                             </h2>
                             <div className="pt-8 space-y-6">
                                 <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
@@ -536,53 +536,6 @@ export function AntiHairLossPageV2() {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: O QUE VEM NO KIT (DETALHADA) */}
-            <section className="py-24 px-6 bg-[#FDF8F3] border-b border-orange-100">
-                <div className="max-w-5xl mx-auto">
-                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
-                        <div className="space-y-12">
-                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
-                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
-                                    <ShoppingBag size={24} />
-                                </div>
-                                VOCÊ RECEBE O KIT COMPLETO:
-                            </h3>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                                {[
-                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
-                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
-                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
-                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-5 group">
-                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
-                                            <span className="text-3xl">🧴</span>
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
-                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -826,6 +779,47 @@ export function AntiHairLossPageV2() {
                         </div>
                     </div>
 
+                    {/* VOCÊ RECEBE O KIT COMPLETO CARD */}
+                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
+                        <div className="space-y-12">
+                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
+                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
+                                    <ShoppingBag size={24} />
+                                </div>
+                                VOCÊ RECEBE O KIT COMPLETO:
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                                {[
+                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-5 group">
+                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
+                                            <span className="text-3xl">🧴</span>
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
+                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* POTENCIALIZAR RESULTADOS */}
                     <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-orange-50">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -942,9 +936,9 @@ export function AntiHairLossPageV2() {
                             <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PREÇO E PAGAMENTO</h3>
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
-                                    { q: "❓ Por que R$ 127?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
-                                    { q: "❓ Posso parcelar?", a: "SIM. Até 12x de R$ 12,25 sem juros. Ou R$ 127 no PIX (desconto aplicado)." },
-                                    { q: "❓ Tem desconto maior?", a: "NÃO. Este é o menor preço possível. De R$ 297 por R$ 127 = 57% OFF" },
+                                    { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
+                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96. Ou R$ 147,00 no PIX (desconto aplicado)." },
+                                    { q: "❓ Tem desconto maior?", a: "NÃO. Este é o menor preço possível. De R$ 297 por R$ 147,00 = 50% OFF" },
                                     { q: "❓ E se não funcionar?", a: "GARANTIA DE 7 DIAS. Use por 1 semana. Não funcionou? Devolvemos 100% do valor. Sem perguntas. Sem burocracia." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
@@ -978,7 +972,7 @@ export function AntiHairLossPageV2() {
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
                                     { q: "❓ É difícil de usar?", a: "NÃO. Banho normal:\n1. Shampoo (3 min)\n2. Condicionador (2 min)\n3. Leave-in (1 min)\n4. Máscara 2x/semana (15 min)" },
-                                    { q: "❓ Quanto tempo dura o kit?", a: "2 a 3 meses de uso normal.\nR$ 127 ÷ 75 dias = R$ 1,69/dia" },
+                                    { q: "❓ Quanto tempo dura o kit?", a: "2 a 3 meses de uso normal.\nR$ 147,00 ÷ 75 dias = R$ 1,96/dia" },
                                     { q: "❓ Preciso usar os 4 produtos?", a: "SIM. Eles trabalham juntos:\n→ Shampoo: Ancora raiz\n→ Condicionador: Sela cutícula\n→ Máscara: Reconstrói fibra\n→ Leave-in: Protege\nUsar só alguns = Resultado pela metade." },
                                     { q: "❓ Posso misturar com outros produtos?", a: "NÃO RECOMENDAMOS. Quebra a sinergia dos 4 produtos. Use APENAS o kit por 30 dias. Depois você decide." },
                                     { q: "❓ Tenho química no cabelo. Posso usar?", a: "PODE. E deve. Química enfraquece. Kit reconstrói." },
