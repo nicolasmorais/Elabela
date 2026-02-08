@@ -94,31 +94,22 @@ export function AntiHairLossPageV2() {
       <PageTracker contentId="antiqueda2" />
       <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
-        {/* NAVIGATION E-COMMERCE */}
-        <nav className="bg-white border-b border-slate-100 py-4 px-6 sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* NAVIGATION E-COMMERCE CENTRALIZADA */}
+        <nav className="bg-[#FDF8F3] border-b border-slate-100 py-4 px-6 sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto flex items-center justify-center">
                 <img 
                     src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
                     alt="Logo" className="h-8"
                 />
-                <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                    <span className="text-orange-600">Kit Antiqueda</span>
-                    <span>Colágeno</span>
-                    <span>Vitaminas</span>
-                    <span>Cabelo & Unha</span>
-                </div>
-                <div className="flex items-center gap-4">
-                    <ShoppingBag size={20} className="text-slate-400" />
-                </div>
             </div>
         </nav>
 
         {/* HERO / PRODUCT SECTION */}
         <main className="max-w-7xl mx-auto px-6 py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 {/* ESQUERDA: GALERIA (50%) */}
-                <div className="space-y-4">
+                <div className="lg:col-span-6 space-y-4">
                     <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 relative group">
                         <img src={activeImage} alt="Produto Principal" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                     </div>
@@ -139,7 +130,7 @@ export function AntiHairLossPageV2() {
                 </div>
 
                 {/* DIREITA: INFOS DE COMPRA (50%) */}
-                <div className="space-y-6">
+                <div className="lg:col-span-6 space-y-6">
                     
                     {/* Badge de Destaque */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
@@ -166,7 +157,7 @@ export function AntiHairLossPageV2() {
 
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                            <span className="text-slate-400 line-through text-lg">R$ 297,00</span>
+                            <span className="text-slate-400 line-through text-lg">R$ 497,00</span>
                             <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">40% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
