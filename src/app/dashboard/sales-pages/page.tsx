@@ -34,11 +34,13 @@ import {
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors } from 'lucide-react';
+import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors, Type } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface CustomAdvertorial {
   id: string;
@@ -70,7 +72,12 @@ export default function SalesPagesListPage() {
       pricePix: '97,00',
       installmentText: 'Parcelamento em até 12x',
       buttonText: 'COMPRAR AGORA',
-      checkoutUrl: ''
+      checkoutUrl: '',
+      // Novos campos de texto para Antiqueda
+      headlineMain: '',
+      headlineHighlight: '',
+      caseStudyTitle: '',
+      solutionTitle: ''
   });
 
   useEffect(() => {
@@ -97,7 +104,11 @@ export default function SalesPagesListPage() {
               pricePix: data.pricePix || '97,00',
               installmentText: data.installmentText || 'Parcelamento em até 12x',
               buttonText: data.buttonText || 'COMPRAR AGORA',
-              checkoutUrl: data.checkoutUrl || ''
+              checkoutUrl: data.checkoutUrl || '',
+              headlineMain: data.headlineMain || '',
+              headlineHighlight: data.headlineHighlight || '',
+              caseStudyTitle: data.caseStudyTitle || '',
+              solutionTitle: data.solutionTitle || ''
           });
           setIsEditDialogOpen(true);
       } catch (e) {
@@ -183,7 +194,7 @@ export default function SalesPagesListPage() {
                   ))
                 ) : (
                   filteredPages.map((page) => (
-                    <TableRow key={page.id} className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors border-slate-50 dark:border-slate-800 h-20">
+                    <TableRow key={page.id} className="group hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors border-slate-100 dark:border-slate-800 h-20">
                       <TableCell className="pl-8">
                         <div className="flex items-center gap-4">
                             <div className={cn("p-2.5 rounded-xl", page.bg, page.color)}>
@@ -226,7 +237,7 @@ export default function SalesPagesListPage() {
                                     <DropdownMenuContent align="end" className="w-48 rounded-xl">
                                         <DropdownMenuItem onClick={() => openEditDialog(page.id)} className="font-bold gap-2 cursor-pointer">
                                             <Settings2 size={16} />
-                                            Editar Preços/Link
+                                            Editar Conteúdo
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
@@ -244,78 +255,148 @@ export default function SalesPagesListPage() {
 
       {/* Popup de Edição Dinâmica */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-[425px] rounded-[2rem]">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-                <Settings2 className="text-[#0061FF]" /> Configurações de Venda
+        <DialogContent className="sm:max-w-[600px] rounded-[2rem] p-0 overflow-hidden border-none shadow-2xl">
+          <DialogHeader className="bg-slate-50 dark:bg-slate-900 p-8 border-b border-slate-100 dark:border-slate-800">
+            <DialogTitle className="flex items-center gap-3 text-2xl font-black">
+                <div className="p-2 bg-[#0061FF] rounded-lg text-white">
+                    <Settings2 size={24} />
+                </div>
+                Configurações da Página
             </DialogTitle>
-            <DialogDescription>
-              Edite as informações da página <strong>/{activeSlug}</strong>.
+            <DialogDescription className="text-slate-500 font-medium">
+              Modifique preços, links e textos da página <strong>/{activeSlug}</strong>.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="grid gap-6 py-4">
-            <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Preço Cartão (Texto Livre)</Label>
-              <Input 
-                value={pageConfig.priceCard} 
-                onChange={e => setPageConfig({...pageConfig, priceCard: e.target.value})}
-                placeholder="Ex: R$ 157,00"
-                className="rounded-xl h-12"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Preço Pix (Apenas Números)</Label>
-              <Input 
-                value={pageConfig.pricePix} 
-                onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
-                placeholder="Ex: 97,00"
-                className="rounded-xl h-12"
-              />
-            </div>
+          <ScrollArea className="max-h-[60vh]">
+            <div className="p-8 space-y-8">
+                
+                {/* SEÇÃO DE TEXTOS (Apenas para Antiqueda) */}
+                {activeSlug === 'antiqueda' && (
+                    <div className="space-y-6">
+                        <div className="flex items-center gap-2 text-orange-600">
+                            <Type size={18} />
+                            <h4 className="font-black uppercase text-xs tracking-widest">Edição de Textos</h4>
+                        </div>
+                        
+                        <div className="grid gap-6">
+                            <div className="space-y-2">
+                                <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Headline Principal</Label>
+                                <Textarea 
+                                    value={pageConfig.headlineMain} 
+                                    onChange={e => setPageConfig({...pageConfig, headlineMain: e.target.value})}
+                                    placeholder='"Todo Dia Era um Bolo de Cabelo no Pente...'
+                                    className="rounded-xl min-h-[100px] border-slate-200 focus:ring-[#0061FF]/10 focus:border-[#0061FF]"
+                                />
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Headline Destaque (Itálico)</Label>
+                                <Input 
+                                    value={pageConfig.headlineHighlight} 
+                                    onChange={e => setPageConfig({...pageConfig, headlineHighlight: e.target.value})}
+                                    placeholder='Hoje Não Cai Quase Nada."'
+                                    className="rounded-xl h-12 border-slate-200"
+                                />
+                            </div>
 
-            <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Texto de Parcelamento</Label>
-              <Input 
-                value={pageConfig.installmentText} 
-                onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
-                placeholder="Ex: Parcelamento em até 12x"
-                className="rounded-xl h-12"
-              />
-            </div>
+                            <div className="space-y-2">
+                                <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Título Estudo de Caso</Label>
+                                <Input 
+                                    value={pageConfig.caseStudyTitle} 
+                                    onChange={e => setPageConfig({...pageConfig, caseStudyTitle: e.target.value})}
+                                    placeholder='O cabelo de Ana estava cedendo.'
+                                    className="rounded-xl h-12 border-slate-200"
+                                />
+                            </div>
+                        </div>
+                        <div className="h-px bg-slate-100" />
+                    </div>
+                )}
 
-            <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Texto do Botão</Label>
-              <Input 
-                value={pageConfig.buttonText} 
-                onChange={e => setPageConfig({...pageConfig, buttonText: e.target.value})}
-                placeholder="Ex: COMPRAR AGORA"
-                className="rounded-xl h-12"
-              />
-            </div>
+                {/* SEÇÃO DE PREÇOS E LINKS */}
+                <div className="space-y-6">
+                    <div className="flex items-center gap-2 text-emerald-600">
+                        <ShoppingBag size={18} />
+                        <h4 className="font-black uppercase text-xs tracking-widest">Preços e Conversão</h4>
+                    </div>
 
-            <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Link de Checkout</Label>
-              <Input 
-                value={pageConfig.checkoutUrl} 
-                onChange={e => setPageConfig({...pageConfig, checkoutUrl: e.target.value})}
-                placeholder="https://..."
-                className="rounded-xl h-12"
-              />
-            </div>
-          </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Preço Normal (R$)</Label>
+                            <Input 
+                                value={pageConfig.priceCard} 
+                                onChange={e => setPageConfig({...pageConfig, priceCard: e.target.value})}
+                                placeholder="Ex: 297,00"
+                                className="rounded-xl h-12 border-slate-200"
+                            />
+                        </div>
+                        
+                        <div className="space-y-2">
+                            <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Preço Oferta (R$)</Label>
+                            <Input 
+                                value={pageConfig.pricePix} 
+                                onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
+                                placeholder="Ex: 147,00"
+                                className="rounded-xl h-12 border-slate-200 font-bold text-emerald-600"
+                            />
+                        </div>
+                    </div>
 
-          <DialogFooter>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Texto de Parcelamento</Label>
+                            <Input 
+                                value={pageConfig.installmentText} 
+                                onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
+                                placeholder="Ex: 12x de 14,96"
+                                className="rounded-xl h-12 border-slate-200"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Texto do Botão</Label>
+                            <Input 
+                                value={pageConfig.buttonText} 
+                                onChange={e => setPageConfig({...pageConfig, buttonText: e.target.value})}
+                                placeholder="Ex: COMPRAR AGORA"
+                                className="rounded-xl h-12 border-slate-200"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Link de Checkout</Label>
+                        <Input 
+                            value={pageConfig.checkoutUrl} 
+                            onChange={e => setPageConfig({...pageConfig, checkoutUrl: e.target.value})}
+                            placeholder="https://pay.oneconversion.pro/..."
+                            className="rounded-xl h-12 border-slate-200 bg-slate-50"
+                        />
+                    </div>
+                </div>
+            </div>
+          </ScrollArea>
+
+          <div className="p-8 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
             <Button 
                 onClick={handleSaveConfig} 
                 disabled={isSavingConfig}
-                className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-xl font-bold w-full h-12"
+                className="bg-[#0061FF] hover:bg-[#0050D1] text-white rounded-2xl font-black w-full h-16 shadow-xl shadow-blue-500/20 text-lg transition-all hover:scale-[1.02] active:scale-95"
             >
-              {isSavingConfig ? <Loader2 className="animate-spin mr-2" /> : <Save className="mr-2" />}
-              Salvar Alterações
+              {isSavingConfig ? (
+                <>
+                    <Loader2 className="animate-spin mr-2 h-6 w-6" />
+                    SALVANDO...
+                </>
+              ) : (
+                <>
+                    <Save className="mr-2 h-6 w-6" />
+                    CONFIRMAR ALTERAÇÕES
+                </>
+              )}
             </Button>
-          </DialogFooter>
+          </div>
         </DialogContent>
       </Dialog>
     </>
