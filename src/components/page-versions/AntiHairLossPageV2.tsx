@@ -49,6 +49,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
 
@@ -350,7 +356,7 @@ export function AntiHairLossPageV2() {
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-start gap-16">
                         <div className="flex-1 space-y-8">
-                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
+                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCINA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
                                 O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 147.</span>
                             </h2>
@@ -494,6 +500,53 @@ export function AntiHairLossPageV2() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: O QUE VEM NO KIT (DETALHADA) */}
+            <section className="py-24 px-6 bg-[#FDF8F3] border-b border-orange-100">
+                <div className="max-w-5xl mx-auto">
+                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
+                        <div className="space-y-12">
+                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
+                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
+                                    <ShoppingBag size={24} />
+                                </div>
+                                VOCÊ RECEBE O KIT COMPLETO:
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                                {[
+                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-5 group">
+                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
+                                            <span className="text-3xl">🧴</span>
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
+                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -737,7 +790,7 @@ export function AntiHairLossPageV2() {
                         </div>
                     </div>
 
-                    {/* VOCÊ RECEBE O KIT COMPLETO CARD (MOVED HERE) */}
+                    {/* VOCÊ RECEBE O KIT COMPLETO CARD */}
                     <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
                         <div className="space-y-12">
                             <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
@@ -858,7 +911,124 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: GARANTIA */}
+            {/* SEÇÃO: FAQ (PERGUNTAS FREQUENTES) */}
+            <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
+                <div className="max-w-4xl mx-auto space-y-12">
+                    <div className="text-center space-y-4 mb-16">
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">PERGUNTAS FREQUENTES</h2>
+                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
+                    </div>
+
+                    <div className="space-y-12">
+                        {/* SOBRE O PRODUTO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
+                                    { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Produtos comuns mascaram. Este reconstrói a raiz." },
+                                    { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
+                                    { q: "❓ Funciona para queda por estresse?", a: "SIM. Fortalece a raiz independente da causa." },
+                                    { q: "❓ Tenho couro cabeludo oleoso/seco. Posso usar?", a: "PODE. pH balanceado para todos os tipos." },
+                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar\n→ 30 dias: Bebês começam a nascer" },
+                                    { q: "❓ Preciso usar para sempre?", a: "NÃO. Após 2-3 meses intensivos, pode fazer manutenção 2-3x por semana." },
+                                    { q: "❓ Funciona para calvície?", a: "Se você ainda TEM cabelo, funciona. Fortalece raiz viva. Calvície total (sem raiz) = Não resolve." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`produto-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE PREÇO E PAGAMENTO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PREÇO E PAGAMENTO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Por que R$ 127?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
+                                    { q: "❓ Posso parcelar?", a: "SIM. Até 12x de R$ 12,25 sem juros. Ou R$ 127 no PIX (desconto aplicado)." },
+                                    { q: "❓ Tem desconto maior?", a: "NÃO. Este é o menor preço possível. De R$ 297 por R$ 127 = 57% OFF" },
+                                    { q: "❓ E se não funcionar?", a: "GARANTIA DE 7 DIAS. Use por 1 semana. Não funcionou? Devolvemos 100% do valor. Sem perguntas. Sem burocracia." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE ENTREGA */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">📦 SOBRE ENTREGA</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Frete é grátis?", a: "SIM. Para todo o Brasil. Rastreio + Seguro inclusos." },
+                                    { q: "❓ Quanto tempo para chegar?", a: "→ Sudeste/Sul: 3-7 dias úteis\n→ Demais regiões: 5-12 dias úteis\nEnvio em até 24h úteis após confirmação." },
+                                    { q: "❓ É seguro comprar?", a: "SIM.\n✅ Certificado SSL\n✅ Checkout seguro\n✅ Nota fiscal\n✅ CNPJ ativo" }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`entrega-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE USO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">🧴 SOBRE USO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ É difícil de usar?", a: "NÃO. Banho normal:\n1. Shampoo (3 min)\n2. Condicionador (2 min)\n3. Leave-in (1 min)\n4. Máscara 2x/semana (15 min)" },
+                                    { q: "❓ Quanto tempo dura o kit?", a: "2 a 3 meses de uso normal.\nR$ 127 ÷ 75 dias = R$ 1,69/dia" },
+                                    { q: "❓ Preciso usar os 4 produtos?", a: "SIM. Eles trabalham juntos:\n→ Shampoo: Ancora raiz\n→ Condicionador: Sela cutícula\n→ Máscara: Reconstrói fibra\n→ Leave-in: Protege\nUsar só alguns = Resultado pela metade." },
+                                    { q: "❓ Posso misturar com outros produtos?", a: "NÃO RECOMENDAMOS. Quebra a sinergia dos 4 produtos. Use APENAS o kit por 30 dias. Depois você decide." },
+                                    { q: "❓ Tenho química no cabelo. Posso usar?", a: "PODE. E deve. Química enfraquece. Kit reconstrói." },
+                                    { q: "❓ Grávida pode usar?", a: "Produtos de uso externo = Seguro. Mas consulte seu médico antes." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`uso-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE ESTOQUE */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">⚠️ SOBRE ESTOQUE</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ \"Últimas unidades\" é verdade?", a: "SIM. Produção em lotes pequenos. Alta demanda. Quando acaba = Acaba." },
+                                    { q: "❓ Posso comprar depois?", a: "PODE. Mas:\n→ Preço volta para R$ 297\n→ Frete deixa de ser grátis\n→ Esta oferta não se repete" },
+                                    { q: "❓ Ainda tenho dúvidas. Como falar com vocês?", a: "📧 contato@cavalo-de-raca.pro\nResposta em até 24h úteis." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`estoque-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+                    </div>
+
+                    <div className="mt-16 bg-white border-2 border-orange-500 border-dashed p-8 md:p-12 rounded-[3rem] text-center space-y-6">
+                        <div className="mx-auto w-16 h-16 bg-orange-100 text-orange-700 rounded-full flex items-center justify-center mb-4">
+                            <ShieldCheck size={32} />
+                        </div>
+                        <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight">GARANTIA TOTAL DE 7 DIAS</h4>
+                        <p className="text-lg text-slate-600 font-medium italic">
+                            Use o kit por 1 semana. Não ver resultado? Devolvemos 100%. <br />
+                            <strong className="text-orange-800 uppercase not-italic">O risco é TODO nosso.</strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: GARANTIA (ORIGINAL) */}
             <section className="py-24 px-6 bg-white border-t border-slate-50">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
