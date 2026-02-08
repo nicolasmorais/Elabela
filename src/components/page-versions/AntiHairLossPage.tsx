@@ -51,7 +51,6 @@ const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421091644-ChatGPT-Image-6-de-fev.-de-2026,-20_37_37.png"
 ];
 
-// Dados de depoimentos focados no recebimento
 const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
@@ -71,20 +70,24 @@ const DELIVERY_TESTIMONIALS = [
 ];
 
 export function AntiHairLossPage() {
-  // ESTADO DA LOCALIZAÇÃO
   const [city, setCity] = useState('');
+  const [timeLeft, setTimeLeft] = useState(877); // 14:37 em segundos
 
-  // ESTADO DOS DADOS DINÂMICOS
   const [config, setConfig] = useState({
-      priceCard: 'R$ 157,00',
-      pricePix: '97,00',
-      installmentText: 'Parcelamento em até 12x',
+      priceCard: 'R$ 147,00',
+      pricePix: '127,00',
+      installmentText: 'ou 12x de R$ 12,25 sem juros',
       buttonText: 'COMPRAR AGORA',
       checkoutUrl: '#'
   });
 
   useEffect(() => {
-    // Busca a cidade da usuária
+    // Timer Logic
+    const timer = setInterval(() => {
+      setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
+    }, 1000);
+
+    // Cidade detection
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
@@ -92,25 +95,29 @@ export function AntiHairLossPage() {
       })
       .catch(() => console.log("Não foi possível detectar a cidade."));
 
-    // Busca configurações do banco
+    // Preços dinâmicos
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
             if (data) {
                 setConfig({
-                    priceCard: data.priceCard || 'R$ 157,00',
-                    pricePix: data.pricePix || '97,00',
-                    installmentText: data.installmentText || 'Parcelamento em até 12x',
+                    priceCard: data.priceCard || 'R$ 147,00',
+                    pricePix: data.pricePix || '127,00',
+                    installmentText: data.installmentText || 'ou 12x de R$ 12,25 sem juros',
                     buttonText: data.buttonText || 'COMPRAR AGORA',
                     checkoutUrl: data.checkoutUrl || '#'
                 });
             }
         })
         .catch(e => console.error("Erro ao carregar preços."));
+
+    return () => clearInterval(timer);
   }, []);
 
-  const scrollToPricing = () => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -118,14 +125,13 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen pb-24 md:pb-0">
         
-        {/* BARRA DE AVISO - SUAVIZADA */}
+        {/* BARRA DE AVISO */}
         <div className="bg-slate-900 py-3 px-4 text-center border-b border-orange-500/20 sticky top-0 z-50 shadow-lg">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-3">
             <div className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
             </div>
-            
             <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.15em] text-white leading-tight">
                 Mais de 4.000 mulheres de <span className="text-emerald-400 border-b border-emerald-400/30 pb-0.5 mx-0.5">{city ? city : 'sua região'}</span> já estancaram a queda com este kit
             </p>
@@ -268,11 +274,9 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: TRIPLA ANCORAGEM - DESIGN SUAVIDADE TOTAL */}
+        {/* 3. SEÇÃO: TRIPLA ANCORAGEM */}
         <section className="py-32 px-6 bg-white relative overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-24">
-                
-                {/* Header da Seção */}
                 <div className="text-center space-y-6 max-w-4xl mx-auto">
                     <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
                     <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
@@ -281,12 +285,8 @@ export function AntiHairLossPage() {
                     <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
                         TECNOLOGIA TRIPLA ANCORAGEM™
                     </p>
-                    <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto italic">
-                        O Único Sistema Que Reconstrói, Fortalece e ANCORA o Fio no Folículo em 3 Camadas Simultâneas.
-                    </p>
                 </div>
 
-                {/* Bloco: Como Funciona */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
                         <div className="flex items-center gap-3">
@@ -295,11 +295,9 @@ export function AntiHairLossPage() {
                             </div>
                             <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
                         </div>
-                        
                         <p className="text-xl text-slate-700 font-medium leading-relaxed">
                             Seu cabelo cai por <span className="text-orange-600 font-black">3 MOTIVOS:</span>
                         </p>
-
                         <div className="space-y-4">
                             {[
                                 { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
@@ -315,9 +313,7 @@ export function AntiHairLossPage() {
                                 </div>
                             ))}
                         </div>
-                        <p className="text-slate-400 font-bold text-sm italic">Shampoos comuns tratam ZERO desses problemas.</p>
                     </div>
-
                     <div className="relative">
                         <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                         <img 
@@ -328,7 +324,6 @@ export function AntiHairLossPage() {
                     </div>
                 </div>
 
-                {/* Grid das 3 Camadas */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
                         { 
@@ -352,7 +347,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -366,7 +361,6 @@ export function AntiHairLossPage() {
                                     <p className="text-xs font-black text-orange-600 uppercase tracking-widest">({step.prod})</p>
                                 </div>
                                 <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.desc}</p>
-                                
                                 <div className="space-y-3 pt-4 border-t border-orange-50">
                                     {step.feels.map((feel, idx) => (
                                         <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
@@ -375,7 +369,6 @@ export function AntiHairLossPage() {
                                         </div>
                                     ))}
                                 </div>
-
                                 <div className="mt-auto pt-6">
                                     <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-50 text-xs text-slate-500 italic leading-relaxed">
                                         <span className="font-black text-slate-900 not-italic uppercase block mb-1">Analogia:</span>
@@ -386,108 +379,10 @@ export function AntiHairLossPage() {
                         </div>
                     ))}
                 </div>
-
-                {/* Seção: Linha do Tempo Real - SUAVIZADA (Removido Preto) */}
-                <div className="bg-white border-4 border-orange-100 text-slate-900 rounded-[4rem] p-10 md:p-20 shadow-xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-12 opacity-[0.05] pointer-events-none text-orange-500">
-                        <Activity size={300} />
-                    </div>
-                    
-                    <div className="text-center mb-16 relative z-10 space-y-4">
-                        <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-orange-900">📊 LINHA DO TEMPO REAL</h3>
-                        <p className="text-orange-600 font-bold text-lg uppercase tracking-widest">(O Que Acontece Semana a Semana)</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-                        {[
-                            { 
-                                t: "SEMANA 1", 
-                                steps: ["Fio mais denso ao toque", "Queda reduz 50%", "Estanca 80-90% no 7º dia"] 
-                            },
-                            { 
-                                t: "SEMANA 2", 
-                                steps: ["Fios param de quebrar", "Couro cabeludo fecha", "Raiz visivelmente firme"] 
-                            },
-                            { 
-                                t: "SEMANA 3-4", 
-                                steps: ["Bebês nascem (1-2cm)", "Volume aumenta 2x", "Elogios de amigas"] 
-                            },
-                            { 
-                                t: "MÊS 2-3", 
-                                steps: ["Densidade restaurada", "Cresce 2x mais rápido", "Zero queda residual"] 
-                            }
-                        ].map((week, i) => (
-                            <div key={i} className="space-y-6 bg-orange-50/50 p-6 rounded-[2.5rem] border border-orange-100">
-                                <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-black shadow-md">{i+1}</div>
-                                    <p className="font-black text-xl tracking-tight text-orange-950">{week.t}</p>
-                                </div>
-                                <div className="space-y-4">
-                                    {week.steps.map((step, idx) => (
-                                        <div key={idx} className="flex items-start gap-3">
-                                            <CheckCircle2 size={16} className="text-orange-600 shrink-0 mt-0.5" />
-                                            <p className="text-sm font-bold text-slate-600">{step}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Por que Funciona Tão Rápido? - SUAVIZADO */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-12">
-                    <div className="space-y-8">
-                        <div className="flex items-center gap-3">
-                            <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
-                                <Zap size={24} fill="currentColor" />
-                            </div>
-                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">🧪 POR QUE FUNCIONA TÃO RÁPIDO?</h3>
-                        </div>
-                        <p className="text-xl text-slate-600 font-medium leading-relaxed">
-                            Porque age nas <span className="text-orange-700 font-black underline decoration-orange-200">3 CAUSAS</span> ao mesmo tempo. É matemática pura.
-                        </p>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="p-6 bg-[#FDF8F3] rounded-3xl border border-orange-100 space-y-2">
-                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest">Shampoo Comum</p>
-                                <p className="text-lg font-black text-slate-400">Só Limpa</p>
-                            </div>
-                            <div className="p-6 bg-white rounded-3xl border-2 border-orange-500/20 shadow-sm space-y-2">
-                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Kit Cavalo de Raça</p>
-                                <p className="text-lg font-black text-orange-800">Limpa + ANCORA + RECONSTRÓI</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Resumo Técnico (Bento Grid Style) - SUAVIZADO */}
-                    <div className="bg-white p-8 md:p-12 rounded-[4rem] border-2 border-orange-200 shadow-2xl space-y-10">
-                        <div className="flex items-center gap-3">
-                            <div className="p-2 bg-orange-100 rounded-xl"><FileCheck className="text-orange-700" size={24} /></div>
-                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">💡 RESUMO TÉCNICO</h3>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                            {[
-                                { l: "PROBLEMA", v: "Raiz fraca + Fibra quebrada" },
-                                { l: "SOLUÇÃO", v: "Tecnologia Tripla Ancoragem™" },
-                                { l: "RESULTADO", v: "87% Menos Queda em 7 Dias" },
-                                { l: "DIFERENCIAL", v: "RECONSTRÓI (Não Mascara)" },
-                                { l: "TEMPO", v: "15 min no banho normal" },
-                                { l: "PREÇO", v: "R$ 1,61 por dia" }
-                            ].map((item, i) => (
-                                <div key={i} className="p-4 bg-[#FDF8F3] rounded-2xl border border-orange-50 space-y-1">
-                                    <p className="text-[8px] font-black text-orange-400 uppercase tracking-widest">{item.l}</p>
-                                    <p className="text-sm font-black text-slate-900 leading-tight">{item.v}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        {/* 5. SEÇÃO: DEPOIMENTOS COM IMAGEM E TEXTO ✨ */}
+        {/* 4. SEÇÃO: DEPOIMENTOS RECEBIMENTO */}
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
@@ -497,32 +392,21 @@ export function AntiHairLossPage() {
                     </h2>
                     <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Fotos reais enviadas por nossas clientes ao receberem seus kits Cavalo de Raça.</p>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {DELIVERY_TESTIMONIALS.map((test, i) => (
                         <div key={i} className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-50 transition-all hover:scale-[1.02] hover:shadow-orange-200/30 flex flex-col">
                             <div className="aspect-square relative overflow-hidden border-b border-orange-50">
-                                <img 
-                                    src={test.image} 
-                                    alt="Kit Recebido" 
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg">
-                                    <Verified size={20} />
-                                </div>
+                                <img src={test.image} alt="Kit Recebido" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg"><Verified size={20} /></div>
                             </div>
                             <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
                                 <div className="space-y-4">
                                     <div className="flex gap-1 text-orange-400">
                                         {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
                                     </div>
-                                    <p className="text-slate-600 font-medium leading-relaxed italic text-lg">
-                                        "{test.text}"
-                                    </p>
+                                    <p className="text-slate-600 font-medium leading-relaxed italic text-lg">"{test.text}"</p>
                                 </div>
-                                <div className="pt-6 border-t border-orange-50">
-                                    <p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p>
-                                </div>
+                                <div className="pt-6 border-t border-orange-50"><p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p></div>
                             </div>
                         </div>
                     ))}
@@ -530,111 +414,129 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 🚀 NOVA SEÇÃO DE OFERTA ULTRA CONVERSÃO 🚀 */}
-        <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
-            {/* Background Effects */}
+        {/* 🚀 SEÇÃO DE OFERTA REDESENHADA 🚀 */}
+        <section id="pricing" className="py-24 px-6 bg-slate-950 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-600/10 via-transparent to-transparent"></div>
             <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px]"></div>
             
             <div className="max-w-4xl mx-auto relative z-10">
-                <div className="text-center mb-16 space-y-6">
-                    <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-tight">
-                        SUA ÚLTIMA CHANCE DE <br /> <span className="text-orange-500 italic">SOLTAR O CABELO</span> ✨
+                <div className="text-center mb-12 space-y-6">
+                    <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">
+                        🚨 SUA ÚLTIMA CHANCE DE PARAR A QUEDA EM CASA 🚨
                     </h2>
-                    <div className="flex flex-col items-center gap-2">
-                        <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Enviamos para todo o Brasil com Seguro e Rastreio</p>
-                    </div>
-                </div>
-
-                <div className="bg-white rounded-[4rem] p-6 md:p-12 shadow-[0_64px_128px_-24px_rgba(249,115,22,0.4)] relative border-[8px] border-white group overflow-hidden">
-                    
-                    {/* Badge 35% OFF */}
-                    <div className="absolute top-6 right-6 md:top-10 md:right-10 bg-orange-600 text-white w-20 h-20 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center font-black rotate-12 shadow-2xl border-4 border-white z-20 group-hover:scale-110 transition-transform">
-                        <span className="text-xl md:text-3xl">35%</span>
-                        <span className="text-[10px] md:text-sm uppercase leading-none">OFF</span>
-                    </div>
-
-                    <div className="flex flex-col items-center text-center space-y-10 relative z-10">
-                        
-                        {/* Header Oferta */}
-                        <div className="space-y-2">
-                            <span className="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">Oferta Direto da Fábrica</span>
-                            <h3 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">Kit Completo 4 Passos</h3>
-                        </div>
-
-                        {/* Preço Principal (PIX) */}
-                        <div className="bg-emerald-50 border-2 border-emerald-500/20 p-8 md:p-12 rounded-[3rem] w-full max-w-2xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-4 text-emerald-100">
-                                <Zap size={100} fill="currentColor" />
-                            </div>
-                            
-                            <div className="space-y-4 relative z-10">
-                                <div className="flex flex-col items-center leading-none">
-                                    <p className="text-slate-400 line-through font-bold text-lg mb-2">{config.priceCard}</p>
-                                    <p className="text-emerald-600 font-black text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
-                                        <Zap size={14} fill="currentColor" /> Exclusivo no PIX
-                                    </p>
-                                    <div className="flex items-start justify-center text-slate-950 font-black tracking-tighter">
-                                        <span className="text-3xl md:text-4xl mt-4 mr-2">R$</span>
-                                        <span className="text-8xl md:text-[10rem] font-black leading-none">
-                                            {config.pricePix.split(',')[0]}<span className="text-5xl md:text-6xl">,{config.pricePix.split(',')[1] || '00'}</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <p className="text-slate-500 font-bold uppercase text-[10px] md:text-xs tracking-widest">{config.installmentText}</p>
-                            </div>
-                        </div>
-
-                        {/* Benefícios de Entrega */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl border-y border-slate-100 py-8">
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><Truck size={24} /></div>
-                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Frete Grátis</p>
-                                <p className="text-[10px] text-slate-400 font-bold">Todo Brasil</p>
-                            </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl"><Verified size={24} /></div>
-                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Entrega Garantida</p>
-                                <p className="text-[10px] text-slate-400 font-bold">Com Seguro</p>
-                            </div>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="p-3 bg-orange-50 text-orange-600 rounded-2xl"><Zap size={24} /></div>
-                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Envio Imediato</p>
-                                <p className="text-[10px] text-slate-400 font-bold">Em 24 horas</p>
-                            </div>
-                        </div>
-
-                        {/* CTA Button */}
-                        <Link href={config.checkoutUrl || '#'} className="w-full max-w-xl group/btn" target="_blank" rel="noopener noreferrer">
-                            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
-                                <span className="flex items-center gap-4 text-xl md:text-3xl font-black uppercase tracking-tight">
-                                    <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover/btn:scale-110 transition-transform" />
-                                    {config.buttonText}
-                                </span>
-                            </Button>
-                        </Link>
-
-                        {/* Segurança Badges */}
-                        <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
-                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={18} /> Original</div>
-                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Lock size={18} /> SSL Seguro</div>
-                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Zap size={18} /> PIX Prioritário</div>
-                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><CreditCard size={18} /> Cartão</div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Scarcity Note */}
-                <div className="mt-12 text-center">
-                    <p className="text-white/60 font-medium text-sm flex items-center justify-center gap-2">
-                        <ShieldAlert size={16} className="text-orange-500" /> 
-                        Devido à alta procura, restam apenas <strong>14 unidades</strong> com este desconto promocional.
+                    <p className="text-slate-400 font-bold text-lg md:text-xl">
+                        Acorde Sem Cabelo no Travesseiro. Penteia Sem Medo. <br className="hidden md:block" />
+                        Viva Sem Precisar Esconder o Couro Cabeludo.
                     </p>
+                </div>
+
+                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl relative border-[8px] border-white overflow-hidden">
+                    
+                    {/* Timer Banner */}
+                    <div className="bg-red-600 -mx-12 -mt-12 mb-12 py-4 px-6 text-center text-white font-black text-sm md:text-lg tracking-widest flex items-center justify-center gap-3">
+                        <Clock size={20} className="animate-pulse" />
+                        OFERTA ENCERRA EM: <span className="font-mono">{formatTime(timeLeft)}</span>
+                    </div>
+
+                    <div className="flex flex-col items-center text-center space-y-12">
+                        
+                        {/* Preços */}
+                        <div className="space-y-6 w-full">
+                            <div className="space-y-1">
+                                <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Preço Normal: <span className="line-through">R$ 297,00</span></p>
+                                <p className="text-orange-600 font-black text-xs uppercase tracking-[0.3em]">Oportunidade Única Hoje</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Card Price */}
+                                <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col items-center justify-center gap-1">
+                                    <div className="flex items-center gap-2 text-slate-500 font-bold text-xs uppercase tracking-widest">
+                                        <CreditCard size={14} /> No Cartão
+                                    </div>
+                                    <p className="text-4xl font-black text-slate-900">{config.priceCard}</p>
+                                    <p className="text-[10px] text-slate-400 font-bold">{config.installmentText}</p>
+                                </div>
+
+                                {/* Pix Price */}
+                                <div className="p-6 rounded-3xl bg-emerald-50 border-2 border-emerald-500/20 flex flex-col items-center justify-center gap-1 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-2 text-emerald-100 opacity-50"><Zap size={40} fill="currentColor" /></div>
+                                    <div className="flex items-center gap-2 text-emerald-600 font-black text-xs uppercase tracking-widest relative z-10">
+                                        <Zap size={14} fill="currentColor" /> No Pix
+                                    </div>
+                                    <p className="text-5xl font-black text-slate-950 relative z-10">R$ {config.pricePix}</p>
+                                    <p className="text-[10px] text-emerald-600 font-black uppercase relative z-10">R$ 20 de desconto exclusivo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Lista de Recebimento */}
+                        <div className="w-full text-left bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 space-y-6">
+                            <h4 className="text-lg font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
+                                <ShoppingBag size={20} className="text-orange-600" /> VOCÊ RECEBE EM CASA:
+                            </h4>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {[
+                                    { icon: "🧴", t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { icon: "🧴", t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { icon: "🧴", t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { icon: "🧴", t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-4">
+                                        <span className="text-2xl">{item.icon}</span>
+                                        <div>
+                                            <p className="font-black text-slate-900 text-sm">{item.t}</p>
+                                            <p className="text-xs text-slate-500 font-medium">→ {item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="pt-6 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-600"><CheckCircle2 className="text-emerald-500" size={14} /> Frete GRÁTIS</div>
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-600"><CheckCircle2 className="text-emerald-500" size={14} /> Envio IMEDIATO</div>
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-600"><CheckCircle2 className="text-emerald-500" size={14} /> Seguro de entrega</div>
+                            </div>
+                        </div>
+
+                        {/* CTA */}
+                        <div className="w-full space-y-4">
+                            <Link href={config.checkoutUrl || '#'} className="block" target="_blank" rel="noopener noreferrer">
+                                <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2rem] shadow-xl shadow-green-200 transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
+                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3">
+                                        <ShoppingBag size={28} className="group-hover:scale-110 transition-transform" />
+                                        {config.buttonText}
+                                    </span>
+                                    <span className="text-[10px] font-black uppercase opacity-60">Acesso seguro | Envio em 24h</span>
+                                </Button>
+                            </Link>
+                            <div className="flex justify-center gap-8 opacity-40 grayscale">
+                                <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={14} /> Seguro</div>
+                                <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest"><Lock size={14} /> SSL</div>
+                                <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest"><CreditCard size={14} /> Cartão / Pix</div>
+                            </div>
+                        </div>
+
+                        {/* Scarcity / Progress Bar */}
+                        <div className="w-full pt-8 border-t border-slate-100 space-y-4">
+                            <div className="flex items-center justify-center gap-2 text-red-600 font-black text-sm uppercase tracking-widest">
+                                <ShieldAlert size={18} /> ATENÇÃO: ESTOQUE LIMITADO
+                            </div>
+                            <div className="space-y-2">
+                                <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                                    <div className="h-full bg-red-600 rounded-full animate-pulse" style={{ width: '80%' }}></div>
+                                </div>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                                    🔴 Restam apenas <span className="text-red-600">14 unidades</span> com este desconto
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        {/* GARANTIA SECTION */}
+        {/* GARANTIA */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
@@ -652,8 +554,6 @@ export function AntiHairLossPage() {
         <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
           <div className="max-w-6xl mx-auto px-6">
-            
-            {/* SEÇÃO JURÍDICA SUPERIOR */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
                 <div className="space-y-4">
                     <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
@@ -672,19 +572,11 @@ export function AntiHairLossPage() {
                         </div>
                     </div>
                 </div>
-
                 <div className="space-y-6 text-center md:text-left">
-                    <img 
-                        src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
-                        alt="OneBase Logo" 
-                        className="h-14 mx-auto md:mx-0"
-                    />
+                    <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="OneBase Logo" className="h-14 mx-auto md:mx-0" />
                     <div className="space-y-2">
                         <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
-                        <p className="text-xs text-slate-500 leading-relaxed">
-                            E-Business Rio Verde | Aparecida de Goiania - GO<br />
-                            CNPJ: 60.357.932/0001-18
-                        </p>
+                        <p className="text-xs text-slate-500 leading-relaxed">E-Business Rio Verde | Aparecida de Goiania - GO<br />CNPJ: 60.357.932/0001-18</p>
                     </div>
                 </div>
             </div>
@@ -693,7 +585,6 @@ export function AntiHairLossPage() {
               <div className="space-y-6 text-center md:text-left">
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
                 <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                    
                     <Dialog>
                         <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
@@ -706,7 +597,6 @@ export function AntiHairLossPage() {
                             </ScrollArea>
                         </DialogContent>
                     </Dialog>
-
                     <Dialog>
                         <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
                         <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
@@ -718,7 +608,6 @@ export function AntiHairLossPage() {
                             </ScrollArea>
                         </DialogContent>
                     </Dialog>
-
                     <Dialog>
                         <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
                         <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
@@ -734,38 +623,22 @@ export function AntiHairLossPage() {
                             </ScrollArea>
                         </DialogContent>
                     </Dialog>
-
                 </nav>
               </div>
-
               <div className="space-y-6 text-center md:text-left">
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
-                <div className="space-y-4">
-                    <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
-                        <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
-                        <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
-                    </div>
-                </div>
+                <div className="space-y-4"><div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full"><p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p><p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p></div></div>
               </div>
-
               <div className="space-y-6 text-center md:text-left">
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
-                <div className="flex justify-center md:justify-start gap-4 opacity-50">
-                    <ShieldCheck size={40} strokeWidth={1} />
-                    <Lock size={40} strokeWidth={1} />
-                    <CreditCard size={40} strokeWidth={1} />
-                </div>
+                <div className="flex justify-center md:justify-start gap-4 opacity-50"><ShieldCheck size={40} strokeWidth={1} /><Lock size={40} strokeWidth={1} /><CreditCard size={40} strokeWidth={1} /></div>
               </div>
             </div>
 
             <div className="pt-12 border-t border-slate-200 space-y-8">
                 <div className="max-w-4xl mx-auto space-y-6">
-                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
-                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
-                    </p>
-                    <div className="flex flex-col items-center gap-4">
-                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Cavalo de Raça</p>
-                    </div>
+                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic"><strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.</p>
+                    <div className="flex flex-col items-center gap-4"><p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Cavalo de Raça</p></div>
                 </div>
             </div>
           </div>
