@@ -654,10 +654,9 @@ export function AntiHairLossPage() {
 
         {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          price={config.pricePix} 
+          installmentText={config.installmentText}
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
-          installmentText={config.installmentText}
         />
       </div>
     </>

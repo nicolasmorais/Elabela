@@ -6,15 +6,14 @@ import { ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 
 interface MobileStickyBarProps {
-  price: string;
+  installmentText: string;
   buttonText: string;
   checkoutUrl: string;
-  installmentText: string;
 }
 
-export const MobileStickyBar = ({ price, buttonText, checkoutUrl, installmentText }: MobileStickyBarProps) => {
+export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: MobileStickyBarProps) => {
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white/98 border-t border-slate-100 px-4 pt-2 pb-6 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.08)] animate-in fade-in slide-in-from-bottom-full duration-700">
+    <div className="fixed bottom-0 left-0 w-full bg-white/98 border-t border-slate-100 px-4 pt-2 pb-6 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
       {/* Scarcity - Estoque Acabando */}
       <div className="text-center mb-2">
         <p className="text-[9px] font-black uppercase tracking-[0.2em] text-red-600 flex items-center justify-center gap-1.5">
@@ -24,23 +23,40 @@ export const MobileStickyBar = ({ price, buttonText, checkoutUrl, installmentTex
       </div>
 
       <Link href={checkoutUrl} className="block">
-        <Button className="w-full h-14 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex flex-col items-center justify-center gap-0 overflow-hidden px-2">
-          {/* Preço | COMPRAR AGORA */}
-          <div className="flex items-center gap-3 font-black text-lg uppercase tracking-tight">
-            <span className="whitespace-nowrap">R$ {price}</span>
-            <span className="opacity-30 font-light text-2xl">|</span>
-            <span className="flex items-center gap-2 truncate">
-                <ShoppingBag size={18} className="shrink-0" />
-                {buttonText}
-            </span>
+        <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-between gap-0 overflow-hidden px-5 py-0">
+          {/* LADO ESQUERDO: PARCELAMENTO */}
+          <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4">
+            <span className="text-[10px] font-bold uppercase opacity-70 tracking-widest">Apenas</span>
+            <span className="text-lg font-black tracking-tight whitespace-nowrap">{installmentText}</span>
           </div>
           
-          {/* PARCELAS (Texto Suave abaixo) */}
-          <p className="text-[9px] font-bold uppercase opacity-80 tracking-widest leading-none mt-1">
-            {installmentText.replace('ou em ', '')}
-          </p>
+          {/* LADO DIREITO: COMPRAR AGORA */}
+          <div className="flex-1 flex items-center justify-center pl-4">
+            <span className="flex items-center gap-2 text-lg font-black uppercase tracking-tighter italic">
+                {buttonText}
+                <ArrowRight size={18} className="shrink-0" />
+            </span>
+          </div>
         </Button>
       </Link>
     </div>
   );
 };
+
+// Componente local para ícone não importado
+const ArrowRight = ({ size, className }: { size: number, className: string }) => (
+    <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="3" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className={className}
+    >
+        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+    </svg>
+);
