@@ -22,7 +22,7 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
         </p>
       </div>
 
-      <Link href={checkoutUrl} className="block">
+      <Link href={checkoutUrl || '#'} className="block" target="_blank" rel="noopener noreferrer">
         <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-between gap-0 overflow-hidden px-5 py-0">
           {/* LADO ESQUERDO: PARCELAMENTO */}
           <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4 text-left">
