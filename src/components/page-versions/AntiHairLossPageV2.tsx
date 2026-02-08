@@ -60,10 +60,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
 
 const GALLERY_IMAGES = [
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421102915-ChatGPT-Image-6-de-fev.-de-2026,-20_35_44.png"
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896113265-ChatGPT-Image-31-de-jan.-de-2026,-18_44_47.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg"
 ];
 
 const DELIVERY_TESTIMONIALS = [
@@ -426,9 +425,9 @@ export function AntiHairLossPageV2() {
             </footer>
         </div>
 
-        {/* STICKY BAR MOBILE */}
+        {/* STICKY BAR MOBILE - Ajustado para remover 'no Cartão' apenas aqui */}
         <MobileStickyBar 
-          installmentText="12x de 14,96 no Cartão"
+          installmentText={config.installmentText.replace(' no Cartão', '')}
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
         />
