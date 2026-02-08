@@ -380,55 +380,8 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: O QUE VEM NO KIT (DETALHADA) */}
-            <section className="py-24 px-6 bg-[#FDF8F3] border-b border-orange-100">
-                <div className="max-w-5xl mx-auto">
-                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
-                        <div className="space-y-12">
-                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
-                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
-                                    <ShoppingBag size={24} />
-                                </div>
-                                VOCÊ RECEBE O KIT COMPLETO:
-                            </h3>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                                {[
-                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
-                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
-                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
-                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-5 group">
-                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
-                                            <span className="text-3xl">🧴</span>
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
-                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: TRIPLA ANCORAGEM */}
-            <section className="py-32 px-6 bg-white relative overflow-hidden">
+            {/* SEÇÃO COMPLETA: TRIPLA ANCORAGEM */}
+            <section className="py-32 px-6 bg-white relative overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto space-y-24">
                     <div className="text-center space-y-6 max-w-4xl mx-auto">
                         <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
@@ -438,6 +391,46 @@ export function AntiHairLossPageV2() {
                         <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
                             TECNOLOGIA TRIPLA ANCORAGEM™
                         </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8">
+                            <div className="flex items-center gap-3">
+                                <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
+                                    <Microscope size={24} />
+                                </div>
+                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
+                            </div>
+                            <p className="text-xl text-slate-700 font-medium leading-relaxed">
+                                Seu cabelo cai por <span className="text-orange-600 font-black">3 MOTIVOS:</span>
+                            </p>
+                            <div className="space-y-4">
+                                {[
+                                    { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
+                                    { n: "2", t: "FIBRA QUEBRADA", d: "O fio está tão seco que parte ao meio antes mesmo de cair." },
+                                    { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio solto e vulnerável." }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
+                                        <div className="h-8 w-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-black shrink-0 shadow-sm">{item.n}</div>
+                                        <div>
+                                            <p className="font-black text-orange-950 uppercase text-sm tracking-widest mb-1">{item.t}</p>
+                                            <p className="text-slate-500 font-medium text-sm">{item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-lg text-slate-600 leading-relaxed italic border-l-4 border-orange-200 pl-6 py-2">
+                                Imagine um cabo de aço tentando segurar um peso enorme enquanto a base está solta no barro. Não importa quão forte seja o cabo, ele vai soltar. Nossa tecnologia "cimenta" a base enquanto reforça o cabo.
+                            </p>
+                        </div>
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
+                            <img 
+                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
+                                alt="Tecnologia Tripla Ancoragem" 
+                                className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03]"
+                            />
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -485,9 +478,62 @@ export function AntiHairLossPageV2() {
                                             </div>
                                         ))}
                                     </div>
+                                    <div className="mt-auto pt-6">
+                                        <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-50 text-xs text-slate-500 italic leading-relaxed">
+                                            <span className="font-black text-slate-900 not-italic uppercase block mb-1 text-[9px] tracking-widest">Analogia Profissional:</span>
+                                            {step.analogia}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: O QUE VEM NO KIT (DETALHADA) */}
+            <section className="py-24 px-6 bg-[#FDF8F3] border-b border-orange-100">
+                <div className="max-w-5xl mx-auto">
+                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
+                        <div className="space-y-12">
+                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
+                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
+                                    <ShoppingBag size={24} />
+                                </div>
+                                VOCÊ RECEBE O KIT COMPLETO:
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                                {[
+                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-5 group">
+                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
+                                            <span className="text-3xl">🧴</span>
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
+                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
