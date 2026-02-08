@@ -99,48 +99,16 @@ const DELIVERY_TESTIMONIALS = [
   }
 ];
 
-const KITS = [
-    { 
-        id: '1-unidade', 
-        name: '1 kit', 
-        discount: '21% OFF', 
-        originalPrice: 'R$ 187,00', 
-        price: '147,00', 
-        unitPrice: 'R$ 147,00 por kit',
-        checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=1'
-    },
-    { 
-        id: '3-unidades', 
-        name: '3 kits', 
-        discount: '40% OFF', 
-        originalPrice: 'R$ 497,00', 
-        price: '297,00', 
-        unitPrice: 'R$ 99,00 por kit',
-        badge: 'Mais Vendido',
-        checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=3'
-    },
-    { 
-        id: '6-unidades', 
-        name: '6 kits', 
-        discount: '55% OFF', 
-        originalPrice: 'R$ 994,00', 
-        price: '447,00', 
-        unitPrice: 'R$ 74,50 por kit',
-        badge: 'Melhor Preço',
-        badgeColor: 'bg-emerald-500',
-        checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=6'
-    }
-];
-
 export function AntiHairLossPageV2() {
   const [city, setCity] = useState('');
   const [timeLeft, setTimeLeft] = useState(38010); // ~10h 33min
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  // PREÇOS FIXADOS EM 147,00 CONFORME SOLICITADO
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
       pricePix: '147,00',
-      installmentText: '12x de R$ 14,96',
+      installmentText: '12x de R$ 14,96 no cartão',
       buttonText: 'Comprar agora',
       checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
   });
@@ -155,20 +123,18 @@ export function AntiHairLossPageV2() {
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
 
+    // OMITIMOS A SOBREPOSIÇÃO DE PREÇOS PELA API PARA MANTER O VALOR FIXO DE 147,00
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
-            if (data) {
-                setConfig({
-                    priceCard: data.priceCard || 'R$ 187,00',
-                    pricePix: data.pricePix || '147,00',
-                    installmentText: data.installmentText || '12x de R$ 14,96',
-                    buttonText: data.buttonText || 'Comprar agora',
-                    checkoutUrl: data.checkoutUrl || 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
-                });
+            if (data && data.checkoutUrl) {
+                setConfig(prev => ({
+                    ...prev,
+                    checkoutUrl: data.checkoutUrl
+                }));
             }
         })
-        .catch(e => console.error("Erro ao carregar preços."));
+        .catch(e => console.error("Erro ao carregar link de checkout."));
 
     return () => clearInterval(timer);
   }, []);
@@ -779,47 +745,6 @@ export function AntiHairLossPageV2() {
                         </div>
                     </div>
 
-                    {/* VOCÊ RECEBE O KIT COMPLETO CARD */}
-                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
-                        <div className="space-y-12">
-                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
-                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
-                                    <ShoppingBag size={24} />
-                                </div>
-                                VOCÊ RECEBE O KIT COMPLETO:
-                            </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-                                {[
-                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
-                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
-                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
-                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-5 group">
-                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
-                                            <span className="text-3xl">🧴</span>
-                                        </div>
-                                        <div className="space-y-1.5">
-                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
-                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
-                                </div>
-                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
-                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     {/* POTENCIALIZAR RESULTADOS */}
                     <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-orange-50">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -937,7 +862,7 @@ export function AntiHairLossPageV2() {
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
                                     { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
-                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96. Ou R$ 147,00 no PIX (desconto aplicado)." },
+                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." },
                                     { q: "❓ Tem desconto maior?", a: "NÃO. Este é o menor preço possível. De R$ 297 por R$ 147,00 = 50% OFF" },
                                     { q: "❓ E se não funcionar?", a: "GARANTIA DE 7 DIAS. Use por 1 semana. Não funcionou? Devolvemos 100% do valor. Sem perguntas. Sem burocracia." }
                                 ].map((item, i) => (
