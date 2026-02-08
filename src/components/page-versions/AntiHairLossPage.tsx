@@ -54,32 +54,32 @@ const GALLERY_IMAGES = [
 const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558637636-1.png",
-    text: "Acabou de chegar! Muito bem embalado e o cheiro é maravilhoso. Começando meu tratamento hoje mesmo, super ansiosa pelos resultados!",
+    text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme e cheiroso.",
     author: "Marta S., São Paulo"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
-    text: "Entrega super rápida aqui no RJ. O kit é lindo e já fiz a primeira aplicação. Meu cabelo ficou com um brilho que eu não via há anos.",
+    text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. Notei que caiu bem menos fios no banho, já sinto a diferença na quebra.",
     author: "Juliana P., Rio de Janeiro"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558644450-3.png",
-    text: "Recebi tudo certinho em Minas. Estava com medo de comprar online mas o suporte foi ótimo. Agora é focar no cronograma antiqueda!",
+    text: "Recebi em tempo recorde! O kit é lindo e muito cheiroso. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a quebra diminuiu logo de cara.",
     author: "Fernanda L., Belo Horizonte"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558648736-4.png",
-    text: "Gente, o perfume desse kit é sem igual. O cabelo fica muito macio logo no primeiro uso. Amei demais!",
+    text: "Chegou voando! Começando o cronograma antiqueda agora. O perfume fixou no cabelo e já sinto os fios mais resistentes, caiu quase nada no pente hoje.",
     author: "Carla T., Curitiba"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
-    text: "Chegou hoje! Embalagem impecável e envio super rápido. Já indiquei para todas as minhas amigas.",
+    text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
     author: "Renata M., Salvador"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
-    text: "Meu kit chegou! Já vou começar o cronograma hoje mesmo para recuperar a força do meu cabelo.",
+    text: "Meu kit chegou antes do esperado! Já iniciei o tratamento. O cabelo está super cheiroso e sinto que a queda já deu uma segurada na primeira lavagem.",
     author: "Beatriz A., Porto Alegre"
   }
 ];
@@ -110,7 +110,7 @@ export function AntiHairLossPage() {
       })
       .catch(() => console.log("Não foi possível detectar a cidade."));
 
-    // Preços dinâmicos (mantendo a lógica mas forçando o valor se necessário)
+    // Preços dinâmicos
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
