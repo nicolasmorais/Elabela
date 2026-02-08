@@ -115,10 +115,10 @@ export function AntiHairLossPageV2() {
 
         {/* HERO / PRODUCT SECTION */}
         <main className="max-w-7xl mx-auto px-6 py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 
-                {/* ESQUERDA: GALERIA (Col 5) */}
-                <div className="lg:col-span-5 space-y-4">
+                {/* ESQUERDA: GALERIA (50%) */}
+                <div className="space-y-4">
                     <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 relative group">
                         <img src={activeImage} alt="Produto Principal" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                     </div>
@@ -138,8 +138,8 @@ export function AntiHairLossPageV2() {
                     </div>
                 </div>
 
-                {/* DIREITA: INFOS DE COMPRA (Col 7) */}
-                <div className="lg:col-span-7 space-y-6">
+                {/* DIREITA: INFOS DE COMPRA (50%) */}
+                <div className="space-y-6">
                     
                     {/* Badge de Destaque */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
