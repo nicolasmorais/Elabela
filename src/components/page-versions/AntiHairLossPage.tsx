@@ -91,7 +91,7 @@ export function AntiHairLossPage() {
   const [config, setConfig] = useState({
       priceCard: '147,00',
       pricePix: '147,00',
-      installmentText: 'ou em 12x de 14,96',
+      installmentText: '12x de 14,96',
       buttonText: 'COMPRAR AGORA',
       checkoutUrl: '#'
   });
@@ -118,7 +118,7 @@ export function AntiHairLossPage() {
                 setConfig({
                     priceCard: data.priceCard || '147,00',
                     pricePix: data.pricePix || '147,00',
-                    installmentText: data.installmentText || 'ou em 12x de 14,96',
+                    installmentText: data.installmentText || '12x de 14,96',
                     buttonText: data.buttonText || 'COMPRAR AGORA',
                     checkoutUrl: data.checkoutUrl || '#'
                 });
@@ -568,7 +568,7 @@ export function AntiHairLossPage() {
                     <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
-                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
@@ -657,6 +657,7 @@ export function AntiHairLossPage() {
           price={config.pricePix} 
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
+          installmentText={config.installmentText}
         />
       </div>
     </>
