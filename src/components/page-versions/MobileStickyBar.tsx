@@ -25,8 +25,8 @@ export const MobileStickyBar = ({ price, buttonText, checkoutUrl }: MobileSticky
       </div>
 
       <Link href={checkoutUrl} className="flex-1">
-        <Button className="w-full h-14 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black uppercase tracking-tight shadow-lg shadow-green-200 active:scale-95 transition-transform flex items-center justify-center gap-2">
-          <ShoppingBag size={18} />
+        <Button className="w-full h-14 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-xl uppercase tracking-tight shadow-lg shadow-green-200 active:scale-95 transition-transform flex items-center justify-center gap-2">
+          <ShoppingBag size={20} />
           {buttonText}
         </Button>
       </Link>
