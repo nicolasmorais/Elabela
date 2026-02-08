@@ -515,7 +515,6 @@ export function AntiHairLossPageV2() {
                                 </div>
                                 VOCÊ RECEBE O KIT COMPLETO:
                             </h3>
-                            
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                                 {[
                                     { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
@@ -534,7 +533,6 @@ export function AntiHairLossPageV2() {
                                     </div>
                                 ))}
                             </div>
-
                             <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
                                 <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
                                     <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
@@ -1013,17 +1011,6 @@ export function AntiHairLossPageV2() {
                                 ))}
                             </Accordion>
                         </div>
-                    </div>
-
-                    <div className="mt-16 bg-white border-2 border-orange-500 border-dashed p-8 md:p-12 rounded-[3rem] text-center space-y-6">
-                        <div className="mx-auto w-16 h-16 bg-orange-100 text-orange-700 rounded-full flex items-center justify-center mb-4">
-                            <ShieldCheck size={32} />
-                        </div>
-                        <h4 className="text-2xl font-black text-slate-900 uppercase tracking-tight">GARANTIA TOTAL DE 7 DIAS</h4>
-                        <p className="text-lg text-slate-600 font-medium italic">
-                            Use o kit por 1 semana. Não ver resultado? Devolvemos 100%. <br />
-                            <strong className="text-orange-800 uppercase not-italic">O risco é TODO nosso.</strong>
-                        </p>
                     </div>
                 </div>
             </section>
