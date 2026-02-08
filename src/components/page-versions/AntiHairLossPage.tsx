@@ -351,7 +351,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -597,38 +597,6 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* TESTEMUNHOS */}
-        <section className="py-24 px-6">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">Mulheres Reais</h2>
-                    <div className="flex justify-center gap-1 text-orange-500">
-                        {[...Array(5)].map((_, i) => <Star key={i} size={24} fill="currentColor" />)}
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {[
-                        { n: "Mariana R.", i: "34 anos", t: "Chorei na primeira vez que usei. Eu não acreditava que meu cabelo pudesse voltar a ser assim." },
-                        { n: "Juliana S.", i: "29 anos", t: "Meu marido perguntou se eu tinha ido ao salão. O perfume é incrível e o brilho é absurdo!" },
-                        { n: "Camila F.", i: "41 anos", t: "Gastava R$200 todo mês no salão. Esse kit me deu resultado profissional em casa por muito menos." }
-                    ].map((test, i) => (
-                        <div key={i} className="bg-white p-10 rounded-[3rem] border border-orange-100 shadow-xl relative group hover:-translate-y-2 transition-all">
-                            <div className="absolute -top-6 -left-4 text-orange-100 text-9xl font-serif select-none pointer-events-none group-hover:text-orange-200 transition-colors opacity-50">“</div>
-                            <p className="italic text-slate-700 text-lg font-medium leading-relaxed relative z-10 mb-8">"{test.t}"</p>
-                            <div className="flex items-center gap-4 border-t border-slate-50 pt-6">
-                                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center font-black text-orange-800">{test.n[0]}</div>
-                                <div>
-                                    <p className="font-black text-slate-900">{test.n}</p>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">{test.i}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
         {/* 🚀 NOVA SEÇÃO DE OFERTA ULTRA CONVERSÃO 🚀 */}
         <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
             {/* Background Effects */}
@@ -742,7 +710,7 @@ export function AntiHairLossPage() {
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
                         Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
-                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
+                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Cavalo de Raça</div>
                 </div>
             </div>
         </section>
