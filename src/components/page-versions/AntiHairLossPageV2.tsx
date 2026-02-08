@@ -104,11 +104,10 @@ export function AntiHairLossPageV2() {
   const [timeLeft, setTimeLeft] = useState(38010); // ~10h 33min
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  // PREÇOS FIXADOS EM 147,00 CONFORME SOLICITADO
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
       pricePix: '147,00',
-      installmentText: '12x de R$ 14,96 no cartão',
+      installmentText: '12x de R$ 14,96',
       buttonText: 'Comprar agora',
       checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
   });
@@ -123,7 +122,6 @@ export function AntiHairLossPageV2() {
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
 
-    // OMITIMOS A SOBREPOSIÇÃO DE PREÇOS PELA API PARA MANTER O VALOR FIXO DE 147,00
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
@@ -494,7 +492,7 @@ export function AntiHairLossPageV2() {
                                         ))}
                                     </div>
                                     <div className="mt-auto pt-6">
-                                        <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-50 text-xs text-slate-500 italic leading-relaxed">
+                                        <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-100 text-xs text-slate-500 italic leading-relaxed">
                                             <span className="font-black text-slate-900 not-italic uppercase block mb-1 text-[9px] tracking-widest">Analogia Profissional:</span>
                                             {step.analogia}
                                         </div>
@@ -502,6 +500,53 @@ export function AntiHairLossPageV2() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: O QUE VEM NO KIT (DETALHADA) */}
+            <section className="py-24 px-6 bg-[#FDF8F3] border-b border-orange-100">
+                <div className="max-w-5xl mx-auto">
+                    <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
+                        <div className="space-y-12">
+                            <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
+                                <div className="p-2.5 bg-orange-600 rounded-xl text-white shadow-lg shadow-orange-200">
+                                    <ShoppingBag size={24} />
+                                </div>
+                                VOCÊ RECEBE O KIT COMPLETO:
+                            </h3>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+                                {[
+                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-5 group">
+                                        <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
+                                            <span className="text-3xl">🧴</span>
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
+                                            <p className="text-slate-400 font-bold text-base leading-tight italic">→ {item.d}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-10 md:gap-16">
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> FRETE GRÁTIS
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> ENVIO IMEDIATO
+                                </div>
+                                <div className="flex items-center gap-2.5 text-xs font-black uppercase text-emerald-700 tracking-[0.1em]">
+                                    <CheckCircle2 size={20} className="text-emerald-500" /> SEGURO DE ENTREGA
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -687,7 +732,7 @@ export function AntiHairLossPageV2() {
 
                                 <div className="space-y-6">
                                     <div className="flex gap-6 group">
-                                        <div className="h-10 w-10 shrink-0 bg-orange-100 rounded-xl flex items-center justify-center font-black text-orange-800 text-lg border border-orange-200">4</div>
+                                        <div className="h-10 w-10 shrink-0 bg-orange-100 rounded-xl flex items-center justify-center font-black text-orange-800 text-lg border border-orange-100">4</div>
                                         <div className="space-y-4">
                                             <div className="flex items-center justify-between">
                                                 <h4 className="font-black text-slate-950 text-lg uppercase tracking-tight">MÁSCARA ANTI-QUEDA</h4>
