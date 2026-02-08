@@ -2,32 +2,87 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
+  Check, 
   Star, 
-  ShoppingBag, 
+  Clock, 
+  ShieldCheck, 
+  ArrowRight, 
   Zap, 
-  CheckCircle2, 
+  Heart, 
+  Sparkles, 
   Award,
-  Clock,
-  ShieldCheck,
+  Truck,
+  Verified,
+  ShieldAlert,
+  ShoppingBag,
+  DollarSign,
+  Home,
+  Dumbbell,
+  Microscope,
   Lock,
   CreditCard,
-  ChevronDown,
-  Heart,
-  Sparkles,
-  Droplets,
-  ZapIcon,
-  ArrowRight
+  CheckCircle2,
+  Anchor,
+  Layers,
+  Settings2,
+  Activity,
+  FileCheck,
+  ClipboardList,
+  AlertCircle,
+  ChevronRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { MobileStickyBar } from './MobileStickyBar';
 
 const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421102915-ChatGPT-Image-6-de-fev.-de-2026,-20_35_44.png"
+];
+
+const DELIVERY_TESTIMONIALS = [
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558637636-1.png",
+    text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme e cheiroso.",
+    author: "Marta S., São Paulo"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
+    text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. Notei que caiu bem menos fios no banho, já sinto a diferença na quebra.",
+    author: "Juliana P., Rio de Janeiro"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558644450-3.png",
+    text: "Recebi em tempo recorde! O kit é lindo e muito cheiroso. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a quebra diminuiu logo de cara.",
+    author: "Fernanda L., Belo Horizonte"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558648736-4.png",
+    text: "Chegou voando! Começando o cronograma antiqueda agora. O perfume fixou no cabelo e já sinto os fios mais resistentes, caiu quase nada no pente hoje.",
+    author: "Carla T., Curitiba"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
+    text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
+    author: "Renata M., Salvador"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
+    text: "Meu kit chegou antes do esperado! Já iniciei o tratamento. O cabelo está super cheiroso e sinto que a queda já deu uma segurada na primeira lavagem.",
+    author: "Beatriz A., Porto Alegre"
+  }
 ];
 
 const KITS = [
@@ -69,6 +124,14 @@ export function AntiHairLossPageV2() {
   const [activeImage, setActiveImage] = useState(GALLERY_IMAGES[0]);
   const [selectedKitId, setSelectedKitId] = useState('3-unidades');
 
+  const [config, setConfig] = useState({
+      priceCard: 'R$ 497,00',
+      pricePix: '297,00',
+      installmentText: 'Em até 12x de R$ 14,96 sem juros',
+      buttonText: 'Comprar agora',
+      checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=3'
+  });
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
@@ -78,6 +141,21 @@ export function AntiHairLossPageV2() {
       .then(res => res.json())
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
+
+    fetch('/api/page-settings/antiqueda')
+        .then(res => res.json())
+        .then(data => {
+            if (data) {
+                setConfig({
+                    priceCard: data.priceCard || 'R$ 497,00',
+                    pricePix: data.pricePix || '297,00',
+                    installmentText: data.installmentText || 'Em até 12x de R$ 14,96 sem juros',
+                    buttonText: data.buttonText || 'Comprar agora',
+                    checkoutUrl: data.checkoutUrl || 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8&qty=3'
+                });
+            }
+        })
+        .catch(e => console.error("Erro ao carregar preços."));
 
     return () => clearInterval(timer);
   }, []);
@@ -158,15 +236,15 @@ export function AntiHairLossPageV2() {
 
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                            <span className="text-slate-400 line-through text-lg">R$ 497,00</span>
+                            <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
                             <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">40% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
-                            <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
+                            <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
                             <span className="text-emerald-600 font-bold text-xl">no pix</span>
                         </div>
                         <p className="text-slate-500 font-medium text-sm">
-                            Em até 12x de R$ 14,96 sem juros
+                            {config.installmentText}
                         </p>
                     </div>
 
@@ -183,13 +261,13 @@ export function AntiHairLossPageV2() {
 
                     {/* BOTÃO COMPRAR AGORA MELHORADO */}
                     <div className="space-y-4 pt-4">
-                        <Link href={selectedKit.checkoutUrl} target="_blank">
+                        <Link href={config.checkoutUrl} target="_blank">
                             <Button 
                                 className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group"
                                 style={{ backgroundColor: '#35c867' }}
                             >
                                 <ShoppingBag size={28} />
-                                Comprar agora
+                                {config.buttonText}
                                 <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
                             </Button>
                         </Link>
@@ -212,6 +290,240 @@ export function AntiHairLossPageV2() {
                 </div>
             </div>
         </main>
+
+        {/* --- SEÇÃO DE DESCRIÇÃO (INTEGRADA DA V1) --- */}
+        <div className="border-t border-slate-100 bg-white">
+            
+            {/* SEÇÃO: MÍDIA / PORTAIS */}
+            <section className="py-12 bg-white border-b border-slate-50 overflow-hidden">
+              <div className="max-w-6xl mx-auto px-6">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 opacity-30 grayscale group">
+                   <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-2 md:mb-0">Destaque na Mídia:</p>
+                   <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans">G1</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans italic">R7</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans">GLOBO</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans">BAND</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans underline decoration-4">SBT</span>
+                   </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SEÇÃO: PÚBLICO-ALVO */}
+            <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col lg:flex-row items-start gap-16">
+                        <div className="flex-1 space-y-8">
+                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
+                            <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
+                                O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa.</span>
+                            </h2>
+                            <div className="pt-8 space-y-6">
+                                <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        "💔 Chora vendo tanto cabelo caindo no ralo",
+                                        "💔 Evita passar a mão no cabelo com medo que caia mais",
+                                        "💔 Já escondeu o couro cabeludo com truques de penteado",
+                                        "💔 Não pode (ou não quer) gastar R$ 500 em dermatologista",
+                                        "💔 Trabalha, cuida da casa e não tem tempo para salão toda semana"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-700">
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="flex-1 lg:sticky lg:top-24 relative w-full">
+                            <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
+                            <img 
+                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                                alt="Mulher Confiante com Cabelo Lindo" 
+                                className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: TRIPLA ANCORAGEM */}
+            <section className="py-32 px-6 bg-white relative overflow-hidden">
+                <div className="max-w-6xl mx-auto space-y-24">
+                    <div className="text-center space-y-6 max-w-4xl mx-auto">
+                        <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
+                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
+                            POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-600">7 DIAS?</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
+                            TECNOLOGIA TRIPLA ANCORAGEM™
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { 
+                                icon: Anchor, 
+                                title: "CAMADA 1: ANCORA A RAIZ", 
+                                prod: "Shampoo Reconstrutor",
+                                desc: "Remove resíduos químicos que DISSOLVEM a proteção da raiz e deposita aminoácidos que RECONSTROEM a bainha folicular.",
+                                feels: ["1ª lavada: Couro cabeludo respira", "3 dias: Fios param de soltar", "7 dias: Raiz firme (Zero quebra)"],
+                                analogia: "É como cimentar um poste que estava solto no chão. O fio PARA de cair porque ele está PRESO de verdade."
+                            },
+                            { 
+                                icon: Layers, 
+                                title: "CAMADA 2: RECONSTRÓI A FIBRA", 
+                                prod: "Máscara Intensiva",
+                                desc: "Penetra na ESTRUTURA INTERNA do fio com queratina biomimética, unindo pontas quebradas como se fossem soldar.",
+                                feels: ["1ª aplicação: Fio fica pesado", "1 semana: Para de ver fios partidos", "2 semanas: Fio DOBRA sem quebrar"],
+                                analogia: "É como consertar rachaduras numa parede. Não adianta pintar. Tem que TAPAR o buraco."
+                            },
+                            { 
+                                icon: ShieldCheck, 
+                                title: "CAMADA 3: SELA E PROTEGE", 
+                                prod: "Condicionador + Leave-in",
+                                desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
+                                feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                                analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
+                            }
+                        ].map((step, i) => (
+                            <div key={i} className="flex flex-col p-8 md:p-10 bg-white rounded-[3.5rem] border border-orange-100 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all duration-500 group">
+                                <div className="p-4 bg-[#FDF8F3] rounded-2xl shadow-sm w-fit mb-8 group-hover:scale-110 transition-transform">
+                                    <step.icon className="h-8 w-8 text-orange-700" />
+                                </div>
+                                <div className="space-y-6 flex-1">
+                                    <div className="space-y-2">
+                                        <h4 className="text-xl font-black text-slate-950 uppercase tracking-tight leading-tight">{step.title}</h4>
+                                        <p className="text-xs font-black text-orange-600 uppercase tracking-widest">({step.prod})</p>
+                                    </div>
+                                    <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.desc}</p>
+                                    <div className="space-y-3 pt-4 border-t border-orange-50">
+                                        {step.feels.map((feel, idx) => (
+                                            <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                                                <div className="h-1.5 w-1.5 rounded-full bg-orange-400"></div>
+                                                {feel}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: DEPOIMENTOS RECEBIMENTO */}
+            <section className="py-24 px-6 bg-white overflow-hidden">
+                <div className="max-w-6xl mx-auto space-y-16">
+                    <div className="text-center space-y-4">
+                        <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.5em] mb-2">Comunidade Cavalo de Raça</span>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
+                          ENQUANTO VOCÊ LÊ, MILHARES JÁ ESTÃO USANDO ✨
+                        </h2>
+                        <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Fotos reais enviadas por nossas clientes ao receberem seus kits Cavalo de Raça.</p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {DELIVERY_TESTIMONIALS.map((test, i) => (
+                            <div key={i} className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-50 transition-all hover:scale-[1.02] hover:shadow-orange-200/30 flex flex-col">
+                                <div className="aspect-square relative overflow-hidden border-b border-orange-50">
+                                    <img src={test.image} alt="Kit Recebido" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg"><Verified size={20} /></div>
+                                </div>
+                                <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                                    <div className="space-y-4">
+                                        <div className="flex gap-1 text-orange-400">
+                                            {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
+                                        </div>
+                                        <p className="text-slate-600 font-medium leading-relaxed italic text-lg">"{test.text}"</p>
+                                    </div>
+                                    <div className="pt-6 border-t border-orange-50"><p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p></div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: GARANTIA */}
+            <section className="py-24 px-6 bg-white border-t border-slate-50">
+                <div className="max-w-4xl mx-auto text-center">
+                    <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
+                        <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
+                        <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
+                        <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
+                            Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
+                        </p>
+                        <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FOOTER */}
+            <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
+              <div className="max-w-6xl mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
+                    <div className="space-y-4">
+                        <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
+                        <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
+                            <div>
+                                <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
+                                <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="space-y-6 text-center md:text-left">
+                        <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="OneBase Logo" className="h-14 mx-auto md:mx-0" />
+                        <div className="space-y-2">
+                            <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
+                            <p className="text-xs text-slate-500 leading-relaxed">E-Business Rio Verde | Aparecida de Goiania - GO<br />CNPJ: 60.357.932/0001-18</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                    <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                    <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido possui caráter exclusivamente informativo.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                    <p>Valorizamos sua privacidade. Suas informações são protegidas.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
+                    </nav>
+                  </div>
+                </div>
+
+                <div className="pt-12 border-t border-slate-200 space-y-8">
+                    <div className="max-w-4xl mx-auto space-y-6">
+                        <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic"><strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.</p>
+                        <div className="flex flex-col items-center gap-4"><p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Cavalo de Raça</p></div>
+                    </div>
+                </div>
+              </div>
+            </footer>
+
+        </div>
+
+        {/* STICKY BAR MOBILE */}
+        <MobileStickyBar 
+          installmentText={config.installmentText.split('de ')[1] || config.installmentText}
+          buttonText={config.buttonText} 
+          checkoutUrl={config.checkoutUrl} 
+        />
       </div>
     </>
   );
