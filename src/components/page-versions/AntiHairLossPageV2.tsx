@@ -35,7 +35,8 @@ import {
   Beaker,
   Calendar,
   Lightbulb,
-  Info
+  Info,
+  Play // <-- Corrigido: Adicionado Play
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
