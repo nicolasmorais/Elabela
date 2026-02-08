@@ -351,7 +351,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -529,44 +529,6 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 6. SEÇÃO: CAVALO DE RAÇA */}
-        <section className="py-24 px-6 bg-orange-50/50 text-slate-900 relative overflow-hidden border-y border-orange-100">
-            <div className="max-w-6xl mx-auto relative z-10">
-                <div className="max-w-3xl mx-auto text-center space-y-8">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 border border-orange-200 rounded-full text-orange-800 text-[10px] font-black uppercase tracking-widest">
-                        <Microscope size={14} /> Ciência Aplicada
-                    </div>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight text-slate-950">
-                        Desenvolvido por <span className="text-orange-700 italic">Especialistas.</span>
-                    </h2>
-                    <div className="space-y-6">
-                        <p className="text-xl md:text-2xl font-bold text-slate-800 leading-relaxed">
-                            Cavalo de Raça: 12 anos de expertise capilar
-                        </p>
-                        <p className="text-lg text-slate-600 leading-relaxed mx-auto">
-                            Não é product genérico de farmácia. É tecnologia profissional do Cavalo de Raça - uma das maiores tecnologias de cosméticos do Brasil.
-                        </p>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                        {[
-                            "12 anos transformando cabelos", 
-                            "500 mil clientes ativos", 
-                            "Linha profissional de salão", 
-                            "Fórmulas testadas em laboratório"
-                        ].map((stat, i) => (
-                            <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-orange-100 shadow-sm hover:border-orange-300 transition-all group">
-                                <div className="bg-orange-100 p-1.5 rounded-full text-orange-700 group-hover:scale-110 transition-transform">
-                                    <Check size={16} strokeWidth={4} />
-                                </div>
-                                <span className="font-bold text-sm text-slate-800">{stat}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-
         {/* TESTEMUNHOS */}
         <section className="py-24 px-6">
             <div className="max-w-6xl mx-auto">
@@ -712,7 +674,7 @@ export function AntiHairLossPage() {
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
                         Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
-                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Cavalo de Raça</div>
+                    <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                 </div>
             </div>
         </section>
