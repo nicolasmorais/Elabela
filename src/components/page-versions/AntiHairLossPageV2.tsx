@@ -115,10 +115,10 @@ export function AntiHairLossPageV2() {
 
         {/* HERO / PRODUCT SECTION */}
         <main className="max-w-7xl mx-auto px-6 py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 {/* ESQUERDA: GALERIA (50%) */}
-                <div className="space-y-4">
+                <div className="lg:col-span-6 space-y-4">
                     <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 relative group">
                         <img src={activeImage} alt="Produto Principal" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                     </div>
@@ -139,7 +139,7 @@ export function AntiHairLossPageV2() {
                 </div>
 
                 {/* DIREITA: INFOS DE COMPRA (50%) */}
-                <div className="space-y-6">
+                <div className="lg:col-span-6 space-y-6">
                     
                     {/* Badge de Destaque */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
@@ -166,7 +166,7 @@ export function AntiHairLossPageV2() {
 
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                            <span className="text-slate-400 line-through text-lg">R$ 297,00</span>
+                            <span className="text-slate-400 line-through text-lg">R$ 497,00</span>
                             <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">40% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
@@ -184,22 +184,6 @@ export function AntiHairLossPageV2() {
                             "Todo Dia Era um Bolo de Cabelo no Pente... <br />
                             Hoje Não Cai Quase Nada."
                         </p>
-                    </div>
-
-                    {/* Feature Tags */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                        {[
-                            { icon: Zap, label: "Antiqueda Real" },
-                            { icon: Droplets, label: "Raiz Fortalecida" },
-                            { icon: Heart, label: "Brilho Intenso" },
-                            { icon: Sparkles, label: "Crescimento Acelerado" },
-                            { icon: Clock, label: "Resultados em 7 dias" }
-                        ].map((tag, i) => (
-                            <div key={i} className="flex items-center gap-1.5 px-3 py-2 border border-pink-200 rounded-xl text-pink-600 text-[10px] font-black uppercase tracking-tight">
-                                <tag.icon size={12} />
-                                {tag.label}
-                            </div>
-                        ))}
                     </div>
 
                     {/* BOTÃO COMPRAR AGORA */}
