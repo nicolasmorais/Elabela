@@ -414,120 +414,130 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 🚀 SEÇÃO DE OFERTA REDESENHADA 🚀 */}
-        <section id="pricing" className="py-24 px-6 bg-slate-950 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-600/10 via-transparent to-transparent"></div>
-            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px]"></div>
+        {/* 🚀 SEÇÃO DE OFERTA SUAVIZADA 🚀 */}
+        <section id="pricing" className="py-24 px-6 bg-[#FDF8F3] relative overflow-hidden border-y border-orange-100">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent opacity-50"></div>
             
             <div className="max-w-4xl mx-auto relative z-10">
-                <div className="text-center mb-12 space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight uppercase">
+                <div className="text-center mb-12 space-y-4">
+                    <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight uppercase">
                         🚨 SUA ÚLTIMA CHANCE DE PARAR A QUEDA EM CASA 🚨
                     </h2>
-                    <p className="text-slate-400 font-bold text-lg md:text-xl">
+                    <p className="text-slate-500 font-bold text-lg md:text-xl max-w-2xl mx-auto">
                         Acorde Sem Cabelo no Travesseiro. Penteia Sem Medo. <br className="hidden md:block" />
                         Viva Sem Precisar Esconder o Couro Cabeludo.
                     </p>
                 </div>
 
-                <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl relative border-[8px] border-white overflow-hidden">
+                <div className="bg-white rounded-[3rem] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.05)] relative border-4 border-white overflow-hidden">
                     
-                    {/* Timer Banner */}
-                    <div className="bg-red-600 -mx-12 -mt-12 mb-12 py-4 px-6 text-center text-white font-black text-sm md:text-lg tracking-widest flex items-center justify-center gap-3">
-                        <Clock size={20} className="animate-pulse" />
-                        OFERTA ENCERRA EM: <span className="font-mono">{formatTime(timeLeft)}</span>
+                    {/* Timer Suave */}
+                    <div className="bg-orange-50 py-4 px-6 text-center text-orange-900 font-black text-sm md:text-base tracking-widest flex items-center justify-center gap-3 border-b border-orange-100">
+                        <Clock size={18} className="text-orange-600" />
+                        OFERTA ENCERRA EM: <span className="font-mono text-orange-700">{formatTime(timeLeft)}</span>
                     </div>
 
-                    <div className="flex flex-col items-center text-center space-y-12">
+                    <div className="p-8 md:p-12 flex flex-col items-center text-center space-y-12">
                         
-                        {/* Preços */}
-                        <div className="space-y-6 w-full">
+                        {/* Preços Suavizados */}
+                        <div className="space-y-8 w-full">
                             <div className="space-y-1">
-                                <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Preço Normal: <span className="line-through">R$ 297,00</span></p>
-                                <p className="text-orange-600 font-black text-xs uppercase tracking-[0.3em]">Oportunidade Única Hoje</p>
+                                <p className="text-slate-300 font-bold text-sm uppercase tracking-widest">De: <span className="line-through">R$ 297,00</span></p>
+                                <p className="text-orange-800 font-black text-xs uppercase tracking-[0.3em]">Por Apenas:</p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Card Price */}
-                                <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 flex flex-col items-center justify-center gap-1">
+                                <div className="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col items-center justify-center gap-2">
                                     <div className="flex items-center gap-2 text-slate-500 font-bold text-xs uppercase tracking-widest">
                                         <CreditCard size={14} /> No Cartão
                                     </div>
                                     <p className="text-4xl font-black text-slate-900">{config.priceCard}</p>
-                                    <p className="text-[10px] text-slate-400 font-bold">{config.installmentText}</p>
+                                    <p className="text-[10px] text-slate-400 font-bold tracking-tight">{config.installmentText}</p>
                                 </div>
 
                                 {/* Pix Price */}
-                                <div className="p-6 rounded-3xl bg-emerald-50 border-2 border-emerald-500/20 flex flex-col items-center justify-center gap-1 relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-2 text-emerald-100 opacity-50"><Zap size={40} fill="currentColor" /></div>
-                                    <div className="flex items-center gap-2 text-emerald-600 font-black text-xs uppercase tracking-widest relative z-10">
+                                <div className="p-8 rounded-[2.5rem] bg-emerald-50/50 border-2 border-emerald-500/20 flex flex-col items-center justify-center gap-2 relative group transition-all">
+                                    <div className="flex items-center gap-2 text-emerald-700 font-black text-xs uppercase tracking-widest">
                                         <Zap size={14} fill="currentColor" /> No Pix
                                     </div>
-                                    <p className="text-5xl font-black text-slate-950 relative z-10">R$ {config.pricePix}</p>
-                                    <p className="text-[10px] text-emerald-600 font-black uppercase relative z-10">R$ 20 de desconto exclusivo</p>
+                                    <div className="flex items-start text-slate-950 font-black tracking-tighter">
+                                        <span className="text-xl mt-2 mr-1">R$</span>
+                                        <span className="text-6xl md:text-7xl leading-none">{config.pricePix}</span>
+                                    </div>
+                                    <p className="text-[10px] text-emerald-600 font-black uppercase tracking-widest bg-white/50 px-3 py-1 rounded-full border border-emerald-100">R$ 20 de desconto exclusivo</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Lista de Recebimento */}
-                        <div className="w-full text-left bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 space-y-6">
-                            <h4 className="text-lg font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
-                                <ShoppingBag size={20} className="text-orange-600" /> VOCÊ RECEBE EM CASA:
+                        {/* Recebimento Suave */}
+                        <div className="w-full text-left bg-[#FDF8F3] p-8 rounded-[3rem] border border-orange-100 space-y-6">
+                            <h4 className="text-base font-black text-orange-950 uppercase tracking-[0.2em] flex items-center gap-2 border-b border-orange-200/50 pb-4">
+                                <CheckCircle2 size={18} className="text-orange-700" /> VOCÊ RECEBE EM CASA:
                             </h4>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                                 {[
                                     { icon: "🧴", t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
                                     { icon: "🧴", t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
                                     { icon: "🧴", t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
                                     { icon: "🧴", t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-4">
-                                        <span className="text-2xl">{item.icon}</span>
+                                    <div key={i} className="flex gap-3">
+                                        <span className="text-xl shrink-0">{item.icon}</span>
                                         <div>
-                                            <p className="font-black text-slate-900 text-sm">{item.t}</p>
-                                            <p className="text-xs text-slate-500 font-medium">→ {item.d}</p>
+                                            <p className="font-bold text-slate-800 text-sm leading-tight mb-0.5">{item.t}</p>
+                                            <p className="text-[11px] text-slate-500 font-medium leading-tight">→ {item.d}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="pt-6 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-600"><CheckCircle2 className="text-emerald-500" size={14} /> Frete GRÁTIS</div>
-                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-600"><CheckCircle2 className="text-emerald-500" size={14} /> Envio IMEDIATO</div>
-                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-slate-600"><CheckCircle2 className="text-emerald-500" size={14} /> Seguro de entrega</div>
+                            <div className="pt-6 border-t border-orange-100 grid grid-cols-3 gap-2">
+                                <div className="text-center space-y-1">
+                                    <p className="text-[9px] font-black uppercase text-emerald-700">FRETE GRÁTIS</p>
+                                    <p className="text-[8px] text-slate-400 font-bold">Todo Brasil</p>
+                                </div>
+                                <div className="text-center border-x border-orange-100 space-y-1">
+                                    <p className="text-[9px] font-black uppercase text-emerald-700">ENVIO 24H</p>
+                                    <p className="text-[8px] text-slate-400 font-bold">Dias Úteis</p>
+                                </div>
+                                <div className="text-center space-y-1">
+                                    <p className="text-[9px] font-black uppercase text-emerald-700">RASTREIO</p>
+                                    <p className="text-[8px] text-slate-400 font-bold">Com Seguro</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* CTA */}
-                        <div className="w-full space-y-4">
+                        {/* CTA Elegante */}
+                        <div className="w-full space-y-6">
                             <Link href={config.checkoutUrl || '#'} className="block" target="_blank" rel="noopener noreferrer">
-                                <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2rem] shadow-xl shadow-green-200 transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
-                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3">
-                                        <ShoppingBag size={28} className="group-hover:scale-110 transition-transform" />
+                                <Button className="w-full h-20 md:h-24 bg-green-600 hover:bg-green-700 text-white rounded-3xl shadow-xl shadow-green-100 transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1">
+                                    <span className="text-xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3">
+                                        <ShoppingBag size={24} className="md:size-32" />
                                         {config.buttonText}
                                     </span>
-                                    <span className="text-[10px] font-black uppercase opacity-60">Acesso seguro | Envio em 24h</span>
                                 </Button>
                             </Link>
-                            <div className="flex justify-center gap-8 opacity-40 grayscale">
-                                <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={14} /> Seguro</div>
-                                <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest"><Lock size={14} /> SSL</div>
-                                <div className="flex items-center gap-1 text-[9px] font-black uppercase tracking-widest"><CreditCard size={14} /> Cartão / Pix</div>
+                            
+                            <div className="flex justify-center gap-6 opacity-30">
+                                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={14} /> Seguro</div>
+                                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><Lock size={14} /> SSL</div>
+                                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><CreditCard size={14} /> PIX / Cartão</div>
                             </div>
                         </div>
 
-                        {/* Scarcity / Progress Bar */}
+                        {/* Estoque Suave */}
                         <div className="w-full pt-8 border-t border-slate-100 space-y-4">
-                            <div className="flex items-center justify-center gap-2 text-red-600 font-black text-sm uppercase tracking-widest">
-                                <ShieldAlert size={18} /> ATENÇÃO: ESTOQUE LIMITADO
+                            <div className="flex items-center justify-center gap-2 text-orange-800 font-black text-xs uppercase tracking-[0.2em]">
+                                <ShieldAlert size={16} className="text-orange-600" /> ATENÇÃO: ESTOQUE LIMITADO
                             </div>
-                            <div className="space-y-2">
-                                <div className="w-full h-4 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
-                                    <div className="h-full bg-red-600 rounded-full animate-pulse" style={{ width: '80%' }}></div>
+                            <div className="space-y-3">
+                                <div className="w-full h-3 bg-orange-50 rounded-full overflow-hidden border border-orange-100">
+                                    <div className="h-full bg-orange-500 rounded-full" style={{ width: '80%' }}></div>
                                 </div>
                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
-                                    🔴 Restam apenas <span className="text-red-600">14 unidades</span> com este desconto
+                                    Restam apenas <span className="text-orange-700">14 unidades</span> com este desconto
                                 </p>
                             </div>
                         </div>
