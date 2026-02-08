@@ -426,9 +426,9 @@ export function AntiHairLossPageV2() {
             </footer>
         </div>
 
-        {/* STICKY BAR MOBILE */}
+        {/* STICKY BAR MOBILE - Ajustado para remover 'no Cartão' apenas aqui */}
         <MobileStickyBar 
-          installmentText="12x de 14,96 no Cartão"
+          installmentText={config.installmentText.replace(' no Cartão', '')}
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
         />
