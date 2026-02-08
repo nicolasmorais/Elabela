@@ -7,7 +7,10 @@ import {
   Zap, 
   CheckCircle2, 
   Award,
-  Clock
+  Clock,
+  ShieldCheck,
+  Lock,
+  CreditCard
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
