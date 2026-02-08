@@ -28,8 +28,7 @@ import {
   Activity,
   FileCheck,
   ClipboardList,
-  AlertCircle,
-  Timer as TimerIcon
+  AlertCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -44,7 +43,6 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
-import { Progress } from "@/components/ui/progress";
 
 const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
@@ -53,6 +51,7 @@ const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421091644-ChatGPT-Image-6-de-fev.-de-2026,-20_37_37.png"
 ];
 
+// Dados de depoimentos focados no recebimento
 const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
@@ -72,18 +71,20 @@ const DELIVERY_TESTIMONIALS = [
 ];
 
 export function AntiHairLossPage() {
+  // ESTADO DA LOCALIZAÇÃO
   const [city, setCity] = useState('');
-  const [timeLeft, setTimeLeft] = useState(877); // 14:37
 
+  // ESTADO DOS DADOS DINÂMICOS
   const [config, setConfig] = useState({
-      priceCard: 'R$ 147,00',
-      pricePix: '127,00',
-      installmentText: 'ou 12x de R$ 12,25 sem juros',
+      priceCard: 'R$ 157,00',
+      pricePix: '97,00',
+      installmentText: 'Parcelamento em até 12x',
       buttonText: 'COMPRAR AGORA',
       checkoutUrl: '#'
   });
 
   useEffect(() => {
+    // Busca a cidade da usuária
     fetch('https://ipapi.co/json/')
       .then(res => res.json())
       .then(data => {
@@ -91,33 +92,22 @@ export function AntiHairLossPage() {
       })
       .catch(() => console.log("Não foi possível detectar a cidade."));
 
+    // Busca configurações do banco
     fetch('/api/page-settings/antiqueda')
         .then(res => res.json())
         .then(data => {
             if (data) {
                 setConfig({
-                    priceCard: data.priceCard || 'R$ 147,00',
-                    pricePix: data.pricePix || '127,00',
-                    installmentText: data.installmentText || 'ou 12x de R$ 12,25 sem juros',
+                    priceCard: data.priceCard || 'R$ 157,00',
+                    pricePix: data.pricePix || '97,00',
+                    installmentText: data.installmentText || 'Parcelamento em até 12x',
                     buttonText: data.buttonText || 'COMPRAR AGORA',
                     checkoutUrl: data.checkoutUrl || '#'
                 });
             }
         })
         .catch(e => console.error("Erro ao carregar preços."));
-
-    const timer = setInterval(() => {
-        setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-    return () => clearInterval(timer);
   }, []);
-
-  const formatTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const mins = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -128,13 +118,14 @@ export function AntiHairLossPage() {
       <PageTracker contentId="antiqueda" />
       <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen pb-24 md:pb-0">
         
-        {/* BARRA DE AVISO */}
+        {/* BARRA DE AVISO - SUAVIZADA */}
         <div className="bg-slate-900 py-3 px-4 text-center border-b border-orange-500/20 sticky top-0 z-50 shadow-lg">
           <div className="max-w-6xl mx-auto flex justify-center items-center gap-3">
             <div className="relative flex h-2.5 w-2.5 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
             </div>
+            
             <p className="text-[10px] md:text-sm font-black uppercase tracking-[0.15em] text-white leading-tight">
                 Mais de 4.000 mulheres de <span className="text-emerald-400 border-b border-emerald-400/30 pb-0.5 mx-0.5">{city ? city : 'sua região'}</span> já estancaram a queda com este kit
             </p>
@@ -144,6 +135,7 @@ export function AntiHairLossPage() {
         {/* HERO SECTION */}
         <header className="relative pt-12 md:pt-20 pb-16 md:pb-24 px-6 overflow-hidden bg-white">
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_var(--tw-gradient-stops))] from-orange-100/40 via-white to-white pointer-events-none"></div>
+          
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-16">
                 <h1 className="text-4xl md:text-7xl lg:text-[5.5rem] font-black leading-[0.95] tracking-tighter text-slate-950 max-w-5xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-200">
@@ -276,9 +268,11 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 3. SEÇÃO: TRIPLA ANCORAGEM */}
+        {/* 3. SEÇÃO: TRIPLA ANCORAGEM - DESIGN SUAVIDADE TOTAL */}
         <section className="py-32 px-6 bg-white relative overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-24">
+                
+                {/* Header da Seção */}
                 <div className="text-center space-y-6 max-w-4xl mx-auto">
                     <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
                     <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
@@ -292,6 +286,7 @@ export function AntiHairLossPage() {
                     </p>
                 </div>
 
+                {/* Bloco: Como Funciona */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
                         <div className="flex items-center gap-3">
@@ -300,9 +295,11 @@ export function AntiHairLossPage() {
                             </div>
                             <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
                         </div>
+                        
                         <p className="text-xl text-slate-700 font-medium leading-relaxed">
                             Seu cabelo cai por <span className="text-orange-600 font-black">3 MOTIVOS:</span>
                         </p>
+
                         <div className="space-y-4">
                             {[
                                 { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
@@ -318,8 +315,11 @@ export function AntiHairLossPage() {
                                 </div>
                             ))}
                         </div>
+                        <p className="text-slate-400 font-bold text-sm italic">Shampoos comuns tratam ZERO desses problemas.</p>
                     </div>
+
                     <div className="relative">
+                        <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                         <img 
                             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
                             alt="Tecnologia Tripla Ancoragem" 
@@ -328,6 +328,7 @@ export function AntiHairLossPage() {
                     </div>
                 </div>
 
+                {/* Grid das 3 Camadas */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
                         { 
@@ -351,7 +352,7 @@ export function AntiHairLossPage() {
                             title: "CAMADA 3: SELA E PROTEGE", 
                             prod: "Condicionador + Leave-in",
                             desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                            feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem deixar cabelo no chão"],
                             analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                         }
                     ].map((step, i) => (
@@ -365,6 +366,7 @@ export function AntiHairLossPage() {
                                     <p className="text-xs font-black text-orange-600 uppercase tracking-widest">({step.prod})</p>
                                 </div>
                                 <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.desc}</p>
+                                
                                 <div className="space-y-3 pt-4 border-t border-orange-50">
                                     {step.feels.map((feel, idx) => (
                                         <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
@@ -373,6 +375,7 @@ export function AntiHairLossPage() {
                                         </div>
                                     ))}
                                 </div>
+
                                 <div className="mt-auto pt-6">
                                     <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-50 text-xs text-slate-500 italic leading-relaxed">
                                         <span className="font-black text-slate-900 not-italic uppercase block mb-1">Analogia:</span>
@@ -383,10 +386,108 @@ export function AntiHairLossPage() {
                         </div>
                     ))}
                 </div>
+
+                {/* Seção: Linha do Tempo Real - SUAVIZADA (Removido Preto) */}
+                <div className="bg-white border-4 border-orange-100 text-slate-900 rounded-[4rem] p-10 md:p-20 shadow-xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.05] pointer-events-none text-orange-500">
+                        <Activity size={300} />
+                    </div>
+                    
+                    <div className="text-center mb-16 relative z-10 space-y-4">
+                        <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-4 text-orange-900">📊 LINHA DO TEMPO REAL</h3>
+                        <p className="text-orange-600 font-bold text-lg uppercase tracking-widest">(O Que Acontece Semana a Semana)</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                        {[
+                            { 
+                                t: "SEMANA 1", 
+                                steps: ["Fio mais denso ao toque", "Queda reduz 50%", "Estanca 80-90% no 7º dia"] 
+                            },
+                            { 
+                                t: "SEMANA 2", 
+                                steps: ["Fios param de quebrar", "Couro cabeludo fecha", "Raiz visivelmente firme"] 
+                            },
+                            { 
+                                t: "SEMANA 3-4", 
+                                steps: ["Bebês nascem (1-2cm)", "Volume aumenta 2x", "Elogios de amigas"] 
+                            },
+                            { 
+                                t: "MÊS 2-3", 
+                                steps: ["Densidade restaurada", "Cresce 2x mais rápido", "Zero queda residual"] 
+                            }
+                        ].map((week, i) => (
+                            <div key={i} className="space-y-6 bg-orange-50/50 p-6 rounded-[2.5rem] border border-orange-100">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-10 w-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-black shadow-md">{i+1}</div>
+                                    <p className="font-black text-xl tracking-tight text-orange-950">{week.t}</p>
+                                </div>
+                                <div className="space-y-4">
+                                    {week.steps.map((step, idx) => (
+                                        <div key={idx} className="flex items-start gap-3">
+                                            <CheckCircle2 size={16} className="text-orange-600 shrink-0 mt-0.5" />
+                                            <p className="text-sm font-bold text-slate-600">{step}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Por que Funciona Tão Rápido? - SUAVIZADO */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-12">
+                    <div className="space-y-8">
+                        <div className="flex items-center gap-3">
+                            <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
+                                <Zap size={24} fill="currentColor" />
+                            </div>
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">🧪 POR QUE FUNCIONA TÃO RÁPIDO?</h3>
+                        </div>
+                        <p className="text-xl text-slate-600 font-medium leading-relaxed">
+                            Porque age nas <span className="text-orange-700 font-black underline decoration-orange-200">3 CAUSAS</span> ao mesmo tempo. É matemática pura.
+                        </p>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div className="p-6 bg-[#FDF8F3] rounded-3xl border border-orange-100 space-y-2">
+                                <p className="text-[10px] font-black text-orange-300 uppercase tracking-widest">Shampoo Comum</p>
+                                <p className="text-lg font-black text-slate-400">Só Limpa</p>
+                            </div>
+                            <div className="p-6 bg-white rounded-3xl border-2 border-orange-500/20 shadow-sm space-y-2">
+                                <p className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Kit Cavalo de Raça</p>
+                                <p className="text-lg font-black text-orange-800">Limpa + ANCORA + RECONSTRÓI</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Resumo Técnico (Bento Grid Style) - SUAVIZADO */}
+                    <div className="bg-white p-8 md:p-12 rounded-[4rem] border-2 border-orange-200 shadow-2xl space-y-10">
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 bg-orange-100 rounded-xl"><FileCheck className="text-orange-700" size={24} /></div>
+                            <h3 className="text-2xl font-black text-slate-950 uppercase tracking-tight">💡 RESUMO TÉCNICO</h3>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { l: "PROBLEMA", v: "Raiz fraca + Fibra quebrada" },
+                                { l: "SOLUÇÃO", v: "Tecnologia Tripla Ancoragem™" },
+                                { l: "RESULTADO", v: "87% Menos Queda em 7 Dias" },
+                                { l: "DIFERENCIAL", v: "RECONSTRÓI (Não Mascara)" },
+                                { l: "TEMPO", v: "15 min no banho normal" },
+                                { l: "PREÇO", v: "R$ 1,61 por dia" }
+                            ].map((item, i) => (
+                                <div key={i} className="p-4 bg-[#FDF8F3] rounded-2xl border border-orange-50 space-y-1">
+                                    <p className="text-[8px] font-black text-orange-400 uppercase tracking-widest">{item.l}</p>
+                                    <p className="text-sm font-black text-slate-900 leading-tight">{item.v}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        {/* 5. SEÇÃO: DEPOIMENTOS */}
+        {/* 5. SEÇÃO: DEPOIMENTOS COM IMAGEM E TEXTO ✨ */}
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
@@ -396,19 +497,28 @@ export function AntiHairLossPage() {
                     </h2>
                     <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto pt-4">Fotos reais enviadas por nossas clientes ao receberem seus kits Cavalo de Raça.</p>
                 </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {DELIVERY_TESTIMONIALS.map((test, i) => (
                         <div key={i} className="group bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-orange-50 transition-all hover:scale-[1.02] hover:shadow-orange-200/30 flex flex-col">
                             <div className="aspect-square relative overflow-hidden border-b border-orange-50">
-                                <img src={test.image} alt="Kit Recebido" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg"><Verified size={20} /></div>
+                                <img 
+                                    src={test.image} 
+                                    alt="Kit Recebido" 
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full text-orange-600 shadow-lg">
+                                    <Verified size={20} />
+                                </div>
                             </div>
                             <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
                                 <div className="space-y-4">
                                     <div className="flex gap-1 text-orange-400">
                                         {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
                                     </div>
-                                    <p className="text-slate-600 font-medium leading-relaxed italic text-lg">"{test.text}"</p>
+                                    <p className="text-slate-600 font-medium leading-relaxed italic text-lg">
+                                        "{test.text}"
+                                    </p>
                                 </div>
                                 <div className="pt-6 border-t border-orange-50">
                                     <p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p>
@@ -420,140 +530,114 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 🚀 SEÇÃO DE OFERTA ULTRA CONVERSÃO 🚀 */}
-        <section id="pricing" className="py-24 px-6 bg-white relative overflow-hidden">
+        {/* 🚀 NOVA SEÇÃO DE OFERTA ULTRA CONVERSÃO 🚀 */}
+        <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
+            {/* Background Effects */}
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-600/10 via-transparent to-transparent"></div>
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px]"></div>
             
-            <div className="max-w-4xl mx-auto relative z-10 text-center space-y-12">
-                
-                {/* HEADLINE DE OFERTA */}
-                <div className="space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight uppercase">
-                        🚨 SUA ÚLTIMA CHANCE DE PARAR A QUEDA EM CASA 🚨
+            <div className="max-w-4xl mx-auto relative z-10">
+                <div className="text-center mb-16 space-y-6">
+                    <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-tight">
+                        SUA ÚLTIMA CHANCE DE <br /> <span className="text-orange-500 italic">SOLTAR O CABELO</span> ✨
                     </h2>
-                    <p className="text-lg md:text-2xl text-slate-600 font-bold max-w-3xl mx-auto leading-tight">
-                        Acorde Sem Cabelo no Travesseiro. Penteia Sem Medo. <br />
-                        Viva Sem Precisar Esconder o Couro Cabeludo.
-                    </p>
-                    <div className="w-full h-px bg-slate-200 max-w-md mx-auto"></div>
+                    <div className="flex flex-col items-center gap-2">
+                        <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Enviamos para todo o Brasil com Seguro e Rastreio</p>
+                    </div>
                 </div>
 
-                {/* TIMER */}
-                <div className="inline-flex items-center gap-4 px-8 py-3 bg-red-600 text-white rounded-full font-black text-lg md:text-xl shadow-xl shadow-red-200 animate-pulse">
-                    <TimerIcon className="h-6 w-6" />
-                    ⏰ OFERTA ENCERRA EM: {formatTime(timeLeft)}
-                </div>
+                <div className="bg-white rounded-[4rem] p-6 md:p-12 shadow-[0_64px_128px_-24px_rgba(249,115,22,0.4)] relative border-[8px] border-white group overflow-hidden">
+                    
+                    {/* Badge 35% OFF */}
+                    <div className="absolute top-6 right-6 md:top-10 md:right-10 bg-orange-600 text-white w-20 h-20 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center font-black rotate-12 shadow-2xl border-4 border-white z-20 group-hover:scale-110 transition-transform">
+                        <span className="text-xl md:text-3xl">35%</span>
+                        <span className="text-[10px] md:text-sm uppercase leading-none">OFF</span>
+                    </div>
 
-                {/* TABELA DE PREÇO */}
-                <div className="bg-white border-4 border-slate-100 p-8 md:p-12 rounded-[4rem] shadow-2xl space-y-10 relative overflow-hidden group">
-                    <div className="space-y-2">
-                        <p className="text-slate-400 font-black text-sm uppercase tracking-widest">Por Apenas:</p>
+                    <div className="flex flex-col items-center text-center space-y-10 relative z-10">
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center pt-4">
-                            {/* CARTÃO */}
-                            <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 text-left space-y-2">
-                                <p className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                                    <CreditCard size={14} /> NO CARTÃO:
-                                </p>
-                                <p className="text-3xl font-black text-slate-900">{config.priceCard}</p>
-                                <p className="text-xs font-bold text-slate-500 uppercase tracking-tight italic">({config.installmentText})</p>
+                        {/* Header Oferta */}
+                        <div className="space-y-2">
+                            <span className="text-slate-400 font-black text-xs uppercase tracking-[0.4em]">Oferta Direto da Fábrica</span>
+                            <h3 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">Kit Completo 4 Passos</h3>
+                        </div>
+
+                        {/* Preço Principal (PIX) */}
+                        <div className="bg-emerald-50 border-2 border-emerald-500/20 p-8 md:p-12 rounded-[3rem] w-full max-w-2xl relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-4 text-emerald-100">
+                                <Zap size={100} fill="currentColor" />
                             </div>
                             
-                            {/* PIX */}
-                            <div className="p-6 rounded-3xl bg-emerald-50 border-2 border-emerald-200 text-left space-y-2 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-3 text-emerald-100"><Zap size={40} fill="currentColor" /></div>
-                                <p className="text-xs font-black text-emerald-700 uppercase tracking-widest flex items-center gap-2 relative z-10">
-                                    <Zap size={14} fill="currentColor" /> NO PIX:
-                                </p>
-                                <p className="text-4xl font-black text-slate-900 relative z-10">R$ {config.pricePix}</p>
-                                <p className="text-xs font-bold text-emerald-600 uppercase tracking-widest relative z-10">(R$ 20 de desconto exclusivo)</p>
+                            <div className="space-y-4 relative z-10">
+                                <div className="flex flex-col items-center leading-none">
+                                    <p className="text-slate-400 line-through font-bold text-lg mb-2">{config.priceCard}</p>
+                                    <p className="text-emerald-600 font-black text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                                        <Zap size={14} fill="currentColor" /> Exclusivo no PIX
+                                    </p>
+                                    <div className="flex items-start justify-center text-slate-950 font-black tracking-tighter">
+                                        <span className="text-3xl md:text-4xl mt-4 mr-2">R$</span>
+                                        <span className="text-8xl md:text-[10rem] font-black leading-none">
+                                            {config.pricePix.split(',')[0]}<span className="text-5xl md:text-6xl">,{config.pricePix.split(',')[1] || '00'}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p className="text-slate-500 font-bold uppercase text-[10px] md:text-xs tracking-widest">{config.installmentText}</p>
                             </div>
                         </div>
-                    </div>
 
-                    {/* VOCÊ RECEBE EM CASA */}
-                    <div className="space-y-6 text-left">
-                        <h4 className="text-xl font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
-                            <CheckCircle2 className="text-emerald-500" /> ✅ VOCÊ RECEBE EM CASA:
-                        </h4>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            {[
-                                { p: "🧴 Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
-                                { p: "🧴 Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
-                                { p: "🧴 Máscara Anti-Queda Intensiva 250g", d: "Reconstruir fibra (fio fica FORTE)" },
-                                { p: "🧴 Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
-                            ].map((item, i) => (
-                                <div key={i} className="space-y-1">
-                                    <p className="font-black text-slate-900 text-sm">{item.p}</p>
-                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-tight flex items-center gap-1">
-                                        <ArrowRight size={10} className="text-orange-600" /> {item.d}
-                                    </p>
-                                </div>
-                            ))}
+                        {/* Benefícios de Entrega */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl border-y border-slate-100 py-8">
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl"><Truck size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Frete Grátis</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Todo Brasil</p>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-2xl"><Verified size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Entrega Garantida</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Com Seguro</p>
+                            </div>
+                            <div className="flex flex-col items-center gap-2">
+                                <div className="p-3 bg-orange-50 text-orange-600 rounded-2xl"><Zap size={24} /></div>
+                                <p className="text-[10px] font-black uppercase text-slate-900 tracking-widest">Envio Imediato</p>
+                                <p className="text-[10px] text-slate-400 font-bold">Em 24 horas</p>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* VANTAGENS LOGÍSTICAS */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left border-y border-slate-100 py-8">
-                        <div className="flex items-center gap-3 text-xs font-black text-slate-700 uppercase tracking-tight">
-                            <div className="h-6 w-6 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center shrink-0"><Truck size={14} /></div>
-                            <span>Frete GRÁTIS para todo Brasil</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-xs font-black text-slate-700 uppercase tracking-tight">
-                            <div className="h-6 w-6 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center shrink-0"><Zap size={14} fill="currentColor" /></div>
-                            <span>Envio IMEDIATO em até 24h úteis</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-xs font-black text-slate-700 uppercase tracking-tight">
-                            <div className="h-6 w-6 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center shrink-0"><Verified size={14} /></div>
-                            <span>Rastreio + Seguro de entrega</span>
-                        </div>
-                    </div>
-
-                    {/* CTA E SEGURANÇA */}
-                    <div className="space-y-8">
-                        <Link href={config.checkoutUrl} target="_blank">
-                            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-2xl shadow-green-200 transition-all hover:scale-[1.03] active:scale-95 group overflow-hidden">
-                                <div className="flex flex-col items-center">
-                                    <span className="text-2xl md:text-4xl font-black uppercase tracking-tight flex items-center gap-4">
-                                        <ShoppingBag size={28} /> {config.buttonText}
-                                    </span>
-                                    <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60 mt-1">Clique para Garantir seu Kit</span>
-                                </div>
+                        {/* CTA Button */}
+                        <Link href={config.checkoutUrl || '#'} className="w-full max-w-xl group/btn" target="_blank" rel="noopener noreferrer">
+                            <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(22,163,74,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center gap-1 group overflow-hidden">
+                                <span className="flex items-center gap-4 text-xl md:text-3xl font-black uppercase tracking-tight">
+                                    <ShoppingBag className="h-6 w-6 md:h-8 md:w-8 group-hover/btn:scale-110 transition-transform" />
+                                    {config.buttonText}
+                                </span>
                             </Button>
                         </Link>
 
-                        <div className="flex flex-wrap justify-center items-center gap-8 opacity-40">
-                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest"><Lock size={16} /> Compra 100% Segura</div>
-                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest"><CreditCard size={16} /> PIX | Cartão | Boleto</div>
+                        {/* Segurança Badges */}
+                        <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={18} /> Original</div>
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Lock size={18} /> SSL Seguro</div>
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><Zap size={18} /> PIX Prioritário</div>
+                            <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-widest"><CreditCard size={18} /> Cartão</div>
                         </div>
                     </div>
                 </div>
 
-                {/* ESCASSEZ E BARRA DE PROGRESSO */}
-                <div className="max-w-2xl mx-auto space-y-6 pt-12">
-                    <div className="text-center space-y-3">
-                        <p className="text-xl md:text-2xl font-black text-red-600 uppercase tracking-tighter flex items-center justify-center gap-3">
-                            <ShieldAlert /> ⚠️ ATENÇÃO: ESTOQUE LIMITADO ⚠️
-                        </p>
-                        <div className="space-y-4">
-                            <div className="relative h-6 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200">
-                                <div className="absolute top-0 left-0 h-full bg-red-600 rounded-full w-[80%] animate-pulse"></div>
-                                <div className="absolute inset-0 flex items-center justify-center text-[10px] font-black text-white uppercase tracking-widest drop-shadow-md">80% VENDIDO</div>
-                            </div>
-                            <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">
-                                🔴 Restam apenas <span className="text-red-600 font-black">14 unidades</span> com este desconto
-                            </p>
-                        </div>
-                    </div>
+                {/* Scarcity Note */}
+                <div className="mt-12 text-center">
+                    <p className="text-white/60 font-medium text-sm flex items-center justify-center gap-2">
+                        <ShieldAlert size={16} className="text-orange-500" /> 
+                        Devido à alta procura, restam apenas <strong>14 unidades</strong> com este desconto promocional.
+                    </p>
                 </div>
             </div>
         </section>
 
-        {/* GARANTIA */}
-        <section className="py-24 px-6 bg-[#FDF8F3]">
+        {/* GARANTIA SECTION */}
+        <section className="py-24 px-6 bg-white">
             <div className="max-w-4xl mx-auto text-center">
-                <div className="bg-white border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden shadow-xl">
+                <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
                     <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
                     <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
@@ -565,21 +649,38 @@ export function AntiHairLossPage() {
         </section>
 
         {/* FOOTER */}
-        <footer className="py-20 bg-slate-950 text-white relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600"></div>
+        <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
           <div className="max-w-6xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-white/5">
+            
+            {/* SEÇÃO JURÍDICA SUPERIOR */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
                 <div className="space-y-4">
-                    <h3 className="text-sm font-black text-orange-400 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
-                    <div className="space-y-4 text-[10px] text-slate-400 leading-relaxed text-justify opacity-60">
-                        <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
-                        <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
-                        <p>Conteúdo destinado a maiores de 18 anos.</p>
+                    <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
+                    <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
+                            <p>Conteúdo destinado a maiores de 18 anos.</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
+                            <p>O uso de qualquer product natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                        </div>
                     </div>
                 </div>
+
                 <div className="space-y-6 text-center md:text-left">
+                    <img 
+                        src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
+                        alt="OneBase Logo" 
+                        className="h-14 mx-auto md:mx-0"
+                    />
                     <div className="space-y-2">
-                        <p className="text-sm font-black text-white uppercase tracking-widest">OneBase | Soluções Digitais</p>
+                        <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
                         <p className="text-xs text-slate-500 leading-relaxed">
                             E-Business Rio Verde | Aparecida de Goiania - GO<br />
                             CNPJ: 60.357.932/0001-18
@@ -587,31 +688,85 @@ export function AntiHairLossPage() {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start mb-20">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/50">Links Úteis</p>
-                <nav className="flex flex-col gap-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                    <button className="hover:text-orange-400 transition-colors text-left">Termos e Condições</button>
-                    <button className="hover:text-orange-400 transition-colors text-left">Política de Privacidade</button>
-                    <button className="hover:text-orange-400 transition-colors text-left">Política de Reembolso</button>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                    
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
+                                <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
+                                <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p><br/>
+                                <p>O uso dos produtos adquiridos é de responsabilidade do consumidor, que deve sempre seguir as orientações descritas na embalagem ou no material que acompanha o produto.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário — como nome, e-mail ou dados inseridos em formulários — são utilizadas apenas para fins de atendimento, envio de comunicações solicitadas ou suporte relacionado aos produtos oferecidos.</p><br/>
+                                <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p><br/>
+                                <p>O usuário pode solicitar a remoção ou alteração de seus dados a qualquer momento por meio de nossos canais de suporte. Consulte esta página regularmente, pois nossa Política de Privacidade pode ser atualizada conforme necessário.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
+                    <Dialog>
+                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
+                        <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
+                            <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
+                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
+                                <p>Por se tratar de um product digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
+                                <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
+                                <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
+                                <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao product digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
+                                <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+
                 </nav>
               </div>
+
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/50">Precisa de Ajuda?</p>
-                <div className="inline-block p-4 rounded-2xl bg-white/5 border border-white/5 w-full">
-                    <p className="text-[10px] font-black uppercase text-orange-400 mb-1">E-mail de Suporte</p>
-                    <p className="text-sm font-bold text-white">contato@cavalo-de-raca.pro</p>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
+                <div className="space-y-4">
+                    <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
+                        <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
+                        <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
+                    </div>
                 </div>
               </div>
+
               <div className="space-y-6 text-center md:text-left">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-white/50">Segurança</p>
-                <div className="flex justify-center md:justify-start gap-4 opacity-20">
-                    <ShieldCheck size={32} /> <Lock size={32} /> <CreditCard size={32} />
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
+                <div className="flex justify-center md:justify-start gap-4 opacity-50">
+                    <ShieldCheck size={40} strokeWidth={1} />
+                    <Lock size={40} strokeWidth={1} />
+                    <CreditCard size={40} strokeWidth={1} />
                 </div>
               </div>
             </div>
-            <div className="text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em] text-center">
-                © 2024 Cavalo de Raça - Original Cavalo de Raça
+
+            <div className="pt-12 border-t border-slate-200 space-y-8">
+                <div className="max-w-4xl mx-auto space-y-6">
+                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
+                    </p>
+                    <div className="flex flex-col items-center gap-4">
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Cavalo de Raça</p>
+                    </div>
+                </div>
             </div>
           </div>
         </footer>
