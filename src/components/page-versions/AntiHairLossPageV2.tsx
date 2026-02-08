@@ -178,7 +178,7 @@ export function AntiHairLossPageV2() {
                         <img 
                           src={GALLERY_IMAGES[activeImageIndex]} 
                           alt="Produto Principal" 
-                          className="w-full h-full object-contain p-4 transition-all duration-700 group-hover:scale-[1.02]" 
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]" 
                         />
                         
                         <button 
@@ -211,7 +211,7 @@ export function AntiHairLossPageV2() {
                                       : "border-slate-100 opacity-60 hover:opacity-100 hover:border-slate-300"
                                 )}
                             >
-                                <img src={img} alt="Thumb" className="w-full h-full object-cover p-1" />
+                                <img src={img} alt="Thumb" className="w-full h-full object-cover" />
                             </button>
                         ))}
                     </div>
