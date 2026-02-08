@@ -54,17 +54,17 @@ const GALLERY_IMAGES = [
 const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558637636-1.png",
-    text: "Acabou de chegar! Muito bem embalado e o cheiro é maravilhoso. Começando meu tratamento hoje mesmo, super ansiosa!",
+    text: "Acabou de chegar! Muito bem embalado e o cheiro é maravilhoso. Começando meu tratamento hoje mesmo, super ansiosa pelos resultados!",
     author: "Marta S., São Paulo"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
-    text: "Entrega super rápida! O kit é lindo e já fiz a primeira aplicação. Meu cabelo ficou com um brilho incrível.",
+    text: "Entrega super rápida aqui no RJ. O kit é lindo e já fiz a primeira aplicação. Meu cabelo ficou com um brilho que eu não via há anos.",
     author: "Juliana P., Rio de Janeiro"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558644450-3.png",
-    text: "Recebi tudo certinho aqui em BH. Estava ansiosa mas o suporte foi ótimo. Agora é focar no cronograma antiqueda!",
+    text: "Recebi tudo certinho em Minas. Estava com medo de comprar online mas o suporte foi ótimo. Agora é focar no cronograma antiqueda!",
     author: "Fernanda L., Belo Horizonte"
   },
   {
@@ -91,7 +91,7 @@ export function AntiHairLossPage() {
   const [config, setConfig] = useState({
       priceCard: '147,00',
       pricePix: '147,00',
-      installmentText: 'ou em 12x no cartão de crédito',
+      installmentText: 'ou em 12x de 14,96',
       buttonText: 'COMPRAR AGORA',
       checkoutUrl: '#'
   });
@@ -118,7 +118,7 @@ export function AntiHairLossPage() {
                 setConfig({
                     priceCard: data.priceCard || '147,00',
                     pricePix: data.pricePix || '147,00',
-                    installmentText: data.installmentText || 'ou em 12x no cartão de crédito',
+                    installmentText: data.installmentText || 'ou em 12x de 14,96',
                     buttonText: data.buttonText || 'COMPRAR AGORA',
                     checkoutUrl: data.checkoutUrl || '#'
                 });
@@ -251,7 +251,7 @@ export function AntiHairLossPage() {
                     <div className="flex-1 space-y-8">
                         <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
-                            O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 97.</span>
+                            O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 147.</span>
                         </h2>
                         <div className="pt-8 space-y-6">
                             <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
@@ -429,127 +429,110 @@ export function AntiHairLossPage() {
             </div>
         </section>
 
-        {/* 🚀 SEÇÃO DE OFERTA SUAVIZADA 🚀 */}
-        <section id="pricing" className="py-24 px-6 bg-[#FDF8F3] relative overflow-hidden border-y border-orange-100">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent opacity-50"></div>
+        {/* 🚀 SEÇÃO DE OFERTA REDESENHADA (ÚNICO PREÇO) 🚀 */}
+        <section id="pricing" className="py-24 px-6 bg-white relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-50 via-transparent to-transparent opacity-50"></div>
             
             <div className="max-w-4xl mx-auto relative z-10">
-                <div className="text-center mb-12 space-y-4">
+                <div className="text-center mb-12 space-y-6">
                     <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight uppercase">
                         🚨 SUA ÚLTIMA CHANCE DE PARAR A QUEDA EM CASA 🚨
                     </h2>
-                    <p className="text-slate-500 font-bold text-lg md:text-xl max-w-2xl mx-auto">
+                    <p className="text-slate-500 font-bold text-lg md:text-xl">
                         Acorde Sem Cabelo no Travesseiro. Penteia Sem Medo. <br className="hidden md:block" />
                         Viva Sem Precisar Esconder o Couro Cabeludo.
                     </p>
                 </div>
 
-                <div className="bg-white rounded-[3rem] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.05)] relative border-4 border-white overflow-hidden">
+                <div className="bg-[#FDF8F3] rounded-[3.5rem] p-8 md:p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] relative border-4 border-white overflow-hidden">
                     
                     {/* Timer Suave */}
-                    <div className="bg-orange-50 py-4 px-6 text-center text-orange-900 font-black text-sm md:text-base tracking-widest flex items-center justify-center gap-3 border-b border-orange-100">
-                        <Clock size={18} className="text-orange-600" />
+                    <div className="bg-orange-100/50 -mx-12 -mt-12 mb-12 py-4 px-6 text-center text-orange-900 font-black text-sm md:text-base tracking-widest flex items-center justify-center gap-3 border-b border-orange-100">
+                        <Clock size={20} className="text-orange-600 animate-pulse" />
                         OFERTA ENCERRA EM: <span className="font-mono text-orange-700">{formatTime(timeLeft)}</span>
                     </div>
 
-                    <div className="p-8 md:p-12 flex flex-col items-center text-center space-y-12">
+                    <div className="flex flex-col items-center text-center space-y-12">
                         
-                        {/* Preços Suavizados */}
-                        <div className="space-y-8 w-full">
-                            <div className="space-y-1">
-                                <p className="text-slate-300 font-bold text-sm uppercase tracking-widest">De: <span className="line-through">R$ 297,00</span></p>
-                                <p className="text-orange-800 font-black text-xs uppercase tracking-[0.3em]">Por Apenas:</p>
+                        {/* Preço Único Centralizado */}
+                        <div className="space-y-6 w-full">
+                            <div className="space-y-2">
+                                <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">Preço Normal: <span className="line-through">R$ 297,00</span></p>
+                                <p className="text-orange-800 font-black text-xs uppercase tracking-[0.3em]">Oportunidade Única Hoje</p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Card Price */}
-                                <div className="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 flex flex-col items-center justify-center gap-2">
-                                    <div className="flex items-center gap-2 text-slate-500 font-bold text-xs uppercase tracking-widest">
-                                        <CreditCard size={14} /> No Cartão
-                                    </div>
-                                    <p className="text-4xl font-black text-slate-900">R$ {config.priceCard}</p>
-                                    <p className="text-[10px] text-slate-400 font-bold tracking-tight">{config.installmentText}</p>
-                                </div>
-
-                                {/* Pix Price */}
-                                <div className="p-8 rounded-[2.5rem] bg-emerald-50/50 border-2 border-emerald-500/20 flex flex-col items-center justify-center gap-2 relative group transition-all">
-                                    <div className="flex items-center gap-2 text-emerald-700 font-black text-xs uppercase tracking-widest">
-                                        <Zap size={14} fill="currentColor" /> No Pix
-                                    </div>
+                            <div className="py-10 px-8 rounded-[3rem] bg-white border-2 border-orange-200/50 shadow-sm inline-block mx-auto min-w-[300px]">
+                                <div className="flex flex-col items-center">
                                     <div className="flex items-start text-slate-950 font-black tracking-tighter">
-                                        <span className="text-xl mt-2 mr-1">R$</span>
-                                        <span className="text-6xl md:text-7xl leading-none">{config.pricePix}</span>
+                                        <span className="text-3xl md:text-4xl mt-4 mr-1">R$</span>
+                                        <span className="text-8xl md:text-9xl leading-none">147<span className="text-4xl md:text-5xl">,00</span></span>
                                     </div>
-                                    <p className="text-[10px] text-emerald-600 font-black uppercase tracking-widest bg-white/50 px-3 py-1 rounded-full border border-emerald-100">Desconto exclusivo aplicado</p>
+                                    <p className="text-sm text-slate-500 font-bold uppercase tracking-widest mt-4">
+                                        {config.installmentText}
+                                    </p>
+                                    <div className="mt-6 px-4 py-1.5 bg-emerald-50 text-emerald-700 rounded-full text-[10px] font-black uppercase tracking-widest border border-emerald-100 flex items-center gap-2">
+                                        <Zap size={10} fill="currentColor" /> Pix ou Cartão de Crédito
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Recebimento Suave */}
-                        <div className="w-full text-left bg-[#FDF8F3] p-8 rounded-[3rem] border border-orange-100 space-y-6">
-                            <h4 className="text-base font-black text-orange-950 uppercase tracking-[0.2em] flex items-center gap-2 border-b border-orange-200/50 pb-4">
-                                <CheckCircle2 size={18} className="text-orange-700" /> VOCÊ RECEBE EM CASA:
+                        {/* Lista de Itens do Kit */}
+                        <div className="w-full text-left bg-white p-8 md:p-10 rounded-[3rem] border border-orange-100 space-y-8">
+                            <h4 className="text-lg font-black text-slate-900 uppercase tracking-widest flex items-center gap-2 border-b border-orange-50 pb-4">
+                                <ShoppingBag size={20} className="text-orange-600" /> VOCÊ RECEBE O KIT COMPLETO:
                             </h4>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
                                 {[
                                     { icon: "🧴", t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
                                     { icon: "🧴", t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
                                     { icon: "🧴", t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
                                     { icon: "🧴", t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
                                 ].map((item, i) => (
-                                    <div key={i} className="flex gap-3">
-                                        <span className="text-xl shrink-0">{item.icon}</span>
-                                        <div>
-                                            <p className="font-bold text-slate-800 text-sm leading-tight mb-0.5">{item.t}</p>
-                                            <p className="text-[11px] text-slate-500 font-medium leading-tight">→ {item.d}</p>
+                                    <div key={i} className="flex gap-4 group">
+                                        <span className="text-2xl group-hover:scale-110 transition-transform">{item.icon}</span>
+                                        <div className="space-y-0.5">
+                                            <p className="font-black text-slate-800 text-sm leading-tight">{item.t}</p>
+                                            <p className="text-xs text-slate-400 font-medium">→ {item.d}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="pt-6 border-t border-orange-100 grid grid-cols-3 gap-2">
-                                <div className="text-center space-y-1">
-                                    <p className="text-[9px] font-black uppercase text-emerald-700">FRETE GRÁTIS</p>
-                                    <p className="text-[8px] text-slate-400 font-bold">Todo Brasil</p>
-                                </div>
-                                <div className="text-center border-x border-orange-100 space-y-1">
-                                    <p className="text-[9px] font-black uppercase text-emerald-700">ENVIO 24H</p>
-                                    <p className="text-[8px] text-slate-400 font-bold">Dias Úteis</p>
-                                </div>
-                                <div className="text-center space-y-1">
-                                    <p className="text-[9px] font-black uppercase text-emerald-700">RASTREIO</p>
-                                    <p className="text-[8px] text-slate-400 font-bold">Com Seguro</p>
-                                </div>
+                            <div className="pt-8 border-t border-orange-50 flex flex-wrap justify-center gap-6 md:gap-12">
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-emerald-700"><CheckCircle2 size={16} /> Frete GRÁTIS</div>
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-emerald-700"><CheckCircle2 size={16} /> Envio IMEDIATO</div>
+                                <div className="flex items-center gap-2 text-[10px] font-black uppercase text-emerald-700"><CheckCircle2 size={16} /> Seguro de entrega</div>
                             </div>
                         </div>
 
-                        {/* CTA Elegante */}
+                        {/* Botão de Compra */}
                         <div className="w-full space-y-6">
-                            <Link href={config.checkoutUrl || '#'} className="block" target="_blank" rel="noopener noreferrer">
-                                <Button className="w-full h-20 md:h-24 bg-green-600 hover:bg-green-700 text-white rounded-3xl shadow-xl shadow-green-100 transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1">
-                                    <span className="text-xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3">
-                                        <ShoppingBag size={24} className="md:size-32" />
+                            <Link href={config.checkoutUrl || '#'} className="block group/btn" target="_blank" rel="noopener noreferrer">
+                                <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-xl shadow-green-100 transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1 overflow-hidden relative">
+                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3 relative z-10">
+                                        <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" />
                                         {config.buttonText}
                                     </span>
+                                    <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] relative z-10">Acesso 100% seguro | Envio hoje</span>
                                 </Button>
                             </Link>
-                            
-                            <div className="flex justify-center gap-6 opacity-30">
-                                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={14} /> Seguro</div>
+                            <div className="flex justify-center gap-8 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+                                <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><ShieldCheck size={14} /> Original</div>
                                 <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><Lock size={14} /> SSL</div>
                                 <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest"><CreditCard size={14} /> PIX / Cartão</div>
                             </div>
                         </div>
 
-                        {/* Estoque Suave */}
-                        <div className="w-full pt-8 border-t border-slate-100 space-y-4">
+                        {/* Barra de Estoque */}
+                        <div className="w-full pt-8 border-t border-orange-100 space-y-4">
                             <div className="flex items-center justify-center gap-2 text-orange-800 font-black text-xs uppercase tracking-[0.2em]">
-                                <ShieldAlert size={16} className="text-orange-600" /> ATENÇÃO: ESTOQUE LIMITADO
+                                <ShieldAlert size={18} className="text-orange-600" /> ATENÇÃO: ESTOQUE LIMITADO
                             </div>
-                            <div className="space-y-3">
-                                <div className="w-full h-3 bg-orange-50 rounded-full overflow-hidden border border-orange-100">
-                                    <div className="h-full bg-orange-500 rounded-full" style={{ width: '80%' }}></div>
+                            <div className="space-y-3 max-w-md mx-auto">
+                                <div className="w-full h-3 bg-white rounded-full overflow-hidden border border-orange-100">
+                                    <div className="h-full bg-orange-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.3)]" style={{ width: '82%' }}></div>
                                 </div>
                                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
                                     Restam apenas <span className="text-orange-700">14 unidades</span> com este desconto
@@ -641,7 +624,7 @@ export function AntiHairLossPage() {
                                 <p>Por se tratar de um product digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
                                 <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
                                 <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
-                                <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
+                                <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitaçao (opcional).</p>
                                 <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao product digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
                                 <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
                                 <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
