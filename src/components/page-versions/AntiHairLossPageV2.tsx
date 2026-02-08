@@ -18,11 +18,14 @@ import {
   Layers,
   Truck,
   Verified,
-  Plus,
-  Minus,
-  ChevronDown,
   ShieldAlert,
-  Microscope
+  Microscope,
+  Check,
+  X,
+  FileCheck,
+  ZapIcon,
+  FlaskConical,
+  Dumbbell
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -111,7 +114,7 @@ export function AntiHairLossPageV2() {
   return (
     <>
       <PageTracker contentId="antiqueda2" />
-      <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen pb-20">
+      <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
         {/* NAVIGATION */}
         <nav className="bg-white border-b border-slate-100 py-4 px-6 sticky top-0 z-50">
@@ -134,10 +137,10 @@ export function AntiHairLossPageV2() {
 
         {/* HERO / PRODUCT SECTION */}
         <main className="max-w-7xl mx-auto px-6 py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 
                 {/* ESQUERDA: GALERIA (50%) */}
-                <div className="lg:col-span-6 space-y-4">
+                <div className="space-y-4">
                     <div className="aspect-square bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-100 relative group">
                         <img src={activeImage} alt="Produto Principal" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                         <div className="absolute top-6 left-6">
@@ -163,8 +166,7 @@ export function AntiHairLossPageV2() {
                 </div>
 
                 {/* DIREITA: INFOS DE COMPRA (50%) */}
-                <div className="lg:col-span-6 space-y-6">
-                    
+                <div className="space-y-6">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
                         <div className="bg-pink-500 p-1 rounded-md text-white">
                             <Award size={14} />
@@ -202,10 +204,6 @@ export function AntiHairLossPageV2() {
                         </p>
                     </div>
 
-                    <p className="text-slate-600 leading-relaxed text-lg">
-                        O passo mais poderoso da sua rotina capilar. Com tecnologia Bio Instinto, o kit Cavalo de Raça nutre o folículo piloso, estanca a queda e acelera o crescimento. Resultado em 7 dias: fios mais fortes, brilho intenso e regeneração real.
-                    </p>
-
                     {/* Feature Tags */}
                     <div className="flex flex-wrap gap-2 pt-2">
                         {[
@@ -225,7 +223,6 @@ export function AntiHairLossPageV2() {
                     {/* SELEÇÃO DE KITS */}
                     <div className="space-y-4 pt-6">
                         <h3 className="font-black text-lg uppercase tracking-tighter">SELECIONE O KIT</h3>
-                        
                         <div className="space-y-3">
                             {KITS.map((kit) => (
                                 <div 
@@ -241,7 +238,6 @@ export function AntiHairLossPageV2() {
                                             {kit.badge}
                                         </div>
                                     )}
-                                    
                                     <div className="flex items-center gap-4">
                                         <div className={cn(
                                             "w-7 h-7 rounded-full border-2 flex items-center justify-center transition-colors",
@@ -257,7 +253,6 @@ export function AntiHairLossPageV2() {
                                             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{kit.unitPrice}</p>
                                         </div>
                                     </div>
-
                                     <div className="text-right">
                                         <p className="text-[10px] text-slate-300 line-through font-bold uppercase tracking-widest">{kit.originalPrice}</p>
                                         <p className="text-2xl font-black text-slate-950 tracking-tight leading-none">R$ {kit.price}</p>
@@ -267,20 +262,15 @@ export function AntiHairLossPageV2() {
                         </div>
                     </div>
 
-                    {/* BOTÃO COMPRAR AGORA */}
                     <div className="space-y-4 pt-4">
                         <Link href={selectedKit.checkoutUrl} target="_blank" className="block">
                             <Button className="w-full h-20 bg-slate-950 hover:bg-slate-900 text-white rounded-[2rem] font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99]">
                                 Comprar agora
                             </Button>
                         </Link>
-                        
-                        {/* ENTREGA FULL BANNER */}
                         <div className="bg-emerald-50 border border-emerald-100 rounded-3xl p-5 flex items-center justify-between group">
                             <div className="flex items-center gap-4">
-                                <div className="bg-emerald-500 text-white p-2.5 rounded-xl shadow-lg shadow-emerald-200">
-                                    <Zap size={20} fill="currentColor" />
-                                </div>
+                                <div className="bg-emerald-500 text-white p-2.5 rounded-xl shadow-lg shadow-emerald-200"><Zap size={20} fill="currentColor" /></div>
                                 <div>
                                     <p className="text-[11px] font-black text-slate-950 uppercase tracking-widest">ENTREGA FULL — <span className="text-slate-500">Envio em até 24h</span></p>
                                     <p className="text-[10px] font-bold text-slate-500 tracking-tight">Comprando nas próximas <span className="text-slate-950 font-black">{formatTime(timeLeft)}</span></p>
@@ -293,54 +283,153 @@ export function AntiHairLossPageV2() {
             </div>
         </main>
 
-        {/* 2. SEÇÃO: CIÊNCIA / TECNOLOGIA */}
-        <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100/50 rounded-full blur-[120px] -mr-48 -mt-48"></div>
+        {/* COMPOSIÇÃO PODEROSA */}
+        <section className="py-24 px-6 bg-slate-50 border-y border-slate-100">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16 space-y-4">
-                    <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.4em]">Exclusividade Cavalo de Raça</span>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-none">
-                        Tecnologia <span className="text-orange-700 italic">Tripla Ancoragem™</span>
-                    </h2>
+                    <span className="text-orange-600 font-black text-[10px] uppercase tracking-[0.4em]">Fórmula Avançada</span>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-950 uppercase">O que faz a mágica acontecer?</h2>
+                    <p className="text-slate-500 font-medium max-w-2xl mx-auto">Ativos de alta performance que agem diretamente no bulbo capilar e na estrutura do fio.</p>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { 
-                            icon: Anchor, 
-                            t: "1. ANCORA A RAIZ", 
-                            d: "Deposita aminoácidos que reconstroem a bainha folicular, impedindo que o fio solte da raiz."
-                        },
-                        { 
-                            icon: Layers, 
-                            t: "2. RECONSTRÓI A FIBRA", 
-                            d: "Penetra na estrutura interna do fio com queratina biomimética, unindo pontas quebradas."
-                        },
-                        { 
-                            icon: ShieldCheck, 
-                            t: "3. SELA E PROTEGE", 
-                            d: "Cria um filme protetor que fecha as cutículas e protege contra o calor e atrito diário."
-                        }
-                    ].map((step, i) => (
-                        <div key={i} className="bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                            <div className="p-5 bg-[#FDF8F3] rounded-2xl w-fit mb-8 group-hover:scale-110 transition-transform">
-                                <step.icon className="h-8 w-8 text-orange-700" />
+                        { icon: FlaskConical, t: "BIOTINA (VITAMINA H)", d: "A 'vitamina do crescimento'. Estimula a produção de queratina e fortalece o fio desde a raiz, impedindo a queda por quebra." },
+                        { icon: Droplets, t: "D-PANTENOL (VIT B5)", d: "Retém a umidade natural do fio por muito mais tempo. Acaba com o aspecto seco e poroso logo na primeira lavagem." },
+                        { icon: Layers, t: "QUERATINA BIOMIMÉTICA", d: "Preenche as falhas na fibra capilar causadas por químicas e calor. Devolve a massa e a elasticidade natural do cabelo." }
+                    ].map((item, i) => (
+                        <div key={i} className="bg-white p-10 rounded-[3rem] border border-slate-100 text-center space-y-6 hover:shadow-2xl transition-all">
+                            <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mx-auto text-orange-600">
+                                <item.icon size={32} />
                             </div>
-                            <h4 className="text-xl font-black text-slate-950 mb-4 tracking-tighter uppercase">{step.t}</h4>
-                            <p className="text-slate-500 font-medium leading-relaxed">{step.d}</p>
+                            <h4 className="font-black text-lg uppercase tracking-widest text-orange-950">{item.t}</h4>
+                            <p className="text-slate-500 text-sm leading-relaxed">{item.d}</p>
                         </div>
                     ))}
                 </div>
             </div>
         </section>
 
-        {/* 3. SEÇÃO: DEPOIMENTOS DE ENTREGA */}
+        {/* DETALHAMENTO DO KIT (O que vem dentro) */}
+        <section className="py-24 px-6 bg-white">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col lg:flex-row items-center gap-16">
+                    <div className="flex-1 space-y-8">
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-950 tracking-tighter uppercase leading-tight">Um tratamento <br /> <span className="text-orange-600 italic">Completo de 4 Etapas</span></h2>
+                        <div className="space-y-6">
+                            {[
+                                { t: "Passo 1: Shampoo Fortalecedor (300ml)", d: "Limpeza profunda sem agredir, preparando o couro cabeludo para receber os nutrientes." },
+                                { t: "Passo 2: Máscara Reconstrutora (250g)", d: "O coração do tratamento. Reposição de massa e reconstrução intensiva em 15 minutos." },
+                                { t: "Passo 3: Condicionador Selante (300ml)", d: "Fecha as cutículas, retém o tratamento e proporciona desembaraço imediato e brilho." },
+                                { t: "Passo 4: Leave-in Protetor (200ml)", d: "Proteção térmica e contra raios UV. Cabelo alinhado e cheiroso o dia todo." }
+                            ].map((step, i) => (
+                                <div key={i} className="flex gap-4">
+                                    <div className="bg-orange-600 text-white w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-black text-xs">{i+1}</div>
+                                    <div>
+                                        <p className="font-black text-slate-950 uppercase text-sm tracking-tight">{step.t}</p>
+                                        <p className="text-slate-500 text-sm">{step.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex-1">
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769844571647-ChatGPT-Image-31-de-jan.-de-2026,-04_29_21.png" 
+                            alt="Kit Completo" 
+                            className="w-full h-auto drop-shadow-2xl rounded-[3rem]"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* TABELA COMPARATIVA */}
+        <section className="py-24 px-6 bg-slate-950 text-white overflow-hidden">
+            <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-16 space-y-4">
+                    <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase">Por que investir no Cavalo de Raça?</h2>
+                </div>
+                <div className="bg-white/5 rounded-[3rem] border border-white/10 overflow-hidden">
+                    <table className="w-full text-left">
+                        <thead>
+                            <tr className="bg-white/10">
+                                <th className="p-8 font-black uppercase text-xs tracking-widest">Diferencial</th>
+                                <th className="p-8 font-black uppercase text-xs tracking-widest text-center text-orange-500 bg-white/5">Cavalo de Raça</th>
+                                <th className="p-8 font-black uppercase text-xs tracking-widest text-center opacity-30">Outros Produtos</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm">
+                            {[
+                                { f: "Tratamento de Queda Real", c: true, o: false },
+                                { f: "Biotina e Pantenol em Alta Conc.", c: true, o: false },
+                                { f: "Fórmula Sem Parabenos", c: true, o: false },
+                                { f: "Resultado Profissional em Casa", c: true, o: false },
+                                { f: "Aprovado pela ANVISA", c: true, o: "Alguns" }
+                            ].map((row, i) => (
+                                <tr key={i} className="border-b border-white/5 last:border-0">
+                                    <td className="p-8 font-bold text-slate-300">{row.f}</td>
+                                    <td className="p-8 text-center bg-white/5"><Check className="mx-auto text-emerald-500" size={24} /></td>
+                                    <td className="p-8 text-center opacity-30">
+                                        {typeof row.o === 'string' ? row.o : <X className="mx-auto text-red-500" size={24} />}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        {/* ANVISA / FÁBRICA / CONFIANÇA */}
+        <section className="py-24 px-6 bg-white border-b border-slate-100">
+            <div className="max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="space-y-8">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-blue-700 text-[10px] font-black uppercase tracking-widest">
+                            <Verified size={14} /> Procedência Garantida
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-950 uppercase leading-tight">Direto da fábrica <br /> <span className="text-blue-600">Bio Instinto</span> para você.</h2>
+                        <p className="text-slate-600 text-lg leading-relaxed">
+                            O Kit Cavalo de Raça é produzido em um dos maiores laboratórios cosméticos do Brasil. Seguimos rigorosos padrões de qualidade e segurança farmacêutica.
+                        </p>
+                        <div className="flex flex-wrap gap-8 pt-4">
+                            <div className="flex flex-col items-center gap-3">
+                                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 shadow-sm">
+                                    <img src="https://logodownload.org/wp-content/uploads/2017/02/anvisa-logo.png" alt="Anvisa" className="h-6 opacity-60" />
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Aprovado Anvisa</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-3">
+                                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 shadow-sm">
+                                    <ShieldCheck className="text-emerald-500" size={32} />
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">100% Seguro</span>
+                            </div>
+                            <div className="flex flex-col items-center gap-3">
+                                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 shadow-sm">
+                                    <Dumbbell className="text-orange-500" size={32} />
+                                </div>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Não Testado em Animais</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-slate-50 p-8 rounded-[3rem] border border-slate-100">
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png" 
+                            alt="Fábrica Bio Instinto" 
+                            className="w-full h-auto rounded-[2rem] shadow-xl"
+                        />
+                        <p className="text-center mt-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Instalações Bio Instinto — Goiás, Brasil</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* FEED DE ENTREGA */}
         <section className="py-24 px-6 bg-white overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-950 uppercase">
-                        Quem recebe, <span className="text-orange-700 italic">se apaixona</span> ✨
-                    </h2>
+                    <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-slate-950 uppercase">Quem recebe, <span className="text-orange-700 italic">se apaixona</span> ✨</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {DELIVERY_FEED.map((item, i) => (
@@ -365,12 +454,10 @@ export function AntiHairLossPageV2() {
             </div>
         </section>
 
-        {/* 4. SEÇÃO: GARANTIA */}
+        {/* GARANTIA */}
         <section className="py-24 px-6 bg-[#FDF8F3]">
             <div className="max-w-4xl mx-auto text-center bg-white border-[6px] border-dashed border-orange-200 p-12 md:p-20 rounded-[4rem] shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-orange-800 rotate-12">
-                    <ShieldCheck size={200} />
-                </div>
+                <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-orange-800 rotate-12"><ShieldCheck size={200} /></div>
                 <ShieldCheck className="mx-auto h-20 w-20 text-orange-700 mb-8" />
                 <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950 leading-tight">7 dias para testar ou seu dinheiro de volta</h2>
                 <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
@@ -380,7 +467,7 @@ export function AntiHairLossPageV2() {
             </div>
         </section>
 
-        {/* 5. SEÇÃO: FAQ */}
+        {/* FAQ */}
         <section className="py-24 px-6 bg-white">
             <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-5xl font-black text-center mb-16 tracking-tighter uppercase text-slate-950">Dúvidas Comuns</h2>
