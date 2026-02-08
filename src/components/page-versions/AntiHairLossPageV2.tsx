@@ -64,7 +64,7 @@ const KITS = [
 
 export function AntiHairLossPageV2() {
   const [city, setCity] = useState('');
-  const [timeLeft, setTimeLeft] = useState(38010); 
+  const [timeLeft, setTimeLeft] = useState(38010); // ~10h 33min
   const [activeImage, setActiveImage] = useState(GALLERY_IMAGES[0]);
   const [selectedKitId, setSelectedKitId] = useState('3-unidades');
 
@@ -94,8 +94,27 @@ export function AntiHairLossPageV2() {
       <PageTracker contentId="antiqueda2" />
       <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         
+        {/* NAVIGATION E-COMMERCE */}
+        <nav className="bg-white border-b border-slate-100 py-4 px-6 sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
+                <img 
+                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
+                    alt="Logo" className="h-8"
+                />
+                <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <span className="text-orange-600">Kit Antiqueda</span>
+                    <span>Colágeno</span>
+                    <span>Vitaminas</span>
+                    <span>Cabelo & Unha</span>
+                </div>
+                <div className="flex items-center gap-4">
+                    <ShoppingBag size={20} className="text-slate-400" />
+                </div>
+            </div>
+        </nav>
+
         {/* HERO / PRODUCT SECTION */}
-        <main className="max-w-7xl mx-auto px-6 py-10 md:py-20">
+        <main className="max-w-7xl mx-auto px-6 py-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 
                 {/* ESQUERDA: GALERIA (50%) */}
@@ -131,7 +150,7 @@ export function AntiHairLossPageV2() {
                     </div>
 
                     <div className="space-y-2">
-                        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
+                        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
                             Kit Cavalo de Raça - Reconstrução + Antiqueda Intensiva
                         </h1>
                         <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
@@ -141,21 +160,21 @@ export function AntiHairLossPageV2() {
                             <span>4.9 | 2322 avaliações 5 estrelas</span>
                         </div>
                         <p className="text-emerald-600 font-bold text-sm">
-                            Mais de 50.800 compras no mês passado.
+                            Mais de 50800 compras no mês passado.
                         </p>
                     </div>
 
-                    <div className="space-y-3 pt-2">
+                    <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <span className="text-slate-400 line-through text-lg">R$ 297,00</span>
-                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">{selectedKit.discount}</span>
+                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">40% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
-                            <span className="text-5xl md:text-6xl font-black text-slate-950">R$ {selectedKit.price}</span>
+                            <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
                             <span className="text-emerald-600 font-bold text-xl">no pix</span>
                         </div>
                         <p className="text-slate-500 font-medium text-sm">
-                            Ou parcelamento facilitado no cartão de crédito
+                            Em até 12x de R$ 14,96 sem juros
                         </p>
                     </div>
 
@@ -181,7 +200,7 @@ export function AntiHairLossPageV2() {
 
                     {/* SELEÇÃO DE KITS */}
                     <div className="space-y-4 pt-6">
-                        <h3 className="font-black text-lg uppercase tracking-tight text-slate-400">Selecione o kit</h3>
+                        <h3 className="font-black text-lg uppercase tracking-tight">Selecione o kit</h3>
                         
                         <div className="space-y-3">
                             {KITS.map((kit) => (
@@ -208,7 +227,7 @@ export function AntiHairLossPageV2() {
                                         </div>
                                         <div>
                                             <div className="flex items-center gap-2">
-                                                <span className="font-black text-slate-900 uppercase">{kit.name}</span>
+                                                <span className="font-black text-slate-900">{kit.name}</span>
                                                 <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-lg text-[10px] font-black">{kit.discount}</span>
                                             </div>
                                             <p className="text-xs font-bold text-slate-400">{kit.unitPrice}</p>
