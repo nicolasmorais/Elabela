@@ -115,10 +115,10 @@ export function AntiHairLossPageV2() {
 
         {/* HERO / PRODUCT SECTION */}
         <main className="max-w-7xl mx-auto px-6 py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 {/* ESQUERDA: GALERIA (50%) */}
-                <div className="space-y-4">
+                <div className="lg:col-span-6 space-y-4">
                     <div className="aspect-square bg-slate-50 rounded-[2rem] overflow-hidden border border-slate-100 relative group">
                         <img src={activeImage} alt="Produto Principal" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" />
                     </div>
@@ -139,7 +139,7 @@ export function AntiHairLossPageV2() {
                 </div>
 
                 {/* DIREITA: INFOS DE COMPRA (50%) */}
-                <div className="space-y-6">
+                <div className="lg:col-span-6 space-y-6">
                     
                     {/* Badge de Destaque */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
@@ -166,7 +166,7 @@ export function AntiHairLossPageV2() {
 
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                            <span className="text-slate-400 line-through text-lg">R$ 297,00</span>
+                            <span className="text-slate-400 line-through text-lg">R$ 497,00</span>
                             <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">40% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
@@ -196,51 +196,6 @@ export function AntiHairLossPageV2() {
                                 {tag.label}
                             </div>
                         ))}
-                    </div>
-
-                    {/* SELEÇÃO DE KITS */}
-                    <div className="space-y-4 pt-6">
-                        <h3 className="font-black text-lg uppercase tracking-tight">Selecione o kit</h3>
-                        
-                        <div className="space-y-3">
-                            {KITS.map((kit) => (
-                                <div 
-                                    key={kit.id}
-                                    onClick={() => setSelectedKitId(kit.id)}
-                                    className={cn(
-                                        "relative flex items-center justify-between p-5 rounded-3xl border-2 transition-all cursor-pointer",
-                                        selectedKitId === kit.id ? "border-slate-900 bg-white" : "border-slate-100 bg-slate-50/50"
-                                    )}
-                                >
-                                    {kit.badge && (
-                                        <div className={cn("absolute -top-3 right-6 px-3 py-1 rounded-full text-white text-[10px] font-black uppercase tracking-widest", kit.badgeColor || "bg-pink-500")}>
-                                            {kit.badge}
-                                        </div>
-                                    )}
-                                    
-                                    <div className="flex items-center gap-4">
-                                        <div className={cn(
-                                            "w-6 h-6 rounded-full border-2 flex items-center justify-center",
-                                            selectedKitId === kit.id ? "border-slate-900" : "border-slate-300"
-                                        )}>
-                                            {selectedKitId === kit.id && <div className="w-3 h-3 rounded-full bg-slate-900" />}
-                                        </div>
-                                        <div>
-                                            <div className="flex items-center gap-2">
-                                                <span className="font-black text-slate-900">{kit.name}</span>
-                                                <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-lg text-[10px] font-black">{kit.discount}</span>
-                                            </div>
-                                            <p className="text-xs font-bold text-slate-400">{kit.unitPrice}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="text-right">
-                                        <p className="text-xs text-slate-300 line-through font-bold">{kit.originalPrice}</p>
-                                        <p className="text-xl font-black text-slate-900">R$ {kit.price}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
                     </div>
 
                     {/* BOTÃO COMPRAR AGORA */}
