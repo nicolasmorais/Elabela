@@ -66,9 +66,9 @@ export default function SalesPagesListPage() {
   const [isSavingConfig, setIsSavingConfig] = useState(false);
   const [activeSlug, setActiveSlug] = useState('');
   const [pageConfig, setPageConfig] = useState({
-      priceCard: 'R$ 187,00',
-      pricePix: '147,00',
-      installmentText: '12x de 14,96 no Cartão',
+      priceCard: 'R$ 157,00',
+      pricePix: '97,00',
+      installmentText: 'Parcelamento em até 12x',
       buttonText: 'COMPRAR AGORA',
       checkoutUrl: ''
   });
@@ -93,9 +93,9 @@ export default function SalesPagesListPage() {
           const res = await fetch(`/api/page-settings/${slug}`);
           const data = await res.json();
           setPageConfig({
-              priceCard: data.priceCard || 'R$ 187,00',
-              pricePix: data.pricePix || '147,00',
-              installmentText: data.installmentText || '12x de 14,96 no Cartão',
+              priceCard: data.priceCard || 'R$ 157,00',
+              pricePix: data.pricePix || '97,00',
+              installmentText: data.installmentText || 'Parcelamento em até 12x',
               buttonText: data.buttonText || 'COMPRAR AGORA',
               checkoutUrl: data.checkoutUrl || ''
           });
@@ -216,7 +216,7 @@ export default function SalesPagesListPage() {
                             </Button>
                             </Link>
 
-                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda' || page.id === 'antiqueda2') && (
+                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda') && (
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl">
@@ -256,21 +256,21 @@ export default function SalesPagesListPage() {
           
           <div className="grid gap-6 py-4">
             <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Preço Original (R$ 187,00)</Label>
+              <Label className="text-xs font-black uppercase text-slate-400">Preço Cartão (Texto Livre)</Label>
               <Input 
                 value={pageConfig.priceCard} 
                 onChange={e => setPageConfig({...pageConfig, priceCard: e.target.value})}
-                placeholder="Ex: R$ 187,00"
+                placeholder="Ex: R$ 157,00"
                 className="rounded-xl h-12"
               />
             </div>
             
             <div className="space-y-2">
-              <Label className="text-xs font-black uppercase text-slate-400">Preço Final (147,00)</Label>
+              <Label className="text-xs font-black uppercase text-slate-400">Preço Pix (Apenas Números)</Label>
               <Input 
                 value={pageConfig.pricePix} 
                 onChange={e => setPageConfig({...pageConfig, pricePix: e.target.value})}
-                placeholder="Ex: 147,00"
+                placeholder="Ex: 97,00"
                 className="rounded-xl h-12"
               />
             </div>
@@ -280,7 +280,7 @@ export default function SalesPagesListPage() {
               <Input 
                 value={pageConfig.installmentText} 
                 onChange={e => setPageConfig({...pageConfig, installmentText: e.target.value})}
-                placeholder="Ex: 12x de 14,96 no Cartão"
+                placeholder="Ex: Parcelamento em até 12x"
                 className="rounded-xl h-12"
               />
             </div>

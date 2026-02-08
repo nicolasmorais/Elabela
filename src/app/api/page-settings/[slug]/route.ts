@@ -14,9 +14,8 @@ export async function GET(
     if (result.rows.length === 0) {
       // Retorna valores padrão se não existir no banco
       return NextResponse.json({ 
-        priceCard: 'R$ 187,00', 
-        pricePix: '147,00', 
-        installmentText: '12x de 14,96 no Cartão',
+        priceCard: 'R$ 157,00', 
+        pricePix: '97,00', 
         checkoutUrl: '#' 
       });
     }
