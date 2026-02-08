@@ -29,11 +29,11 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
             <span className="text-lg font-black tracking-tight whitespace-nowrap">{installmentText}</span>
           </div>
           
-          {/* LADO DIREITO: COMPRAR AGORA */}
+          {/* LADO DIREITO: COMPRAR AGORA (Texto Aumentado) */}
           <div className="flex-1 flex items-center justify-center pl-4">
-            <span className="flex items-center gap-2 text-lg font-black uppercase tracking-tighter italic">
+            <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
                 {buttonText}
-                <ArrowRight size={18} className="shrink-0" />
+                <ArrowRight size={22} className="shrink-0" />
             </span>
           </div>
         </Button>
