@@ -60,9 +60,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
 
 const GALLERY_IMAGES = [
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896113265-ChatGPT-Image-31-de-jan.-de-2026,-18_44_47.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg"
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421102915-ChatGPT-Image-6-de-fev.-de-2026,-20_35_44.png"
 ];
 
 const DELIVERY_TESTIMONIALS = [
@@ -178,7 +179,7 @@ export function AntiHairLossPageV2() {
                         <img 
                           src={GALLERY_IMAGES[activeImageIndex]} 
                           alt="Produto Principal" 
-                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]" 
+                          className="w-full h-full object-contain p-4 transition-all duration-700 group-hover:scale-[1.02]" 
                         />
                         
                         <button 
@@ -211,7 +212,7 @@ export function AntiHairLossPageV2() {
                                       : "border-slate-100 opacity-60 hover:opacity-100 hover:border-slate-300"
                                 )}
                             >
-                                <img src={img} alt="Thumb" className="w-full h-full object-cover" />
+                                <img src={img} alt="Thumb" className="w-full h-full object-cover p-1" />
                             </button>
                         ))}
                     </div>
@@ -425,9 +426,9 @@ export function AntiHairLossPageV2() {
             </footer>
         </div>
 
-        {/* STICKY BAR MOBILE - Ajustado para remover 'no Cartão' apenas aqui */}
+        {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText={config.installmentText.replace(' no Cartão', '')}
+          installmentText="12x de 14,96 no Cartão"
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
         />
