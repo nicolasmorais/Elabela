@@ -12,6 +12,9 @@ interface MobileStickyBarProps {
 }
 
 export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: MobileStickyBarProps) => {
+  // Prioriza o link direto passado pelo usuário
+  const finalUrl = checkoutUrl || 'https://seguro.elabela.store/r/M1MW6QA99S';
+
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 pt-2 pb-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
       {/* Scarcity - Estoque Acabando */}
@@ -22,7 +25,7 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
         </p>
       </div>
 
-      <Link href={checkoutUrl || '#'} className="block" target="_blank" rel="noopener noreferrer">
+      <Link href={finalUrl} className="block" target="_blank" rel="noopener noreferrer">
         <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-between gap-0 overflow-hidden px-5 py-0">
           {/* LADO ESQUERDO: PARCELAMENTO */}
           <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4 text-left">
@@ -33,7 +36,7 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
           {/* LADO DIREITO: COMPRAR AGORA */}
           <div className="flex-1 flex items-center justify-center pl-4">
             <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
-                {buttonText}
+                {buttonText || 'Comprar agora'}
                 <ArrowRight size={22} className="shrink-0" />
             </span>
           </div>
