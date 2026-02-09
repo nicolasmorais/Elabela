@@ -59,10 +59,19 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
 
-const GALLERY_IMAGES = [
+// IMAGENS EXCLUSIVAS DA GALERIA DE PRODUTO (TOPO)
+const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png"
+];
+
+// IMAGENS DA SEÇÃO RESULTADOS REAIS (MANTIDAS ORIGINAIS)
+const GALLERY_IMAGES = [
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421102915-ChatGPT-Image-6-de-fev.-de-2026,-20_35_44.png"
 ];
 
 const DELIVERY_TESTIMONIALS = [
@@ -143,11 +152,11 @@ export function AntiHairLossPageV2() {
   };
 
   const nextImage = () => {
-    setActiveImageIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
+    setActiveImageIndex((prev) => (prev + 1) % PRODUCT_IMAGES.length);
   };
 
   const prevImage = () => {
-    setActiveImageIndex((prev) => (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
+    setActiveImageIndex((prev) => (prev - 1 + PRODUCT_IMAGES.length) % PRODUCT_IMAGES.length);
   };
 
   return (
@@ -173,7 +182,7 @@ export function AntiHairLossPageV2() {
                 <div className="lg:col-span-6 space-y-6">
                     <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.08)] group">
                         <img 
-                          src={GALLERY_IMAGES[activeImageIndex]} 
+                          src={PRODUCT_IMAGES[activeImageIndex]} 
                           alt="Produto Principal" 
                           className="w-full h-full object-contain p-4 transition-all duration-700 group-hover:scale-[1.02]" 
                         />
@@ -194,13 +203,13 @@ export function AntiHairLossPageV2() {
                         
                         {/* Contador Visual */}
                         <div className="absolute bottom-6 right-6 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                          {activeImageIndex + 1} / {GALLERY_IMAGES.length}
+                          {activeImageIndex + 1} / {PRODUCT_IMAGES.length}
                         </div>
                     </div>
 
                     {/* Thumbnails Estilizados */}
                     <div className="grid grid-cols-4 gap-4 px-2">
-                        {GALLERY_IMAGES.map((img, i) => (
+                        {PRODUCT_IMAGES.map((img, i) => (
                             <button 
                                 key={i} 
                                 onClick={() => setActiveImageIndex(i)}
