@@ -27,7 +27,7 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
           {/* LADO ESQUERDO: PARCELAMENTO */}
           <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4 text-left">
             <span className="text-[10px] font-bold uppercase opacity-70 tracking-widest">Apenas</span>
-            <span className="text-lg font-black tracking-tight whitespace-nowrap">{installmentText}</span>
+            <span className="text-lg font-black tracking-tight whitespace-nowrap">12x de 14,96</span>
           </div>
           
           {/* LADO DIREITO: COMPRAR AGORA */}
