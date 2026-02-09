@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'export default function SalesPagesListPage() {';
 import Link from 'next/link';
 import {
   Card,
@@ -53,7 +53,8 @@ const STATIC_PAGES = [
   { id: 'menopausa', name: 'Menopausa Nunca Mais', type: 'Vendas', icon: ShoppingBag, color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-950/20' },
   { id: 'dor-zero', name: 'Dolorzero (Articulações)', type: 'Vendas', icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-950/20' },
   { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', type: 'Vendas', icon: Heart, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-950/20' },
-  { id: 'antiqueda', name: 'Tratamento Antiqueda', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
+  { id: 'antiqueda', name: 'Tratamento Antiqueda V1', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
+  { id: 'antiqueda2', name: 'Tratamento Antiqueda V2', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
 ];
 
 export default function SalesPagesListPage() {
@@ -216,7 +217,7 @@ export default function SalesPagesListPage() {
                             </Button>
                             </Link>
 
-                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda') && (
+                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda' || page.id === 'antiqueda2') && (
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl">
