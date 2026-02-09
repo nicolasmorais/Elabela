@@ -174,7 +174,7 @@ export function AntiHairLossPageV2() {
                         <img 
                           src={GALLERY_IMAGES[activeImageIndex]} 
                           alt="Produto Principal" 
-                          className="w-full h-full object-contain p-4 transition-all duration-700 group-hover:scale-[1.02]" 
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]" 
                         />
                         
                         {/* Botões de Navegação Lateral (Desktop Only) */}
@@ -210,7 +210,7 @@ export function AntiHairLossPageV2() {
                                       : "border-slate-100 opacity-60 hover:opacity-100 hover:border-slate-300"
                                 )}
                             >
-                                <img src={img} alt="Thumb" className="w-full h-full object-cover p-1" />
+                                <img src={img} alt="Thumb" className="w-full h-full object-cover" />
                                 {activeImageIndex === i && (
                                   <div className="absolute inset-0 bg-orange-500/5 pointer-events-none"></div>
                                 )}
@@ -301,7 +301,6 @@ export function AntiHairLossPageV2() {
                 </div>
             </div>
         </main>
-        {/* ... manter o resto do componente exatamente igual ... */}
         <div className="border-t border-slate-100 bg-white">
             
             {/* SEÇÃO: MÍDIA / PORTAIS */}
@@ -548,7 +547,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* 🆕 SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? 🆕 */}
+            {/* SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? */}
             <section className="py-32 px-6 bg-white overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -651,11 +650,10 @@ export function AntiHairLossPageV2() {
                     </div>
                 </div>
             </section>
-            {/* ... o restante das seções ... */}
         </div>
-        {/* ... rodapé e mobile bar ... */}
+
+        {/* FOOTER */}
         <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
-          {/* ... conteúdo do rodapé ... */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
@@ -664,7 +662,7 @@ export function AntiHairLossPageV2() {
                     <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
-                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar any mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estars.</p>
                         </div>
                         <div>
                             <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
