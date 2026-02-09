@@ -109,7 +109,7 @@ export function AntiHairLossPageV2() {
       pricePix: '147,00',
       installmentText: '12x de R$ 14,96',
       buttonText: 'Comprar agora',
-      checkoutUrl: 'https://pay.oneconversion.pro/checkout?product_id=d912bd88-7bb4-4be9-ae2e-f3bbd40d9ac8'
+      checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
   });
 
   useEffect(() => {

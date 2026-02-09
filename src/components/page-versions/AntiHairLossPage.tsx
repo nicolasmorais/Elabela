@@ -93,7 +93,7 @@ export function AntiHairLossPage() {
       pricePix: '147,00',
       installmentText: '12x de 14,96',
       buttonText: 'COMPRAR AGORA',
-      checkoutUrl: '#'
+      checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
   });
 
   useEffect(() => {
@@ -120,7 +120,7 @@ export function AntiHairLossPage() {
                     pricePix: data.pricePix || '147,00',
                     installmentText: data.installmentText || '12x de 14,96',
                     buttonText: data.buttonText || 'COMPRAR AGORA',
-                    checkoutUrl: data.checkoutUrl || '#'
+                    checkoutUrl: data.checkoutUrl || 'https://seguro.elabela.store/r/M1MW6QA99S'
                 });
             }
         })
@@ -132,7 +132,7 @@ export function AntiHairLossPage() {
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -335,7 +335,7 @@ export function AntiHairLossPage() {
                                 { n: "2", t: "FIBRA QUEBRADA", d: "O fio está tão seco que parte ao meio antes mesmo de cair." },
                                 { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio solto e vulnerável." }
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
+                                <div className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
                                     <div className="h-8 w-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-black shrink-0 shadow-sm">{item.n}</div>
                                     <div>
                                         <p className="font-black text-orange-950 uppercase text-sm tracking-widest mb-1">{item.t}</p>
@@ -361,7 +361,7 @@ export function AntiHairLossPage() {
                             icon: Anchor, 
                             title: "CAMADA 1: ANCORA A RAIZ", 
                             prod: "Shampoo Reconstrutor",
-                            desc: "Remove resíduos químicos que DISSOLVEM a proteção da raiz e deposita aminoácidos que RECONSTROEM a bainha folicular.",
+                            desc: "Remove resíduos químicos que DISSOLVEM a protection da raiz e deposita aminoácidos que RECONSTROEM a bainha folicular.",
                             feels: ["1ª lavada: Couro cabeludo respira", "3 dias: Fios param de soltar", "7 dias: Raiz firme (Zero quebra)"],
                             analogia: "É como cimentar um poste que estava solto no chão. O fio PARA de cair porque ele está PRESO de verdade."
                         },
@@ -525,7 +525,7 @@ export function AntiHairLossPage() {
 
                         {/* Botão de Compra */}
                         <div className="w-full space-y-6">
-                            <Link href={config.checkoutUrl || '#'} className="block group/btn" target="_blank" rel="noopener noreferrer">
+                            <Link href={config.checkoutUrl || 'https://seguro.elabela.store/r/M1MW6QA99S'} className="block group/btn" target="_blank" rel="noopener noreferrer">
                                 <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-xl shadow-green-100 transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1 overflow-hidden relative">
                                     <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3 relative z-10">
                                         <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" />
@@ -567,7 +567,7 @@ export function AntiHairLossPage() {
                     <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
                     <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
                     <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
-                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
+                        Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o result, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                     </p>
                     <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                 </div>
@@ -670,7 +670,7 @@ export function AntiHairLossPage() {
 
         {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText={config.installmentText}
+          installmentText={config.installmentText.split('de ')[1] || config.installmentText}
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
         />
