@@ -1,0 +1,8 @@
+name = "elabela-control"
+compatibility_date = "2024-04-03"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+# DATABASE_URL deve ser configurada no painel do Cloudflare para segurança
+# DATABASE_URL = "postgresql://postgres:8zrcemo0tdetrmig@147.93.179.152:5441/postgres"
