@@ -71,7 +71,7 @@
     "zod": "^3.25.28"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.7",
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@dyad-sh/nextjs-webpack-component-tagger": "^0.8.0",
     "@types/node": "^20",
     "@types/react": "^19",
