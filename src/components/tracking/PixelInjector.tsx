@@ -1,31 +1,29 @@
 import { getDb } from '@/lib/database';
 import { GlobalPixelConfig, PagePixelConfig } from '@/lib/advertorial-types';
-import { Client } from 'pg';
 
 interface PixelInjectorProps {
     pagePixels?: PagePixelConfig;
     forcePageId?: string;
 }
 
-async function fetchTaboolaCentralConfig(db: Client) {
-    const result = await db.query('SELECT value FROM settings WHERE key = $1', ['taboolaConfig']);
-    return result.rows.length > 0 ? result.rows[0].value : { globalId: '', pageOverrides: {} };
+async function fetchTaboolaCentralConfig(client: any) {
+    const result = await client.query('SELECT value FROM settings WHERE key = $1', ['taboolaConfig']);
+    return result.rows.length > 0 ? JSON.parse(result.rows[0].value) : { globalId: '', pageOverrides: {} };
 }
 
-async function fetchGlobalPixelConfig(db: Client): Promise<GlobalPixelConfig> {
-    const result = await db.query('SELECT value FROM settings WHERE key = $1', ['pixelConfig']);
+async function fetchGlobalPixelConfig(client: any): Promise<GlobalPixelConfig> {
+    const result = await client.query('SELECT value FROM settings WHERE key = $1', ['pixelConfig']);
     if (result.rows.length === 0) {
         return { metaPixelId: '', taboolaPixelId: '', globalScripts: '' };
     }
-    return result.rows[0].value as GlobalPixelConfig;
+    return JSON.parse(result.rows[0].value) as GlobalPixelConfig;
 }
 
 export async function PixelInjector({ pagePixels, forcePageId }: PixelInjectorProps): Promise<React.ReactNode> {
-  const db = await getDb();
-  const globalConfig: GlobalPixelConfig = await fetchGlobalPixelConfig(db);
-  const taboolaCentral = await fetchTaboolaCentralConfig(db);
+  const client = await getDb();
+  const globalConfig: GlobalPixelConfig = await fetchGlobalPixelConfig(client);
+  const taboolaCentral = await fetchTaboolaCentralConfig(client);
   
-  // 1. Lógica do Taboola (Prioridade: Override Central -> Local da Página -> Global Central)
   let taboolaId = '';
   if (forcePageId && taboolaCentral.pageOverrides[forcePageId]) {
     taboolaId = taboolaCentral.pageOverrides[forcePageId];
@@ -35,7 +33,6 @@ export async function PixelInjector({ pagePixels, forcePageId }: PixelInjectorPr
     taboolaId = taboolaCentral.globalId;
   }
 
-  // 2. Lógica do Meta
   let metaPixelId = pagePixels?.metaPixelId || '';
   let customScripts = pagePixels?.customScripts || '';
 
@@ -44,7 +41,6 @@ export async function PixelInjector({ pagePixels, forcePageId }: PixelInjectorPr
     customScripts = customScripts || globalConfig.globalScripts;
   }
 
-  // Scripts
   const metaScript = metaPixelId ? `
     <script>
       !function(f,b,e,v,n,t,s)

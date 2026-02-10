@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-import { Client } from 'pg';
 
 export const runtime = 'edge';
 
@@ -19,21 +18,20 @@ export async function GET(): Promise<NextResponse> {
   };
 
   try {
-    const db = await getDb();
-    if (!db) return NextResponse.json(defaultResponse);
+    const client = await getDb();
+    if (!client) return NextResponse.json(defaultResponse);
 
-    const client = db as Client;
     const response = { ...defaultResponse, status: 'OK', database: 'OK' };
 
     try {
-      const routeResult = await client.query('SELECT COUNT(*) FROM routes');
-      response.metrics.routes = parseInt(routeResult.rows[0]?.count || '0');
+      const routeResult = await client.query('SELECT COUNT(*) as count FROM routes');
+      response.metrics.routes = Number(routeResult.rows[0]?.count || 0);
       
-      const advertorialResult = await client.query('SELECT COUNT(*) FROM custom_advertorials');
-      response.metrics.advertorials = parseInt(advertorialResult.rows[0]?.count || '0');
+      const advertorialResult = await client.query('SELECT COUNT(*) as count FROM custom_advertorials');
+      response.metrics.advertorials = Number(advertorialResult.rows[0]?.count || 0);
       
-      const pageViewResult = await client.query('SELECT COUNT(*) FROM page_views');
-      response.metrics.pageViews = parseInt(pageViewResult.rows[0]?.count || '0');
+      const pageViewResult = await client.query('SELECT COUNT(*) as count FROM page_views');
+      response.metrics.pageViews = Number(pageViewResult.rows[0]?.count || 0);
       
       if (response.metrics.pageViews > 0) {
         const lastViewResult = await client.query('SELECT timestamp FROM page_views ORDER BY timestamp DESC LIMIT 1');
@@ -44,9 +42,9 @@ export async function GET(): Promise<NextResponse> {
       
       const authResult = await client.query('SELECT value FROM settings WHERE key = $1', ['auth']);
       if (authResult.rows.length > 0) {
-        const authData = authResult.rows[0].value;
+        const authData = JSON.parse(authResult.rows[0].value);
         if (authData && typeof authData === 'object') {
-          response.authStatus = (authData as any).passwordHash ? 'Configurado' : 'Padrão/Não Configurado';
+          response.authStatus = authData.passwordHash ? 'Configurado' : 'Padrão/Não Configurado';
         }
       }
     } catch (innerError) {

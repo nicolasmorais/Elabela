@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 import bcrypt from 'bcryptjs';
 import { cookies } from 'next/headers';
-import { Client } from 'pg';
 
 export const runtime = 'edge';
 
@@ -17,13 +16,13 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });
     }
 
-    const client: Client = await getDb();
+    const client = await getDb();
     let storedHash = '';
     
     const result = await client.query('SELECT value FROM settings WHERE key = $1', ['auth']);
     
     if (result.rows.length > 0) {
-      const authData = result.rows[0].value;
+      const authData = JSON.parse(result.rows[0].value);
       if (authData && typeof authData === 'object') {
         storedHash = authData.passwordHash || '';
       }
@@ -34,7 +33,7 @@ export async function POST(req: Request): Promise<NextResponse> {
       const newHash = await bcrypt.hash(defaultPassword, 10);
       
       await client.query(
-        'INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO UPDATE SET value = $2',
+        'INSERT OR REPLACE INTO settings (key, value) VALUES ($1, $2)',
         ['auth', JSON.stringify({ passwordHash: newHash })]
       );
       
@@ -56,7 +55,6 @@ export async function POST(req: Request): Promise<NextResponse> {
     });
 
     return NextResponse.json({ success: true, message: 'Login bem-sucedido' });
-
   } catch (error) {
     console.error('Login failed:', error);
     return NextResponse.json({ message: 'Erro interno do servidor' }, { status: 500 });
