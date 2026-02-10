@@ -1,0 +1,3 @@
+.next/cache
+.next/server/app-paths-manifest.json
+.next/server/webpack-runtime.js
