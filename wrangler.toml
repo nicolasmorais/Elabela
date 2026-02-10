@@ -1,17 +1,7 @@
-name = "docker-dyad-template"
-compatibility_date = "2024-11-01"
-compatibility_flags = ["nodejs_compat"]
+name = "elabela"
+pages_build_output_dir = ".next"
 
-[vars]
-# Variáveis de tempo de execução (Runtime)
-NODE_VERSION = "20"
-
-[build]
-command = "pnpm run build"
-path = ".vercel/output/static"
-
-[build.vars]
-# Variáveis exclusivas do momento do BUILD
-NODE_VERSION = "20"
-PNPM_VERSION = "9"
-PNPM_FLAGS = "--no-frozen-lockfile"
+[[d1_databases]]
+binding = "DB" # Nome que usaremos no código
+database_name = "elabela-db"
+database_id = "f8f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8f8" # Você precisará trocar pelo ID real gerado no painel da Cloudflare
