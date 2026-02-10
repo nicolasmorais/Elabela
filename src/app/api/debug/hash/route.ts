@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
+
+export const runtime = 'edge';
 
 export async function POST(req: Request) {
   try {
@@ -9,7 +11,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });
     }
     
-    // Gera hash para a senha fornecida
     const hash = await bcrypt.hash(password, 10);
     
     return NextResponse.json({ 

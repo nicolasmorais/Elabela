@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { cookies } from 'next/headers';
 import { Client } from 'pg';
 
+export const runtime = 'edge';
+
 const SESSION_COOKIE_NAME = 'auth_session';
-const SESSION_EXPIRY_SECONDS = 60 * 60 * 24; // 24 hours
+const SESSION_EXPIRY_SECONDS = 60 * 60 * 24;
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
@@ -22,13 +24,11 @@ export async function POST(req: Request): Promise<NextResponse> {
     
     if (result.rows.length > 0) {
       const authData = result.rows[0].value;
-      // Verificação de segurança para evitar erro de desestruturação se authData for nulo
       if (authData && typeof authData === 'object') {
         storedHash = authData.passwordHash || '';
       }
     }
 
-    // Se não houver hash armazenado ou authData estiver corrompido, usa o padrão
     if (!storedHash) {
       const defaultPassword = '84740949';
       const newHash = await bcrypt.hash(defaultPassword, 10);
@@ -47,9 +47,10 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha incorreta' }, { status: 401 });
     }
 
-    (await cookies()).set(SESSION_COOKIE_NAME, 'true', {
+    const cookieStore = await cookies();
+    cookieStore.set(SESSION_COOKIE_NAME, 'true', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: true,
       maxAge: SESSION_EXPIRY_SECONDS,
       path: '/',
     });
