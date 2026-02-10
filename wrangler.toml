@@ -1,8 +1,17 @@
-name = "elabela-control"
-compatibility_date = "2024-04-03"
+name = "docker-dyad-template"
+compatibility_date = "2024-11-01"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".vercel/output/static"
 
 [vars]
-# DATABASE_URL deve ser configurada no painel do Cloudflare para segurança
-# DATABASE_URL = "postgresql://postgres:8zrcemo0tdetrmig@147.93.179.152:5441/postgres"
+# Variáveis de tempo de execução (Runtime)
+NODE_VERSION = "20"
+
+[build]
+command = "pnpm run build"
+path = ".vercel/output/static"
+
+[build.vars]
+# Variáveis exclusivas do momento do BUILD
+NODE_VERSION = "20"
+PNPM_VERSION = "9"
+PNPM_FLAGS = "--no-frozen-lockfile"
