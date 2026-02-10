@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
       });
     }
 
-    // RESOLVE O ERRO 'fs' na Cloudflare/Edge
+    // RESOLVE OS ERROS DE MÓDULOS NATIVOS na Cloudflare/Edge
     if (!isServer) {
         config.resolve.fallback = {
             ...config.resolve.fallback,
@@ -31,14 +31,23 @@ const nextConfig: NextConfig = {
             net: false,
             tls: false,
             crypto: false,
+            path: false,
+            stream: false,
+            string_decoder: false,
+            dns: false,
+            events: false,
         };
     } else {
-        // No servidor, também precisamos ignorar módulos que o pg-connection-string tenta dar require
-        config.externals.push({
-            'fs': 'commonjs fs',
-            'net': 'commonjs net',
-            'tls': 'commonjs tls',
-        });
+        // No servidor (Edge/Node), também precisamos neutralizar esses módulos para pacotes específicos
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+            net: false,
+            tls: false,
+            path: false,
+            stream: false,
+            string_decoder: false,
+        };
     }
 
     return config;
