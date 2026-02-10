@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    // Configuração para o Dyad em desenvolvimento
     if (process.env.NODE_ENV === "development") {
       config.module.rules.push({
         test: /\.(jsx|tsx)$/,
@@ -21,10 +22,28 @@ const nextConfig: NextConfig = {
         use: "@dyad-sh/nextjs-webpack-component-tagger",
       });
     }
+
+    // RESOLVE O ERRO 'fs' na Cloudflare/Edge
+    if (!isServer) {
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+            net: false,
+            tls: false,
+            crypto: false,
+        };
+    } else {
+        // No servidor, também precisamos ignorar módulos que o pg-connection-string tenta dar require
+        config.externals.push({
+            'fs': 'commonjs fs',
+            'net': 'commonjs net',
+            'tls': 'commonjs tls',
+        });
+    }
+
     return config;
   },
   async rewrites() {
-    // Explicitamente typing the rewrites array
     const rewrites: Array<{ source: string; destination: string }> = [];
 
     const externalApiUrlService1 = process.env.EXTERNAL_API_URL_SERVICE1;
