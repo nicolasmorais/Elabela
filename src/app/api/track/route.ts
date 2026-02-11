@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 import { v4 as uuidv4 } from 'uuid';
 
+export const runtime = 'edge';
+
 export async function POST(req: Request): Promise<NextResponse> {
   try {
     const { contentId, path } = await req.json();

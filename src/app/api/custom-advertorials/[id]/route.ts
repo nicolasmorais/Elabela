@@ -3,6 +3,8 @@ import { getDb } from '@/lib/database';
 import { CustomAdvertorial } from '@/lib/advertorial-types';
 import { validate as isUUID } from 'uuid';
 
+export const runtime = 'edge';
+
 export async function GET(
   request: NextRequest, 
   { params }: { params: Promise<{ id: string }> }

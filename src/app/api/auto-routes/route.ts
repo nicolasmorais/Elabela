@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 
+export const runtime = 'edge';
+
 interface AutoRouteMapping {
     [slug: string]: string;
 }

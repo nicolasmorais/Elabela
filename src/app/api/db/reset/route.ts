@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 
+export const runtime = 'edge';
+
 export async function POST() {
   try {
     const client = await getDb();

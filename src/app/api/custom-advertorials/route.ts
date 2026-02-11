@@ -3,6 +3,8 @@ import { getDb } from '@/lib/database';
 import { CustomAdvertorial } from '@/lib/advertorial-types';
 import { v4 as uuidv4 } from 'uuid';
 
+export const runtime = 'edge';
+
 export async function GET(): Promise<NextResponse> {
   try {
     const client = await getDb();
