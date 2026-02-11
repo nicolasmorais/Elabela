@@ -1,8 +1,6 @@
 import { getDb } from '@/lib/database';
 import { notFound } from 'next/navigation';
-import { Client } from 'pg';
 import { validate as isUUID } from 'uuid';
-import Head from 'next/head';
 
 import { V1Page } from '@/components/page-versions/V1Page';
 import { V2Page } from '@/components/page-versions/V2Page';
@@ -59,7 +57,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     const slugKey = slug.join('/');
     const path = `/${slugKey}`;
 
-    let client: Client;
+    let client: any;
     try {
         client = await getDb();
     } catch (dbError) {
@@ -73,7 +71,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     try {
         const autoRoutesResult = await client.query('SELECT value FROM settings WHERE key = $1', ['autoRoutes']);
         if (autoRoutesResult.rows.length > 0) {
-            const autoRoutes = autoRoutesResult.rows[0].value;
+            const autoRoutes = JSON.parse(autoRoutesResult.rows[0].value);
             if (autoRoutes && autoRoutes[slugKey]) {
                 contentId = autoRoutes[slugKey];
             }
