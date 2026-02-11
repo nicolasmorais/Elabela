@@ -1,50 +1,67 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getDb } from '@/lib/database';
+import { Client, QueryResult } from 'pg';
+import { v4 as uuidv4 } from 'uuid';
 
-export const config = {
-  runtime: 'edge',
-};
+// Definindo o tipo para um item de exemplo
+interface ExampleItem {
+    id: string; // Usando string/UUID para PostgreSQL
+    name: string;
+    createdAt: string;
+}
 
-export default async function handler(req: Request): Promise<Response> {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+  let client: Client | null = null;
   try {
-    const client = await getDb();
+    client = await getDb(); // Get the PostgreSQL Client
 
-    // No Edge Runtime, usamos o objeto Request nativo em vez de NextApiRequest
+    // Garantir que a tabela 'examples' exista (não estava no ensureTablesExist)
+    await client.query(`
+        CREATE TABLE IF NOT EXISTS examples (
+            id UUID PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+        );
+    `);
+
     if (req.method === 'GET') {
-      const result = await client.query('SELECT id, name, created_at as "createdAt" FROM examples ORDER BY created_at DESC');
-      return new Response(JSON.stringify(result.rows), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      // Handle GET requests to fetch examples
+      const result: QueryResult = await client.query('SELECT id, name, created_at as "createdAt" FROM examples ORDER BY created_at DESC');
+      const examples: ExampleItem[] = result.rows;
+      res.status(200).json(examples);
+      return;
     } else if (req.method === 'POST') {
-      const body = await req.json() as { name: string };
-      if (!body.name) {
-        return new Response(JSON.stringify({ message: 'O nome é obrigatório' }), {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        });
+      // Handle POST requests to create a new example
+      const { name } = req.body as { name: string };
+      if (!name) {
+        res.status(400).json({ message: 'O nome é obrigatório' });
+        return;
       }
 
-      const newId = crypto.randomUUID();
-      const createdAt = new Date().toISOString();
+      const newId = uuidv4();
+      const newExample: ExampleItem = {
+        id: newId,
+        name,
+        createdAt: new Date().toISOString(),
+      };
 
+      // Insert the new example
       await client.query(
         'INSERT INTO examples (id, name, created_at) VALUES ($1, $2, $3)',
-        [newId, body.name, createdAt]
+        [newId, name, newExample.createdAt]
       );
 
-      return new Response(JSON.stringify({ id: newId, name: body.name, createdAt }), {
-        status: 201,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      res.status(201).json(newExample);
+      return;
     } else {
-      return new Response(`Método ${req.method} não permitido`, { status: 405 });
+      // Method Not Allowed for other HTTP methods
+      res.setHeader('Allow', ['GET', 'POST']);
+      res.status(405).end(`Método ${req.method} não permitido`);
+      return;
     }
   } catch (error: any) {
     console.error('Database operation failed:', error.message || error);
-    return new Response(JSON.stringify({ message: 'Erro interno do servidor', error: error.message || 'Unknown error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    res.status(500).json({ message: 'Erro interno do servidor', error: error.message || 'Unknown error' });
+    return;
   }
 }

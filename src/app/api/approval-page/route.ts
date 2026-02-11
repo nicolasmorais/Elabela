@@ -1,19 +1,20 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
 import { ApprovalPageContent } from '@/lib/advertorial-types';
-
-export const runtime = 'edge';
+import { Client } from 'pg';
 
 export async function GET(): Promise<NextResponse> {
   try {
-    const client = await getDb();
+    const client: Client = await getDb();
+    
+    // Buscar da tabela settings
     const result = await client.query('SELECT value FROM settings WHERE key = $1', ['approvalPageContent']);
     
     if (result.rows.length === 0) {
       return NextResponse.json({ message: 'Conteúdo não encontrado' }, { status: 404 });
     }
     
-    return NextResponse.json(JSON.parse(result.rows[0].value));
+    return NextResponse.json(result.rows[0].value);
   } catch (error) {
     console.error('Failed to get approval page content:', error);
     return NextResponse.json({ message: 'Erro Interno do Servidor' }, { status: 500 });
@@ -27,10 +28,11 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'O conteúdo é obrigatório' }, { status: 400 });
     }
 
-    const client = await getDb();
+    const client: Client = await getDb();
     
+    // Atualizar na tabela settings
     await client.query(
-      'INSERT OR REPLACE INTO settings (key, value) VALUES ($1, $2)',
+      'INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO UPDATE SET value = $2',
       ['approvalPageContent', JSON.stringify(newContent)]
     );
     

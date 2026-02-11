@@ -17,8 +17,6 @@ import { BlocksEditor } from '@/components/dashboard/custom-advertorials/BlocksE
 import { FooterEditor } from '@/components/dashboard/custom-advertorials/FooterEditor';
 import { PixelEditor } from '@/components/dashboard/custom-advertorials/PixelEditor';
 
-export const runtime = 'edge';
-
 export default function CustomAdvertorialEditor() {
     const params = useParams();
     const router = useRouter();

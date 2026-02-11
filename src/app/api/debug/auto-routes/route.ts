@@ -1,33 +1,36 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-
-export const runtime = 'edge';
+import { Client } from 'pg';
 
 export async function GET() {
   try {
-    const client = await getDb();
+    const client: Client = await getDb();
     
-    // SQLite check for table existence
+    // Verifica se a tabela settings existe
     const tableCheck = await client.query(`
-      SELECT name FROM sqlite_master WHERE type='table' AND name='settings'
+      SELECT EXISTS (
+        SELECT FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'settings'
+      );
     `);
     
-    const tableExists = tableCheck.rows.length > 0;
+    const tableExists = tableCheck.rows[0].exists;
     
     let autoRoutesData: any = null;
     let allSettings: any[] = [];
     
     if (tableExists) {
+      // Busca as auto routes
       const autoRoutesResult = await client.query('SELECT value FROM settings WHERE key = $1', ['autoRoutes']);
+      
       if (autoRoutesResult.rows.length > 0) {
-        autoRoutesData = JSON.parse(autoRoutesResult.rows[0].value);
+        autoRoutesData = autoRoutesResult.rows[0].value;
       }
       
+      // Busca todas as settings
       const allSettingsResult = await client.query('SELECT key, value FROM settings ORDER BY key');
-      allSettings = allSettingsResult.rows.map((row: any) => ({
-          key: row.key,
-          value: JSON.parse(row.value)
-      }));
+      allSettings = allSettingsResult.rows;
     }
     
     return NextResponse.json({
@@ -37,7 +40,9 @@ export async function GET() {
       allSettings,
       timestamp: new Date().toISOString()
     });
+    
   } catch (error) {
+    console.error('Debug Auto Routes Error:', error);
     return NextResponse.json({
       success: false,
       error: String(error),

@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/database';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
-
-export const runtime = 'edge';
+import { Client } from 'pg';
 
 const SESSION_COOKIE_NAME = 'auth_session';
-const SESSION_EXPIRY_SECONDS = 60 * 60 * 24;
+const SESSION_EXPIRY_SECONDS = 60 * 60 * 24; // 24 hours
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
@@ -16,24 +15,26 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });
     }
 
-    const client = await getDb();
+    const client: Client = await getDb();
     let storedHash = '';
     
     const result = await client.query('SELECT value FROM settings WHERE key = $1', ['auth']);
     
     if (result.rows.length > 0) {
-      const authData = JSON.parse(result.rows[0].value);
+      const authData = result.rows[0].value;
+      // Verificação de segurança para evitar erro de desestruturação se authData for nulo
       if (authData && typeof authData === 'object') {
         storedHash = authData.passwordHash || '';
       }
     }
 
+    // Se não houver hash armazenado ou authData estiver corrompido, usa o padrão
     if (!storedHash) {
       const defaultPassword = '84740949';
       const newHash = await bcrypt.hash(defaultPassword, 10);
       
       await client.query(
-        'INSERT OR REPLACE INTO settings (key, value) VALUES ($1, $2)',
+        'INSERT INTO settings (key, value) VALUES ($1, $2) ON CONFLICT (key) DO UPDATE SET value = $2',
         ['auth', JSON.stringify({ passwordHash: newHash })]
       );
       
@@ -46,15 +47,15 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha incorreta' }, { status: 401 });
     }
 
-    const cookieStore = await cookies();
-    cookieStore.set(SESSION_COOKIE_NAME, 'true', {
+    (await cookies()).set(SESSION_COOKIE_NAME, 'true', {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === 'production',
       maxAge: SESSION_EXPIRY_SECONDS,
       path: '/',
     });
 
     return NextResponse.json({ success: true, message: 'Login bem-sucedido' });
+
   } catch (error) {
     console.error('Login failed:', error);
     return NextResponse.json({ message: 'Erro interno do servidor' }, { status: 500 });

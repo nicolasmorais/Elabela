@@ -7,13 +7,16 @@ import type { Metadata } from "next";
 import { cn } from '@/lib/utils';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { PageTracker } from "./PageTracker";
+import { Client } from 'pg';
+import Head from 'next/head';
 
 interface CustomAdvertorialPageProps {
     advertorialId: string;
 }
 
-async function fetchCustomAdvertorial(client: any, id: string): Promise<CustomAdvertorial | undefined> {
-    const result = await client.query('SELECT id, name, data FROM custom_advertorials WHERE id = $1', [id]);
+// Função auxiliar para buscar o advertorial dinâmico
+async function fetchCustomAdvertorial(db: Client, id: string): Promise<CustomAdvertorial | undefined> {
+    const result = await db.query('SELECT id, name, data FROM custom_advertorials WHERE id = $1', [id]);
     
     if (result.rows.length === 0) {
         return undefined;
@@ -23,13 +26,14 @@ async function fetchCustomAdvertorial(client: any, id: string): Promise<CustomAd
     return {
         id: row.id,
         name: row.name,
-        ...JSON.parse(row.data)
+        ...row.data
     } as CustomAdvertorial;
 }
 
+// Function to generate metadata dynamically
 export async function generateMetadata({ advertorialId }: CustomAdvertorialPageProps): Promise<Metadata> {
-  const client = await getDb();
-  const advertorial = await fetchCustomAdvertorial(client, advertorialId);
+  const db = await getDb();
+  const advertorial = await fetchCustomAdvertorial(db, advertorialId);
   
   if (!advertorial) {
     return { title: "Conteúdo Não Encontrado" };
@@ -41,7 +45,9 @@ export async function generateMetadata({ advertorialId }: CustomAdvertorialPageP
   };
 }
 
-const DynamicHeader = ({ preTitle, title, subheadline }: CustomAdvertorial["header"]) => (
+// Component to render header
+const DynamicHeader = ({ preTitle, title, subheadline, fontFamily }: CustomAdvertorial["header"]) => (
+    // Removendo a borda inferior (border-b)
     <header className="text-center pt-10 pb-6">
         <div className="max-w-4xl mx-auto px-4">
             <p className="text-sm text-blue-600 font-semibold uppercase tracking-wider">
@@ -59,21 +65,27 @@ const DynamicHeader = ({ preTitle, title, subheadline }: CustomAdvertorial["head
     </header>
 );
 
+// Server Component principal
 export default async function CustomAdvertorialPage({ advertorialId }: CustomAdvertorialPageProps) {
-  const client = await getDb();
-  const advertorial = await fetchCustomAdvertorial(client, advertorialId);
+  const db = await getDb();
+  const advertorial = await fetchCustomAdvertorial(db, advertorialId);
 
   if (!advertorial) {
     notFound();
   }
   
+  // Determina a classe de fonte principal
   const mainFontClass = advertorial.header.fontFamily ? `font-${advertorial.header.fontFamily}` : 'font-sans';
+  
+  // Renderiza o PixelInjector (Server Component)
   const pixelScripts = await PixelInjector({ pagePixels: advertorial.pixels });
 
   return (
     <>
       <PageTracker contentId={advertorialId} />
-      {pixelScripts && <div dangerouslySetInnerHTML={{ __html: pixelScripts.toString() }} className="hidden" />}
+      <Head>
+        {pixelScripts && <div dangerouslySetInnerHTML={{ __html: pixelScripts }} />}
+      </Head>
       <div className={cn("bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen", mainFontClass)}>
         <div className="bg-gray-100 dark:bg-gray-800 text-center py-2">
           <p className="text-sm font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
@@ -89,6 +101,7 @@ export default async function CustomAdvertorialPage({ advertorialId }: CustomAdv
           ))}
         </main>
         
+        {/* Using custom footer from advertorial object */}
         <FooterAP {...advertorial.footer} />
       </div>
     </>

@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
-export const runtime = 'edge';
-
+// MODO TEMPORÁRIO - SEM HASH para teste
 const DEFAULT_PASSWORD = '84740949';
-const USE_PLAIN_PASSWORD = true; 
+const USE_PLAIN_PASSWORD = true; // Mude para false quando quiser voltar ao hash
 
-const DEFAULT_PASSWORD_HASH = '$2a$10$k2z3Z5M3K7W8N0V3bV/CYr1v5c0N9x2l3K8n5oW7uR4tE3qFyD2e';
+// Hash para quando usar bcrypt
+const DEFAULT_PASSWORD_HASH = '$2b$10$k2z3Z5M3K7W8N0V3bV/CYr1v5c0N9x2l3K8n5oW7uR4tE3qFyD2e';
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
@@ -16,11 +16,14 @@ export async function POST(req: Request): Promise<NextResponse> {
       return NextResponse.json({ message: 'Senha é obrigatória' }, { status: 400 });
     }
 
+    // MODO TEMPORÁRIO: comparação direta
     let isCorrect = false;
     if (USE_PLAIN_PASSWORD) {
       isCorrect = password === DEFAULT_PASSWORD;
+      console.log('MODO TEMPORÁRIO: comparação direta - OK');
     } else {
       isCorrect = await bcrypt.compare(password, DEFAULT_PASSWORD_HASH);
+      console.log('MODO BCRYPT: comparação com hash');
     }
     
     if (isCorrect) {
@@ -32,7 +35,7 @@ export async function POST(req: Request): Promise<NextResponse> {
       
       response.cookies.set('auth_session', 'true', {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
         maxAge: 60 * 60 * 24,
         path: '/',
