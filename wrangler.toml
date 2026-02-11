@@ -1,7 +1,9 @@
 name = "elabela"
-pages_build_output_dir = ".next"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "elabela-db"
-database_id = "a54153f5-8bb9-4c5e-bf67-dd84ea947594" # ID atualizado
+database_id = "f4c9c7f9-2c70-4f36-8c90-8d591ca0f41a"
