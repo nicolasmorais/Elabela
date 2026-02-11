@@ -8,9 +8,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from '@/components/ui/textarea';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { cn } from '@/lib/utils'; // Import cn
+import { cn } from '@/lib/utils';
 import { Zap, Code } from 'lucide-react';
 import { DashboardSwitch } from '@/components/dashboard/DashboardSwitch';
+
+export const runtime = 'edge';
 
 interface Policy { title: string; trigger: string; content: string; }
 interface Disclaimer { title: string; text: string; }
@@ -22,7 +24,7 @@ interface ApprovalPageContent {
   body: { imageUrl1: string; advertorialText: string; imageUrl2: string; guaranteeText: string; };
   pricing: { prePriceText: string; price: string; paymentType: string; buttonText: string; buttonUrl: string; postButtonText: string; };
   footer: ApprovalPageFooter;
-  pixels: PagePixelConfig; // NEW
+  pixels: PagePixelConfig;
 }
 
 const LoadingSkeleton = () => (
@@ -40,7 +42,6 @@ export default function ApprovalPageEditor() {
 
   useEffect(() => {
     fetch('/api/approval-page').then(res => res.json()).then(data => { 
-        // Garante que o campo pixels exista, se não, usa um default
         if (!data.pixels) {
             data.pixels = { metaPixelId: '', taboolaPixelId: '', customScripts: '', useGlobalPixels: true };
         }
@@ -67,7 +68,6 @@ export default function ApprovalPageEditor() {
     });
   };
 
-  // Corrigindo a tipagem para arrays aninhados dentro de 'footer'
   const handleArrayChange = <T extends object>(
     section: 'footer', 
     arrayName: 'disclaimers' | 'policies', 
@@ -78,7 +78,6 @@ export default function ApprovalPageEditor() {
     setContent(prev => {
         if (!prev) return null;
         const newContent = { ...prev };
-        // Acessamos o array dentro do footer e atualizamos o item
         ((newContent[section] as any)[arrayName] as T[])[index][field] = value as any;
         return newContent;
     });
@@ -107,7 +106,6 @@ export default function ApprovalPageEditor() {
     }
   };
 
-  // Cores Dinâmicas
   const cardBg = 'bg-white dark:bg-[#1e293b]';
   const borderColor = 'border-gray-200 dark:border-[#334155]';
   const inputBg = 'bg-gray-100 dark:bg-[#020617]'; 
@@ -117,7 +115,7 @@ export default function ApprovalPageEditor() {
   const descriptionColor = 'text-gray-500 dark:text-zinc-400';
 
   if (isLoading) return <LoadingSkeleton />;
-  if (!content) return <p className={textColor}>Não foi possível carregar o conteúdo. Por favor, tente atualizar a página.</p>;
+  if (!content) return <p className={textColor}>Não foi possível carregar o conteúdo.</p>;
 
   return (
     <>
@@ -155,7 +153,6 @@ export default function ApprovalPageEditor() {
           </CardContent>
         </Card>
         
-        {/* PIXEL CONFIGURATION CARD */}
         <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader><CardTitle className="flex items-center gap-2"><Zap className="h-5 w-5 text-[#0061FF]" /> Rastreamento (Pixels)</CardTitle></CardHeader>
             <CardContent className="space-y-4">
@@ -166,9 +163,6 @@ export default function ApprovalPageEditor() {
                         onCheckedChange={(checked) => handlePixelChange('useGlobalPixels', checked)}
                     />
                 </div>
-                
-                <p className={descriptionColor}>Se a opção acima estiver desativada, use os campos abaixo. Se estiver ativada, os campos abaixo *substituirão* os globais se preenchidos.</p>
-
                 <div>
                     <Label className={labelColor}>Meta Pixel ID (Local)</Label>
                     <Input 
@@ -178,7 +172,6 @@ export default function ApprovalPageEditor() {
                         placeholder="Deixe vazio para usar o global"
                     />
                 </div>
-                
                 <div>
                     <Label className={labelColor}>Taboola Pixel ID (Local)</Label>
                     <Input 
@@ -188,7 +181,6 @@ export default function ApprovalPageEditor() {
                         placeholder="Deixe vazio para usar o global"
                     />
                 </div>
-                
                 <div className="pt-2">
                     <Label className={labelColor}>Scripts Adicionais (Local)</Label>
                     <Textarea 
@@ -205,7 +197,6 @@ export default function ApprovalPageEditor() {
         <Card className={cn(cardBg, borderColor, textColor)}>
             <CardHeader><CardTitle>Rodapé</CardTitle></CardHeader>
             <CardContent className="space-y-6">
-                {/* Company Info */}
                 <div className={cn("space-y-4 p-4 rounded-md", borderColor, "border")}>
                     <h3 className="font-semibold text-lg">Informações da Empresa</h3>
                     <div><Label className={labelColor}>Nome da Empresa</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.companyInfo.name} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'name', e.target.value)} /></div>
@@ -214,7 +205,6 @@ export default function ApprovalPageEditor() {
                     <div><Label className={labelColor}>Contato</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.companyInfo.contact} onChange={e => handleNestedInputChange('footer', 'companyInfo', 'contact', e.target.value)} /></div>
                 </div>
 
-                {/* Disclaimers */}
                 <div className={cn("space-y-4 p-4 rounded-md", borderColor, "border")}>
                     <h3 className="font-semibold text-lg">Avisos e Isenções</h3>
                     {content.footer.disclaimers.map((disclaimer, index) => (
@@ -225,7 +215,6 @@ export default function ApprovalPageEditor() {
                     ))}
                 </div>
 
-                {/* Policies */}
                 <div className={cn("space-y-4 p-4 rounded-md", borderColor, "border")}>
                     <h3 className="font-semibold text-lg">Políticas</h3>
                     {content.footer.policies.map((policy, index) => (
@@ -236,8 +225,6 @@ export default function ApprovalPageEditor() {
                         </div>
                     ))}
                 </div>
-                
-                {/* Copyright */}
                 <div><Label className={labelColor}>Direitos Autorais</Label><Input className={cn(inputBg, borderColor, textColor)} value={content.footer.copyright} onChange={e => handleInputChange('footer', 'copyright', e.target.value)} /></div>
             </CardContent>
             <CardFooter className="flex justify-end"><Button onClick={handleSave} disabled={isSaving} className={primaryButtonClasses}>{isSaving ? "Salvando..." : "Salvar Alterações"}</Button></CardFooter>

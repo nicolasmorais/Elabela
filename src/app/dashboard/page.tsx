@@ -34,6 +34,8 @@ import { RouteCard } from '@/components/dashboard/RouteCard';
 import { AutoRouteManager } from '@/components/dashboard/AutoRouteManager';
 import { Input } from '@/components/ui/input';
 
+export const runtime = 'edge';
+
 interface CustomAdvertorial {
   id: string;
   name: string;
