@@ -29,7 +29,6 @@ export async function POST(req: Request): Promise<NextResponse> {
 
     const client = await getDb();
     
-    // In D1/SQLite, we use INSERT OR REPLACE for UPSERT behavior
     await client.query(
       'INSERT OR REPLACE INTO settings (key, value) VALUES ($1, $2)',
       ['approvalPageContent', JSON.stringify(newContent)]
