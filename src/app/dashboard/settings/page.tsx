@@ -26,7 +26,8 @@ import {
   AlertTriangle,
   Activity,
   ShieldCheck,
-  Server
+  Server,
+  Zap
 } from 'lucide-react';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
