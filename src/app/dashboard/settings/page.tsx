@@ -28,7 +28,8 @@ import {
   ShieldCheck,
   Server,
   Zap,
-  CheckCircle2
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -60,9 +61,20 @@ interface DbTestResult {
 }
 
 const StatusIndicator = ({ status, label }: { status: string, label?: string }) => {
-    const isOk = status === 'OK' || status === 'Configurado' || status === 'Ativo';
-    const Icon = isOk ? CheckCircle : XCircle;
-    const color = isOk ? 'text-emerald-500' : 'text-red-500';
+    // Definimos quais termos são considerados positivos
+    const isOk = ['OK', 'Configurado', 'Ativo', 'Conectado'].includes(status);
+    const isWarning = ['Padrão/Não Configurado', 'Padrão', '...'].includes(status);
+    
+    let color = 'text-red-500';
+    let Icon = XCircle;
+
+    if (isOk) {
+        color = 'text-emerald-500';
+        Icon = CheckCircle;
+    } else if (isWarning) {
+        color = 'text-amber-500';
+        Icon = AlertCircle;
+    }
     
     return (
         <div className="space-y-1">
@@ -145,7 +157,7 @@ export default function SettingsPage() {
                     </div>
                     <StatusIndicator 
                         label="Status da Aplicação" 
-                        status={isLoading ? 'Carregando...' : (status?.status === 'OK' ? 'Ativo' : 'Erro')} 
+                        status={isLoading ? '...' : (status?.status === 'OK' ? 'Ativo' : 'Erro')} 
                     />
                 </CardContent>
             </Card>
