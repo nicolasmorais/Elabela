@@ -3,11 +3,10 @@ import { getDb } from '@/lib/database';
 import { Client } from 'pg';
 
 export async function GET(): Promise<NextResponse> {
-  // Objeto de resposta padrão para garantir que nunca retorne undefined para o cliente
   const defaultResponse = {
     status: 'ERROR',
     database: 'DOWN',
-    authStatus: 'Padrão/Não Configurado',
+    authStatus: 'Ativo (Padrão)',
     metrics: {
       routes: 0,
       advertorials: 0,
@@ -25,19 +24,15 @@ export async function GET(): Promise<NextResponse> {
     const response = { ...defaultResponse, status: 'OK', database: 'OK' };
 
     try {
-      // 1. Contar rotas
       const routeResult = await client.query('SELECT COUNT(*) FROM routes');
       response.metrics.routes = parseInt(routeResult.rows[0]?.count || '0');
       
-      // 2. Contar advertoriais
       const advertorialResult = await client.query('SELECT COUNT(*) FROM custom_advertorials');
       response.metrics.advertorials = parseInt(advertorialResult.rows[0]?.count || '0');
       
-      // 3. Contar page views
       const pageViewResult = await client.query('SELECT COUNT(*) FROM page_views');
       response.metrics.pageViews = parseInt(pageViewResult.rows[0]?.count || '0');
       
-      // 4. Última visualização
       if (response.metrics.pageViews > 0) {
         const lastViewResult = await client.query('SELECT timestamp FROM page_views ORDER BY timestamp DESC LIMIT 1');
         if (lastViewResult.rows.length > 0) {
@@ -45,16 +40,15 @@ export async function GET(): Promise<NextResponse> {
         }
       }
       
-      // 5. Status de autenticação
       const authResult = await client.query('SELECT value FROM settings WHERE key = $1', ['auth']);
       if (authResult.rows.length > 0) {
         const authData = authResult.rows[0].value;
         if (authData && typeof authData === 'object') {
-          response.authStatus = authData.passwordHash ? 'Configurado' : 'Padrão/Não Configurado';
+          response.authStatus = authData.passwordHash ? 'Personalizada' : 'Ativo (Padrão)';
         }
       }
     } catch (innerError) {
-      console.error('Erro ao buscar métricas específicas:', innerError);
+      console.error('Erro ao buscar métricas:', innerError);
     }
     
     return NextResponse.json(response);

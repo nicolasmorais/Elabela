@@ -45,7 +45,7 @@ interface StatusMetrics {
 interface SystemStatus {
     status: 'OK' | 'ERROR';
     database: 'OK' | 'DOWN';
-    authStatus: 'Configurado' | 'Padrão/Não Configurado';
+    authStatus: string;
     metrics: StatusMetrics;
     timestamp: string;
     message?: string;
@@ -61,9 +61,10 @@ interface DbTestResult {
 }
 
 const StatusIndicator = ({ status, label }: { status: string, label?: string }) => {
-    // Definimos quais termos são considerados positivos
-    const isOk = ['OK', 'Configurado', 'Ativo', 'Conectado'].includes(status);
-    const isWarning = ['Padrão/Não Configurado', 'Padrão', '...'].includes(status);
+    // ESTADOS POSITIVOS (VERDE)
+    const isOk = ['OK', 'Configurado', 'Ativo', 'Conectado', 'Personalizada', 'Ativo (Padrão)'].includes(status);
+    // ESTADOS DE ATENÇÃO (AMARELO)
+    const isWarning = ['...'].includes(status);
     
     let color = 'text-red-500';
     let Icon = XCircle;
@@ -79,9 +80,9 @@ const StatusIndicator = ({ status, label }: { status: string, label?: string }) 
     return (
         <div className="space-y-1">
             {label && <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{label}</p>}
-            <div className={cn("flex items-center gap-2 font-bold text-lg", color)}>
-                <Icon className="h-5 w-5" />
-                {status || 'Erro'}
+            <div className={cn("flex items-center gap-2 font-bold text-lg whitespace-nowrap", color)}>
+                <Icon className="h-5 w-5 shrink-0" />
+                <span className="truncate">{status || 'Erro'}</span>
             </div>
         </div>
     );
@@ -181,7 +182,7 @@ export default function SettingsPage() {
                     </div>
                     <StatusIndicator 
                         label="Segurança (Auth)" 
-                        status={status?.authStatus || 'Padrão'} 
+                        status={status?.authStatus || 'Ativo'} 
                     />
                 </CardContent>
             </Card>
