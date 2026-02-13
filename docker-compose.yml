@@ -2,26 +2,12 @@ version: '3.8'
 
 services:
   web:
-    # Substitua 'your-github-username/your-repo-name' pelo caminho real da imagem no GHCR.
-    image: ghcr.io/your-github-username/your-repo-name:latest
-    container_name: dyad-app-web
-
+    build: .
+    container_name: elabela-app
     ports:
-      - "3000:3000"
-
-    volumes:
-      - dyad_db_data:/app/data
-
+      - "3001:3000"
     environment:
-      NODE_ENV: production
-      DATABASE_DIR: /app/data
-      IPGEOLOCATION_API_KEY: d04e5f06615e4ad78f0eb2d479c61ecd
-      MAPBOX_TOKEN: pk.eyJ1Ijoibmljb2xhc21vcmFpczE1NCIsImEiOiJjbWphOHR3M3owMmtqM2VwejlpbGQ3YXVlIn0.75I0qHVcMDeu-R5x99G3zg
-      
-      # Variáveis de Conexão PostgreSQL (Atualizada para porta 5441 conforme log de erro)
-      DATABASE_URL: postgresql://postgres:8zrcemo0tdetrmig@147.93.179.152:5441/postgres
-      
+      - NODE_ENV=production
+      - DATABASE_URL=$DATABASE_URL
+      - NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
     restart: unless-stopped
-
-volumes:
-  dyad_db_data:

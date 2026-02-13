@@ -4,18 +4,20 @@ import type { NextRequest } from 'next/server';
 const SESSION_COOKIE_NAME = 'auth_session';
 
 export function middleware(request: NextRequest) {
-  const isAuthenticated = request.cookies.get(SESSION_COOKIE_NAME)?.value === 'true';
+  const authCookie = request.cookies.get(SESSION_COOKIE_NAME);
+  const isAuthenticated = authCookie?.value === 'true';
   const pathname = request.nextUrl.pathname;
 
-  // 1. Se o usuário tentar acessar o dashboard sem autenticação, redireciona para o login.
-  if (pathname.startsWith('/dashboard') && !isAuthenticated) {
-    // Redireciona para /login
-    return NextResponse.redirect(new URL('/login', request.url));
+  // 1. Proteger rotas do dashboard
+  if (pathname.startsWith('/dashboard')) {
+    if (!isAuthenticated) {
+      const url = new URL('/login', request.url);
+      return NextResponse.redirect(url);
+    }
   }
 
-  // 2. Se o usuário estiver autenticado e tentar acessar a página de login, redireciona para o dashboard.
-  if (pathname.startsWith('/login') && isAuthenticated) {
-    // Redireciona para /dashboard
+  // 2. Impedir login se já estiver logado
+  if (pathname === '/login' && isAuthenticated) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
