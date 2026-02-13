@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Truck } from 'lucide-react';
+import { Button,  } from '@/components/ui/button';
+import { Truck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface MobileStickyBarProps {
@@ -12,8 +12,8 @@ interface MobileStickyBarProps {
 }
 
 export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: MobileStickyBarProps) => {
-  // Link fixo solicitado pelo usuário
-  const linkSugerido = "https://seguro.elabela.store/r/M1MW6QA99S";
+  // Agora usamos o checkoutUrl que vem das configurações da página, removendo o link fixo 'M1MW6QA99S'
+  const finalLink = checkoutUrl || "#";
 
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 pt-2 pb-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
@@ -25,12 +25,12 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
         </p>
       </div>
 
-      <Link href={linkSugerido} className="block" target="_blank" rel="noopener noreferrer">
+      <Link href={finalLink} className="block" target="_blank" rel="noopener noreferrer">
         <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-between gap-0 overflow-hidden px-5 py-0">
           {/* LADO ESQUERDO: PARCELAMENTO */}
           <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4 text-left">
             <span className="text-[10px] font-bold uppercase opacity-70 tracking-widest">Apenas</span>
-            <span className="text-lg font-black tracking-tight whitespace-nowrap">12x de 14,96</span>
+            <span className="text-lg font-black tracking-tight whitespace-nowrap">{installmentText}</span>
           </div>
           
           {/* LADO DIREITO: COMPRAR AGORA */}
@@ -53,21 +53,3 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
     </div>
   );
 };
-
-// Componente local para ícone não importado
-const ArrowRight = ({ size, className }: { size: number, className: string }) => (
-    <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        width={size} 
-        height={size} 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="3" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        className={className}
-    >
-        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
-    </svg>
-);
