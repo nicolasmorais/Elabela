@@ -23,6 +23,8 @@ const STATIC_PAGES = [
   { id: 'menopausa', name: 'Menopausa Nunca Mais' },
   { id: 'dor-zero', name: 'Dolorzero' },
   { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça' },
+  { id: 'antiqueda', name: 'Tratamento Antiqueda' },
+  { id: 'clareador', name: 'Clareador' },
 ];
 
 export default function TaboolaPixelPage() {
