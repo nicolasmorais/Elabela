@@ -27,7 +27,8 @@ import {
   Activity,
   ShieldCheck,
   Server,
-  Zap
+  Zap,
+  CheckCircle2
 } from 'lucide-react';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
