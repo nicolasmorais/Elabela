@@ -68,7 +68,7 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const allContentOptions = [...STATIC_CONTENT_OPTIONS, ...advertorials];
+  const allContentOptions = useMemo(() => [...STATIC_CONTENT_OPTIONS, ...advertorials], [advertorials]);
 
   const fetchAllData = async (): Promise<void> => {
     setIsLoading(true);
@@ -79,15 +79,22 @@ export default function DashboardPage() {
         fetch('/api/auto-routes')
       ]);
 
-      const routeData = await routeRes.json();
-      const advData = await advRes.json();
-      const autoRouteData = await autoRouteRes.json();
+      const advData = advRes.ok ? await advRes.json() : [];
+      const routeData = routeRes.ok ? await routeRes.json() : [];
+      const autoRouteData = autoRouteRes.ok ? await autoRouteRes.json() : {};
 
-      setAdvertorials(advData);
-      setExistingRoutes(routeData);
-      setAutoRoutes(autoRouteData);
+      setAdvertorials(Array.isArray(advData) ? advData : []);
+      setExistingRoutes(Array.isArray(routeData) ? routeData : []);
+      setAutoRoutes(autoRouteData && typeof autoRouteData === 'object' ? autoRouteData : {});
+      
+      if (!advRes.ok || !routeRes.ok) {
+        toast.error("Alguns dados não puderam ser carregados. Verifique a conexão com o banco.");
+      }
     } catch (error: any) {
       toast.error(`Falha ao carregar os dados.`);
+      setAdvertorials([]);
+      setExistingRoutes([]);
+      setAutoRoutes({});
     } finally {
       setIsLoading(false);
     }
@@ -98,9 +105,10 @@ export default function DashboardPage() {
   }, []);
 
   const filteredRoutes = useMemo(() => {
+    if (!Array.isArray(existingRoutes)) return [];
     return existingRoutes.filter(r => 
-        r.path.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        r.name.toLowerCase().includes(searchQuery.toLowerCase())
+        (r.path?.toLowerCase() || '').includes(searchQuery.toLowerCase()) || 
+        (r.name?.toLowerCase() || '').includes(searchQuery.toLowerCase())
     );
   }, [existingRoutes, searchQuery]);
 
@@ -176,10 +184,10 @@ export default function DashboardPage() {
         {/* Status Mini Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-                { label: 'Rotas Fixas', val: existingRoutes.length, icon: Globe, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
-                { label: 'Redirecionamentos', val: Object.keys(autoRoutes).length, icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
+                { label: 'Rotas Fixas', val: Array.isArray(existingRoutes) ? existingRoutes.length : 0, icon: Globe, color: 'text-blue-600', bg: 'bg-blue-50 dark:bg-blue-900/20' },
+                { label: 'Redirecionamentos', val: autoRoutes ? Object.keys(autoRoutes).length : 0, icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
                 { label: 'Conteúdos', val: allContentOptions.length, icon: LayoutGrid, color: 'text-[#0061FF]', bg: 'bg-blue-50 dark:bg-blue-900/20' },
-                { label: 'Status BD', val: 'Online', icon: Activity, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
+                { label: 'Status BD', val: isLoading ? '...' : 'Ativo', icon: Activity, color: 'text-green-600', bg: 'bg-green-50 dark:bg-green-900/20' },
             ].map((stat, i) => (
                 <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl flex items-center gap-4 shadow-sm">
                     <div className={cn("p-2 rounded-xl", stat.bg, stat.color)}>
@@ -251,7 +259,7 @@ export default function DashboardPage() {
           <TabsContent value="auto" className="animate-in fade-in slide-in-from-bottom-2 duration-400">
             <div className="max-w-4xl">
                 <AutoRouteManager 
-                    autoRoutes={autoRoutes}
+                    autoRoutes={autoRoutes || {}}
                     contentOptions={allContentOptions}
                     onRefresh={fetchAllData}
                 />
