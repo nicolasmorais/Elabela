@@ -11,6 +11,7 @@ export default {
   	extend: {
       fontFamily: {
         sans: ["var(--font-space-grotesk)"],
+        cairo: ["var(--font-cairo)"],
         barlow: ["var(--font-barlow)"],
         quicksand: ["var(--font-quicksand)"],
         mono: ["var(--font-geist-mono)"],
