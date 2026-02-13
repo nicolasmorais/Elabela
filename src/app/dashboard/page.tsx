@@ -59,6 +59,7 @@ const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)' },
     { id: 'antiqueda', name: 'Tratamento Antiqueda V1' },
     { id: 'antiqueda2', name: 'Tratamento Antiqueda V2' },
+    { id: 'clareador', name: 'Clareador' },
 ];
 
 export default function DashboardPage() {
