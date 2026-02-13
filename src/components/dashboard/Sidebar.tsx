@@ -37,20 +37,10 @@ const systemNavItems = [
     label: "Pixel Taboola",
   },
   {
-    href: "/dashboard/status",
-    icon: CheckCircle,
-    label: "Status de Sistema",
-  },
-  {
     href: "/dashboard/settings",
     icon: Monitor,
-    label: "Configurações",
-  },
-  {
-    href: "/dashboard/db-test",
-    icon: Database,
-    label: "Status Banco",
-  },
+    label: "Configurações & Status",
+  }
 ];
 
 export const Sidebar = () => {
