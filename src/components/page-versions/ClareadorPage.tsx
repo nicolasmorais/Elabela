@@ -130,18 +130,14 @@ export function ClareadorPage() {
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
 
-    // IMPORTANTE: Buscando configurações específicas do clareador
     fetch('/api/page-settings/clareador')
         .then(res => res.json())
         .then(data => {
-            if (data) {
-                setConfig({
-                    priceCard: data.priceCard || 'R$ 187,00',
-                    pricePix: data.pricePix || '147,00',
-                    installmentText: data.installmentText || '12x de R$ 14,96',
-                    buttonText: data.buttonText || 'Comprar agora',
-                    checkoutUrl: data.checkoutUrl || 'https://seguro.elabela.store/r/M1MW6QA99S'
-                });
+            if (data && data.checkoutUrl) {
+                setConfig(prev => ({
+                    ...prev,
+                    ...data
+                }));
             }
         })
         .catch(e => console.error("Erro ao carregar link de checkout."));
@@ -182,7 +178,7 @@ export function ClareadorPage() {
         <main className="max-w-7xl mx-auto px-6 py-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
-                {/* ESQUERDA: GALERIA (50%) - DESIGN MELHORADO */}
+                {/* ESQUERDA: GALERIA (50%) */}
                 <div className="lg:col-span-6 space-y-6">
                     <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.08)] group">
                         <img 
@@ -191,7 +187,6 @@ export function ClareadorPage() {
                           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]" 
                         />
                         
-                        {/* Botões de Navegação Lateral (Desktop Only) */}
                         <button 
                           onClick={prevImage}
                           className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg border border-slate-100 text-slate-400 hover:text-orange-600 hover:scale-110 transition-all opacity-0 group-hover:opacity-100 hidden md:block"
@@ -205,13 +200,11 @@ export function ClareadorPage() {
                           <ChevronRight size={24} />
                         </button>
                         
-                        {/* Contador Visual */}
                         <div className="absolute bottom-6 right-6 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
                           {activeImageIndex + 1} / {PRODUCT_IMAGES.length}
                         </div>
                     </div>
 
-                    {/* Thumbnails Estilizados */}
                     <div className="grid grid-cols-4 gap-4 px-2">
                         {PRODUCT_IMAGES.map((img, i) => (
                             <button 
@@ -236,7 +229,6 @@ export function ClareadorPage() {
                 {/* DIREITA: INFOS DE COMPRA (50%) */}
                 <div className="lg:col-span-6 space-y-6">
                     
-                    {/* Badge de Destaque */}
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
                         <div className="bg-pink-500 p-1 rounded-md text-white">
                             <Award size={14} />
@@ -273,7 +265,6 @@ export function ClareadorPage() {
                         </p>
                     </div>
 
-                    {/* DEPOIMENTO ABAIXO DO PREÇO */}
                     <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl space-y-2">
                         <p className="text-slate-800 font-black text-xl italic leading-tight">
                             "Todo Dia Era um Bolo de Cabelo no Pente... <br />
@@ -284,7 +275,6 @@ export function ClareadorPage() {
                         </p>
                     </div>
 
-                    {/* BOTÃO COMPRAR AGORA */}
                     <div className="space-y-4 pt-4">
                         <Link href={config.checkoutUrl} target="_blank">
                             <Button 
@@ -297,7 +287,6 @@ export function ClareadorPage() {
                             </Button>
                         </Link>
                         
-                        {/* ENTREGA FULL BANNER */}
                         <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center justify-between group">
                             <div className="flex items-center gap-4">
                                 <div className="bg-emerald-500 text-white p-2 rounded-lg">
@@ -316,26 +305,23 @@ export function ClareadorPage() {
             </div>
         </main>
 
-        {/* --- SEÇÃO DE DESCRIÇÃO --- */}
         <div className="border-t border-slate-100 bg-white">
             
-            {/* SEÇÃO: MÍDIA / PORTAIS */}
             <section className="py-12 bg-white border-b border-slate-50 overflow-hidden">
               <div className="max-w-6xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 opacity-30 grayscale group">
                    <p className="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-slate-400 mb-2 md:mb-0">Destaque na Mídia:</p>
                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans">G1</span>
-                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans italic">R7</span>
-                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans">GLOBO</span>
-                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans">BAND</span>
-                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-900 font-sans underline decoration-4">SBT</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-950 font-sans">G1</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-950 font-sans italic">R7</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-950 font-sans">GLOBO</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-950 font-sans">BAND</span>
+                      <span className="text-2xl md:text-3xl font-black tracking-tighter text-slate-950 font-sans underline decoration-4">SBT</span>
                    </div>
                 </div>
               </div>
             </section>
 
-            {/* GALERIA DE RESULTADOS REAIS */}
             <section className="py-24 px-6 bg-white border-b border-orange-100">
               <div className="max-w-6xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
@@ -360,7 +346,6 @@ export function ClareadorPage() {
               </div>
             </section>
 
-            {/* SEÇÃO: PÚBLICO-ALVO */}
             <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -384,17 +369,13 @@ export function ClareadorPage() {
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
-                                    <p>Porque você merece acordar SEM cabelo no travesseiro.</p>
-                                    <p className="text-orange-800 italic underline decoration-orange-300">Sem precisar escolher entre: Tratar a queda OU pagar as contas.</p>
-                                </div>
                             </div>
                         </div>
                         <div className="flex-1 lg:sticky lg:top-24 relative w-full">
                             <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                                alt="Mulher Confiante com Cabelo Lindo" 
+                                alt="Mulher Confiante" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                             />
                         </div>
@@ -402,7 +383,6 @@ export function ClareadorPage() {
                 </div>
             </section>
 
-            {/* SEÇÃO COMPLETA: TRIPLA ANCORAGEM */}
             <section className="py-32 px-6 bg-white relative overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto space-y-24">
                     <div className="text-center space-y-6 max-w-4xl mx-auto">
@@ -423,9 +403,6 @@ export function ClareadorPage() {
                                 </div>
                                 <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
                             </div>
-                            <p className="text-xl text-slate-700 font-medium leading-relaxed">
-                                Seu cabelo cai por <span className="text-orange-600 font-black">3 MOTIVOS:</span>
-                            </p>
                             <div className="space-y-4">
                                 {[
                                     { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
@@ -441,16 +418,11 @@ export function ClareadorPage() {
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-lg text-slate-600 leading-relaxed italic border-l-4 border-orange-200 pl-6 py-2">
-                                Imagine um cabo de aço tentando segurar um peso enorme enquanto a base está solta no barro. Não importa quão forte seja o cabo, ele vai soltar. Nossa tecnologia "cimenta" a base enquanto reforça o cabo.
-                            </p>
                         </div>
                         <div className="relative">
-                            <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
-                                alt="Tecnologia Tripla Ancoragem" 
-                                className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03]"
+                                alt="Tecnologia" className="relative z-10 w-full h-auto drop-shadow-2xl"
                             />
                         </div>
                     </div>
@@ -502,7 +474,6 @@ export function ClareadorPage() {
                                     </div>
                                     <div className="mt-auto pt-6">
                                         <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-100 text-xs text-slate-500 italic leading-relaxed">
-                                            <span className="font-black text-slate-900 not-italic uppercase block mb-1 text-[9px] tracking-widest">Analogia Profissional:</span>
                                             {step.analogia}
                                         </div>
                                     </div>
@@ -513,197 +484,6 @@ export function ClareadorPage() {
                 </div>
             </section>
 
-            {/* SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? */}
-            <section className="py-32 px-6 bg-white overflow-hidden border-b border-slate-100">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                        <div className="space-y-12">
-                            <div className="space-y-4">
-                                <span className="text-orange-600 font-black text-xs uppercase tracking-[0.4em] block">Diferencial Bio Instinto</span>
-                                <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter uppercase leading-none">
-                                    POR QUE <span className="text-orange-700 italic">CAVALO DE RAÇA</span> E OUTROS NÃO?
-                                </h2>
-                                <p className="text-xl text-slate-500 font-bold uppercase tracking-tight">3 Ingredientes Científicos Que Fazem a Diferença</p>
-                            </div>
-
-                            <div className="space-y-10 relative">
-                                <div className="absolute left-6 top-8 bottom-8 w-1 bg-orange-100 -z-10 rounded-full"></div>
-
-                                {[
-                                    { 
-                                        icon: Anchor, 
-                                        n: "1️⃣", 
-                                        t: "BIOTINA (Vitamina H)", 
-                                        bullets: ["Ancora o fio na raiz", "Reduz queda por enfraquecimento"], 
-                                        feel: "Menos fios no ralo em 3 dias" 
-                                    },
-                                    { 
-                                        icon: Dumbbell, 
-                                        n: "2️⃣", 
-                                        t: "PROTEÍNA DE TRIGO HIDROLISADA", 
-                                        bullets: ["Reconstrói fibra capilar", "Preenche \"buracos\" do fio"], 
-                                        feel: "Fio 3x mais forte em 1 semana" 
-                                    },
-                                    { 
-                                        icon: Droplets, 
-                                        n: "3️⃣", 
-                                        t: "PANTENOL (Pró-Vitamina B5)", 
-                                        bullets: ["Sela cutículas e protege", "Forma filme protetor"], 
-                                        feel: "Escova sem quebra imediata" 
-                                    }
-                                ].map((item, i) => (
-                                    <div key={i} className="flex gap-6 items-start group">
-                                        <div className="w-12 h-12 rounded-2xl bg-white border-2 border-orange-100 flex items-center justify-center shrink-0 shadow-sm group-hover:border-orange-50 transition-colors">
-                                            <item.icon className="h-6 w-6 text-orange-700" />
-                                        </div>
-                                        <div className="space-y-3">
-                                            <h4 className="text-xl font-black text-slate-900 tracking-tight uppercase">{item.t}</h4>
-                                            <ul className="space-y-2">
-                                                {item.bullets.map((b, idx) => (
-                                                    <li key={idx} className="flex items-center gap-2 text-slate-600 font-medium text-sm">
-                                                        <Check size={14} className="text-emerald-500" strokeWidth={4} /> {b}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                            <div className="bg-orange-50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
-                                                <p className="text-[10px] font-black text-orange-900 uppercase tracking-widest leading-none mb-1">Você Sente:</p>
-                                                <p className="text-sm font-bold text-orange-700 leading-none">{item.feel}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="bg-slate-950 rounded-[4rem] p-10 md:p-16 text-white space-y-12 relative overflow-hidden shadow-2xl">
-                            <div className="absolute top-0 right-0 p-12 opacity-10 rotate-12"><FlaskConical size={180} /></div>
-                            <div className="space-y-4 relative z-10">
-                                <div className="flex items-center gap-3">
-                                    <Microscope className="text-orange-500" />
-                                    <h3 className="text-xl font-black uppercase tracking-widest">🔬 FÓRMULA EXCLUSIVA</h3>
-                                </div>
-                                <div className="h-0.5 w-full bg-white/10"></div>
-                            </div>
-                            <div className="space-y-8 relative z-10">
-                                <h4 className="text-lg font-black uppercase tracking-[0.2em] text-orange-500">✅ MAIS 3 DIFERENCIAIS:</h4>
-                                <div className="space-y-6">
-                                    {[
-                                        "pH Balanceado (não agride raiz)",
-                                        "Concentração Profissional (dose terapêutica)",
-                                        "Sistema 4 Passos (sinergia completa)"
-                                    ].map((diff, i) => (
-                                        <div key={i} className="flex items-center gap-4 group">
-                                            <div className="h-1.5 w-1.5 rounded-full bg-orange-500 group-hover:scale-[2] transition-transform"></div>
-                                            <p className="text-xl font-bold tracking-tight text-white/90">{diff}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="pt-10 border-t border-white/10 relative z-10">
-                                <div className="bg-orange-600 p-8 rounded-[2.5rem] text-center shadow-xl transform hover:scale-[1.02] transition-transform cursor-default">
-                                    <p className="text-[10px] font-black uppercase tracking-[0.4em] mb-3 text-orange-100">RESULTADO COMPROVADO:</p>
-                                    <p className="text-4xl md:text-5xl font-black tracking-tighter leading-none mb-4">
-                                        87% Menos Queda em 7 Dias
-                                    </p>
-                                    <p className="text-xs font-bold text-orange-200 uppercase tracking-widest">Não é promessa. É ciência aplicada.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: COMO USAR O KIT CAVALO DE RAÇA */}
-            <section className="py-32 px-6 bg-[#FDF8F3] relative overflow-hidden border-b border-orange-100">
-                <div className="max-w-6xl mx-auto space-y-20">
-                    <div className="text-center space-y-6 max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-orange-200 shadow-sm">
-                            <Play className="h-4 w-4 text-orange-600 fill-current" />
-                            <span className="text-xs font-black uppercase tracking-[0.2em] text-slate-600">Guia de Aplicação</span>
-                        </div>
-                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9]">
-                            COMO USAR O <span className="text-orange-700">KIT CAVALO DE RAÇA</span>
-                        </h2>
-                        <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
-                            15 Minutos no Banho = Resultado Profissional
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                        <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-orange-50 space-y-10 h-full">
-                            <div className="flex items-center gap-4 border-b border-orange-50 pb-6">
-                                <div className="p-3 bg-orange-600 text-white rounded-2xl shadow-lg shadow-orange-100">
-                                    <Calendar size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight leading-none mb-1">ROTINA DIÁRIA</h3>
-                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">(TODO BANHO)</p>
-                                </div>
-                            </div>
-                            <div className="space-y-8">
-                                {[
-                                    { n: "1️⃣", t: "SHAMPOO RECONSTRUTOR", d: "Aplique no cabelo molhado, massageie o couro cabeludo até espumar. Enxágue e REPITA.", time: "3 minutos" },
-                                    { n: "2️⃣", t: "CONDICIONADOR FORTIFICANTE", d: "Aplique do meio às pontas (evite raiz). Deixe agir por 2 minutos e enxágue.", time: "2 minutos" },
-                                    { n: "3️⃣", t: "LEAVE-IN PROTETOR", d: "Com o cabelo úmido, espalhe nas mãos e aplique do meio às pontas. NÃO enxágue.", time: "1 minuto" }
-                                ].map((step, i) => (
-                                    <div key={i} className="flex gap-6 group">
-                                        <div className="h-10 w-10 shrink-0 bg-[#FDF8F3] rounded-xl flex items-center justify-center font-black text-orange-800 text-lg border border-orange-100 group-hover:scale-110 transition-transform">{step.n.replace(/[^\d]/g, '')}</div>
-                                        <div className="space-y-2">
-                                            <div className="flex items-center justify-between">
-                                                <h4 className="font-black text-slate-950 text-sm uppercase tracking-wider">{step.t}</h4>
-                                                <span className="flex items-center gap-1.5 text-[10px] font-black text-orange-600 uppercase tracking-widest bg-orange-50 px-2.5 py-1 rounded-full">
-                                                    <Clock size={10} /> {step.time}
-                                                </span>
-                                            </div>
-                                            <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.d}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-orange-50 space-y-10 flex-1 relative overflow-hidden">
-                            <div className="flex items-center gap-4 border-b border-orange-50 pb-6">
-                                <div className="p-3 bg-slate-900 text-white rounded-2xl shadow-lg">
-                                    <Calendar size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight leading-none mb-1">ROTINA SEMANAL</h3>
-                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">(2X POR SEMANA)</p>
-                                </div>
-                            </div>
-                            <div className="space-y-6">
-                                <div className="flex gap-6 group">
-                                    <div className="h-10 w-10 shrink-0 bg-orange-100 rounded-xl flex items-center justify-center font-black text-orange-800 text-lg border border-orange-100">4</div>
-                                    <div className="space-y-4">
-                                        <div className="flex items-center justify-between">
-                                            <h4 className="font-black text-slate-950 text-lg uppercase tracking-tight">MÁSCARA ANTI-QUEDA</h4>
-                                            <span className="flex items-center gap-1.5 text-[10px] font-black text-orange-600 uppercase tracking-widest bg-orange-50 px-2.5 py-1 rounded-full">
-                                                <Clock size={12} /> 15 min
-                                            </span>
-                                        </div>
-                                        <ul className="space-y-3">
-                                            {[
-                                                "Após o shampoo, retire o excesso de água",
-                                                "Aplique do comprimento às pontas",
-                                                "Massageie suavemente mecha a mecha",
-                                                "Deixe agir de 10 a 15 minutos",
-                                                "Enxágue completamente"
-                                            ].map((li, i) => (
-                                                <li key={i} className="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                                    <Check size={14} className="text-orange-600" strokeWidth={4} /> {li}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: DEPOIMENTOS RECEBIMENTO */}
             <section className="py-24 px-6 bg-white overflow-hidden">
                 <div className="max-w-6xl mx-auto space-y-16">
                     <div className="text-center space-y-4">
@@ -734,12 +514,10 @@ export function ClareadorPage() {
                 </div>
             </section>
 
-            {/* SEÇÃO: FAQ */}
             <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
                 <div className="max-w-4xl mx-auto space-y-12">
                     <div className="text-center space-y-4 mb-16">
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">PERGUNTAS FREQUENTES</h2>
-                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
                     </div>
                     <Accordion type="single" collapsible className="w-full space-y-3">
                         {[
@@ -757,28 +535,26 @@ export function ClareadorPage() {
                 </div>
             </section>
 
-            {/* SEÇÃO: GARANTIA */}
             <section className="py-24 px-6 bg-white border-t border-slate-50">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
                         <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
                         <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
                         <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
-                            Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas.
+                            Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                         </p>
                         <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                     </div>
                 </div>
             </section>
 
-            {/* FOOTER */}
             <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
               <div className="max-w-6xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
                     <div className="space-y-4">
                         <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
                         <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
-                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Sempre consulte um profissional de saúde qualificado.</p>
+                            <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
                         </div>
                     </div>
                     <div className="space-y-6 text-center md:text-left">
@@ -790,14 +566,13 @@ export function ClareadorPage() {
                     </div>
                 </div>
                 <div className="text-center">
-                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Todos os direitos reservados</p>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
                 </div>
               </div>
             </footer>
 
         </div>
 
-        {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
           installmentText={config.installmentText.split('de ')[1] || config.installmentText}
           buttonText={config.buttonText} 
