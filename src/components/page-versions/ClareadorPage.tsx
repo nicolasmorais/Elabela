@@ -111,9 +111,9 @@ const KITS = [
     id: 1,
     name: "1 unidade",
     discount: "21% OFF",
-    pricePerUnit: "R$ 117,70",
-    oldPrice: "R$ 149,90",
-    totalPrice: "117,70",
+    pricePerUnit: "R$ 137,00",
+    oldPrice: "R$ 179,90",
+    totalPrice: "137,00",
     installment: "Em até 6x de R$ 19,61 sem juros",
     badge: null,
     checkoutUrl: "https://seguro.elabela.store/r/M1MW6QA99S?kit=1"
@@ -148,6 +148,14 @@ export function ClareadorPage() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedKit, setSelectedKit] = useState(KITS[2]);
 
+  const [config, setConfig] = useState({
+      priceCard: 'R$ 187,00',
+      pricePix: '137,00',
+      installmentText: '12x de R$ 14,96',
+      buttonText: 'Comprar agora',
+      checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+  });
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
@@ -178,7 +186,7 @@ export function ClareadorPage() {
   return (
     <>
       <PageTracker contentId="clareador" />
-      <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
+      <div className="bg-white text-slate-900 font-inter selection:bg-orange-100 antialiased min-h-screen">
         
         {/* NAVIGATION E-COMMERCE CENTRALIZADA */}
         <nav className="bg-[#FDF8F3] border-b border-slate-100 py-4 px-6 sticky top-0 z-50">
@@ -347,7 +355,7 @@ export function ClareadorPage() {
                                 style={{ backgroundColor: '#35c867' }}
                             >
                                 <ShoppingBag size={28} />
-                                Comprar agora
+                                {config.buttonText}
                                 <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
                             </Button>
                         </Link>
@@ -387,7 +395,30 @@ export function ClareadorPage() {
               </div>
             </section>
 
-            {/* SEÇÃO: PÚBLICO-ALVO */}
+            <section className="py-24 px-6 bg-white border-b border-orange-100">
+              <div className="max-w-6xl mx-auto space-y-16">
+                <div className="text-center space-y-4">
+                  <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
+                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
+                    Resultados Reais, Mulheres Reais
+                  </h2>
+                  <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                  {GALLERY_IMAGES.map((url, i) => (
+                    <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
+                       <img 
+                          src={url} 
+                          alt={`Imagem da Galeria ${i + 1}`} 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+                       />
+                       <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -482,8 +513,8 @@ export function ClareadorPage() {
 
         {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText={selectedKit.installment.split('de ')[1].split(' sem')[0]}
-          buttonText="Comprar agora" 
+          installmentText={selectedKit.id === 1 ? "R$ 19,61" : selectedKit.id === 3 ? "R$ 44,61" : "R$ 66,28"}
+          buttonText={config.buttonText} 
           checkoutUrl={selectedKit.checkoutUrl} 
         />
       </div>
