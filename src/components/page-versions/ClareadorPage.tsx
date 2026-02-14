@@ -279,7 +279,7 @@ export function ClareadorPage() {
                     </div>
 
                     <div className="space-y-4 pt-4">
-                        <Link href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }}>
+                        <Link href={config.checkoutUrl} target="_blank">
                             <Button 
                                 className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group"
                                 style={{ backgroundColor: '#35c867' }}
@@ -532,117 +532,50 @@ export function ClareadorPage() {
                 </div>
             </section>
 
-            {/* 🚀 NOVA SEÇÃO DE OFERTA COM 3 KITS 🚀 */}
-            <section id="pricing" className="py-24 px-6 bg-[#FDF8F3] relative overflow-hidden border-y border-orange-100">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-100/30 via-transparent to-transparent opacity-50"></div>
+            {/* SEÇÃO DE OFERTA */}
+            <section id="pricing" className="py-24 px-6 bg-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-50 via-transparent to-transparent opacity-50"></div>
                 
-                <div className="max-w-6xl mx-auto relative z-10 space-y-16">
-                    <div className="text-center space-y-6">
+                <div className="max-w-4xl mx-auto relative z-10">
+                    <div className="text-center mb-12 space-y-6">
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight uppercase">
-                            🚨 ESCOLHA O SEU KIT ABAIXO 🚨
+                            🚨 SUA ÚLTIMA CHANCE DE RECUPERAR SUA PELE 🚨
                         </h2>
-                        <div className="h-1 w-24 bg-orange-600 mx-auto rounded-full"></div>
-                        <p className="text-slate-500 font-bold text-lg md:text-xl">
-                            Frete Grátis e Garantia Blindada em Todos os Kits.
-                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                        {/* KIT 1 FRASCO */}
-                        <div className="bg-white border-2 border-orange-100 rounded-[3rem] p-10 text-center space-y-6 flex flex-col hover:border-orange-300 transition-all shadow-sm hover:shadow-xl group">
-                            <h3 className="text-2xl font-black leading-tight uppercase">Kit Tratamento <br /> (1 Mês)</h3>
-                            <div className="relative inline-block mx-auto">
-                                <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png" alt="1 frasco" className="w-48 h-auto rounded-2xl mx-auto group-hover:scale-105 transition-transform" />
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-slate-400 line-through font-bold">R$ 297,00</p>
-                                <div className="flex flex-col items-center leading-none">
-                                    <p className="text-5xl font-black text-slate-950">R$ 147,00</p>
-                                    <p className="text-emerald-600 font-bold text-sm mt-2">à vista no PIX</p>
+                    <div className="bg-[#FDF8F3] rounded-[3.5rem] p-8 md:p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] relative border-4 border-white overflow-hidden">
+                        <div className="bg-orange-100/50 -mx-12 -mt-12 mb-12 py-4 px-6 text-center text-orange-900 font-black text-sm md:text-base tracking-widest flex items-center justify-center gap-3 border-b border-orange-100">
+                            <Clock size={20} className="text-orange-600 animate-pulse" />
+                            OFERTA EXCLUSIVA POR TEMPO LIMITADO
+                        </div>
+
+                        <div className="flex flex-col items-center text-center space-y-12">
+                            <div className="space-y-6 w-full">
+                                <div className="py-10 px-8 rounded-[3rem] bg-white border-2 border-orange-200/50 shadow-sm inline-block mx-auto min-w-[300px]">
+                                    <div className="flex flex-col items-center">
+                                        <div className="flex items-start text-slate-950 font-black tracking-tighter">
+                                            <span className="text-3xl md:text-4xl mt-4 mr-1">R$</span>
+                                            <span className="text-8xl md:text-9xl leading-none">147<span className="text-4xl md:text-5xl">,00</span></span>
+                                        </div>
+                                        <p className="text-sm text-slate-500 font-bold uppercase tracking-widest mt-4">
+                                            {config.installmentText}
+                                        </p>
+                                    </div>
                                 </div>
-                                <p className="text-slate-400 font-bold text-xs uppercase mt-4 tracking-widest">Ou 12x de R$ 14,96</p>
                             </div>
-                            <Link href={config.checkoutUrl} className="mt-auto" target="_blank">
-                                <Button className="w-full h-14 bg-slate-900 hover:bg-black text-white font-black rounded-2xl uppercase tracking-widest text-sm">Comprar Agora</Button>
-                            </Link>
-                        </div>
 
-                        {/* KIT 3 FRASCOS (MAIS VENDIDO) */}
-                        <div className="bg-white border-[6px] border-orange-500 rounded-[3rem] p-10 text-center space-y-6 flex flex-col scale-105 shadow-2xl relative group">
-                            <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-orange-600 text-white px-8 py-2 rounded-full font-black text-sm uppercase shadow-xl tracking-widest">Mais Vendido</div>
-                            <h3 className="text-2xl font-black leading-tight uppercase">Kit Reconstrução <br /> (3 Meses)</h3>
-                            <div className="relative inline-block mx-auto">
-                                <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg" alt="3 frascos" className="w-48 h-auto rounded-2xl mx-auto group-hover:scale-105 transition-transform" />
-                                <div className="absolute -bottom-2 -right-4 bg-emerald-500 text-white p-2 rounded-xl text-[10px] font-black shadow-lg">ECONOMIA MÁXIMA</div>
+                            <div className="w-full space-y-6">
+                                <Link href={config.checkoutUrl} className="block group/btn" target="_blank" rel="noopener noreferrer">
+                                    <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-xl shadow-green-100 transition-all hover:scale-[1.02] active:scale-[0.99] flex flex-col items-center justify-center gap-1 overflow-hidden relative">
+                                        <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3 relative z-10">
+                                            <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" />
+                                            {config.buttonText}
+                                        </span>
+                                    </Button>
+                                </Link>
                             </div>
-                            <div className="space-y-1">
-                                <p className="text-slate-400 line-through font-bold">R$ 891,00</p>
-                                <div className="flex flex-col items-center leading-none">
-                                    <p className="text-6xl font-black text-orange-600">R$ 297,00</p>
-                                    <p className="text-emerald-600 font-bold text-sm mt-2">à vista no PIX</p>
-                                </div>
-                                <p className="text-slate-500 font-bold text-xs uppercase mt-4 tracking-widest">Ou 12x de R$ 30,22</p>
-                            </div>
-                            <Link href={config.checkoutUrl} className="mt-auto" target="_blank">
-                                <Button className="w-full h-16 bg-orange-600 hover:bg-orange-700 text-white font-black rounded-2xl text-xl uppercase tracking-widest shadow-xl animate-pulse">Quero Este Agora</Button>
-                            </Link>
-                        </div>
-
-                        {/* KIT 6 FRASCOS (MELHOR CUSTO) */}
-                        <div className="bg-white border-2 border-orange-100 rounded-[3rem] p-10 text-center space-y-6 flex flex-col hover:border-orange-300 transition-all shadow-sm hover:shadow-xl group">
-                            <h3 className="text-2xl font-black leading-tight uppercase">Kit Renovação <br /> (6 Meses)</h3>
-                            <div className="relative inline-block mx-auto">
-                                <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png" alt="6 frascos" className="w-48 h-auto rounded-2xl mx-auto group-hover:scale-105 transition-transform" />
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-slate-400 line-through font-bold">R$ 1.782,00</p>
-                                <div className="flex flex-col items-center leading-none">
-                                    <p className="text-5xl font-black text-slate-950">R$ 447,00</p>
-                                    <p className="text-emerald-600 font-bold text-sm mt-2">à vista no PIX</p>
-                                </div>
-                                <p className="text-slate-400 font-bold text-xs uppercase mt-4 tracking-widest">Ou 12x de R$ 45,46</p>
-                            </div>
-                            <Link href={config.checkoutUrl} className="mt-auto" target="_blank">
-                                <Button className="w-full h-14 bg-slate-900 hover:bg-black text-white font-black rounded-2xl uppercase tracking-widest text-sm">Melhor Custo</Button>
-                            </Link>
                         </div>
                     </div>
-
-                    {/* Benefícios de Entrega */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-orange-200">
-                        <div className="flex items-center justify-center gap-3 text-sm font-black text-slate-900 uppercase tracking-widest">
-                            <Truck className="text-orange-600" /> Frete Grátis Todo Brasil
-                        </div>
-                        <div className="flex items-center justify-center gap-3 text-sm font-black text-slate-900 uppercase tracking-widest">
-                            <Verified className="text-orange-600" /> Entrega 100% Segura
-                        </div>
-                        <div className="flex items-center justify-center gap-3 text-sm font-black text-slate-900 uppercase tracking-widest">
-                            <Zap className="text-orange-600" /> Envio Imediato
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* FAQ (PERGUNTAS FREQUENTES) */}
-            <section className="py-24 px-6 bg-white">
-                <div className="max-w-4xl mx-auto space-y-12">
-                    <div className="text-center space-y-4 mb-16">
-                        <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">PERGUNTAS FREQUENTES</h2>
-                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
-                    </div>
-
-                    <Accordion type="single" collapsible className="w-full space-y-3">
-                        {[
-                            { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
-                            { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Produtos comuns mascaram. Este reconstrói a raiz." },
-                            { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar\n→ 30 dias: Bebês começam a nascer" }
-                        ].map((item, i) => (
-                            <AccordionItem key={i} value={`faq-${i}`} className="bg-[#FDF8F3] border border-orange-50 rounded-2xl px-6 shadow-sm">
-                                <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
-                                <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
                 </div>
             </section>
 
