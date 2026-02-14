@@ -105,15 +105,16 @@ const DELIVERY_TESTIMONIALS = [
   }
 ];
 
-// DADOS DOS KITS
+// DADOS DOS KITS ATUALIZADOS
 const KITS = [
   {
     id: 1,
     name: "1 unidade",
     discount: "21% OFF",
-    pricePerUnit: "R$ 137,00",
-    oldPrice: "R$ 179,90",
-    totalPrice: "137,00",
+    pricePerUnit: "R$ 117,70",
+    oldPrice: "R$ 149,90",
+    totalPrice: "117,70",
+    installment: "Em até 6x de R$ 19,61 sem juros",
     badge: null,
     checkoutUrl: "https://seguro.elabela.store/r/M1MW6QA99S?kit=1"
   },
@@ -124,6 +125,7 @@ const KITS = [
     pricePerUnit: "R$ 89,23",
     oldPrice: "R$ 449,70",
     totalPrice: "267,70",
+    installment: "Em até 6x de R$ 44,61 sem juros",
     badge: { text: "Mais Vendido", color: "bg-pink-500" },
     checkoutUrl: "https://seguro.elabela.store/r/M1MW6QA99S?kit=3"
   },
@@ -134,6 +136,7 @@ const KITS = [
     pricePerUnit: "R$ 79,54",
     oldPrice: "R$ 899,40",
     totalPrice: "397,70",
+    installment: "Em até 6x de R$ 66,28 sem juros",
     badge: { text: "Melhor Preço", color: "bg-emerald-500", extra: "Promoção Carro" },
     checkoutUrl: "https://seguro.elabela.store/r/M1MW6QA99S?kit=5"
   }
@@ -144,14 +147,6 @@ export function ClareadorPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedKit, setSelectedKit] = useState(KITS[2]);
-
-  const [config, setConfig] = useState({
-      priceCard: 'R$ 187,00',
-      pricePix: '137,00',
-      installmentText: '12x de R$ 14,96',
-      buttonText: 'Comprar agora',
-      checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
-  });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -272,22 +267,25 @@ export function ClareadorPage() {
                         </p>
                     </div>
 
-                    <div className="space-y-3">
+                    {/* SEÇÃO DE PREÇO (FORMATO EXATO DA IMAGEM) */}
+                    <div className="space-y-1.5 py-4">
                         <div className="flex items-center gap-3">
-                            <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
-                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">25% OFF</span>
+                            <span className="text-slate-400 line-through text-2xl font-light">{selectedKit.oldPrice}</span>
+                            <span className="bg-emerald-50 text-emerald-600 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tight">
+                                {selectedKit.discount}
+                            </span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
-                            <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
-                            <span className="text-emerald-600 font-bold text-xl">no pix</span>
+                            <span className="text-5xl font-black text-slate-900">R$ {selectedKit.totalPrice}</span>
+                            <span className="text-emerald-500 font-medium text-2xl">no pix</span>
                         </div>
-                        <p className="text-slate-500 font-medium text-sm">
-                            {config.installmentText}
+                        <p className="text-slate-500 text-lg">
+                            {selectedKit.installment}
                         </p>
                     </div>
 
                     {/* SELETOR DE KITS */}
-                    <div className="space-y-4 pt-4">
+                    <div className="space-y-4 pt-2">
                         <p className="font-bold text-slate-700">Selecione o kit</p>
                         <div className="space-y-3">
                             {KITS.map((kit) => (
@@ -349,7 +347,7 @@ export function ClareadorPage() {
                                 style={{ backgroundColor: '#35c867' }}
                             >
                                 <ShoppingBag size={28} />
-                                {config.buttonText}
+                                Comprar agora
                                 <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
                             </Button>
                         </Link>
@@ -389,12 +387,12 @@ export function ClareadorPage() {
               </div>
             </section>
 
-            {/* SEÇÃO: PÚBLICO-ALVO (ATUALIZADA) */}
+            {/* SEÇÃO: PÚBLICO-ALVO */}
             <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-start gap-16">
                         <div className="flex-1 space-y-8">
-                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
+                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCINA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
                                 Clareie Manchas Difíceis Sem Ácidos Agressivos. <span className="text-orange-700">100% Natural da Amazônia Por R$ 137,00.</span>
                             </h2>
@@ -484,8 +482,8 @@ export function ClareadorPage() {
 
         {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText={selectedKit.id === 1 ? "R$ 14,96" : selectedKit.id === 3 ? "R$ 30,22" : "R$ 45,46"}
-          buttonText={config.buttonText} 
+          installmentText={selectedKit.installment.split('de ')[1].split(' sem')[0]}
+          buttonText="Comprar agora" 
           checkoutUrl={selectedKit.checkoutUrl} 
         />
       </div>
