@@ -55,6 +55,7 @@ const STATIC_PAGES = [
   { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', type: 'Vendas', icon: Heart, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-950/20' },
   { id: 'antiqueda', name: 'Tratamento Antiqueda V1', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
+  { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'clareador', name: 'Clareador', type: 'Vendas', icon: Sparkles, color: 'text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/20' },
 ];
 
@@ -218,7 +219,7 @@ export default function SalesPagesListPage() {
                             </Button>
                             </Link>
 
-                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda' || page.id === 'antiqueda2' || page.id === 'clareador') && (
+                            {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda' || page.id === 'antiqueda2' || page.id === 'antiqueda3' || page.id === 'clareador') && (
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl">

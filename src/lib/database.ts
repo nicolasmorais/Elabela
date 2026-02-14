@@ -75,6 +75,7 @@ async function insertDefaultData(client: Client): Promise<void> {
         { path: '/menopausa', name: 'Vendas: Menopausa Nunca Mais', content_id: 'menopausa' },
         { path: '/antiqueda', name: 'Vendas: Tratamento Antiqueda', content_id: 'antiqueda' },
         { path: '/antiqueda2', name: 'Vendas: Tratamento Antiqueda V2', content_id: 'antiqueda2' },
+        { path: '/antiqueda3', name: 'Vendas: Tratamento Antiqueda V3', content_id: 'antiqueda3' },
         { path: '/clareador', name: 'Vendas: Clareador', content_id: 'clareador' },
     ];
 
