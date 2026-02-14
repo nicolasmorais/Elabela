@@ -105,15 +105,15 @@ const DELIVERY_TESTIMONIALS = [
   }
 ];
 
-// DADOS DOS KITS CONFORME A IMAGEM
+// DADOS DOS KITS
 const KITS = [
   {
     id: 1,
     name: "1 unidade",
     discount: "21% OFF",
-    pricePerUnit: "R$ 117,70",
-    oldPrice: "R$ 149,90",
-    totalPrice: "117,70",
+    pricePerUnit: "R$ 137,00",
+    oldPrice: "R$ 179,90",
+    totalPrice: "137,00",
     badge: null,
     checkoutUrl: "https://seguro.elabela.store/r/M1MW6QA99S?kit=1"
   },
@@ -143,11 +143,11 @@ export function ClareadorPage() {
   const [city, setCity] = useState('');
   const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [selectedKit, setSelectedKit] = useState(KITS[2]); // Começa com o de 5 unidades selecionado (igual na imagem)
+  const [selectedKit, setSelectedKit] = useState(KITS[2]);
 
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
-      pricePix: '147,00',
+      pricePix: '137,00',
       installmentText: '12x de R$ 14,96',
       buttonText: 'Comprar agora',
       checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
@@ -272,7 +272,21 @@ export function ClareadorPage() {
                         </p>
                     </div>
 
-                    {/* SELETOR DE KITS (IGUAL A IMAGEM) */}
+                    <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                            <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
+                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">25% OFF</span>
+                        </div>
+                        <div className="flex items-baseline gap-2 leading-none">
+                            <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
+                            <span className="text-emerald-600 font-bold text-xl">no pix</span>
+                        </div>
+                        <p className="text-slate-500 font-medium text-sm">
+                            {config.installmentText}
+                        </p>
+                    </div>
+
+                    {/* SELETOR DE KITS */}
                     <div className="space-y-4 pt-4">
                         <p className="font-bold text-slate-700">Selecione o kit</p>
                         <div className="space-y-3">
@@ -285,7 +299,6 @@ export function ClareadorPage() {
                                         selectedKit.id === kit.id ? "border-slate-900 bg-white" : "border-slate-100 bg-white"
                                     )}
                                 >
-                                    {/* Badges de Destaque */}
                                     <div className="absolute -top-3 right-4 flex gap-2">
                                         {kit.badge?.extra && (
                                             <span className="bg-black text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
@@ -376,59 +389,45 @@ export function ClareadorPage() {
               </div>
             </section>
 
-            <section className="py-24 px-6 bg-white border-b border-orange-100">
-              <div className="max-w-6xl mx-auto space-y-16">
-                <div className="text-center space-y-4">
-                  <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
-                    Resultados Reais, Mulheres Reais
-                  </h2>
-                  <div className="h-1.5 w-32 bg-orange-500 mx-auto rounded-full"></div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                  {GALLERY_IMAGES.map((url, i) => (
-                    <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 cursor-pointer border border-orange-100">
-                       <img 
-                          src={url} 
-                          alt={`Imagem da Galeria ${i + 1}`} 
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
-                       />
-                       <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
+            {/* SEÇÃO: PÚBLICO-ALVO (ATUALIZADA) */}
             <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-start gap-16">
                         <div className="flex-1 space-y-8">
-                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCINA</span>
+                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
-                                O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Com Amazolé.</span>
+                                Clareie Manchas Difíceis Sem Ácidos Agressivos. <span className="text-orange-700">100% Natural da Amazônia Por R$ 137,00.</span>
                             </h2>
                             <div className="pt-8 space-y-6">
                                 <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
                                 <ul className="space-y-4">
                                     {[
-                                        "💔 Sente vergonha das manchas no rosto e mãos",
-                                        "💔 Não sai de casa sem maquiagem pesada para esconder",
-                                        "💔 Já gastou fortunas com ácidos que queimam a pele",
-                                        "💔 Não pode (ou não quer) gastar R$ 500 em peeling",
-                                        "💔 Busca uma solução natural, segura e definitiva"
+                                        "💔 Esconde axilas escuras e não usa regata há anos",
+                                        "💔 Evita biquíni ou calcinha porque a virilha tá manchada",
+                                        "💔 Melasma te faz usar base TODOS os dias (mesmo em casa)",
+                                        "💔 Já tentou mil cremes que arderam, descascaram e não clarearam",
+                                        "💔 Tem vergonha de tirar a roupa na frente do parceiro"
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-700">
+                                            <div className="bg-orange-100 p-1 rounded-full text-orange-600"><Check size={16} strokeWidth={3} /></div>
                                             {item}
                                         </li>
                                     ))}
                                 </ul>
+                                <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
+                                    <p>Porque você merece usar QUALQUER roupa sem medo.</p>
+                                    <p className="text-orange-800 italic underline decoration-orange-300">
+                                        Sem precisar escolher entre: <br />
+                                        Clarear as manchas OU irritar a pele.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div className="flex-1 lg:sticky lg:top-24 relative w-full">
+                            <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                                alt="Pele Lindo com Amazolé" 
+                                alt="Mulher confiante de regata" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                             />
                         </div>
@@ -470,19 +469,6 @@ export function ClareadorPage() {
                 </div>
             </section>
 
-            <section className="py-24 px-6 bg-white border-t border-slate-50">
-                <div className="max-w-4xl mx-auto text-center">
-                    <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
-                        <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
-                        <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Garantia de Satisfação Amazolé</h2>
-                        <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
-                            Use o Kit Amazolé por 7 dias. Se você não AMAR o resultado na sua pele, nós devolvemos 100% do seu dinheiro. Sem perguntas.
-                        </p>
-                        <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Qualidade Total</div>
-                    </div>
-                </div>
-            </section>
-
             <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
               <div className="max-w-6xl mx-auto px-6 text-center">
                     <img 
@@ -496,7 +482,7 @@ export function ClareadorPage() {
             </footer>
         </div>
 
-        {/* STICKY BAR MOBILE - AGORA SEGUE O KIT SELECIONADO */}
+        {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
           installmentText={selectedKit.id === 1 ? "R$ 14,96" : selectedKit.id === 3 ? "R$ 30,22" : "R$ 45,46"}
           buttonText={config.buttonText} 
