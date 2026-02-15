@@ -211,13 +211,6 @@ export function ClareadorPageV2() {
                         </p>
                     </div>
 
-                    {/* MobileStickyBar */}
-                    <MobileStickyBar 
-                      installmentText={`12x de ${(parseFloat(selectedKit.price.replace(',', '.')) / 12).toFixed(2).replace('.', ',')}`}
-                      buttonText="Comprar agora" 
-                      checkoutUrl={selectedKit.checkoutUrl} 
-                    />
-
                     <div className="bg-emerald-50/50 border-l-4 border-emerald-400 p-5 rounded-r-2xl space-y-2">
                         <p className="text-slate-800 font-black text-xl italic leading-tight">
                             "Escondi Minhas Axilas Por 3 Anos... <br />
@@ -229,7 +222,6 @@ export function ClareadorPageV2() {
                     </div>
 
                     <div className="space-y-6 pt-4">
-                        {/* NOVO SELETOR DE KIT ADICIONADO AQUI */}
                         <KitSelector 
                             options={AMAZOLÉ_KITS}
                             selectedId={selectedKit.id}
@@ -270,19 +262,34 @@ export function ClareadorPageV2() {
                 <span className="text-2xl font-black">G1</span><span className="text-2xl font-black italic">R7</span><span className="text-2xl font-black">GLOBO</span><span className="text-2xl font-black underline">SBT</span>
             </section>
 
-            {/* RESULTADOS REAIS */}
+            {/* NOVA SEÇÃO: PAIXÃO NACIONAL / RESULTADOS REAIS */}
             <section className="py-24 px-6 bg-white border-b border-orange-100">
               <div className="max-w-6xl mx-auto space-y-16 text-center">
                 <div className="space-y-4">
-                  <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">Resultados Reais</h2>
+                  <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em]">PAIXÃO NACIONAL</span>
+                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
+                    Resultados Reais, Mulheres Reais
+                  </h2>
                 </div>
+                
+                {/* GRID DA GALERIA */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                   {GALLERY_IMAGES.map((url, i) => (
-                    <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden border border-orange-100">
-                       <img src={url} alt={`Resultado ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden border border-orange-100 shadow-md hover:shadow-xl transition-all duration-500">
+                       <img 
+                          src={url} 
+                          alt={`Resultado Real ${i + 1}`} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                       />
+                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                   ))}
+                </div>
+
+                <div className="pt-8">
+                  <p className="text-slate-500 font-medium text-lg italic">
+                    Milhares de mulheres compartilhando seus resultados reais todos os dias.
+                  </p>
                 </div>
               </div>
             </section>
@@ -321,7 +328,7 @@ export function ClareadorPageV2() {
                                 {[
                                     { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
                                     { q: "❓ Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Reconstroi a raiz em vez de apenas mascarar." },
-                                    { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
+                                    { q: "❓ Funciona para queda pós-parto?", a: "SIM. Fortalece a raiz enfraquecida pelas mudanças hormônios." },
                                     { q: "❓ Quanto tempo para ver resultado?", a: "3-5 dias: Queda reduz 50%. 7 dias: Queda estanca 90%." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`prod-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6"><AccordionTrigger className="text-left font-bold py-5">{item.q}</AccordionTrigger><AccordionContent className="text-slate-600 pb-6">{item.a}</AccordionContent></AccordionItem>
@@ -408,6 +415,13 @@ export function ClareadorPageV2() {
               </div>
             </footer>
         </div>
+
+        {/* STICKY BAR MOBILE */}
+        <MobileStickyBar 
+          installmentText="12x de 14,96"
+          buttonText="Comprar agora" 
+          checkoutUrl={selectedKit.checkoutUrl} 
+        />
       </div>
     </>
   );
