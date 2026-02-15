@@ -46,6 +46,7 @@ import {
   Dna
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { PageTracker } from "./PageTracker";
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
