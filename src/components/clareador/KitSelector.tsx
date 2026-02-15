@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Check, Star } from 'lucide-react';
+import { Check, Star, ShieldCheck, Verified } from 'lucide-react';
 
 export interface KitOption {
   id: string;
