@@ -11,6 +11,8 @@ import {
   ShoppingBag, 
   Lock, 
   CreditCard, 
+  Anchor, 
+  Layers, 
   Microscope, 
   Verified, 
   Check, 
@@ -34,7 +36,10 @@ import {
   Moon,
   Lightbulb,
   Beaker,
-  Settings2
+  Settings2,
+  MapPin,
+  CalendarRange,
+  Target
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -588,6 +593,151 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
+            {/* 🆕 SEÇÃO: ÁREAS TRATÁVEIS E CONSUMO 🆕 */}
+            <section className="py-24 px-6 bg-white border-b border-brand-blue/10">
+                <div className="max-w-6xl mx-auto space-y-16">
+                    <div className="text-center space-y-4 max-w-3xl mx-auto">
+                        <span className="text-brand-blue-dark font-black text-xs uppercase tracking-[0.5em] block mb-2 px-4 py-1.5 rounded-full bg-brand-blue/5 border border-brand-blue/10 w-fit mx-auto">Flexibilidade Total</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9]">
+                            ÁREAS QUE VOCÊ <span className="text-brand-pink italic">PODE TRATAR</span>
+                        </h2>
+                        <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">RESULTADO COMPROVADO EM TODAS AS ÁREAS</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                        {/* Lista de Áreas */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {[
+                                { t: "Axilas escuras", d: "Atrito e depilação" },
+                                { t: "Virilhas manchadas", d: "Calcinha e depilação" },
+                                { t: "Melasma facial", d: "Gravidez e sol" },
+                                { t: "Manchas de idade", d: "Rosto e mãos" },
+                                { t: "Foliculite", d: "Bolinhas escuras" },
+                                { t: "Cotovelos/Joelhos", d: "Pele grossa e escura" },
+                                { t: "Pescoço manchado", d: "Atrito e suor" },
+                                { t: "Entre coxas", d: "Atrito ao caminhar" }
+                            ].map((area, i) => (
+                                <div key={i} className="flex items-center gap-4 p-5 bg-brand-gray-light rounded-2xl border border-slate-100 hover:border-brand-blue/30 transition-all group">
+                                    <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center text-emerald-500 shadow-sm group-hover:scale-110 transition-transform shrink-0">
+                                        <CheckCircle2 size={24} />
+                                    </div>
+                                    <div>
+                                        <p className="font-black text-brand-blue-dark text-sm uppercase leading-tight">{area.t}</p>
+                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{area.d}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Guia de Consumo */}
+                        <div className="bg-brand-blue-dark rounded-[3.5rem] p-10 md:p-14 text-white space-y-10 relative overflow-hidden shadow-2xl">
+                            <div className="absolute top-0 right-0 p-12 opacity-5 rotate-12"><Target size={180} /></div>
+                            
+                            <div className="space-y-4">
+                                <h3 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
+                                    <Info className="text-brand-pink" /> GUIA DE CONSUMO:
+                                </h3>
+                                <div className="h-1 w-20 bg-brand-pink rounded-full"></div>
+                            </div>
+
+                            <div className="p-8 bg-white/10 rounded-[2.5rem] border border-white/10 backdrop-blur-sm text-center">
+                                <p className="text-xl md:text-2xl font-black tracking-tight mb-2">1 FRASCO = 1 ÁREA POR 30 DIAS</p>
+                                <p className="text-sm font-medium text-white/70 uppercase tracking-widest italic">A dosagem correta garante o clareamento</p>
+                            </div>
+
+                            <div className="space-y-6">
+                                <p className="text-xs font-black uppercase tracking-[0.2em] text-brand-pink">Exemplos de tratamento:</p>
+                                <div className="space-y-4">
+                                    {[
+                                        { t: "Tratar só axilas", q: "1 frasco" },
+                                        { t: "Tratar axilas + virilha", q: "2 frascos" },
+                                        { t: "Tratar rosto + axilas + virilha", q: "3 frascos" }
+                                    ].map((ex, i) => (
+                                        <div key={i} className="flex items-center justify-between p-4 bg-black/20 rounded-2xl border border-white/5">
+                                            <span className="font-bold text-sm">→ {ex.t}</span>
+                                            <span className="bg-white text-brand-blue-dark px-3 py-1 rounded-lg font-black text-xs uppercase">{ex.q}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 🆕 SEÇÃO: LINHA DO TEMPO REAL 🆕 */}
+            <section className="py-24 px-6 bg-brand-gray-light border-b border-slate-100">
+                <div className="max-w-4xl mx-auto space-y-20">
+                    <div className="text-center space-y-4">
+                        <span className="text-brand-pink font-black text-xs uppercase tracking-[0.5em] block mb-2">Paciência & Consistência</span>
+                        <h2 className="text-4xl md:text-6xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9]">
+                            LINHA DO <span className="text-brand-pink italic">TEMPO REAL</span>
+                        </h2>
+                        <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">O QUE ACONTECE SEMANA A SEMANA</p>
+                    </div>
+
+                    <div className="relative space-y-12">
+                        {/* Linha Vertical Decorativa */}
+                        <div className="absolute left-6 top-4 bottom-4 w-1 bg-brand-blue/20 -z-10 rounded-full hidden md:block"></div>
+
+                        {[
+                            { 
+                                s: "SEMANA 1", 
+                                icon: Sparkles, 
+                                color: "bg-brand-blue", 
+                                items: ["Pele mais macia e uniforme", "Vermelhidão diminui", "Foliculite (bolinhas) melhora"] 
+                            },
+                            { 
+                                s: "SEMANA 2", 
+                                icon: Activity, 
+                                color: "bg-brand-blue-dark", 
+                                items: ["Tom começa a clarear (sutil)", "Textura lisa", "Inflamação some"] 
+                            },
+                            { 
+                                s: "SEMANA 3-4", 
+                                icon: UserCheck, 
+                                color: "bg-brand-pink", 
+                                items: ["Clareamento VISÍVEL", "Mancha 30-40% mais clara", "Outras pessoas NOTAM"] 
+                            },
+                            { 
+                                s: "SEMANA 5-8", 
+                                icon: Heart, 
+                                color: "bg-brand-pink-dark", 
+                                items: ["Clareamento intensifica", "Mancha 50-70% mais clara", "Usa regata/biquíni com confiança"] 
+                            },
+                            { 
+                                s: "MÊS 3+", 
+                                icon: ShieldCheck, 
+                                color: "bg-emerald-600", 
+                                items: ["Tom quase igualado", "Pele uniforme", "Manutenção 1x ao dia"] 
+                            }
+                        ].map((step, i) => (
+                            <div key={i} className="flex flex-col md:flex-row gap-8 items-start group">
+                                {/* Marcador */}
+                                <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0 group-hover:scale-110 transition-transform duration-500 z-10", step.color)}>
+                                    <step.icon size={24} />
+                                </div>
+                                
+                                {/* Conteúdo */}
+                                <div className="flex-1 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all duration-500">
+                                    <h4 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight mb-6">{step.s}</h4>
+                                    <ul className="space-y-3">
+                                        {step.items.map((li, idx) => (
+                                            <li key={idx} className="flex items-center gap-3 text-brand-text font-bold text-sm">
+                                                <div className="h-4 w-4 border-2 border-brand-blue/30 rounded flex items-center justify-center shrink-0">
+                                                    <div className="h-2 w-2 bg-brand-blue rounded-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                                </div>
+                                                {li}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* GARANTIA */}
             <section className="py-24 px-6 bg-brand-gray-light border-t border-slate-50 text-center">
                 <div className="max-w-4xl mx-auto bg-white border-[6px] border-dashed border-brand-blue/30 p-12 md:p-24 rounded-[4rem] shadow-2xl relative overflow-hidden">
@@ -609,7 +759,7 @@ export function ClareadorPageV2() {
                     <div className="space-y-6">
                         <span className="inline-block px-4 py-1 bg-brand-pink text-white rounded-full text-xs font-black uppercase tracking-[0.3em] animate-bounce shadow-lg">Últimas Unidades do Lote</span>
                         <h2 className="text-3xl md:text-6xl font-black text-white tracking-tighter leading-tight uppercase">
-                            PELE CLARA E <span className="text-brand-pink italic underline decoration-white/30">SEM MANCHAS</span>
+                            SOLTE SEU CABELO E <span className="text-brand-pink italic underline decoration-white/30">VIVA SEM VERGONHA</span>
                         </h2>
                         <p className="text-brand-blue font-black text-xl flex items-center justify-center gap-3">
                             <Clock size={24} className="animate-pulse" /> OFERTA ENCERRA EM: {formatTime(timeLeft)}
