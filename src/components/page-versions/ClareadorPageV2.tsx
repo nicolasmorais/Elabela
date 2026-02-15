@@ -28,11 +28,14 @@ import {
   AlertTriangle,
   Activity,
   UserCheck,
-  Scissors,
   CheckCircle2,
   Leaf,
   Thermometer,
-  Waves
+  Waves,
+  Sun,
+  Moon,
+  Lightbulb,
+  Scissors
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -430,6 +433,148 @@ export function ClareadorPageV2() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* SEÇÃO: COMO USAR O AMAZOLÉ (NOVA) */}
+            <section className="py-32 px-6 bg-brand-gray-light relative overflow-hidden border-b border-brand-blue/10">
+                <div className="max-w-6xl mx-auto space-y-20">
+                    <div className="text-center space-y-4 max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue-dark text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+                            <Info size={14} /> Passo a Passo Ilustrado
+                        </div>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-brand-blue-dark uppercase leading-[0.9]">
+                            COMO USAR O <span className="text-brand-pink italic">AMAZOLÉ</span>
+                        </h2>
+                        <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
+                            Tão Fácil Quanto Passar Creme Hidratante
+                        </p>
+                        <p className="text-sm font-bold text-brand-pink italic">(Nem precisa enxaguar!)</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                        
+                        {/* ROTINA DIÁRIA (PASSO A PASSO) */}
+                        <div className="lg:col-span-7 space-y-8">
+                            <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-slate-100 space-y-10 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-10 opacity-[0.03] text-brand-blue pointer-events-none"><Sparkles size={200} /></div>
+                                
+                                <div className="flex items-center gap-4 border-b border-brand-gray-light pb-6">
+                                    <div className="p-3 bg-brand-pink text-white rounded-2xl shadow-lg">
+                                        <Activity size={24} />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight leading-none mb-1">ROTINA DIÁRIA</h3>
+                                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">(2X AO DIA)</p>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-12">
+                                    {[
+                                        { 
+                                            n: "1️⃣", 
+                                            t: "LIMPE A ÁREA", 
+                                            bullets: ["Lave com sabonete neutro", "Seque bem (MUITO importante!)"], 
+                                            time: "1 minuto",
+                                            icon: Droplets
+                                        },
+                                        { 
+                                            n: "2️⃣", 
+                                            t: "APLIQUE O AMAZOLÉ", 
+                                            bullets: ["Pegue quantidade de 1 grão de ervilha", "Espalhe na mancha em movimentos circulares", "Massageie até absorver completamente", "NÃO enxágue (deixa agir)"], 
+                                            time: "2 minutos",
+                                            icon: Sparkles
+                                        },
+                                        { 
+                                            n: "3️⃣", 
+                                            t: "AGUARDE SECAR", 
+                                            bullets: ["Espere 3-5 minutos antes de vestir", "Pode aplicar desodorante/maquiagem depois"], 
+                                            time: "3 minutos",
+                                            icon: Clock
+                                        }
+                                    ].map((step, i) => (
+                                        <div key={i} className="flex gap-6 group">
+                                            <div className="h-12 w-12 shrink-0 bg-brand-gray-light rounded-2xl flex items-center justify-center font-black text-brand-blue text-xl border border-slate-100 group-hover:scale-110 group-hover:border-brand-blue transition-all duration-300 shadow-sm">{step.n.substring(0, 1)}</div>
+                                            <div className="space-y-3 flex-1">
+                                                <div className="flex items-center justify-between">
+                                                    <h4 className="font-black text-brand-blue-dark text-lg uppercase tracking-tight">{step.t}</h4>
+                                                    <span className="flex items-center gap-1.5 text-[10px] font-black text-brand-pink uppercase tracking-widest bg-brand-pink/5 px-2.5 py-1 rounded-full border border-brand-pink/10">
+                                                        <Clock size={10} /> {step.time}
+                                                    </span>
+                                                </div>
+                                                <ul className="space-y-2">
+                                                    {step.bullets.map((bullet, idx) => (
+                                                        <li key={idx} className="flex items-start gap-2 text-slate-500 font-medium text-sm leading-snug">
+                                                            <div className="mt-1 text-brand-blue"><ArrowRight size={14} strokeWidth={3} /></div>
+                                                            {bullet}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="pt-8 border-t border-brand-gray-light text-center">
+                                    <div className="bg-brand-blue-dark text-white p-6 rounded-[2.5rem] relative overflow-hidden group">
+                                        <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-50 mb-1">CUIDADO RÁPIDO:</p>
+                                        <p className="text-4xl font-black tracking-tighter">6 MINUTOS <span className="text-brand-pink italic text-2xl">2x ao dia</span></p>
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-125 transition-transform"><Clock size={80} /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* QUANDO APLICAR + DICAS */}
+                        <div className="lg:col-span-5 space-y-8">
+                            
+                            {/* QUANDO APLICAR */}
+                            <div className="bg-white rounded-[3.5rem] p-10 border border-slate-100 shadow-lg space-y-8">
+                                <h3 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight border-b border-brand-gray-light pb-4">⏰ QUANDO APLICAR:</h3>
+                                <div className="grid grid-cols-1 gap-6">
+                                    <div className="flex items-start gap-4 p-5 bg-brand-blue/5 rounded-2xl border border-brand-blue/10 group hover:bg-brand-blue/10 transition-colors">
+                                        <div className="p-3 bg-white rounded-xl shadow-sm text-brand-blue group-hover:scale-110 transition-transform"><Sun size={24} /></div>
+                                        <div>
+                                            <p className="font-black text-brand-blue-dark uppercase text-sm mb-1">MANHÃ:</p>
+                                            <p className="text-xs font-medium text-slate-500">Após o banho, antes de se vestir. Perfeito para usar antes do desodorante.</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4 p-5 bg-brand-pink/5 rounded-2xl border border-brand-pink/10 group hover:bg-brand-pink/10 transition-colors">
+                                        <div className="p-3 bg-white rounded-xl shadow-sm text-brand-pink group-hover:scale-110 transition-transform"><Moon size={24} /></div>
+                                        <div>
+                                            <p className="font-black text-brand-pink uppercase text-sm mb-1">NOITE:</p>
+                                            <p className="text-xs font-medium text-slate-500">Antes de dormir, com a pele limpa e seca. Deixe os ativos agirem a noite toda.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* DICAS PARA POTENCIALIZAR */}
+                            <div className="bg-brand-blue-dark text-white rounded-[3.5rem] p-10 shadow-2xl space-y-8 relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12"><Lightbulb size={120} /></div>
+                                <h3 className="text-lg font-black uppercase tracking-[0.2em] text-brand-pink flex items-center gap-2">
+                                    <Zap size={20} fill="currentColor" /> POTENCIALIZE O RESULTADO:
+                                </h3>
+                                <div className="space-y-6">
+                                    {[
+                                        { t: "USE PROTETOR SOLAR", d: "Se aplicar no rosto, use FPS 50+. Sem ele, a mancha volta com o sol.", icon: Sun },
+                                        { t: "PELE BEM SECA", d: "A umidade dilui o produto. Aplique sempre com a pele 100% seca.", icon: Droplets },
+                                        { t: "NÃO MISTURE PRODUTOS", d: "Use apenas Amazolé na área. Outros cremes podem anular o efeito.", icon: Ban },
+                                        { t: "SEJA CONSISTENTE", d: "2x por dia, TODO DIA. Pular dias atrasa seu clareamento.", icon: Activity }
+                                    ].map((tip, i) => (
+                                        <div key={i} className="flex gap-4 items-start group">
+                                            <div className="p-2 bg-white/10 rounded-lg text-brand-pink group-hover:scale-110 transition-transform"><tip.icon size={18} /></div>
+                                            <div>
+                                                <p className="font-black uppercase text-xs tracking-widest mb-1 text-white">{tip.t}</p>
+                                                <p className="text-xs text-white/70 font-medium leading-relaxed">{tip.d}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </section>
