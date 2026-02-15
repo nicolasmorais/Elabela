@@ -350,6 +350,9 @@ export function ClareadorPageV2() {
                     </div>
                   ))}
                 </div>
+                <div className="text-center pt-8">
+                  <p className="text-slate-500 font-medium italic">Milhares de mulheres compartilhando seus resultados reais todos os dias.</p>
+                </div>
               </div>
             </section>
 
@@ -376,13 +379,17 @@ export function ClareadorPageV2() {
                                         </li>
                                     ))}
                                 </ul>
+                                <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
+                                    <p>Porque você merece acordar SEM cabelo no travesseiro.</p>
+                                    <p className="text-orange-800 italic underline decoration-orange-300">Sem precisar escolher entre: Tratar a queda OU pagar as contas.</p>
+                                </div>
                             </div>
                         </div>
                         <div className="flex-1 lg:sticky lg:top-24 relative w-full">
                             <div className="absolute inset-0 bg-orange-300 rounded-full blur-[100px] opacity-10"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                                alt="Mulher Confiante" 
+                                alt="Mulher Confiante com Cabelo Lindo" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                             />
                         </div>
@@ -393,9 +400,13 @@ export function ClareadorPageV2() {
             <section className="py-32 px-6 bg-white relative overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto space-y-24">
                     <div className="text-center space-y-6 max-w-4xl mx-auto">
+                        <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
                         <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
                             POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-700">7 DIAS?</span>
                         </h2>
+                        <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
+                            TECNOLOGIA TRIPLA ANCORAGEM™
+                        </p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -404,8 +415,11 @@ export function ClareadorPageV2() {
                                 <div className="p-3 bg-orange-50 text-orange-700 rounded-2xl shadow-sm border border-orange-100">
                                     <Microscope size={24} />
                                 </div>
-                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA</h3>
+                                <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
                             </div>
+                            <p className="text-xl text-slate-700 font-medium leading-relaxed">
+                                Seu cabelo cai por <span className="text-orange-600 font-black">3 MOTIVOS:</span>
+                            </p>
                             <div className="space-y-4">
                                 {[
                                     { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Seu folículo não tem força para segurar o peso do fio." },
@@ -423,9 +437,10 @@ export function ClareadorPageV2() {
                             </div>
                         </div>
                         <div className="relative">
+                            <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
-                                alt="Tripla Ancoragem" 
+                                alt="Tecnologia Tripla Ancoragem" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03]"
                             />
                         </div>
@@ -433,20 +448,52 @@ export function ClareadorPageV2() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { icon: Anchor, title: "CAMADA 1: ANCORA A RAIZ", desc: "Remove resíduos químicos que DISSOLVEM a proteção da raiz e deposita aminoácidos.", analogia: "É como cimentar um poste que estava solto." },
-                            { icon: Layers, title: "CAMADA 2: RECONSTRÓI A FIBRA", desc: "Penetra na ESTRUTURA INTERNA do fio com queratina biomimética.", analogia: "É como consertar rachaduras numa parede." },
-                            { icon: ShieldCheck, title: "CAMADA 3: SELA E PROTEGE", desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor.", analogia: "É como envernizar madeira." }
+                            { 
+                                icon: Anchor, 
+                                title: "CAMADA 1: ANCORA A RAIZ", 
+                                prod: "Shampoo Reconstrutor",
+                                desc: "Remove resíduos químicos que DISSOLVEM a proteção da raiz e deposita aminoácidos que RECONSTROEM a bainha folicular.",
+                                feels: ["1ª lavada: Couro cabeludo respira", "3 dias: Fios param de soltar", "7 dias: Raiz firme (Zero quebra)"],
+                                analogia: "É como cimentar um poste que estava solto no chão. O fio PARA de cair porque ele está PRESO de verdade."
+                            },
+                            { 
+                                icon: Layers, 
+                                title: "CAMADA 2: RECONSTRÓI A FIBRA", 
+                                prod: "Máscara Intensiva",
+                                desc: "Penetra na ESTRUTURA INTERNA do fio com queratina biomimética, unindo pontas quebradas como se fossem soldar.",
+                                feels: ["1ª aplicação: Fio fica pesado", "1 semana: Para de ver fios partidos", "2 semanas: Fio DOBRA sem quebrar"],
+                                analogia: "É como consertar rachaduras numa parede. Não adianta pintar. Tem que TAPAR o buraco."
+                            },
+                            { 
+                                icon: ShieldCheck, 
+                                title: "CAMADA 3: SELA E PROTEGE", 
+                                prod: "Condicionador + Leave-in",
+                                desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
+                                feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                                analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
+                            }
                         ].map((step, i) => (
                             <div key={i} className="flex flex-col p-8 md:p-10 bg-white rounded-[3.5rem] border border-orange-100 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all duration-500 group">
                                 <div className="p-4 bg-[#FDF8F3] rounded-2xl shadow-sm w-fit mb-8 group-hover:scale-110 transition-transform">
                                     <step.icon className="h-8 w-8 text-orange-700" />
                                 </div>
                                 <div className="space-y-6 flex-1">
-                                    <h4 className="text-xl font-black text-slate-950 uppercase tracking-tight leading-tight">{step.title}</h4>
+                                    <div className="space-y-2">
+                                        <h4 className="text-xl font-black text-slate-950 uppercase tracking-tight leading-tight">{step.title}</h4>
+                                        <p className="text-xs font-black text-orange-600 uppercase tracking-widest">({step.prod})</p>
+                                    </div>
                                     <p className="text-sm text-slate-500 font-medium leading-relaxed">{step.desc}</p>
+                                    <div className="space-y-3 pt-4 border-t border-orange-50">
+                                        {step.feels.map((feel, idx) => (
+                                            <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                                                <div className="h-1.5 w-1.5 rounded-full bg-orange-400"></div>
+                                                {feel}
+                                            </div>
+                                        ))}
+                                    </div>
                                     <div className="mt-auto pt-6">
                                         <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-100 text-xs text-slate-500 italic leading-relaxed">
-                                            <span className="font-black text-slate-900 not-italic uppercase block mb-1 text-[9px] tracking-widest">Analogia:</span>
+                                            <span className="font-black text-slate-900 not-italic uppercase block mb-1 text-[9px] tracking-widest">Analogia Profissional:</span>
                                             {step.analogia}
                                         </div>
                                     </div>
@@ -457,6 +504,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
+            {/* SEÇÃO: DEPOIMENTOS RECEBIMENTO */}
             <section className="py-24 px-6 bg-white overflow-hidden">
                 <div className="max-w-6xl mx-auto space-y-16 text-center">
                     <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase leading-tight">
@@ -482,28 +530,34 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
+            {/* SEÇÃO: FAQ COMPLETO */}
             <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
                 <div className="max-w-4xl mx-auto space-y-12">
                     <div className="text-center space-y-4 mb-16">
                         <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">PERGUNTAS FREQUENTES</h2>
+                        <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
                     </div>
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
-                        <Accordion type="single" collapsible className="w-full space-y-3">
-                            {[
-                                { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
-                                { q: "❓ Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Reconstroi a raiz em vez de apenas mascarar." }
-                            ].map((item, i) => (
-                                <AccordionItem key={i} value={`faq-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6">
-                                    <AccordionTrigger className="text-left font-bold py-5">{item.q}</AccordionTrigger>
-                                    <AccordionContent className="text-slate-600 pb-6">{item.a}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
+
+                    <div className="space-y-12">
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
+                                    { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Reconstroi a raiz em vez de apenas mascarar." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`faq-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6">
+                                        <AccordionTrigger className="text-left font-bold py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 pb-6">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
                     </div>
                 </div>
             </section>
 
+            {/* SEÇÃO: GARANTIA */}
             <section className="py-24 px-6 bg-white border-t border-slate-50 text-center">
                 <div className="max-w-4xl mx-auto bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem]">
                     <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
@@ -512,6 +566,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
+            {/* FOOTER COMPLETO */}
             <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
               <div className="max-w-6xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100 text-center md:text-left">
