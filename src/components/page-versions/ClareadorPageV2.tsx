@@ -29,7 +29,10 @@ import {
   Activity,
   UserCheck,
   Scissors,
-  CheckCircle2
+  CheckCircle2,
+  Leaf,
+  Thermometer,
+  Waves
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -342,6 +345,173 @@ export function ClareadorPageV2() {
                         </div>
                     </div>
                 </div>
+            </section>
+
+            {/* SEÇÃO: POR QUE AMAZOLÉ CLAREIA EM SEMANAS? */}
+            <section className="py-24 px-6 bg-white border-b border-slate-100">
+              <div className="max-w-5xl mx-auto space-y-20">
+                <div className="text-center space-y-4">
+                  <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">POR QUE AMAZOLÉ CLAREIA EM SEMANAS?</h2>
+                  <div className="space-y-2">
+                    <p className="text-emerald-700 font-black text-xl md:text-2xl uppercase">FÓRMULA PATENTEADA DA AMAZÔNIA</p>
+                    <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">(Sem Ácidos Que Ardem, Descascam ou Mancham Mais)</p>
+                  </div>
+                </div>
+
+                <div className="bg-emerald-50/50 rounded-[3rem] p-8 md:p-16 border border-emerald-100 space-y-12">
+                  <div className="flex items-center gap-4 pb-6 border-b border-emerald-200/50">
+                    <Microscope className="text-emerald-700 h-10 w-10" />
+                    <h3 className="text-2xl md:text-3xl font-black text-slate-950 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
+                  </div>
+
+                  <div className="space-y-8">
+                    <p className="text-xl font-black text-slate-800">Sua mancha escura existe por 3 MOTIVOS:</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {[
+                        { num: "1️⃣", title: "MELANINA ACUMULADA", desc: "Células produzem pigmento demais naquela área" },
+                        { num: "2️⃣", title: "INFLAMAÇÃO CRÔNICA", desc: "Atrito, depilação, suor mantém a pele irritada" },
+                        { num: "3️⃣", title: "CÉLULAS MORTAS", desc: "Camada de pele escura acumula e não sai" }
+                      ].map((reason, i) => (
+                        <div key={i} className="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                          <span className="text-3xl block mb-4">{reason.num}</span>
+                          <h4 className="font-black text-slate-950 mb-2 leading-tight uppercase text-sm">{reason.title}</h4>
+                          <p className="text-slate-500 text-sm font-medium">{reason.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-red-50 border-2 border-red-100 p-8 rounded-[2.5rem] space-y-4">
+                    <p className="text-slate-700 font-bold leading-relaxed">
+                      Produtos comuns usam ÁCIDOS para "queimar" a mancha. <br />
+                      <span className="text-red-600 font-black uppercase italic">Resultado: Arde, descasca, irrita, e volta PIOR.</span>
+                    </p>
+                    <p className="text-emerald-800 text-2xl font-black uppercase tracking-tighter">Amazolé é TOTALMENTE DIFERENTE:</p>
+                  </div>
+
+                  {/* ETAPA 1 */}
+                  <div className="space-y-10 pt-10">
+                    <div className="flex items-center gap-4 text-emerald-800 font-black text-xl md:text-2xl uppercase border-b-2 border-emerald-200 pb-2">
+                      <Leaf className="h-8 w-8" />
+                      ETAPA 1: BLOQUEIA MELANINA NA RAIZ
+                    </div>
+                    <p className="text-slate-500 font-bold italic">(Mulateiro + Dolomita)</p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                      <div className="space-y-4">
+                        <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">MULATEIRO (Planta da Amazônia):</h4>
+                        <ul className="space-y-2 text-slate-700 font-bold">
+                          <li className="flex items-center gap-2">→ Inibe produção de melanina (pigmento escuro)</li>
+                          <li className="flex items-center gap-2">→ Antioxidante poderoso (previne manchas novas)</li>
+                          <li className="flex items-center gap-2">→ Cicatrizante natural (repara pele danificada)</li>
+                        </ul>
+                      </div>
+                      <div className="space-y-4">
+                        <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">DOLOMITA (Mineral amazônico):</h4>
+                        <ul className="space-y-2 text-slate-700 font-bold">
+                          <li className="flex items-center gap-2">→ Rico em cálcio e magnésio</li>
+                          <li className="flex items-center gap-2">→ Regenera células da pele</li>
+                          <li className="flex items-center gap-2">→ Clareia naturalmente SEM queimar</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                      <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-4">
+                        <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs border-b border-emerald-100 pb-2">O QUE VOCÊ SENTE:</h5>
+                        <ul className="space-y-2 text-emerald-800 font-black">
+                          <li className="flex items-center gap-2"><Check size={16} /> 1ª semana: Pele mais uniforme</li>
+                          <li className="flex items-center gap-2"><Check size={16} /> 2 semanas: Tom começa a clarear</li>
+                          <li className="flex items-center gap-2"><Check size={16} /> 4 semanas: Mancha visivelmente mais clara</li>
+                        </ul>
+                      </div>
+                      <div className="bg-emerald-800 text-white p-8 rounded-[2.5rem] space-y-4">
+                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2">Analogia:</h5>
+                        <p className="font-bold leading-relaxed">
+                          É como desligar a TORNEIRA que jorra tinta preta. <br />
+                          Não adianta limpar se continua jorrando. <br />
+                          <span className="text-emerald-300 font-black underline">Mulateiro FECHA a torneira.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ETAPA 2 */}
+                  <div className="space-y-10 pt-10">
+                    <div className="flex items-center gap-4 text-emerald-800 font-black text-xl md:text-2xl uppercase border-b-2 border-emerald-200 pb-2">
+                      <Thermometer className="h-8 w-8" />
+                      ETAPA 2: ACALMA INFLAMAÇÃO
+                    </div>
+                    <p className="text-slate-500 font-bold italic">(Óleo de Melaleuca)</p>
+
+                    <div className="space-y-4">
+                      <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">ÓLEO DE MELALEUCA:</h4>
+                      <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 text-slate-700 font-bold">
+                        <li className="flex items-center gap-2">→ Antibacteriano e antifúngico</li>
+                        <li className="flex items-center gap-2">→ Acalma irritação de atrito/depilação</li>
+                        <li className="flex items-center gap-2">→ Previne foliculite (bolinhas escuras)</li>
+                      </ul>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                      <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-4">
+                        <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs border-b border-emerald-100 pb-2">O QUE VOCÊ SENTE:</h5>
+                        <ul className="space-y-2 text-emerald-800 font-black">
+                          <li className="flex items-center gap-2"><Check size={16} /> Imediato: Pele para de coçar/arder</li>
+                          <li className="flex items-center gap-2"><Check size={16} /> 3 dias: Vermelhidão diminui</li>
+                          <li className="flex items-center gap-2"><Check size={16} /> 1 semana: Pele lisa (sem bolinhas)</li>
+                        </ul>
+                      </div>
+                      <div className="bg-emerald-800 text-white p-8 rounded-[2.5rem] space-y-4">
+                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2">Analogia:</h5>
+                        <p className="font-bold leading-relaxed">
+                          É como apagar um INCÊNDIO antes de pintar a parede. <br />
+                          Se tá pegando fogo, não adianta pintar. <br />
+                          <span className="text-emerald-300 font-black underline">Melaleuca APAGA o fogo.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ETAPA 3 */}
+                  <div className="space-y-10 pt-10">
+                    <div className="flex items-center gap-4 text-emerald-800 font-black text-xl md:text-2xl uppercase border-b-2 border-emerald-200 pb-2">
+                      <Waves className="h-8 w-8" />
+                      ETAPA 3: REMOVE CÉLULAS ESCURAS
+                    </div>
+                    <p className="text-slate-500 font-bold italic">(Argila Branca)</p>
+
+                    <div className="space-y-4">
+                      <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">ARGILA BRANCA AMAZÔNICA:</h4>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-8 text-slate-700 font-bold">
+                        <li className="flex items-center gap-2">→ Esfolia suavemente (sem arder)</li>
+                        <li className="flex items-center gap-2">→ Absorve impurezas e células mortas</li>
+                        <li className="flex items-center gap-2">→ Clareia progressivamente</li>
+                        <li className="flex items-center gap-2">→ Controla oleosidade (axilas/virilha)</li>
+                      </ul>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                      <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-4">
+                        <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs border-b border-emerald-100 pb-2">O QUE VOCÊ SENTE:</h5>
+                        <ul className="space-y-2 text-emerald-800 font-black">
+                          <li className="flex items-center gap-2"><Check size={16} /> 1ª aplicação: Pele macia ao toque</li>
+                          <li className="flex items-center gap-2"><Check size={16} /> 1 semana: Textura lisa</li>
+                          <li className="flex items-center gap-2"><Check size={16} /> 2 semanas: Tom mais claro visível</li>
+                        </ul>
+                      </div>
+                      <div className="bg-emerald-800 text-white p-8 rounded-[2.5rem] space-y-4">
+                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2">Analogia:</h5>
+                        <p className="font-bold leading-relaxed">
+                          É como LIXAR madeira antes de envernizar. <br />
+                          Remove o escuro sem agredir. <br />
+                          <span className="text-emerald-300 font-black underline">Argila faz isso naturalmente.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* TRIPLA ANCORAGEM */}
