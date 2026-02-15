@@ -258,7 +258,7 @@ export function ClareadorPageV2() {
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
-                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">21% OFF</span>
+                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">50% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
                             <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
@@ -767,7 +767,7 @@ export function ClareadorPageV2() {
                                             <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest leading-none mb-1 flex items-center gap-1.5">
                                                 <div className="h-1.5 w-1.5 rounded-full bg-orange-600"></div> {tip.t}
                                             </p>
-                                            <p className="text-sm text-slate-500 font-medium leading-tight">{tip.d}</p>
+                                            <p className="text-sm text-slate-500 font-medium text-justify">{tip.d}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -866,7 +866,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: FAQ */}
+            {/* SEÇÃO: FAQ COMPLETO */}
             <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
                 <div className="max-w-4xl mx-auto space-y-12">
                     <div className="text-center space-y-4 mb-16">
