@@ -66,12 +66,14 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
 import { KitSelector, KitOption } from '@/components/clareador/KitSelector';
 
+// IMAGENS EXCLUSIVAS DA GALERIA DE PRODUTO (TOPO)
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770954500000-beach-woman.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png"
 ];
 
+// IMAGENS DA SEÇÃO RESULTADOS REAIS
 const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
@@ -111,8 +113,42 @@ const AMAZOLÉ_KITS: KitOption[] = [
   }
 ];
 
+const DELIVERY_TESTIMONIALS = [
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558637636-1.png",
+    text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme e cheiroso.",
+    author: "Marta S., São Paulo"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
+    text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. Notei que caiu bem menos fios no banho, já sinto a diferença na quebra.",
+    author: "Juliana P., Rio de Janeiro"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558644450-3.png",
+    text: "Recebi em tempo recorde! O kit é lindo e muito cheiroso. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a quebra diminuiu logo de cara.",
+    author: "Fernanda L., Belo Horizonte"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558648736-4.png",
+    text: "Chegou voando! Começando o cronograma antiqueda agora. O perfume fixou no cabelo e já sinto os fios mais resistentes, caiu quase nada no pente hoje.",
+    author: "Carla T., Curitiba"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
+    text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
+    author: "Renata M., Salvador"
+  },
+  {
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
+    text: "Meu kit chegou antes do esperado! Já iniciei o tratamento. O cabelo está super cheiroso e sinto que a queda já deu uma segurada na primeira lavagem.",
+    author: "Beatriz A., Porto Alegre"
+  }
+];
+
 export function ClareadorPageV2() {
-  const [timeLeft, setTimeLeft] = useState(37860);
+  const [city, setCity] = useState('');
+  const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedKit, setSelectedKit] = useState<KitOption>(AMAZOLÉ_KITS[1]);
 
@@ -120,6 +156,12 @@ export function ClareadorPageV2() {
     const timer = setInterval(() => {
       setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
     }, 1000);
+
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => { if (data.city) setCity(data.city); })
+      .catch(() => {});
+
     return () => clearInterval(timer);
   }, []);
 
@@ -295,12 +337,6 @@ export function ClareadorPageV2() {
                     </div>
                   ))}
                 </div>
-
-                <div className="text-center pt-8">
-                  <p className="text-brand-text font-black uppercase tracking-widest text-sm opacity-50">
-                    Sua transformação começa com Amazolé.
-                  </p>
-                </div>
               </div>
             </section>
 
@@ -331,13 +367,6 @@ export function ClareadorPageV2() {
                                         </li>
                                     ))}
                                 </ul>
-                                
-                                <div className="space-y-4 text-2xl font-black text-brand-blue-dark tracking-tight leading-tight pt-4">
-                                    <p>Recupere sua liberdade de vestir o que quiser.</p>
-                                    <p className="text-brand-pink underline decoration-brand-blue decoration-4 underline-offset-8 uppercase italic">
-                                        Clareamento real, suave e seguro.
-                                    </p>
-                                </div>
                             </div>
                         </div>
                         
@@ -345,7 +374,7 @@ export function ClareadorPageV2() {
                             <div className="absolute inset-0 bg-brand-blue rounded-full blur-[100px] opacity-10"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                                alt="Pele perfeita e iluminada" 
+                                alt="Pele iluminada" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                             />
                         </div>
@@ -353,98 +382,104 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: POR QUE AMAZOLÉ CLAREIA? (DESIGN MELHORADO) */}
-            <section className="py-24 px-6 bg-brand-beige/20 border-b border-brand-beige">
-              <div className="max-w-6xl mx-auto space-y-20">
-                <div className="text-center space-y-4 max-w-3xl mx-auto">
-                  <span className="text-brand-pink font-black text-xs uppercase tracking-[0.5em] block mb-2 px-4 py-1.5 rounded-full bg-white border border-brand-beige w-fit mx-auto">Poder da Natureza</span>
-                  <h2 className="text-4xl md:text-6xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9]">
-                    POR QUE <span className="text-brand-pink italic">AMAZOLÉ</span> CLAREIA EM SEMANAS?
-                  </h2>
-                  <p className="text-brand-text font-bold text-sm uppercase tracking-[0.2em] opacity-60">FÓRMULA PATENTEADA DA AMAZÔNIA</p>
+            {/* SEÇÃO: DESIGN REDESENHADO (CIÊNCIA) */}
+            <section className="py-24 md:py-32 px-6 bg-brand-beige/10 relative overflow-hidden border-b border-brand-beige/50">
+              <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-blue/5 to-transparent pointer-events-none" />
+              
+              <div className="max-w-6xl mx-auto space-y-20 relative z-10">
+                <div className="text-center space-y-6 max-w-4xl mx-auto">
+                    <span className="inline-flex items-center gap-2 px-5 py-2 bg-white border border-brand-beige rounded-full text-brand-pink text-[10px] font-black uppercase tracking-[0.4em] shadow-sm">
+                        <Beaker size={14} className="animate-pulse" /> Tecnologia Bio-Botânica
+                    </span>
+                    <h2 className="text-4xl md:text-7xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9] text-center">
+                        A CIÊNCIA POR TRÁS DO <br /> <span className="text-brand-pink italic">CLAREAMENTO REAL</span>
+                    </h2>
+                    <div className="h-1.5 w-24 bg-brand-pink mx-auto rounded-full shadow-sm" />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
                   
-                  {/* ETAPA 1 - O HERÓI */}
-                  <div className="lg:col-span-7 bg-white rounded-[3.5rem] p-10 md:p-14 border border-brand-beige shadow-[0_30px_60px_-15px_rgba(217,200,169,0.3)] relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] text-brand-blue pointer-events-none group-hover:scale-110 transition-transform duration-1000">
-                        <Leaf size={250} />
+                  {/* CARD PRINCIPAL - ETAPA 1 */}
+                  <div className="lg:col-span-7 bg-white rounded-[4rem] p-8 md:p-16 border border-brand-beige shadow-[0_40px_80px_-15px_rgba(139,121,94,0.15)] relative overflow-hidden group hover:shadow-2xl transition-all duration-700">
+                    <div className="absolute -top-20 -right-20 w-80 h-80 bg-brand-blue/5 rounded-full blur-[80px] group-hover:scale-125 transition-transform duration-1000" />
+                    <div className="absolute top-12 right-12 text-brand-blue/10 pointer-events-none group-hover:rotate-12 transition-transform duration-1000">
+                        <Leaf size={180} />
                     </div>
-                    
-                    <div className="relative z-10 space-y-10">
-                        <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-brand-blue-dark text-white flex items-center justify-center font-black text-xl shadow-lg">01</div>
-                            <h3 className="text-2xl md:text-3xl font-black text-brand-blue-dark uppercase tracking-tight">ETAPA 1: BLOQUEIO NA RAIZ</h3>
+
+                    <div className="relative z-10 space-y-12">
+                        <div className="space-y-4">
+                            <div className="flex items-center gap-4">
+                                <span className="text-7xl font-black text-brand-blue/20 leading-none select-none">01</span>
+                                <h3 className="text-3xl md:text-4xl font-black text-brand-blue-dark uppercase tracking-tighter leading-tight">
+                                    Bloqueio Inteligente <br /> <span className="text-brand-pink italic">da Pigmentação</span>
+                                </h3>
+                            </div>
                         </div>
 
-                        <div className="space-y-6">
-                            <div className="inline-flex items-center gap-3 px-4 py-2 bg-brand-blue/10 rounded-xl text-brand-blue-dark font-black text-sm uppercase tracking-widest border border-brand-blue/20">
-                                <Beaker size={18} /> ATIVO: MULATEIRO DA AMAZÔNIA
+                        <div className="space-y-8">
+                            <div className="p-6 bg-brand-blue-dark rounded-[2.5rem] text-white shadow-xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-4 opacity-10"><Microscope size={60} /></div>
+                                <p className="text-[11px] font-black uppercase tracking-[0.2em] mb-4 text-brand-blue">Ativo Principal:</p>
+                                <p className="text-xl md:text-2xl font-bold leading-snug">
+                                    Concentrado de <span className="text-brand-pink italic">Mulateiro:</span> A árvore da juventude que paralisa a produção de melanina na raiz da mancha.
+                                </p>
                             </div>
-                            <p className="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed">
-                                Considerado o <span className="text-brand-pink font-black italic">"Botox da Selva"</span>, o Mulateiro inibe a enzima tirosinase — a principal responsável pela produção do pigmento escuro na pele.
-                            </p>
-                            
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 {[
-                                    "Reduz Melasma",
-                                    "Inibe nova coloração",
-                                    "Antioxidante Natural",
-                                    "Reparação Celular"
-                                ].map((bullet, i) => (
-                                    <div key={i} className="flex items-center gap-2 text-sm font-bold text-brand-blue-dark">
-                                        <div className="h-5 w-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                                            <Check size={12} strokeWidth={4} />
+                                    { t: "Inibe a Tirosinase", d: "Desliga a 'fábrica' de cor escura na pele." },
+                                    { t: "Efeito clareador contínuo", d: "Age por 24h após a aplicação." }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-4 p-5 bg-brand-gray-light rounded-3xl border border-slate-100">
+                                        <div className="h-6 w-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 mt-1 shadow-sm">
+                                            <Check size={14} strokeWidth={4} />
                                         </div>
-                                        {bullet}
+                                        <div className="space-y-1">
+                                            <p className="font-black text-sm text-brand-blue-dark uppercase leading-none">{item.t}</p>
+                                            <p className="text-xs text-slate-500 font-medium">{item.d}</p>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-
-                        <div className="bg-brand-blue-dark text-white p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group/box">
-                            <div className="absolute top-0 right-0 p-4 opacity-10 rotate-12 group-hover/box:scale-110 transition-transform"><Sparkles size={100} /></div>
-                            <p className="text-lg font-bold leading-relaxed italic relative z-10">
-                                "É como desligar a TORNEIRA que jorra tinta preta na sua pele. Amazolé fecha a fonte das manchas enquanto você dorme."
-                            </p>
-                        </div>
                     </div>
                   </div>
 
-                  {/* ETAPAS 2 & 3 - SUPORTE */}
-                  <div className="lg:col-span-5 flex flex-col gap-8">
+                  {/* CARDS SECUNDÁRIOS */}
+                  <div className="lg:col-span-5 flex flex-col gap-10">
                     
                     {/* ETAPA 2 */}
-                    <div className="flex-1 bg-white rounded-[3rem] p-10 border border-brand-beige shadow-lg space-y-6 hover:border-brand-pink/30 transition-all">
-                        <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-brand-pink text-white flex items-center justify-center font-black">02</div>
-                            <h4 className="text-lg font-black text-brand-blue-dark uppercase tracking-widest">ACALMA E REPARA</h4>
+                    <div className="flex-1 bg-white rounded-[3.5rem] p-10 border border-brand-beige shadow-lg relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                        <div className="absolute top-0 right-0 p-6 opacity-5 text-brand-pink group-hover:scale-110 transition-transform"><Sun size={100} /></div>
+                        <div className="flex items-center gap-5 mb-8">
+                            <span className="text-4xl font-black text-brand-pink/20 leading-none">02</span>
+                            <h4 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight">Escudo contra <br /> inflamações</h4>
                         </div>
-                        <div className="space-y-4">
-                            <p className="text-slate-500 font-medium leading-relaxed">
-                                <strong className="text-brand-pink">Óleo de Melaleuca:</strong> Apaga o "incêndio" da depilação e suor, impedindo que a pele escureça por irritação constante.
+                        <div className="space-y-5">
+                            <p className="text-slate-600 font-medium leading-relaxed">
+                                <strong className="text-brand-pink uppercase tracking-widest text-xs block mb-1">Dolomita + Melaleuca:</strong> 
+                                Acalma o couro cabeludo e as áreas sensíveis, impedindo que novas manchas nasçam por irritação de depilação.
                             </p>
-                            <div className="p-4 bg-brand-pink/5 rounded-2xl border border-brand-pink/10 flex items-center gap-3">
-                                <Thermometer className="text-brand-pink" size={20} />
-                                <span className="text-xs font-black uppercase text-brand-pink">Efeito Anti-Inflamatório</span>
+                            <div className="flex items-center gap-2">
+                                <Badge className="bg-brand-pink/10 text-brand-pink border-none px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest">Proteção Ativa</Badge>
                             </div>
                         </div>
                     </div>
 
                     {/* ETAPA 3 */}
-                    <div className="flex-1 bg-white rounded-[3rem] p-10 border border-brand-beige shadow-lg space-y-6 hover:border-brand-blue/30 transition-all">
-                        <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-xl bg-brand-blue text-white flex items-center justify-center font-black">03</div>
-                            <h4 className="text-lg font-black text-brand-blue-dark uppercase tracking-widest">RENOVAÇÃO CELULAR</h4>
+                    <div className="flex-1 bg-brand-blue-dark rounded-[3.5rem] p-10 shadow-2xl relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                        <div className="absolute top-0 right-0 p-6 opacity-10 text-white group-hover:scale-110 transition-transform"><Waves size={100} /></div>
+                        <div className="flex items-center gap-5 mb-8">
+                            <span className="text-4xl font-black text-white/20 leading-none">03</span>
+                            <h4 className="text-xl font-black text-white uppercase tracking-tight">Renovação de <br /> Camadas</h4>
                         </div>
-                        <div className="space-y-4">
-                            <p className="text-slate-500 font-medium leading-relaxed">
-                                <strong className="text-brand-blue">Argila Branca:</strong> Esfolia suavemente a camada "crosta" escura, revelando uma pele nova, macia e iluminada.
+                        <div className="space-y-5">
+                            <p className="text-white/80 font-medium leading-relaxed">
+                                <strong className="text-brand-blue uppercase tracking-widest text-xs block mb-1">Argila Branca:</strong> 
+                                Promove um peeling natural suave que remove a "capa" escura de células mortas, revelando a pele iluminada por baixo.
                             </p>
-                            <div className="p-4 bg-brand-blue/5 rounded-2xl border border-brand-blue/10 flex items-center gap-3">
-                                <Waves className="text-brand-blue" size={20} />
-                                <span className="text-xs font-black uppercase text-brand-blue">Peeling Natural Suave</span>
+                            <div className="flex items-center gap-2">
+                                <Badge className="bg-white/10 text-brand-blue border-none px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest">Efeito Iluminador</Badge>
                             </div>
                         </div>
                     </div>
@@ -455,281 +490,26 @@ export function ClareadorPageV2() {
               </div>
             </section>
 
-            {/* SEÇÃO: COMO USAR O AMAZOLÉ */}
-            <section className="py-32 px-6 bg-brand-gray-light relative overflow-hidden border-b border-brand-blue/10">
-                <div className="max-w-6xl mx-auto space-y-20">
-                    <div className="text-center space-y-4 max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue-dark text-[10px] font-black uppercase tracking-[0.3em] mb-4">
-                            <Info size={14} /> Passo a Passo Ilustrado
-                        </div>
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-brand-blue-dark uppercase leading-[0.9]">
-                            COMO USAR O <span className="text-brand-pink italic">AMAZOLÉ</span>
-                        </h2>
-                        <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
-                            Tão Fácil Quanto Passar Creme Hidratante
-                        </p>
-                        <p className="text-sm font-bold text-brand-pink italic">(Nem precisa enxaguar!)</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                        
-                        {/* ROTINA DIÁRIA (PASSO A PASSO) */}
-                        <div className="lg:col-span-7 space-y-8">
-                            <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-slate-100 space-y-10 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-10 opacity-[0.03] text-brand-blue pointer-events-none"><Sparkles size={200} /></div>
-                                
-                                <div className="flex items-center gap-4 border-b border-brand-gray-light pb-6">
-                                    <div className="p-3 bg-brand-pink text-white rounded-2xl shadow-lg">
-                                        <Activity size={24} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight leading-none mb-1">ROTINA DIÁRIA</h3>
-                                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">(2X AO DIA)</p>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-12">
-                                    {[
-                                        { 
-                                            n: "1️⃣", 
-                                            t: "LIMPE A ÁREA", 
-                                            bullets: ["Lave com sabonete neutro", "Seque bem (MUITO importante!)"], 
-                                            time: "1 minuto",
-                                            icon: Droplets
-                                        },
-                                        { 
-                                            n: "2️⃣", 
-                                            t: "APLIQUE O AMAZOLÉ", 
-                                            bullets: ["Pegue quantidade de 1 grão de ervilha", "Espalhe na mancha em movimentos circulares", "Massageie até absorver completamente", "NÃO enxágue (deixa agir)"], 
-                                            time: "2 minutos",
-                                            icon: Sparkles
-                                        },
-                                        { 
-                                            n: "3️⃣", 
-                                            t: "AGUARDE SECAR", 
-                                            bullets: ["Espere 3-5 minutos antes de vestir", "Pode aplicar desodorante/maquiagem depois"], 
-                                            time: "3 minutos",
-                                            icon: Clock
-                                        }
-                                    ].map((step, i) => (
-                                        <div key={i} className="flex gap-6 group">
-                                            <div className="h-12 w-12 shrink-0 bg-brand-gray-light rounded-2xl flex items-center justify-center font-black text-brand-blue text-xl border border-slate-100 group-hover:scale-110 group-hover:border-brand-blue transition-all duration-300 shadow-sm">{step.n.substring(0, 1)}</div>
-                                            <div className="space-y-3 flex-1">
-                                                <div className="flex items-center justify-between">
-                                                    <h4 className="font-black text-brand-blue-dark text-lg uppercase tracking-tight">{step.t}</h4>
-                                                    <span className="flex items-center gap-1.5 text-[10px] font-black text-brand-pink uppercase tracking-widest bg-brand-pink/5 px-2.5 py-1 rounded-full border border-brand-pink/10">
-                                                        <Clock size={10} /> {step.time}
-                                                    </span>
-                                                </div>
-                                                <ul className="space-y-2">
-                                                    {step.bullets.map((bullet, idx) => (
-                                                        <li key={idx} className="flex items-start gap-2 text-slate-500 font-medium text-sm leading-snug">
-                                                            <div className="mt-1 text-brand-blue"><ArrowRight size={14} strokeWidth={3} /></div>
-                                                            {bullet}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="pt-8 border-t border-brand-gray-light text-center">
-                                    <div className="bg-brand-blue-dark text-white p-6 rounded-[2.5rem] relative overflow-hidden group">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.3em] opacity-50 mb-1">CUIDADO RÁPIDO:</p>
-                                        <p className="text-4xl font-black tracking-tighter">6 MINUTOS <span className="text-brand-pink italic text-2xl">2x ao dia</span></p>
-                                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-125 transition-transform"><Clock size={80} /></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* QUANDO APLICAR + DICAS */}
-                        <div className="lg:col-span-5 space-y-8">
-                            
-                            {/* QUANDO APLICAR */}
-                            <div className="bg-white rounded-[3.5rem] p-10 border border-slate-100 shadow-lg space-y-8">
-                                <h3 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight border-b border-brand-gray-light pb-4">⏰ QUANDO APLICAR:</h3>
-                                <div className="grid grid-cols-1 gap-6">
-                                    <div className="flex items-start gap-4 p-5 bg-brand-blue/5 rounded-2xl border border-brand-blue/10 group hover:bg-brand-blue/10 transition-colors">
-                                        <div className="p-3 bg-white rounded-xl shadow-sm text-brand-blue group-hover:scale-110 transition-transform"><Sun size={24} /></div>
-                                        <div>
-                                            <p className="font-black text-brand-blue-dark uppercase text-sm mb-1">MANHÃ:</p>
-                                            <p className="text-xs font-medium text-slate-500">Após o banho, antes de se vestir. Perfeito para usar antes do desodorante.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-4 p-5 bg-brand-pink/5 rounded-2xl border border-brand-pink/10 group hover:bg-brand-pink/10 transition-colors">
-                                        <div className="p-3 bg-white rounded-xl shadow-sm text-brand-pink group-hover:scale-110 transition-transform"><Moon size={24} /></div>
-                                        <div>
-                                            <p className="font-black text-brand-pink uppercase text-sm mb-1">NOITE:</p>
-                                            <p className="text-xs font-medium text-slate-500">Antes de dormir, com a pele limpa e seca. Deixe os ativos agirem a noite toda.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* DICAS PARA POTENCIALIZAR */}
-                            <div className="bg-brand-blue-dark text-white rounded-[3.5rem] p-10 shadow-2xl space-y-8 relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12"><Lightbulb size={120} /></div>
-                                <h3 className="text-lg font-black uppercase tracking-[0.2em] text-brand-pink flex items-center gap-2">
-                                    <Zap size={20} fill="currentColor" /> POTENCIALIZE O RESULTADO:
-                                </h3>
-                                <div className="space-y-6">
-                                    {[
-                                        { t: "USE PROTETOR SOLAR", d: "Se aplicar no rosto, use FPS 50+. Sem ele, a mancha volta com o sol.", icon: Sun },
-                                        { t: "PELE BEM SECA", d: "A umidade dilui o produto. Aplique sempre com a pele 100% seca.", icon: Droplets },
-                                        { t: "NÃO MISTURE PRODUTOS", d: "Use apenas Amazolé na área. Outros cremes podem anular o efeito.", icon: Ban },
-                                        { t: "SEJA CONSISTENTE", d: "2x por dia, TODO DIA. Pular dias atrasa seu clareamento.", icon: Activity }
-                                    ].map((tip, i) => (
-                                        <div key={i} className="flex gap-4 items-start group">
-                                            <div className="p-2 bg-white/10 rounded-lg text-brand-pink group-hover:scale-110 transition-transform"><tip.icon size={18} /></div>
-                                            <div>
-                                                <p className="font-black uppercase text-xs tracking-widest mb-1 text-white">{tip.t}</p>
-                                                <p className="text-xs text-white/70 font-medium leading-relaxed">{tip.d}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: ÁREAS TRATÁVEIS E CONSUMO */}
+            {/* SEÇÃO: COMO USAR */}
             <section className="py-24 px-6 bg-white border-b border-brand-blue/10">
-                <div className="max-w-6xl mx-auto space-y-16">
-                    <div className="text-center space-y-4 max-w-3xl mx-auto">
-                        <span className="text-brand-blue-dark font-black text-xs uppercase tracking-[0.5em] block mb-2 px-4 py-1.5 rounded-full bg-brand-blue/5 border border-brand-blue/10 w-fit mx-auto">Flexibilidade Total</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9]">
-                            ÁREAS QUE VOCÊ <span className="text-brand-pink italic">PODE TRATAR</span>
-                        </h2>
-                        <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">RESULTADO COMPROVADO EM TODAS AS ÁREAS</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {[
-                                { t: "Axilas escuras", d: "Atrito e depilação" },
-                                { t: "Virilhas manchadas", d: "Calcinha e depilação" },
-                                { t: "Melasma facial", d: "Gravidez e sol" },
-                                { t: "Manchas de idade", d: "Rosto e mãos" },
-                                { t: "Foliculite", d: "Bolinhas escuras" },
-                                { t: "Cotovelos/Joelhos", d: "Pele grossa e escura" },
-                                { t: "Pescoço manchado", d: "Atrito e suor" },
-                                { t: "Entre coxas", d: "Atrito ao caminhar" }
-                            ].map((area, i) => (
-                                <div key={i} className="flex items-center gap-4 p-5 bg-brand-gray-light rounded-2xl border border-slate-100 hover:border-brand-blue/30 transition-all group">
-                                    <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center text-emerald-500 shadow-sm group-hover:scale-110 transition-transform shrink-0">
-                                        <CheckCircle2 size={24} />
-                                    </div>
-                                    <div>
-                                        <p className="font-black text-brand-blue-dark text-sm uppercase leading-tight">{area.t}</p>
-                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{area.d}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="bg-brand-blue-dark rounded-[3.5rem] p-10 md:p-14 text-white space-y-10 relative overflow-hidden shadow-2xl">
-                            <div className="absolute top-0 right-0 p-12 opacity-5 rotate-12"><Target size={180} /></div>
-                            
-                            <div className="space-y-4">
-                                <h3 className="text-2xl font-black uppercase tracking-tight flex items-center gap-3">
-                                    <Info className="text-brand-pink" /> GUIA DE CONSUMO:
-                                </h3>
-                                <div className="h-1 w-20 bg-brand-pink rounded-full"></div>
-                            </div>
-
-                            <div className="p-8 bg-white/10 rounded-[2.5rem] border border-white/10 backdrop-blur-sm text-center">
-                                <p className="text-xl md:text-2xl font-black tracking-tight mb-2">1 FRASCO = 1 ÁREA POR 30 DIAS</p>
-                                <p className="text-sm font-medium text-white/70 uppercase tracking-widest italic">A dosagem correta garante o clareamento</p>
-                            </div>
-
-                            <div className="space-y-6">
-                                <p className="text-xs font-black uppercase tracking-[0.2em] text-brand-pink">Exemplos de tratamento:</p>
-                                <div className="space-y-4">
-                                    {[
-                                        { t: "Tratar só axilas", q: "1 frasco" },
-                                        { t: "Tratar axilas + virilha", q: "2 frascos" },
-                                        { t: "Tratar rosto + axilas + virilha", q: "3 frascos" }
-                                    ].map((ex, i) => (
-                                        <div key={i} className="flex items-center justify-between p-4 bg-black/20 rounded-2xl border border-white/5">
-                                            <span className="font-bold text-sm">→ {ex.t}</span>
-                                            <span className="bg-white text-brand-blue-dark px-3 py-1 rounded-lg font-black text-xs uppercase">{ex.q}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: LINHA DO TEMPO REAL */}
-            <section className="py-24 px-6 bg-brand-gray-light border-b border-slate-100">
-                <div className="max-w-4xl mx-auto space-y-20">
+                <div className="max-w-6xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
-                        <span className="text-brand-pink font-black text-xs uppercase tracking-[0.5em] block mb-2">Paciência & Consistência</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9]">
-                            LINHA DO <span className="text-brand-pink italic">TEMPO REAL</span>
-                        </h2>
-                        <p className="text-slate-500 font-bold text-sm uppercase tracking-widest">O QUE ACONTECE SEMANA A SEMANA</p>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-brand-blue-dark uppercase leading-[0.9]">COMO USAR O <span className="text-brand-pink">AMAZOLÉ</span></h2>
+                        <p className="text-xl font-bold text-slate-400 uppercase">Tão fácil quanto seu hidratante normal</p>
                     </div>
-
-                    <div className="relative space-y-12">
-                        <div className="absolute left-6 top-4 bottom-4 w-1 bg-brand-blue/20 -z-10 rounded-full hidden md:block"></div>
-
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                         {[
-                            { 
-                                s: "SEMANA 1", 
-                                icon: Sparkles, 
-                                color: "bg-brand-blue", 
-                                items: ["Pele mais macia e uniforme", "Vermelhidão diminui", "Foliculite (bolinhas) melhora"] 
-                            },
-                            { 
-                                s: "SEMANA 2", 
-                                icon: Activity, 
-                                color: "bg-brand-blue-dark", 
-                                items: ["Tom começa a clarear (sutil)", "Textura lisa", "Inflamação some"] 
-                            },
-                            { 
-                                s: "SEMANA 3-4", 
-                                icon: UserCheck, 
-                                color: "bg-brand-pink", 
-                                items: ["Clareamento VISÍVEL", "Mancha 30-40% mais clara", "Outras pessoas NOTAM"] 
-                            },
-                            { 
-                                s: "SEMANA 5-8", 
-                                icon: Heart, 
-                                color: "bg-brand-pink-dark", 
-                                items: ["Clareamento intensifica", "Mancha 50-70% mais clara", "Usa regata/biquíni com confiança"] 
-                            },
-                            { 
-                                s: "MÊS 3+", 
-                                icon: ShieldCheck, 
-                                color: "bg-emerald-600", 
-                                items: ["Tom quase igualado", "Pele uniforme", "Manutenção 1x ao dia"] 
-                            }
+                            { n: "1", t: "Limpe a área", d: "Lave com sabonete neutro e seque bem a região que deseja clarear.", icon: Droplets },
+                            { n: "2", t: "Aplique e Massageie", d: "Pegue uma pequena quantidade e espalhe com movimentos circulares.", icon: Activity },
+                            { n: "3", t: "Deixe Agir", d: "Não precisa enxaguar. Use 2x ao dia para resultados mais rápidos.", icon: Clock }
                         ].map((step, i) => (
-                            <div key={i} className="flex flex-col md:flex-row gap-8 items-start group">
-                                <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0 group-hover:scale-110 transition-transform duration-500 z-10", step.color)}>
-                                    <step.icon size={24} />
+                            <div key={i} className="flex flex-col items-center text-center space-y-6 group">
+                                <div className="h-20 w-20 rounded-[2rem] bg-brand-blue/10 flex items-center justify-center text-brand-blue shadow-sm group-hover:scale-110 transition-transform">
+                                    <step.icon size={32} strokeWidth={2.5} />
                                 </div>
-                                
-                                <div className="flex-1 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all duration-500">
-                                    <h4 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight mb-6">{step.s}</h4>
-                                    <ul className="space-y-3">
-                                        {step.items.map((li, idx) => (
-                                            <li key={idx} className="flex items-center gap-3 text-brand-text font-bold text-sm">
-                                                <div className="h-4 w-4 border-2 border-brand-blue/30 rounded flex items-center justify-center shrink-0">
-                                                    <div className="h-2 w-2 bg-brand-blue rounded-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                                </div>
-                                                {li}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <div className="space-y-2">
+                                    <h4 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight">{step.n}. {step.t}</h4>
+                                    <p className="text-slate-500 font-medium leading-relaxed">{step.d}</p>
                                 </div>
                             </div>
                         ))}
@@ -737,172 +517,65 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* 🆕 SEÇÃO: O QUE VOCÊ RECEBE 🆕 */}
-            <section className="py-24 px-6 bg-white border-b border-brand-blue/10">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                        
-                        {/* Imagem do Produto/Pack */}
-                        <div className="lg:col-span-5 relative">
-                            <div className="absolute inset-0 bg-brand-blue/10 rounded-full blur-3xl opacity-50"></div>
-                            <img 
-                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png" 
-                                alt="Frasco Amazolé" 
-                                className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700"
-                            />
-                        </div>
+            {/* SEÇÃO: FAQ COMPLETO */}
+            <section className="py-24 px-6 bg-brand-gray-light border-y border-orange-100">
+                <div className="max-w-4xl mx-auto space-y-12">
+                    <div className="text-center space-y-4 mb-16">
+                        <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark uppercase tracking-tighter">PERGUNTAS FREQUENTES</h2>
+                        <div className="h-1.5 w-24 bg-brand-blue mx-auto rounded-full"></div>
+                    </div>
 
-                        {/* Detalhes do Conteúdo */}
-                        <div className="lg:col-span-7 space-y-10">
-                            <div className="space-y-4">
-                                <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-blue/10 rounded-full text-brand-blue-dark font-black text-[10px] uppercase tracking-widest border border-brand-blue/20">
-                                    <Package size={14} /> NO INTERIOR DA CAIXA
-                                </span>
-                                <h2 className="text-4xl md:text-5xl font-black text-brand-blue-dark uppercase tracking-tighter leading-none">
-                                    O QUE VOCÊ <span className="text-brand-pink italic">RECEBE:</span>
-                                </h2>
-                            </div>
-
-                            <div className="bg-brand-gray-light rounded-[3rem] p-8 md:p-10 border border-slate-100 shadow-sm space-y-8">
-                                <div className="flex items-center gap-6 border-b border-slate-200 pb-6">
-                                    <div className="h-16 w-16 bg-white rounded-2xl flex items-center justify-center text-4xl shadow-sm border border-slate-100">🧴</div>
-                                    <div>
-                                        <h3 className="text-2xl font-black text-brand-blue-dark uppercase tracking-tight">AMAZOLÉ CLAREADOR</h3>
-                                        <p className="text-brand-pink font-bold text-sm uppercase tracking-widest">50g <span className="text-slate-400 mx-2">•</span> rende 30 dias em 1 área</p>
-                                    </div>
-                                </div>
-
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
-                                    {[
-                                        { t: "Fórmula patenteada 100% natural", icon: Leaf },
-                                        { t: "Mulateiro + Dolomita + Melaleuca", icon: Beaker },
-                                        { t: "Textura leve, absorção rápida", icon: Droplets },
-                                        { t: "Sem ácidos agressivos", icon: Ban },
-                                        { t: "Testado dermatologicamente", icon: Microscope }
-                                    ].map((item, i) => (
-                                        <li key={i} className="flex items-center gap-3 text-brand-blue-dark font-black text-xs uppercase tracking-tight">
-                                            <div className="h-8 w-8 bg-brand-blue/10 rounded-lg flex items-center justify-center text-brand-blue shrink-0">
-                                                <item.icon size={16} strokeWidth={3} />
-                                            </div>
-                                            {item.t}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Selos de Benefício Logístico */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="space-y-12">
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-brand-pink uppercase tracking-[0.2em] border-b-2 border-brand-pink/30 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
-                                    { t: "FRETE GRÁTIS", icon: Truck },
-                                    { t: "ENVIO IMEDIATO", icon: Zap },
-                                    { t: "SEGURO ENTREGA", icon: ShieldAlert },
-                                    { t: "GARANTIA 90 DIAS", icon: Award }
-                                ].map((badge, i) => (
-                                    <div key={i} className="flex flex-col items-center justify-center p-4 bg-white border border-brand-beige/50 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                                        <div className="text-brand-pink mb-2"><badge.icon size={24} strokeWidth={2.5} /></div>
-                                        <span className="text-[10px] font-black text-brand-blue-dark text-center leading-tight tracking-widest">{badge.t}</span>
-                                    </div>
+                                    { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de manchas visíveis em semanas. Garantia de 90 dias: não funcionou = dinheiro de volta." },
+                                    { q: "❓ Tem contraindicação?", a: "Não. É um produto 100% natural e testado dermatologicamente. Seguro para todos os tipos de pele." },
+                                    { q: "❓ Em quanto tempo vejo resultado?", a: "Os primeiros sinais de uniformização aparecem em 15 dias. O resultado completo ocorre entre 60 a 90 dias de uso contínuo." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`produto-${i}`} className="bg-white border border-brand-blue/10 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-brand-blue-dark hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
                                 ))}
-                            </div>
+                            </Accordion>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* GARANTIA */}
-            <section className="py-24 px-6 bg-brand-gray-light border-t border-slate-50 text-center">
-                <div className="max-w-4xl mx-auto bg-white border-[6px] border-dashed border-brand-blue/30 p-12 md:p-24 rounded-[4rem] shadow-2xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-12 opacity-5 text-brand-blue rotate-12"><ShieldCheck size={200} /></div>
+            <section className="py-24 px-6 bg-white border-t border-slate-50 text-center">
+                <div className="max-w-4xl mx-auto bg-brand-blue/5 border-[6px] border-dashed border-brand-blue/30 p-12 md:p-24 rounded-[4rem]">
                     <ShieldCheck className="mx-auto h-24 w-24 text-brand-blue-dark mb-10 drop-shadow-lg" />
-                    <h2 className="text-3xl md:text-5xl font-black mb-8 uppercase tracking-tighter text-brand-blue-dark">GARANTIA <span className="text-brand-pink">RISCO ZERO</span></h2>
-                    <p className="text-xl text-brand-text font-bold italic mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Use o Amazolé por 90 dias inteiros. Se você não ver clareamento visível, devolvemos 100% do seu dinheiro. Sem perguntas. Sem enrolação. Porque temos certeza que funciona.
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 uppercase text-brand-blue-dark">Garantia 90 Dias</h2>
+                    <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
+                        Use o Amazolé por 90 dias. Se você não AMAR o resultado ou sentir que sua pele não clareou, nós devolvemos 100% do seu dinheiro. Sem perguntas.
                     </p>
-                    <div className="inline-block px-10 py-3 bg-brand-blue-dark text-white rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-lg">90 DIAS DE GARANTIA BLINDADA</div>
-                </div>
-            </section>
-
-            {/* OFERTA FINAL */}
-            <section id="pricing" className="py-32 px-6 bg-brand-blue-dark relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-blue/20 via-transparent to-transparent"></div>
-                
-                <div className="max-w-4xl mx-auto relative z-10 text-center space-y-12">
-                    <div className="space-y-6">
-                        <span className="inline-block px-4 py-1 bg-brand-pink text-white rounded-full text-xs font-black uppercase tracking-[0.3em] animate-bounce shadow-lg">Últimas Unidades do Lote</span>
-                        <h2 className="text-3xl md:text-6xl font-black text-white tracking-tighter leading-tight uppercase">
-                            SOLTE SEU CABELO E <span className="text-brand-pink italic underline decoration-white/30">VIVA SEM VERGONHA</span>
-                        </h2>
-                        <p className="text-brand-blue font-black text-xl flex items-center justify-center gap-3">
-                            <Clock size={24} className="animate-pulse" /> OFERTA ENCERRA EM: {formatTime(timeLeft)}
-                        </p>
-                    </div>
-                    
-                    <div className="bg-white rounded-[4rem] p-8 md:p-12 shadow-[0_40px_100px_rgba(0,0,0,0.4)] relative border-[8px] border-white">
-                        <div className="flex flex-col items-center space-y-10">
-                            <div className="space-y-4 w-full text-left">
-                                <p className="text-slate-400 font-black uppercase tracking-[0.4em] text-center text-xs mb-6">Escolha o seu tratamento:</p>
-                                
-                                <KitSelector 
-                                    options={AMAZOLÉ_KITS}
-                                    selectedId={selectedKit.id}
-                                    onSelect={setSelectedKit}
-                                />
-                            </div>
-
-                            <Link href={selectedKit.checkoutUrl} className="w-full max-w-xl group/btn" target="_blank">
-                                <Button className="w-full h-24 bg-brand-pink hover:bg-brand-pink-dark text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(229,71,143,0.4)] transition-all hover:scale-[1.05] active:scale-95 flex flex-col items-center justify-center gap-1 group/button overflow-hidden relative">
-                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3 relative z-10">
-                                        <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" />
-                                        Aproveitar Agora
-                                    </span>
-                                    <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] relative z-10">PAGAMENTO 100% SEGURO | FRETE GRÁTIS BRASIL</span>
-                                </Button>
-                            </Link>
-
-                            <div className="space-y-6">
-                                <div className="flex items-center justify-center gap-2 text-red-600 font-black text-xs uppercase tracking-widest bg-red-50 px-4 py-2 rounded-full border border-red-100">
-                                    <AlertTriangle size={18} className="animate-pulse" /> RESTAM APENAS 14 KITS COM ESTE DESCONTO
-                                </div>
-                                <div className="flex justify-center gap-10 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
-                                    <ShieldCheck size={28} /> <Lock size={28} /> <CreditCard size={28} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div className="inline-block px-8 py-2 bg-brand-blue-dark text-white rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Amazolé</div>
                 </div>
             </section>
 
             {/* FOOTER */}
             <footer className="py-20 bg-brand-gray-light text-brand-text border-t border-slate-200">
               <div className="max-w-6xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-slate-200">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
                     <div className="space-y-4">
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-brand-blue-dark">Avisos e Isenções</h3>
-                        <div className="text-xs text-slate-500 font-medium leading-relaxed space-y-4 text-justify">
+                        <div className="text-xs text-slate-500 font-medium leading-relaxed text-justify">
                             <p>Este conteúdo tem caráter informativo e educacional. Não oferece diagnóstico ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado.</p>
-                            <p>Conteúdo destinado a maiores de 18 anos.</p>
                         </div>
                     </div>
                     <div className="space-y-6 text-center md:text-left">
                         <span className="text-3xl font-black tracking-tighter text-brand-blue-dark uppercase">AMAZOLÉ</span>
                         <div className="text-xs text-slate-500 font-bold uppercase tracking-widest leading-loose">
                             <p>OneBase | Soluções Digitais</p>
-                            <p>E-Business Rio Verde | Aparecida de Goiania - GO</p>
                             <p>CNPJ: 60.357.932/0001-18</p>
                         </div>
                     </div>
                 </div>
 
-                <nav className="flex flex-col md:flex-row gap-8 justify-center mb-12 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
-                    <button className="hover:text-brand-pink transition-colors">Termos e Condições</button>
-                    <button className="hover:text-brand-pink transition-colors">Política de Privacidade</button>
-                    <button className="hover:text-brand-pink transition-colors">Política de Reembolso</button>
-                </nav>
-
-                <div className="text-center opacity-30 flex justify-center gap-8 mb-10 grayscale">
-                    <ShieldCheck size={40} /><Lock size={40} /><CreditCard size={40} />
-                </div>
-                
                 <div className="text-center pt-8 border-t border-slate-100">
                     <p className="text-[10px] text-slate-300 font-black uppercase tracking-[0.4em]">© 2024 Amazolé - Clareador Natural da Amazônia</p>
                 </div>
