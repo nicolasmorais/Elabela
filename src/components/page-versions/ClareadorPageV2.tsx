@@ -348,8 +348,7 @@ export function ClareadorPageV2() {
                         <div className="flex-1 space-y-8 order-2 lg:order-1">
                             <span className="inline-block text-brand-blue-dark font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark tracking-tighter leading-tight uppercase">
-                                Clareie Manchas Difíceis Sem Ácidos Agressivos. <br />
-                                <span className="text-brand-pink italic">100% Natural da Amazônia Por R$ 137,00.</span>
+                                Clareie Manchas Difíceis Sem Ácidos Agressivos.
                             </h2>
 
                             <div className="pt-8 space-y-6">
