@@ -39,7 +39,11 @@ import {
   Settings2,
   MapPin,
   CalendarRange,
-  Target
+  Target,
+  Package,
+  Truck,
+  ShieldAlert,
+  Dna
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -593,7 +597,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* 🆕 SEÇÃO: ÁREAS TRATÁVEIS E CONSUMO 🆕 */}
+            {/* SEÇÃO: ÁREAS TRATÁVEIS E CONSUMO */}
             <section className="py-24 px-6 bg-white border-b border-brand-blue/10">
                 <div className="max-w-6xl mx-auto space-y-16">
                     <div className="text-center space-y-4 max-w-3xl mx-auto">
@@ -605,7 +609,6 @@ export function ClareadorPageV2() {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                        {/* Lista de Áreas */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {[
                                 { t: "Axilas escuras", d: "Atrito e depilação" },
@@ -629,7 +632,6 @@ export function ClareadorPageV2() {
                             ))}
                         </div>
 
-                        {/* Guia de Consumo */}
                         <div className="bg-brand-blue-dark rounded-[3.5rem] p-10 md:p-14 text-white space-y-10 relative overflow-hidden shadow-2xl">
                             <div className="absolute top-0 right-0 p-12 opacity-5 rotate-12"><Target size={180} /></div>
                             
@@ -665,7 +667,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* 🆕 SEÇÃO: LINHA DO TEMPO REAL 🆕 */}
+            {/* SEÇÃO: LINHA DO TEMPO REAL */}
             <section className="py-24 px-6 bg-brand-gray-light border-b border-slate-100">
                 <div className="max-w-4xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
@@ -677,7 +679,6 @@ export function ClareadorPageV2() {
                     </div>
 
                     <div className="relative space-y-12">
-                        {/* Linha Vertical Decorativa */}
                         <div className="absolute left-6 top-4 bottom-4 w-1 bg-brand-blue/20 -z-10 rounded-full hidden md:block"></div>
 
                         {[
@@ -713,12 +714,10 @@ export function ClareadorPageV2() {
                             }
                         ].map((step, i) => (
                             <div key={i} className="flex flex-col md:flex-row gap-8 items-start group">
-                                {/* Marcador */}
                                 <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center text-white shadow-lg shrink-0 group-hover:scale-110 transition-transform duration-500 z-10", step.color)}>
                                     <step.icon size={24} />
                                 </div>
                                 
-                                {/* Conteúdo */}
                                 <div className="flex-1 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all duration-500">
                                     <h4 className="text-xl font-black text-brand-blue-dark uppercase tracking-tight mb-6">{step.s}</h4>
                                     <ul className="space-y-3">
@@ -734,6 +733,78 @@ export function ClareadorPageV2() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* 🆕 SEÇÃO: O QUE VOCÊ RECEBE 🆕 */}
+            <section className="py-24 px-6 bg-white border-b border-brand-blue/10">
+                <div className="max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                        
+                        {/* Imagem do Produto/Pack */}
+                        <div className="lg:col-span-5 relative">
+                            <div className="absolute inset-0 bg-brand-blue/10 rounded-full blur-3xl opacity-50"></div>
+                            <img 
+                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png" 
+                                alt="Frasco Amazolé" 
+                                className="relative z-10 w-full max-w-md mx-auto drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+                            />
+                        </div>
+
+                        {/* Detalhes do Conteúdo */}
+                        <div className="lg:col-span-7 space-y-10">
+                            <div className="space-y-4">
+                                <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-blue/10 rounded-full text-brand-blue-dark font-black text-[10px] uppercase tracking-widest border border-brand-blue/20">
+                                    <Package size={14} /> NO INTERIOR DA CAIXA
+                                </span>
+                                <h2 className="text-4xl md:text-5xl font-black text-brand-blue-dark uppercase tracking-tighter leading-none">
+                                    O QUE VOCÊ <span className="text-brand-pink italic">RECEBE:</span>
+                                </h2>
+                            </div>
+
+                            <div className="bg-brand-gray-light rounded-[3rem] p-8 md:p-10 border border-slate-100 shadow-sm space-y-8">
+                                <div className="flex items-center gap-6 border-b border-slate-200 pb-6">
+                                    <div className="h-16 w-16 bg-white rounded-2xl flex items-center justify-center text-4xl shadow-sm border border-slate-100">🧴</div>
+                                    <div>
+                                        <h3 className="text-2xl font-black text-brand-blue-dark uppercase tracking-tight">AMAZOLÉ CLAREADOR</h3>
+                                        <p className="text-brand-pink font-bold text-sm uppercase tracking-widest">50g <span className="text-slate-400 mx-2">•</span> rende 30 dias em 1 área</p>
+                                    </div>
+                                </div>
+
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+                                    {[
+                                        { t: "Fórmula patenteada 100% natural", icon: Leaf },
+                                        { t: "Mulateiro + Dolomita + Melaleuca", icon: Beaker },
+                                        { t: "Textura leve, absorção rápida", icon: Droplets },
+                                        { t: "Sem ácidos agressivos", icon: Ban },
+                                        { t: "Testado dermatologicamente", icon: Microscope }
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-brand-blue-dark font-black text-xs uppercase tracking-tight">
+                                            <div className="h-8 w-8 bg-brand-blue/10 rounded-lg flex items-center justify-center text-brand-blue shrink-0">
+                                                <item.icon size={16} strokeWidth={3} />
+                                            </div>
+                                            {item.t}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Selos de Benefício Logístico */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                {[
+                                    { t: "FRETE GRÁTIS", icon: Truck },
+                                    { t: "ENVIO IMEDIATO", icon: Zap },
+                                    { t: "SEGURO ENTREGA", icon: ShieldAlert },
+                                    { t: "GARANTIA 90 DIAS", icon: Award }
+                                ].map((badge, i) => (
+                                    <div key={i} className="flex flex-col items-center justify-center p-4 bg-white border border-brand-beige/50 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                        <div className="text-brand-pink mb-2"><badge.icon size={24} strokeWidth={2.5} /></div>
+                                        <span className="text-[10px] font-black text-brand-blue-dark text-center leading-tight tracking-widest">{badge.t}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
