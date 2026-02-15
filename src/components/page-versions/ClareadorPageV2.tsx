@@ -341,7 +341,7 @@ export function ClareadorPageV2() {
               </div>
             </section>
 
-            {/* SEÇÃO: SOLUÇÃO QUE FUNCIONA */}
+            {/* SEÇÃO: SOLUÇÃO QUE FUNCIONA (ATUALIZADA) */}
             <section className="py-24 px-6 bg-brand-gray-light relative overflow-hidden border-b border-brand-blue/10">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -349,18 +349,18 @@ export function ClareadorPageV2() {
                             <span className="inline-block text-brand-blue-dark font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark tracking-tighter leading-tight uppercase">
                                 Clareie Manchas Difíceis Sem Ácidos Agressivos. <br />
-                                <span className="text-brand-pink italic italic">100% Natural da Amazônia.</span>
+                                <span className="text-brand-pink italic">100% Natural da Amazônia Por R$ 137,00.</span>
                             </h2>
 
                             <div className="pt-8 space-y-6">
-                                <h4 className="text-2xl font-black text-brand-blue-dark border-b-2 border-brand-pink/30 inline-block pb-1 uppercase tracking-tight">VOCÊ NÃO PRECISA MAIS:</h4>
+                                <h4 className="text-2xl font-black text-brand-blue-dark border-b-2 border-brand-pink/30 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
                                 <ul className="space-y-4">
                                     {[
-                                        "💔 Esconder axilas escuras e evitar usar regata",
-                                        "💔 Sentir vergonha da virilha manchada no biquíni",
-                                        "💔 Usar base pesada todo dia para esconder o Melasma",
-                                        "💔 Sofrer com cremes que ardem e descascam a pele",
-                                        "💔 Ter insegurança na hora da intimidade"
+                                        "💔 Esconde axilas escuras e não usa regata há anos",
+                                        "💔 Evita biquíni ou calcinha porque a virilha tá manchada",
+                                        "💔 Melasma te faz usar base TODOS os dias (mesmo em casa)",
+                                        "💔 Já tentou mil cremes que arderam, descascaram e não clarearam",
+                                        "💔 Tem vergonha de tirar a roupa na frente do parceiro"
                                     ].map((item, i) => (
                                         <li key={i} className="flex items-start gap-3 text-lg font-bold text-brand-text">
                                             <div className="bg-brand-pink/10 p-1 rounded-full text-brand-pink shrink-0 mt-1"><Ban size={16} strokeWidth={3} /></div>
@@ -368,6 +368,16 @@ export function ClareadorPageV2() {
                                         </li>
                                     ))}
                                 </ul>
+                                
+                                <div className="space-y-4 pt-6">
+                                    <p className="text-2xl font-black text-brand-blue-dark tracking-tight leading-tight">
+                                        Porque você merece usar <span className="text-brand-pink underline decoration-brand-pink/30">QUALQUER</span> roupa sem medo.
+                                    </p>
+                                    <p className="text-xl font-bold text-slate-500 uppercase tracking-tighter">
+                                        Sem precisar escolher entre: <br />
+                                        Clarear as manchas OU irritar a pele.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         
