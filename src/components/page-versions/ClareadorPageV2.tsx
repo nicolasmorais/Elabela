@@ -237,21 +237,21 @@ export function ClareadorPageV2() {
                         <div className="bg-pink-500 p-1 rounded-md text-white">
                             <Award size={14} />
                         </div>
-                        Eleito o melhor Kit Antiqueda do Brasil
+                        Eleito o melhor Clareador Natural do Brasil
                     </div>
 
                     <div className="space-y-2">
                         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-                            Novo Clareador
+                            Amazolé - Clareador de Manchas 100% Natural
                         </h1>
                         <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
                             <div className="flex gap-0.5 text-orange-400">
                                 {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                             </div>
-                            <span>4.9 | 2322 avaliações 5 estrelas</span>
+                            <span>4.9 | 1.847 avaliações 5 estrelas</span>
                         </div>
                         <p className="text-emerald-600 font-bold text-sm">
-                            Mais de 50.800 compras no mês passado.
+                            Mais de 32.400 mulheres usando no mês passado.
                         </p>
                     </div>
 
@@ -512,7 +512,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? */}
+            {/* 🆕 SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? 🆕 */}
             <section className="py-32 px-6 bg-white overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -616,7 +616,7 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: COMO USAR O KIT CAVALO DE RAÇA */}
+            {/* 🆕 SEÇÃO: COMO USAR O KIT CAVALO DE RAÇA 🆕 */}
             <section className="py-32 px-6 bg-[#FDF8F3] relative overflow-hidden border-b border-orange-100">
                 <div className="max-w-6xl mx-auto space-y-20">
                     <div className="text-center space-y-6 max-w-4xl mx-auto">
@@ -630,6 +630,7 @@ export function ClareadorPageV2() {
                         <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
                             15 Minutos no Banho = Resultado Profissional
                         </p>
+                        <p className="text-sm font-bold text-orange-600 italic">(Tão Fácil Quanto Seu Shampoo Normal)</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -700,6 +701,7 @@ export function ClareadorPageV2() {
                                                     <Clock size={12} /> 15 min
                                                 </span>
                                             </div>
+                                            <p className="text-slate-400 font-bold text-xs uppercase tracking-widest leading-none mb-2">(Substitui o condicionador 2x na semana)</p>
                                             <ul className="space-y-3">
                                                 {[
                                                     "Após o shampoo, retire o excesso de água",
@@ -767,7 +769,7 @@ export function ClareadorPageV2() {
                                             <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest leading-none mb-1 flex items-center gap-1.5">
                                                 <div className="h-1.5 w-1.5 rounded-full bg-orange-600"></div> {tip.t}
                                             </p>
-                                            <p className="text-sm text-slate-500 font-medium text-justify">{tip.d}</p>
+                                            <p className="text-sm text-slate-500 font-medium leading-tight">{tip.d}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -856,7 +858,7 @@ export function ClareadorPageV2() {
                                 <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
                                     <div className="space-y-4">
                                         <div className="flex gap-1 text-orange-400">{[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}</div>
-                                        <p className="text-slate-600 font-medium leading-relaxed italic text-lg">"{test.text}"</p>
+                                        <p className="text-slate-600 italic">"{test.text}"</p>
                                     </div>
                                     <div className="pt-6 border-t border-orange-50"><p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p></div>
                                 </div>
@@ -875,35 +877,17 @@ export function ClareadorPageV2() {
                     </div>
 
                     <div className="space-y-12">
-                        {/* SOBRE O PRODUTO */}
+                        {/* CATEGORIAS FAQ */}
                         <div className="space-y-6">
                             <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
                                     { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
-                                    { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Produtos comuns mascaram. Este reconstrói a raiz." },
-                                    { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
-                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar" }
+                                    { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Reconstroi a raiz em vez de apenas mascarar." }
                                 ].map((item, i) => (
-                                    <AccordionItem key={i} value={`produto-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
-                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
-                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
-                        </div>
-
-                        {/* SOBRE PREÇO E PAGAMENTO */}
-                        <div className="space-y-6">
-                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PREÇO E PAGAMENTO</h3>
-                            <Accordion type="single" collapsible className="w-full space-y-3">
-                                {[
-                                    { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
-                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." }
-                                ].map((item, i) => (
-                                    <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
-                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
-                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    <AccordionItem key={i} value={`faq-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6">
+                                        <AccordionTrigger className="text-left font-bold py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 pb-6">{item.a}</AccordionContent>
                                     </AccordionItem>
                                 ))}
                             </Accordion>
@@ -913,145 +897,33 @@ export function ClareadorPageV2() {
             </section>
 
             {/* SEÇÃO: GARANTIA */}
-            <section className="py-24 px-6 bg-white border-t border-slate-50">
-                <div className="max-w-4xl mx-auto text-center">
-                    <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
-                        <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
-                        <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
-                        <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
-                            Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
-                        </p>
-                        <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
-                    </div>
+            <section className="py-24 px-6 bg-white border-t border-slate-50 text-center">
+                <div className="max-w-4xl mx-auto bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem]">
+                    <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 uppercase">Satisfação Garantida</h2>
+                    <p className="text-xl text-slate-600 italic">Use por 7 dias. Não AMOU? Devolvemos 100% do seu dinheiro.</p>
                 </div>
             </section>
 
             {/* FOOTER COMPLETO */}
-            <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
+            <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
               <div className="max-w-6xl mx-auto px-6">
-                
-                {/* SEÇÃO JURÍDICA SUPERIOR */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100 text-center md:text-left">
                     <div className="space-y-4">
-                        <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
-                        <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
-                            <div>
-                                <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
-                                <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
-                            </div>
-                            <div>
-                                <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
-                                <p>Conteúdo destinado a maiores de 18 anos.</p>
-                            </div>
-                            <div>
-                                <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
-                                <p>O uso de qualquer produto natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
-                            </div>
-                        </div>
+                        <h3 className="text-sm font-black uppercase tracking-[0.2em]">Avisos e Isenções</h3>
+                        <p className="text-xs text-slate-500 leading-relaxed">Este conteúdo tem caráter informativo. Não substitui consulta médica. Resultados variam.</p>
                     </div>
-
-                    <div className="space-y-6 text-center md:text-left">
-                        <img 
-                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
-                            alt="OneBase Logo" 
-                            className="h-14 mx-auto md:mx-0"
-                        />
-                        <div className="space-y-2">
-                            <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
-                            <p className="text-xs text-slate-500 leading-relaxed">
-                                E-Business Rio Verde | Aparecida de Goiania - GO<br />
-                                CNPJ: 60.357.932/0001-18
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
-                  <div className="space-y-6 text-center md:text-left">
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
-                    <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
-                        
-                        <Dialog>
-                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
-                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
-                                <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
-                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
-                                    <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
-                                    <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
-                                    <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p><br/>
-                                    <p>O uso dos produtos adquiridos é de responsabilidade do consumidor, que deve sempre seguir as orientações descritas na embalagem ou no material que acompanha o produto.</p>
-                                </ScrollArea>
-                            </DialogContent>
-                        </Dialog>
-
-                        <Dialog>
-                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
-                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
-                                <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
-                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
-                                    <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário — como nome, e-mail ou dados inseridos em formulários — são utilizadas apenas para fins de atendimento, envio de comunicações solicitadas ou suporte relacionado aos produtos oferecidos.</p><br/>
-                                    <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p><br/>
-                                    <p>O usuário pode solicitar a remoção ou alteração de seus dados a qualquer momento por meio de nossos canais de suporte. Consulte esta página regularmente, pois nossa Política de Privacidade pode ser atualizada conforme necessário.</p>
-                                </ScrollArea>
-                            </DialogContent>
-                        </Dialog>
-
-                        <Dialog>
-                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
-                            <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
-                                <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
-                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
-                                    <p>Oferecemos uma política de reembolso transparente para garantir a satisfação do cliente. Você pode solicitar o reembolso em até 7 dias corridos após a compra.</p>
-                                    <p><strong>Como solicitar:</strong> Envie um e-mail para 📩 contato@oneconversion.pro com seus dados de compra.</p>
-                                </ScrollArea>
-                            </DialogContent>
-                        </Dialog>
-
-                    </nav>
-                  </div>
-
-                  <div className="space-y-6 text-center md:text-left">
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
                     <div className="space-y-4">
-                        <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
-                            <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
-                            <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6 text-center md:text-left">
-                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
-                    <div className="flex justify-center md:justify-start gap-4 opacity-50">
-                        <ShieldCheck size={40} strokeWidth={1} />
-                        <Lock size={40} strokeWidth={1} />
-                        <CreditCard size={40} strokeWidth={1} />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-12 border-t border-slate-200 space-y-8">
-                    <div className="max-w-4xl mx-auto space-y-6">
-                        <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
-                            <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
-                        </p>
-                        <div className="flex flex-col items-center gap-4">
-                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
-                        </div>
+                        <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="Logo" className="h-10 mx-auto md:mx-0" />
+                        <p className="text-xs text-slate-500">OneBase Soluções Digitais | CNPJ: 60.357.932/0001-18</p>
                     </div>
                 </div>
+                <div className="text-center pt-8 border-t border-slate-200"><p className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p></div>
               </div>
             </footer>
-
         </div>
 
-        {/* STICKY BAR MOBILE */}
-        <MobileStickyBar 
-          installmentText={config.installmentText.split('de ')[1] || config.installmentText}
-          buttonText={config.buttonText} 
-          checkoutUrl={config.checkoutUrl} 
-        />
+        <MobileStickyBar installmentText="12x de 14,96" buttonText={config.buttonText} checkoutUrl={config.checkoutUrl} />
       </div>
     </>
   );
