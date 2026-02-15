@@ -28,7 +28,8 @@ import {
   AlertTriangle,
   Activity,
   UserCheck,
-  Scissors
+  Scissors,
+  CheckCircle2 // Adicionado o import faltante
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -841,47 +842,11 @@ export function ClareadorPageV2() {
                         <div className="space-y-4 w-full text-left">
                             <p className="text-slate-400 font-bold uppercase tracking-widest text-center text-sm mb-6">Escolha seu tratamento:</p>
                             
-                            <div className="space-y-6">
-                                {AMAZOLÉ_KITS.map((kit) => (
-                                    <div 
-                                        key={kit.id}
-                                        onClick={() => setSelectedKit(kit)}
-                                        className={cn(
-                                            "p-6 md:p-10 rounded-[2.5rem] border-2 cursor-pointer transition-all flex flex-col md:flex-row items-center justify-between gap-6 relative group",
-                                            selectedKit.id === kit.id ? "border-emerald-500 bg-emerald-50 shadow-xl" : "border-slate-100 hover:border-slate-200"
-                                        )}
-                                    >
-                                        {kit.badges?.[0] && (
-                                            <span className={cn(
-                                                "absolute -top-3 right-8 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-white shadow-lg",
-                                                kit.badges[0] === 'Mais Vendido' ? "bg-pink-500" : "bg-emerald-600"
-                                            )}>
-                                                {kit.badges[0]}
-                                            </span>
-                                        )}
-                                        
-                                        <div className="flex items-center gap-6">
-                                            <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center font-black text-xl border-2 transition-colors", selectedKit.id === kit.id ? "bg-emerald-600 border-emerald-600 text-white" : "border-slate-100 bg-white text-slate-300")}>
-                                                {kit.units}
-                                            </div>
-                                            <div>
-                                                <p className="font-black text-2xl text-slate-900 uppercase">{kit.units} {kit.units === 1 ? 'Frasco' : 'Frascos'}</p>
-                                                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Tratamento {kit.units * 30} Dias</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="text-center md:text-right">
-                                            <span className="text-slate-300 line-through font-bold">{kit.originalPrice}</span>
-                                            <div className="flex items-baseline justify-center md:justify-end gap-2">
-                                                <span className="text-slate-900 text-4xl font-black">R$ {kit.price}</span>
-                                            </div>
-                                            <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">
-                                                PIX: R$ {parseInt(kit.price) - 10} | Cartão: R$ {kit.price}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                            <KitSelector 
+                                options={AMAZOLÉ_KITS}
+                                selectedId={selectedKit.id}
+                                onSelect={setSelectedKit}
+                            />
                         </div>
 
                         <Link href={selectedKit.checkoutUrl} className="w-full max-w-xl group/btn" target="_blank">
