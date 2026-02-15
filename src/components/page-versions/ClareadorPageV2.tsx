@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import KitSelector from '@/components/KitSelector';
 
-const ClareadorPageV2 = () => {
+export const ClareadorPageV2 = () => {
   const [selectedKit, setSelectedKit] = useState(2); // Padrão no kit recomendado
 
   const handleBuyNow = () => {
@@ -64,7 +64,7 @@ const ClareadorPageV2 = () => {
               </li>
             </ul>
 
-            {/* Inserção do Seletor de Kits aqui */}
+            {/* Seletor de Kits */}
             <KitSelector selectedKit={selectedKit} onSelect={setSelectedKit} />
 
             <button 
@@ -161,7 +161,6 @@ const ClareadorPageV2 = () => {
               <span className="font-bold">Risco Zero para Você</span>
             </div>
           </div>
-          {/* Decorative background circle */}
           <div className="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         </div>
       </section>
