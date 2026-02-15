@@ -61,6 +61,7 @@ const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'antiqueda2', name: 'Tratamento Antiqueda V2' },
     { id: 'antiqueda3', name: 'Tratamento Antiqueda V3' },
     { id: 'clareador', name: 'Clareador' },
+    { id: 'novoclareador', name: 'Novo Clareador V2 (Duplicado)' },
 ];
 
 export default function DashboardPage() {
