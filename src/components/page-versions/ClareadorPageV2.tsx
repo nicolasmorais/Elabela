@@ -242,7 +242,7 @@ export function ClareadorPageV2() {
 
                     <div className="space-y-2">
                         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-                            Kit Cavalo de Raça - Reconstrução + Antiqueda Intensiva
+                            Novo Clareador
                         </h1>
                         <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
                             <div className="flex gap-0.5 text-orange-400">
@@ -440,6 +440,9 @@ export function ClareadorPageV2() {
                                     </div>
                                 ))}
                             </div>
+                            <p className="text-lg text-slate-600 leading-relaxed italic border-l-4 border-orange-200 pl-6 py-2">
+                                Imagine um cabo de aço tentando segurar um peso enorme enquanto a base está solta no barro. Não importa quão forte seja o cabo, ele vai soltar. Nossa tecnologia "cimenta" a base enquanto reforça o cabo.
+                            </p>
                         </div>
                         <div className="relative">
                             <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
@@ -644,9 +647,9 @@ export function ClareadorPageV2() {
 
                             <div className="space-y-8">
                                 {[
-                                    { n: "1️⃣", t: "SHAMPOO RECONSTRUTOR", d: "Aplique no cabelo molhado, massageie o couro cabeludo até espumar. Enxágue e REPITA.", time: "3 minutos" },
-                                    { n: "2️⃣", t: "CONDICIONADOR FORTIFICANTE", d: "Aplique do meio às pontas. Deixe agir por 2 minutos e enxágue completamente.", time: "2 minutos" },
-                                    { n: "3️⃣", t: "LEAVE-IN PROTETOR", d: "Com o cabelo úmido, espalhe nas mãos e aplique. NÃO enxágue.", time: "1 minuto" }
+                                    { n: "1️⃣", t: "SHAMPOO RECONSTRUTOR", d: "Aplique no cabelo molhado, massageie o couro cabeludo até espumar. Enxágue e REPITA (segunda lavada = absorção melhor).", time: "3 minutos" },
+                                    { n: "2️⃣", t: "CONDICIONADOR FORTIFICANTE", d: "Aplique do meio às pontas (evite raiz). Deixe agir por 2 minutos e enxágue completamente.", time: "2 minutos" },
+                                    { n: "3️⃣", t: "LEAVE-IN PROTETOR", d: "Com o cabelo úmido, espalhe nas mãos e aplique do meio às pontas. NÃO enxágue. Seque normalmente.", time: "1 minuto" }
                                 ].map((step, i) => (
                                     <div key={i} className="flex gap-6 group">
                                         <div className="h-10 w-10 shrink-0 bg-[#FDF8F3] rounded-xl flex items-center justify-center font-black text-orange-800 text-lg border border-orange-100 group-hover:scale-110 transition-transform">{step.n.replace(/[^\d]/g, '')}</div>
@@ -723,6 +726,72 @@ export function ClareadorPageV2() {
                                     </p>
                                 </div>
                             </div>
+
+                            {/* RESUMO SIMPLES */}
+                            <div className="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 space-y-4 shadow-sm">
+                                <h4 className="text-sm font-black text-slate-950 uppercase tracking-widest flex items-center gap-2">
+                                    <CheckCircle2 size={16} className="text-emerald-500" /> RESUMO SIMPLES:
+                                </h4>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Segunda a Domingo:</p>
+                                        <p className="text-xs font-bold text-slate-700">Shampoo + Condicionador + Leave-in</p>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Terça e Sexta (ex):</p>
+                                        <p className="text-xs font-bold text-orange-700">Shampoo + MÁSCARA + Leave-in</p>
+                                    </div>
+                                </div>
+                                <div className="pt-4 border-t border-slate-200 text-center">
+                                    <p className="text-sm font-black text-slate-900 uppercase tracking-tight">Não tem segredo. É seu banho normal + resultado profissional.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* POTENCIALIZAR RESULTADOS */}
+                    <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-xl border border-orange-50">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div className="space-y-8">
+                                <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
+                                    <Lightbulb className="text-orange-500" /> DICAS PARA POTENCIALIZAR O RESULTADO:
+                                </h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                                    {[
+                                        { t: "SHAMPOO EM DOBRO", d: "Sempre repita o shampoo (2ª lavada limpa PROFUNDO)." },
+                                        { t: "ENXÁGUE FRIO", d: "Use água morna/fria no enxágue final para fechar as cutículas." },
+                                        { t: "NÃO PULE A MÁSCARA", d: "É o tratamento intensivo. Não abra mão das 2x por semana." },
+                                        { t: "LEAVE-IN SEMPRE", d: "Ele é o escudo que protege o fio reconstruído do calor e atrito." }
+                                    ].map((tip, i) => (
+                                        <div key={i} className="space-y-1">
+                                            <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest leading-none mb-1 flex items-center gap-1.5">
+                                                <div className="h-1.5 w-1.5 rounded-full bg-orange-600"></div> {tip.t}
+                                            </p>
+                                            <p className="text-sm text-slate-500 font-medium leading-tight">{tip.d}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="bg-[#FDF8F3] p-10 rounded-[3rem] border border-orange-100 space-y-6 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 p-4 opacity-10 rotate-12 text-slate-950 group-hover:scale-110 transition-transform"><ShieldAlert size={120} /></div>
+                                <h4 className="text-lg font-black text-orange-950 uppercase tracking-widest flex items-center gap-2">
+                                    <Info size={18} className="text-orange-700" /> INFORMAÇÕES IMPORTANTES:
+                                </h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        "Produtos rendem 2-3 MESES de uso regular",
+                                        "Use TODOS os 4 produtos (trabalham em sinergia)",
+                                        "Não substitua por outros (quebra o ciclo de tratamento)",
+                                        "Consistência é a chave: 7 dias para ver, 30 para transformar"
+                                    ].map((li, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm font-bold text-slate-700 leading-snug">
+                                            <div className="mt-1"><AlertCircle size={16} className="text-orange-800" /></div>
+                                            {li}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -738,14 +807,14 @@ export function ClareadorPageV2() {
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                                 {[
-                                    { icon: "🧴", t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
-                                    { icon: "🧴", t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
-                                    { icon: "🧴", t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
-                                    { icon: "🧴", t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+                                    { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
+                                    { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
+                                    { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
+                                    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
                                 ].map((item, i) => (
                                     <div key={i} className="flex gap-5 group">
                                         <div className="w-14 h-14 shrink-0 bg-[#FDF8F3] rounded-2xl flex items-center justify-center border border-orange-100 group-hover:scale-110 transition-transform shadow-sm">
-                                            <span className="text-3xl">{item.icon}</span>
+                                            <span className="text-3xl">🧴</span>
                                         </div>
                                         <div className="space-y-1.5">
                                             <p className="font-black text-slate-950 text-xl leading-tight uppercase tracking-tight">{item.t}</p>
@@ -787,9 +856,9 @@ export function ClareadorPageV2() {
                                 <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
                                     <div className="space-y-4">
                                         <div className="flex gap-1 text-orange-400">{[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}</div>
-                                        <p className="text-slate-600 italic">"{test.text}"</p>
+                                        <p className="text-slate-600 font-medium leading-relaxed italic text-lg">"{test.text}"</p>
                                     </div>
-                                    <div className="pt-6 border-t border-orange-50"><p className="font-black text-orange-900 text-sm uppercase">{test.author}</p></div>
+                                    <div className="pt-6 border-t border-orange-50"><p className="font-black text-orange-900 text-sm uppercase tracking-widest">{test.author}</p></div>
                                 </div>
                             </div>
                         ))}
@@ -805,34 +874,54 @@ export function ClareadorPageV2() {
                         <div className="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
                     </div>
 
-                    <div className="space-y-6">
-                        <Accordion type="single" collapsible className="w-full space-y-3">
-                            {[
-                                { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
-                                { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Reconstroi a raiz em vez de apenas mascarar." },
-                                { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar" },
-                                { q: "❓ É seguro comprar?", a: "SIM. Checkout seguro, certificado SSL e envio garantido com nota fiscal." }
-                            ].map((item, i) => (
-                                <AccordionItem key={i} value={`faq-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
-                                    <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
-                                    <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
+                    <div className="space-y-12">
+                        {/* SOBRE O PRODUTO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
+                                    { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Produtos comuns mascaram. Este reconstrói a raiz." },
+                                    { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
+                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar" }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`produto-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE PREÇO E PAGAMENTO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PREÇO E PAGAMENTO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
+                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* SEÇÃO: GARANTIA */}
-            <section className="py-24 px-6 bg-white border-t border-slate-50 text-center">
-                <div className="max-w-4xl mx-auto">
+            <section className="py-24 px-6 bg-white border-t border-slate-50">
+                <div className="max-w-4xl mx-auto text-center">
                     <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
                         <ShieldCheck className="mx-auto h-24 w-24 text-orange-700 mb-10" />
                         <h2 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter uppercase text-slate-950">Satisfação ou seu Dinheiro de Volta</h2>
                         <p className="text-xl text-slate-600 leading-relaxed font-medium italic mb-10">
                             Use o Kit Cavalo de Raça por 7 dias. Se você não AMAR o resultado, nós devolvemos 100% do seu dinheiro. Sem perguntas. Porque temos certeza que você vai se apaixonar.
                         </p>
-                        <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Qualidade Total</div>
+                        <div className="inline-block px-8 py-2 bg-slate-950 text-orange-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">Compromisso Bio Instinto</div>
                     </div>
                 </div>
             </section>
@@ -878,62 +967,88 @@ export function ClareadorPageV2() {
                     </div>
                 </div>
 
-                <nav className="flex flex-col md:flex-row gap-8 justify-center mb-12 text-xs font-bold uppercase tracking-widest text-slate-500">
-                    <Dialog>
-                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
-                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
-                            <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
-                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
-                                <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
-                                <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
-                                <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p>
-                            </ScrollArea>
-                        </DialogContent>
-                    </Dialog>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                    <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                        
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                    <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
+                                    <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
+                                    <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p><br/>
+                                    <p>O uso dos produtos adquiridos é de responsabilidade do consumidor, que deve sempre seguir as orientações descritas na embalagem ou no material que acompanha o produto.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
 
-                    <Dialog>
-                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
-                        <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
-                            <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
-                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
-                                <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário são utilizadas apenas para fins de atendimento e suporte.</p><br/>
-                                <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p>
-                            </ScrollArea>
-                        </DialogContent>
-                    </Dialog>
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                    <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário — como nome, e-mail ou dados inseridos em formulários — são utilizadas apenas para fins de atendimento, envio de comunicações solicitadas ou suporte relacionado aos produtos oferecidos.</p><br/>
+                                    <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p><br/>
+                                    <p>O usuário pode solicitar a remoção ou alteração de seus dados a qualquer momento por meio de nossos canais de suporte. Consulte esta página regularmente, pois nossa Política de Privacidade pode ser atualizada conforme necessário.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
 
-                    <Dialog>
-                        <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
-                        <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
-                            <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
-                            <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
-                                <p>Oferecemos uma política de reembolso transparente para garantir a satisfação do cliente. Você pode solicitar o reembolso em até 7 dias corridos após a compra.</p>
-                                <p><strong>Como solicitar:</strong> Envie um e-mail para 📩 contato@oneconversion.pro com seus dados de compra.</p>
-                            </ScrollArea>
-                        </DialogContent>
-                    </Dialog>
-                </nav>
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
+                                    <p>Oferecemos uma política de reembolso transparente para garantir a satisfação do cliente. Você pode solicitar o reembolso em até 7 dias corridos após a compra.</p>
+                                    <p><strong>Como solicitar:</strong> Envie um e-mail para 📩 contato@oneconversion.pro com seus dados de compra.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
 
-                <div className="flex justify-center gap-8 opacity-40 grayscale mb-10">
-                    <ShieldCheck size={40} strokeWidth={1} />
-                    <Lock size={40} strokeWidth={1} />
-                    <CreditCard size={40} strokeWidth={1} />
+                    </nav>
+                  </div>
+
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
+                    <div className="space-y-4">
+                        <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
+                            <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
+                            <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
+                    <div className="flex justify-center md:justify-start gap-4 opacity-50">
+                        <ShieldCheck size={40} strokeWidth={1} />
+                        <Lock size={40} strokeWidth={1} />
+                        <CreditCard size={40} strokeWidth={1} />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-12 border-t border-slate-200 text-center">
-                    <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] italic mb-4">
-                        <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
-                    </p>
-                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                <div className="pt-12 border-t border-slate-200 space-y-8">
+                    <div className="max-w-4xl mx-auto space-y-6">
+                        <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                            <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
+                        </p>
+                        <div className="flex flex-col items-center gap-4">
+                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                        </div>
+                    </div>
                 </div>
               </div>
             </footer>
 
         </div>
 
-        {/* STICKY BAR MOBILE (REGRA 100) */}
+        {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText="12x de 14,96"
+          installmentText={config.installmentText.split('de ')[1] || config.installmentText}
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
         />
