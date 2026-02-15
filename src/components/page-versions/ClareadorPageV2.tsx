@@ -295,6 +295,55 @@ export function ClareadorPageV2() {
               </div>
             </section>
 
+            {/* SEÇÃO: SOLUÇÃO QUE FUNCIONA */}
+            <section className="py-24 px-6 bg-slate-50 relative overflow-hidden border-b border-emerald-100">
+                <div className="max-w-6xl mx-auto">
+                    <div className="flex flex-col lg:flex-row items-center gap-16">
+                        <div className="flex-1 space-y-8 order-2 lg:order-1">
+                            <span className="inline-block text-emerald-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
+                            <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
+                                Clareie Manchas Difíceis Sem Ácidos Agressivos. <br />
+                                <span className="text-emerald-700 italic">100% Natural da Amazônia Por R$ 137,00.</span>
+                            </h2>
+
+                            <div className="pt-8 space-y-6">
+                                <h4 className="text-2xl font-black text-slate-950 border-b-2 border-emerald-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
+                                <ul className="space-y-4">
+                                    {[
+                                        "💔 Esconde axilas escuras e não usa regata há anos",
+                                        "💔 Evita biquíni ou calcinha porque a virilha tá manchada",
+                                        "💔 Melasma te faz usar base TODOS os dias (mesmo em casa)",
+                                        "💔 Já tentou mil cremes que arderam, descascaram e não clarearam",
+                                        "💔 Tem vergonha de tirar a roupa na frente do parceiro"
+                                    ].map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-lg font-bold text-slate-700">
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                                
+                                <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
+                                    <p>Porque você merece usar QUALQUER roupa sem medo.</p>
+                                    <p className="text-emerald-800 italic underline decoration-emerald-300">
+                                        Sem precisar escolher entre: <br />
+                                        Clarear as manchas OU irritar a pele.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="flex-1 relative w-full order-1 lg:order-2">
+                            <div className="absolute inset-0 bg-emerald-300 rounded-full blur-[100px] opacity-10"></div>
+                            <img 
+                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                                alt="Mulher confiante de regata" 
+                                className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* TRIPLA ANCORAGEM */}
             <section className="py-32 px-6 bg-white border-b border-slate-100">
                 <div className="max-w-6xl mx-auto space-y-24">
@@ -416,8 +465,6 @@ export function ClareadorPageV2() {
               </div>
             </footer>
         </div>
-
-        <MobileStickyBar installmentText={`12x de ${(parseFloat(selectedKit.price.replace(',', '.')) / 12).toFixed(2).replace('.', ',')}`} buttonText="Comprar agora" checkoutUrl={selectedKit.checkoutUrl} />
       </div>
     </>
   );
