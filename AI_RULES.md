@@ -144,3 +144,5 @@ By following these guidelines, we can build a more robust, maintainable, and con
 2. **PROIBIÇÃO DE RESUMOS**: É terminantemente proibido o uso de comentários como "// ... restante do código" ou "// ... mantém o anterior".
 3. **INTEGRIDADE DA PÁGINA**: Nunca remova seções (Hero, Depoimentos, FAQ, Scripts de Rastreio, Modais) sem um pedido explícito do usuário.
 4. **PRONTO PARA USO**: O código deve ser entregue pronto para que o usuário possa "Selecionar Tudo" e "Substituir", sem necessidade de ajustes manuais para recuperar partes perdidas.
+
+**[COMANDO MESTRE] PROTOCOLO INTEGRAL**: Sempre que solicitado "Protocolo Integral" ou "Regra 100", as regras 1, 2, 3 e 4 devem ser aplicadas rigorosamente em conjunto.
