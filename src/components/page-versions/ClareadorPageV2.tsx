@@ -32,7 +32,9 @@ import {
   Waves,
   Sun,
   Moon,
-  Lightbulb
+  Lightbulb,
+  Beaker,
+  Settings2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -342,68 +344,104 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: POR QUE AMAZOLÉ CLAREIA? (BEGE NATURAL) */}
+            {/* SEÇÃO: POR QUE AMAZOLÉ CLAREIA? (DESIGN MELHORADO) */}
             <section className="py-24 px-6 bg-brand-beige/20 border-b border-brand-beige">
-              <div className="max-w-5xl mx-auto space-y-20">
-                <div className="text-center space-y-4">
-                  <span className="text-brand-blue-dark font-black text-xs uppercase tracking-[0.5em] block mb-2">Poder da Natureza</span>
-                  <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark uppercase tracking-tighter leading-none">
+              <div className="max-w-6xl mx-auto space-y-20">
+                <div className="text-center space-y-4 max-w-3xl mx-auto">
+                  <span className="text-brand-pink font-black text-xs uppercase tracking-[0.5em] block mb-2 px-4 py-1.5 rounded-full bg-white border border-brand-beige w-fit mx-auto">Poder da Natureza</span>
+                  <h2 className="text-4xl md:text-6xl font-black text-brand-blue-dark uppercase tracking-tighter leading-[0.9]">
                     POR QUE <span className="text-brand-pink italic">AMAZOLÉ</span> CLAREIA EM SEMANAS?
                   </h2>
                   <p className="text-brand-text font-bold text-sm uppercase tracking-[0.2em] opacity-60">FÓRMULA PATENTEADA DA AMAZÔNIA</p>
                 </div>
 
-                <div className="bg-white rounded-[3rem] p-8 md:p-16 border border-brand-beige shadow-xl space-y-12">
-                  <div className="flex items-center gap-4 pb-6 border-b border-brand-beige/50">
-                    <div className="p-3 bg-brand-blue-dark text-white rounded-2xl shadow-lg">
-                        <Microscope size={32} />
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-black text-brand-blue-dark uppercase tracking-tight">🔬 CIÊNCIA APLICADA À PELE</h3>
-                  </div>
-
-                  {/* ETAPA 1 */}
-                  <div className="space-y-10">
-                    <div className="flex items-center gap-4 text-brand-blue-dark font-black text-xl md:text-2xl uppercase border-b-2 border-brand-blue pb-2">
-                      <Leaf className="h-8 w-8 text-emerald-600" />
-                      ETAPA 1: BLOQUEIA MELANINA NA RAIZ
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                  
+                  {/* ETAPA 1 - O HERÓI */}
+                  <div className="lg:col-span-7 bg-white rounded-[3.5rem] p-10 md:p-14 border border-brand-beige shadow-[0_30px_60px_-15px_rgba(217,200,169,0.3)] relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-12 opacity-[0.03] text-brand-blue pointer-events-none group-hover:scale-110 transition-transform duration-1000">
+                        <Leaf size={250} />
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                      <div className="space-y-6">
-                        <div className="p-6 bg-brand-gray-light rounded-[2rem] border border-slate-200">
-                            <h4 className="text-brand-pink font-black text-xl uppercase tracking-tight mb-4">MULATEIRO (Amazônia):</h4>
-                            <ul className="space-y-3 text-brand-text font-bold text-sm">
-                                <li className="flex items-center gap-2"><CheckCircle2 className="text-brand-blue" size={16} /> Inibe a enzima do pigmento escuro</li>
-                                <li className="flex items-center gap-2"><CheckCircle2 className="text-brand-blue" size={16} /> Antioxidante ultra-poderoso</li>
-                                <li className="flex items-center gap-2"><CheckCircle2 className="text-brand-blue" size={16} /> Repara a pele agredida</li>
-                            </ul>
+                    <div className="relative z-10 space-y-10">
+                        <div className="flex items-center gap-4">
+                            <div className="h-12 w-12 rounded-2xl bg-brand-blue-dark text-white flex items-center justify-center font-black text-xl shadow-lg">01</div>
+                            <h3 className="text-2xl md:text-3xl font-black text-brand-blue-dark uppercase tracking-tight">ETAPA 1: BLOQUEIO NA RAIZ</h3>
                         </div>
-                      </div>
-                      <div className="flex flex-col justify-center bg-brand-blue-dark text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform"><Sparkles size={80} /></div>
-                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2 mb-4">O SEGREDO:</h5>
-                        <p className="font-bold leading-relaxed text-lg italic">
-                          "É como desligar a TORNEIRA que jorra tinta preta na sua pele. Amazolé fecha a fonte das manchas."
-                        </p>
-                      </div>
+
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-3 px-4 py-2 bg-brand-blue/10 rounded-xl text-brand-blue-dark font-black text-sm uppercase tracking-widest border border-brand-blue/20">
+                                <Beaker size={18} /> ATIVO: MULATEIRO DA AMAZÔNIA
+                            </div>
+                            <p className="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed">
+                                Considerado o <span className="text-brand-pink font-black italic">"Botox da Selva"</span>, o Mulateiro inibe a enzima tirosinase — a principal responsável pela produção do pigmento escuro na pele.
+                            </p>
+                            
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {[
+                                    "Reduz Melasma",
+                                    "Inibe nova coloração",
+                                    "Antioxidante Natural",
+                                    "Reparação Celular"
+                                ].map((bullet, i) => (
+                                    <div key={i} className="flex items-center gap-2 text-sm font-bold text-brand-blue-dark">
+                                        <div className="h-5 w-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                            <Check size={12} strokeWidth={4} />
+                                        </div>
+                                        {bullet}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="bg-brand-blue-dark text-white p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group/box">
+                            <div className="absolute top-0 right-0 p-4 opacity-10 rotate-12 group-hover/box:scale-110 transition-transform"><Sparkles size={100} /></div>
+                            <p className="text-lg font-bold leading-relaxed italic relative z-10">
+                                "É como desligar a TORNEIRA que jorra tinta preta na sua pele. Amazolé fecha a fonte das manchas enquanto você dorme."
+                            </p>
+                        </div>
                     </div>
                   </div>
 
-                  {/* ETAPA 2 & 3 */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="p-8 bg-brand-beige/10 rounded-[3rem] border border-brand-beige/30 space-y-4">
-                        <div className="flex items-center gap-3 text-brand-blue-dark font-black uppercase">
-                            <Thermometer className="text-brand-pink" /> ACALMA INFLAMAÇÃO
+                  {/* ETAPAS 2 & 3 - SUPORTE */}
+                  <div className="lg:col-span-5 flex flex-col gap-8">
+                    
+                    {/* ETAPA 2 */}
+                    <div className="flex-1 bg-white rounded-[3rem] p-10 border border-brand-beige shadow-lg space-y-6 hover:border-brand-pink/30 transition-all">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-xl bg-brand-pink text-white flex items-center justify-center font-black">02</div>
+                            <h4 className="text-lg font-black text-brand-blue-dark uppercase tracking-widest">ACALMA E REPARA</h4>
                         </div>
-                        <p className="text-slate-500 font-medium text-sm">O Óleo de Melaleuca apaga o "incêndio" da depilação e suor, impedindo que a pele escureça por irritação.</p>
-                     </div>
-                     <div className="p-8 bg-brand-beige/10 rounded-[3rem] border border-brand-beige/30 space-y-4">
-                        <div className="flex items-center gap-3 text-brand-blue-dark font-black uppercase">
-                            <Waves className="text-brand-blue" /> REMOVE CÉLULAS MORTAS
+                        <div className="space-y-4">
+                            <p className="text-slate-500 font-medium leading-relaxed">
+                                <strong className="text-brand-pink">Óleo de Melaleuca:</strong> Apaga o "incêndio" da depilação e suor, impedindo que a pele escureça por irritação constante.
+                            </p>
+                            <div className="p-4 bg-brand-pink/5 rounded-2xl border border-brand-pink/10 flex items-center gap-3">
+                                <Thermometer className="text-brand-pink" size={20} />
+                                <span className="text-xs font-black uppercase text-brand-pink">Efeito Anti-Inflamatório</span>
+                            </div>
                         </div>
-                        <p className="text-slate-500 font-medium text-sm">A Argila Branca esfolia suavemente a "crosta" escura, revelando uma pele nova e iluminada já na primeira semana.</p>
-                     </div>
+                    </div>
+
+                    {/* ETAPA 3 */}
+                    <div className="flex-1 bg-white rounded-[3rem] p-10 border border-brand-beige shadow-lg space-y-6 hover:border-brand-blue/30 transition-all">
+                        <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-xl bg-brand-blue text-white flex items-center justify-center font-black">03</div>
+                            <h4 className="text-lg font-black text-brand-blue-dark uppercase tracking-widest">RENOVAÇÃO CELULAR</h4>
+                        </div>
+                        <div className="space-y-4">
+                            <p className="text-slate-500 font-medium leading-relaxed">
+                                <strong className="text-brand-blue">Argila Branca:</strong> Esfolia suavemente a camada "crosta" escura, revelando uma pele nova, macia e iluminada.
+                            </p>
+                            <div className="p-4 bg-brand-blue/5 rounded-2xl border border-brand-blue/10 flex items-center gap-3">
+                                <Waves className="text-brand-blue" size={20} />
+                                <span className="text-xs font-black uppercase text-brand-blue">Peeling Natural Suave</span>
+                            </div>
+                        </div>
+                    </div>
+
                   </div>
+
                 </div>
               </div>
             </section>
@@ -534,7 +572,7 @@ export function ClareadorPageV2() {
                                         { t: "NÃO MISTURE PRODUTOS", d: "Use apenas Amazolé na área. Outros cremes podem anular o efeito.", icon: Ban },
                                         { t: "SEJA CONSISTENTE", d: "2x por dia, TODO DIA. Pular dias atrasa seu clareamento.", icon: Activity }
                                     ].map((tip, i) => (
-                                        <div className="flex gap-4 items-start group">
+                                        <div key={i} className="flex gap-4 items-start group">
                                             <div className="p-2 bg-white/10 rounded-lg text-brand-pink group-hover:scale-110 transition-transform"><tip.icon size={18} /></div>
                                             <div>
                                                 <p className="font-black uppercase text-xs tracking-widest mb-1 text-white">{tip.t}</p>
@@ -571,7 +609,7 @@ export function ClareadorPageV2() {
                     <div className="space-y-6">
                         <span className="inline-block px-4 py-1 bg-brand-pink text-white rounded-full text-xs font-black uppercase tracking-[0.3em] animate-bounce shadow-lg">Últimas Unidades do Lote</span>
                         <h2 className="text-3xl md:text-6xl font-black text-white tracking-tighter leading-tight uppercase">
-                            SOLTE SEU CABELO E <span className="text-brand-pink italic underline decoration-white/30">VIVA SEM VERGONHA</span>
+                            PELE CLARA E <span className="text-brand-pink italic underline decoration-white/30">SEM MANCHAS</span>
                         </h2>
                         <p className="text-brand-blue font-black text-xl flex items-center justify-center gap-3">
                             <Clock size={24} className="animate-pulse" /> OFERTA ENCERRA EM: {formatTime(timeLeft)}
@@ -619,7 +657,7 @@ export function ClareadorPageV2() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-slate-200">
                     <div className="space-y-4">
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-brand-blue-dark">Avisos e Isenções</h3>
-                        <div className="text-xs text-slate-500 font-medium leading-relaxed space-y-4">
+                        <div className="text-xs text-slate-500 font-medium leading-relaxed space-y-4 text-justify">
                             <p>Este conteúdo tem caráter informativo e educacional. Não oferece diagnóstico ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado.</p>
                             <p>Conteúdo destinado a maiores de 18 anos.</p>
                         </div>
