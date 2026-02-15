@@ -138,3 +138,9 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
   - For testing and development within the Dyad environment, users can set environment variables directly through the Dyad UI. **It is critical to instruct the user to set any necessary environment variables (e.g., for external API URLs like `THIRD_PARTY_API_URL` or database directories like `DATABASE_DIR`) within the Dyad UI's environment variable settings.** These variables will then be available to the running Next.js application, allowing for quick iteration before pushing to a Docker-based deployment. The AI should remind the user to set these when relevant.
 
 By following these guidelines, we can build a more robust, maintainable, and consistent application within the Dockerized Next.js ecosystem.
+
+## REGRAS CRÍTICAS DE ENTREGA DE CÓDIGO
+1. COMPLETO, SEMPRE: Para qualquer alteração em arquivos na pasta `src/components/page-versions/`, você DEVE reescrever o arquivo INTEGRALMENTE.
+2. PROIBIÇÃO DE RESUMOS: É terminantemente proibido o uso de comentários como "// ... restante do código" ou "// ... mantém o anterior".
+3. INTEGRIDADE DA PÁGINA: Nunca remova seções (Hero, Depoimentos, FAQ, Scripts de Rastreio, Modais) sem um pedido explícito do usuário.
+4. PRONTO PARA USO: O código deve ser entregue pronto para que o usuário possa "Selecionar Tudo" e "Substituir", sem necessidade de ajustes manuais para recuperar partes perdidas.
