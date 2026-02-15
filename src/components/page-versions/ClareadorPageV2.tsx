@@ -29,7 +29,7 @@ import {
   Activity,
   UserCheck,
   Scissors,
-  CheckCircle2 // Adicionado o import faltante
+  CheckCircle2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -210,6 +210,13 @@ export function ClareadorPageV2() {
                             12x de R$ 13,90
                         </p>
                     </div>
+
+                    {/* MobileStickyBar movido para cima conforme solicitado */}
+                    <MobileStickyBar 
+                      installmentText="12x de 13,90"
+                      buttonText="Comprar agora" 
+                      checkoutUrl={selectedKit.checkoutUrl} 
+                    />
 
                     <div className="bg-emerald-50/50 border-l-4 border-emerald-400 p-5 rounded-r-2xl space-y-2">
                         <p className="text-slate-800 font-black text-xl italic leading-tight">
@@ -937,11 +944,6 @@ export function ClareadorPageV2() {
           </div>
         </footer>
 
-        <MobileStickyBar 
-          installmentText="12x de 13,90"
-          buttonText="Comprar agora" 
-          checkoutUrl={selectedKit.checkoutUrl} 
-        />
       </div>
     </>
   );
