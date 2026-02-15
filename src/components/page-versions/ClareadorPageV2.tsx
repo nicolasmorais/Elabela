@@ -11,8 +11,6 @@ import {
   ShoppingBag, 
   Lock, 
   CreditCard, 
-  Anchor, 
-  Layers, 
   Microscope, 
   Verified, 
   Check, 
@@ -34,8 +32,7 @@ import {
   Waves,
   Sun,
   Moon,
-  Lightbulb,
-  Scissors
+  Lightbulb
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -411,33 +408,7 @@ export function ClareadorPageV2() {
               </div>
             </section>
 
-            {/* TRIPLA ANCORAGEM */}
-            <section className="py-32 px-6 bg-white border-b border-slate-100">
-                <div className="max-w-6xl mx-auto space-y-24">
-                    <div className="text-center space-y-6">
-                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-brand-blue-dark uppercase leading-[0.9]">TECNOLOGIA TRIPLA ANCORAGEM™</h2>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {[
-                            { icon: Anchor, title: "CAMADA 1: ANCORA A RAIZ", desc: "Reconstrói a bainha folicular e trava o fio na raiz.", analogia: "É como cimentar um poste solto.", color: "text-brand-blue" },
-                            { icon: Layers, title: "CAMADA 2: RECONSTRÓI A FIBRA", desc: "Une pontas quebradas com queratina biomimética.", analogia: "É como consertar rachaduras na parede.", color: "text-brand-pink" },
-                            { icon: ShieldCheck, title: "CAMADA 3: SELA E PROTEGE", desc: "Fecha as cutículas e protege contra calor e atrito.", analogia: "É como envernizar madeira.", color: "text-emerald-600" }
-                        ].map((step, i) => (
-                            <div key={i} className="flex flex-col p-8 bg-brand-gray-light rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                                <div className={cn("p-4 bg-white rounded-2xl w-fit mb-8 group-hover:scale-110 transition-transform shadow-sm", step.color)}><step.icon className="h-8 w-8" /></div>
-                                <h4 className="text-xl font-black text-brand-blue-dark uppercase mb-4 leading-tight">{step.title}</h4>
-                                <p className="text-sm text-slate-500 mb-6 font-medium leading-relaxed">{step.desc}</p>
-                                <div className="mt-auto p-5 bg-white rounded-3xl text-xs text-brand-text font-bold italic border border-slate-100">
-                                    <span className="text-slate-400 not-italic uppercase text-[10px] block mb-1">Entenda melhor:</span>
-                                    {step.analogia}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* SEÇÃO: COMO USAR O AMAZOLÉ (NOVA) */}
+            {/* SEÇÃO: COMO USAR O AMAZOLÉ */}
             <section className="py-32 px-6 bg-brand-gray-light relative overflow-hidden border-b border-brand-blue/10">
                 <div className="max-w-6xl mx-auto space-y-20">
                     <div className="text-center space-y-4 max-w-4xl mx-auto">
@@ -563,7 +534,7 @@ export function ClareadorPageV2() {
                                         { t: "NÃO MISTURE PRODUTOS", d: "Use apenas Amazolé na área. Outros cremes podem anular o efeito.", icon: Ban },
                                         { t: "SEJA CONSISTENTE", d: "2x por dia, TODO DIA. Pular dias atrasa seu clareamento.", icon: Activity }
                                     ].map((tip, i) => (
-                                        <div key={i} className="flex gap-4 items-start group">
+                                        <div className="flex gap-4 items-start group">
                                             <div className="p-2 bg-white/10 rounded-lg text-brand-pink group-hover:scale-110 transition-transform"><tip.icon size={18} /></div>
                                             <div>
                                                 <p className="font-black uppercase text-xs tracking-widest mb-1 text-white">{tip.t}</p>
