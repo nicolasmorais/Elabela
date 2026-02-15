@@ -22,6 +22,16 @@ export default {
         graphik: ["'Graphik Trial'", "sans-serif"],
       },
   		colors: {
+        // PALETA AMAZOLÉ
+        brand: {
+          blue: "#27B6C9",
+          "blue-dark": "#0E6F7F",
+          pink: "#E5478F",
+          "pink-dark": "#C83474",
+          "gray-light": "#F5F7F8",
+          text: "#333333",
+          beige: "#D9C8A9",
+        },
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -102,15 +112,15 @@ export default {
             'pulse': {
                 '0%': { 
                     transform: 'scale(0.9)',
-                    'box-shadow': '0 0 0 0 rgba(0, 97, 255, 0.7)',
+                    'box-shadow': '0 0 0 0 rgba(229, 71, 143, 0.7)',
                 },
                 '70%': { 
                     transform: 'scale(1)',
-                    'box-shadow': '0 0 0 10px rgba(0, 97, 255, 0)',
+                    'box-shadow': '0 0 0 10px rgba(229, 71, 143, 0)',
                 },
                 '100%': { 
                     transform: 'scale(0.9)',
-                    'box-shadow': '0 0 0 0 rgba(0, 97, 255, 0)',
+                    'box-shadow': '0 0 0 0 rgba(229, 71, 143, 0)',
                 }
             }
   		},

@@ -23,7 +23,7 @@ interface KitSelectorProps {
 export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps) => {
   return (
     <div className="w-full space-y-4">
-      <h3 className="text-xl font-bold text-slate-800 text-left mb-4">Selecione o kit</h3>
+      <h3 className="text-xl font-bold text-brand-blue-dark text-left mb-4">Selecione seu tratamento</h3>
       
       <div className="space-y-3">
         {options.map((kit) => {
@@ -36,8 +36,8 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
               className={cn(
                 "relative flex items-center p-5 rounded-[1.5rem] border-2 cursor-pointer transition-all duration-300 bg-white",
                 isSelected 
-                  ? "border-slate-800 shadow-md scale-[1.01]" 
-                  : "border-slate-100 hover:border-slate-200 shadow-sm"
+                  ? "border-brand-blue shadow-md scale-[1.01]" 
+                  : "border-slate-100 hover:border-brand-blue/30 shadow-sm"
               )}
             >
               {/* Badges Container */}
@@ -47,8 +47,8 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
                     key={idx}
                     className={cn(
                       "px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-white shadow-sm",
-                      badge === "Mais Vendido" ? "bg-pink-500" : 
-                      badge === "Melhor Preço" ? "bg-emerald-500" : 
+                      badge === "Mais Vendido" ? "bg-brand-pink" : 
+                      badge === "Melhor Result" ? "bg-brand-blue-dark" : 
                       "bg-slate-900"
                     )}
                   >
@@ -61,9 +61,9 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
               <div className="mr-5 flex shrink-0">
                 <div className={cn(
                   "w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors",
-                  isSelected ? "border-slate-800" : "border-slate-200"
+                  isSelected ? "border-brand-blue bg-brand-blue/10" : "border-slate-200"
                 )}>
-                  {isSelected && <div className="w-3 h-3 rounded-full bg-slate-800" />}
+                  {isSelected && <div className="w-3 h-3 rounded-full bg-brand-blue" />}
                 </div>
               </div>
 
@@ -72,7 +72,7 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
                 <div className="space-y-1 text-left">
                   <div className="flex items-center gap-2">
                     <span className="text-lg font-black text-slate-900">{kit.units} {kit.units === 1 ? 'unidade' : 'unidades'}</span>
-                    <span className="bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full text-[10px] font-black border border-emerald-100">
+                    <span className="bg-brand-pink/10 text-brand-pink px-2 py-0.5 rounded-full text-[10px] font-black border border-brand-pink/20">
                       {kit.discount}
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
 
                 <div className="text-right flex flex-col items-end">
                   <span className="text-sm text-slate-300 line-through font-bold">{kit.originalPrice}</span>
-                  <span className="text-2xl font-black text-slate-900 leading-tight">R$ {kit.price}</span>
+                  <span className="text-2xl font-black text-brand-blue-dark leading-tight">R$ {kit.price}</span>
                 </div>
               </div>
             </div>

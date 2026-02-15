@@ -55,14 +55,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MobileStickyBar } from './MobileStickyBar';
 import { KitSelector, KitOption } from '@/components/clareador/KitSelector';
 
-// IMAGENS DA GALERIA DE PRODUTO
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770954500000-beach-woman.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png"
 ];
 
-// IMAGENS ANTES E DEPOIS (PAIXÃO NACIONAL)
 const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
@@ -70,7 +68,6 @@ const GALLERY_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421102915-ChatGPT-Image-6-de-fev.-de-2026,-20_35_44.png"
 ];
 
-// CONFIGURAÇÃO DOS KITS
 const AMAZOLÉ_KITS: KitOption[] = [
   {
     id: '1-un',
@@ -133,12 +130,12 @@ export function ClareadorPageV2() {
   return (
     <>
       <PageTracker contentId="novoclareador" />
-      <div className="bg-white text-slate-900 font-sans selection:bg-emerald-100 antialiased min-h-screen">
+      <div className="bg-white text-brand-text font-sans selection:bg-brand-blue/20 antialiased min-h-screen">
         
         {/* NAV */}
-        <nav className="bg-[#FDF8F3] border-b border-slate-100 py-4 px-6 sticky top-0 z-50">
+        <nav className="bg-brand-blue py-4 px-6 sticky top-0 z-50 shadow-md">
             <div className="max-w-7xl mx-auto flex items-center justify-center">
-                <span className="text-2xl font-black tracking-tighter text-emerald-800">AMAZOLÉ</span>
+                <span className="text-2xl font-black tracking-tighter text-white uppercase">AMAZOLÉ</span>
             </div>
         </nav>
 
@@ -148,15 +145,15 @@ export function ClareadorPageV2() {
                 
                 {/* ESQUERDA: GALERIA */}
                 <div className="lg:col-span-6 space-y-6">
-                    <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-xl group">
+                    <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.08)] group">
                         <img 
                           src={PRODUCT_IMAGES[activeImageIndex]} 
                           alt="Amazolé" 
                           className="w-full h-full object-cover transition-all duration-700" 
                         />
-                        <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 hidden md:block"><ChevronLeft /></button>
-                        <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 hidden md:block"><ChevronRight /></button>
-                        <div className="absolute bottom-6 right-6 bg-slate-900/80 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">
+                        <button onClick={prevImage} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 hidden md:block text-brand-blue-dark hover:text-brand-pink transition-colors"><ChevronLeft /></button>
+                        <button onClick={nextImage} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 hidden md:block text-brand-blue-dark hover:text-brand-pink transition-colors"><ChevronRight /></button>
+                        <div className="absolute bottom-6 right-6 bg-brand-blue-dark/80 backdrop-blur-md text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
                           {activeImageIndex + 1} / {PRODUCT_IMAGES.length}
                         </div>
                     </div>
@@ -167,7 +164,7 @@ export function ClareadorPageV2() {
                                 onClick={() => setActiveImageIndex(i)}
                                 className={cn(
                                     "aspect-square rounded-2xl overflow-hidden border-2 transition-all",
-                                    activeImageIndex === i ? "border-emerald-500 scale-105" : "border-slate-100 opacity-60"
+                                    activeImageIndex === i ? "border-brand-blue scale-105" : "border-slate-100 opacity-60"
                                 )}
                             >
                                 <img src={img} alt="Thumb" className="w-full h-full object-cover" />
@@ -178,44 +175,44 @@ export function ClareadorPageV2() {
 
                 {/* DIREITA: COMPRA */}
                 <div className="lg:col-span-6 space-y-8">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
-                        <div className="bg-emerald-500 p-1 rounded-md text-white">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-blue/10 border border-brand-blue/20 rounded-xl shadow-sm text-[11px] font-bold text-brand-blue-dark">
+                        <div className="bg-brand-pink p-1 rounded-md text-white">
                             <Award size={14} />
                         </div>
                         Eleito o melhor Clareador Natural do Brasil
                     </div>
 
                     <div className="space-y-2">
-                        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900">
-                            Amazolé - Clareador de Manchas 100% Natural
+                        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-brand-blue-dark uppercase leading-none">
+                            Amazolé - Clareador de Manchas <span className="text-brand-pink">100% Natural</span>
                         </h1>
                         <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                            <div className="flex gap-0.5 text-orange-400">
+                            <div className="flex gap-0.5 text-brand-pink">
                                 {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                             </div>
-                            <span>4.9 | 1.847 avaliações 5 estrelas</span>
+                            <span className="font-bold text-brand-text">4.9 | 1.847 avaliações 5 estrelas</span>
                         </div>
-                        <p className="text-emerald-600 font-bold text-sm">
-                            Mais de 32.400 mulheres usando no mês passado.
+                        <p className="text-emerald-600 font-black text-sm uppercase tracking-widest">
+                            32.400+ kits entregues esse mês
                         </p>
                     </div>
 
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                            <span className="text-slate-400 line-through text-lg">{selectedKit.originalPrice}</span>
-                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">{selectedKit.discount}</span>
+                            <span className="text-slate-400 line-through text-lg font-bold">{selectedKit.originalPrice}</span>
+                            <span className="bg-brand-pink text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">{selectedKit.discount}</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
-                            <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
-                            <span className="text-emerald-600 font-bold text-xl">no pix</span>
+                            <span className="text-5xl font-black text-brand-blue-dark">R$ {selectedKit.price}</span>
+                            <span className="text-emerald-600 font-black text-xl uppercase tracking-tighter">no pix</span>
                         </div>
-                        <p className="text-slate-500 font-medium text-sm italic">
+                        <p className="text-slate-500 font-bold text-sm uppercase tracking-widest opacity-60">
                             ou em até 12x no cartão
                         </p>
                     </div>
 
-                    <div className="bg-emerald-50/50 border-l-4 border-emerald-400 p-5 rounded-r-2xl space-y-2">
-                        <p className="text-slate-800 font-black text-xl italic leading-tight">
+                    <div className="bg-brand-blue/5 border-l-4 border-brand-blue p-5 rounded-r-2xl space-y-2 shadow-sm">
+                        <p className="text-brand-blue-dark font-black text-xl italic leading-tight">
                             "Escondi Minhas Axilas Por 3 Anos... <br />
                             Hoje Uso Regata Sem Vergonha."
                         </p>
@@ -233,8 +230,7 @@ export function ClareadorPageV2() {
 
                         <Link href={selectedKit.checkoutUrl} target="_blank">
                             <Button 
-                                className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group"
-                                style={{ backgroundColor: '#35c867' }}
+                                className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-[0_20px_50px_rgba(229,71,143,0.3)] transition-all hover:scale-[1.03] active:scale-[0.99] flex items-center justify-center gap-4 group bg-brand-pink hover:bg-brand-pink-dark animate-pulse"
                             >
                                 <ShoppingBag size={28} />
                                 Comprar agora
@@ -242,14 +238,14 @@ export function ClareadorPageV2() {
                             </Button>
                         </Link>
                         
-                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center justify-between">
+                        <div className="bg-brand-gray-light border border-slate-200 rounded-2xl p-5 flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <div className="bg-emerald-500 text-white p-2 rounded-lg">
+                                <div className="bg-brand-blue-dark text-white p-2 rounded-lg">
                                     <Zap size={20} fill="currentColor" />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black text-slate-900 uppercase">ENTREGA FULL — <span className="text-slate-500 font-bold">Envio imediato em até 24h</span></p>
-                                    <p className="text-[10px] font-bold text-slate-500">Comprando dentro das próximas <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
+                                    <p className="text-xs font-black text-brand-blue-dark uppercase tracking-widest">ENTREGA ACELERADA — <span className="text-brand-pink">Envio imediato</span></p>
+                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Garantido se comprar em <span className="text-brand-text font-black">{formatTime(timeLeft)}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -261,85 +257,84 @@ export function ClareadorPageV2() {
         <div className="border-t border-slate-100 bg-white">
             
             {/* MIDIA */}
-            <section className="py-12 bg-white border-b border-slate-50 opacity-30 grayscale flex justify-center gap-16 items-center">
-                <span className="text-2xl font-black">G1</span><span className="text-2xl font-black italic">R7</span><span className="text-2xl font-black">GLOBO</span><span className="text-2xl font-black underline">SBT</span>
+            <section className="py-12 bg-brand-gray-light border-b border-slate-50 opacity-30 grayscale flex justify-center gap-16 items-center">
+                <span className="text-2xl font-black text-brand-blue-dark">G1</span><span className="text-2xl font-black italic text-brand-blue-dark">R7</span><span className="text-2xl font-black text-brand-blue-dark">GLOBO</span><span className="text-2xl font-black underline text-brand-blue-dark">SBT</span>
             </section>
 
-            {/* SEÇÃO: PAIXÃO NACIONAL (RESULTADOS REAIS) */}
+            {/* SEÇÃO: PAIXÃO NACIONAL */}
             <section className="py-24 px-6 bg-white border-b border-emerald-100">
               <div className="max-w-6xl mx-auto space-y-16 text-center">
                 <div className="space-y-4">
-                  <span className="inline-block text-emerald-600 font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
-                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950 uppercase">
-                    Resultados Reais, Mulheres Reais
+                  <span className="inline-block text-brand-pink font-black text-xs uppercase tracking-[0.4em]">Paixão Nacional</span>
+                  <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-brand-blue-dark uppercase leading-none">
+                    Resultados Reais, <span className="text-brand-pink italic">Mulheres Reais</span>
                   </h2>
-                  <div className="h-1.5 w-32 bg-emerald-500 mx-auto rounded-full"></div>
+                  <div className="h-1.5 w-32 bg-brand-blue mx-auto rounded-full"></div>
                 </div>
                 
-                {/* Grid da Galeria - 4 fotos */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-5xl mx-auto">
                   {GALLERY_IMAGES.map((url, i) => (
-                    <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden border border-emerald-100 shadow-sm hover:shadow-xl transition-all duration-500">
+                    <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden border border-brand-blue/20 shadow-sm hover:shadow-xl transition-all duration-500">
                        <img 
                           src={url} 
                           alt={`Resultado ${i + 1}`} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                        />
-                       <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                       <div className="absolute inset-0 bg-gradient-to-t from-brand-blue-dark/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
                   ))}
                 </div>
 
                 <div className="text-center pt-8">
-                  <p className="text-slate-500 font-medium italic text-lg">
-                    Milhares de mulheres compartilhando seus resultados reais todos os dias.
+                  <p className="text-brand-text font-black uppercase tracking-widest text-sm opacity-50">
+                    Sua transformação começa com Amazolé.
                   </p>
                 </div>
               </div>
             </section>
 
             {/* SEÇÃO: SOLUÇÃO QUE FUNCIONA */}
-            <section className="py-24 px-6 bg-slate-50 relative overflow-hidden border-b border-emerald-100">
+            <section className="py-24 px-6 bg-brand-gray-light relative overflow-hidden border-b border-brand-blue/10">
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-center gap-16">
                         <div className="flex-1 space-y-8 order-2 lg:order-1">
-                            <span className="inline-block text-emerald-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
-                            <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
+                            <span className="inline-block text-brand-blue-dark font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
+                            <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark tracking-tighter leading-tight uppercase">
                                 Clareie Manchas Difíceis Sem Ácidos Agressivos. <br />
-                                <span className="text-emerald-700 italic">100% Natural da Amazônia Por R$ 137,00.</span>
+                                <span className="text-brand-pink italic italic">100% Natural da Amazônia.</span>
                             </h2>
 
                             <div className="pt-8 space-y-6">
-                                <h4 className="text-2xl font-black text-slate-950 border-b-2 border-emerald-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
+                                <h4 className="text-2xl font-black text-brand-blue-dark border-b-2 border-brand-pink/30 inline-block pb-1 uppercase tracking-tight">VOCÊ NÃO PRECISA MAIS:</h4>
                                 <ul className="space-y-4">
                                     {[
-                                        "💔 Esconde axilas escuras e não usa regata há anos",
-                                        "💔 Evita biquíni ou calcinha porque a virilha tá manchada",
-                                        "💔 Melasma te faz usar base TODOS os dias (mesmo em casa)",
-                                        "💔 Já tentou mil cremes que arderam, descascaram e não clarearam",
-                                        "💔 Tem vergonha de tirar a roupa na frente do parceiro"
+                                        "💔 Esconder axilas escuras e evitar usar regata",
+                                        "💔 Sentir vergonha da virilha manchada no biquíni",
+                                        "💔 Usar base pesada todo dia para esconder o Melasma",
+                                        "💔 Sofrer com cremes que ardem e descascam a pele",
+                                        "💔 Ter insegurança na hora da intimidade"
                                     ].map((item, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-lg font-bold text-slate-700">
+                                        <li key={i} className="flex items-start gap-3 text-lg font-bold text-brand-text">
+                                            <div className="bg-brand-pink/10 p-1 rounded-full text-brand-pink shrink-0 mt-1"><Ban size={16} strokeWidth={3} /></div>
                                             {item}
                                         </li>
                                     ))}
                                 </ul>
                                 
-                                <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
-                                    <p>Porque você merece usar QUALQUER roupa sem medo.</p>
-                                    <p className="text-emerald-800 italic underline decoration-emerald-300">
-                                        Sem precisar escolher entre: <br />
-                                        Clarear as manchas OU irritar a pele.
+                                <div className="space-y-4 text-2xl font-black text-brand-blue-dark tracking-tight leading-tight pt-4">
+                                    <p>Recupere sua liberdade de vestir o que quiser.</p>
+                                    <p className="text-brand-pink underline decoration-brand-blue decoration-4 underline-offset-8 uppercase italic">
+                                        Clareamento real, suave e seguro.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="flex-1 relative w-full order-1 lg:order-2">
-                            <div className="absolute inset-0 bg-emerald-300 rounded-full blur-[100px] opacity-10"></div>
+                            <div className="absolute inset-0 bg-brand-blue rounded-full blur-[100px] opacity-10"></div>
                             <img 
                                 src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
-                                alt="Mulher confiante de regata" 
+                                alt="Pele perfeita e iluminada" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                             />
                         </div>
@@ -347,168 +342,67 @@ export function ClareadorPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: POR QUE AMAZOLÉ CLAREIA EM SEMANAS? */}
-            <section className="py-24 px-6 bg-white border-b border-slate-100">
+            {/* SEÇÃO: POR QUE AMAZOLÉ CLAREIA? (BEGE NATURAL) */}
+            <section className="py-24 px-6 bg-brand-beige/20 border-b border-brand-beige">
               <div className="max-w-5xl mx-auto space-y-20">
                 <div className="text-center space-y-4">
-                  <h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">POR QUE AMAZOLÉ CLAREIA EM SEMANAS?</h2>
-                  <div className="space-y-2">
-                    <p className="text-emerald-700 font-black text-xl md:text-2xl uppercase">FÓRMULA PATENTEADA DA AMAZÔNIA</p>
-                    <p className="text-slate-400 font-bold text-sm uppercase tracking-widest">(Sem Ácidos Que Ardem, Descascam ou Mancham Mais)</p>
-                  </div>
+                  <span className="text-brand-blue-dark font-black text-xs uppercase tracking-[0.5em] block mb-2">Poder da Natureza</span>
+                  <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark uppercase tracking-tighter leading-none">
+                    POR QUE <span className="text-brand-pink italic">AMAZOLÉ</span> CLAREIA EM SEMANAS?
+                  </h2>
+                  <p className="text-brand-text font-bold text-sm uppercase tracking-[0.2em] opacity-60">FÓRMULA PATENTEADA DA AMAZÔNIA</p>
                 </div>
 
-                <div className="bg-emerald-50/50 rounded-[3rem] p-8 md:p-16 border border-emerald-100 space-y-12">
-                  <div className="flex items-center gap-4 pb-6 border-b border-emerald-200/50">
-                    <Microscope className="text-emerald-700 h-10 w-10" />
-                    <h3 className="text-2xl md:text-3xl font-black text-slate-950 uppercase tracking-tight">🔬 COMO FUNCIONA (Ciência Simples)</h3>
-                  </div>
-
-                  <div className="space-y-8">
-                    <p className="text-xl font-black text-slate-800">Sua mancha escura existe por 3 MOTIVOS:</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {[
-                        { num: "1️⃣", title: "MELANINA ACUMULADA", desc: "Células produzem pigmento demais naquela área" },
-                        { num: "2️⃣", title: "INFLAMAÇÃO CRÔNICA", desc: "Atrito, depilação, suor mantém a pele irritada" },
-                        { num: "3️⃣", title: "CÉLULAS MORTAS", desc: "Camada de pele escura acumula e não sai" }
-                      ].map((reason, i) => (
-                        <div key={i} className="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
-                          <span className="text-3xl block mb-4">{reason.num}</span>
-                          <h4 className="font-black text-slate-950 mb-2 leading-tight uppercase text-sm">{reason.title}</h4>
-                          <p className="text-slate-500 text-sm font-medium">{reason.desc}</p>
-                        </div>
-                      ))}
+                <div className="bg-white rounded-[3rem] p-8 md:p-16 border border-brand-beige shadow-xl space-y-12">
+                  <div className="flex items-center gap-4 pb-6 border-b border-brand-beige/50">
+                    <div className="p-3 bg-brand-blue-dark text-white rounded-2xl shadow-lg">
+                        <Microscope size={32} />
                     </div>
-                  </div>
-
-                  <div className="bg-red-50 border-2 border-red-100 p-8 rounded-[2.5rem] space-y-4">
-                    <p className="text-slate-700 font-bold leading-relaxed">
-                      Produtos comuns usam ÁCIDOS para "queimar" a mancha. <br />
-                      <span className="text-red-600 font-black uppercase italic">Resultado: Arde, descasca, irrita, e volta PIOR.</span>
-                    </p>
-                    <p className="text-emerald-800 text-2xl font-black uppercase tracking-tighter">Amazolé é TOTALMENTE DIFERENTE:</p>
+                    <h3 className="text-2xl md:text-3xl font-black text-brand-blue-dark uppercase tracking-tight">🔬 CIÊNCIA APLICADA À PELE</h3>
                   </div>
 
                   {/* ETAPA 1 */}
-                  <div className="space-y-10 pt-10">
-                    <div className="flex items-center gap-4 text-emerald-800 font-black text-xl md:text-2xl uppercase border-b-2 border-emerald-200 pb-2">
-                      <Leaf className="h-8 w-8" />
+                  <div className="space-y-10">
+                    <div className="flex items-center gap-4 text-brand-blue-dark font-black text-xl md:text-2xl uppercase border-b-2 border-brand-blue pb-2">
+                      <Leaf className="h-8 w-8 text-emerald-600" />
                       ETAPA 1: BLOQUEIA MELANINA NA RAIZ
                     </div>
-                    <p className="text-slate-500 font-bold italic">(Mulateiro + Dolomita)</p>
-
+                    
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                      <div className="space-y-4">
-                        <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">MULATEIRO (Planta da Amazônia):</h4>
-                        <ul className="space-y-2 text-slate-700 font-bold">
-                          <li className="flex items-center gap-2">→ Inibe produção de melanina (pigmento escuro)</li>
-                          <li className="flex items-center gap-2">→ Antioxidante poderoso (previne manchas novas)</li>
-                          <li className="flex items-center gap-2">→ Cicatrizante natural (repara pele danificada)</li>
-                        </ul>
+                      <div className="space-y-6">
+                        <div className="p-6 bg-brand-gray-light rounded-[2rem] border border-slate-200">
+                            <h4 className="text-brand-pink font-black text-xl uppercase tracking-tight mb-4">MULATEIRO (Amazônia):</h4>
+                            <ul className="space-y-3 text-brand-text font-bold text-sm">
+                                <li className="flex items-center gap-2"><CheckCircle2 className="text-brand-blue" size={16} /> Inibe a enzima do pigmento escuro</li>
+                                <li className="flex items-center gap-2"><CheckCircle2 className="text-brand-blue" size={16} /> Antioxidante ultra-poderoso</li>
+                                <li className="flex items-center gap-2"><CheckCircle2 className="text-brand-blue" size={16} /> Repara a pele agredida</li>
+                            </ul>
+                        </div>
                       </div>
-                      <div className="space-y-4">
-                        <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">DOLOMITA (Mineral amazônico):</h4>
-                        <ul className="space-y-2 text-slate-700 font-bold">
-                          <li className="flex items-center gap-2">→ Rico em cálcio e magnésio</li>
-                          <li className="flex items-center gap-2">→ Regenera células da pele</li>
-                          <li className="flex items-center gap-2">→ Clareia naturalmente SEM queimar</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-                      <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-4">
-                        <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs border-b border-emerald-100 pb-2">O QUE VOCÊ SENTE:</h5>
-                        <ul className="space-y-2 text-emerald-800 font-black">
-                          <li className="flex items-center gap-2"><Check size={16} /> 1ª semana: Pele mais uniforme</li>
-                          <li className="flex items-center gap-2"><Check size={16} /> 2 semanas: Tom começa a clarear</li>
-                          <li className="flex items-center gap-2"><Check size={16} /> 4 semanas: Mancha visivelmente mais clara</li>
-                        </ul>
-                      </div>
-                      <div className="bg-emerald-800 text-white p-8 rounded-[2.5rem] space-y-4">
-                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2">Analogia:</h5>
-                        <p className="font-bold leading-relaxed">
-                          É como desligar a TORNEIRA que jorra tinta preta. <br />
-                          Não adianta limpar se continua jorrando. <br />
-                          <span className="text-emerald-300 font-black underline">Mulateiro FECHA a torneira.</span>
+                      <div className="flex flex-col justify-center bg-brand-blue-dark text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform"><Sparkles size={80} /></div>
+                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2 mb-4">O SEGREDO:</h5>
+                        <p className="font-bold leading-relaxed text-lg italic">
+                          "É como desligar a TORNEIRA que jorra tinta preta na sua pele. Amazolé fecha a fonte das manchas."
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* ETAPA 2 */}
-                  <div className="space-y-10 pt-10">
-                    <div className="flex items-center gap-4 text-emerald-800 font-black text-xl md:text-2xl uppercase border-b-2 border-emerald-200 pb-2">
-                      <Thermometer className="h-8 w-8" />
-                      ETAPA 2: ACALMA INFLAMAÇÃO
-                    </div>
-                    <p className="text-slate-500 font-bold italic">(Óleo de Melaleuca)</p>
-
-                    <div className="space-y-4">
-                      <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">ÓLEO DE MELALEUCA:</h4>
-                      <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 text-slate-700 font-bold">
-                        <li className="flex items-center gap-2">→ Antibacteriano e antifúngico</li>
-                        <li className="flex items-center gap-2">→ Acalma irritação de atrito/depilação</li>
-                        <li className="flex items-center gap-2">→ Previne foliculite (bolinhas escuras)</li>
-                      </ul>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-                      <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-4">
-                        <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs border-b border-emerald-100 pb-2">O QUE VOCÊ SENTE:</h5>
-                        <ul className="space-y-2 text-emerald-800 font-black">
-                          <li className="flex items-center gap-2"><Check size={16} /> Imediato: Pele para de coçar/arder</li>
-                          <li className="flex items-center gap-2"><Check size={16} /> 3 dias: Vermelhidão diminui</li>
-                          <li className="flex items-center gap-2"><Check size={16} /> 1 semana: Pele lisa (sem bolinhas)</li>
-                        </ul>
-                      </div>
-                      <div className="bg-emerald-800 text-white p-8 rounded-[2.5rem] space-y-4">
-                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2">Analogia:</h5>
-                        <p className="font-bold leading-relaxed">
-                          É como apagar um INCÊNDIO antes de pintar a parede. <br />
-                          Se tá pegando fogo, não adianta pintar. <br />
-                          <span className="text-emerald-300 font-black underline">Melaleuca APAGA o fogo.</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* ETAPA 3 */}
-                  <div className="space-y-10 pt-10">
-                    <div className="flex items-center gap-4 text-emerald-800 font-black text-xl md:text-2xl uppercase border-b-2 border-emerald-200 pb-2">
-                      <Waves className="h-8 w-8" />
-                      ETAPA 3: REMOVE CÉLULAS ESCURAS
-                    </div>
-                    <p className="text-slate-500 font-bold italic">(Argila Branca)</p>
-
-                    <div className="space-y-4">
-                      <h4 className="text-emerald-900 font-black text-xl uppercase tracking-tight">ARGILA BRANCA AMAZÔNICA:</h4>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-8 text-slate-700 font-bold">
-                        <li className="flex items-center gap-2">→ Esfolia suavemente (sem arder)</li>
-                        <li className="flex items-center gap-2">→ Absorve impurezas e células mortas</li>
-                        <li className="flex items-center gap-2">→ Clareia progressivamente</li>
-                        <li className="flex items-center gap-2">→ Controla oleosidade (axilas/virilha)</li>
-                      </ul>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-                      <div className="bg-white p-8 rounded-[2.5rem] border border-emerald-100 shadow-sm space-y-4">
-                        <h5 className="font-black text-slate-900 uppercase tracking-widest text-xs border-b border-emerald-100 pb-2">O QUE VOCÊ SENTE:</h5>
-                        <ul className="space-y-2 text-emerald-800 font-black">
-                          <li className="flex items-center gap-2"><Check size={16} /> 1ª aplicação: Pele macia ao toque</li>
-                          <li className="flex items-center gap-2"><Check size={16} /> 1 semana: Textura lisa</li>
-                          <li className="flex items-center gap-2"><Check size={16} /> 2 semanas: Tom mais claro visível</li>
-                        </ul>
-                      </div>
-                      <div className="bg-emerald-800 text-white p-8 rounded-[2.5rem] space-y-4">
-                        <h5 className="font-black uppercase tracking-widest text-xs border-b border-white/20 pb-2">Analogia:</h5>
-                        <p className="font-bold leading-relaxed">
-                          É como LIXAR madeira antes de envernizar. <br />
-                          Remove o escuro sem agredir. <br />
-                          <span className="text-emerald-300 font-black underline">Argila faz isso naturalmente.</span>
-                        </p>
-                      </div>
-                    </div>
+                  {/* ETAPA 2 & 3 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div className="p-8 bg-brand-beige/10 rounded-[3rem] border border-brand-beige/30 space-y-4">
+                        <div className="flex items-center gap-3 text-brand-blue-dark font-black uppercase">
+                            <Thermometer className="text-brand-pink" /> ACALMA INFLAMAÇÃO
+                        </div>
+                        <p className="text-slate-500 font-medium text-sm">O Óleo de Melaleuca apaga o "incêndio" da depilação e suor, impedindo que a pele escureça por irritação.</p>
+                     </div>
+                     <div className="p-8 bg-brand-beige/10 rounded-[3rem] border border-brand-beige/30 space-y-4">
+                        <div className="flex items-center gap-3 text-brand-blue-dark font-black uppercase">
+                            <Waves className="text-brand-blue" /> REMOVE CÉLULAS MORTAS
+                        </div>
+                        <p className="text-slate-500 font-medium text-sm">A Argila Branca esfolia suavemente a "crosta" escura, revelando uma pele nova e iluminada já na primeira semana.</p>
+                     </div>
                   </div>
                 </div>
               </div>
@@ -518,75 +412,60 @@ export function ClareadorPageV2() {
             <section className="py-32 px-6 bg-white border-b border-slate-100">
                 <div className="max-w-6xl mx-auto space-y-24">
                     <div className="text-center space-y-6">
-                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9]">TECNOLOGIA TRIPLA ANCORAGEM™</h2>
+                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-brand-blue-dark uppercase leading-[0.9]">TECNOLOGIA TRIPLA ANCORAGEM™</h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { icon: Anchor, title: "CAMADA 1: ANCORA A RAIZ", desc: "Reconstrói a bainha folicular e trava o fio na raiz.", analogia: "É como cimentar um poste solto." },
-                            { icon: Layers, title: "CAMADA 2: RECONSTRÓI A FIBRA", desc: "Une pontas quebradas com queratina biomimética.", analogia: "É como consertar rachaduras na parede." },
-                            { icon: ShieldCheck, title: "CAMADA 3: SELA E PROTEGE", desc: "Fecha as cutículas e protege contra calor e atrito.", analogia: "É como envernizar madeira." }
+                            { icon: Anchor, title: "CAMADA 1: ANCORA A RAIZ", desc: "Reconstrói a bainha folicular e trava o fio na raiz.", analogia: "É como cimentar um poste solto.", color: "text-brand-blue" },
+                            { icon: Layers, title: "CAMADA 2: RECONSTRÓI A FIBRA", desc: "Une pontas quebradas com queratina biomimética.", analogia: "É como consertar rachaduras na parede.", color: "text-brand-pink" },
+                            { icon: ShieldCheck, title: "CAMADA 3: SELA E PROTEGE", desc: "Fecha as cutículas e protege contra calor e atrito.", analogia: "É como envernizar madeira.", color: "text-emerald-600" }
                         ].map((step, i) => (
-                            <div key={i} className="flex flex-col p-8 bg-white rounded-[3.5rem] border border-orange-100 shadow-sm hover:shadow-xl transition-all group">
-                                <div className="p-4 bg-[#FDF8F3] rounded-2xl w-fit mb-8 group-hover:scale-110 transition-transform"><step.icon className="h-8 w-8 text-orange-700" /></div>
-                                <h4 className="text-xl font-black text-slate-950 uppercase mb-4">{step.title}</h4>
-                                <p className="text-sm text-slate-500 mb-6">{step.desc}</p>
-                                <div className="mt-auto p-5 bg-[#FDF8F3] rounded-3xl text-xs text-slate-500 italic"><strong>Analogia:</strong> {step.analogia}</div>
+                            <div key={i} className="flex flex-col p-8 bg-brand-gray-light rounded-[3.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                                <div className={cn("p-4 bg-white rounded-2xl w-fit mb-8 group-hover:scale-110 transition-transform shadow-sm", step.color)}><step.icon className="h-8 w-8" /></div>
+                                <h4 className="text-xl font-black text-brand-blue-dark uppercase mb-4 leading-tight">{step.title}</h4>
+                                <p className="text-sm text-slate-500 mb-6 font-medium leading-relaxed">{step.desc}</p>
+                                <div className="mt-auto p-5 bg-white rounded-3xl text-xs text-brand-text font-bold italic border border-slate-100">
+                                    <span className="text-slate-400 not-italic uppercase text-[10px] block mb-1">Entenda melhor:</span>
+                                    {step.analogia}
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* FAQ COMPLETO */}
-            <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
-                <div className="max-w-4xl mx-auto space-y-12">
-                    <div className="text-center mb-16"><h2 className="text-3xl md:text-5xl font-black text-slate-950 uppercase tracking-tighter">PERGUNTAS FREQUENTES</h2></div>
-                    <div className="space-y-12">
-                        <div className="space-y-6">
-                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💰 SOBRE O PRODUTO</h3>
-                            <Accordion type="single" collapsible className="w-full space-y-3">
-                                {[
-                                    { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
-                                    { q: "❓ Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Reconstroi a raiz em vez de apenas mascarar." },
-                                    { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
-                                    { q: "❓ Quanto tempo para ver resultado?", a: "3-5 dias: Queda reduz 50%. 7 dias: Queda estanca 90%." }
-                                ].map((item, i) => (
-                                    <AccordionItem key={i} value={`prod-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6"><AccordionTrigger className="text-left font-bold py-5">{item.q}</AccordionTrigger><AccordionContent className="text-slate-600 pb-6">{item.a}</AccordionContent></AccordionItem>
-                                ))}
-                            </Accordion>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* GARANTIA */}
-            <section className="py-24 px-6 bg-white border-t border-slate-50 text-center">
-                <div className="max-w-4xl mx-auto bg-emerald-50 border-[6px] border-dashed border-emerald-500/30 p-12 md:p-24 rounded-[4rem]">
-                    <ShieldCheck className="mx-auto h-24 w-24 text-emerald-700 mb-10" />
-                    <h2 className="text-3xl md:text-5xl font-black mb-8 uppercase tracking-tighter">GARANTIA SATISFAÇÃO OU DINHEIRO DE VOLTA</h2>
-                    <p className="text-xl text-slate-600 italic mb-10 max-w-2xl mx-auto">
-                        Use o Amazolé por 90 dias inteiros. Se não ver clareamento visível, devolvemos 100% do seu dinheiro. Sem perguntas. Sem enrolação. Porque temos certeza que funciona.
+            <section className="py-24 px-6 bg-brand-gray-light border-t border-slate-50 text-center">
+                <div className="max-w-4xl mx-auto bg-white border-[6px] border-dashed border-brand-blue/30 p-12 md:p-24 rounded-[4rem] shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-12 opacity-5 text-brand-blue rotate-12"><ShieldCheck size={200} /></div>
+                    <ShieldCheck className="mx-auto h-24 w-24 text-brand-blue-dark mb-10 drop-shadow-lg" />
+                    <h2 className="text-3xl md:text-5xl font-black mb-8 uppercase tracking-tighter text-brand-blue-dark">GARANTIA <span className="text-brand-pink">RISCO ZERO</span></h2>
+                    <p className="text-xl text-brand-text font-bold italic mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Use o Amazolé por 90 dias inteiros. Se você não ver clareamento visível, devolvemos 100% do seu dinheiro. Sem perguntas. Sem enrolação. Porque temos certeza que funciona.
                     </p>
-                    <div className="inline-block px-10 py-3 bg-slate-900 text-emerald-400 rounded-full text-xs font-black uppercase tracking-[0.4em]">90 DIAS DE GARANTIA</div>
+                    <div className="inline-block px-10 py-3 bg-brand-blue-dark text-white rounded-full text-xs font-black uppercase tracking-[0.4em] shadow-lg">90 DIAS DE GARANTIA BLINDADA</div>
                 </div>
             </section>
 
-            {/* OFERTA FINAL REDESENHADA */}
-            <section id="pricing" className="py-32 px-6 bg-slate-950 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent"></div>
+            {/* OFERTA FINAL */}
+            <section id="pricing" className="py-32 px-6 bg-brand-blue-dark relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-blue/20 via-transparent to-transparent"></div>
                 
                 <div className="max-w-4xl mx-auto relative z-10 text-center space-y-12">
                     <div className="space-y-6">
+                        <span className="inline-block px-4 py-1 bg-brand-pink text-white rounded-full text-xs font-black uppercase tracking-[0.3em] animate-bounce shadow-lg">Últimas Unidades do Lote</span>
                         <h2 className="text-3xl md:text-6xl font-black text-white tracking-tighter leading-tight uppercase">
-                            SUA ÚLTIMA CHANCE DE USAR <br /> <span className="text-emerald-500 italic underline decoration-emerald-500/30">QUALQUER ROUPA SEM MEDO</span>
+                            SOLTE SEU CABELO E <span className="text-brand-pink italic underline decoration-white/30">VIVA SEM VERGONHA</span>
                         </h2>
-                        <p className="text-emerald-400 font-black text-xl animate-pulse">⏰ OFERTA ENCERRA EM: {formatTime(timeLeft)}</p>
+                        <p className="text-brand-blue font-black text-xl flex items-center justify-center gap-3">
+                            <Clock size={24} className="animate-pulse" /> OFERTA ENCERRA EM: {formatTime(timeLeft)}
+                        </p>
                     </div>
                     
-                    <div className="bg-white rounded-[3.5rem] p-8 md:p-12 shadow-2xl relative border-[8px] border-white">
+                    <div className="bg-white rounded-[4rem] p-8 md:p-12 shadow-[0_40px_100px_rgba(0,0,0,0.4)] relative border-[8px] border-white">
                         <div className="flex flex-col items-center space-y-10">
                             <div className="space-y-4 w-full text-left">
-                                <p className="text-slate-400 font-bold uppercase tracking-widest text-center text-sm mb-6">Escolha seu tratamento:</p>
+                                <p className="text-slate-400 font-black uppercase tracking-[0.4em] text-center text-xs mb-6">Escolha o seu tratamento:</p>
                                 
                                 <KitSelector 
                                     options={AMAZOLÉ_KITS}
@@ -596,18 +475,18 @@ export function ClareadorPageV2() {
                             </div>
 
                             <Link href={selectedKit.checkoutUrl} className="w-full max-w-xl group/btn" target="_blank">
-                                <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-xl shadow-green-100 transition-all hover:scale-[1.02] flex flex-col items-center justify-center gap-1">
-                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3">
+                                <Button className="w-full h-24 bg-brand-pink hover:bg-brand-pink-dark text-white rounded-[2.5rem] shadow-[0_20px_50px_rgba(229,71,143,0.4)] transition-all hover:scale-[1.05] active:scale-95 flex flex-col items-center justify-center gap-1 group/button overflow-hidden relative">
+                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3 relative z-10">
                                         <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" />
-                                        Aproveitar Oferta
+                                        Aproveitar Agora
                                     </span>
-                                    <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em]">PAGAMENTO 100% SEGURO | FRETE GRÁTIS BRASIL</span>
+                                    <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] relative z-10">PAGAMENTO 100% SEGURO | FRETE GRÁTIS BRASIL</span>
                                 </Button>
                             </Link>
 
                             <div className="space-y-6">
-                                <div className="flex items-center justify-center gap-2 text-red-500 font-black text-xs uppercase tracking-widest animate-pulse">
-                                    <AlertTriangle size={18} /> RESTAM APENAS 47 KITS DISPONÍVEIS COM ESTE DESCONTO
+                                <div className="flex items-center justify-center gap-2 text-red-600 font-black text-xs uppercase tracking-widest bg-red-50 px-4 py-2 rounded-full border border-red-100">
+                                    <AlertTriangle size={18} className="animate-pulse" /> RESTAM APENAS 14 KITS COM ESTE DESCONTO
                                 </div>
                                 <div className="flex justify-center gap-10 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
                                     <ShieldCheck size={28} /> <Lock size={28} /> <CreditCard size={28} />
@@ -619,21 +498,54 @@ export function ClareadorPageV2() {
             </section>
 
             {/* FOOTER */}
-            <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
+            <footer className="py-20 bg-brand-gray-light text-brand-text border-t border-slate-200">
               <div className="max-w-6xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-slate-200">
                     <div className="space-y-4">
-                        <h3 className="text-sm font-black uppercase tracking-[0.2em]">Avisos e Isenções</h3>
-                        <div className="text-xs text-slate-500 leading-relaxed"><p>Este conteúdo tem caráter informativo. Não substitui consulta médica. Os resultados variam de pessoa para pessoa.</p></div>
+                        <h3 className="text-sm font-black uppercase tracking-[0.2em] text-brand-blue-dark">Avisos e Isenções</h3>
+                        <div className="text-xs text-slate-500 font-medium leading-relaxed space-y-4">
+                            <p>Este conteúdo tem caráter informativo e educacional. Não oferece diagnóstico ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado.</p>
+                            <p>Conteúdo destinado a maiores de 18 anos.</p>
+                        </div>
                     </div>
                     <div className="space-y-6 text-center md:text-left">
-                        <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="Logo" className="h-14 mx-auto md:mx-0" />
-                        <div className="text-xs text-slate-500"><p>OneBase | Soluções Digitais</p><p>CNPJ: 60.357.932/0001-18</p></div>
+                        <span className="text-3xl font-black tracking-tighter text-brand-blue-dark uppercase">AMAZOLÉ</span>
+                        <div className="text-xs text-slate-500 font-bold uppercase tracking-widest leading-loose">
+                            <p>OneBase | Soluções Digitais</p>
+                            <p>E-Business Rio Verde | Aparecida de Goiania - GO</p>
+                            <p>CNPJ: 60.357.932/0001-18</p>
+                        </div>
                     </div>
                 </div>
-                <div className="text-center pt-8 border-t border-slate-200"><p className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">© 2024 Amazolé - Clareador Natural da Amazônia</p></div>
+
+                <nav className="flex flex-col md:flex-row gap-8 justify-center mb-12 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+                    <button className="hover:text-brand-pink transition-colors">Termos e Condições</button>
+                    <button className="hover:text-brand-pink transition-colors">Política de Privacidade</button>
+                    <button className="hover:text-brand-pink transition-colors">Política de Reembolso</button>
+                </nav>
+
+                <div className="text-center opacity-30 flex justify-center gap-8 mb-10 grayscale">
+                    <ShieldCheck size={40} /><Lock size={40} /><CreditCard size={40} />
+                </div>
+                
+                <div className="text-center pt-8 border-t border-slate-100">
+                    <p className="text-[10px] text-slate-300 font-black uppercase tracking-[0.4em]">© 2024 Amazolé - Clareador Natural da Amazônia</p>
+                </div>
               </div>
             </footer>
+        </div>
+
+        {/* STICKY BAR MOBILE */}
+        <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 pt-2 pb-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
+            <Link href={selectedKit.checkoutUrl} className="block" target="_blank">
+                <Button className="w-full h-16 bg-brand-pink hover:bg-brand-pink-dark text-white rounded-2xl shadow-xl shadow-brand-pink/20 transition-all flex items-center justify-between px-5 font-black uppercase">
+                    <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4">
+                        <span className="text-[10px] opacity-70">Apenas</span>
+                        <span className="text-lg">R$ {selectedKit.price}</span>
+                    </div>
+                    <span className="flex-1 text-center text-xl italic tracking-tighter">Comprar agora <ArrowRight className="inline ml-1" size={20} /></span>
+                </Button>
+            </Link>
         </div>
       </div>
     </>
