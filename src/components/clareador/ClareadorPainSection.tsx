@@ -10,7 +10,7 @@ export const ClareadorPainSection = () => {
             <div className="flex flex-col lg:flex-row items-center gap-16">
                 
                 {/* Lado Esquerdo: Conteúdo */}
-                <div className="flex-1 space-y-8 order-2 lg:order-1">
+                <div className="flex-1 space-y-8 order-1">
                     <div className="space-y-2">
                         <span className="inline-block text-brand-pink font-black text-xs uppercase tracking-[0.4em]">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                         <h2 className="text-3xl md:text-5xl font-black text-brand-blue-dark tracking-tighter leading-tight">
@@ -49,7 +49,7 @@ export const ClareadorPainSection = () => {
                 </div>
                 
                 {/* Lado Direito: Imagem */}
-                <div className="flex-1 order-1 lg:order-2 w-full">
+                <div className="flex-1 order-2 w-full">
                     <div className="relative group">
                         <div className="absolute inset-0 bg-brand-pink rounded-full blur-[100px] opacity-10"></div>
                         <img 
