@@ -1,14 +1,48 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { KitSelector, KitOption } from './KitSelector';
+import Link from 'next/link';
 
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png"
+];
+
+const KITS: KitOption[] = [
+  {
+    id: '1',
+    units: 1,
+    discount: '21% OFF',
+    unitPrice: '147,00',
+    price: '147,00',
+    originalPrice: 'R$ 189,90',
+    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+  },
+  {
+    id: '3',
+    units: 3,
+    discount: '40% OFF',
+    unitPrice: '99,00',
+    price: '297,00',
+    originalPrice: 'R$ 449,70',
+    badges: ['Mais Vendido'],
+    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+  },
+  {
+    id: '5',
+    units: 5,
+    discount: '55% OFF',
+    unitPrice: '79,00',
+    price: '395,00',
+    originalPrice: 'R$ 899,40',
+    badges: ['Promoção Carro', 'Melhor Preço'],
+    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+  }
 ];
 
 interface ClareadorHeroProps {
@@ -18,81 +52,116 @@ interface ClareadorHeroProps {
   scrollToPricing: () => void;
 }
 
-export const ClareadorHero = ({ config, formatTime, timeLeft, scrollToPricing }: ClareadorHeroProps) => {
+export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [selectedKit, setSelectedKit] = useState<KitOption>(KITS[1]);
 
   return (
-    <header className="relative pt-10 pb-20 px-6 bg-[#FDF8F3] overflow-hidden border-b border-slate-100">
+    <header className="relative pt-10 pb-20 px-6 bg-white overflow-hidden border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
-                {/* Lado Esquerdo: Galeria */}
-                <div className="relative group">
-                    <div className="absolute inset-0 bg-brand-blue/10 rounded-[4rem] blur-[100px] opacity-30"></div>
-                    <div className="relative aspect-square rounded-[3rem] bg-slate-100 overflow-hidden shadow-2xl border-8 border-white">
+                {/* ESQUERDA: GALERIA (5 colunas) */}
+                <div className="lg:col-span-5 space-y-6">
+                    <div className="relative aspect-square rounded-[3rem] bg-[#FDFDFD] overflow-hidden border border-slate-100 shadow-sm">
                         <img src={PRODUCT_IMAGES[activeImageIndex]} alt="Produto Amazolé" className="w-full h-full object-cover" />
                         <div className="absolute bottom-6 right-6 bg-slate-900/80 text-white text-[10px] font-black px-3 py-1 rounded-full">{activeImageIndex + 1} / {PRODUCT_IMAGES.length}</div>
                     </div>
-                    <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="grid grid-cols-3 gap-4">
                         {PRODUCT_IMAGES.map((img, i) => (
-                            <button key={i} onClick={() => setActiveImageIndex(i)} className={cn("aspect-square rounded-2xl overflow-hidden border-2 transition-all", activeImageIndex === i ? "border-brand-pink scale-105" : "border-white opacity-60")}>
+                            <button key={i} onClick={() => setActiveImageIndex(i)} className={cn("aspect-square rounded-2xl overflow-hidden border-2 transition-all", activeImageIndex === i ? "border-brand-pink scale-105" : "border-slate-50 opacity-60")}>
                                 <img src={img} alt="Miniatura" className="w-full h-full object-cover" />
                             </button>
                         ))}
                     </div>
                 </div>
 
-                {/* Lado Direito: Informações */}
-                <div className="space-y-6">
+                {/* DIREITA: INFOS (7 colunas) */}
+                <div className="lg:col-span-7 space-y-6">
                     <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-brand-blue/20 rounded-xl shadow-sm text-[11px] font-bold text-brand-blue-dark">
-                            <div className="bg-brand-pink p-1 rounded-md text-white"><Award size={14} /></div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-xl shadow-sm text-[10px] font-bold text-slate-600">
+                            <Heart size={14} className="text-pink-500 fill-current" />
                             Eleito o melhor Clareador Natural do Brasil
                         </div>
                         
-                        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-brand-blue-dark uppercase leading-[0.9]">
-                            Amazolé - Clareador de <span className="text-brand-pink">Manchas 100% Natural</span>
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-950">
+                            Amazolé - Clareador de Manchas 100% Natural
                         </h1>
 
                         <div className="space-y-1">
                             <div className="flex items-center gap-2 text-sm font-bold text-slate-500">
                                 <div className="flex gap-0.5 text-orange-400">
-                                    {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+                                    {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
                                 </div>
-                                <span>4.9 | 1.847 avaliações 5 estrelas</span>
+                                <span>5.0 | 1.847 avaliações 5 estrelas</span>
                             </div>
-                            <p className="text-emerald-600 font-black text-sm uppercase tracking-tighter">
-                                Mais de 32.400 mulheres usando no mês passado
+                            <p className="text-emerald-600 font-bold text-sm">
+                                Mais de 32.400 mulheres usando no mês passado.
                             </p>
                         </div>
                     </div>
 
-                    {/* Novo Depoimento */}
-                    <div className="bg-white p-6 rounded-[2rem] border-l-4 border-brand-pink shadow-sm space-y-2">
-                        <p className="text-brand-blue-dark font-black text-xl italic leading-tight">
-                            "Escondi Minhas Axilas Por 3 Anos... <br />
-                            Hoje Uso Regata Sem Vergonha."
-                        </p>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest italic">
-                            Ass: Carolina M., São Paulo
+                    <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                            <span className="text-slate-400 line-through text-lg font-medium">R$ 189,90</span>
+                            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg text-xs font-black">21% OFF</span>
+                        </div>
+                        <div className="flex items-baseline gap-2 leading-none">
+                            <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
+                            <span className="text-emerald-600 font-bold text-xl">no pix</span>
+                        </div>
+                        <p className="text-slate-500 font-medium text-sm">
+                            Em até 12x de R$ {(parseFloat(selectedKit.price.replace(',','.')) / 12).toFixed(2).replace('.',',')} sem juros
                         </p>
                     </div>
 
-                    <div className="space-y-3">
-                        <Button 
-                            onClick={scrollToPricing} 
-                            className="w-full h-20 bg-brand-pink hover:bg-brand-pink-dark text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-xl transition-all hover:scale-[1.02]"
-                        >
-                            Comprar agora
-                        </Button>
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-2xl">
+                        O Clareador Amazolé foi desenvolvido com extratos puros da Amazônia para quem busca uniformizar a pele sem o uso de ácidos agressivos. Com textura leve e rápida absorção, ele transforma o cuidado diário em um ritual de renovação, fácil de manter na rotina.
+                    </p>
 
-                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center gap-4">
-                            <div className="bg-emerald-500 text-white p-2 rounded-lg">
-                                <Zap size={20} fill="currentColor" />
+                    {/* Feature Badges */}
+                    <div className="flex flex-wrap gap-2">
+                        {[
+                            "100% Vegano", 
+                            "Sem Ácidos Químicos", 
+                            "Rico em Vitamina C", 
+                            "Dermatologicamente Testado"
+                        ].map((badge, i) => (
+                            <div key={i} className="px-4 py-1.5 rounded-full border-2 border-brand-pink/30 text-brand-pink text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                                <Zap size={10} fill="currentColor" />
+                                {badge}
                             </div>
-                            <div>
-                                <p className="text-xs font-black text-slate-900 uppercase">ENTREGA FULL — Envio imediato em até 24h</p>
-                                <p className="text-[10px] font-bold text-slate-500">Comprando dentro das próximas <span className="text-brand-pink font-black">{formatTime(timeLeft)}</span></p>
+                        ))}
+                    </div>
+
+                    {/* Kit Selector Integrado */}
+                    <div className="pt-4">
+                        <KitSelector 
+                            options={KITS} 
+                            selectedId={selectedKit.id} 
+                            onSelect={setSelectedKit} 
+                        />
+                    </div>
+
+                    <div className="space-y-4 pt-4">
+                        <Link href={selectedKit.checkoutUrl} target="_blank">
+                            <Button className="w-full h-16 bg-slate-950 hover:bg-slate-900 text-white rounded-2xl font-black text-xl uppercase tracking-widest shadow-xl transition-all hover:scale-[1.01]">
+                                Comprar agora
+                            </Button>
+                        </Link>
+
+                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center justify-between">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-emerald-500 text-white p-2 rounded-lg">
+                                    <Zap size={20} fill="currentColor" />
+                                </div>
+                                <div>
+                                    <p className="text-xs font-black text-slate-900 uppercase">ENTREGA FULL — <span className="text-slate-500 font-bold">Envio imediato em até 24h</span></p>
+                                    <p className="text-[10px] font-bold text-slate-500">Comprando dentro das próximas <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
+                                </div>
+                            </div>
+                            <div className="p-2 rounded-full border border-emerald-200">
+                                <ShieldCheck size={20} className="text-emerald-500" />
                             </div>
                         </div>
                     </div>
