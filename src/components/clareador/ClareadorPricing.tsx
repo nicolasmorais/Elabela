@@ -15,7 +15,7 @@ interface ClareadorPricingProps {
 
 export const ClareadorPricing = ({ kits, selectedKit, setSelectedKit, formatTime }: ClareadorPricingProps) => {
   return (
-    <section id="pricing" className="py-32 px-6 bg-brand-blue-dark text-white relative overflow-hidden">
+    <section className="py-32 px-6 bg-brand-blue-dark text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
             <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.95]">SUA ÚLTIMA CHANCE</h2>
             <div className="inline-block bg-brand-pink px-8 py-3 rounded-full font-black uppercase text-sm animate-bounce">⏰ ENCERRA EM: {formatTime(877)}</div>
