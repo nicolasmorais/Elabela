@@ -17,6 +17,7 @@ import { ClareadorCustomerFeedback } from '@/components/clareador/ClareadorCusto
 import { ClareadorFAQ } from '@/components/clareador/ClareadorFAQ';
 import { ClareadorGuarantee } from '@/components/clareador/ClareadorGuarantee';
 import { ClareadorFooter } from '@/components/clareador/ClareadorFooter';
+import { ClareadorWhatsInside } from '@/components/clareador/ClareadorWhatsInside';
 
 const AMAZOLÉ_KITS = [
   {
@@ -87,6 +88,9 @@ export function ClareadorPageV2() {
         <ClareadorComparisonSection />
 
         <ClareadorUsageTimeline />
+
+        {/* Seção Nova: O que você recebe */}
+        <ClareadorWhatsInside />
 
         {/* Seção de Clientes Recebendo/Depoimentos */}
         <ClareadorCustomerFeedback />

@@ -31,7 +31,7 @@ export const ClareadorPainSection = () => {
                                 "Já tentou mil cremes que arderam, descascaram e não clarearam",
                                 "Tem vergonha de tirar a roupa na frente do parceiro"
                             ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-lg font-bold text-slate-700 leading-tight">
+                                <li key={i} className="flex items-start gap-3 text-lg font-bold text-brand-text leading-tight">
                                     <span className="shrink-0">💔</span>
                                     {item}
                                 </li>
@@ -53,7 +53,7 @@ export const ClareadorPainSection = () => {
                     <div className="relative group">
                         <div className="absolute inset-0 bg-brand-pink rounded-full blur-[100px] opacity-10"></div>
                         <img 
-                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769820004362-ChatGPT-Image-30-de-jan.-de-2026,-21_39_39.png" 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/ChatGPT%20Image%2016%20de%20fev.%20de%202026,%2018_16_49.png" 
                             alt="Mulher confiante de regata" 
                             className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                         />
