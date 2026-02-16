@@ -13,11 +13,10 @@ import { ClareadorResultsGallery } from '@/components/clareador/ClareadorResults
 import { ClareadorScienceSection } from '@/components/clareador/ClareadorScienceSection';
 import { ClareadorComparisonSection } from '@/components/clareador/ClareadorComparisonSection';
 import { ClareadorUsageTimeline } from '@/components/clareador/ClareadorUsageTimeline';
-import { ClareadorCustomerFeedback } from '@/components/clareador/ClareadorCustomerFeedback'; // NEW
+import { ClareadorCustomerFeedback } from '@/components/clareador/ClareadorCustomerFeedback';
 import { ClareadorFAQ } from '@/components/clareador/ClareadorFAQ';
 import { ClareadorGuarantee } from '@/components/clareador/ClareadorGuarantee';
 import { ClareadorFooter } from '@/components/clareador/ClareadorFooter';
-import { ClareadorPricing } from '@/components/clareador/ClareadorPricing';
 
 const AMAZOLÉ_KITS = [
   {
@@ -92,13 +91,6 @@ export function ClareadorPageV2() {
         {/* Seção de Clientes Recebendo/Depoimentos */}
         <ClareadorCustomerFeedback />
         
-        <ClareadorPricing 
-          kits={AMAZOLÉ_KITS} 
-          selectedKit={selectedKit} 
-          setSelectedKit={setSelectedKit} 
-          formatTime={formatTime} 
-        />
-
         <ClareadorGuarantee />
         
         <ClareadorFAQ />
