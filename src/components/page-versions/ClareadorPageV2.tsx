@@ -4,10 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { PageTracker } from "./PageTracker";
 import { MobileStickyBar } from './MobileStickyBar';
 
-// Importação dos Novos Componentes Modulares
+// Importação dos Componentes Modulares
 import { ClareadorNav } from '@/components/clareador/ClareadorNav';
 import { ClareadorHero } from '@/components/clareador/ClareadorHero';
 import { ClareadorMediaBar } from '@/components/clareador/ClareadorMediaBar';
+import { ClareadorPainSection } from '@/components/clareador/ClareadorPainSection'; // NEW
 import { ClareadorResultsGallery } from '@/components/clareador/ClareadorResultsGallery';
 import { ClareadorTripleAnchorage } from '@/components/clareador/ClareadorTripleAnchorage';
 import { ClareadorFAQ } from '@/components/clareador/ClareadorFAQ';
@@ -74,6 +75,9 @@ export function ClareadorPageV2() {
         />
 
         <ClareadorMediaBar />
+
+        {/* Nova Seção de Dor e Solução */}
+        <ClareadorPainSection />
         
         <ClareadorResultsGallery />
         
