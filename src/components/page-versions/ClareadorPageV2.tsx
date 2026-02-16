@@ -8,9 +8,9 @@ import { MobileStickyBar } from './MobileStickyBar';
 import { ClareadorNav } from '@/components/clareador/ClareadorNav';
 import { ClareadorHero } from '@/components/clareador/ClareadorHero';
 import { ClareadorMediaBar } from '@/components/clareador/ClareadorMediaBar';
-import { ClareadorPainSection } from '@/components/clareador/ClareadorPainSection'; // NEW
+import { ClareadorPainSection } from '@/components/clareador/ClareadorPainSection';
 import { ClareadorResultsGallery } from '@/components/clareador/ClareadorResultsGallery';
-import { ClareadorTripleAnchorage } from '@/components/clareador/ClareadorTripleAnchorage';
+import { ClareadorScienceSection } from '@/components/clareador/ClareadorScienceSection'; // NEW
 import { ClareadorFAQ } from '@/components/clareador/ClareadorFAQ';
 import { ClareadorGuarantee } from '@/components/clareador/ClareadorGuarantee';
 import { ClareadorFooter } from '@/components/clareador/ClareadorFooter';
@@ -76,12 +76,12 @@ export function ClareadorPageV2() {
 
         <ClareadorMediaBar />
 
-        {/* Nova Seção de Dor e Solução */}
         <ClareadorPainSection />
         
         <ClareadorResultsGallery />
-        
-        <ClareadorTripleAnchorage />
+
+        {/* Seção de Ciência e Etapas */}
+        <ClareadorScienceSection />
         
         <ClareadorPricing 
           kits={AMAZOLÉ_KITS} 
