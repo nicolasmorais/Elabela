@@ -12,7 +12,8 @@ import { ClareadorPainSection } from '@/components/clareador/ClareadorPainSectio
 import { ClareadorResultsGallery } from '@/components/clareador/ClareadorResultsGallery';
 import { ClareadorScienceSection } from '@/components/clareador/ClareadorScienceSection';
 import { ClareadorComparisonSection } from '@/components/clareador/ClareadorComparisonSection';
-import { ClareadorUsageTimeline } from '@/components/clareador/ClareadorUsageTimeline'; // NEW
+import { ClareadorUsageTimeline } from '@/components/clareador/ClareadorUsageTimeline';
+import { ClareadorCustomerFeedback } from '@/components/clareador/ClareadorCustomerFeedback'; // NEW
 import { ClareadorFAQ } from '@/components/clareador/ClareadorFAQ';
 import { ClareadorGuarantee } from '@/components/clareador/ClareadorGuarantee';
 import { ClareadorFooter } from '@/components/clareador/ClareadorFooter';
@@ -86,8 +87,10 @@ export function ClareadorPageV2() {
         
         <ClareadorComparisonSection />
 
-        {/* Nova Seção: Áreas e Linha do Tempo */}
         <ClareadorUsageTimeline />
+
+        {/* Seção de Clientes Recebendo/Depoimentos */}
+        <ClareadorCustomerFeedback />
         
         <ClareadorPricing 
           kits={AMAZOLÉ_KITS} 
