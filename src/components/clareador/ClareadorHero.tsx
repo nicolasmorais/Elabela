@@ -18,8 +18,8 @@ const KITS: KitOption[] = [
     id: '1',
     units: 1,
     discount: '21% OFF',
-    unitPrice: '137,00',
-    price: '137,00',
+    unitPrice: '147,00',
+    price: '147,00',
     originalPrice: 'R$ 189,90',
     checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
   },
@@ -27,8 +27,8 @@ const KITS: KitOption[] = [
     id: '2',
     units: 2,
     discount: '55% OFF',
-    unitPrice: '83,50',
-    price: '167,00',
+    unitPrice: '98,50',
+    price: '197,00',
     originalPrice: 'R$ 379,80',
     badges: ['Mais Vendidos'],
     checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'

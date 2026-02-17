@@ -49,8 +49,8 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
                       key={idx}
                       className={cn(
                         "px-3 py-0.5 rounded-lg text-[9px] font-black uppercase tracking-wider text-white shadow-sm",
-                        badge === "Mais Vendido" ? "bg-brand-pink" : 
-                        badge === "Melhor Preço" ? "bg-emerald-500" : "bg-black"
+                        badge === "Mais Vendidos" ? "bg-emerald-500" : 
+                        badge === "Melhores Resultados" ? "bg-blue-600" : "bg-black"
                       )}
                     >
                       {badge}
