@@ -21,7 +21,7 @@ const KITS: KitOption[] = [
     unitPrice: '147,00',
     price: '147,00',
     originalPrice: 'R$ 189,90',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+    checkoutUrl: 'https://seguro.elabela.store/r/96NCB3C2ZG'
   },
   {
     id: '2',
@@ -31,7 +31,7 @@ const KITS: KitOption[] = [
     price: '197,00',
     originalPrice: 'R$ 379,80',
     badges: ['Mais Vendidos'],
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+    checkoutUrl: 'https://seguro.elabela.store/r/5BP7EWDX91'
   },
   {
     id: '3',
@@ -41,7 +41,7 @@ const KITS: KitOption[] = [
     price: '297,00',
     originalPrice: 'R$ 569,70',
     badges: ['Melhores Resultados'],
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+    checkoutUrl: 'https://seguro.elabela.store/r/RBVA7EGOU3'
   }
 ];
 
