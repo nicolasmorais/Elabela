@@ -24,33 +24,33 @@ const AMAZOLÉ_KITS = [
     id: '1-un',
     name: '1 FRASCO',
     oldPrice: 'R$ 189,99',
-    pixPrice: '127',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S',
+    pixPrice: '137',
+    checkoutUrl: 'https://seguro.elabela.store/r/96NCB3C2ZG',
   },
   {
     id: '2-un',
     name: '2 FRASCOS',
     oldPrice: 'R$ 379,98',
-    pixPrice: '187',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S',
+    pixPrice: '167',
+    checkoutUrl: 'https://seguro.elabela.store/r/5BP7EWDX91',
   },
   {
     id: '3-un',
     name: '3 FRASCOS',
     oldPrice: 'R$ 569,97',
-    pixPrice: '237',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S',
+    pixPrice: '297',
+    checkoutUrl: 'https://seguro.elabela.store/r/RBVA7EGOU3',
   }
 ];
 
 export function ClareadorPageV2() {
   const [timeLeft, setTimeLeft] = useState(37860);
   const [selectedKit, setSelectedKit] = useState(AMAZOLÉ_KITS[1]);
-  const [config, setConfig] = useState({ pricePix: '137,00' });
+  const [config, setConfig] = useState({ pricePix: '167,00' });
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(p => p > 0 ? p - 1 : 0), 1000);
-    fetch('/api/page-settings/clareador')
+    fetch('/api/page-settings/novoclareador')
       .then(res => res.json())
       .then(data => data && setConfig(prev => ({ ...prev, ...data })));
     return () => clearInterval(timer);
@@ -102,7 +102,7 @@ export function ClareadorPageV2() {
         <ClareadorFooter />
 
         <MobileStickyBar 
-          installmentText="12x de 13,90"
+          installmentText="12x de 13,92"
           buttonText="Comprar agora" 
           checkoutUrl={selectedKit.checkoutUrl} 
         />

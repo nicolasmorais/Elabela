@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Check } from 'lucide-react';
 
 export interface KitOption {
   id: string;
@@ -41,14 +40,14 @@ export const KitSelector = ({ options, selectedId, onSelect }: KitSelectorProps)
                   : "border-slate-100 bg-white hover:border-slate-200"
               )}
             >
-              {/* Badges Flutuantes */}
+              {/* Badges Flutuantes (Tarjas) */}
               {kit.badges && kit.badges.length > 0 && (
                 <div className="absolute -top-3 right-4 flex gap-2">
                   {kit.badges.map((badge, idx) => (
                     <span 
                       key={idx}
                       className={cn(
-                        "px-3 py-0.5 rounded-lg text-[9px] font-black uppercase tracking-wider text-white shadow-sm",
+                        "px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider text-white shadow-sm",
                         badge === "Mais Vendidos" ? "bg-emerald-500" : 
                         badge === "Melhores Resultados" ? "bg-blue-600" : "bg-black"
                       )}
