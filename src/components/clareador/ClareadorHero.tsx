@@ -108,7 +108,6 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
                             <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
-                            <span className="text-emerald-600 font-bold text-xl">no pix</span>
                         </div>
                         <p className="text-slate-500 font-medium text-sm">
                             Em até 12x de R$ {(parseFloat(selectedKit.price.replace(',','.')) / 12).toFixed(2).replace('.',',')} sem juros
