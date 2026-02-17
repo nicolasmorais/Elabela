@@ -18,9 +18,19 @@ const KITS: KitOption[] = [
     id: '1',
     units: 1,
     discount: '21% OFF',
-    unitPrice: '147,00',
-    price: '147,00',
+    unitPrice: '137,00',
+    price: '137,00',
     originalPrice: 'R$ 189,90',
+    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
+  },
+  {
+    id: '2',
+    units: 2,
+    discount: '55% OFF',
+    unitPrice: '83,50',
+    price: '167,00',
+    originalPrice: 'R$ 379,80',
+    badges: ['Mais Vendidos'],
     checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
   },
   {
@@ -29,18 +39,8 @@ const KITS: KitOption[] = [
     discount: '40% OFF',
     unitPrice: '99,00',
     price: '297,00',
-    originalPrice: 'R$ 449,70',
-    badges: ['Mais Vendido'],
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
-  },
-  {
-    id: '5',
-    units: 5,
-    discount: '55% OFF',
-    unitPrice: '79,00',
-    price: '395,00',
-    originalPrice: 'R$ 899,40',
-    badges: ['Promoção Carro', 'Melhor Preço'],
+    originalPrice: 'R$ 569,70',
+    badges: ['Melhores Resultados'],
     checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S'
   }
 ];
@@ -104,7 +104,7 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <span className="text-slate-400 line-through text-lg font-medium">R$ 189,90</span>
-                            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg text-xs font-black">21% OFF</span>
+                            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg text-xs font-black">PROMOÇÃO</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
                             <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
