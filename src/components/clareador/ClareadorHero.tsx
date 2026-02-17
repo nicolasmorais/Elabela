@@ -8,18 +8,18 @@ import { KitSelector, KitOption } from './KitSelector';
 import Link from 'next/link';
 
 const PRODUCT_IMAGES = [
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414009621-402142efc065a75d21591d74ab992d4d.jpg",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png"
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771320326399-ChatGPT-Image-17-de-fev.-de-2026,-06_22_14.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771277496026-ChatGPT-Image-16-de-fev.-de-2026,-18_13_08.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/br-11134207-81zun-mkquiu4iawar51.webp"
 ];
 
 const KITS: KitOption[] = [
   {
     id: '1',
     units: 1,
-    discount: '21% OFF',
-    unitPrice: '147,00',
-    price: '147,00',
+    discount: 'OFERTA',
+    unitPrice: '137,00',
+    price: '137,00',
     originalPrice: 'R$ 189,90',
     checkoutUrl: 'https://seguro.elabela.store/r/96NCB3C2ZG'
   },
@@ -27,8 +27,8 @@ const KITS: KitOption[] = [
     id: '2',
     units: 2,
     discount: '55% OFF',
-    unitPrice: '98,50',
-    price: '197,00',
+    unitPrice: '83,50',
+    price: '167,00',
     originalPrice: 'R$ 379,80',
     badges: ['Mais Vendidos'],
     checkoutUrl: 'https://seguro.elabela.store/r/5BP7EWDX91'
@@ -37,8 +37,8 @@ const KITS: KitOption[] = [
     id: '3',
     units: 3,
     discount: '50% OFF',
-    unitPrice: '89,00',
-    price: '267,00',
+    unitPrice: '99,00',
+    price: '297,00',
     originalPrice: 'R$ 569,70',
     badges: ['Melhores Resultados'],
     checkoutUrl: 'https://seguro.elabela.store/r/RBVA7EGOU3'
@@ -61,7 +61,7 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
-                {/* ESQUERDA: GALERIA (5 colunas) */}
+                {/* ESQUERDA: GALERIA */}
                 <div className="lg:col-span-5 space-y-6">
                     <div className="relative aspect-square rounded-[3rem] bg-[#FDFDFD] overflow-hidden border border-slate-100 shadow-sm">
                         <img src={PRODUCT_IMAGES[activeImageIndex]} alt="Produto Amazolé" className="w-full h-full object-cover" />
@@ -76,7 +76,7 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                     </div>
                 </div>
 
-                {/* DIREITA: INFOS (7 colunas) */}
+                {/* DIREITA: INFOS */}
                 <div className="lg:col-span-7 space-y-6">
                     <div className="space-y-4">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-xl shadow-sm text-[10px] font-bold text-slate-600">
@@ -93,7 +93,7 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                                 <div className="flex gap-0.5 text-orange-400">
                                     {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
                                 </div>
-                                <span>5.0 | 1.847 avaliações 5 estrelas</span>
+                                <span>4.9 | 1.847 avaliações 5 estrelas</span>
                             </div>
                             <p className="text-emerald-600 font-bold text-sm">
                                 Mais de 32.400 mulheres usando no mês passado.
@@ -104,7 +104,7 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                             <span className="text-slate-400 line-through text-lg font-medium">R$ 189,90</span>
-                            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg text-xs font-black">PROMOÇÃO</span>
+                            <span className="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-lg text-xs font-black">50% OFF</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
                             <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
@@ -114,26 +114,6 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                         </p>
                     </div>
 
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-2xl">
-                        O Clareador Amazolé foi desenvolvido com extratos puros da Amazônia para quem busca uniformizar a pele sem o uso de ácidos agressivos. Com textura leve e rápida absorção, ele transforma o cuidado diário em um ritual de renovação, fácil de manter na rotina.
-                    </p>
-
-                    {/* Feature Badges */}
-                    <div className="flex flex-wrap gap-2">
-                        {[
-                            "100% Vegano", 
-                            "Sem Ácidos Químicos", 
-                            "Rico em Vitamina C", 
-                            "Dermatologicamente Testado"
-                        ].map((badge, i) => (
-                            <div key={i} className="px-4 py-1.5 rounded-full border-2 border-brand-pink/30 text-brand-pink text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
-                                <Zap size={10} fill="currentColor" />
-                                {badge}
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Kit Selector Integrado */}
                     <div className="pt-4">
                         <KitSelector 
                             options={KITS} 

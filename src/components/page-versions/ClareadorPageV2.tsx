@@ -19,40 +19,17 @@ import { ClareadorGuarantee } from '@/components/clareador/ClareadorGuarantee';
 import { ClareadorFooter } from '@/components/clareador/ClareadorFooter';
 import { ClareadorWhatsInside } from '@/components/clareador/ClareadorWhatsInside';
 
-const AMAZOLÉ_KITS = [
-  {
-    id: '1-un',
-    name: '1 FRASCO',
-    oldPrice: 'R$ 189,99',
-    pixPrice: '127',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S',
-  },
-  {
-    id: '2-un',
-    name: '2 FRASCOS',
-    oldPrice: 'R$ 379,98',
-    pixPrice: '187',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S',
-  },
-  {
-    id: '3-un',
-    name: '3 FRASCOS',
-    oldPrice: 'R$ 569,97',
-    pixPrice: '237',
-    checkoutUrl: 'https://seguro.elabela.store/r/M1MW6QA99S',
-  }
-];
-
 export function ClareadorPageV2() {
   const [timeLeft, setTimeLeft] = useState(37860);
-  const [selectedKit, setSelectedKit] = useState(AMAZOLÉ_KITS[1]);
   const [config, setConfig] = useState({ pricePix: '137,00' });
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(p => p > 0 ? p - 1 : 0), 1000);
-    fetch('/api/page-settings/clareador')
+    fetch('/api/page-settings/novoclareador')
       .then(res => res.json())
-      .then(data => data && setConfig(prev => ({ ...prev, ...data })));
+      .then(data => {
+          if (data) setConfig(prev => ({ ...prev, ...data }));
+      });
     return () => clearInterval(timer);
   }, []);
 
@@ -66,7 +43,7 @@ export function ClareadorPageV2() {
 
   return (
     <>
-      <PageTracker contentId="clareador-v2" />
+      <PageTracker contentId="novoclareador" />
       <div className="bg-white text-brand-text font-sans antialiased min-h-screen">
         <ClareadorNav />
         
@@ -89,10 +66,8 @@ export function ClareadorPageV2() {
 
         <ClareadorUsageTimeline />
 
-        {/* Seção Nova: O que você recebe */}
         <ClareadorWhatsInside />
 
-        {/* Seção de Clientes Recebendo/Depoimentos */}
         <ClareadorCustomerFeedback />
         
         <ClareadorGuarantee />
@@ -104,7 +79,7 @@ export function ClareadorPageV2() {
         <MobileStickyBar 
           installmentText="12x de 13,90"
           buttonText="Comprar agora" 
-          checkoutUrl={selectedKit.checkoutUrl} 
+          checkoutUrl="https://seguro.elabela.store/r/M1MW6QA99S" 
         />
       </div>
     </>
