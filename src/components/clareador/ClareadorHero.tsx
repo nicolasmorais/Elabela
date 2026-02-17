@@ -36,9 +36,9 @@ const KITS: KitOption[] = [
   {
     id: '3',
     units: 3,
-    discount: '40% OFF',
-    unitPrice: '99,00',
-    price: '297,00',
+    discount: '50% OFF',
+    unitPrice: '89,00',
+    price: '267,00',
     originalPrice: 'R$ 569,70',
     badges: ['Melhores Resultados'],
     checkoutUrl: 'https://seguro.elabela.store/r/RBVA7EGOU3'
