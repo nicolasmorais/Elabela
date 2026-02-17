@@ -110,7 +110,7 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
                             <span className="text-5xl font-black text-slate-950">R$ {selectedKit.price}</span>
                         </div>
                         <p className="text-slate-500 font-medium text-sm">
-                            Em até 12x de R$ {(parseFloat(selectedKit.price.replace(',','.')) / 12).toFixed(2).replace('.',,')}
+                            Em até 12x de R$ {(parseFloat(selectedKit.price.replace(',','.')) / 12).toFixed(2).replace('.', ',')}
                         </p>
                     </div>
 
