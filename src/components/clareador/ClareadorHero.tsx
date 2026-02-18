@@ -144,8 +144,8 @@ export const ClareadorHero = ({ config, formatTime, timeLeft }: ClareadorHeroPro
 
                     <div className="space-y-4 pt-4">
                         <Link href={selectedKit.checkoutUrl} target="_blank">
-                            <Button className="w-full h-16 bg-slate-950 hover:bg-slate-900 text-white rounded-2xl font-black text-xl uppercase tracking-widest shadow-xl transition-all hover:scale-[1.01]">
-                                PAGAR {selectedKit.units}-{selectedKit.price}
+                            <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-xl uppercase tracking-widest shadow-xl transition-all hover:scale-[1.01]">
+                                COMPRAR AGORA
                             </Button>
                         </Link>
 
