@@ -8,7 +8,6 @@ import { KitSelector, KitOption } from './KitSelector';
 import Link from 'next/link';
 
 const PRODUCT_IMAGES = [
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/br-11134207-81zun-mkquiu4iawar51.webp",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771383486731-generated_image_adaeef86-faaa-4a90-9ed4-214f6bf9ff7a.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/ChatGPT%20Image%2016%20de%20fev.%20de%202026,%2018_16_49.png",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771277496026-ChatGPT-Image-16-de-fev.-de-2026,-18_13_08.png"
