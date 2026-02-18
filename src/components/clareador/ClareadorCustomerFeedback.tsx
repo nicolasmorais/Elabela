@@ -37,6 +37,10 @@ const CUSTOMER_PHOTOS = [
 ];
 
 export const ClareadorCustomerFeedback = () => {
+  // Seção ocultada conforme solicitação
+  return null;
+  
+  /* 
   return (
     <section className="py-24 px-6 bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto space-y-16">
@@ -84,4 +88,5 @@ export const ClareadorCustomerFeedback = () => {
         </div>
     </section>
   );
+  */
 };
