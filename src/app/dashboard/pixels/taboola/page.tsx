@@ -39,7 +39,9 @@ const SYSTEM_PAGES = [
   { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', category: 'Vendas' },
   { id: 'antiqueda', name: 'Tratamento Antiqueda V1', category: 'Vendas' },
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2', category: 'Vendas' },
+  { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', category: 'Vendas' },
   { id: 'clareador', name: 'Clareador', category: 'Vendas' },
+  { id: 'novoclareador', name: 'Novo Clareador V2', category: 'Vendas' },
 ];
 
 export default function TaboolaPixelPage() {
