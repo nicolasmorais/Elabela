@@ -3,10 +3,10 @@
 import React from 'react';
 
 const GALLERY_IMAGES = [
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421128310-ChatGPT-Image-6-de-fev.-de-2026,-19_37_46.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421110516-ChatGPT-Image-6-de-fev.-de-2026,-19_41_56.png",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770421102915-ChatGPT-Image-6-de-fev.-de-2026,-20_35_44.png"
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771384183827-532063fb860b7578c8179d5e0c193ee7.jpg",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771383496255-generated_image_8480214f-cf85-4202-9e55-a5c6982932d1.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771320326399-ChatGPT-Image-17-de-fev.-de-2026,-06_22_14.png",
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771320327807-ChatGPT-Image-17-de-fev.-de-2026,-05_56_50.png"
 ];
 
 export const ClareadorResultsGallery = () => {
