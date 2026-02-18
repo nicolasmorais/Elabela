@@ -25,15 +25,15 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
         </p>
       </div>
 
+      {/* Botão Ocultado conforme solicitação */}
+      {/* 
       <Link href={linkSugerido} className="block" target="_blank" rel="noopener noreferrer">
         <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-between gap-0 overflow-hidden px-5 py-0">
-          {/* LADO ESQUERDO: PARCELAMENTO */}
           <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4 text-left">
             <span className="text-[10px] font-bold uppercase opacity-70 tracking-widest">Apenas</span>
             <span className="text-lg font-black tracking-tight whitespace-nowrap">12x de 14,96</span>
           </div>
           
-          {/* LADO DIREITO: COMPRAR AGORA */}
           <div className="flex-1 flex items-center justify-center pl-4">
             <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
                 {buttonText || 'Comprar agora'}
@@ -42,6 +42,7 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
           </div>
         </Button>
       </Link>
+      */}
 
       {/* Frete Grátis Info */}
       <div className="mt-2 text-center">
