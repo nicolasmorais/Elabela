@@ -4,6 +4,10 @@ import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 export const ClareadorGuarantee = () => {
+  // Seção ocultada conforme solicitação
+  return null;
+
+  /*
   return (
     <section className="py-24 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto bg-[#FDF8F3] border-[6px] border-dashed border-brand-blue/30 p-12 md:p-24 rounded-[4rem]">
@@ -13,4 +17,5 @@ export const ClareadorGuarantee = () => {
         </div>
     </section>
   );
+  */
 };
