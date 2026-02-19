@@ -34,7 +34,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors, Sparkles } from 'lucide-react';
+import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors, Sparkles, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -58,6 +58,7 @@ const STATIC_PAGES = [
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'clareador', name: 'Clareador', type: 'Vendas', icon: Sparkles, color: 'text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/20' },
   { id: 'novoclareador', name: 'Novo Clareador V2', type: 'Vendas', icon: Sparkles, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-950/20' },
+  { id: 'advkcr', name: 'Advertorial KCR', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' },
 ];
 
 export default function SalesPagesListPage() {

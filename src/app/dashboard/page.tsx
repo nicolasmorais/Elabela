@@ -62,6 +62,7 @@ const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'antiqueda3', name: 'Tratamento Antiqueda V3' },
     { id: 'clareador', name: 'Clareador' },
     { id: 'novoclareador', name: 'Novo Clareador V2 (Duplicado)' },
+    { id: 'advkcr', name: 'Advertorial KCR' },
 ];
 
 export default function DashboardPage() {
@@ -157,7 +158,7 @@ export default function DashboardPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
                 <div className="p-2 bg-[#0061FF] rounded-lg text-white">
-                    <Settings2 size={20} />
+                    <Settings2 size(20) />
                 </div>
                 <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
                   Route Control
