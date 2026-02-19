@@ -20,7 +20,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus, Trash2, Edit, ExternalLink, AlertTriangle, Search, FileText } from 'lucide-react';
+import { Plus, Trash2, Edit, ExternalLink, AlertTriangle, Search, FileText, Copy, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CustomAdvertorial } from '@/lib/advertorial-types';
 import { Input } from '@/components/ui/input';
@@ -28,6 +28,7 @@ import { Input } from '@/components/ui/input';
 export default function CustomAdvertorialsPage() {
   const [advertorials, setAdvertorials] = useState<CustomAdvertorial[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isDuplicating, setIsDuplicating] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   const fetchAdvertorials = (): void => {
@@ -65,6 +66,39 @@ export default function CustomAdvertorialsPage() {
     }
   };
 
+  const handleDuplicate = async (id: string, originalName: string) => {
+    setIsDuplicating(id);
+    try {
+      // 1. Busca os dados do original
+      const res = await fetch(`/api/custom-advertorials/${id}`);
+      if (!res.ok) throw new Error();
+      const original: CustomAdvertorial = await res.json();
+
+      // 2. Prepara a cópia (sem ID para o banco gerar um novo)
+      const copy: any = {
+        ...original,
+        name: `${originalName} (Cópia)`,
+      };
+      delete copy.id;
+
+      // 3. Salva como novo
+      const saveRes = await fetch('/api/custom-advertorials', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(copy),
+      });
+
+      if (!saveRes.ok) throw new Error();
+      
+      toast.success(`Cópia de "${originalName}" criada com sucesso!`);
+      fetchAdvertorials();
+    } catch (error) {
+      toast.error("Erro ao duplicar advertorial.");
+    } finally {
+      setIsDuplicating(null);
+    }
+  };
+
   const filteredAdvertorials = advertorials.filter(adv => 
     adv.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     adv.id.toLowerCase().includes(searchTerm.toLowerCase())
@@ -81,7 +115,7 @@ export default function CustomAdvertorialsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Meus Advertoriais</h1>
-          <p className="text-slate-500 dark:text-slate-400 font-medium">Crie e gerencie conteúdos dinâmicos com facilidade.</p>
+          <p className="text-slate-500 dark:text-slate-400 font-medium">Crie, duplique e gerencie conteúdos dinâmicos com facilidade.</p>
         </div>
         <Link href="/dashboard/custom-advertorials/new">
           <Button className={cn("h-12 px-6 rounded-xl font-bold shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95 text-white")} style={{ backgroundColor: primaryColor }}>
@@ -97,8 +131,7 @@ export default function CustomAdvertorialsPage() {
             <AlertTriangle className="h-5 w-5" />
         </div>
         <p className="text-sm text-blue-800 dark:text-blue-300 leading-relaxed py-1">
-          <strong>Dica Pro:</strong> O ID de Conteúdo é o identificador único. Use-o no 
-          <Link href="/dashboard" className="font-bold underline ml-1 hover:text-blue-600 transition-colors">Route Control</Link> para criar URLs amigáveis como <code>/promo-verao</code>.
+          <strong>Dica Pro:</strong> Use a função de duplicação para criar testes A/B variando apenas blocos específicos ou títulos.
         </p>
       </div>
 
@@ -160,6 +193,20 @@ export default function CustomAdvertorialsPage() {
                       </code>
                     </TableCell>
                     <TableCell className="text-right pr-6 space-x-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={() => handleDuplicate(adv.id, adv.name)}
+                        disabled={isDuplicating === adv.id}
+                        className="h-10 px-4 rounded-xl font-bold hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 transition-all"
+                      >
+                        {isDuplicating === adv.id ? (
+                            <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                        ) : (
+                            <Copy className="h-4 w-4 mr-2" />
+                        )}
+                        Duplicar
+                      </Button>
                       <Link href={`/dashboard/custom-advertorials/${adv.id}`}>
                         <Button variant="ghost" size="sm" className="h-10 px-4 rounded-xl font-bold hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 transition-all">
                           <Edit className="h-4 w-4 mr-2" />
