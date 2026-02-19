@@ -158,7 +158,7 @@ export default function DashboardPage() {
           <div>
             <div className="flex items-center gap-2 mb-1">
                 <div className="p-2 bg-[#0061FF] rounded-lg text-white">
-                    <Settings2 size(20) />
+                    <Settings2 size={20} />
                 </div>
                 <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
                   Route Control
