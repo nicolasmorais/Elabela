@@ -15,12 +15,13 @@ import { AntiHairLossPageV2 } from '@/components/page-versions/AntiHairLossPageV
 import { AntiHairLossPageV3 } from '@/components/page-versions/AntiHairLossPageV3';
 import { ClareadorPage } from '@/components/page-versions/ClareadorPage';
 import { ClareadorPageV2 } from '@/components/page-versions/ClareadorPageV2';
+import { AdvKcrPage } from '@/components/page-versions/AdvKcrPage';
 import { DeactivatedPage } from '@/components/page-versions/DeactivatedPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'clareador', 'novoclareador'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'clareador', 'novoclareador', 'advkcr'];
 
 async function ContentSwitcher({ contentId }: { contentId: string }) {
   const pixelScripts = await PixelInjector({ forcePageId: contentId });
@@ -42,6 +43,7 @@ async function ContentSwitcher({ contentId }: { contentId: string }) {
             case 'antiqueda3': return <AntiHairLossPageV3 />;
             case 'clareador': return <ClareadorPage />;
             case 'novoclareador': return <ClareadorPageV2 />;
+            case 'advkcr': return <AdvKcrPage />;
             default: return <CustomAdvertorialPage advertorialId={contentId} />;
           }
       })()}
