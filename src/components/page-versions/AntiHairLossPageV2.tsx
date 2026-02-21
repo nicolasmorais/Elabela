@@ -130,17 +130,18 @@ export function AntiHairLossPageV2() {
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
 
-    fetch('/api/page-settings/antiqueda')
+    // AJUSTADO: Agora busca as configurações específicas desta versão (antiqueda2)
+    fetch('/api/page-settings/antiqueda2')
         .then(res => res.json())
         .then(data => {
             if (data && data.checkoutUrl) {
                 setConfig(prev => ({
                     ...prev,
-                    checkoutUrl: data.checkoutUrl
+                    ...data
                 }));
             }
         })
-        .catch(e => console.error("Erro ao carregar link de checkout."));
+        .catch(e => console.error("Erro ao carregar configurações da página."));
 
     return () => clearInterval(timer);
   }, []);
@@ -364,7 +365,7 @@ export function AntiHairLossPageV2() {
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col lg:flex-row items-start gap-16">
                         <div className="flex-1 space-y-8">
-                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCINA</span>
+                            <span className="inline-block text-orange-800 font-black text-xs uppercase tracking-[0.4em] mb-2">FINALMENTE UMA SOLUÇÃO QUE FUNCIONA</span>
                             <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-tight">
                                 O Mesmo Tratamento Profissional Que Clínicas Cobram R$ 800. <span className="text-orange-700">Agora no Conforto da Sua Casa Por R$ 147,00.</span>
                             </h2>
@@ -407,7 +408,7 @@ export function AntiHairLossPageV2() {
                     <div className="text-center space-y-6 max-w-4xl mx-auto">
                         <span className="inline-block text-orange-600 font-black text-xs uppercase tracking-[0.4em] px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100">Exclusividade Cavalo de Raça</span>
                         <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-slate-950 uppercase leading-[0.9] mb-4">
-                            POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-600">7 DIAS?</span>
+                            POR QUE ESTE KIT PARA A QUEDA EM <span className="text-orange-700">7 DIAS?</span>
                         </h2>
                         <p className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-tight">
                             TECNOLOGIA TRIPLA ANCORAGEM™
@@ -440,9 +441,6 @@ export function AntiHairLossPageV2() {
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-lg text-slate-600 leading-relaxed italic border-l-4 border-orange-200 pl-6 py-2">
-                                Imagine um cabo de aço tentando segurar um peso enorme enquanto a base está solta no barro. Não importa quão forte seja o cabo, ele vai soltar. Nossa tecnologia "cimenta" a base enquanto reforça o cabo.
-                            </p>
                         </div>
                         <div className="relative">
                             <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
@@ -477,7 +475,7 @@ export function AntiHairLossPageV2() {
                                 title: "CAMADA 3: SELA E PROTEGE", 
                                 prod: "Condicionador + Leave-in",
                                 desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                                feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                                feels: ["Imediato: Fio de desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                                 analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                             }
                         ].map((step, i) => (
@@ -512,7 +510,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* 🆕 SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? 🆕 */}
+            {/* SEÇÃO: POR QUE CAVALO DE RAÇA E OUTROS NÃO? */}
             <section className="py-32 px-6 bg-white overflow-hidden border-b border-slate-100">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -616,7 +614,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* 🆕 SEÇÃO: COMO USAR O KIT CAVALO DE RAÇA 🆕 */}
+            {/* SEÇÃO: COMO USAR O KIT CAVALO DE RAÇA */}
             <section className="py-32 px-6 bg-[#FDF8F3] relative overflow-hidden border-b border-orange-100">
                 <div className="max-w-6xl mx-auto space-y-20">
                     <div className="text-center space-y-6 max-w-4xl mx-auto">
@@ -769,7 +767,7 @@ export function AntiHairLossPageV2() {
                                             <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest leading-none mb-1 flex items-center gap-1.5">
                                                 <div className="h-1.5 w-1.5 rounded-full bg-orange-600"></div> {tip.t}
                                             </p>
-                                            <p className="text-sm text-slate-500 font-medium leading-tight">{tip.d}</p>
+                                            <p className="text-sm text-slate-500 font-medium text-justify">{tip.d}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -797,7 +795,7 @@ export function AntiHairLossPageV2() {
                         </div>
                     </div>
 
-                    {/* SEÇÃO: O QUE VEM NO KIT (Final da seção COMO USAR) */}
+                    {/* SEÇÃO: O QUE VEM NO KIT */}
                     <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden">
                         <div className="space-y-12">
                             <h3 className="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tight">
