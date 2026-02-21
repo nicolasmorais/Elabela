@@ -21,7 +21,7 @@ export function AdvKcrPage() {
       .catch(() => {});
   }, []);
 
-  const checkoutUrl = "https://seguro.elabela.store/r/M1MW6QA99S";
+  const checkoutUrl = "https://elabela.store/antiqueda2";
 
   return (
     <>
@@ -193,7 +193,7 @@ export function AdvKcrPage() {
                 {/* BLOCO DE AVISO SITE OFICIAL */}
                 <div className="bg-[#FFF5F5] border border-[#8B1A1A] p-6 rounded-sm text-lg md:text-xl leading-relaxed">
                     <p>
-                        ⚠️ <strong className="text-[#8B1A1A]">Importante:</strong> o Kit Cavalo de Raça Original só é vendido pelo site oficial <strong className="text-[#8B1A1A]">elabela.store</strong>. Eu mesma tomei esse cuidado quando comprei — tem muita cópia barata circulando por aí que não tem a fórmula completa e não funciona. Se você comprar em qualquer outro lugar, não é o original e você não vai ter o mesmo resultado que eu tive. Não caia nessa.
+                        ⚠️ <strong className="text-[#8B1A1A]">Importante:</strong> o Kit Cavalo de Raça Original só é vendido pelo site oficial <strong className="text-[#8B1A1A]">elabela.store</strong>. Eu mesma tomei esse cuidado quando comprei — tem muita cópia barata circulando por aí que não tem a fórmula completa e não funciona. Se você comprar em qualquer outro lugar, não é o original e você não vai ter o mesmo resultado que eu tive. No caia nessa.
                     </p>
                 </div>
 
