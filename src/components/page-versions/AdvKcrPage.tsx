@@ -68,9 +68,14 @@ export function AdvKcrPage() {
 
           {/* CONTEÚDO DO TEXTO */}
           <article className="max-w-none space-y-8 text-xl leading-relaxed text-slate-700">
+            <img 
+              src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771644725841-Gemini_Generated_Image_bi45tvbi45tvbi45.png" 
+              alt="Claudia Mendes" 
+              className="w-full h-auto rounded-lg shadow-sm"
+            />
             <p>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</p>
             <p>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</p>
-            <p>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</p>
+            <p>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</p>
             <p>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã. Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</p>
             <p>Eu ficava contando os fios. Sabe quando você começa a fazer isso? Quando você separa o cabelo no chuveiro pra contar quantos caíram? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</p>
             
@@ -104,6 +109,11 @@ export function AdvKcrPage() {
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">A mensagem que mudou tudo — e eu quase nem li</h2>
             <p>Foi minha prima Renata quem me mandou.</p>
             <p>A gente se fala bastante por Whatsapp, mas sobre besteiras do dia a dia. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</p>
+            <img 
+              src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771647403021-Gemini_Generated_Image_q5dwjpq5dwjpq5dw.png" 
+              alt="Resultado Prima Renata" 
+              className="w-full h-auto rounded-lg shadow-sm"
+            />
             <p>Mas a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente. E eu sabia que a Renata tinha passado pelo mesmo problema que eu — ela tinha até me contado, meses antes, que estava muito mal com a queda.</p>
             <p>Liguei pra ela na hora.</p>
             <p>Ela me contou que tinha começado a usar um kit chamado Cavalo de Raça, da Bio Instinto. Me disse que o diferencial desse kit é que ele não trata só o sintoma — ele trata as três causas principais da queda ao mesmo tempo.</p>
@@ -116,11 +126,21 @@ export function AdvKcrPage() {
             <div className="text-center py-4 text-slate-300 tracking-[1em]">···</div>
 
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">O que aconteceu na primeira semana (e eu não esperava)</h2>
+            <img 
+              src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643769511-Gemini_Generated_Image_6q1tk16q1tk16q1t.png" 
+              alt="Esperança renovada" 
+              className="w-full h-auto rounded-lg shadow-sm"
+            />
             <p>Eu não vou mentir pra você e dizer que acreditei 100%. Depois de tudo que eu tinha tentado, minha esperança estava muito guardada. Eu comprei quase por desespero, mais do que por fé.</p>
             <p>Mas na primeira lavagem, eu senti uma coisa diferente. O couro cabeludo ficou leve. Não aquela sensação de ressecado, nem de oleoso. Leve. Limpo de um jeito que eu não lembrava de ter sentido.</p>
             <p>No terceiro dia, eu estava no chuveiro e reparei: o ralo estava quase limpo. Fechei o chuveiro. Fiquei parada olhando pro ralo por um bom tempo.</p>
             <p>Eu pensei que tinha sido coincidência. Mas no quarto dia, o mesmo. No quinto dia, o mesmo. Na escova pela manhã, menos fios. No travesseiro, quase nada.</p>
             <p>Na primeira semana, a queda tinha diminuído de um jeito que eu não via há dois anos.</p>
+            <img 
+              src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643964059-Gemini_Generated_Image_yehyu3yehyu3yehy-(1).png" 
+              alt="Alívio" 
+              className="w-full h-auto rounded-lg shadow-sm"
+            />
             <p>Chorei. No banheiro mesmo, de emoção. Aquelas lágrimas diferentes — não de tristeza, mas de alívio.</p>
 
             <div className="text-center py-4 text-slate-300 tracking-[1em]">···</div>
@@ -128,6 +148,11 @@ export function AdvKcrPage() {
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">No primeiro mês, minha cabeleireira perguntou o que eu tinha feito</h2>
             <p>Eu continuei usando o kit completo: o shampoo reconstrutor todo dia, a máscara intensiva duas vezes na semana, o condicionador e o leave-in sempre. Do jeito que mandava.</p>
             <p>Com três semanas, eu percebi uns fios pequenos na frente. Bebê, sabe? Aqueles fios novos que nascem e ficam em pezinho porque são curtos demais pra deitar.</p>
+            <img 
+              src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643127487-unnamed.jpg" 
+              alt="Ida ao salão" 
+              className="w-full h-auto rounded-lg shadow-sm"
+            />
             <p>No primeiro mês completo, fui ao salão pela primeira vez em meses sem querer morrer de vergonha.</p>
             <p>A minha cabeleireira, a Patrícia, passou os dedos no meu cabelo e disse: "Cláudia, o que você fez? Seu cabelo tá diferente. Mais encorpado."</p>
             <p>Eu sorri tanto que quase chorei ali na cadeira.</p>
