@@ -70,14 +70,7 @@ export function AdvKcrPage() {
           <article className="max-w-none space-y-8 text-xl leading-relaxed text-slate-700">
             <p>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</p>
             <p>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</p>
-            
-            <img 
-              src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643127487-unnamed.jpg" 
-              alt="Minha jornada com a queda de cabelo" 
-              className="w-full h-auto rounded-lg shadow-sm"
-            />
-
-            <p>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</p>
+            <p>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</p>
             <p>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã. Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</p>
             <p>Eu ficava contando os fios. Sabe quando você começa a fazer isso? Quando você separa o cabelo no chuveiro pra contar quantos caíram? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</p>
             
@@ -109,8 +102,9 @@ export function AdvKcrPage() {
             <div className="text-center py-4 text-slate-300 tracking-[1em]">···</div>
 
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">A mensagem que mudou tudo — e eu quase nem li</h2>
-            <p>Foi minha prima Renata quem me mandou. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</p>
-            <p>Mais a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente. E eu sabia que a Renata tinha passado pelo mesmo problema que eu — ela tinha até me contado, meses antes, que estava muito mal com a queda.</p>
+            <p>Foi minha prima Renata quem me mandou.</p>
+            <p>A gente se fala bastante por Whatsapp, mas sobre besteiras do dia a dia. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</p>
+            <p>Mas a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente. E eu sabia que a Renata tinha passado pelo mesmo problema que eu — ela tinha até me contado, meses antes, que estava muito mal com a queda.</p>
             <p>Liguei pra ela na hora.</p>
             <p>Ela me contou que tinha começado a usar um kit chamado Cavalo de Raça, da Bio Instinto. Me disse que o diferencial desse kit é que ele não trata só o sintoma — ele trata as três causas principais da queda ao mesmo tempo.</p>
             <p>Ela me explicou do jeito dela, simples mesmo: "Renata, o cabelo cai porque a raiz fraqueja, porque o fio quebra no meio, e porque as cutículas ficam abertas e ele vai embora com qualquer coisa. Esse kit age nas três coisas ao mesmo tempo. Um produto não adianta nada sozinho."</p>
@@ -124,7 +118,8 @@ export function AdvKcrPage() {
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">O que aconteceu na primeira semana (e eu não esperava)</h2>
             <p>Eu não vou mentir pra você e dizer que acreditei 100%. Depois de tudo que eu tinha tentado, minha esperança estava muito guardada. Eu comprei quase por desespero, mais do que por fé.</p>
             <p>Mas na primeira lavagem, eu senti uma coisa diferente. O couro cabeludo ficou leve. Não aquela sensação de ressecado, nem de oleoso. Leve. Limpo de um jeito que eu não lembrava de ter sentido.</p>
-            <p>No terceiro dia, eu estava no chuveiro e reparei: o ralo estava quase limpo. Fechei o chuveiro. Fiquei parada olhando pro ralo por um bom tempo. Eu pensei que tinha sido coincidência. Mas no quarto dia, o mesmo. No quinto dia, o mesmo. Na escova pela manhã, menos fios. No travesseiro, quase nada.</p>
+            <p>No terceiro dia, eu estava no chuveiro e reparei: o ralo estava quase limpo. Fechei o chuveiro. Fiquei parada olhando pro ralo por um bom tempo.</p>
+            <p>Eu pensei que tinha sido coincidência. Mas no quarto dia, o mesmo. No quinto dia, o mesmo. Na escova pela manhã, menos fios. No travesseiro, quase nada.</p>
             <p>Na primeira semana, a queda tinha diminuído de um jeito que eu não via há dois anos.</p>
             <p>Chorei. No banheiro mesmo, de emoção. Aquelas lágrimas diferentes — não de tristeza, mas de alívio.</p>
 
