@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Client } from 'pg';
 import { validate as isUUID } from 'uuid';
 import Head from 'next/head';
+import type { Metadata } from 'next';
 
 import { V1Page } from '@/components/page-versions/V1Page';
 import { V2Page } from '@/components/page-versions/V2Page';
@@ -22,6 +23,24 @@ import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialP
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 
 const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'clareador', 'novoclareador', 'advkcr'];
+
+// Função para gerar o título da aba dinamicamente
+export async function generateMetadata({ params }: DynamicPageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug;
+  
+  if (!slug || slug.length === 0) return { title: "Site Indisponível" };
+  
+  const slugKey = slug.join('/');
+  
+  // Título específico para a página advkcr
+  if (slugKey === 'advkcr') {
+    return { title: "Meu Diário de Saúde e Beleza" };
+  }
+
+  // Fallback para as demais páginas (mantém o padrão do layout se não houver título específico)
+  return {};
+}
 
 async function ContentSwitcher({ contentId }: { contentId: string }) {
   const pixelScripts = await PixelInjector({ forcePageId: contentId });
