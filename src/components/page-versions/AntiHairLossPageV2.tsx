@@ -950,7 +950,7 @@ export function AntiHairLossPageV2() {
                 </nav>
 
                 <div className="text-center opacity-50 flex justify-center gap-6 mb-8"><ShieldCheck size={40} /><Lock size={40} /><CreditCard size={40} /></div>
-                <div className="text-center pt-8 border-t border-slate-200"><p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Cláudia Mendes</p></div>
+                <div className="text-center pt-8 border-t border-slate-200"><p className="text-[10px] text-slate-500 uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p></div>
               </div>
             </footer>
         </div>
