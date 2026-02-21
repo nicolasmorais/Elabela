@@ -98,7 +98,7 @@ const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
     text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
-    author: "Cláudia Mendes., Salvador"
+    author: "Cláudia Mendes, Salvador"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
