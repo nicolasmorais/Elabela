@@ -89,8 +89,7 @@ export function AdvKcrPage() {
             <p>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente."</p>
             <p>Eu disse que estava cansada do trabalho.</p>
             <p>Mas a verdade é que eu tinha vergonha. Vergonha de ter 47 anos e estar com menos cabelo do que minha mãe com 70. Vergonha de sentar no salão e ver a cabeleireira fazer aquela cara de "nossa, você perdeu muito". Vergonha de mim mesma.</p>
-            <p>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. E eu não aguentava a ideia de todo mundo olhando.</p>
-            <p>Aquele domingo foi o fundo do poço pra mim.</p>
+            <p>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. E eu não aguentava a ideia de todo mundo olhando. Aquele domingo foi o fundo do poço pra mim.</p>
 
             <div className="text-center py-4 text-slate-300 tracking-[1em]">···</div>
 
@@ -190,6 +189,13 @@ export function AdvKcrPage() {
                 <p>Eles comprovam 87% menos queda em 7 dias, e têm garantia de 7 dias com dinheiro de volta se você não gostar. Ou seja, você não tem nada a perder.</p>
                 
                 <p>O valor normal é R$ 187,00 — mas pelo link que consegui, está saindo por R$ 147,00 no Pix (e parcela em até 12x no cartão). Confesso que quando vi o preço, lembrei dos R$ 800 que gastei em outras coisas que não funcionaram. Uma fração disso, com resultado de verdade.</p>
+
+                {/* BLOCO DE AVISO SITE OFICIAL */}
+                <div className="bg-[#FFF5F5] border border-[#8B1A1A] p-6 rounded-sm text-lg md:text-xl leading-relaxed">
+                    <p>
+                        ⚠️ <strong className="text-[#8B1A1A]">Importante:</strong> o Kit Cavalo de Raça Original só é vendido pelo site oficial <strong className="text-[#8B1A1A]">elabela.store</strong>. Eu mesma tomei esse cuidado quando comprei — tem muita cópia barata circulando por aí que não tem a fórmula completa e não funciona. Se você comprar em qualquer outro lugar, não é o original e você não vai ter o mesmo resultado que eu tive. Não caia nessa.
+                    </p>
+                </div>
 
                 <div className="text-center space-y-4">
                     <p className="text-[#8B1A1A] font-black text-2xl uppercase tracking-tight">ATENÇÃO: O desconto é por tempo limitado.</p>
