@@ -197,6 +197,12 @@ export function AdvKcrPage() {
                     </p>
                 </div>
 
+                <img 
+                  src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771648483540-FireShot-Capture-026---Elabela---Control-Pages---[portal.osegredodelas.site].png" 
+                  alt="Site Oficial" 
+                  className="w-full h-auto rounded-lg shadow-sm"
+                />
+
                 <div className="text-center space-y-4">
                     <p className="text-[#8B1A1A] font-black text-2xl uppercase tracking-tight">ATENÇÃO: O desconto é por tempo limitado.</p>
                     <p className="text-slate-600 font-medium">Não sei até quando o link fica ativo com esse preço especial. Se você está lendo isso hoje, aproveita agora.</p>
