@@ -42,6 +42,7 @@ const SYSTEM_PAGES = [
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', category: 'Vendas' },
   { id: 'clareador', name: 'Clareador', category: 'Vendas' },
   { id: 'novoclareador', name: 'Novo Clareador V2', category: 'Vendas' },
+  { id: 'advkcr', name: 'Advertorial KCR', category: 'Vendas' },
 ];
 
 export default function TaboolaPixelPage() {
