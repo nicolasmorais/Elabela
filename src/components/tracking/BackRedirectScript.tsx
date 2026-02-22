@@ -11,29 +11,49 @@ export const BackRedirectScript = ({ url, enabled }: BackRedirectScriptProps) =>
   useEffect(() => {
     if (!enabled || !url) return;
 
-    // Função para realizar o redirecionamento
+    // Função de redirecionamento
     const doRedirect = () => {
-      window.location.href = url;
+        // Usamos location.replace para não "sujar" o histórico do destino
+        window.location.replace(url);
     };
 
-    // Adiciona uma entrada fake no histórico
-    // Isso garante que o primeiro 'back' seja capturado por nós
-    const pushState = () => {
-        window.history.pushState({ path: window.location.href }, '', window.location.href);
-        window.history.pushState({ path: window.location.href }, '', window.location.href);
+    // Técnica de manipulação de histórico (Back Button Hijack)
+    // Criamos uma entrada falsa no histórico
+    const setupBackRedirect = () => {
+        // Adiciona um hash único para forçar uma mudança de estado real no histórico
+        const currentUrl = window.location.href;
+        
+        // Substituímos o estado atual
+        window.history.replaceState({ backRedirect: true }, document.title, currentUrl);
+        
+        // Empurramos uma nova entrada (a que o usuário está vendo agora)
+        window.history.pushState({ backRedirect: false }, document.title, currentUrl);
     };
 
-    pushState();
+    // Inicializa o hijack
+    setupBackRedirect();
 
     const handlePopState = (event: PopStateEvent) => {
-        // Quando o usuário tenta voltar, redirecionamos
-        doRedirect();
+        // Quando o usuário clica em "voltar", ele cai no estado onde 'backRedirect' é true
+        if (event.state && event.state.backRedirect === true) {
+            doRedirect();
+        }
     };
 
+    // Escuta o evento de voltar do navegador
     window.addEventListener('popstate', handlePopState);
+
+    // Algumas plataformas de anúncios bloqueiam manipulação imediata
+    // Adicionamos uma verificação extra caso a entrada do histórico suma
+    const interval = setInterval(() => {
+        if (window.history.state && window.history.state.backRedirect === undefined) {
+            setupBackRedirect();
+        }
+    }, 2000);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
+      clearInterval(interval);
     };
   }, [url, enabled]);
 
