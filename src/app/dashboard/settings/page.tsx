@@ -34,6 +34,7 @@ import {
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import Link from 'next/link';
+import { BackRedirectManager } from '@/components/dashboard/BackRedirectManager';
 
 interface StatusMetrics {
     routes: number;
@@ -61,9 +62,7 @@ interface DbTestResult {
 }
 
 const StatusIndicator = ({ status, label }: { status: string, label?: string }) => {
-    // ESTADOS POSITIVOS (VERDE)
     const isOk = ['OK', 'Configurado', 'Ativo', 'Conectado', 'Personalizada', 'Ativo (Padrão)'].includes(status);
-    // ESTADOS DE ATENÇÃO (AMARELO)
     const isWarning = ['...'].includes(status);
     
     let color = 'text-red-500';
@@ -127,7 +126,6 @@ export default function SettingsPage() {
     fetchStatus();
   }, []);
 
-  // Estilos
   const primaryColor = '#0061FF';
   const cardClasses = "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 rounded-[2rem] shadow-sm overflow-hidden";
 
@@ -137,7 +135,6 @@ export default function SettingsPage() {
       
       <div className="max-w-6xl mx-auto space-y-8 pb-20">
         
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-200 dark:border-slate-800 pb-8">
           <div>
             <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Configurações & Diagnóstico</h1>
@@ -149,7 +146,7 @@ export default function SettingsPage() {
           </Button>
         </div>
 
-        {/* 1. SAÚDE DO SISTEMA (Resumo) */}
+        {/* 1. SAÚDE DO SISTEMA */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className={cardClasses}>
                 <CardContent className="p-8 flex items-center gap-6">
@@ -188,10 +185,11 @@ export default function SettingsPage() {
             </Card>
         </div>
 
+        {/* BACK REDIRECT SECTION */}
+        <BackRedirectManager />
+
         {/* 2. MÉTRICAS E TESTE DE CONEXÃO */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Métricas Detalhadas */}
             <Card className={cardClasses}>
                 <CardHeader className="border-b border-slate-50 dark:border-slate-800 pb-6">
                     <CardTitle className="flex items-center gap-2">
@@ -227,7 +225,6 @@ export default function SettingsPage() {
                 </CardContent>
             </Card>
 
-            {/* Diagnóstico de Banco */}
             <Card className={cn(cardClasses, "border-l-4 border-l-[#0061FF]")}>
                 <CardHeader className="border-b border-slate-50 dark:border-slate-800 pb-6">
                     <CardTitle className="flex items-center gap-2">
@@ -275,7 +272,6 @@ export default function SettingsPage() {
             </Card>
         </div>
 
-        {/* 3. AÇÕES DE MANUTENÇÃO */}
         <Card className={cardClasses}>
             <CardHeader className="bg-slate-50/50 dark:bg-slate-800/30 border-b border-slate-100 dark:border-slate-800">
                 <CardTitle className="text-lg">Zona de Perigo & Manutenção</CardTitle>

@@ -2,7 +2,6 @@ import { getDb } from '@/lib/database';
 import { notFound } from 'next/navigation';
 import { Client } from 'pg';
 import { validate as isUUID } from 'uuid';
-import Head from 'next/head';
 
 import { V1Page } from '@/components/page-versions/V1Page';
 import { V2Page } from '@/components/page-versions/V2Page';
@@ -20,15 +19,30 @@ import { DeactivatedPage } from '@/components/page-versions/DeactivatedPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
+import { BackRedirectScript } from '@/components/tracking/BackRedirectScript';
 
 const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'clareador', 'novoclareador', 'advkcr'];
 
+async function fetchBackRedirect(db: Client) {
+    try {
+        const result = await db.query('SELECT value FROM settings WHERE key = $1', ['backRedirectConfig']);
+        return result.rows.length > 0 ? result.rows[0].value : { url: '', enabled: false };
+    } catch (e) {
+        return { url: '', enabled: false };
+    }
+}
+
 async function ContentSwitcher({ contentId }: { contentId: string }) {
+  const db = await getDb();
   const pixelScripts = await PixelInjector({ forcePageId: contentId });
+  const backRedirect = await fetchBackRedirect(db);
 
   return (
     <>
       {pixelScripts && <div dangerouslySetInnerHTML={{ __html: pixelScripts.toString() }} className="hidden" />}
+      {backRedirect.enabled && backRedirect.url && (
+          <BackRedirectScript url={backRedirect.url} enabled={backRedirect.enabled} />
+      )}
       {(() => {
           switch (contentId) {
             case 'v1': return <V1Page />;
