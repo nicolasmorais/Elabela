@@ -12,6 +12,7 @@ import { HairCarePage } from '@/components/page-versions/HairCarePage';
 import { AntiHairLossPage } from '@/components/page-versions/AntiHairLossPage';
 import { AntiHairLossPageV2 } from '@/components/page-versions/AntiHairLossPageV2';
 import { AntiHairLossPageV3 } from '@/components/page-versions/AntiHairLossPageV3';
+import { KcrPromoPage } from '@/components/page-versions/KcrPromoPage'; // NEW
 import { ClareadorPage } from '@/components/page-versions/ClareadorPage';
 import { ClareadorPageV2 } from '@/components/page-versions/ClareadorPageV2';
 import { AdvKcrPage } from '@/components/page-versions/AdvKcrPage';
@@ -21,24 +22,16 @@ import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialP
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { BackRedirectScript } from '@/components/tracking/BackRedirectScript';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'clareador', 'novoclareador', 'advkcr'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'kcrpromo', 'clareador', 'novoclareador', 'advkcr'];
 
 async function fetchBackRedirect(db: Client, currentSlug: string) {
     try {
-        // 1. Busca Redirecionamentos Individuais
         const individualRes = await db.query('SELECT value FROM settings WHERE key = $1', ['pageBackRedirects']);
         const individualMap = individualRes.rows.length > 0 ? individualRes.rows[0].value : {};
-        
-        if (individualMap && individualMap[currentSlug]) {
-            return { url: individualMap[currentSlug], enabled: true };
-        }
-
-        // 2. Fallback para Global
+        if (individualMap && individualMap[currentSlug]) return { url: individualMap[currentSlug], enabled: true };
         const globalRes = await db.query('SELECT value FROM settings WHERE key = $1', ['backRedirectConfig']);
         return globalRes.rows.length > 0 ? globalRes.rows[0].value : { url: '', enabled: false };
-    } catch (e) {
-        return { url: '', enabled: false };
-    }
+    } catch (e) { return { url: '', enabled: false }; }
 }
 
 async function ContentSwitcher({ contentId, originalSlug }: { contentId: string, originalSlug: string }) {
@@ -49,9 +42,7 @@ async function ContentSwitcher({ contentId, originalSlug }: { contentId: string,
   return (
     <>
       {pixelScripts && <div dangerouslySetInnerHTML={{ __html: pixelScripts.toString() }} className="hidden" />}
-      {backRedirect.enabled && backRedirect.url && (
-          <BackRedirectScript url={backRedirect.url} enabled={backRedirect.enabled} />
-      )}
+      {backRedirect.enabled && backRedirect.url && <BackRedirectScript url={backRedirect.url} enabled={backRedirect.enabled} />}
       {(() => {
           switch (contentId) {
             case 'v1': return <V1Page />;
@@ -64,6 +55,7 @@ async function ContentSwitcher({ contentId, originalSlug }: { contentId: string,
             case 'antiqueda': return <AntiHairLossPage />;
             case 'antiqueda2': return <AntiHairLossPageV2 />;
             case 'antiqueda3': return <AntiHairLossPageV3 />;
+            case 'kcrpromo': return <KcrPromoPage />; // NEW
             case 'clareador': return <ClareadorPage />;
             case 'novoclareador': return <ClareadorPageV2 />;
             case 'advkcr': return <AdvKcrPage />;
@@ -74,66 +66,42 @@ async function ContentSwitcher({ contentId, originalSlug }: { contentId: string,
   );
 }
 
-interface DynamicPageProps {
-  params: Promise<{ slug?: string[] }>;
-}
+interface DynamicPageProps { params: Promise<{ slug?: string[] }>; }
 
 export default async function DynamicPage({ params }: DynamicPageProps) {
   try {
     const resolvedParams = await params;
     const slug = resolvedParams?.slug;
-    
-    if (!slug || slug.length === 0) {
-      return <DeactivatedPage />;
-    }
-    
+    if (!slug || slug.length === 0) return <DeactivatedPage />;
     const slugKey = slug.join('/');
     const path = `/${slugKey}`;
 
     let client: Client;
-    try {
-        client = await getDb();
-    } catch (dbError) {
-        console.error("Erro de conexão com o banco na página dinâmica:", dbError);
+    try { client = await getDb(); } catch (dbError) {
         if (STATIC_PAGE_IDS.includes(slugKey)) return <ContentSwitcher contentId={slugKey} originalSlug={slugKey} />;
         return notFound();
     }
 
     let contentId: string | null = null;
-
     try {
         const autoRoutesResult = await client.query('SELECT value FROM settings WHERE key = $1', ['autoRoutes']);
         if (autoRoutesResult.rows.length > 0) {
             const autoRoutes = autoRoutesResult.rows[0].value;
-            if (autoRoutes && autoRoutes[slugKey]) {
-                contentId = autoRoutes[slugKey];
-            }
+            if (autoRoutes && autoRoutes[slugKey]) contentId = autoRoutes[slugKey];
         }
     } catch (e) {}
 
     if (!contentId) {
         try {
             const routeResult = await client.query('SELECT content_id as "contentId" FROM routes WHERE path = $1', [path]);
-            if (routeResult.rows.length > 0) {
-                contentId = routeResult.rows[0].contentId;
-            }
+            if (routeResult.rows.length > 0) contentId = routeResult.rows[0].contentId;
         } catch (e) {}
     }
 
-    if (!contentId && STATIC_PAGE_IDS.includes(slugKey)) {
-        contentId = slugKey;
-    }
-
-    if (!contentId && isUUID(slugKey)) {
-        contentId = slugKey;
-    }
-
-    if (!contentId) {
-        return notFound();
-    }
+    if (!contentId && STATIC_PAGE_IDS.includes(slugKey)) contentId = slugKey;
+    if (!contentId && isUUID(slugKey)) contentId = slugKey;
+    if (!contentId) return notFound();
 
     return <ContentSwitcher contentId={contentId} originalSlug={slugKey} />;
-  } catch (error) {
-    return <DeactivatedPage />;
-  }
+  } catch (error) { return <DeactivatedPage />; }
 }
