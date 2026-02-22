@@ -13,47 +13,50 @@ export const BackRedirectScript = ({ url, enabled }: BackRedirectScriptProps) =>
 
     const targetUrl = url;
 
-    // Função de execução do redirecionamento
     const executeRedirect = () => {
-      // Usamos href direto para garantir a navegação
-      window.location.href = targetUrl;
+        // Redireciona de forma definitiva
+        window.location.href = targetUrl;
     };
 
-    // Função para "sujar" o histórico de forma que o voltar caia no nosso gatilho
-    const initBackRedirect = () => {
-      if (window.history.state?.backRedirected) return;
+    const setupHistory = () => {
+        // Se já configuramos o estado para esta página, não repetimos
+        if (window.history.state?.isBackRedirectActive) return;
 
-      // 1. Marca a página atual como a "página de destino do redirecionamento"
-      window.history.replaceState({ backRedirected: true }, "");
-      
-      // 2. Empurra uma nova entrada (que é a que o usuário está vendo)
-      window.history.pushState({ backRedirected: false }, "");
+        // 1. Empurramos o estado atual com uma flag
+        window.history.replaceState({ isBackRedirectActive: true }, "");
+        
+        // 2. Empurramos uma nova entrada no histórico (a que o usuário fica parado)
+        // Adicionamos um '#' invisível para garantir que o mobile reconheça como "navegação"
+        window.history.pushState({ isBackRedirectActive: false }, "", window.location.pathname + window.location.search + "#");
     };
 
-    // Delay de 500ms para garantir que o navegador processe o histórico inicial
-    const timeoutId = setTimeout(initBackRedirect, 500);
+    // Tenta inicializar após um curto delay (padrão desktop)
+    const timeoutId = setTimeout(setupHistory, 500);
+
+    // CRÍTICO PARA MOBILE: O navegador só permite manipulação real após interação
+    const handleMobileInteraction = () => {
+        setupHistory();
+        // Remove os ouvintes após a primeira interação para não pesar
+        window.removeEventListener('touchstart', handleMobileInteraction);
+        window.removeEventListener('click', handleMobileInteraction);
+    };
+
+    window.addEventListener('touchstart', handleMobileInteraction);
+    window.addEventListener('click', handleMobileInteraction);
 
     const handlePopState = (event: PopStateEvent) => {
-      // Se o usuário clicar em voltar, ele volta para o estado onde 'backRedirected' é true
-      // Ou, em alguns navegadores, o state fica nulo ao voltar
-      executeRedirect();
+        // No mobile, clicar em voltar ou deslizar a tela (swipe back)
+        // fará o navegador tentar voltar para o estado onde 'isBackRedirectActive' é true
+        executeRedirect();
     };
 
-    // Escuta o evento de voltar
     window.addEventListener('popstate', handlePopState);
-
-    // Técnica extra: Se o usuário clicar em qualquer lugar da tela, 
-    // reforçamos o histórico (contorna bloqueios de 'user activation')
-    const handleInteraction = () => {
-        initBackRedirect();
-        window.removeEventListener('click', handleInteraction);
-    };
-    window.addEventListener('click', handleInteraction);
 
     return () => {
       clearTimeout(timeoutId);
       window.removeEventListener('popstate', handlePopState);
-      window.removeEventListener('click', handleInteraction);
+      window.removeEventListener('touchstart', handleMobileInteraction);
+      window.removeEventListener('click', handleMobileInteraction);
     };
   }, [url, enabled]);
 
