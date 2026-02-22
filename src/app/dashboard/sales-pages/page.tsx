@@ -34,7 +34,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from "sonner";
 import { Skeleton } from '@/components/ui/skeleton';
-import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors, Sparkles, FileText, Undo2 } from 'lucide-react';
+import { ExternalLink, Search, ShoppingBag, Layout, Zap, Flame, Heart, Info, MoreVertical, Settings2, Save, Loader2, Scissors, Sparkles, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -75,8 +75,7 @@ export default function SalesPagesListPage() {
       pricePix: '97,00',
       installmentText: 'Parcelamento em até 12x',
       buttonText: 'COMPRAR AGORA',
-      checkoutUrl: '',
-      backRedirectUrl: '' // Novo campo
+      checkoutUrl: ''
   });
 
   useEffect(() => {
@@ -103,8 +102,7 @@ export default function SalesPagesListPage() {
               pricePix: data.pricePix || '97,00',
               installmentText: data.installmentText || 'Parcelamento em até 12x',
               buttonText: data.buttonText || 'COMPRAR AGORA',
-              checkoutUrl: data.checkoutUrl || '',
-              backRedirectUrl: data.backRedirectUrl || '' // Carrega o valor do banco
+              checkoutUrl: data.checkoutUrl || ''
           });
           setIsEditDialogOpen(true);
       } catch (e) {
@@ -293,6 +291,16 @@ export default function SalesPagesListPage() {
             </div>
 
             <div className="space-y-2">
+              <Label className="text-xs font-black uppercase text-slate-400">Texto do Botão</Label>
+              <Input 
+                value={pageConfig.buttonText} 
+                onChange={e => setPageConfig({...pageConfig, buttonText: e.target.value})}
+                placeholder="Ex: COMPRAR AGORA"
+                className="rounded-xl h-12"
+              />
+            </div>
+
+            <div className="space-y-2">
               <Label className="text-xs font-black uppercase text-slate-400">Link de Checkout</Label>
               <Input 
                 value={pageConfig.checkoutUrl} 
@@ -300,22 +308,6 @@ export default function SalesPagesListPage() {
                 placeholder="https://..."
                 className="rounded-xl h-12"
               />
-            </div>
-
-            {/* SEÇÃO BACK REDIRECT */}
-            <div className="pt-4 border-t border-slate-100">
-                <div className="space-y-2">
-                  <Label className="text-xs font-black uppercase text-orange-600 flex items-center gap-1">
-                      <Undo2 size={12} /> Back Redirect (Captura Botão Voltar)
-                  </Label>
-                  <Input 
-                    value={pageConfig.backRedirectUrl} 
-                    onChange={e => setPageConfig({...pageConfig, backRedirectUrl: e.target.value})}
-                    placeholder="https://sua-oferta-de-downsell.com"
-                    className="rounded-xl h-12 border-orange-200 focus:ring-orange-500"
-                  />
-                  <p className="text-[10px] text-slate-400 font-medium">Redireciona o usuário para este link quando ele clicar em "Voltar" no navegador.</p>
-                </div>
             </div>
           </div>
 
