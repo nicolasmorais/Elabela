@@ -11,49 +11,49 @@ export const BackRedirectScript = ({ url, enabled }: BackRedirectScriptProps) =>
   useEffect(() => {
     if (!enabled || !url) return;
 
-    // Função de redirecionamento
-    const doRedirect = () => {
-        // Usamos location.replace para não "sujar" o histórico do destino
-        window.location.replace(url);
+    const targetUrl = url;
+
+    // Função de execução do redirecionamento
+    const executeRedirect = () => {
+      // Usamos href direto para garantir a navegação
+      window.location.href = targetUrl;
     };
 
-    // Técnica de manipulação de histórico (Back Button Hijack)
-    // Criamos uma entrada falsa no histórico
-    const setupBackRedirect = () => {
-        // Adiciona um hash único para forçar uma mudança de estado real no histórico
-        const currentUrl = window.location.href;
-        
-        // Substituímos o estado atual
-        window.history.replaceState({ backRedirect: true }, document.title, currentUrl);
-        
-        // Empurramos uma nova entrada (a que o usuário está vendo agora)
-        window.history.pushState({ backRedirect: false }, document.title, currentUrl);
+    // Função para "sujar" o histórico de forma que o voltar caia no nosso gatilho
+    const initBackRedirect = () => {
+      if (window.history.state?.backRedirected) return;
+
+      // 1. Marca a página atual como a "página de destino do redirecionamento"
+      window.history.replaceState({ backRedirected: true }, "");
+      
+      // 2. Empurra uma nova entrada (que é a que o usuário está vendo)
+      window.history.pushState({ backRedirected: false }, "");
     };
 
-    // Inicializa o hijack
-    setupBackRedirect();
+    // Delay de 500ms para garantir que o navegador processe o histórico inicial
+    const timeoutId = setTimeout(initBackRedirect, 500);
 
     const handlePopState = (event: PopStateEvent) => {
-        // Quando o usuário clica em "voltar", ele cai no estado onde 'backRedirect' é true
-        if (event.state && event.state.backRedirect === true) {
-            doRedirect();
-        }
+      // Se o usuário clicar em voltar, ele volta para o estado onde 'backRedirected' é true
+      // Ou, em alguns navegadores, o state fica nulo ao voltar
+      executeRedirect();
     };
 
-    // Escuta o evento de voltar do navegador
+    // Escuta o evento de voltar
     window.addEventListener('popstate', handlePopState);
 
-    // Algumas plataformas de anúncios bloqueiam manipulação imediata
-    // Adicionamos uma verificação extra caso a entrada do histórico suma
-    const interval = setInterval(() => {
-        if (window.history.state && window.history.state.backRedirect === undefined) {
-            setupBackRedirect();
-        }
-    }, 2000);
+    // Técnica extra: Se o usuário clicar em qualquer lugar da tela, 
+    // reforçamos o histórico (contorna bloqueios de 'user activation')
+    const handleInteraction = () => {
+        initBackRedirect();
+        window.removeEventListener('click', handleInteraction);
+    };
+    window.addEventListener('click', handleInteraction);
 
     return () => {
+      clearTimeout(timeoutId);
       window.removeEventListener('popstate', handlePopState);
-      clearInterval(interval);
+      window.removeEventListener('click', handleInteraction);
     };
   }, [url, enabled]);
 
