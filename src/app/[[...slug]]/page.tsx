@@ -23,19 +23,28 @@ import { BackRedirectScript } from '@/components/tracking/BackRedirectScript';
 
 const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'clareador', 'novoclareador', 'advkcr'];
 
-async function fetchBackRedirect(db: Client) {
+async function fetchBackRedirect(db: Client, currentSlug: string) {
     try {
-        const result = await db.query('SELECT value FROM settings WHERE key = $1', ['backRedirectConfig']);
-        return result.rows.length > 0 ? result.rows[0].value : { url: '', enabled: false };
+        // 1. Busca Redirecionamentos Individuais
+        const individualRes = await db.query('SELECT value FROM settings WHERE key = $1', ['pageBackRedirects']);
+        const individualMap = individualRes.rows.length > 0 ? individualRes.rows[0].value : {};
+        
+        if (individualMap && individualMap[currentSlug]) {
+            return { url: individualMap[currentSlug], enabled: true };
+        }
+
+        // 2. Fallback para Global
+        const globalRes = await db.query('SELECT value FROM settings WHERE key = $1', ['backRedirectConfig']);
+        return globalRes.rows.length > 0 ? globalRes.rows[0].value : { url: '', enabled: false };
     } catch (e) {
         return { url: '', enabled: false };
     }
 }
 
-async function ContentSwitcher({ contentId }: { contentId: string }) {
+async function ContentSwitcher({ contentId, originalSlug }: { contentId: string, originalSlug: string }) {
   const db = await getDb();
   const pixelScripts = await PixelInjector({ forcePageId: contentId });
-  const backRedirect = await fetchBackRedirect(db);
+  const backRedirect = await fetchBackRedirect(db, originalSlug);
 
   return (
     <>
@@ -86,7 +95,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
         client = await getDb();
     } catch (dbError) {
         console.error("Erro de conexão com o banco na página dinâmica:", dbError);
-        if (STATIC_PAGE_IDS.includes(slugKey)) return <ContentSwitcher contentId={slugKey} />;
+        if (STATIC_PAGE_IDS.includes(slugKey)) return <ContentSwitcher contentId={slugKey} originalSlug={slugKey} />;
         return notFound();
     }
 
@@ -123,7 +132,7 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
         return notFound();
     }
 
-    return <ContentSwitcher contentId={contentId} />;
+    return <ContentSwitcher contentId={contentId} originalSlug={slugKey} />;
   } catch (error) {
     return <DeactivatedPage />;
   }
