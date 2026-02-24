@@ -117,6 +117,9 @@ export function KcrPromoPage() {
                 setActiveImageIndex={setActiveImageIndex}
                 nextImage={nextImage}
                 prevImage={prevImage}
+                config={config}
+                formatTime={formatTime}
+                timeLeft={timeLeft}
             />
 
             <KcrPromoMediaBar />
