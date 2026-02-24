@@ -74,7 +74,7 @@ export function KcrPromoPage() {
       priceCard: 'R$ 147,00',
       pricePix: '117,00',
       installmentText: 'Ou 12x de R$ 11,92',
-      buttonText: 'Comprar agora',
+      buttonText: 'PAGAR AGORA',
       checkoutUrl: 'https://seguro.elabela.store/checkout?skipToCheckout=1&tokenReference=RC8ASYUL88'
   });
 
@@ -86,13 +86,12 @@ export function KcrPromoPage() {
     fetch('/api/page-settings/kcrpromo')
         .then(res => res.json())
         .then(data => {
-            // Se os dados do banco retornarem o valor antigo (97), ignoramos e usamos o novo (117)
             if (data && data.checkoutUrl) {
                 setConfig({
                   priceCard: data.priceCard && data.priceCard !== 'R$ 157,00' ? data.priceCard : 'R$ 147,00',
                   pricePix: data.pricePix && data.pricePix !== '97,00' ? data.pricePix : '117,00',
                   installmentText: data.installmentText && !data.installmentText.includes('9,74') ? data.installmentText : 'Ou 12x de R$ 11,92',
-                  buttonText: data.buttonText || 'Comprar agora',
+                  buttonText: 'PAGAR AGORA',
                   checkoutUrl: data.checkoutUrl
                 });
             }
