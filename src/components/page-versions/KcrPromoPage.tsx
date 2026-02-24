@@ -69,7 +69,7 @@ export function KcrPromoPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  // Padronizado para 147 -> 117
+  // Padronizado para R$ 117,00 (Preço Final)
   const [config, setConfig] = useState({
       priceCard: 'R$ 147,00',
       pricePix: '117,00',
