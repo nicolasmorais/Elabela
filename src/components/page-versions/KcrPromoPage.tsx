@@ -86,7 +86,13 @@ export function KcrPromoPage() {
         .then(res => res.json())
         .then(data => {
             if (data && data.checkoutUrl) {
-                setConfig(prev => ({ ...prev, ...data }));
+                setConfig({
+                  priceCard: data.priceCard || 'R$ 147,00',
+                  pricePix: data.pricePix || '117,00',
+                  installmentText: data.installmentText || 'Ou 12x de R$ 11,92',
+                  buttonText: data.buttonText || 'Comprar agora',
+                  checkoutUrl: data.checkoutUrl
+                });
             }
         })
         .catch(e => console.error("Erro ao carregar configurações."));
@@ -158,7 +164,7 @@ export function KcrPromoPage() {
         </main>
 
         <MobileStickyBar 
-            installmentText="12x de 11,92" 
+            installmentText={config.installmentText.includes('de') ? config.installmentText.split('de ')[1] : config.installmentText} 
             buttonText={config.buttonText} 
             checkoutUrl={config.checkoutUrl} 
         />
