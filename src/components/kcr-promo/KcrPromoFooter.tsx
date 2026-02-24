@@ -10,13 +10,15 @@ export const KcrPromoFooter = () => {
     <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
-            <div className="space-y-4">
-                <h3 className="text-sm font-black uppercase tracking-[0.2em]">Avisos e Isenções</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">Este conteúdo tem caráter informativo e educacional. Não substitui consulta médica. Os resultados variam de pessoa para pessoa.</p>
-            </div>
-            <div className="space-y-6 text-center md:text-left">
-                <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="Logo" className="h-14 mx-auto md:mx-0" />
-                <div className="text-xs text-slate-500"><p>OneBase | Soluções Digitais</p><p>CNPJ: 60.357.932/0001-18</p></div>
+            {/* Espaço vazio onde ficavam os avisos para manter o alinhamento da logo à direita ou remover se preferir centralizado */}
+            <div className="hidden md:block"></div>
+            
+            <div className="space-y-6 text-center md:text-right">
+                <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="Logo" className="h-14 mx-auto md:ml-auto md:mr-0" />
+                <div className="text-xs text-slate-500">
+                    <p className="font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
+                    <p>CNPJ: 60.357.932/0001-18</p>
+                </div>
             </div>
         </div>
 
