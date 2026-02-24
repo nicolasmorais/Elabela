@@ -4,6 +4,10 @@ import React from 'react';
 import { Microscope, Anchor, Layers, ShieldCheck } from 'lucide-react';
 
 export const KcrPromoScience = () => {
+  // Componente ocultado conforme solicitação
+  return null;
+
+  /*
   return (
     <section className="py-32 px-6 bg-white relative overflow-hidden border-b border-slate-100">
         <div className="max-w-6xl mx-auto space-y-24">
@@ -112,4 +116,5 @@ export const KcrPromoScience = () => {
         </div>
     </section>
   );
+  */
 };
