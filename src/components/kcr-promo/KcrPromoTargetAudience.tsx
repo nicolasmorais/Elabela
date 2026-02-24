@@ -3,6 +3,10 @@
 import React from 'react';
 
 export const KcrPromoTargetAudience = () => {
+  // Componente ocultado conforme solicitação
+  return null;
+
+  /*
   return (
     <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
@@ -45,4 +49,5 @@ export const KcrPromoTargetAudience = () => {
         </div>
     </section>
   );
+  */
 };
