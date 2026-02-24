@@ -70,9 +70,9 @@ export function KcrPromoPage() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const [config, setConfig] = useState({
-      priceCard: 'R$ 187,00',
-      pricePix: '147,00',
-      installmentText: 'Ou 12x de R$ 14,96',
+      priceCard: 'R$ 147,00',
+      pricePix: '117,00',
+      installmentText: 'Ou 12x de R$ 11,92',
       buttonText: 'Comprar agora',
       checkoutUrl: 'https://seguro.elabela.store/checkout?skipToCheckout=1&tokenReference=RC8ASYUL88'
   });
@@ -158,7 +158,7 @@ export function KcrPromoPage() {
         </main>
 
         <MobileStickyBar 
-            installmentText="12x de 14,96" 
+            installmentText="12x de 11,92" 
             buttonText={config.buttonText} 
             checkoutUrl={config.checkoutUrl} 
         />
