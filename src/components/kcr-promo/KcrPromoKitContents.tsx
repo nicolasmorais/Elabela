@@ -4,6 +4,10 @@ import React from 'react';
 import { ShoppingBag, CheckCircle2 } from 'lucide-react';
 
 export const KcrPromoKitContents = () => {
+  // Componente ocultado conforme solicitação
+  return null;
+
+  /*
   return (
     <div className="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] border-4 border-white relative overflow-hidden my-24 max-w-6xl mx-auto">
         <div className="space-y-12">
@@ -47,4 +51,5 @@ export const KcrPromoKitContents = () => {
         </div>
     </div>
   );
+  */
 };
