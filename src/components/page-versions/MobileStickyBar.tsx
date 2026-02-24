@@ -18,7 +18,7 @@ export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: Mo
       <div className="text-center mb-2">
         <p className="text-[9px] font-black uppercase tracking-[0.15em] text-red-600 flex items-center justify-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse"></span>
-          Finalize sua Compra e Ganhe um Secador (R$149)
+          ESTOQUE ACABANDO - PREÇO R$ 117,00
         </p>
       </div>
 
