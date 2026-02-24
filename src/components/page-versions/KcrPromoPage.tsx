@@ -116,6 +116,11 @@ export function KcrPromoPage() {
       <PageTracker contentId="kcrpromo" />
       <div className="bg-white text-slate-900 font-sans antialiased min-h-screen">
         
+        {/* BADGE TOPO */}
+        <div className="bg-slate-900 text-white py-2.5 text-center text-[10px] md:text-xs font-black uppercase tracking-[0.1em]">
+          🔒 Oferta Exclusiva — Disponível Só Para Você
+        </div>
+
         <KcrPromoNav />
         
         <main>
