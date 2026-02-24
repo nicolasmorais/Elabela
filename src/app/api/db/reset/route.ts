@@ -30,6 +30,12 @@ export async function POST() {
         { path: '/v2', name: 'Rota do Advertorial V2', content_id: 'v2' },
         { path: '/v3', name: 'Rota do Advertorial V3', content_id: 'v3' },
         { path: '/aprovado', name: 'Página de Aprovação (Preview)', content_id: 'ap' },
+        { path: '/menopausa', name: 'Vendas: Menopausa Nunca Mais', content_id: 'menopausa' },
+        { path: '/antiqueda', name: 'Vendas: Tratamento Antiqueda', content_id: 'antiqueda' },
+        { path: '/antiqueda2', name: 'Vendas: Tratamento Antiqueda V2', content_id: 'antiqueda2' },
+        { path: '/antiqueda3', name: 'Vendas: Tratamento Antiqueda V3', content_id: 'antiqueda3' },
+        { path: '/kcrpromo', name: 'Vendas: KCR Promo', content_id: 'kcrpromo' },
+        { path: '/clareador', name: 'Vendas: Clareador', content_id: 'clareador' },
     ];
 
     for (const route of defaultRoutes) {
