@@ -4,6 +4,10 @@ import React from 'react';
 import { Check, Anchor, Dumbbell, Droplets, Microscope, FlaskConical } from 'lucide-react';
 
 export const KcrPromoIngredients = () => {
+  // Componente ocultado conforme solicitação
+  return null;
+
+  /*
   return (
     <section className="py-32 px-6 bg-white overflow-hidden border-b border-slate-100">
         <div className="max-w-6xl mx-auto">
@@ -98,4 +102,5 @@ export const KcrPromoIngredients = () => {
         </div>
     </section>
   );
+  */
 };
