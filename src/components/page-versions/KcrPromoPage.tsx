@@ -69,6 +69,7 @@ export function KcrPromoPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  // Padronizado para 147 -> 117
   const [config, setConfig] = useState({
       priceCard: 'R$ 147,00',
       pricePix: '117,00',
@@ -85,11 +86,12 @@ export function KcrPromoPage() {
     fetch('/api/page-settings/kcrpromo')
         .then(res => res.json())
         .then(data => {
+            // Se os dados do banco retornarem o valor antigo (97), ignoramos e usamos o novo (117)
             if (data && data.checkoutUrl) {
                 setConfig({
-                  priceCard: data.priceCard || 'R$ 147,00',
-                  pricePix: data.pricePix || '117,00',
-                  installmentText: data.installmentText || 'Ou 12x de R$ 11,92',
+                  priceCard: data.priceCard && data.priceCard !== 'R$ 157,00' ? data.priceCard : 'R$ 147,00',
+                  pricePix: data.pricePix && data.pricePix !== '97,00' ? data.pricePix : '117,00',
+                  installmentText: data.installmentText && !data.installmentText.includes('9,74') ? data.installmentText : 'Ou 12x de R$ 11,92',
                   buttonText: data.buttonText || 'Comprar agora',
                   checkoutUrl: data.checkoutUrl
                 });
@@ -164,7 +166,7 @@ export function KcrPromoPage() {
         </main>
 
         <MobileStickyBar 
-            installmentText={config.installmentText.includes('de') ? config.installmentText.split('de ')[1] : config.installmentText} 
+            installmentText={config.installmentText.includes('de') ? config.installmentText.split('de ')[1] : 'R$ 11,92'} 
             buttonText={config.buttonText} 
             checkoutUrl={config.checkoutUrl} 
         />
