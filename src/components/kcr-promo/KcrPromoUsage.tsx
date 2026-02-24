@@ -4,6 +4,10 @@ import React from 'react';
 import { Play, Calendar, Clock, Check, Lightbulb, Info, AlertCircle, ShieldAlert } from 'lucide-react';
 
 export const KcrPromoUsage = () => {
+  // Componente ocultado conforme solicitação
+  return null;
+
+  /*
   return (
     <section className="py-32 px-6 bg-[#FDF8F3] relative overflow-hidden border-b border-orange-100">
         <div className="max-w-6xl mx-auto space-y-20">
@@ -92,4 +96,5 @@ export const KcrPromoUsage = () => {
         </div>
     </section>
   );
+  */
 };
