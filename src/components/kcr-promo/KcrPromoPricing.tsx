@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard, Zap, ShieldAlert } from 'lucide-react';
+import { ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard, Zap, ShieldAlert, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
