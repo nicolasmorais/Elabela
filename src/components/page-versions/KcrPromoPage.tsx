@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { PageTracker } from "./PageTracker";
 import { MobileStickyBar } from './MobileStickyBar';
-import { ShieldCheck } from 'lucide-react'; // Adicionado para o novo design de garantia
+import { ShieldCheck } from 'lucide-react';
 
 // Componentes Modulares
 import { KcrPromoNav } from '@/components/kcr-promo/KcrPromoNav';
 import { KcrPromoHero } from '@/components/kcr-promo/KcrPromoHero';
 import { KcrPromoMediaBar } from '@/components/kcr-promo/KcrPromoMediaBar';
 import { KcrPromoResultsGallery } from '@/components/kcr-promo/KcrPromoResultsGallery';
+import { KcrPromoFreeGift } from '@/components/kcr-promo/KcrPromoFreeGift'; // NOVO
 import { KcrPromoTargetAudience } from '@/components/kcr-promo/KcrPromoTargetAudience';
 import { KcrPromoScience } from '@/components/kcr-promo/KcrPromoScience';
 import { KcrPromoIngredients } from '@/components/kcr-promo/KcrPromoIngredients';
@@ -139,6 +140,8 @@ export function KcrPromoPage() {
 
             <KcrPromoResultsGallery images={GALLERY_IMAGES} />
 
+            <KcrPromoFreeGift /> {/* POSICIONADO AQUI CONFORME SOLICITADO */}
+
             <KcrPromoTargetAudience />
 
             <KcrPromoScience />
@@ -160,7 +163,6 @@ export function KcrPromoPage() {
             <section className="py-24 px-6 bg-white">
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/20 p-12 md:p-20 rounded-[4rem] text-center relative overflow-hidden">
-                        {/* Elemento Decorativo de Fundo */}
                         <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
                             <ShieldCheck size={200} className="text-orange-950" />
                         </div>
