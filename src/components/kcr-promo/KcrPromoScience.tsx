@@ -4,10 +4,6 @@ import React from 'react';
 import { Microscope, Anchor, Layers, ShieldCheck } from 'lucide-react';
 
 export const KcrPromoScience = () => {
-  // Componente ocultado conforme solicitação
-  return null;
-
-  /*
   return (
     <section className="py-32 px-6 bg-white relative overflow-hidden border-b border-slate-100">
         <div className="max-w-6xl mx-auto space-y-24">
@@ -107,7 +103,7 @@ export const KcrPromoScience = () => {
                                 <div className="p-5 bg-[#FDF8F3] rounded-3xl border border-orange-100 text-xs text-slate-500 italic leading-relaxed">
                                     <span className="font-black text-slate-900 not-italic uppercase block mb-1 text-[9px] tracking-widest">Analogia Profissional:</span>
                                     {step.analogia}
-                                </div>
+                                00</div>
                             </div>
                         </div>
                     </div>
@@ -116,5 +112,4 @@ export const KcrPromoScience = () => {
         </div>
     </section>
   );
-  */
 };
