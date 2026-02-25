@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-center';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -27,8 +27,8 @@ export const KcrPromoHero = ({
     formatTime,
     timeLeft
 }: KcrPromoHeroProps) => {
-  // Garantindo que use o link solicitado ou o do banco de dados
-  const checkoutUrl = config.checkoutUrl || 'https://seguro.elabela.store/r/I83HKZOFGP';
+  // Definindo o link fixo conforme solicitado
+  const checkoutUrl = 'https://seguro.elabela.store/r/I83HKZOFGP';
 
   return (
     <header className="relative pt-12 md:pt-20 pb-16 md:pb-24 px-6 overflow-hidden bg-white border-b border-slate-100">

@@ -12,8 +12,8 @@ interface KcrPromoPricingProps {
 }
 
 export const KcrPromoPricing = ({ config, formatTime, timeLeft }: KcrPromoPricingProps) => {
-  // Garantindo que use o link solicitado ou o do banco de dados
-  const checkoutUrl = config.checkoutUrl || 'https://seguro.elabela.store/r/I83HKZOFGP';
+  // Forçando o link direto
+  const checkoutUrl = 'https://seguro.elabela.store/r/I83HKZOFGP';
 
   return (
     <section id="pricing" className="py-24 px-6 bg-white relative overflow-hidden">
