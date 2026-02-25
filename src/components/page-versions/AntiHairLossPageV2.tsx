@@ -42,7 +42,7 @@ const AMAZOLÉ_KITS = [
   }
 ];
 
-export function AntiHairLossPageV2() {
+export function ClareadorPageV2() {
   const [timeLeft, setTimeLeft] = useState(37860);
   const [selectedKit, setSelectedKit] = useState(AMAZOLÉ_KITS[1]);
   const [config, setConfig] = useState({ pricePix: '167,00' });
@@ -65,7 +65,7 @@ export function AntiHairLossPageV2() {
 
   return (
     <>
-      <PageTracker contentId="antiqueda2" />
+      <PageTracker contentId="clareador-v2" />
       <div className="bg-white text-brand-text font-sans antialiased min-h-screen">
         {/* BARRA DE FRETE NO TOPO */}
         <div className="bg-brand-blue-dark text-white py-2 text-center text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
