@@ -47,8 +47,7 @@ export const KcrPromoFreeGift = () => {
                                 <p className="font-black uppercase tracking-tight text-xl">São apenas 100 unidades.</p>
                             </div>
                             <p className="text-sm text-red-900 font-medium">
-                                Quando esgotar, o secador sai automaticamente do pedido — sem aviso, sem segunda chance. <br />
-                                <strong className="underline">Se você está lendo isso, ainda há unidades disponíveis.</strong>
+                                Quando esgotar, o secador sai automaticamente do pedido — sem aviso, sem segunda chance.
                             </p>
                         </div>
                     </div>
