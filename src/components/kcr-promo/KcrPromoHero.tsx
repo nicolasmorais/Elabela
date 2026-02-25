@@ -27,6 +27,9 @@ export const KcrPromoHero = ({
     formatTime,
     timeLeft
 }: KcrPromoHeroProps) => {
+  // Garantindo que use o link solicitado ou o do banco de dados
+  const checkoutUrl = config.checkoutUrl || 'https://seguro.elabela.store/r/I83HKZOFGP';
+
   return (
     <header className="relative pt-12 md:pt-20 pb-16 md:pb-24 px-6 overflow-hidden bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
@@ -122,7 +125,7 @@ export const KcrPromoHero = ({
                     </div>
 
                     <div className="space-y-4 pt-4">
-                        <Link href={config.checkoutUrl} target="_blank">
+                        <Link href={checkoutUrl} target="_blank">
                             <Button 
                                 className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group"
                                 style={{ backgroundColor: '#35c867' }}

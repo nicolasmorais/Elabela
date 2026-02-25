@@ -12,6 +12,9 @@ interface KcrPromoPricingProps {
 }
 
 export const KcrPromoPricing = ({ config, formatTime, timeLeft }: KcrPromoPricingProps) => {
+  // Garantindo que use o link solicitado ou o do banco de dados
+  const checkoutUrl = config.checkoutUrl || 'https://seguro.elabela.store/r/I83HKZOFGP';
+
   return (
     <section id="pricing" className="py-24 px-6 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-50 via-transparent to-transparent opacity-50"></div>
@@ -51,7 +54,7 @@ export const KcrPromoPricing = ({ config, formatTime, timeLeft }: KcrPromoPricin
                     </div>
 
                     <div className="w-full space-y-6">
-                        <Link href={config.checkoutUrl} className="block group/btn" target="_blank" rel="noopener noreferrer">
+                        <Link href={checkoutUrl} className="block group/btn" target="_blank" rel="noopener noreferrer">
                             <Button className="w-full h-24 bg-green-600 hover:bg-green-700 text-white rounded-[2.5rem] shadow-xl shadow-green-100 transition-all hover:scale-[1.02] flex flex-col items-center justify-center gap-1 overflow-hidden">
                                 <span className="text-2xl md:text-3xl font-black uppercase tracking-tight flex items-center gap-3 relative z-10">
                                     <ShoppingBag size={28} /> {config.buttonText}
