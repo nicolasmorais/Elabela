@@ -475,7 +475,7 @@ export function AntiHairLossPageV2() {
                                 title: "CAMADA 3: SELA E PROTEGE", 
                                 prod: "Condicionador + Leave-in",
                                 desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                                feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                                feels: ["Imediato: Fio de desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                                 analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                             }
                         ].map((step, i) => (
@@ -648,7 +648,7 @@ export function AntiHairLossPageV2() {
                                 {[
                                     { n: "1️⃣", t: "SHAMPOO RECONSTRUTOR", d: "Aplique no cabelo molhado, massageie o couro cabeludo até espumar. Enxágue e REPITA (segunda lavada = absorção melhor).", time: "3 minutos" },
                                     { n: "2️⃣", t: "CONDICIONADOR FORTIFICANTE", d: "Aplique do meio às pontas (evite raiz). Deixe agir por 2 minutos e enxágue completamente.", time: "2 minutos" },
-                                    { n: "3️⃣", t: "LEAVE-IN PROTETOR", d: "Com o cabelo úmido, espalhe nas mãos e aplique do meio às pontas. NÃO enxágue. Seque normalmente.", time: "1 minute" }
+                                    { n: "3️⃣", t: "LEAVE-IN PROTETOR", d: "Com o cabelo úmido, espalhe nas mãos e aplique do meio às pontas. NÃO enxágue. Seque normalmente.", time: "1 minuto" }
                                 ].map((step, i) => (
                                     <div key={i} className="flex gap-6 group">
                                         <div className="h-10 w-10 shrink-0 bg-[#FDF8F3] rounded-xl flex items-center justify-center font-black text-orange-800 text-lg border border-orange-100 group-hover:scale-110 transition-transform">{step.n.replace(/[^\d]/g, '')}</div>
@@ -872,7 +872,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: FAQ COMPLETO */}
+            {/* SEÇÃO: FAQ (PERGUNTAS FREQUENTES) */}
             <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
                 <div className="max-w-4xl mx-auto space-y-12">
                     <div className="text-center space-y-4 mb-16">
@@ -889,7 +889,11 @@ export function AntiHairLossPageV2() {
                                     { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
                                     { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Produtos comuns mascaram. Este reconstrói a raiz." },
                                     { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
-                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar\n→ 30 dias: Bebês começam a nascer" }
+                                    { q: "❓ Funciona para queda por estresse?", a: "SIM. Fortalece a raiz independente da causa." },
+                                    { q: "❓ Tenho couro cabeludo oleoso/seco. Posso usar?", a: "PODE. pH balanceado para todos os tipos." },
+                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar\n→ 30 dias: Bebês começam a nascer" },
+                                    { q: "❓ Preciso usar para sempre?", a: "NÃO. Após 2-3 meses intensivos, pode fazer manutenção 2-3x por semana." },
+                                    { q: "❓ Funciona para calvície?", a: "Se você ainda TEM cabelo, funciona. Fortalece raiz viva. Calvície total (sem raiz) = Não resolve." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`produto-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
                                         <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
@@ -901,13 +905,68 @@ export function AntiHairLossPageV2() {
 
                         {/* SOBRE PREÇO E PAGAMENTO */}
                         <div className="space-y-6">
-                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PAGAMENTO</h3>
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PREÇO E PAGAMENTO</h3>
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
                                     { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
-                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." }
+                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." },
+                                    { q: "❓ Tem desconto maior?", a: "NÃO. Este é o menor preço possível. De R$ 297 por R$ 147,00 = 50% OFF" },
+                                    { q: "❓ E se não funcionar?", a: "GARANTIA DE 7 DIAS. Use por 1 semana. Não funcionou? Devolvemos 100% do valor. Sem perguntas. Sem burocracia." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE ENTREGA */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">📦 SOBRE ENTREGA</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Frete é grátis?", a: "SIM. Para todo o Brasil. Rastreio + Seguro inclusos." },
+                                    { q: "❓ Quanto tempo para chegar?", a: "→ Sudeste/Sul: 3-7 dias úteis\n→ Demais regiões: 5-12 dias úteis\nEnvio em até 24h úteis após confirmação." },
+                                    { q: "❓ É seguro comprar?", a: "SIM.\n✅ Certificado SSL\n✅ Checkout seguro\n✅ Nota fiscal\n✅ CNPJ ativo" }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`entrega-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE USO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">🧴 SOBRE USO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ É difícil de usar?", a: "NÃO. Banho normal:\n1. Shampoo (3 min)\n2. Condicionador (2 min)\n3. Leave-in (1 min)\n4. Máscara 2x/semana (15 min)" },
+                                    { q: "❓ Quanto tempo dura o kit?", a: "2 a 3 meses de uso normal.\nR$ 147,00 ÷ 75 dias = R$ 1,96/dia" },
+                                    { q: "❓ Preciso usar os 4 produtos?", a: "SIM. Eles trabalham juntos:\n→ Shampoo: Ancora raiz\n→ Condicionador: Sela cutícula\n→ Máscara: Reconstrói fibra\n→ Leave-in: Protege\nUsar só alguns = Resultado pela metade." },
+                                    { q: "❓ Tenho química no cabelo. Posso usar?", a: "PODE. E deve. Química enfraquece. Kit reconstrói." },
+                                    { q: "❓ Grávida pode usar?", a: "Produtos de uso externo = Seguro. Mas consulte seu médico antes." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`uso-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE ESTOQUE */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">⚠️ SOBRE ESTOQUE</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ \"Últimas unidades\" é verdade?", a: "SIM. Produção em lotes pequenos. Alta demanda. Quando acaba = Acaba." },
+                                    { q: "❓ Posso comprar depois?", a: "PODE. Mas:\n→ Preço volta para R$ 297\n→ Frete deixa de ser grátis\n→ Esta oferta não se repete" },
+                                    { q: "❓ Ainda tenho dúvidas. Como falar com vocês?", a: "📧 contato@cavalo-de-raca.pro\nResposta em até 24h úteis." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`estoque-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
                                         <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
                                         <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
                                     </AccordionItem>
@@ -918,7 +977,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: GARANTIA */}
+            {/* SEÇÃO: GARANTIA (ORIGINAL) */}
             <section className="py-24 px-6 bg-white border-t border-slate-50">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
@@ -932,39 +991,137 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* FOOTER COMPLETO COM MODAIS */}
-            <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
+            {/* FOOTER COMPLETO */}
+            <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
               <div className="max-w-6xl mx-auto px-6">
+                
+                {/* SEÇÃO JURÍDICA SUPERIOR */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-orange-100">
                     <div className="space-y-4">
                         <h3 className="text-sm font-black text-orange-950 uppercase tracking-[0.2em]">Avisos e Isenções de Responsabilidade</h3>
-                        <div className="text-xs text-slate-500 leading-relaxed space-y-2">
-                            <p>Este conteúdo tem caráter exclusivamente informativo. Não oferece diagnóstico ou cura. Resultados podem variar entre indivíduos.</p>
-                            <p>Aviso de Idade: Conteúdo destinado a maiores de 18 anos.</p>
+                        <div className="space-y-4 text-xs text-slate-500 leading-relaxed text-justify">
+                            <div>
+                                <p className="font-bold text-slate-700 mb-1">Isenção de Responsabilidade</p>
+                                <p>Este conteúdo tem caráter exclusivamente informativo e educacional. Não oferece diagnóstico, tratamento ou cura de condições de saúde. Os resultados podem variar de pessoa para pessoa. Sempre consulte um profissional de saúde qualificado antes de iniciar qualquer mudança na dieta, no consumo de chás, suplementos ou rotina de bem-estar.</p>
+                            </div>
+                            <div>
+                                <p className="font-bold text-slate-700 mb-1">Aviso de Idade</p>
+                                <p>Conteúdo destinado a maiores de 18 anos.</p>
+                            </div>
+                            <div>
+                                <p className="font-bold text-slate-700 mb-1">Declaração de Risco</p>
+                                <p>O uso de qualquer produto natural deve ser feito com responsabilidade. Pessoas com condições médicas pré-existentes, gestantes, lactantes ou usuários de medicamentos devem buscar orientação profissional antes do consumo.</p>
+                            </div>
                         </div>
                     </div>
+
                     <div className="space-y-6 text-center md:text-left">
-                        <img src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" alt="Logo" className="h-14 mx-auto md:mx-0" />
-                        <div className="text-xs text-slate-500"><p>OneBase | Soluções Digitais</p><p>CNPJ: 60.357.932/0001-18</p></div>
+                        <img 
+                            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769910342967-ChatGPT-Image-31-de-jan.-de-2026,-22_38_10-(1).png" 
+                            alt="OneBase Logo" 
+                            className="h-14 mx-auto md:mx-0"
+                        />
+                        <div className="space-y-2">
+                            <p className="text-sm font-black text-orange-800 uppercase tracking-widest">OneBase | Soluções Digitais</p>
+                            <p className="text-xs text-slate-500 leading-relaxed">
+                                E-Business Rio Verde | Aparecida de Goiania - GO<br />
+                                CNPJ: 60.357.932/0001-18
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <nav className="flex flex-col md:flex-row gap-8 justify-center mb-12 text-xs font-bold uppercase tracking-widest text-slate-500">
-                    <Dialog>
-                        <DialogTrigger className="hover:text-orange-600">Termos e Condições</DialogTrigger>
-                        <DialogContent className="max-w-2xl"><DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader><ScrollArea className="h-96 pr-4 text-sm leading-relaxed"><p>Ao acessar este site, o usuário concorda com os termos informativos. Os produtos não substituem recomendações médicas...</p></ScrollArea></DialogContent>
-                    </Dialog>
-                    <Dialog>
-                        <DialogTrigger className="hover:text-orange-600">Privacidade</DialogTrigger>
-                        <DialogContent className="max-w-2xl"><DialogHeader><DialogTitle>Privacidade</DialogTitle></DialogHeader><ScrollArea className="h-96 pr-4 text-sm leading-relaxed"><p>Valorizamos sua privacidade. Dados são usados apenas para suporte e atendimento...</p></ScrollArea></DialogContent>
-                    </Dialog>
-                </nav>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 items-start mb-20">
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Links Úteis</p>
+                    <nav className="flex flex-col gap-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+                        
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Termos e Condições</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Termos e Condições</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                    <p>Ao acessar este site, o usuário concorda que todo o conteúdo exibido — incluindo textos, imagens, vídeos e informações — possui caráter exclusivamente informativo.</p><br/>
+                                    <p>Os produtos apresentados não substituem consultas, diagnósticos ou recomendações de profissionais da saúde.</p><br/>
+                                    <p>As informações sobre preços, disponibilidade, frete e políticas comerciais podem ser modificadas a qualquer momento, sem aviso prévio.</p><br/>
+                                    <p>O uso dos produtos adquiridos é de responsabilidade do consumidor, que deve sempre seguir as orientações descritas na embalagem ou no material que acompanha o produto.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
 
-                <div className="text-center opacity-50 flex justify-center gap-6 mb-8"><ShieldCheck size={40} /><Lock size={40} /><CreditCard size={40} /></div>
-                <div className="text-center pt-8 border-t border-slate-200"><p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p></div>
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Privacidade</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[600px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Política de Privacidade</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600">
+                                    <p>Valorizamos sua privacidade. Todas as informações fornecidas voluntariamente pelo usuário — como nome, e-mail ou dados inseridos em formulários — são utilizadas apenas para fins de atendimento, envio de comunicações solicitadas ou suporte relacionado aos produtos oferecidos.</p><br/>
+                                    <p>Não compartilhamos, vendemos ou divulgamos dados a terceiros sem autorização do usuário, exceto quando exigido por lei.</p><br/>
+                                    <p>O usuário pode solicitar a remoção ou alteração de seus dados a qualquer momento por meio de nossos canais de suporte. Consulte esta página regularmente, pois nossa Política de Privacidade pode ser atualizada conforme necessário.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
+
+                        <Dialog>
+                            <DialogTrigger asChild><button className="hover:text-orange-600 transition-colors text-left">Política de Reembolso</button></DialogTrigger>
+                            <DialogContent className="sm:max-w-[700px] max-h-[80vh]">
+                                <DialogHeader><DialogTitle>Política de Reembolso</DialogTitle></DialogHeader>
+                                <ScrollArea className="pr-4 py-4 text-sm leading-relaxed text-slate-600 space-y-4">
+                                    <p>Por se tratar de um produto digital, o acesso ao conteúdo é liberado imediatamente após a confirmação do pagamento. Ainda assim, oferecemos uma política de reembolso transparente para garantir a satisfação do cliente.</p>
+                                    <p>Você pode solicitar o reembolso em até 7 dias corridos após a compra, conforme o Código de Defesa do Consumidor, desde que respeitadas as condições abaixo:</p>
+                                    <p><strong>Como solicitar o reembolso:</strong> Para iniciar o processo, envie um e-mail para nosso suporte: 📩 contato@oneconversion.pro</p>
+                                    <p>Inclua obrigatoriamente as seguintes informações: Nome completo, E-mail utilizado na compra, Número do pedido, Data da compra e Motivo da solicitação (opcional).</p>
+                                    <p><strong>Processo de avaliação:</strong> Após recebermos seu e-mail: Nossa equipe irá confirmar os dados da compra; O acesso ao produto digital será revogado; O pedido de reembolso será processado em até 5 dias úteis.</p>
+                                    <p><strong>Forma de reembolso:</strong> Pagamentos via cartão (5 a 15 dias úteis); Pagamentos via Pix (até 5 dias úteis); Pagamentos via boleto (necessário informar conta bancária).</p>
+                                    <p><strong>Casos em que o reembolso pode ser recusado:</strong> Solicitação após 7 dias; evidência de uso excessivo ou violação de direitos autorais; falta de dados de identificação.</p>
+                                </ScrollArea>
+                            </DialogContent>
+                        </Dialog>
+
+                    </nav>
+                  </div>
+
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Precisa de Ajuda?</p>
+                    <div className="space-y-4">
+                        <div className="inline-block p-4 rounded-2xl bg-black/5 border border-slate-200 w-full">
+                            <p className="text-[10px] font-black uppercase text-orange-800 mb-1">E-mail de Suporte</p>
+                            <p className="text-sm font-bold text-slate-900">contato@cavalo-de-raca.pro</p>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6 text-center md:text-left">
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-900/80">Segurança</p>
+                    <div className="flex justify-center md:justify-start gap-4 opacity-50">
+                        <ShieldCheck size={40} strokeWidth={1} />
+                        <Lock size={40} strokeWidth={1} />
+                        <CreditCard size={40} strokeWidth={1} />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-12 border-t border-slate-200 space-y-8">
+                    <div className="max-w-4xl mx-auto space-y-6">
+                        <p className="text-[10px] text-slate-400 leading-relaxed uppercase tracking-[0.1em] text-center italic">
+                            <strong>IMPORTANTE:</strong> Os resultados podem variar de pessoa para pessoa.
+                        </p>
+                        <div className="flex flex-col items-center gap-4">
+                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em]">© 2024 Cavalo de Raça - Original Bio Instinto</p>
+                        </div>
+                    </div>
+                </div>
               </div>
             </footer>
+
         </div>
+
+        {/* STICKY BAR MOBILE */}
+        <MobileStickyBar 
+          installmentText={config.installmentText.split('de ')[1] || config.installmentText}
+          buttonText={config.buttonText} 
+          checkoutUrl={config.checkoutUrl} 
+        />
       </div>
     </>
   );
