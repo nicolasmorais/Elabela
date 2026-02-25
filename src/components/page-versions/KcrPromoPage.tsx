@@ -36,7 +36,7 @@ const GALLERY_IMAGES = [
 
 const DELIVERY_TESTIMONIALS = [
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771982908068-ChatGPT-Image-24-de-fev.-de-2026,-21_12_30.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771983983446-ChatGPT-Image-24-de-fev.-de-2026,-22_46_15.png",
     text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje e o brinde é lindo demais. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme.",
     author: "Marta S., São Paulo"
   },
