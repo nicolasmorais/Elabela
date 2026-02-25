@@ -16,7 +16,7 @@ export const MobileStickyBar = ({ buttonText, checkoutUrl }: MobileStickyBarProp
       <Link href={checkoutUrl} className="block" target="_blank" rel="noopener noreferrer">
         <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-center gap-3 overflow-hidden px-5 py-0">
           <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
-              {buttonText || 'PAGAR AGORA'}
+              Finalizar compra com desconto
               <ArrowRight size={22} className="shrink-0" />
           </span>
         </Button>
