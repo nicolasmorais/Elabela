@@ -41,28 +41,7 @@ export const KcrPromoFreeGift = () => {
                             A partir de 10/02, as 100 primeiras clientes que finalizarem a compra do Kit Cavalo de Raça receberão um Secador Profissional completamente grátis, junto com o kit — sem custo adicional, sem frete separado.
                         </p>
 
-                        <div className="space-y-4 pt-4 border-t border-orange-100">
-                            <h3 className="text-xl font-black text-slate-950 uppercase tracking-tight flex items-center gap-2">
-                                <div className="p-2 bg-slate-900 text-white rounded-lg"><Zap size={18} fill="currentColor" /></div>
-                                Por que estamos incluindo um secador?
-                            </h3>
-                            <p>
-                                A maioria das mulheres trata a queda no banho e destrói tudo na hora de secar. 
-                                O calor excessivo abre as cutículas, fragiliza a fibra e quebra exatamente o fio que o kit acabou de reconstruir. É como reformar uma parede e bater nela com um martelo logo depois.
-                            </p>
-                            <p className="bg-white p-6 rounded-2xl border-l-4 border-orange-500 shadow-sm font-medium italic">
-                                "O Secador que você vai receber tem a Tecnologia <strong className="text-orange-800">IonShield X3</strong> — que libera íons negativos durante a secagem, selando as cutículas em vez de abri-las, reduzindo o atrito e protegendo a estrutura do fio reconstruído pelo kit."
-                            </p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <p className="font-black text-slate-950 uppercase text-sm tracking-widest">Na prática:</p>
-                            <p className="text-xl">
-                                O kit para a queda <strong className="text-orange-700">por dentro</strong>. O secador protege <strong className="text-orange-700">por fora</strong>. Os dois juntos fecham o ciclo completo do tratamento.
-                            </p>
-                        </div>
-
-                        <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] space-y-4">
+                        <div className="bg-red-50 border-2 border-red-100 p-6 rounded-[2rem] space-y-4 mt-8">
                             <div className="flex items-center gap-3 text-red-600">
                                 <ShieldAlert size={24} />
                                 <p className="font-black uppercase tracking-tight text-xl">São apenas 100 unidades.</p>
