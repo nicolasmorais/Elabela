@@ -36,18 +36,18 @@ const GALLERY_IMAGES = [
 
 const DELIVERY_TESTIMONIALS = [
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558637636-1.png",
-    text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme e cheiroso.",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771982908068-ChatGPT-Image-24-de-fev.-de-2026,-21_12_30.png",
+    text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje e o brinde é lindo demais. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme.",
     author: "Marta S., São Paulo"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
-    text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. Notei que caiu bem menos fios no banho, já sinto a diferença na quebra.",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771982931791-ChatGPT-Image-24-de-fev.-de-2026,-21_24_04.png",
+    text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. O secador que veio de brinde é potente e ajudou muito a não quebrar os fios.",
     author: "Juliana P., Rio de Janeiro"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558644450-3.png",
-    text: "Recebi em tempo recorde! O kit é lindo e muito cheiroso. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a quebra diminuiu logo de cara.",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771982905910-Gemini_Generated_Image_11sdqx11sdqx11sdqx.png",
+    text: "Recebi em tempo recorde! O kit é lindo e o brinde me surpreendeu. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a queda diminuiu logo de cara.",
     author: "Fernanda L., Belo Horizonte"
   },
   {
@@ -162,7 +162,7 @@ export function KcrPromoPage() {
 
             <section className="py-24 px-6 bg-white">
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/20 p-12 md:p-20 rounded-[4rem] text-center relative overflow-hidden">
+                    <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-50/20 p-12 md:p-20 rounded-[4rem] text-center relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
                             <ShieldCheck size={200} className="text-orange-950" />
                         </div>
@@ -183,7 +183,7 @@ export function KcrPromoPage() {
                             </div>
 
                             <div className="pt-8">
-                                <div className="inline-flex items-center gap-3 px-6 py-2 bg-slate-900 text-orange-400 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg border border-orange-500/20">
+                                <div className="inline-flex items-center gap-3 px-6 py-2 bg-slate-900 text-orange-400 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg border border-orange-50/20">
                                     Selo de Compromisso Total
                                 </div>
                             </div>
