@@ -71,13 +71,13 @@ export function KcrPromoPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  // Padronizado para R$ 117,00 (Preço Final)
+  // Padronizado para R$ 117,00 (Preço Final) e link atualizado
   const [config, setConfig] = useState({
       priceCard: 'R$ 147,00',
       pricePix: '117,00',
       installmentText: 'Ou 12x de R$ 11,92',
       buttonText: 'PAGAR AGORA',
-      checkoutUrl: 'https://seguro.elabela.store/checkout?skipToCheckout=1&tokenReference=RC8ASYUL88'
+      checkoutUrl: 'https://seguro.elabela.store/r/I83HKZOFGP'
   });
 
   useEffect(() => {
