@@ -130,6 +130,7 @@ export function AntiHairLossPageV2() {
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
 
+    // AJUSTADO: Agora busca as configurações específicas desta versão (antiqueda2)
     fetch('/api/page-settings/antiqueda2')
         .then(res => res.json())
         .then(data => {
@@ -269,7 +270,7 @@ export function AntiHairLossPageV2() {
                         </p>
                     </div>
 
-                    {/* DEPOIMENTO ABAIXO DO PREÇO */}
+                    {/* NOVO DEPOIMENTO ABAIXO DO PREÇO */}
                     <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl space-y-2">
                         <p className="text-slate-800 font-black text-xl italic leading-tight">
                             "Todo Dia Era um Bolo de Cabelo no Pente... <br />
@@ -280,7 +281,7 @@ export function AntiHairLossPageV2() {
                         </p>
                     </div>
 
-                    {/* BOTÃO COMPRAR AGORA */}
+                    {/* BOTÃO COMPRAR AGORA MELHORADO */}
                     <div className="space-y-4 pt-4">
                         <Link href={config.checkoutUrl} target="_blank">
                             <Button 
@@ -474,7 +475,7 @@ export function AntiHairLossPageV2() {
                                 title: "CAMADA 3: SELA E PROTEGE", 
                                 prod: "Condicionador + Leave-in",
                                 desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                                feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                                feels: ["Imediato: Fio de desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                                 analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                             }
                         ].map((step, i) => (
@@ -871,7 +872,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: FAQ COMPLETO */}
+            {/* SEÇÃO: FAQ (PERGUNTAS FREQUENTES) */}
             <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100">
                 <div className="max-w-4xl mx-auto space-y-12">
                     <div className="text-center space-y-4 mb-16">
@@ -888,7 +889,11 @@ export function AntiHairLossPageV2() {
                                     { q: "❓ Funciona mesmo?", a: "SIM. 12.847 clientes comprovam. 87% tiveram redução de queda em 7 dias. Garantia de 7 dias: não funcionou = dinheiro de volta." },
                                     { q: "❓ Já tentei outros produtos e não funcionaram. Por que este seria diferente?", a: "Formulação profissional com Biotina + Proteína de Trigo + Pantenol. Produtos comuns mascaram. Este reconstrói a raiz." },
                                     { q: "❓ Funciona para queda pós-parto?", a: "SIM. É quando mais funciona. Fortalece raiz enfraquecida pelos hormônios." },
-                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar\n→ 30 dias: Bebês começam a nascer" }
+                                    { q: "❓ Funciona para queda por estresse?", a: "SIM. Fortalece a raiz independente da causa." },
+                                    { q: "❓ Tenho couro cabeludo oleoso/seco. Posso usar?", a: "PODE. pH balanceado para todos os tipos." },
+                                    { q: "❓ Quanto tempo para ver resultado?", a: "→ 3-5 dias: Queda reduz 40-50%\n→ 7 dias: Queda estanca 80-90%\n→ 14 dias: Fios param de quebrar\n→ 30 dias: Bebês começam a nascer" },
+                                    { q: "❓ Preciso usar para sempre?", a: "NÃO. Após 2-3 meses intensivos, pode fazer manutenção 2-3x por semana." },
+                                    { q: "❓ Funciona para calvície?", a: "Se você ainda TEM cabelo, funciona. Fortalece raiz viva. Calvície total (sem raiz) = Não resolve." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`produto-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
                                         <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
@@ -900,13 +905,68 @@ export function AntiHairLossPageV2() {
 
                         {/* SOBRE PREÇO E PAGAMENTO */}
                         <div className="space-y-6">
-                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PAGAMENTO</h3>
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">💳 SOBRE PREÇO E PAGAMENTO</h3>
                             <Accordion type="single" collapsible className="w-full space-y-3">
                                 {[
                                     { q: "❓ Por que R$ 147,00?", a: "Venda direta da indústria. Sem intermediários. Sem markup. Preço normal em salões: R$ 297" },
-                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." }
+                                    { q: "❓ Posso parcelar?", a: "SIM. Em 12x de R$ 14,96 no cartão. Ou R$ 147,00 no PIX (desconto aplicado)." },
+                                    { q: "❓ Tem desconto maior?", a: "NÃO. Este é o menor preço possível. De R$ 297 por R$ 147,00 = 50% OFF" },
+                                    { q: "❓ E se não funcionar?", a: "GARANTIA DE 7 DIAS. Use por 1 semana. Não funcionou? Devolvemos 100% do valor. Sem perguntas. Sem burocracia." }
                                 ].map((item, i) => (
                                     <AccordionItem key={i} value={`pagamento-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE ENTREGA */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">📦 SOBRE ENTREGA</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ Frete é grátis?", a: "SIM. Para todo o Brasil. Rastreio + Seguro inclusos." },
+                                    { q: "❓ Quanto tempo para chegar?", a: "→ Sudeste/Sul: 3-7 dias úteis\n→ Demais regiões: 5-12 dias úteis\nEnvio em até 24h úteis após confirmação." },
+                                    { q: "❓ É seguro comprar?", a: "SIM.\n✅ Certificado SSL\n✅ Checkout seguro\n✅ Nota fiscal\n✅ CNPJ ativo" }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`entrega-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE USO */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">🧴 SOBRE USO</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ É difícil de usar?", a: "NÃO. Banho normal:\n1. Shampoo (3 min)\n2. Condicionador (2 min)\n3. Leave-in (1 min)\n4. Máscara 2x/semana (15 min)" },
+                                    { q: "❓ Quanto tempo dura o kit?", a: "2 a 3 meses de uso normal.\nR$ 147,00 ÷ 75 dias = R$ 1,96/dia" },
+                                    { q: "❓ Preciso usar os 4 produtos?", a: "SIM. Eles trabalham juntos:\n→ Shampoo: Ancora raiz\n→ Condicionador: Sela cutícula\n→ Máscara: Reconstrói fibra\n→ Leave-in: Protege\nUsar só alguns = Resultado pela metade." },
+                                    { q: "❓ Tenho química no cabelo. Posso usar?", a: "PODE. E deve. Química enfraquece. Kit reconstrói." },
+                                    { q: "❓ Grávida pode usar?", a: "Produtos de uso externo = Seguro. Mas consulte seu médico antes." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`uso-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
+                                        <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
+                                        <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
+                                    </AccordionItem>
+                                ))}
+                            </Accordion>
+                        </div>
+
+                        {/* SOBRE ESTOQUE */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-black text-orange-800 uppercase tracking-[0.2em] border-b-2 border-orange-200 inline-block pb-1">⚠️ SOBRE ESTOQUE</h3>
+                            <Accordion type="single" collapsible className="w-full space-y-3">
+                                {[
+                                    { q: "❓ \"Últimas unidades\" é verdade?", a: "SIM. Produção em lotes pequenos. Alta demanda. Quando acaba = Acaba." },
+                                    { q: "❓ Posso comprar depois?", a: "PODE. Mas:\n→ Preço volta para R$ 297\n→ Frete deixa de ser grátis\n→ Esta oferta não se repete" },
+                                    { q: "❓ Ainda tenho dúvidas. Como falar com vocês?", a: "📧 contato@cavalo-de-raca.pro\nResposta em até 24h úteis." }
+                                ].map((item, i) => (
+                                    <AccordionItem key={i} value={`estoque-${i}`} className="bg-white border border-orange-100 rounded-2xl px-6 shadow-sm">
                                         <AccordionTrigger className="text-left font-bold text-slate-900 hover:no-underline py-5">{item.q}</AccordionTrigger>
                                         <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6 whitespace-pre-line">{item.a}</AccordionContent>
                                     </AccordionItem>
@@ -917,7 +977,7 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* SEÇÃO: GARANTIA */}
+            {/* SEÇÃO: GARANTIA (ORIGINAL) */}
             <section className="py-24 px-6 bg-white border-t border-slate-50">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem] relative overflow-hidden">
@@ -931,8 +991,8 @@ export function AntiHairLossPageV2() {
                 </div>
             </section>
 
-            {/* FOOTER COMPLETO COM MODAIS */}
-            <footer className="py-20 bg-[#FDF8F3] text-slate-900 border-t border-slate-200">
+            {/* FOOTER COMPLETO */}
+            <footer className="py-20 bg-[#FDF8F3] text-slate-900 relative overflow-hidden border-t border-slate-200">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600 opacity-30"></div>
               <div className="max-w-6xl mx-auto px-6">
                 
@@ -1053,14 +1113,14 @@ export function AntiHairLossPageV2() {
                 </div>
               </div>
             </footer>
+
         </div>
 
         {/* STICKY BAR MOBILE */}
         <MobileStickyBar 
-          installmentText="12x de 14,96"
+          installmentText={config.installmentText.split('de ')[1] || config.installmentText}
           buttonText={config.buttonText} 
           checkoutUrl={config.checkoutUrl} 
-          showGift={false} // OCULTANDO O BRINDE NA /ANTIQUEDA2
         />
       </div>
     </>
