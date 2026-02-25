@@ -57,6 +57,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { MobileStickyBar } from './MobileStickyBar';
 
 // IMAGENS EXCLUSIVAS DA GALERIA DE PRODUTO (TOPO)
 const PRODUCT_IMAGES = [
@@ -96,7 +97,7 @@ const DELIVERY_TESTIMONIALS = [
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
-    text: "Impecável a entrega! O cheiro o viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
+    text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
     author: "Cláudia Mendes, Brasília"
   },
   {
@@ -1053,6 +1054,14 @@ export function AntiHairLossPageV2() {
               </div>
             </footer>
         </div>
+
+        {/* STICKY BAR MOBILE */}
+        <MobileStickyBar 
+          installmentText="12x de 14,96"
+          buttonText={config.buttonText} 
+          checkoutUrl={config.checkoutUrl} 
+          showGift={false} // OCULTANDO O BRINDE NA /ANTIQUEDA2
+        />
       </div>
     </>
   );
