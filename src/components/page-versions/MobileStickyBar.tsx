@@ -13,7 +13,12 @@ interface MobileStickyBarProps {
 export const MobileStickyBar = ({ buttonText, checkoutUrl }: MobileStickyBarProps) => {
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 py-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
-      <Link href={checkoutUrl} className="block" target="_blank" rel="noopener noreferrer">
+      <div className="text-center mb-2">
+        <p className="text-[13px] font-black uppercase tracking-tighter text-red-600 animate-pulse">
+            🎁 Finalize sua compra e ganhe um secador grátis
+        </p>
+      </div>
+      <Link href={checkoutUrl} className="block" target="_child" rel="noopener noreferrer">
         <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-center gap-3 overflow-hidden px-5 py-0">
           <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
               Finalizar compra com desconto
