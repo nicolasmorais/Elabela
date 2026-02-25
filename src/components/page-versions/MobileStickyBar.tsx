@@ -11,8 +11,8 @@ interface MobileStickyBarProps {
 }
 
 export const MobileStickyBar = ({ buttonText, checkoutUrl }: MobileStickyBarProps) => {
-  // Hardcodando o link solicitado para garantir que sempre funcione nesta versão
-  const finalUrl = 'https://seguro.elabela.store/r/I83HKZOFGP';
+  // Garantindo que use o link solicitado caso venha vazio
+  const finalUrl = checkoutUrl || 'https://seguro.elabela.store/r/I83HKZOFGP';
 
   return (
     <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 py-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
