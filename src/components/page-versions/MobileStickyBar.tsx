@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Truck } from 'lucide-react';
 import Link from 'next/link';
 
 interface MobileStickyBarProps {
@@ -11,40 +10,17 @@ interface MobileStickyBarProps {
   checkoutUrl: string;
 }
 
-export const MobileStickyBar = ({ installmentText, buttonText, checkoutUrl }: MobileStickyBarProps) => {
+export const MobileStickyBar = ({ buttonText, checkoutUrl }: MobileStickyBarProps) => {
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 pt-2 pb-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
-      {/* Scarcity - Oferta Especial */}
-      <div className="text-center mb-2">
-        <p className="text-[9px] font-black uppercase tracking-[0.15em] text-red-600 flex items-center justify-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse"></span>
-          ESTOQUE ACABANDO - PREÇO R$ 117,00
-        </p>
-      </div>
-
+    <div className="fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 px-4 py-4 z-[100] md:hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] animate-in fade-in slide-in-from-bottom-full duration-700">
       <Link href={checkoutUrl} className="block" target="_blank" rel="noopener noreferrer">
-        <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-between gap-0 overflow-hidden px-5 py-0">
-          <div className="flex flex-col items-start leading-tight border-r border-white/20 pr-4 text-left">
-            <span className="text-[10px] font-bold uppercase opacity-70 tracking-widest">PREÇO CHEIO</span>
-            <span className="text-lg font-black tracking-tight whitespace-nowrap">{installmentText}</span>
-          </div>
-          
-          <div className="flex-1 flex items-center justify-center pl-4">
-            <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
-                {buttonText || 'PAGAR AGORA'}
-                <ArrowRight size={22} className="shrink-0" />
-            </span>
-          </div>
+        <Button className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl shadow-xl shadow-green-100 active:scale-[0.98] transition-all flex items-center justify-center gap-3 overflow-hidden px-5 py-0">
+          <span className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter italic">
+              {buttonText || 'PAGAR AGORA'}
+              <ArrowRight size={22} className="shrink-0" />
+          </span>
         </Button>
       </Link>
-
-      {/* Frete Grátis Info */}
-      <div className="mt-2 text-center">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 flex items-center justify-center gap-2">
-          <span className="text-emerald-500">✅</span>
-          Frete grátis para todo Brasil
-        </p>
-      </div>
     </div>
   );
 };
