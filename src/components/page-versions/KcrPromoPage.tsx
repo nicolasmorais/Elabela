@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageTracker } from "./PageTracker";
 import { MobileStickyBar } from './MobileStickyBar';
+import { ShieldCheck } from 'lucide-react'; // Adicionado para o novo design de garantia
 
 // Componentes Modulares
 import { KcrPromoNav } from '@/components/kcr-promo/KcrPromoNav';
@@ -156,11 +157,36 @@ export function KcrPromoPage() {
                 timeLeft={timeLeft}
             />
 
-            <section className="py-24 px-6 bg-white text-center">
-                <div className="max-w-4xl mx-auto bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/30 p-12 md:p-24 rounded-[4rem]">
-                    <span className="text-6xl block mb-10">🛡️</span>
-                    <h2 className="text-3xl md:text-5xl font-black mb-8 uppercase">Satisfação Garantida</h2>
-                    <p className="text-xl text-slate-600 italic">Use por 7 dias. Não AMOU o resultado? Devolvemos 100% do seu dinheiro. Sem perguntas.</p>
+            <section className="py-24 px-6 bg-white">
+                <div className="max-w-4xl mx-auto">
+                    <div className="bg-[#FDF8F3] border-[6px] border-dashed border-orange-500/20 p-12 md:p-20 rounded-[4rem] text-center relative overflow-hidden">
+                        {/* Elemento Decorativo de Fundo */}
+                        <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
+                            <ShieldCheck size={200} className="text-orange-950" />
+                        </div>
+                        
+                        <div className="relative z-10 space-y-8">
+                            <div className="mx-auto w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center border border-orange-100 mb-4">
+                                <ShieldCheck className="h-12 w-12 text-orange-600" strokeWidth={2.5} />
+                            </div>
+                            
+                            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+                                Risco Zero para Você
+                            </h2>
+                            
+                            <div className="space-y-6">
+                                <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-medium italic">
+                                    "Você tem 7 dias para experimentar com total liberdade. Não ficou encantado? Devolvemos tudo, sem perguntas, sem letras miúdas. Acreditamos tanto no nosso produto que colocamos nosso dinheiro onde está nossa palavra."
+                                </p>
+                            </div>
+
+                            <div className="pt-8">
+                                <div className="inline-flex items-center gap-3 px-6 py-2 bg-slate-900 text-orange-400 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg border border-orange-500/20">
+                                    Selo de Compromisso Total
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
