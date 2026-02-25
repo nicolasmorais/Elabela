@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { PageTracker } from "./PageTracker";
-import { MobileStickyBar } from './MobileStickyBar';
 import { ShieldCheck } from 'lucide-react';
 
 // Componentes Modulares
@@ -10,7 +9,7 @@ import { KcrPromoNav } from '@/components/kcr-promo/KcrPromoNav';
 import { KcrPromoHero } from '@/components/kcr-promo/KcrPromoHero';
 import { KcrPromoMediaBar } from '@/components/kcr-promo/KcrPromoMediaBar';
 import { KcrPromoResultsGallery } from '@/components/kcr-promo/KcrPromoResultsGallery';
-import { KcrPromoFreeGift } from '@/components/kcr-promo/KcrPromoFreeGift'; // NOVO
+import { KcrPromoFreeGift } from '@/components/kcr-promo/KcrPromoFreeGift';
 import { KcrPromoTargetAudience } from '@/components/kcr-promo/KcrPromoTargetAudience';
 import { KcrPromoScience } from '@/components/kcr-promo/KcrPromoScience';
 import { KcrPromoIngredients } from '@/components/kcr-promo/KcrPromoIngredients';
@@ -20,6 +19,7 @@ import { KcrPromoDeliveryGallery } from '@/components/kcr-promo/KcrPromoDelivery
 import { KcrPromoPricing } from '@/components/kcr-promo/KcrPromoPricing';
 import { KcrPromoFAQ } from '@/components/kcr-promo/KcrPromoFAQ';
 import { KcrPromoFooter } from '@/components/kcr-promo/KcrPromoFooter';
+import { KcrPromoStickyBar } from '@/components/kcr-promo/KcrPromoStickyBar';
 
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png",
@@ -71,7 +71,6 @@ export function KcrPromoPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  // Padronizado para R$ 117,00 (Preço Final) e link atualizado
   const [config, setConfig] = useState({
       priceCard: 'R$ 147,00',
       pricePix: '117,00',
@@ -140,7 +139,7 @@ export function KcrPromoPage() {
 
             <KcrPromoResultsGallery images={GALLERY_IMAGES} />
 
-            <KcrPromoFreeGift /> {/* POSICIONADO AQUI CONFORME SOLICITADO */}
+            <KcrPromoFreeGift />
 
             <KcrPromoTargetAudience />
 
@@ -197,10 +196,9 @@ export function KcrPromoPage() {
             <KcrPromoFooter />
         </main>
 
-        <MobileStickyBar 
-            installmentText={config.installmentText.includes('de') ? config.installmentText.split('de ')[1] : 'R$ 11,92'} 
-            buttonText={config.buttonText} 
-            checkoutUrl={config.checkoutUrl} 
+        <KcrPromoStickyBar 
+            installmentText={config.installmentText}
+            checkoutUrl={config.checkoutUrl}
         />
       </div>
     </>
