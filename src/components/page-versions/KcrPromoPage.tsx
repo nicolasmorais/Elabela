@@ -46,7 +46,7 @@ const DELIVERY_TESTIMONIALS = [
     author: "Juliana P., Rio de Janeiro"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771983983446-ChatGPT-Image-24-de-fev.-de-2026,-22_46_15.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771982905910-Gemini_Generated_Image_11sdqx11sdqx11sd.png",
     text: "Recebi em tempo recorde! O kit é lindo e o brinde me surpreendeu. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a queda diminuiu logo de cara.",
     author: "Fernanda L., Belo Horizonte"
   },
