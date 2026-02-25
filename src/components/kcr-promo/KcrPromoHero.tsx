@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-center';
+import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
