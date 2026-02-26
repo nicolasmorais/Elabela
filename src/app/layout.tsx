@@ -82,6 +82,7 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} ${barlow.variable} ${quicksand.variable} ${merriweather.variable} ${manrope.variable} ${spaceGrotesk.variable} ${roboto.variable} ${openSans.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <AuthProvider>
           {children}
