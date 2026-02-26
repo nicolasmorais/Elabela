@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { X, ShoppingBag, Zap, Gift } from 'lucide-react';
+import { X, ShoppingBag, Zap, Gift, Check, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
