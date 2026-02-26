@@ -11,7 +11,10 @@ interface KcrPromoStickyBarProps {
   checkoutUrl: string;
 }
 
-export const KcrPromoStickyBar = ({ priceCard, pricePix, checkoutUrl }: KcrPromoStickyBarProps) => {
+export const KcrPromoStickyBar = ({ priceCard, pricePix }: KcrPromoStickyBarProps) => {
+  // Link fixo conforme solicitado
+  const checkoutUrl = "https://seguro.elabela.store/r/I83HKZOFGP";
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-t border-orange-100 p-4 pb-3 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.1)] sm:hidden animate-in slide-in-from-bottom-full duration-500">
       <div className="max-w-md mx-auto space-y-3">
