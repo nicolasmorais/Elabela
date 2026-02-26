@@ -10,31 +10,34 @@ import {
   Zap, 
   Heart, 
   Sparkles, 
-  Timer,
-  Lock,
-  CreditCard,
-  ChevronRight,
   Award,
-  Users,
-  CheckCircle2,
-  Trash2,
-  Droplets,
-  Scissors,
-  XCircle,
-  AlertCircle,
-  Frown,
-  Ban,
-  Image as ImageIcon,
+  Truck,
+  Verified,
+  ShieldAlert,
   ShoppingBag,
   DollarSign,
   Home,
   Dumbbell,
-  Play,
   Microscope,
+  Lock,
+  CreditCard,
+  CheckCircle2,
+  Anchor,
+  Layers,
+  Settings2,
+  Activity,
+  FileCheck,
+  ClipboardList,
+  AlertCircle,
+  ChevronRight,
+  ChevronLeft,
+  Droplets,
   FlaskConical,
-  Truck,
-  Verified,
-  ShieldAlert
+  Beaker,
+  Calendar,
+  Lightbulb,
+  Info,
+  Play
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTracker } from "./PageTracker";
@@ -161,7 +164,7 @@ export function HairCarePage() {
                    <img 
                       src={url} 
                       alt={`Imagem da Galeria ${i + 1}`} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms]"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>

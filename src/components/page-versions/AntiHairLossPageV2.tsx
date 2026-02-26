@@ -130,7 +130,6 @@ export function AntiHairLossPageV2() {
       .then(data => { if (data.city) setCity(data.city); })
       .catch(() => console.log("Erro cidade."));
 
-    // AJUSTADO: Agora busca as configurações específicas desta versão (antiqueda2)
     fetch('/api/page-settings/antiqueda2')
         .then(res => res.json())
         .then(data => {
@@ -270,7 +269,7 @@ export function AntiHairLossPageV2() {
                         </p>
                     </div>
 
-                    {/* NOVO DEPOIMENTO ABAIXO DO PREÇO */}
+                    {/* DEPOIMENTO ABAIXO DO PREÇO */}
                     <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl space-y-2">
                         <p className="text-slate-800 font-black text-xl italic leading-tight">
                             "Todo Dia Era um Bolo de Cabelo no Pente... <br />
@@ -281,7 +280,7 @@ export function AntiHairLossPageV2() {
                         </p>
                     </div>
 
-                    {/* BOTÃO COMPRAR AGORA MELHORADO */}
+                    {/* BOTÃO COMPRAR AGORA */}
                     <div className="space-y-4 pt-4">
                         <Link href={config.checkoutUrl} target="_blank">
                             <Button 
@@ -348,7 +347,7 @@ export function AntiHairLossPageV2() {
                        <img 
                           src={url} 
                           alt={`Imagem da Galeria ${i + 1}`} 
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.5s]"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms]"
                        />
                        <div className="absolute inset-0 bg-gradient-to-t from-orange-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
@@ -475,7 +474,7 @@ export function AntiHairLossPageV2() {
                                 title: "CAMADA 3: SELA E PROTEGE", 
                                 prod: "Condicionador + Leave-in",
                                 desc: "Fecha as cutículas e cria um FILME PROTETOR contra atrito e calor, impedindo que o fio quebre no dia a dia.",
-                                feels: ["Imediato: Fio de desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
+                                feels: ["Imediato: Fio desembaraça sozinho", "3 dias: ZERO eletricidade estática", "1 semana: Escova sem fios no chão"],
                                 analogia: "É como envernizar madeira. Protege de água, sol, atrito. Dura MUITO mais."
                             }
                         ].map((step, i) => (
@@ -785,7 +784,7 @@ export function AntiHairLossPageV2() {
                                         "Não substitua por outros (quebra o ciclo de tratamento)",
                                         "Consistência é a chave: 7 dias para ver, 30 para transformar"
                                     ].map((li, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-sm font-bold text-slate-700 leading-snug">
+                                        <li key={li} className="flex items-start gap-3 text-sm font-bold text-slate-700 leading-snug">
                                             <div className="mt-1"><AlertCircle size={16} className="text-orange-800" /></div>
                                             {li}
                                         </li>
