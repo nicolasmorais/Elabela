@@ -20,6 +20,7 @@ import { KcrPromoPricing } from '@/components/kcr-promo/KcrPromoPricing';
 import { KcrPromoFAQ } from '@/components/kcr-promo/KcrPromoFAQ';
 import { KcrPromoFooter } from '@/components/kcr-promo/KcrPromoFooter';
 import { KcrPromoStickyBar } from '@/components/kcr-promo/KcrPromoStickyBar';
+import { ExitIntentPopup } from '@/components/kcr-promo/ExitIntentPopup';
 
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1769896120372-ChatGPT-Image-31-de-jan.-de-2026,-18_42_42.png",
@@ -99,6 +100,7 @@ export function KcrPromoPage() {
   return (
     <>
       <PageTracker contentId="kcrpromo" />
+      <ExitIntentPopup />
       <div className="bg-white text-slate-900 font-sans antialiased min-h-screen">
         
         {/* BADGE TOPO */}
