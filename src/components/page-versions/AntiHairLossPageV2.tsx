@@ -117,7 +117,7 @@ export function AntiHairLossPageV2() {
       pricePix: '147,00',
       installmentText: 'Ou 12x de R$ 14,96',
       buttonText: 'Comprar agora',
-      checkoutUrl: 'https://seguro.elabela.store/checkout?skipToCheckout=1&tokenReference=RC8ASYUL88'
+      checkoutUrl: 'https://seguro.elabela.store/r/RC8ASYUL88'
   });
 
   useEffect(() => {
