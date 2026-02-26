@@ -49,21 +49,6 @@ const DELIVERY_TESTIMONIALS = [
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771982905910-Gemini_Generated_Image_11sdqx11sdqx11sd.png",
     text: "Recebi em tempo recorde! O kit é lindo e o brinde me surpreendeu. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a queda diminuiu logo de cara.",
     author: "Fernanda L., Belo Horizonte"
-  },
-  {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558648736-4.png",
-    text: "Chegou voando! Começando o cronograma antiqueda agora. O perfume fixou no cabelo e já sinto os fios mais resistentes, caiu quase nada no pente hoje.",
-    author: "Carla T., Curitiba"
-  },
-  {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
-    text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
-    author: "Cláudia Mendes, Brasília"
-  },
-  {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
-    text: "Meu kit chegou antes do esperado! Já iniciei o tratamento. O cabelo está super cheiroso e sinto que a queda já deu uma segurada na primeira lavagem.",
-    author: "Beatriz A., Porto Alegre"
   }
 ];
 
