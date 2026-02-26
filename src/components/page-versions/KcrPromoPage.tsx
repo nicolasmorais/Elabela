@@ -197,7 +197,8 @@ export function KcrPromoPage() {
         </main>
 
         <KcrPromoStickyBar 
-            installmentText={config.installmentText}
+            priceCard={config.priceCard}
+            pricePix={config.pricePix}
             checkoutUrl={config.checkoutUrl}
         />
       </div>

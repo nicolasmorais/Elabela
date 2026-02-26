@@ -6,11 +6,12 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 interface KcrPromoStickyBarProps {
-  installmentText: string;
+  priceCard: string;
+  pricePix: string;
   checkoutUrl: string;
 }
 
-export const KcrPromoStickyBar = ({ installmentText, checkoutUrl }: KcrPromoStickyBarProps) => {
+export const KcrPromoStickyBar = ({ priceCard, pricePix, checkoutUrl }: KcrPromoStickyBarProps) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-t border-orange-100 p-4 pb-3 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.1)] sm:hidden animate-in slide-in-from-bottom-full duration-500">
       <div className="max-w-md mx-auto space-y-3">
@@ -20,18 +21,20 @@ export const KcrPromoStickyBar = ({ installmentText, checkoutUrl }: KcrPromoStic
             Finalize sua compra Com Desconto
         </p>
 
-        {/* Informação de Preço Centralizada */}
-        <div className="flex items-center justify-center gap-2 text-slate-500">
-            <span className="text-[10px] font-black uppercase tracking-widest">Apenas hoje:</span>
-            <div className="flex items-baseline gap-1">
-                <span className="text-[11px] font-bold text-slate-900">12x de</span>
-                <span className="text-2xl font-black text-slate-900 tracking-tighter">
-                    {installmentText.replace('Ou 12x de ', '')}
+        {/* Informação de Preço: De / Por */}
+        <div className="flex items-center justify-center gap-3">
+            <span className="text-[11px] font-bold text-slate-400 line-through">
+                de {priceCard}
+            </span>
+            <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Por apenas:</span>
+                <span className="text-2xl font-black text-emerald-600 tracking-tighter">
+                    R$ {pricePix}
                 </span>
             </div>
         </div>
 
-        {/* Botão Gigante Ocupando Quase 100% da Largura */}
+        {/* Botão de Ação */}
         <Link href={checkoutUrl} className="block w-full group" target="_blank">
             <Button 
                 className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-lg uppercase tracking-widest shadow-xl shadow-green-100 flex items-center justify-center gap-3 active:scale-95 transition-all"
