@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ShoppingBag, ArrowRight } from 'lucide-react';
+import { ShoppingBag, TrendingDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -34,14 +34,14 @@ export const KcrPromoStickyBar = ({ priceCard, pricePix, checkoutUrl }: KcrPromo
             </div>
         </div>
 
-        {/* Botão de Ação */}
+        {/* Botão com novo texto e ícone de 'queda' (TrendingDown) */}
         <Link href={checkoutUrl} className="block w-full group" target="_blank">
             <Button 
                 className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-lg uppercase tracking-widest shadow-xl shadow-green-100 flex items-center justify-center gap-3 active:scale-95 transition-all"
             >
                 <ShoppingBag size={22} className="group-hover:scale-110 transition-transform" />
-                PAGAR AGORA
-                <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+                <span>COMPRAR COM DESCONTO</span>
+                <TrendingDown size={22} className="animate-bounce" />
             </Button>
         </Link>
         
