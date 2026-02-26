@@ -12,43 +12,39 @@ interface KcrPromoStickyBarProps {
 
 export const KcrPromoStickyBar = ({ installmentText, checkoutUrl }: KcrPromoStickyBarProps) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-t border-orange-100 p-4 pb-3 shadow-[0_-10px_30px_-5px_rgba(0,0,0,0.1)] sm:hidden animate-in slide-in-from-bottom-full duration-500">
+    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-t border-orange-100 p-4 pb-3 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.1)] sm:hidden animate-in slide-in-from-bottom-full duration-500">
       <div className="max-w-md mx-auto space-y-3">
         
         {/* Chamada Superior */}
-        <p className="text-center text-[11px] font-black text-orange-600 uppercase tracking-[0.1em] animate-pulse">
+        <p className="text-center text-[10px] font-black text-orange-600 uppercase tracking-[0.15em] animate-pulse">
             Finalize sua compra Com Desconto
         </p>
 
-        <div className="flex items-center justify-between gap-4">
-            {/* Lado Esquerdo: Preço */}
-            <div className="flex-1">
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">
-                Oferta Hoje
-            </p>
+        {/* Informação de Preço Centralizada */}
+        <div className="flex items-center justify-center gap-2 text-slate-500">
+            <span className="text-[10px] font-black uppercase tracking-widest">Apenas hoje:</span>
             <div className="flex items-baseline gap-1">
-                <span className="text-[10px] font-bold text-slate-900">12x de</span>
-                <span className="text-xl font-black text-slate-900 tracking-tighter">
-                {installmentText.replace('Ou 12x de ', '')}
+                <span className="text-[11px] font-bold text-slate-900">12x de</span>
+                <span className="text-2xl font-black text-slate-900 tracking-tighter">
+                    {installmentText.replace('Ou 12x de ', '')}
                 </span>
             </div>
-            </div>
-
-            {/* Lado Direito: Botão */}
-            <Link href={checkoutUrl} className="flex-[1.5]" target="_blank">
-            <Button 
-                className="w-full h-14 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-sm uppercase tracking-tighter shadow-lg shadow-green-200 flex items-center justify-center gap-2 active:scale-95 transition-all"
-            >
-                <ShoppingBag size={18} />
-                PAGAR AGORA
-                <ArrowRight size={18} />
-            </Button>
-            </Link>
         </div>
+
+        {/* Botão Gigante Ocupando Quase 100% da Largura */}
+        <Link href={checkoutUrl} className="block w-full group" target="_blank">
+            <Button 
+                className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-lg uppercase tracking-widest shadow-xl shadow-green-100 flex items-center justify-center gap-3 active:scale-95 transition-all"
+            >
+                <ShoppingBag size={22} className="group-hover:scale-110 transition-transform" />
+                PAGAR AGORA
+                <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+            </Button>
+        </Link>
         
-        {/* Indicador de Segurança Pequeno */}
+        {/* Indicador de Segurança */}
         <p className="text-[8px] text-center text-slate-300 font-bold uppercase tracking-[0.2em]">
-            🔒 Checkout 100% Seguro
+            🔒 Pagamento 100% Seguro e Criptografado
         </p>
       </div>
     </div>
