@@ -77,7 +77,8 @@ export const CaseStudy = () => {
                 <img
                     src="https://iv2jb3repd5xzuuy.public.blob.vercel-storage.com/qualidade-vida-paciente-hemodialise-q0ctIYihvARlrqUtGTp18yGq0z4hLk.jpg"
                     alt="Hemodiálise"
-                    className="w-full h-auto transition-transform duration-[2000ms] group-hover:scale-110"
+                    className="w-full h-auto transition-transform group-hover:scale-110"
+                    style={{ transitionDuration: '2000ms' }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-10">
                     <p className="text-white text-xs font-black uppercase tracking-[0.3em] mb-2 opacity-70">Aviso: Imagem Forte</p>

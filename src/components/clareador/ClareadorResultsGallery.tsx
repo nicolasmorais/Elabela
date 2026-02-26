@@ -21,7 +21,12 @@ export const ClareadorResultsGallery = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                 {GALLERY_IMAGES.map((url, i) => (
                     <div key={i} className="group relative aspect-video rounded-[2rem] overflow-hidden border border-orange-100 shadow-md">
-                       <img src={url} alt={`Resultado ${i + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                       <img 
+                         src={url} 
+                         alt={`Resultado ${i + 1}`} 
+                         className="w-full h-full object-cover transition-transform group-hover:scale-110" 
+                         style={{ transitionDuration: '1500ms' }}
+                       />
                     </div>
                 ))}
             </div>
