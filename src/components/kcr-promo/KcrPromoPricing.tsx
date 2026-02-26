@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard, Zap, ShieldAlert, Clock } from 'lucide-react';
+import { ShoppingBag, ShieldCheck, Lock, CreditCard, Zap, ShieldAlert, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -20,15 +20,7 @@ export const KcrPromoPricing = ({ config, formatTime, timeLeft }: KcrPromoPricin
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-50 via-transparent to-transparent opacity-50"></div>
         
         <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-12 space-y-6">
-                <h2 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight uppercase">
-                    🚨 SUA ÚLTIMA CHANCE DE PARAR A QUEDA EM CASA 🚨
-                </h2>
-                <p className="text-slate-500 font-bold text-lg md:text-xl">
-                    Acorde Sem Cabelo no Travesseiro. Penteia Sem Medo. <br className="hidden md:block" />
-                    Viva Sem Precisar Esconder o Couro Cabeludo.
-                </p>
-            </div>
+            {/* Seção 🚨 SUA ÚLTIMA CHANCE... 🚨 ocultada conforme solicitação */}
 
             <div className="bg-[#FDF8F3] rounded-[3.5rem] p-8 md:p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] relative border-4 border-white overflow-hidden">
                 <div className="bg-orange-100/50 -mx-12 -mt-12 mb-12 py-4 px-6 text-center text-orange-900 font-black text-sm md:text-base tracking-widest flex items-center justify-center gap-3 border-b border-orange-100">
