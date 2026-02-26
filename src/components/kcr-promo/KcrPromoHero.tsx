@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight, TrendingDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -127,12 +127,12 @@ export const KcrPromoHero = ({
                     <div className="space-y-4 pt-4">
                         <Link href={checkoutUrl} target="_blank">
                             <Button 
-                                className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group"
+                                className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group animate-pulse"
                                 style={{ backgroundColor: '#35c867' }}
                             >
                                 <ShoppingBag size={28} />
-                                {config.buttonText}
-                                <ArrowRight size={28} className="group-hover:translate-x-2 transition-transform" />
+                                <span>COMPRAR COM DESCONTO</span>
+                                <TrendingDown size={28} className="animate-bounce" />
                             </Button>
                         </Link>
                         
