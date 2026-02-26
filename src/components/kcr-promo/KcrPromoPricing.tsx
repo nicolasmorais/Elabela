@@ -17,7 +17,7 @@ export const KcrPromoPricing = ({ config, formatTime, timeLeft }: KcrPromoPricin
 
   return (
     <section id="pricing" className="py-24 px-6 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-50 via-transparent to-transparent opacity-50"></div>
+        {/* Gradiente de fundo ocultado conforme solicitação */}
         
         <div className="max-w-4xl mx-auto relative z-10">
             {/* Seção 🚨 SUA ÚLTIMA CHANCE... 🚨 ocultada conforme solicitação */}
