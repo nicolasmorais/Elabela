@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ShoppingBag, TrendingDown } from 'lucide-react';
+import { ShoppingBag, TrendingDown, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -16,9 +16,9 @@ export const KcrPromoStickyBar = ({ priceCard, pricePix, checkoutUrl }: KcrPromo
     <div className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-t border-orange-100 p-4 pb-3 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.1)] sm:hidden animate-in slide-in-from-bottom-full duration-500">
       <div className="max-w-md mx-auto space-y-3">
         
-        {/* Chamada Superior */}
-        <p className="text-center text-[10px] font-black text-orange-600 uppercase tracking-[0.15em] animate-pulse">
-            Finalize sua compra Com Desconto
+        {/* Chamada Superior com Escassez */}
+        <p className="text-center text-[10px] font-black text-red-600 uppercase tracking-[0.15em] animate-pulse flex items-center justify-center gap-1.5">
+            <Gift size={12} /> Apenas 100 unidades com brinde exclusivo
         </p>
 
         {/* Informação de Preço: De / Por */}
@@ -34,14 +34,19 @@ export const KcrPromoStickyBar = ({ priceCard, pricePix, checkoutUrl }: KcrPromo
             </div>
         </div>
 
-        {/* Botão com novo texto e ícone de 'queda' (TrendingDown) */}
+        {/* Botão com a nova oferta do secador */}
         <Link href={checkoutUrl} className="block w-full group" target="_blank">
             <Button 
-                className="w-full h-16 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black text-lg uppercase tracking-widest shadow-xl shadow-green-100 flex items-center justify-center gap-3 active:scale-95 transition-all"
+                className="w-full h-auto py-4 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-black shadow-xl shadow-green-100 flex flex-col items-center justify-center gap-0 active:scale-95 transition-all"
             >
-                <ShoppingBag size={22} className="group-hover:scale-110 transition-transform" />
-                <span>COMPRAR COM DESCONTO</span>
-                <TrendingDown size={22} className="animate-bounce" />
+                <div className="flex items-center gap-2 text-base md:text-lg uppercase tracking-tight">
+                    <span>Compre Com Desconto</span>
+                    <TrendingDown size={20} className="animate-bounce" />
+                </div>
+                <div className="flex items-center gap-1.5 text-[10px] md:text-xs opacity-90 uppercase tracking-widest">
+                    <span>e Ganhe até um Secador</span>
+                    <Gift size={12} className="fill-current" />
+                </div>
             </Button>
         </Link>
         
