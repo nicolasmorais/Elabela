@@ -11,7 +11,7 @@ interface KcrPromoStickyBarProps {
 
 export function KcrPromoStickyBar({ priceCard, pricePix, checkoutUrl }: KcrPromoStickyBarProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-xl border-t border-orange-100 shadow-[0_-20px|50px_rgba(0,0,0,0.2)] md:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-orange-100 shadow-[0_-20px_50px_rgba(0,0,0,0.2)] md:hidden">
       <div className="px-5 py-5 flex flex-col gap-4">
         
         {/* Chamada de Oferta Clara e Amigável */}
