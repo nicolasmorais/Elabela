@@ -22,7 +22,7 @@ import { KcrPromoFooter } from '@/components/kcr-promo/KcrPromoFooter';
 import { KcrPromoStickyBar } from '@/components/kcr-promo/KcrPromoStickyBar';
 
 const PRODUCT_IMAGES = [
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772319122685-ChatGPT-Image-28-de-fev.-de-2026,-19_47_19.png"
+  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772320104451-ChatGPT-Image-28-de-fev.-de-2026,-20_08_08.png"
 ];
 
 const GALLERY_IMAGES = [
