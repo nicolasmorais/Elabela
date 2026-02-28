@@ -31,13 +31,13 @@ export const KcrPromoHero = ({
   const checkoutUrl = 'https://seguro.elabela.store/r/I83HKZOFGP';
 
   return (
-    <header className="relative pt-12 md:pt-20 pb-16 md:pb-24 px-6 overflow-hidden bg-white border-b border-slate-100">
+    <header className="relative pt-0 md:pt-20 pb-16 md:pb-24 px-0 md:px-6 overflow-hidden bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
                 
-                {/* ESQUERDA: GALERIA (50%) */}
+                {/* ESQUERDA: GALERIA (50%) - EDGE TO EDGE NO MOBILE */}
                 <div className="lg:col-span-6 space-y-6">
-                    <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.08)] group">
+                    <div className="relative aspect-square bg-[#FDFDFD] rounded-none md:rounded-[2.5rem] overflow-hidden border-0 md:border border-slate-100 shadow-none md:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.08)] group">
                         <img 
                           src={productImages[activeImageIndex]} 
                           alt="Produto Principal" 
@@ -60,7 +60,7 @@ export const KcrPromoHero = ({
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 px-2">
+                    <div className="grid grid-cols-3 gap-4 px-6 md:px-2">
                         {productImages.map((img, i) => (
                             <button 
                                 key={i} 
@@ -76,8 +76,8 @@ export const KcrPromoHero = ({
                     </div>
                 </div>
 
-                {/* DIREITA: INFOS DE COMPRA (50%) */}
-                <div className="lg:col-span-6 space-y-6">
+                {/* DIREITA: INFOS DE COMPRA (50%) - COM PADDING NO MOBILE */}
+                <div className="lg:col-span-6 space-y-6 px-6 md:px-0">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
                         <div className="bg-pink-500 p-1 rounded-md text-white">
                             <Award size={14} />
