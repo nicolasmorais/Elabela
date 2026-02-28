@@ -11,12 +11,12 @@ interface KcrPromoStickyBarProps {
 
 export function KcrPromoStickyBar({ priceCard, pricePix, checkoutUrl }: KcrPromoStickyBarProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-xl border-t border-orange-100 shadow-[0_-20px|50px_rgba(0,0,0,0.2)] md:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] md:hidden">
       <div className="px-5 py-5 flex flex-col gap-4">
         
         {/* Chamada de Oferta Clara e Amigável */}
         <div className="flex items-center justify-center gap-2 animate-pulse">
-            <span className="text-[14px] font-black text-orange-700 uppercase tracking-tight">
+            <span className="text-[15px] font-black text-orange-700 uppercase tracking-tight">
                 🔥 PROMOÇÃO: COMPRE 1 E GANHE MAIS 1 DE PRESENTE
             </span>
         </div>
@@ -29,8 +29,8 @@ export function KcrPromoStickyBar({ priceCard, pricePix, checkoutUrl }: KcrPromo
                     </span>
                 </div>
                 <div className="flex items-center gap-1 mt-1">
-                    <ShieldCheck size={12} className="text-emerald-600" />
-                    <span className="text-[9px] font-black text-emerald-600 uppercase tracking-widest">
+                    <ShieldCheck size={14} className="text-emerald-600" />
+                    <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">
                         SITE SEGURO E OFICIAL
                     </span>
                 </div>
