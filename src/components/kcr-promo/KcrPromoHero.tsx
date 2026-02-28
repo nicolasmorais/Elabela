@@ -36,43 +36,15 @@ export const KcrPromoHero = ({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
                 
                 {/* ESQUERDA: GALERIA (50%) - EDGE TO EDGE NO MOBILE */}
-                <div className="lg:col-span-6 space-y-6">
+                <div className="lg:col-span-6">
                     <div className="relative aspect-square bg-[#FDFDFD] rounded-none md:rounded-[2.5rem] overflow-hidden border-0 md:border border-slate-100 shadow-none md:shadow-[0_20px_50px_-20px_rgba(0,0,0,0.08)] group">
                         <img 
                           src={productImages[activeImageIndex]} 
                           alt="Produto Principal" 
                           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]" 
                         />
-                        <button 
-                          onClick={prevImage}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg border border-slate-100 text-slate-400 hover:text-orange-600 hidden md:block transition-all"
-                        >
-                          <ChevronLeft size={24} />
-                        </button>
-                        <button 
-                          onClick={nextImage}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 p-3 rounded-full shadow-lg border border-slate-100 text-slate-400 hover:text-orange-600 hidden md:block transition-all"
-                        >
-                          <ChevronRight size={24} />
-                        </button>
-                        <div className="absolute bottom-6 right-6 bg-slate-900/80 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                          {activeImageIndex + 1} / {productImages.length}
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-4 px-6 md:px-2">
-                        {productImages.map((img, i) => (
-                            <button 
-                                key={i} 
-                                onClick={() => setActiveImageIndex(i)}
-                                className={cn(
-                                    "aspect-square rounded-2xl overflow-hidden border-2 transition-all",
-                                    activeImageIndex === i ? "border-orange-500 scale-105 shadow-md" : "border-slate-100 opacity-60"
-                                )}
-                            >
-                                <img src={img} alt="Miniatura" className="w-full h-full object-cover" />
-                            </button>
-                        ))}
+                        
+                        {/* Removido controles de navegação e miniaturas para manter apenas a imagem principal */}
                     </div>
                 </div>
 
