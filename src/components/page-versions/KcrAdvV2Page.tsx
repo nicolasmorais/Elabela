@@ -13,7 +13,7 @@ import {
   User,
   Share2,
   Clock,
-  ShieldCheck, // Adicionado aqui
+  ShieldCheck,
   AlertCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -204,6 +204,15 @@ export default function KcrAdvV2Page() {
         <H1>Eu chorava toda vez que olhava para o ralo do meu chuveiro.</H1>
         <H1Sub>Hoje meu cabelo voltou a crescer — e eu finalmente me reconheço no espelho.</H1Sub>
 
+        {/* IMAGEM DE RELATO ADICIONADA */}
+        <div className="my-10">
+          <img 
+            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771644725841-Gemini_Generated_Image_bi45tvbi45tvbi45.png" 
+            alt="Relato de Cláudia Mendes" 
+            className="w-full h-auto rounded-[2rem] shadow-xl border-4 border-white"
+          />
+        </div>
+
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
         <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
@@ -225,7 +234,7 @@ export default function KcrAdvV2Page() {
         <P>Quando ele começou a cair, eu senti que estava perdendo um pedaço de mim. Literalmente.</P>
         <P>Comecei a usar truques de penteado pra esconder as falhas. Rabinho alto disfarçava o couro cabeludo aparecendo na frente. Coque escondia o volume que tinha sumido.</P>
         <Ancora>Chapéu virou meu acessório favorito. E eu odeio chapéu.</Ancora>
-        <P>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente." Eu disse que estava cansada do trabalho. Mas a verdade é que eu tinha vergonha. Vergonha de ter 51 anos e estar com menos cabelo do que minha mãe com 72.</P>
+        <P>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente." Eu disse que estava cansada do trabalho. Mas a verdade é que eu tinha vergonha. Vergonha de tel 51 anos e estar com menos cabelo do que minha mãe com 72.</P>
         <P>E ainda tinha aquela voz na cabeça: "é a idade, Cláudia. É a menopausa. É o que acontece com a gente."</P>
         <PullQuote>Como se depois dos 50 a gente tivesse que aceitar virar outra pessoa.</PullQuote>
         <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. Não aguentava a ideia de todo mundo olhando.</P>
