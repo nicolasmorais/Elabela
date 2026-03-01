@@ -30,11 +30,11 @@ export const KcrPromoHero = ({
         <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-orange-50/30 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start">
                 
                 {/* ESQUERDA: GALERIA - DESIGN CLEAN */}
-                <div className="lg:col-span-6 flex flex-col h-full">
-                    <div className="relative aspect-square bg-[#F9F9F9] rounded-none md:rounded-[3rem] overflow-hidden border-0 md:border border-slate-100 shadow-none md:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.08)] group flex-1">
+                <div className="lg:col-span-6">
+                    <div className="relative aspect-square bg-[#F9F9F9] rounded-none md:rounded-[3rem] overflow-hidden border-0 md:border border-slate-100 shadow-none md:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.08)] group">
                         <img 
                           src={productImages[activeImageIndex]} 
                           alt="Kit Cavalo de Raça" 
@@ -44,7 +44,7 @@ export const KcrPromoHero = ({
                 </div>
 
                 {/* DIREITA: INFOS DE COMPRA - HIERARQUIA PREMIUM */}
-                <div className="lg:col-span-6 flex flex-col justify-between h-full space-y-8 px-6 md:px-0 mt-4 md:mt-0">
+                <div className="lg:col-span-6 space-y-8 px-6 md:px-0 mt-4 md:mt-0">
                     
                     {/* Header: Badges & Title */}
                     <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
@@ -71,8 +71,8 @@ export const KcrPromoHero = ({
                     </div>
 
                     {/* BLOCO DE PREÇO: FOCO NA OFERTA 1+1 */}
-                    <div className="w-full bg-white rounded-[3rem] border-2 border-slate-100 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] overflow-hidden transition-all hover:border-orange-200 flex-1 flex flex-col">
-                        <div className="p-8 md:p-10 space-y-8 flex-1 flex flex-col justify-center">
+                    <div className="w-full bg-white rounded-[3rem] border-2 border-slate-100 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] overflow-hidden transition-all hover:border-orange-200">
+                        <div className="p-8 md:p-10 space-y-8">
                             
                             {/* Promo Label */}
                             <div className="flex items-center gap-4">
@@ -117,7 +117,7 @@ export const KcrPromoHero = ({
                     </div>
 
                     {/* BOTÃO CTA */}
-                    <div className="space-y-6 pt-2 mt-auto">
+                    <div className="space-y-6 pt-2">
                         <Link href={checkoutUrl} target="_blank" className="hidden md:block group/btn">
                             <Button 
                                 className="w-full h-20 text-white rounded-3xl font-black text-2xl uppercase tracking-widest shadow-[0_20px_40px_-10px_rgba(53,200,103,0.4)] transition-all hover:scale-[1.02] active:scale-[0.99] flex items-center justify-center gap-4"
