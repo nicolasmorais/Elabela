@@ -22,7 +22,7 @@ import { Button } from '@/components/ui/button';
 // --- Componentes de Design Blog Nativo & Feminino ---
 
 const HeaderMeta = () => (
-  <div className="flex flex-col gap-4 border-b border-pink-100 pb-8 mb-10 font-sans">
+  <div className="flex flex-col gap-4 border-b border-pink-100 pb-8 mb-10 font-merriweather">
     <div className="flex items-center gap-2 text-pink-600 text-[10px] font-black uppercase tracking-[0.3em]">
       <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
       Saúde & Bem-Estar Feminino
@@ -38,31 +38,31 @@ const HeaderMeta = () => (
 );
 
 const H1 = ({ children }: { children: ReactNode }) => (
-  <h1 className="font-sans font-black text-3xl md:text-5xl text-slate-900 leading-[1.15] tracking-tight mb-6">
+  <h1 className="font-merriweather font-black text-3xl md:text-5xl text-slate-900 leading-[1.15] tracking-tight mb-6">
     {children}
   </h1>
 );
 
 const H1Sub = ({ children }: { children: ReactNode }) => (
-  <h2 className="font-sans font-bold text-xl md:text-2xl text-pink-700 leading-relaxed mb-12 italic opacity-80">
+  <h2 className="font-merriweather font-bold text-xl md:text-2xl text-pink-700 leading-relaxed mb-12 italic opacity-80">
     {children}
   </h2>
 );
 
 const H2 = ({ children }: { children: ReactNode }) => (
-  <h3 className="font-sans font-black text-2xl md:text-3xl text-slate-800 mt-16 mb-6 tracking-tight border-l-4 border-pink-200 pl-4">
+  <h3 className="font-merriweather font-black text-2xl md:text-3xl text-slate-800 mt-16 mb-6 tracking-tight border-l-4 border-pink-200 pl-4">
     {children}
   </h3>
 );
 
 const P = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <p className={cn("font-sans text-[19px] md:text-[21px] text-slate-600 leading-[1.8] mb-8 font-medium", className)}>
+  <p className={cn("font-merriweather text-[19px] md:text-[21px] text-slate-600 leading-[1.8] mb-8 font-medium", className)}>
     {children}
   </p>
 );
 
 const Ancora = ({ children }: { children: ReactNode }) => (
-  <p className="font-sans font-black text-xl md:text-2xl text-slate-900 my-8 leading-tight tracking-tight border-b-2 border-pink-100 inline-block">
+  <p className="font-merriweather font-black text-xl md:text-2xl text-slate-900 my-8 leading-tight tracking-tight border-b-2 border-pink-100 inline-block">
     {children}
   </p>
 );
@@ -70,7 +70,7 @@ const Ancora = ({ children }: { children: ReactNode }) => (
 const PullQuote = ({ children }: { children: ReactNode }) => (
   <div className="my-12 py-4 text-center">
     <div className="h-px w-20 bg-pink-100 mx-auto mb-8"></div>
-    <p className="font-sans font-black italic text-2xl md:text-4xl text-pink-800 leading-tight tracking-tighter max-w-2xl mx-auto">
+    <p className="font-merriweather font-black italic text-2xl md:text-4xl text-pink-800 leading-tight tracking-tighter max-w-2xl mx-auto">
       "{children}"
     </p>
     <div className="h-px w-20 bg-pink-100 mx-auto mt-8"></div>
@@ -79,8 +79,8 @@ const PullQuote = ({ children }: { children: ReactNode }) => (
 
 const Citacao = ({ text, author }: { text: string; author: string }) => (
   <div className="bg-pink-50/30 border-l-4 border-pink-400 p-8 my-12 rounded-r-2xl">
-    <p className="font-sans italic text-xl md:text-2xl text-slate-700 leading-relaxed mb-4">"{text}"</p>
-    <p className="font-sans font-black text-xs text-pink-600 uppercase tracking-widest flex items-center gap-2">
+    <p className="font-merriweather italic text-xl md:text-2xl text-slate-700 leading-relaxed mb-4">"{text}"</p>
+    <p className="font-merriweather font-black text-xs text-pink-600 uppercase tracking-widest flex items-center gap-2">
         — {author}
     </p>
   </div>
@@ -95,7 +95,7 @@ const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) 
           <span className="text-lg leading-none">{item.label.split(' ')[1]}</span>
         </div>
         <div className="pt-2">
-          <p className="font-sans text-lg md:text-xl text-slate-600 leading-relaxed font-bold">
+          <p className="font-merriweather text-lg md:text-xl text-slate-600 leading-relaxed font-bold">
             {item.text}
           </p>
         </div>
@@ -106,7 +106,7 @@ const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) 
 
 const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
   <div className="bg-white border border-pink-100 rounded-3xl p-8 md:p-12 my-16 shadow-sm">
-    <h4 className="font-sans font-black text-xl md:text-2xl mb-8 text-slate-900 tracking-tight uppercase flex items-center gap-3">
+    <h4 className="font-merriweather font-black text-xl md:text-2xl mb-8 text-slate-900 tracking-tight uppercase flex items-center gap-3">
         <Heart className="text-pink-500" size={24} fill="currentColor" />
         {title}
     </h4>
@@ -124,7 +124,7 @@ const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
 const BoxAlerta = ({ children }: { children: ReactNode }) => (
   <div className="bg-rose-50 border border-rose-100 p-8 my-12 rounded-2xl flex gap-4 items-start">
     <AlertCircle className="text-rose-500 shrink-0" size={24} />
-    <div className="font-sans text-lg md:text-xl leading-relaxed font-bold text-rose-900 italic">
+    <div className="font-merriweather text-lg md:text-xl leading-relaxed font-bold text-rose-900 italic">
         {children}
     </div>
   </div>
@@ -132,10 +132,10 @@ const BoxAlerta = ({ children }: { children: ReactNode }) => (
 
 const Depoimento = ({ name, text }: { name: string; text: string }) => (
   <div className="bg-slate-50 p-8 md:p-10 my-10 rounded-3xl relative group">
-    <p className="font-sans italic text-lg md:text-xl text-slate-600 leading-relaxed mb-6 font-medium">"{text}"</p>
+    <p className="font-merriweather italic text-lg md:text-xl text-slate-600 leading-relaxed mb-6 font-medium">"{text}"</p>
     <div className="flex items-center gap-3">
         <div className="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center font-black text-pink-600 text-sm">{name.charAt(0)}</div>
-        <p className="font-sans font-black text-xs text-slate-400 uppercase tracking-widest">{name}</p>
+        <p className="font-merriweather font-black text-xs text-slate-400 uppercase tracking-widest">{name}</p>
     </div>
   </div>
 );
@@ -144,30 +144,30 @@ const CTAButton = () => (
   <div className="flex flex-col items-center my-16">
     <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full max-w-xl">
       <Button 
-        className="w-full h-20 bg-pink-600 hover:bg-pink-700 text-white rounded-2xl font-black text-lg md:text-xl uppercase tracking-widest shadow-xl shadow-pink-200 transition-all active:scale-95 flex items-center justify-center gap-3"
+        className="w-full h-20 bg-pink-600 hover:bg-pink-700 text-white rounded-2xl font-black text-lg md:text-xl uppercase tracking-widest shadow-xl shadow-pink-200 transition-all active:scale-95 flex items-center justify-center gap-3 font-merriweather"
       >
         <ShoppingBag size={24} />
         Clique Aqui para ver o Kit
       </Button>
     </Link>
-    <p className="font-sans font-bold text-[10px] text-slate-400 mt-4 text-center uppercase tracking-[0.3em]">
+    <p className="font-merriweather font-bold text-[10px] text-slate-400 mt-4 text-center uppercase tracking-[0.3em]">
        Verifique a disponibilidade hoje no site oficial
     </p>
   </div>
 );
 
 const CommentItem = ({ name, date, text, likes, isReply = false }: { name: string; date: string; text: string; likes: number; isReply?: boolean }) => (
-  <div className={cn("py-8 flex gap-4", isReply ? 'ml-12 border-l-2 border-slate-50 pl-6' : 'border-b border-slate-50')}>
+  <div className={cn("py-8 flex gap-4 font-merriweather", isReply ? 'ml-12 border-l-2 border-slate-50 pl-6' : 'border-b border-slate-50')}>
     <div className={cn("shrink-0 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 font-bold uppercase", isReply ? 'w-10 h-10 text-xs' : 'w-12 h-12 text-sm')}>
       {name.charAt(0)}
     </div>
     <div className="flex-1 space-y-2">
       <div className="flex items-center justify-between">
-        <span className="font-sans font-black text-slate-900 text-base">{name}</span>
-        <span className="font-sans font-bold text-[10px] text-slate-300 uppercase tracking-widest">{date}</span>
+        <span className="font-merriweather font-black text-slate-900 text-base">{name}</span>
+        <span className="font-merriweather font-bold text-[10px] text-slate-300 uppercase tracking-widest">{date}</span>
       </div>
-      <p className="font-sans text-lg text-slate-500 leading-relaxed font-medium">{text}</p>
-      <div className="font-sans text-[10px] text-pink-400 flex items-center gap-4 font-black uppercase tracking-widest pt-2">
+      <p className="font-merriweather text-lg text-slate-500 leading-relaxed font-medium">{text}</p>
+      <div className="font-merriweather text-[10px] text-pink-400 flex items-center gap-4 font-black uppercase tracking-widest pt-2">
         <button className="hover:text-pink-600 transition-colors">Curtir</button>
         <button className="hover:text-pink-600 transition-colors">Responder</button>
         {likes > 0 && <span className="text-slate-300 ml-auto flex items-center gap-1"><Heart size={10} fill="currentColor" /> {likes}</span>}
@@ -180,13 +180,13 @@ const CommentItem = ({ name, date, text, likes, isReply = false }: { name: strin
 
 export default function KcrAdvV2Page() {
   return (
-    <div className="bg-white min-h-screen antialiased selection:bg-pink-100">
+    <div className="bg-white min-h-screen antialiased selection:bg-pink-100 font-merriweather">
       <PageTracker contentId="adv-kcr-v2" />
 
       {/* NAVBAR CLEAN BLOG */}
       <nav className="bg-white border-b border-slate-50 py-6 px-6 sticky top-0 z-50">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
-              <span className="text-xl font-sans font-black tracking-tighter text-slate-900 uppercase italic">
+              <span className="text-xl font-merriweather font-black tracking-tighter text-slate-900 uppercase italic">
                 Meu <span className="text-pink-600">Diário</span> de Beleza
               </span>
               <div className="flex items-center gap-4 text-slate-400">
@@ -355,8 +355,8 @@ export default function KcrAdvV2Page() {
 
         <P>Eu sei que parece caro à primeira vista. <strong>Mas faz a conta comigo:</strong></P>
         <div className="bg-pink-50 p-10 rounded-3xl text-center my-12 border border-pink-100">
-            <p className="font-sans font-black text-3xl md:text-5xl tracking-tighter mb-4 text-pink-700">R$ 1,80 Por Dia.</p>
-            <p className="font-sans text-lg md:text-xl font-medium text-slate-500 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
+            <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-4 text-pink-700">R$ 1,80 Por Dia.</p>
+            <p className="font-merriweather text-lg md:text-xl font-medium text-slate-500 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
         </div>
         
         <P>Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado. Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
@@ -366,11 +366,11 @@ export default function KcrAdvV2Page() {
         </BoxAlerta>
 
         <div className="text-center my-10 space-y-2">
-          <p className="font-sans font-black text-3xl md:text-4xl text-pink-600">De R$ 227,00 por R$ 159,90</p>
+          <p className="font-merriweather font-black text-3xl md:text-4xl text-pink-600">De R$ 227,00 por R$ 159,90</p>
           <div className="flex justify-center items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest">
              <Check size={16} strokeWidth={4} /> Frete Grátis Para Todo Brasil
           </div>
-          <p className="font-sans text-xs text-slate-400 font-bold uppercase tracking-widest pt-4">
+          <p className="font-merriweather text-xs text-slate-400 font-bold uppercase tracking-widest pt-4">
             Aprovado pela ANVISA  |  Dinheiro de volta se não gostar
           </p>
         </div>
@@ -389,7 +389,7 @@ export default function KcrAdvV2Page() {
         
         <CTAButton />
 
-        <div className="mt-20 pt-10 border-t border-slate-100 font-sans space-y-1">
+        <div className="mt-20 pt-10 border-t border-slate-100 font-merriweather space-y-1">
           <p className="italic text-pink-600 text-2xl font-serif">Com amor,</p>
           <p className="text-2xl font-black text-slate-900">Cláudia Mendes</p>
           <p className="text-slate-400 text-xs font-black uppercase tracking-widest">Brasília, DF</p>
@@ -398,7 +398,7 @@ export default function KcrAdvV2Page() {
         {/* Seção de Comentários Estilo Blog Nativo */}
         <section className="mt-24 pt-16 border-t border-slate-100 pb-20">
           <div className="flex items-center justify-between mb-12">
-            <h4 className="font-sans font-black text-2xl md:text-3xl text-slate-900 tracking-tighter uppercase leading-none">
+            <h4 className="font-merriweather font-black text-2xl md:text-3xl text-slate-900 tracking-tighter uppercase leading-none">
                 Leitoras <span className="text-pink-600">Interagindo</span>
             </h4>
             <div className="bg-pink-50 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-pink-600">
@@ -423,7 +423,7 @@ export default function KcrAdvV2Page() {
           <div className="flex justify-center gap-8 opacity-20 grayscale">
              <ShieldCheck size={28} /> <Heart size={28} /> <MessageSquare size={28} />
           </div>
-          <p className="font-sans text-[11px] text-slate-400 leading-relaxed text-center font-bold uppercase tracking-[0.2em] max-w-xl mx-auto italic">
+          <p className="font-merriweather text-[11px] text-slate-400 leading-relaxed text-center font-bold uppercase tracking-[0.2em] max-w-xl mx-auto italic">
             Este conteúdo é informativo e baseado em relatos pessoais. Resultados podem variar. Produto notificado na ANVISA.
             <br /><br />
             © 2025 MEU DIÁRIO DE BELEZA. TODOS OS DIREITOS RESERVADOS.
