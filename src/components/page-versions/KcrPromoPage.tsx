@@ -21,6 +21,7 @@ import { KcrPromoFAQ } from '@/components/kcr-promo/KcrPromoFAQ';
 import { KcrPromoFooter } from '@/components/kcr-promo/KcrPromoFooter';
 import { KcrPromoStickyBar } from '@/components/kcr-promo/KcrPromoStickyBar';
 import { KcrPromoCelebrities } from '@/components/kcr-promo/KcrPromoCelebrities';
+import { KcrPromoAnvisa } from '@/components/kcr-promo/KcrPromoAnvisa';
 
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772320104451-ChatGPT-Image-28-de-fev.-de-2026,-20_08_08.png"
@@ -122,6 +123,8 @@ export function KcrPromoPage() {
             <KcrPromoMediaBar />
 
             <KcrPromoCelebrities />
+
+            <KcrPromoAnvisa />
 
             <KcrPromoResultsGallery images={GALLERY_IMAGES} />
 
