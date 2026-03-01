@@ -32,9 +32,9 @@ export const KcrPromoHero = ({
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-stretch">
                 
-                {/* ESQUERDA: GALERIA - PROPORÇÃO 1:1 GARANTIDA */}
-                <div className="lg:col-span-6">
-                    <div className="relative aspect-square bg-[#F9F9F9] rounded-none md:rounded-[3rem] overflow-hidden border-0 md:border border-slate-100 shadow-none md:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.08)] group">
+                {/* ESQUERDA: GALERIA - DESIGN CLEAN */}
+                <div className="lg:col-span-6 flex flex-col h-full">
+                    <div className="relative aspect-square bg-[#F9F9F9] rounded-none md:rounded-[3rem] overflow-hidden border-0 md:border border-slate-100 shadow-none md:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.08)] group flex-1">
                         <img 
                           src={productImages[activeImageIndex]} 
                           alt="Kit Cavalo de Raça" 
@@ -43,16 +43,16 @@ export const KcrPromoHero = ({
                     </div>
                 </div>
 
-                {/* DIREITA: INFOS DE COMPRA - ALINHADA À ALTURA DA IMAGEM */}
-                <div className="lg:col-span-6 flex flex-col justify-between h-full space-y-6 px-6 md:px-0 mt-4 md:mt-0">
+                {/* DIREITA: INFOS DE COMPRA - HIERARQUIA PREMIUM */}
+                <div className="lg:col-span-6 flex flex-col justify-between h-full space-y-8 px-6 md:px-0 mt-4 md:mt-0">
                     
                     {/* Header: Badges & Title */}
-                    <div className="space-y-3 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="space-y-4 flex flex-col items-center md:items-start text-center md:text-left">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-50 text-orange-700 rounded-full border border-orange-100 text-[10px] font-black uppercase tracking-[0.2em]">
                             <Sparkles size={12} fill="currentColor" /> Eleito o Nº 1 em Reconstrução
                         </div>
 
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.1]">
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.1]">
                             Kit Cavalo de Raça <br className="hidden lg:block" />
                             <span className="text-orange-600">Antiqueda Intensiva</span>
                         </h1>
@@ -65,57 +65,59 @@ export const KcrPromoHero = ({
                                 <span className="text-xs font-bold text-slate-900 ml-1">4.9</span>
                             </div>
                             <span className="text-sm font-medium text-slate-400">
-                                (2.322 avaliações)
+                                (2.322 avaliações • 50k+ pedidos no mês)
                             </span>
                         </div>
                     </div>
 
                     {/* BLOCO DE PREÇO: FOCO NA OFERTA 1+1 */}
-                    <div className="w-full bg-white rounded-[3rem] border-2 border-slate-100 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] overflow-hidden transition-all hover:border-orange-200 flex-1 flex flex-col justify-center p-6 md:p-8 space-y-6">
-                        
-                        {/* Promo Label */}
-                        <div className="flex items-center gap-4">
-                            <div className="h-0.5 flex-1 bg-slate-100"></div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-600 whitespace-nowrap">Oferta Especial Limitada</span>
-                            <div className="h-0.5 flex-1 bg-slate-100"></div>
-                        </div>
-
-                        <div className="space-y-6">
-                            {/* Lado do Preço - Centralizado */}
-                            <div className="space-y-1 text-center">
-                                <p className="text-slate-400 line-through font-bold text-base">R$ 297,00</p>
-                                <div className="flex items-baseline justify-center gap-1">
-                                    <span className="text-2xl font-black text-slate-900">R$</span>
-                                    <span className="text-6xl md:text-7xl font-black text-slate-950 tracking-tighter">147<span className="text-2xl">,00</span></span>
-                                </div>
-                                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{config.installmentText}</p>
+                    <div className="w-full bg-white rounded-[3rem] border-2 border-slate-100 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] overflow-hidden transition-all hover:border-orange-200 flex-1 flex flex-col">
+                        <div className="p-8 md:p-10 space-y-8 flex-1 flex flex-col justify-center">
+                            
+                            {/* Promo Label */}
+                            <div className="flex items-center gap-4">
+                                <div className="h-0.5 flex-1 bg-slate-100"></div>
+                                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-600 whitespace-nowrap">Oferta Especial Limitada</span>
+                                <div className="h-0.5 flex-1 bg-slate-100"></div>
                             </div>
 
-                            {/* Lado da Vantagem - FULL SPACE */}
-                            <div className="space-y-4">
-                                <div className="p-5 md:p-6 bg-emerald-50 rounded-[2.5rem] border border-emerald-100 text-center space-y-1 relative overflow-hidden group">
-                                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-125 transition-transform">
-                                        <Zap size={60} fill="currentColor" className="text-emerald-600" />
+                            <div className="space-y-6">
+                                {/* Lado do Preço - Centralizado */}
+                                <div className="space-y-1 text-center">
+                                    <p className="text-slate-400 line-through font-bold text-base">R$ 297,00</p>
+                                    <div className="flex items-baseline justify-center gap-1">
+                                        <span className="text-2xl font-black text-slate-900">R$</span>
+                                        <span className="text-7xl font-black text-slate-950 tracking-tighter">147<span className="text-2xl">,00</span></span>
                                     </div>
-                                    <p className="text-[10px] font-black text-emerald-700 uppercase tracking-[0.3em] leading-none">Vantagem Exclusiva de Hoje:</p>
-                                    <p className="text-lg md:text-2xl font-black text-slate-900 leading-tight">
-                                        Compre 1 e <span className="text-emerald-600 underline decoration-emerald-200 decoration-4 underline-offset-4">Leve +1 Kit Grátis</span>
-                                    </p>
+                                    <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{config.installmentText}</p>
                                 </div>
 
-                                {/* FRETE GRÁTIS */}
-                                <div className="flex items-center justify-center gap-2">
-                                    <div className="bg-emerald-500 rounded-full p-0.5">
-                                        <Check size={12} className="text-white" strokeWidth={4} />
+                                {/* Lado da Vantagem - FULL SPACE */}
+                                <div className="space-y-4">
+                                    <div className="p-6 md:p-8 bg-emerald-50 rounded-[2.5rem] border border-emerald-100 text-center space-y-2 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-125 transition-transform">
+                                            <Zap size={60} fill="currentColor" className="text-emerald-600" />
+                                        </div>
+                                        <p className="text-[10px] font-black text-emerald-700 uppercase tracking-[0.3em] leading-none">Vantagem Exclusiva de Hoje:</p>
+                                        <p className="text-xl md:text-3xl font-black text-slate-900 leading-tight">
+                                            Compre 1 e <span className="text-emerald-600 underline decoration-emerald-200 decoration-4 underline-offset-4">Leve +1 Kit Grátis</span>
+                                        </p>
                                     </div>
-                                    <span className="text-sm font-black text-slate-900 uppercase tracking-wider">Frete Grátis Para Brasil</span>
+
+                                    {/* FRETE GRÁTIS - NOVO ABAIXO DA VANTAGEM */}
+                                    <div className="flex items-center justify-center gap-2 py-1">
+                                        <div className="bg-emerald-500 rounded-full p-0.5">
+                                            <Check size={12} className="text-white" strokeWidth={4} />
+                                        </div>
+                                        <span className="text-sm font-black text-slate-900 uppercase tracking-wider">Frete Grátis Para Brasil</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* BOTÃO CTA */}
-                    <div className="pt-2">
+                    <div className="space-y-6 pt-2 mt-auto">
                         <Link href={checkoutUrl} target="_blank" className="hidden md:block group/btn">
                             <Button 
                                 className="w-full h-20 text-white rounded-3xl font-black text-2xl uppercase tracking-widest shadow-[0_20px_40px_-10px_rgba(53,200,103,0.4)] transition-all hover:scale-[1.02] active:scale-[0.99] flex items-center justify-center gap-4"
