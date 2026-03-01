@@ -204,12 +204,12 @@ export default function KcrAdvV2Page() {
         <H1>Eu chorava toda vez que olhava para o ralo do meu chuveiro.</H1>
         <H1Sub>Hoje meu cabelo voltou a crescer — e eu finalmente me reconheço no espelho.</H1Sub>
 
-        {/* IMAGEM DE RELATO ADICIONADA */}
-        <div className="my-10">
+        {/* IMAGEM DE RELATO AJUSTADA: MAIOR NO MOBILE E ARREDONDAMENTO SUAVE */}
+        <div className="my-10 -mx-6 md:mx-0">
           <img 
             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771644725841-Gemini_Generated_Image_bi45tvbi45tvbi45.png" 
             alt="Relato de Cláudia Mendes" 
-            className="w-full h-auto rounded-[2rem] shadow-xl border-4 border-white"
+            className="w-full h-auto rounded-xl md:rounded-2xl shadow-lg border-2 border-white"
           />
         </div>
 
@@ -314,7 +314,7 @@ export default function KcrAdvV2Page() {
         <Ancora>Eu não me conformei. E você também não precisa.</Ancora>
         <P>No domingo passado, eu fui ao churrasco da família. Arrumei o cabelo solto. Botei um brinco bonito. Quando minha cunhada disse "Cláudia, você tá ótima, o que aconteceu?", eu consegui responder sem travar: "Tô bem, obrigada."</P>
         <P>Eu tô bem. Faz tanto tempo que eu não podia dizer isso de verdade.</P>
-        <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem nem perceber.</P>
+        <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem ni perceber.</P>
         <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. </P>
         <PullQuote>É identidade. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
 
