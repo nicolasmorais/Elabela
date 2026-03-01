@@ -43,8 +43,6 @@ export const KcrPromoHero = ({
                           alt="Produto Principal" 
                           className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]" 
                         />
-                        
-                        {/* Removido controles de navegação e miniaturas para manter apenas a imagem principal */}
                     </div>
                 </div>
 
@@ -97,7 +95,7 @@ export const KcrPromoHero = ({
                     </div>
 
                     <div className="space-y-4 pt-4">
-                        <Link href={checkoutUrl} target="_blank">
+                        <Link href={checkoutUrl} target="_blank" className="hidden md:block">
                             <Button 
                                 className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-4 group animate-pulse"
                                 style={{ backgroundColor: '#35c867' }}
