@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ShieldCheck, TrendingDown } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ShieldCheck, TrendingDown, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -66,18 +66,45 @@ export const KcrPromoHero = ({
                         </p>
                     </div>
 
-                    <div className="space-y-3 w-full">
-                        <div className="flex items-center justify-center md:justify-start gap-3">
-                            <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
-                            <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">21% OFF</span>
+                    {/* BLOCO DE PREÇO REDESENHADO */}
+                    <div className="w-full p-6 md:p-8 bg-orange-50/50 rounded-[2.5rem] border border-orange-100 relative overflow-hidden group">
+                        {/* Tarja Promocional */}
+                        <div className="absolute top-0 left-0 bg-orange-600 text-white px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-br-2xl shadow-lg">
+                            OFERTA: LEVE 2, PAGUE 1
                         </div>
-                        <div className="flex items-baseline justify-center md:justify-start gap-2 leading-none">
-                            <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
-                            <span className="text-emerald-600 font-bold text-xl">no pix</span>
+
+                        <div className="space-y-4 pt-4">
+                            <div className="flex flex-col items-center md:items-start gap-1">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-slate-400 line-through text-lg font-bold">R$ 297,00</span>
+                                    <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-black uppercase">50% de Desconto</span>
+                                </div>
+                                <div className="flex items-baseline gap-2 leading-none">
+                                    <span className="text-6xl font-black text-slate-950 tracking-tighter">R$ 147<span className="text-2xl">,00</span></span>
+                                    <span className="text-emerald-600 font-bold text-xl uppercase">no pix</span>
+                                </div>
+                            </div>
+
+                            <div className="space-y-2">
+                                <p className="text-slate-800 font-black text-lg md:text-xl leading-tight">
+                                    Compre 1 kit por 147,00 e leve <br className="hidden md:block" /> 
+                                    mais <span className="text-orange-700 underline decoration-2 underline-offset-4">1 kit de graça</span>
+                                </p>
+                                <p className="text-slate-500 font-bold text-sm">
+                                    {config.installmentText}
+                                </p>
+                            </div>
+
+                            <div className="flex items-center justify-center md:justify-start gap-2 pt-2">
+                                <div className="flex items-center gap-1.5 text-emerald-600 font-black text-[10px] uppercase tracking-widest bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">
+                                    <Check size={12} strokeWidth={4} /> Frete Grátis Liberado
+                                </div>
+                            </div>
                         </div>
-                        <p className="text-slate-500 font-medium text-sm">
-                            {config.installmentText}
-                        </p>
+
+                        <div className="absolute -bottom-6 -right-6 opacity-5 group-hover:scale-110 transition-transform duration-700">
+                            <Zap size={120} fill="currentColor" className="text-orange-600" />
+                        </div>
                     </div>
 
                     <div className="space-y-4 pt-4 w-full">
