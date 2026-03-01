@@ -21,20 +21,20 @@ export function KcrPromoStickyBar({ checkoutUrl }: KcrPromoStickyBarProps) {
             </span>
         </div>
 
-        {/* Botão - Ocupando 100% do espaço */}
+        {/* Botão - Verde com novo texto */}
         <a
             href={checkoutUrl}
-            className="w-full bg-slate-950 text-white h-16 rounded-[1.5rem] flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-2xl animate-pulse border-2 border-orange-500/30"
+            className="w-full bg-green-600 hover:bg-green-700 text-white h-16 rounded-[1.5rem] flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl animate-pulse border-2 border-green-500/20"
         >
             <div className="flex flex-col items-center leading-none">
-                <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-orange-400 mb-0.5">
-                    CLIQUE AQUI E
+                <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/80 mb-0.5">
+                    CLIQUE AQUI PARA
                 </span>
-                <span className="text-sm font-black uppercase tracking-widest">
-                    QUERO MEU KIT + BRINDE
+                <span className="text-base font-black uppercase tracking-widest">
+                    COMPRAR 1 E LEVAR 2
                 </span>
             </div>
-            <ShoppingCart size={18} className="text-orange-400 ml-1" />
+            <ShoppingCart size={20} className="text-white ml-1" />
         </a>
       </div>
     </div>
