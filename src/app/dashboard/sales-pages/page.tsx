@@ -47,19 +47,21 @@ interface CustomAdvertorial {
 
 const STATIC_PAGES = [
   { id: 'v1', name: 'Advertorial Principal V1', type: 'Estática', icon: Flame, color: 'text-orange-500', bg: 'bg-orange-50 dark:bg-orange-950/20' },
-  { id: 'v2', name: 'Advertorial Japonês V2', type: 'Estática', icon: Layout, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-950/20' },
+  { id: 'v2', name: 'Advertorial Japonês V2', type: 'Estática', icon: Layout, color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
   { id: 'v3', name: 'Advertorial Editorial V3', type: 'Estática', icon: Layout, color: 'text-purple-500', bg: 'bg-purple-50 dark:bg-purple-950/20' },
   { id: 'ap', name: 'Página de Aprovação (AP)', type: 'Sistema', icon: Info, color: 'text-green-500', bg: 'bg-green-50 dark:bg-green-950/20' },
   { id: 'menopausa', name: 'Menopausa Nunca Mais', type: 'Vendas', icon: ShoppingBag, color: 'text-pink-500', bg: 'bg-pink-50 dark:bg-pink-950/20' },
-  { id: 'dor-zero', name: 'Dolorzero (Articulações)', type: 'Vendas', icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-950/20' },
-  { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', type: 'Vendas', icon: Heart, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-950/20' },
+  { id: 'dor-zero', name: 'Dolorzero (Articulações)', type: 'Vendas', icon: Zap, color: 'text-yellow-600', bg: 'bg-yellow-50 dark:bg-yellow-900/20' },
+  { id: 'cavalo-de-raca', name: 'Kit Cavalo de Raça (Cabelo)', type: 'Vendas', icon: Heart, color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-900/20' },
   { id: 'antiqueda', name: 'Tratamento Antiqueda V1', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
-  { id: 'kcrpromo', name: 'KCR Promo', type: 'Vendas', icon: ShoppingBag, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-950/20' }, // NEW
-  { id: 'clareador', name: 'Clareador', type: 'Vendas', icon: Sparkles, color: 'text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/20' },
+  { id: 'kcrpromo', name: 'KCR Promo', type: 'Vendas', icon: ShoppingBag, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-950/20' },
+  { id: 'clareador', name: 'Clareador', type: 'Vendas', icon: Sparkles, color: 'text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20' },
   { id: 'novoclareador', name: 'Novo Clareador V2', type: 'Vendas', icon: Sparkles, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-950/20' },
   { id: 'advkcr', name: 'Advertorial KCR', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' },
+  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' }, // NEW
+  { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' },
 ];
 
 export default function SalesPagesListPage() {

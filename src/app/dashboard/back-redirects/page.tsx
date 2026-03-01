@@ -25,10 +25,12 @@ const STATIC_PAGES = [
   { id: 'antiqueda', name: 'Tratamento Antiqueda V1' },
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2' },
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3' },
-  { id: 'kcrpromo', name: 'KCR Promo' }, // NEW
+  { id: 'kcrpromo', name: 'KCR Promo' },
   { id: 'clareador', name: 'Clareador' },
   { id: 'novoclareador', name: 'Novo Clareador V2' },
   { id: 'advkcr', name: 'Advertorial KCR' },
+  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)' }, // NEW
+  { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)' },
 ];
 
 export default function BackRedirectsPage() {

@@ -64,7 +64,8 @@ const STATIC_CONTENT_OPTIONS: CustomAdvertorial[] = [
     { id: 'clareador', name: 'Clareador' },
     { id: 'novoclareador', name: 'Novo Clareador V2 (Duplicado)' },
     { id: 'advkcr', name: 'Advertorial KCR' },
-    { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)' }, // NEW
+    { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)' }, // NEW
+    { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)' },
 ];
 
 export default function DashboardPage() {

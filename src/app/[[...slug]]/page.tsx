@@ -16,14 +16,15 @@ import { KcrPromoPage } from '@/components/page-versions/KcrPromoPage';
 import { ClareadorPage } from '@/components/page-versions/ClareadorPage';
 import { ClareadorPageV2 } from '@/components/page-versions/ClareadorPageV2';
 import { AdvKcrPage } from '@/components/page-versions/AdvKcrPage';
-import { KcrAdvV3Page } from '@/components/page-versions/KcrAdvV3Page'; // NEW
+import KcrAdvV2Page from '@/components/page-versions/KcrAdvV2Page'; // NEW
+import { KcrAdvV3Page } from '@/components/page-versions/KcrAdvV3Page';
 import { DeactivatedPage } from '@/components/page-versions/DeactivatedPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { BackRedirectScript } from '@/components/tracking/BackRedirectScript';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'kcrpromo', 'clareador', 'novoclareador', 'advkcr', 'adv-kcr-v3'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'kcrpromo', 'clareador', 'novoclareador', 'advkcr', 'adv-kcr-v2', 'adv-kcr-v3'];
 
 async function fetchBackRedirect(db: Client, currentSlug: string) {
     try {
@@ -60,7 +61,8 @@ async function ContentSwitcher({ contentId, originalSlug }: { contentId: string,
             case 'clareador': return <ClareadorPage />;
             case 'novoclareador': return <ClareadorPageV2 />;
             case 'advkcr': return <AdvKcrPage />;
-            case 'adv-kcr-v3': return <KcrAdvV3Page />; // NEW
+            case 'adv-kcr-v2': return <KcrAdvV2Page />; // NEW
+            case 'adv-kcr-v3': return <KcrAdvV3Page />;
             default: return <CustomAdvertorialPage advertorialId={contentId} />;
           }
       })()}
