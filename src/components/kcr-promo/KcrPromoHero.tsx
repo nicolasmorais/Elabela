@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ShieldCheck, TrendingDown, Check, Sparkles, ArrowRight } from 'lucide-react';
+import { Star, Zap, ShoppingBag, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -20,9 +20,7 @@ interface KcrPromoHeroProps {
 export const KcrPromoHero = ({ 
     activeImageIndex, 
     productImages, 
-    config,
-    formatTime,
-    timeLeft
+    config
 }: KcrPromoHeroProps) => {
   const checkoutUrl = 'https://seguro.elabela.store/r/I83HKZOFGP';
 
@@ -113,12 +111,10 @@ export const KcrPromoHero = ({
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Badges de Confiança OCULTADOS */}
                         </div>
                     </div>
 
-                    {/* BOTÃO CTA & BANNER DE ENTREGA */}
+                    {/* BOTÃO CTA */}
                     <div className="space-y-6 pt-2">
                         <Link href={checkoutUrl} target="_blank" className="hidden md:block group/btn">
                             <Button 
@@ -130,21 +126,6 @@ export const KcrPromoHero = ({
                                 <ArrowRight size={24} className="group-hover/btn:translate-x-2 transition-transform" />
                             </Button>
                         </Link>
-                        
-                        <div className="bg-slate-50 border border-slate-100 rounded-3xl p-5 flex items-center justify-between group w-full overflow-hidden relative">
-                            <div className="flex items-center gap-4 relative z-10">
-                                <div className="bg-slate-900 text-white p-2.5 rounded-xl shadow-lg shrink-0">
-                                    <Zap size={20} fill="currentColor" className="text-orange-400" />
-                                </div>
-                                <div>
-                                    <p className="text-[10px] font-black text-slate-950 uppercase tracking-widest">Entrega Acelerada</p>
-                                    <p className="text-xs text-slate-500 font-medium">Envio hoje se comprar em <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
-                                </div>
-                            </div>
-                            <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center shadow-inner relative z-10">
-                                <TrendingDown size={20} className="text-emerald-500" />
-                            </div>
-                        </div>
                     </div>
 
                 </div>
