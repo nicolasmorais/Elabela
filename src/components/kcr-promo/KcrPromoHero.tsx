@@ -40,12 +40,6 @@ export const KcrPromoHero = ({
                           alt="Kit Cavalo de Raça" 
                           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                         />
-                        
-                        {/* Selo de Originalidade Flutuante */}
-                        <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-700 delay-300">
-                            <ShieldCheck className="text-orange-600 h-5 w-5" />
-                            <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Produto Original</span>
-                        </div>
                     </div>
                 </div>
 
