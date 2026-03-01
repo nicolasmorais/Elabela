@@ -23,7 +23,7 @@ export function KcrPromoStickyBar({ checkoutUrl }: KcrPromoStickyBarProps) {
 
         {/* Botão - Verde com novo texto */}
         <a
-            href={checkoutUrl}
+            href="https://seguro.elabela.store/r/EGL6N8EAE1"
             className="w-full bg-green-600 hover:bg-green-700 text-white h-16 rounded-[1.5rem] flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl animate-pulse border-2 border-green-500/20"
         >
             <div className="flex flex-col items-center leading-none">
