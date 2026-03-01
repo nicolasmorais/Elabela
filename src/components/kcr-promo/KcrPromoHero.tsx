@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Zap, ShoppingBag, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
+import { Star, Zap, ShoppingBag, ShieldCheck, Sparkles, ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -87,7 +87,7 @@ export const KcrPromoHero = ({
                                 <div className="h-0.5 flex-1 bg-slate-100"></div>
                             </div>
 
-                            <div className="space-y-8">
+                            <div className="space-y-6">
                                 {/* Lado do Preço - Centralizado */}
                                 <div className="space-y-1 text-center">
                                     <p className="text-slate-400 line-through font-bold text-base">R$ 297,00</p>
@@ -99,7 +99,7 @@ export const KcrPromoHero = ({
                                 </div>
 
                                 {/* Lado da Vantagem - FULL SPACE */}
-                                <div className="w-full">
+                                <div className="space-y-4">
                                     <div className="p-6 md:p-8 bg-emerald-50 rounded-[2.5rem] border border-emerald-100 text-center space-y-2 relative overflow-hidden group">
                                         <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-125 transition-transform">
                                             <Zap size={60} fill="currentColor" className="text-emerald-600" />
@@ -108,6 +108,14 @@ export const KcrPromoHero = ({
                                         <p className="text-xl md:text-3xl font-black text-slate-900 leading-tight">
                                             Compre 1 e <span className="text-emerald-600 underline decoration-emerald-200 decoration-4 underline-offset-4">Leve +1 Kit Grátis</span>
                                         </p>
+                                    </div>
+
+                                    {/* FRETE GRÁTIS - NOVO ABAIXO DA VANTAGEM */}
+                                    <div className="flex items-center justify-center gap-2 py-1">
+                                        <div className="bg-emerald-500 rounded-full p-0.5">
+                                            <Check size={12} className="text-white" strokeWidth={4} />
+                                        </div>
+                                        <span className="text-sm font-black text-slate-900 uppercase tracking-wider">Frete Grátis Para Brasil</span>
                                     </div>
                                 </div>
                             </div>
