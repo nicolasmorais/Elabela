@@ -4,97 +4,98 @@ import React, { ReactNode } from 'react';
 import { PageTracker } from "./PageTracker";
 import Link from 'next/link';
 import { 
-  Clock, 
   Calendar, 
   Check, 
   Star, 
   MessageSquare, 
-  ArrowRight, 
   ShoppingBag,
-  ShieldCheck,
-  AlertCircle,
-  Zap,
-  Heart
+  Heart,
+  User,
+  Share2,
+  Clock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
-// --- Componentes de Design Inspirados na KCR Promo ---
+// --- Componentes de Design Blog Nativo & Feminino ---
 
-const Meta = ({ children }: { children: ReactNode }) => (
-  <div className="flex flex-wrap items-center gap-4 text-slate-400 text-[11px] md:text-xs font-black uppercase tracking-[0.2em] mb-10 border-b border-slate-100 pb-6">
-    <span className="flex items-center gap-1.5"><Calendar size={14} className="text-orange-500" /> {children}</span>
+const HeaderMeta = () => (
+  <div className="flex flex-col gap-4 border-b border-pink-100 pb-8 mb-10 font-sans">
+    <div className="flex items-center gap-2 text-pink-600 text-[10px] font-black uppercase tracking-[0.3em]">
+      <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
+      Saúde & Bem-Estar Feminino
+    </div>
+    <div className="flex flex-wrap items-center gap-4 text-slate-400 text-xs font-bold">
+      <span className="flex items-center gap-1.5"><Calendar size={14} className="text-pink-300" /> 14 de Junho de 2025</span>
+      <span className="opacity-20">|</span>
+      <span className="flex items-center gap-1.5"><Clock size={14} className="text-pink-300" /> 7 min de leitura</span>
+      <span className="opacity-20">|</span>
+      <span className="text-pink-500 font-black uppercase tracking-widest">Brasília, DF</span>
+    </div>
   </div>
 );
 
 const H1 = ({ children }: { children: ReactNode }) => (
-  <h1 className="font-sans font-black text-3xl md:text-6xl text-slate-950 leading-[1.1] tracking-tighter mb-6">
+  <h1 className="font-sans font-black text-3xl md:text-5xl text-slate-900 leading-[1.15] tracking-tight mb-6">
     {children}
   </h1>
 );
 
 const H1Sub = ({ children }: { children: ReactNode }) => (
-  <h2 className="font-sans font-bold text-xl md:text-3xl text-orange-600 leading-tight mb-12 tracking-tight italic">
+  <h2 className="font-sans font-bold text-xl md:text-2xl text-pink-700 leading-relaxed mb-12 italic opacity-80">
     {children}
   </h2>
 );
 
 const H2 = ({ children }: { children: ReactNode }) => (
-  <h3 className="font-sans font-black text-2xl md:text-4xl text-slate-900 mt-16 mb-8 tracking-tighter uppercase">
+  <h3 className="font-sans font-black text-2xl md:text-3xl text-slate-800 mt-16 mb-6 tracking-tight border-l-4 border-pink-200 pl-4">
     {children}
   </h3>
 );
 
 const P = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <p className={cn("font-sans text-lg md:text-2xl text-slate-600 leading-relaxed mb-8 font-medium", className)}>
+  <p className={cn("font-sans text-[19px] md:text-[21px] text-slate-600 leading-[1.8] mb-8 font-medium", className)}>
     {children}
   </p>
 );
 
 const Ancora = ({ children }: { children: ReactNode }) => (
-  <p className="font-sans font-black text-xl md:text-3xl text-slate-950 my-10 leading-tight tracking-tighter underline decoration-orange-500/30 decoration-8 underline-offset-4">
+  <p className="font-sans font-black text-xl md:text-2xl text-slate-900 my-8 leading-tight tracking-tight border-b-2 border-pink-100 inline-block">
     {children}
   </p>
 );
 
 const PullQuote = ({ children }: { children: ReactNode }) => (
-  <div className="relative p-8 md:p-12 bg-white rounded-[3rem] border border-orange-100 shadow-[0_20px_50px_-20px_rgba(249,115,22,0.2)] my-12 overflow-hidden group">
-    <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-orange-600 group-hover:rotate-12 transition-transform duration-700">
-        <Heart size={150} fill="currentColor" />
-    </div>
-    <div className="relative z-10 font-sans font-black italic text-2xl md:text-4xl text-orange-700 leading-tight tracking-tighter">
+  <div className="my-12 py-4 text-center">
+    <div className="h-px w-20 bg-pink-100 mx-auto mb-8"></div>
+    <p className="font-sans font-black italic text-2xl md:text-4xl text-pink-800 leading-tight tracking-tighter max-w-2xl mx-auto">
       "{children}"
-    </div>
+    </p>
+    <div className="h-px w-20 bg-pink-100 mx-auto mt-8"></div>
   </div>
 );
 
 const Citacao = ({ text, author }: { text: string; author: string }) => (
-  <div className="bg-[#FDF8F3] border-l-8 border-orange-500 p-8 md:p-12 my-12 rounded-r-[3rem] shadow-sm">
-    <p className="font-sans italic text-xl md:text-3xl text-slate-700 leading-relaxed mb-6 font-medium">"{text}"</p>
-    <p className="font-sans font-black text-xs md:text-sm text-orange-600 uppercase tracking-[0.3em] flex items-center gap-3">
-        <div className="h-1 w-8 bg-orange-500 rounded-full"></div>
-        {author}
+  <div className="bg-pink-50/30 border-l-4 border-pink-400 p-8 my-12 rounded-r-2xl">
+    <p className="font-sans italic text-xl md:text-2xl text-slate-700 leading-relaxed mb-4">"{text}"</p>
+    <p className="font-sans font-black text-xs text-pink-600 uppercase tracking-widest flex items-center gap-2">
+        — {author}
     </p>
   </div>
 );
 
-const Divisor = () => (
-  <div className="flex items-center justify-center gap-4 my-16 opacity-20">
-    <div className="h-px w-20 bg-orange-500"></div>
-    <div className="h-2 w-2 rounded-full bg-orange-600"></div>
-    <div className="h-px w-20 bg-orange-500"></div>
-  </div>
-);
-
 const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) => (
-  <div className="my-12 space-y-4">
+  <div className="my-12 space-y-6">
     {items.map((item, i) => (
-      <div key={i} className="flex flex-col md:flex-row bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden group hover:border-orange-200 transition-all">
-        <div className="md:w-1/4 bg-slate-900 text-white font-black text-[10px] md:text-xs p-6 flex items-center justify-center text-center uppercase tracking-[0.3em] group-hover:bg-orange-600 transition-colors">
-          {item.label}
+      <div key={i} className="flex gap-6 items-start group">
+        <div className="shrink-0 w-16 h-16 rounded-2xl bg-pink-50 flex flex-col items-center justify-center text-pink-600 font-black text-[10px] uppercase tracking-tighter border border-pink-100 group-hover:bg-pink-500 group-hover:text-white transition-all">
+          <span>{item.label.split(' ')[0]}</span>
+          <span className="text-lg leading-none">{item.label.split(' ')[1]}</span>
         </div>
-        <div className="md:w-3/4 p-8 md:p-10 text-slate-600 text-lg md:text-xl leading-relaxed font-bold">
-          {item.text}
+        <div className="pt-2">
+          <p className="font-sans text-lg md:text-xl text-slate-600 leading-relaxed font-bold">
+            {item.text}
+          </p>
         </div>
       </div>
     ))}
@@ -102,16 +103,15 @@ const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) 
 );
 
 const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
-  <div className="bg-white border-4 border-white rounded-[4rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] p-8 md:p-16 my-16 relative overflow-hidden">
-    <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none text-orange-600"><ShoppingBag size={200} /></div>
-    <h4 className="font-sans font-black text-2xl md:text-4xl mb-10 text-slate-950 tracking-tighter uppercase flex items-center gap-4">
-        <div className="p-3 bg-orange-600 text-white rounded-2xl shadow-lg"><Zap size={24} fill="currentColor" /></div>
+  <div className="bg-white border border-pink-100 rounded-3xl p-8 md:p-12 my-16 shadow-sm">
+    <h4 className="font-sans font-black text-xl md:text-2xl mb-8 text-slate-900 tracking-tight uppercase flex items-center gap-3">
+        <Heart className="text-pink-500" size={24} fill="currentColor" />
         {title}
     </h4>
     <ul className="space-y-6">
       {items.map((item, i) => (
-        <li key={i} className="text-lg md:text-2xl leading-tight font-black text-slate-800 flex items-center gap-4 group">
-            <div className="bg-emerald-50 p-1 rounded-full text-emerald-600 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform"><Check size={20} strokeWidth={4} /></div>
+        <li key={i} className="text-lg md:text-xl leading-snug font-bold text-slate-700 flex items-start gap-4">
+            <div className="bg-pink-50 p-1 rounded-full text-pink-600 mt-1"><Check size={16} strokeWidth={4} /></div>
             {item}
         </li>
       ))}
@@ -120,65 +120,55 @@ const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
 );
 
 const BoxAlerta = ({ children }: { children: ReactNode }) => (
-  <div className="bg-red-50 border-2 border-red-100 p-8 md:p-12 my-12 rounded-[3.5rem] shadow-sm relative overflow-hidden group">
-    <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-red-600 group-hover:scale-110 transition-transform"><AlertCircle size={120} /></div>
-    <div className="relative z-10 font-sans text-lg md:text-2xl leading-relaxed font-black text-red-900 italic">
+  <div className="bg-rose-50 border border-rose-100 p-8 my-12 rounded-2xl flex gap-4 items-start">
+    <AlertCircle className="text-rose-500 shrink-0" size={24} />
+    <div className="font-sans text-lg md:text-xl leading-relaxed font-bold text-rose-900 italic">
         {children}
     </div>
   </div>
 );
 
 const Depoimento = ({ name, text }: { name: string; text: string }) => (
-  <div className="bg-white border border-slate-100 p-10 md:p-12 my-10 rounded-[3rem] shadow-xl relative group transition-all hover:-translate-y-1">
-    <div className="absolute -top-6 -left-4 text-orange-100 text-[12rem] font-serif select-none pointer-events-none group-hover:text-orange-200 transition-colors opacity-40">“</div>
-    <p className="font-sans italic text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 relative z-10 font-medium">"{text}"</p>
-    <div className="flex items-center gap-4 pt-6 border-t border-slate-50">
-        <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center font-black text-orange-800 text-xl">{name.charAt(0)}</div>
-        <p className="font-sans font-black text-sm md:text-base text-slate-900 uppercase tracking-widest">{name}</p>
+  <div className="bg-slate-50 p-8 md:p-10 my-10 rounded-3xl relative group">
+    <p className="font-sans italic text-lg md:text-xl text-slate-600 leading-relaxed mb-6 font-medium">"{text}"</p>
+    <div className="flex items-center gap-3">
+        <div className="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center font-black text-pink-600 text-sm">{name.charAt(0)}</div>
+        <p className="font-sans font-black text-xs text-slate-400 uppercase tracking-widest">{name}</p>
     </div>
   </div>
 );
 
 const CTAButton = () => (
-  <div className="flex flex-col items-center my-20 px-2 md:px-0">
-    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full max-w-2xl group/btn">
+  <div className="flex flex-col items-center my-16">
+    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full max-w-xl">
       <Button 
-        className="w-full h-24 md:h-28 text-white rounded-[2.5rem] font-black text-xl md:text-3xl uppercase tracking-widest shadow-[0_20px_50px_rgba(53,200,103,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center justify-center gap-1 overflow-hidden"
-        style={{ backgroundColor: '#35c867' }}
+        className="w-full h-20 bg-pink-600 hover:bg-pink-700 text-white rounded-2xl font-black text-lg md:text-xl uppercase tracking-widest shadow-xl shadow-pink-200 transition-all active:scale-95 flex items-center justify-center gap-3"
       >
-        <span className="flex items-center gap-4">
-            <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover/btn:scale-110 transition-transform" />
-            Clique Aqui — Ver Kit com Desconto
-        </span>
-        <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em]">Site Oficial elabela.store | Envio Imediato</span>
+        <ShoppingBag size={24} />
+        Clique Aqui para ver o Kit
       </Button>
     </Link>
-    <p className="font-sans font-bold text-xs text-slate-400 mt-6 text-center uppercase tracking-[0.3em] animate-pulse">
-       ⚠️ Verifique a disponibilidade da oferta hoje
+    <p className="font-sans font-bold text-[10px] text-slate-400 mt-4 text-center uppercase tracking-[0.3em]">
+       Verifique a disponibilidade hoje no site oficial
     </p>
   </div>
 );
 
 const CommentItem = ({ name, date, text, likes, isReply = false }: { name: string; date: string; text: string; likes: number; isReply?: boolean }) => (
-  <div className={cn("py-8 flex gap-6", isReply ? 'ml-12 md:ml-24 border-l-4 border-slate-50 pl-8' : 'border-b border-slate-50')}>
-    <div className={cn("shrink-0 rounded-3xl bg-slate-100 flex items-center justify-center text-slate-900 font-black uppercase shadow-inner", isReply ? 'w-12 h-12 text-sm' : 'w-16 h-16 text-xl')}>
+  <div className={cn("py-8 flex gap-4", isReply ? 'ml-12 border-l-2 border-slate-50 pl-6' : 'border-b border-slate-50')}>
+    <div className={cn("shrink-0 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 font-bold uppercase", isReply ? 'w-10 h-10 text-xs' : 'w-12 h-12 text-sm')}>
       {name.charAt(0)}
     </div>
-    <div className="flex-1 space-y-3">
-      <div className="flex items-center gap-3">
-        <span className="font-sans font-black text-lg text-slate-900 cursor-pointer hover:text-orange-600 transition-colors">{name}</span>
+    <div className="flex-1 space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="font-sans font-black text-slate-900 text-base">{name}</span>
         <span className="font-sans font-bold text-[10px] text-slate-300 uppercase tracking-widest">{date}</span>
       </div>
-      <p className="font-sans text-lg md:text-xl text-slate-500 leading-relaxed font-medium">{text}</p>
-      <div className="font-sans text-[10px] text-slate-400 flex items-center gap-6 font-black uppercase tracking-widest pt-2">
-        <button className="hover:text-orange-600 transition-colors">Curtir</button>
-        <button className="hover:text-orange-600 transition-colors">Responder</button>
-        {likes > 0 && (
-          <span className="flex items-center gap-2 ml-auto bg-white px-3 py-1.5 rounded-full border border-slate-100 shadow-sm">
-            <span className="text-orange-500">❤️</span>
-            <span className="text-slate-900 text-xs">{likes}</span>
-          </span>
-        )}
+      <p className="font-sans text-lg text-slate-500 leading-relaxed font-medium">{text}</p>
+      <div className="font-sans text-[10px] text-pink-400 flex items-center gap-4 font-black uppercase tracking-widest pt-2">
+        <button className="hover:text-pink-600 transition-colors">Curtir</button>
+        <button className="hover:text-pink-600 transition-colors">Responder</button>
+        {likes > 0 && <span className="text-slate-300 ml-auto flex items-center gap-1"><Heart size={10} fill="currentColor" /> {likes}</span>}
       </div>
     </div>
   </div>
@@ -188,37 +178,33 @@ const CommentItem = ({ name, date, text, likes, isReply = false }: { name: strin
 
 export default function KcrAdvV2Page() {
   return (
-    <div className="bg-[#FDFDFD] min-h-screen antialiased selection:bg-orange-100">
+    <div className="bg-white min-h-screen antialiased selection:bg-pink-100">
       <PageTracker contentId="adv-kcr-v2" />
 
-      {/* NAVBAR ESTILO BLOG PREMIUM */}
-      <nav className="bg-white border-b border-slate-100 py-6 px-6 sticky top-0 z-50 shadow-sm">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-              <span className="text-2xl font-sans font-black tracking-tighter text-slate-950 uppercase italic">
-                Meu <span className="text-orange-600">Diário</span>
+      {/* NAVBAR CLEAN BLOG */}
+      <nav className="bg-white border-b border-slate-50 py-6 px-6 sticky top-0 z-50">
+          <div className="max-w-4xl mx-auto flex items-center justify-between">
+              <span className="text-xl font-sans font-black tracking-tighter text-slate-900 uppercase italic">
+                Meu <span className="text-pink-600">Diário</span> de Beleza
               </span>
-              <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                  <span className="hover:text-orange-600 cursor-pointer transition-colors">Saúde</span>
-                  <span className="hover:text-orange-600 cursor-pointer transition-colors">Autoestima</span>
-                  <span className="hover:text-orange-600 cursor-pointer transition-colors">Beleza</span>
-              </div>
-              <div className="bg-orange-50 text-orange-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-orange-100">
-                  Relato Exclusivo
+              <div className="flex items-center gap-4 text-slate-400">
+                  <Share2 size={18} className="hover:text-pink-500 cursor-pointer transition-colors" />
+                  <div className="h-4 w-px bg-slate-100"></div>
+                  <User size={18} className="hover:text-pink-500 cursor-pointer transition-colors" />
               </div>
           </div>
       </nav>
 
-      <article className="max-w-[850px] mx-auto px-6 py-12 md:py-24">
+      <article className="max-w-[750px] mx-auto px-6 py-12 md:py-20">
         
-        <Meta>Publicado em 14 de Junho de 2025  •  Brasília, DF  •  7 Minutos de Leitura</Meta>
+        <HeaderMeta />
 
         <H1>Eu chorava toda vez que olhava para o ralo do meu chuveiro.</H1>
         <H1Sub>Hoje meu cabelo voltou a crescer — e eu finalmente me reconheço no espelho.</H1Sub>
 
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
-        <P>Durante quase dois anos, eu evitei espelhos.</P>
-        <P>Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
-        <P>Porque toda vez que eu me via, o que eu enxergava não era eu.</P>
+        <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
+        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
@@ -227,7 +213,9 @@ export default function KcrAdvV2Page() {
         <Ancora>Depois dos 45, o cabelo muda. Os hormônios mudam. O corpo inteiro muda.</Ancora>
         <P>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. Mas ninguém te avisa que você pode acordar um dia e o seu cabelo não ser mais o mesmo.</P>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>O dia que eu quase não saí mais de casa</H2>
         <P>Nunca fui vaidosa no sentido de ficar horas me arrumando. Mas o meu cabelo era a minha coisa. Era longo, era cheio, era o que as pessoas comentavam.</P>
@@ -241,7 +229,9 @@ export default function KcrAdvV2Page() {
         <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. Não aguentava a ideia de todo mundo olhando.</P>
         <Ancora>Aquele domingo foi o fundo do poço pra mim.</Ancora>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>Os R$ 800 que eu joguei fora tentando resolver sozinha</H2>
         <P>Antes de te contar o que funcionou, preciso te contar tudo que NÃO funcionou. Porque eu sei que você provavelmente já tentou várias dessas coisas também.</P>
@@ -255,7 +245,9 @@ export default function KcrAdvV2Page() {
         <PullQuote>O pior era a esperança que eu colocava em cada coisa nova — e o tombo quando não funcionava.</PullQuote>
         <P>Eu comecei a acreditar que esse era o meu destino. Que eu ia ficar assim.</P>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>A mensagem que mudou tudo — e eu quase nem li</H2>
         <P>Foi minha prima Renata quem me mandou. A gente se fala bastante por Whatsapp. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</P>
@@ -270,23 +262,27 @@ export default function KcrAdvV2Page() {
         <Ancora>O tônico cuida do fio que ainda vai nascer.</Ancora>
         <P>Pedi o link pra ela. Comprei naquela mesma noite.</P>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>O que aconteceu semana a semana</H2>
         <P>Vou te contar exatamente o que aconteceu. Sem exagero, sem enfeite.</P>
         <Timeline items={[
-          { label: "1ª Lavagem", text: "Couro cabeludo leve. Limpo de um jeito que eu não lembrava de ter sentido." },
-          { label: "3º Dia", text: "Olhei pro ralo no chuveiro. Estava quase limpo. Fiquei parada olhando." },
-          { label: "1ª Semana", text: "A queda diminuiu de um jeito que eu não via há dois anos. Chorei de alívio." },
-          { label: "3 Semanas", text: "Fios novos na frente. Bebê, sabe? Curtos demais pra deitar. Nascendo." },
-          { label: "1º Mês", text: "Minha cabeleireira perguntou: 'Cláudia, o que você fez? Seu cabelo tá diferente.'" },
-          { label: "3 Meses", text: "Meu cabelo voltou. O volume, o brilho, a vida. Melhor do que antes." }
+          { label: "DIA 1", text: "Couro cabeludo leve. Limpo de um jeito que eu não lembrava de ter sentido." },
+          { label: "DIA 3", text: "Olhei pro ralo no chuveiro. Estava quase limpo. Fiquei parada olhando." },
+          { label: "SEM 1", text: "A queda diminuiu de um jeito que eu não via há dois anos. Chorei de alívio." },
+          { label: "SEM 3", text: "Fios novos na frente. Bebê, sabe? Curtos demais pra deitar. Nascendo." },
+          { label: "MÊS 1", text: "Minha cabeleireira perguntou: 'Cláudia, o que você fez? Seu cabelo tá diferente.'" },
+          { label: "MÊS 3", text: "Meu cabelo voltou. O volume, o brilho, a vida. Melhor do que antes." }
         ]} />
         <P>No terceiro dia, eu fechei o chuveiro. Fiquei parada olhando pro ralo por um bom tempo. Pensei que tinha sido coincidência. Mas no quarto dia, o mesmo. No quinto dia, o mesmo.</P>
         <P>Na escova pela manhã, menos fios. No travesseiro, quase nada.</P>
         <Ancora>Chorei. No banheiro mesmo, de emoção. Aquelas lágrimas diferentes — não de tristeza, mas de alívio.</Ancora>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>No primeiro mês, minha cabeleireira notou antes de mim</H2>
         <P>Continuei usando o kit completo: shampoo todo dia, máscara duas vezes na semana, condicionador, leave-in e o tônico. Do jeito que mandava.</P>
@@ -294,7 +290,9 @@ export default function KcrAdvV2Page() {
         <P>A Patrícia passou os dedos no meu cabelo e disse: "Cláudia, o que você fez? Seu cabelo tá diferente. Mais encorpado."</P>
         <PullQuote>Essa frase, de uma profissional que cuida do meu cabelo há oito anos, valeu mais do que qualquer resultado de exame.</PullQuote>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>Três meses depois: eu não me reconhecia — do jeito bom</H2>
         <P>Hoje meu cabelo voltou. Não do jeito que estava antes da queda começar.</P>
@@ -309,7 +307,9 @@ export default function KcrAdvV2Page() {
         <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. </P>
         <PullQuote>É identidade. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>Imagina você daqui a 60 dias...</H2>
         <P>Fecha os olhos um segundo. Imagina você acordando de manhã, passando a mão no cabelo no travesseiro — e não encontrando quase nada.</P>
@@ -318,14 +318,18 @@ export default function KcrAdvV2Page() {
         <P>Imagina postar uma foto e se reconhecer na imagem. Se gostar do que você vê. Isso não é sonho. Foi exatamente o que aconteceu comigo em 60 dias.</P>
         <Ancora>E pode acontecer com você também.</Ancora>
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>Não sou só eu — leia o que outras mulheres estão dizendo</H2>
         <Depoimento name="Maria Luíza, 54 anos — Goiânia, GO" text="Achei que era tarde demais pra mim. Meu cabelo estava caindo há dois anos e o dermatologista disse que era da menopausa, que eu tinha que aceitar. Comprei o kit sem muita esperança. Na segunda semana já estava diferente. Não consigo mais parar de usar." />
         <Depoimento name="Sônia Aparecida, 49 anos — Belo Horizonte, MG" text="Eu escondia o couro cabeludo com progressiva porque estava tão ralo que dava pra ver. Minha autoestima estava no chão. Com um mês de kit, minha filha me perguntou o que eu tinha feito no cabelo. Quase chorei ali na frente dela." />
         <Depoimento name="Rosângela, 52 anos — Recife, PE" text="Já tinha gastado mais de R$ 600 em produtos que não funcionaram. Estava desacreditada. Comprei o kit como última tentativa. Foi a melhor decisão que tomei. A queda parou na primeira semana. Agora estou vendo os fios novos nascendo." />
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <BoxLista 
           title="O que você recebe no Kit Cavalo de Raça:"
@@ -339,31 +343,32 @@ export default function KcrAdvV2Page() {
         />
 
         <P>Eu sei que parece caro à primeira vista. <strong>Mas faz a conta comigo:</strong></P>
-        <div className="bg-slate-900 text-white p-10 rounded-[3rem] text-center my-12 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform"><ShieldCheck size={100} /></div>
-            <p className="font-sans font-black text-3xl md:text-5xl tracking-tighter mb-4 text-orange-500">R$ 1,80 Por Dia.</p>
-            <p className="font-sans text-lg md:text-xl font-medium opacity-80 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
+        <div className="bg-pink-50 p-10 rounded-3xl text-center my-12 border border-pink-100">
+            <p className="font-sans font-black text-3xl md:text-5xl tracking-tighter mb-4 text-pink-700">R$ 1,80 Por Dia.</p>
+            <p className="font-sans text-lg md:text-xl font-medium text-slate-500 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
         </div>
         
         <P>Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado. Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
 
         <BoxAlerta>
-          ⚠️ <span className="underline">Importante:</span> o Kit Cavalo de Raça Original está disponível em <strong>elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
+          ⚠️ Importante: o Kit Cavalo de Raça Original está disponível em <strong className="text-slate-900">elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
         </BoxAlerta>
 
-        <div className="text-center my-12 p-10 rounded-[3.5rem] bg-orange-50 border-2 border-orange-100">
-          <p className="font-sans font-black text-[36px] md:text-[48px] text-orange-700 leading-none mb-4">De R$ 227,00 por R$ 159,90</p>
-          <div className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-100 text-emerald-700 rounded-full font-black text-sm uppercase tracking-widest">
+        <div className="text-center my-10 space-y-2">
+          <p className="font-sans font-black text-3xl md:text-4xl text-pink-600">De R$ 227,00 por R$ 159,90</p>
+          <div className="flex justify-center items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest">
              <Check size={16} strokeWidth={4} /> Frete Grátis Para Todo Brasil
           </div>
-          <p className="font-sans text-sm text-slate-400 mt-6 font-bold uppercase tracking-widest">
-            Aprovado e testado pela ANVISA  |  Garantia de 7 Dias
+          <p className="font-sans text-xs text-slate-400 font-bold uppercase tracking-widest pt-4">
+            Aprovado pela ANVISA  |  Dinheiro de volta se não gostar
           </p>
         </div>
 
         <CTAButton />
 
-        <Divisor />
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
 
         <H2>Da última vez que olhei pro ralo...</H2>
         <P>Você lembra que eu comecei esse texto falando do ralo do chuveiro? Que eu chorava toda vez que olhava pra ele?</P>
@@ -373,26 +378,24 @@ export default function KcrAdvV2Page() {
         
         <CTAButton />
 
-        <div className="mt-20 pt-10 border-t border-slate-100 font-sans">
-          <p className="italic text-orange-600 text-3xl font-black mb-2">Com carinho,</p>
-          <p className="text-3xl font-black text-slate-900 leading-none">Cláudia Mendes</p>
-          <p className="text-slate-400 text-xs font-black uppercase tracking-[0.3em] mt-3">Brasília, DF</p>
+        <div className="mt-20 pt-10 border-t border-slate-100 font-sans space-y-1">
+          <p className="italic text-pink-600 text-2xl font-serif">Com amor,</p>
+          <p className="text-2xl font-black text-slate-900">Cláudia Mendes</p>
+          <p className="text-slate-400 text-xs font-black uppercase tracking-widest">Brasília, DF</p>
         </div>
 
-        <Divisor />
-
-        {/* Seção de Comentários Estilo Moderno */}
-        <section className="mt-20 pt-16 border-t-8 border-slate-50">
-          <div className="flex items-center justify-between gap-3 mb-16">
-            <h4 className="font-sans font-black text-2xl md:text-5xl text-slate-950 tracking-tighter uppercase leading-none">
-                Leitoras <span className="text-orange-600">Comentando</span>
+        {/* Seção de Comentários Estilo Blog Nativo */}
+        <section className="mt-24 pt-16 border-t border-slate-100 pb-20">
+          <div className="flex items-center justify-between mb-12">
+            <h4 className="font-sans font-black text-2xl md:text-3xl text-slate-900 tracking-tighter uppercase leading-none">
+                Leitoras <span className="text-pink-600">Interagindo</span>
             </h4>
-            <div className="bg-slate-100 px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400">
+            <div className="bg-pink-50 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-pink-600">
                 20 Relatos
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             <CommentItem name="Fatima Oliveira" date="3 HORAS ATRÁS" likes={47} text="Gente, eu ERA cética. Já tinha tentado o shampoo Pantogar, a biotina, óleo de rícino... nada funcionou. Comprei o Cavalo de Raça sem muita esperança. *Na segunda semana, o ralo do chuveiro estava visivelmente mais limpo.* Não consigo acreditar. Já pedi o segundo kit." />
             
             <CommentItem name="Rosimeire Santos" date="1 DIA ATRÁS" likes={38} text="Comprei numa terça-feira à noite e chegou na quinta de manhã! Vim logo comentar porque achei que ia demorar muito mais. Embalagem muito caprichada, todos os produtos bem protegidos. *Já usei na primeira lavagem e o cheiro é maravilhoso.* Ainda vou contar o resultado depois, mas começou bem!" />
@@ -404,15 +407,15 @@ export default function KcrAdvV2Page() {
           </div>
         </section>
 
-        {/* Rodapé Moderno */}
-        <footer className="mt-32 pt-16 border-t border-slate-100 space-y-12">
-          <div className="flex justify-center gap-10 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
-             <ShieldCheck size={32} /> <Zap size={32} /> <MessageSquare size={32} />
+        {/* Rodapé Blog */}
+        <footer className="mt-32 pt-16 border-t border-slate-50 space-y-12">
+          <div className="flex justify-center gap-8 opacity-20 grayscale">
+             <ShieldCheck size={28} /> <Heart size={28} /> <MessageSquare size={28} />
           </div>
-          <p className="font-sans text-[10px] md:text-xs text-slate-400 leading-relaxed text-center font-bold uppercase tracking-[0.2em] max-w-2xl mx-auto italic">
-            Aviso: Este post contém links de afiliados. Resultados variam de pessoa para pessoa. Produto aprovado pela ANVISA conforme normas vigentes.
+          <p className="font-sans text-[11px] text-slate-400 leading-relaxed text-center font-bold uppercase tracking-[0.2em] max-w-xl mx-auto italic">
+            Este conteúdo é informativo e baseado em relatos pessoais. Resultados podem variar. Produto notificado na ANVISA.
             <br /><br />
-            © 2025 MEU DIÁRIO DE SAÚDE E BELEZA. TODOS OS DIREITOS RESERVADOS.
+            © 2025 MEU DIÁRIO DE BELEZA. TODOS OS DIREITOS RESERVADOS.
           </p>
         </footer>
 
