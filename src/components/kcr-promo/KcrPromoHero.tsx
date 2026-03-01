@@ -89,26 +89,26 @@ export const KcrPromoHero = ({
                                 <div className="h-0.5 flex-1 bg-slate-100"></div>
                             </div>
 
-                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                                {/* Lado do Preço */}
-                                <div className="space-y-1 text-center md:text-left">
+                            <div className="space-y-8">
+                                {/* Lado do Preço - Centralizado */}
+                                <div className="space-y-1 text-center">
                                     <p className="text-slate-400 line-through font-bold text-base">R$ 297,00</p>
-                                    <div className="flex items-baseline justify-center md:justify-start gap-1">
+                                    <div className="flex items-baseline justify-center gap-1">
                                         <span className="text-2xl font-black text-slate-900">R$</span>
                                         <span className="text-7xl font-black text-slate-950 tracking-tighter">147<span className="text-2xl">,00</span></span>
                                     </div>
                                     <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{config.installmentText}</p>
                                 </div>
 
-                                {/* Lado da Vantagem */}
-                                <div className="flex-1 max-w-[240px] mx-auto md:mx-0">
-                                    <div className="p-5 bg-emerald-50 rounded-[2rem] border border-emerald-100 text-center space-y-2 relative overflow-hidden group">
-                                        <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:scale-125 transition-transform">
-                                            <Zap size={40} fill="currentColor" className="text-emerald-600" />
+                                {/* Lado da Vantagem - FULL SPACE */}
+                                <div className="w-full">
+                                    <div className="p-6 md:p-8 bg-emerald-50 rounded-[2.5rem] border border-emerald-100 text-center space-y-2 relative overflow-hidden group">
+                                        <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-125 transition-transform">
+                                            <Zap size={60} fill="currentColor" className="text-emerald-600" />
                                         </div>
-                                        <p className="text-[10px] font-black text-emerald-700 uppercase tracking-widest leading-none">Vantagem Exclusiva:</p>
-                                        <p className="text-lg font-black text-slate-900 leading-tight">
-                                            Compre 1 e <span className="text-emerald-600">Leve +1 Grátis</span>
+                                        <p className="text-[10px] font-black text-emerald-700 uppercase tracking-[0.3em] leading-none">Vantagem Exclusiva de Hoje:</p>
+                                        <p className="text-xl md:text-3xl font-black text-slate-900 leading-tight">
+                                            Compre 1 e <span className="text-emerald-600 underline decoration-emerald-200 decoration-4 underline-offset-4">Leve +1 Kit Grátis</span>
                                         </p>
                                     </div>
                                 </div>
