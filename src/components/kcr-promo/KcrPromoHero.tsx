@@ -65,6 +65,9 @@ export const KcrPromoHero = ({
                             </div>
                             <span>4.9 | 2322 avaliações 5 estrelas</span>
                         </div>
+                        <p className="text-emerald-600 font-bold text-sm">
+                            Mais de 50.800 compras no mês passado.
+                        </p>
                     </div>
 
                     <div className="space-y-3">
