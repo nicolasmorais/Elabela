@@ -12,17 +12,18 @@ import { HairCarePage } from '@/components/page-versions/HairCarePage';
 import { AntiHairLossPage } from '@/components/page-versions/AntiHairLossPage';
 import { AntiHairLossPageV2 } from '@/components/page-versions/AntiHairLossPageV2';
 import { AntiHairLossPageV3 } from '@/components/page-versions/AntiHairLossPageV3';
-import { KcrPromoPage } from '@/components/page-versions/KcrPromoPage'; // NEW
+import { KcrPromoPage } from '@/components/page-versions/KcrPromoPage';
 import { ClareadorPage } from '@/components/page-versions/ClareadorPage';
 import { ClareadorPageV2 } from '@/components/page-versions/ClareadorPageV2';
 import { AdvKcrPage } from '@/components/page-versions/AdvKcrPage';
+import { KcrAdvV3Page } from '@/components/page-versions/KcrAdvV3Page'; // NEW
 import { DeactivatedPage } from '@/components/page-versions/DeactivatedPage';
 import APPage from '@/components/page-versions/APPage';
 import CustomAdvertorialPage from '@/components/page-versions/CustomAdvertorialPage';
 import { PixelInjector } from '@/components/tracking/PixelInjector';
 import { BackRedirectScript } from '@/components/tracking/BackRedirectScript';
 
-const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'kcrpromo', 'clareador', 'novoclareador', 'advkcr'];
+const STATIC_PAGE_IDS = ['v1', 'v2', 'v3', 'ap', 'menopausa', 'dor-zero', 'cavalo-de-raca', 'antiqueda', 'antiqueda2', 'antiqueda3', 'kcrpromo', 'clareador', 'novoclareador', 'advkcr', 'adv-kcr-v3'];
 
 async function fetchBackRedirect(db: Client, currentSlug: string) {
     try {
@@ -55,10 +56,11 @@ async function ContentSwitcher({ contentId, originalSlug }: { contentId: string,
             case 'antiqueda': return <AntiHairLossPage />;
             case 'antiqueda2': return <AntiHairLossPageV2 />;
             case 'antiqueda3': return <AntiHairLossPageV3 />;
-            case 'kcrpromo': return <KcrPromoPage />; // NEW
+            case 'kcrpromo': return <KcrPromoPage />;
             case 'clareador': return <ClareadorPage />;
             case 'novoclareador': return <ClareadorPageV2 />;
             case 'advkcr': return <AdvKcrPage />;
+            case 'adv-kcr-v3': return <KcrAdvV3Page />; // NEW
             default: return <CustomAdvertorialPage advertorialId={contentId} />;
           }
       })()}
