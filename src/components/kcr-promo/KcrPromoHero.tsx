@@ -1,9 +1,8 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, ChevronLeft, ChevronRight, TrendingDown } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ShieldCheck, TrendingDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 interface KcrPromoHeroProps {
@@ -20,9 +19,6 @@ interface KcrPromoHeroProps {
 export const KcrPromoHero = ({ 
     activeImageIndex, 
     productImages, 
-    setActiveImageIndex, 
-    nextImage, 
-    prevImage,
     config,
     formatTime,
     timeLeft
@@ -81,16 +77,6 @@ export const KcrPromoHero = ({
                         </div>
                         <p className="text-slate-500 font-medium text-sm">
                             {config.installmentText}
-                        </p>
-                    </div>
-
-                    <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl space-y-2 w-full">
-                        <p className="text-slate-800 font-black text-xl italic leading-tight">
-                            "Todo Dia Era um Bolo de Cabelo no Pente... <br />
-                            Hoje Não Cai Quase Nada."
-                        </p>
-                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest italic text-right">
-                            Ass: Ana Júlia, Brasília
                         </p>
                     </div>
 
