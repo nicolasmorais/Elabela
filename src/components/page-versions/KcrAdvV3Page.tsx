@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import { PageTracker } from "./PageTracker";
 import Link from 'next/link';
 
-// Componentes auxiliares com sintaxe de função padrão para evitar erros de parser
+// Componentes auxiliares
 function Divider() {
   return <div className="text-center text-[#BBBBBB] text-2xl my-10 font-serif">· · ·</div>;
 }
@@ -17,7 +17,7 @@ function CTAButton() {
   return (
     <div className="flex justify-center my-8">
       <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full">
-        <button className="w-full bg-[#8B1A1A] text-white font-bold py-[18px] px-[36px] rounded-[4px] text-[18px] md:text-[18px] uppercase tracking-tight hover:brightness-110 transition-all text-center">
+        <button className="w-full bg-[#8B1A1A] text-white font-bold py-[20px] px-[20px] rounded-[4px] text-[16px] md:text-[18px] uppercase tracking-tight hover:brightness-110 transition-all text-center leading-tight">
           {" >> CLIQUE AQUI — Ver Kit com Desconto na elabela.store << "}
         </button>
       </Link>
@@ -97,60 +97,60 @@ export function KcrAdvV3Page() {
         </div>
 
         <h1 className="font-bold text-[26px] md:text-[36px] text-[#1A1A1A] leading-[1.2] mb-4">
-            Eu chorava toda vez que olhava para o ralo do meu chuveiro.
+            O ralo do meu chuveiro me fazia chorar.
         </h1>
         <h2 className="font-bold text-[22px] md:text-[28px] text-[#8B1A1A] leading-[1.2] mb-8">
-            Hoje meu cabelo voltou a crescer — e eu finalmente me reconheço no espelho.
+            Eu tinha 51 anos quando meu cabelo começou a cair. Hoje, eu finalmente me reconheço no espelho.
         </h2>
 
         <div className="space-y-[22px]">
-            <p>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</p>
+            <p>Eu preciso te contar uma coisa que nunca tive coragem de falar nem para a minha irmã.</p>
             <p>Durante quase dois anos, eu evitei espelhos.</p>
             <p>Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</p>
             <p>Porque toda vez que eu me via, o que eu enxergava não era eu.</p>
-            <p>Era uma versão de mim que estava... desaparecendo.</p>
+            <p>Era uma versão de mim que estava... <Bold>desaparecendo.</Bold></p>
             <p>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem.</p>
             <p>Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</p>
-            <p>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</p>
+            <p>Era escova com tanto cabelo que eu precisava limpar no meio do processo para conseguir terminar de pentear.</p>
             
             <p className="text-[18px] text-[#1A1A1A] font-bold">Eu tinha 51 anos. E aí vem aquela coisa que ninguém avisa direito:</p>
             
             <p>Depois dos 45, o cabelo muda. Os hormônios mudam. O corpo inteiro muda.</p>
-            <p>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. Mas ninguém te avisa que você pode acordar um dia e o seu cabelo não ser mais o mesmo.</p>
+            <p>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. Mas ninguém te avisa que você pode acordar um dia e o seu cabelo simplesmente não ser mais o mesmo.</p>
 
             <Divider />
 
             <h2 className="font-bold text-[21px] md:text-[26px] text-[#8B1A1A] mb-4">O dia que eu quase não saí mais de casa</h2>
-            <p>Nunca fui vaidosa no sentido de ficar horas me arrumando. Mas o meu cabelo era a minha coisa. Era longo, era cheio, era o que as pessoas comentavam.</p>
-            <p>"Cláudia, que cabelo lindo o seu." Eu ouvia isso a vida toda.</p>
+            <p>Nunca fui excessivamente vaidosa no sentido de ficar horas me arrumando. Mas o meu cabelo era a minha marca. Era longo, era cheio, era o que as pessoas comentavam.</p>
+            <p>"Cláudia, que cabelo lindo o seu." Eu ouvi isso a vida toda.</p>
             <p>Quando ele começou a cair, eu senti que estava perdendo um pedaço de mim. Literalmente.</p>
-            <p>Comecei a usar truques de penteado pra esconder as falhas. Rabinho alto disfarçava o couro cabeludo aparecendo na frente. Coque escondia o volume que tinha sumido.</p>
+            <p>Comecei a usar truques de penteado para esconder as falhas. Rabinho alto disfarçava o couro cabeludo aparecendo na frente. Coque escondia o volume que tinha sumido.</p>
             <p>E ainda tinha aquela voz na cabeça: <Bold>"é a idade, Cláudia. É a menopausa. É o que acontece com a gente."</Bold></p>
-            <p className="text-[18px] text-[#1A1A1A] font-bold">Aquele domingo foi o fundo do poço pra mim.</p>
+            <p className="text-[18px] text-[#1A1A1A] font-bold">Até que eu cheguei no meu fundo do poço.</p>
 
             <Divider />
 
             <h2 className="font-bold text-[21px] md:text-[26px] text-[#8B1A1A] mb-4">Os R$ 800 que eu joguei fora tentando resolver sozinha</h2>
-            <p>Antes de te contar o que funcionou, preciso te contar tudo que NÃO funcionou.</p>
-            <p>Comecei com o shampoo antiqueda da farmácia. O famoso, o caro, o que aparece em toda propaganda. Usei três meses.</p>
+            <p>Antes de te contar o que realmente funcionou, preciso te contar tudo o que NÃO funcionou.</p>
+            <p>Comecei com o shampoo antiqueda da farmácia. O famoso, o caro, o que aparece em toda propaganda. Usei por três meses.</p>
             <p className="text-[18px] text-[#1A1A1A] font-bold">A queda não parou.</p>
-            <p>Depois fui atrás de vitaminas. Biotina, colágeno, zinco — tomei tudo junto achando que quanto mais, melhor.</p>
-            <p>O pior não era gastar dinheiro à toa. O pior era a esperança que eu colocava em cada coisa nova — e o tombo quando não funcionava.</p>
+            <p>Depois fui atrás de vitaminas por conta própria. Biotina, colágeno, zinco — tomei tudo junto achando que quanto mais, melhor.</p>
+            <p>O pior não era gastar dinheiro à toa. O pior era a esperança que eu colocava em cada coisa nova — e o tombo emocional quando percebia que nada mudava.</p>
 
             <Divider />
 
             <h2 className="font-bold text-[21px] md:text-[26px] text-[#8B1A1A] mb-4">A mensagem que mudou tudo — e eu quase nem li</h2>
-            <p>Foi minha prima Renata quem me mandou.</p>
-            <p>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo.</p>
+            <p>Foi minha prima Renata quem me mandou o link. Ela sabia o que eu estava passando.</p>
+            <p>Ela me falou sobre o <Bold>Kit Cavalo de Raça</Bold>. Mas não era "só mais um shampoo". Ela me explicou que ele tratava as três causas da queda ao mesmo tempo.</p>
 
             <div className="border-l-[5px] border-[#8B1A1A] pl-6 py-2 my-8">
                 <p className="text-[19px] italic font-bold text-[#8B1A1A]">
-                    "É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. Não adianta." — Renata, minha prima
+                    "É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. Não adianta." — Renata
                 </p>
             </div>
 
-            <p>E o tônico foi o que mais me surpreendeu depois. Você aplica direto no couro cabeludo e ele age dentro do folículo — onde o fio nasce.</p>
-            <p className="text-[18px] text-[#1A1A1A] font-bold">O tônico cuida do fio que ainda vai nascer.</p>
+            <p>O kit vinha completo: Shampoo, Máscara, Condicionador, Leave-in e o mais importante, o <Bold>Tônico Capilar</Bold>. O tônico é o que você aplica direto no couro cabeludo para agir dentro do folículo — onde o fio nasce.</p>
+            <p className="text-[18px] text-[#1A1A1A] font-bold">Ele cuida do fio que ainda vai nascer.</p>
 
             <Divider />
 
@@ -163,15 +163,15 @@ export function KcrAdvV3Page() {
                 </div>
                 <div className="flex flex-col md:flex-row border-b border-[#8B1A1A] last:border-0">
                     <div className="md:w-1/3 bg-[#8B1A1A] text-white p-4 font-bold flex items-center justify-center text-center">3º Dia</div>
-                    <div className="md:w-2/3 bg-[#FDF5F5] text-[#222222] p-4">Olhei pro ralo no chuveiro. Estava quase limpo. Fiquei parada olhando.</div>
+                    <div className="md:w-2/3 bg-[#FDF5F5] text-[#222222] p-4">Olhei para o ralo no chuveiro. Estava quase limpo. Fiquei parada olhando por minutos, sem acreditar.</div>
                 </div>
                 <div className="flex flex-col md:flex-row border-b border-[#8B1A1A] last:border-0">
                     <div className="md:w-1/3 bg-[#8B1A1A] text-white p-4 font-bold flex items-center justify-center text-center">1ª Semana</div>
-                    <div className="md:w-2/3 bg-[#FDF5F5] text-[#222222] p-4">A queda diminuiu de um jeito que eu não via há dois anos. Chorei de alívio.</div>
+                    <div className="md:w-2/3 bg-[#FDF5F5] text-[#222222] p-4">A queda diminuiu de um jeito que eu não via há dois anos. Chorei de alívio puro.</div>
                 </div>
                 <div className="flex flex-col md:flex-row border-b border-[#8B1A1A] last:border-0">
                     <div className="md:w-1/3 bg-[#8B1A1A] text-white p-4 font-bold flex items-center justify-center text-center">1º Mês</div>
-                    <div className="md:w-2/3 bg-[#FDF5F5] text-[#222222] p-4">Minha cabeleireira perguntou: "Cláudia, o que você fez? Seu cabelo tá diferente."</div>
+                    <div className="md:w-2/3 bg-[#FDF5F5] text-[#222222] p-4">Minha cabeleireira perguntou: "Cláudia, o que você fez? Seu cabelo está com outra textura, muito mais forte."</div>
                 </div>
             </div>
 
@@ -181,15 +181,15 @@ export function KcrAdvV3Page() {
             <p>Hoje meu cabelo voltou. Não do jeito que estava antes da queda começar. <Bold>Melhor.</Bold></p>
             <p>O volume voltou. A queda está em zero. Os fios novos cresceram e já se misturaram com o restante.</p>
             <p className="text-[18px] text-[#1A1A1A] font-bold">Eu não me conformei. E você também não precisa.</p>
-            <p>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. É identidade.</p>
+            <p>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. É a sua identidade.</p>
 
             <Divider />
 
             <h2 className="font-bold text-[21px] md:text-[26px] text-[#8B1A1A] mb-4">Não sou só eu — leia o que outras mulheres estão dizendo</h2>
             
             {[
-                { n: "Maria Luíza, 54 anos, Goiânia, GO", t: "Achei que era tarde demais pra mim. Meu cabelo estava caindo há dois anos e o dermatologista disse que era da menopausa. Comprei o kit sem muita esperança. Na segunda semana já estava diferente." },
-                { n: "Sônia Aparecida, 49 anos, Belo Horizonte, MG", t: "Minha autoestima estava no chão. Com um mês de kit, minha filha me perguntou o que eu tinha feito no cabelo. Quase chorei ali na frente dela." }
+                { n: "Maria Luíza, 54 anos, Goiânia, GO", t: "Achei que era tarde demais para mim por causa da menopausa. O dermatologista disse que era normal. Comprei o kit sem muita esperança e na segunda semana já estava diferente. É libertador." },
+                { n: "Sônia Aparecida, 49 anos, Belo Horizonte, MG", t: "Minha autoestima estava no chão. Com um mês de kit, minha filha me perguntou o que eu tinha feito no cabelo. Quase chorei ali na frente dela de tanta felicidade." }
             ].map((dep, i) => (
                 <div key={i} className="border-l-4 border-[#8B1A1A] bg-[#F9F9F9] p-6 my-6">
                     <p className="italic mb-2">"{dep.t}"</p>
@@ -203,11 +203,11 @@ export function KcrAdvV3Page() {
             
             <div className="bg-[#FDF5F5] border-y-[3px] border-[#8B1A1A] p-6 my-8">
                 <ol className="list-decimal pl-5 space-y-2">
-                    <li><Bold>Shampoo Reconstrutor</Bold> — ancora a raiz.</li>
-                    <li><Bold>Máscara Anti-Queda Intensiva</Bold> — reconstrói a fibra.</li>
-                    <li><Bold>Condicionador Fortificante</Bold> — sela as cutículas.</li>
-                    <li><Bold>Leave-in Protetor</Bold> — protege o fio reconstruído.</li>
-                    <li><Bold>Tônico Capilar Antiqueda</Bold> — age no folículo.</li>
+                    <li><Bold>Shampoo Reconstrutor</Bold> — Limpa sem agredir e ancora a raiz.</li>
+                    <li><Bold>Máscara Anti-Queda Intensiva</Bold> — Reconstrói a fibra capilar profundamente.</li>
+                    <li><Bold>Condicionador Fortificante</Bold> — Sela as cutículas e dá brilho imediato.</li>
+                    <li><Bold>Leave-in Protetor</Bold> — Protege o fio reconstruído contra danos externos.</li>
+                    <li><Bold>Tônico Capilar Antiqueda</Bold> — O segredo: age direto no folículo.</li>
                 </ol>
             </div>
 
@@ -220,7 +220,7 @@ export function KcrAdvV3Page() {
             <CTAButton />
 
             <div className="pt-10">
-                <p className="italic">Com amor,</p>
+                <p className="italic">Com carinho,</p>
                 <p className="font-bold text-[#8B1A1A] text-xl">Cláudia Mendes</p>
                 <p className="text-sm text-gray-500">Brasília, DF</p>
             </div>
@@ -233,21 +233,21 @@ export function KcrAdvV3Page() {
                     <Comment 
                         name="Fatima Oliveira" 
                         time="3 horas atrás" 
-                        text="Gente, eu ERA cética. Já tinha tentado tudo. Comprei o Cavalo de Raça sem muita esperança. Na segunda semana, o ralo do chuveiro estava visivelmente mais limpo." 
+                        text="Gente, eu ERA cética. Já tinha tentado tudo. Comprei o Cavalo de Raça sem muita esperança. Na segunda semana, o ralo do chuveiro estava visivelmente mais limpo. Vale cada centavo." 
                     />
                     <Comment 
                         name="Rosimeire Santos" 
                         time="1 dia atrás" 
-                        text="Comprei numa terça-feira à noite e chegou na quinta de manhã! Vim logo comentar porque achei que ia demorar muito mais." 
+                        text="Comprei numa terça-feira à noite e chegou na quinta de manhã! Vim logo comentar porque achei que ia demorar muito mais. Parabéns pela entrega." 
                     />
                     <Comment 
                         name="Marcia Gomes" 
                         time="1 semana atrás" 
-                        text="Moro no interior do Pará e fiquei com medo de demorar. Chegou em 4 dias. Profissional demais." 
+                        text="Moro no interior do Pará e fiquei com medo de demorar. Chegou em 4 dias. Estou usando há uma semana e já sinto o cabelo mais 'pesado', sabe? Mais forte." 
                         replies={[{
                             name: "Cláudia Mendes",
                             time: "6 dias atrás",
-                            text: "Márcia, que alegria que chegou bem! Moro aqui em Brasília e também tive boa experiência. 💛"
+                            text: "Márcia, que alegria que chegou rápido! Moro aqui em Brasília e também tive uma ótima experiência com a entrega. 💛"
                         }]}
                     />
                 </div>
