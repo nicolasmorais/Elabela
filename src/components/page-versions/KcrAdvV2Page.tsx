@@ -12,7 +12,9 @@ import {
   Heart,
   User,
   Share2,
-  Clock
+  Clock,
+  ShieldCheck, // Adicionado aqui
+  AlertCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -211,7 +213,7 @@ export default function KcrAdvV2Page() {
         <P>Eu ficava contando os fios no chuveiro. Sabe quando você começa a fazer isso? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</P>
         <P>Eu tinha 51 anos. E aí vem aquela coisa que ninguém avisa direito:</P>
         <Ancora>Depois dos 45, o cabelo muda. Os hormônios mudam. O corpo inteiro muda.</Ancora>
-        <P>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. Mas ninguém te avisa que você pode acordar um dia e o seu cabelo não ser mais o mesmo.</P>
+        <P>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. But ninguém te avisa que você pode acordar um dia e o seu cabelo não ser mais o mesmo.</P>
 
         <div className="flex justify-center my-16 opacity-10">
             <div className="h-px w-full bg-slate-900"></div>
