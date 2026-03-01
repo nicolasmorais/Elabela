@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import { PageTracker } from "./PageTracker";
 import Link from 'next/link';
 
-// --- Utilitários de Estilo ---
+// --- Componentes de Estilo Corrigidos ---
 
 const Meta = ({ children }: { children: ReactNode }) => (
   <div className="font-sans text-[13px] text-[#999999] border-b border-[#EEEEEE] pb-2 mb-8 uppercase tracking-tight">
@@ -30,8 +30,8 @@ const H2 = ({ children }: { children: ReactNode }) => (
   </h3>
 );
 
-const P = ({ children }: { children: ReactNode }) => (
-  <p className="font-serif text-[15px] md:text-[16px] text-[#222222] leading-[1.85] mb-[22px] text-left">
+const P = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <p className={`font-serif text-[15px] md:text-[16px] text-[#222222] leading-[1.85] mb-[22px] text-left ${className || ''}`}>
     {children}
   </p>
 );
@@ -100,7 +100,7 @@ const CTAButton = () => (
   <div className="flex flex-col items-center my-10 px-4 md:px-0">
     <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full md:w-auto">
       <button className="w-full bg-[#8B1A1A] text-white font-bold text-[18px] py-[18px] px-9 rounded-[4px] shadow-md hover:brightness-110 transition-all uppercase leading-tight text-center">
-        >> CLIQUE AQUI — Ver Kit com Desconto na elabela.store <<
+        {">> CLIQUE AQUI — Ver Kit com Desconto na elabela.store <<"}
       </button>
     </Link>
     <p className="font-serif italic text-[14px] text-[#999999] mt-3 text-center">
@@ -108,8 +108,6 @@ const CTAButton = () => (
     </p>
   </div>
 );
-
-// --- Componentes de Comentário (Estilo FB) ---
 
 const CommentItem = ({ name, date, text, likes, isReply = false }: { name: string; date: string; text: string; likes: number; isReply?: boolean }) => (
   <div className={`py-4 flex gap-3 ${isReply ? 'ml-12 border-l-2 border-[#EEEEEE] pl-4' : 'border-b border-[#EEEEEE]'}`}>
@@ -145,9 +143,8 @@ const CommentItem = ({ name, date, text, likes, isReply = false }: { name: strin
 export default function KcrAdvV2Page() {
   return (
     <div className="bg-white min-h-screen antialiased">
-      <PageTracker contentId="kcr-adv-v2" />
+      <PageTracker contentId="adv-kcr-v2" />
 
-      {/* Container Principal */}
       <article className="max-w-[720px] mx-auto px-4 py-8 md:py-12">
         
         <Meta>Meu Diário de Saúde e Beleza  |  Por Cláudia Mendes  |  Brasília, DF  |  Leitura: 7 minutos</Meta>
@@ -246,7 +243,8 @@ export default function KcrAdvV2Page() {
         <Ancora>Eu não me conformei. E você também não precisa.</Ancora>
         <P>No domingo passado, eu fui ao churrasco da família. Arrumei o cabelo solto. Botei um brinco bonito. Quando minha cunhada disse "Cláudia, você tá ótima, o que aconteceu?", eu consegui responder sem travar: "Tô bem, obrigada."</P>
         <P>Eu tô bem. Faz tanto tempo que eu não podia dizer isso de verdade.</P>
-        <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade.</P>
+        <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem nem perceber.</P>
+        <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. </P>
         <PullQuote>É identidade. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
 
         <Divisor />
@@ -274,7 +272,7 @@ export default function KcrAdvV2Page() {
             "2. Máscara Anti-Queda Intensiva — reconstrói a fibra. O fio fica forte.",
             "3. Condicionador Fortificante — sela as cutículas. O fio para de quebrar.",
             "4. Leave-in Protetor — protege o fio reconstruído no dia a dia.",
-            <strong className="text-[#8B1A1A]">5. Tônico Capilar Antiqueda — age no folículo. Estimula os fios novos a nascer.</strong>
+            "5. Tônico Capilar Antiqueda — age no folículo. Estimula os fios novos a nascer."
           ]}
         />
 
@@ -332,8 +330,6 @@ export default function KcrAdvV2Page() {
             
             <CommentItem name="Marcia Gomes" date="1 semana atrás" likes={41} text="Moro no interior do Pará e fiquei com medo de demorar muito ou chegar danificado. *Chegou em 4 dias, embalado com plástico bolha, todos os frascos com lacre intacto.* Loja profissional demais." />
             <CommentItem name="Cláudia Mendes" date="6 dias atrás" likes={7} isReply={true} text="Márcia, que alegria que chegou bem! Moro aqui em Brasília e também tive boa experiência com a entrega. Obrigada por contar, isso ajuda muito quem está em dúvida! 💛" />
-            
-            <CommentItem name="Luciana Braga" date="3 semanas atrás" likes={67} text="Fui à dermatologista e ela me orçou um tratamento de R$ 1.800 em sessões. Não tinha esse dinheiro. Comprei pra testar. *Dois meses depois minha dermatologista olhou meu cabelo e perguntou o que eu tinha feito.* Quando falei o preço ela ficou surpresa." />
           </div>
         </section>
 
