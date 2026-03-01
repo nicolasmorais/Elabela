@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Star, Award, Zap, ShoppingBag, ShieldCheck, TrendingDown, Check, Sparkles } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ShieldCheck, TrendingDown, Check, Sparkles, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -79,7 +79,7 @@ export const KcrPromoHero = ({
                     </div>
 
                     {/* BLOCO DE PREÇO: FOCO NA OFERTA 1+1 */}
-                    <div className="w-full bg-white rounded-[3rem] border-2 border-slate-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden transition-all hover:border-orange-200">
+                    <div className="w-full bg-white rounded-[3rem] border-2 border-slate-100 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)] overflow-hidden transition-all hover:border-orange-200">
                         <div className="p-8 md:p-10 space-y-8">
                             
                             {/* Promo Label */}
