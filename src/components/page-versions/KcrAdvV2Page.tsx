@@ -3,71 +3,97 @@
 import React, { ReactNode } from 'react';
 import { PageTracker } from "./PageTracker";
 import Link from 'next/link';
+import { 
+  Clock, 
+  Calendar, 
+  Check, 
+  Star, 
+  MessageSquare, 
+  ArrowRight, 
+  ShoppingBag,
+  ShieldCheck,
+  AlertCircle,
+  Zap,
+  Heart
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
-// --- Componentes de Estilo com Tamanhos Ampliados e Space Grotesk ---
+// --- Componentes de Design Inspirados na KCR Promo ---
 
 const Meta = ({ children }: { children: ReactNode }) => (
-  <div className="font-sans text-[14px] text-[#999999] border-b border-[#EEEEEE] pb-2 mb-8 uppercase tracking-wider">
-    {children}
+  <div className="flex flex-wrap items-center gap-4 text-slate-400 text-[11px] md:text-xs font-black uppercase tracking-[0.2em] mb-10 border-b border-slate-100 pb-6">
+    <span className="flex items-center gap-1.5"><Calendar size={14} className="text-orange-500" /> {children}</span>
   </div>
 );
 
 const H1 = ({ children }: { children: ReactNode }) => (
-  <h1 className="font-sans font-black text-[30px] md:text-[44px] text-[#1A1A1A] leading-[1.1] mb-6 tracking-tight">
+  <h1 className="font-sans font-black text-3xl md:text-6xl text-slate-950 leading-[1.1] tracking-tighter mb-6">
     {children}
   </h1>
 );
 
 const H1Sub = ({ children }: { children: ReactNode }) => (
-  <h2 className="font-sans font-bold text-[24px] md:text-[32px] text-[#8B1A1A] leading-tight mb-10 tracking-tight">
+  <h2 className="font-sans font-bold text-xl md:text-3xl text-orange-600 leading-tight mb-12 tracking-tight italic">
     {children}
   </h2>
 );
 
 const H2 = ({ children }: { children: ReactNode }) => (
-  <h3 className="font-sans font-extrabold text-[24px] md:text-[30px] text-[#8B1A1A] mt-14 mb-6 tracking-tight">
+  <h3 className="font-sans font-black text-2xl md:text-4xl text-slate-900 mt-16 mb-8 tracking-tighter uppercase">
     {children}
   </h3>
 );
 
 const P = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <p className={cn("font-sans text-[18px] md:text-[20px] text-[#222222] leading-[1.7] mb-8 text-left font-medium", className)}>
+  <p className={cn("font-sans text-lg md:text-2xl text-slate-600 leading-relaxed mb-8 font-medium", className)}>
     {children}
   </p>
 );
 
 const Ancora = ({ children }: { children: ReactNode }) => (
-  <p className="font-sans font-black text-[20px] md:text-[22px] text-[#1A1A1A] my-6 leading-tight tracking-tight">
+  <p className="font-sans font-black text-xl md:text-3xl text-slate-950 my-10 leading-tight tracking-tighter underline decoration-orange-500/30 decoration-8 underline-offset-4">
     {children}
   </p>
 );
 
 const PullQuote = ({ children }: { children: ReactNode }) => (
-  <div className="font-sans font-bold italic text-[22px] md:text-[26px] text-[#8B1A1A] border-l-[6px] border-[#8B1A1A] pl-8 my-10 leading-relaxed tracking-tight">
-    {children}
+  <div className="relative p-8 md:p-12 bg-white rounded-[3rem] border border-orange-100 shadow-[0_20px_50px_-20px_rgba(249,115,22,0.2)] my-12 overflow-hidden group">
+    <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-orange-600 group-hover:rotate-12 transition-transform duration-700">
+        <Heart size={150} fill="currentColor" />
+    </div>
+    <div className="relative z-10 font-sans font-black italic text-2xl md:text-4xl text-orange-700 leading-tight tracking-tighter">
+      "{children}"
+    </div>
   </div>
 );
 
 const Citacao = ({ text, author }: { text: string; author: string }) => (
-  <div className="font-sans italic text-[18px] md:text-[21px] text-[#555555] border-l-[5px] border-[#8B1A1A] p-6 md:p-8 bg-[#F9F9F9] my-10 rounded-r-2xl">
-    <p>"{text}"</p>
-    <p className="not-italic font-black mt-4 text-[#8B1A1A] text-sm uppercase tracking-widest">— {author}</p>
+  <div className="bg-[#FDF8F3] border-l-8 border-orange-500 p-8 md:p-12 my-12 rounded-r-[3rem] shadow-sm">
+    <p className="font-sans italic text-xl md:text-3xl text-slate-700 leading-relaxed mb-6 font-medium">"{text}"</p>
+    <p className="font-sans font-black text-xs md:text-sm text-orange-600 uppercase tracking-[0.3em] flex items-center gap-3">
+        <div className="h-1 w-8 bg-orange-500 rounded-full"></div>
+        {author}
+    </p>
   </div>
 );
 
 const Divisor = () => (
-  <div className="text-center text-[#DDDDDD] text-3xl my-14 tracking-[15px]">···</div>
+  <div className="flex items-center justify-center gap-4 my-16 opacity-20">
+    <div className="h-px w-20 bg-orange-500"></div>
+    <div className="h-2 w-2 rounded-full bg-orange-600"></div>
+    <div className="h-px w-20 bg-orange-500"></div>
+  </div>
 );
 
 const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) => (
-  <div className="my-10 font-sans overflow-hidden rounded-2xl border-2 border-[#EEEEEE]">
+  <div className="my-12 space-y-4">
     {items.map((item, i) => (
-      <div key={i} className="flex flex-col md:flex-row border-b-2 border-[#EEEEEE] last:border-0">
-        <div className="md:w-1/4 bg-[#8B1A1A] text-white font-black text-[15px] p-4 md:p-6 flex items-center justify-center text-center uppercase tracking-widest">
+      <div key={i} className="flex flex-col md:flex-row bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden group hover:border-orange-200 transition-all">
+        <div className="md:w-1/4 bg-slate-900 text-white font-black text-[10px] md:text-xs p-6 flex items-center justify-center text-center uppercase tracking-[0.3em] group-hover:bg-orange-600 transition-colors">
           {item.label}
         </div>
-        <div className="md:w-3/4 bg-[#FDF5F5] text-[#222222] text-[18px] md:text-[20px] p-6 md:p-8 leading-relaxed font-medium">
+        <div className="md:w-3/4 p-8 md:p-10 text-slate-600 text-lg md:text-xl leading-relaxed font-bold">
           {item.text}
         </div>
       </div>
@@ -76,12 +102,16 @@ const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) 
 );
 
 const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
-  <div className="bg-[#FDF5F5] border-y-4 border-[#8B1A1A] p-6 md:p-10 my-12 font-sans rounded-xl shadow-sm">
-    <h4 className="font-black text-[22px] md:text-[26px] mb-6 text-[#1A1A1A] tracking-tight uppercase">{title}</h4>
-    <ul className="space-y-4">
+  <div className="bg-white border-4 border-white rounded-[4rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] p-8 md:p-16 my-16 relative overflow-hidden">
+    <div className="absolute top-0 right-0 p-10 opacity-[0.03] pointer-events-none text-orange-600"><ShoppingBag size={200} /></div>
+    <h4 className="font-sans font-black text-2xl md:text-4xl mb-10 text-slate-950 tracking-tighter uppercase flex items-center gap-4">
+        <div className="p-3 bg-orange-600 text-white rounded-2xl shadow-lg"><Zap size={24} fill="currentColor" /></div>
+        {title}
+    </h4>
+    <ul className="space-y-6">
       {items.map((item, i) => (
-        <li key={i} className="text-[18px] md:text-[20px] leading-relaxed font-bold flex items-start gap-3">
-            <span className="text-[#8B1A1A] mt-1">✓</span>
+        <li key={i} className="text-lg md:text-2xl leading-tight font-black text-slate-800 flex items-center gap-4 group">
+            <div className="bg-emerald-50 p-1 rounded-full text-emerald-600 shadow-sm border border-emerald-100 group-hover:scale-110 transition-transform"><Check size={20} strokeWidth={4} /></div>
             {item}
         </li>
       ))}
@@ -90,49 +120,63 @@ const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
 );
 
 const BoxAlerta = ({ children }: { children: ReactNode }) => (
-  <div className="bg-[#FFF5F5] border-2 border-[#8B1A1A] p-6 md:p-8 my-10 font-sans text-[18px] md:text-[20px] leading-relaxed font-bold text-[#8B1A1A] rounded-2xl shadow-inner">
-    {children}
+  <div className="bg-red-50 border-2 border-red-100 p-8 md:p-12 my-12 rounded-[3.5rem] shadow-sm relative overflow-hidden group">
+    <div className="absolute top-0 right-0 p-8 opacity-[0.05] text-red-600 group-hover:scale-110 transition-transform"><AlertCircle size={120} /></div>
+    <div className="relative z-10 font-sans text-lg md:text-2xl leading-relaxed font-black text-red-900 italic">
+        {children}
+    </div>
   </div>
 );
 
 const Depoimento = ({ name, text }: { name: string; text: string }) => (
-  <div className="bg-[#F9F9F9] border-l-[6px] border-[#8B1A1A] p-6 md:p-8 my-8 font-sans rounded-r-3xl shadow-sm">
-    <p className="italic text-[19px] md:text-[22px] text-[#222222] leading-relaxed mb-4">"{text}"</p>
-    <p className="font-black text-[14px] md:text-[16px] text-[#8B1A1A] uppercase tracking-[0.2em]">{name}</p>
+  <div className="bg-white border border-slate-100 p-10 md:p-12 my-10 rounded-[3rem] shadow-xl relative group transition-all hover:-translate-y-1">
+    <div className="absolute -top-6 -left-4 text-orange-100 text-[12rem] font-serif select-none pointer-events-none group-hover:text-orange-200 transition-colors opacity-40">“</div>
+    <p className="font-sans italic text-xl md:text-2xl text-slate-700 leading-relaxed mb-8 relative z-10 font-medium">"{text}"</p>
+    <div className="flex items-center gap-4 pt-6 border-t border-slate-50">
+        <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center font-black text-orange-800 text-xl">{name.charAt(0)}</div>
+        <p className="font-sans font-black text-sm md:text-base text-slate-900 uppercase tracking-widest">{name}</p>
+    </div>
   </div>
 );
 
 const CTAButton = () => (
-  <div className="flex flex-col items-center my-14 px-2 md:px-0">
-    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full">
-      <button className="w-full bg-[#8B1A1A] text-white font-black text-[20px] md:text-[24px] py-8 px-6 rounded-2xl shadow-[0_20px_40px_-10px_rgba(139,26,26,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all uppercase leading-tight text-center tracking-tight">
-        {">> CLIQUE AQUI — Ver Kit com Desconto na elabela.store <<"}
-      </button>
+  <div className="flex flex-col items-center my-20 px-2 md:px-0">
+    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full max-w-2xl group/btn">
+      <Button 
+        className="w-full h-24 md:h-28 text-white rounded-[2.5rem] font-black text-xl md:text-3xl uppercase tracking-widest shadow-[0_20px_50px_rgba(53,200,103,0.4)] transition-all hover:scale-[1.03] active:scale-95 flex flex-col items-center justify-center gap-1 overflow-hidden"
+        style={{ backgroundColor: '#35c867' }}
+      >
+        <span className="flex items-center gap-4">
+            <ShoppingBag className="h-6 w-6 md:h-10 md:w-10 group-hover/btn:scale-110 transition-transform" />
+            Clique Aqui — Ver Kit com Desconto
+        </span>
+        <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em]">Site Oficial elabela.store | Envio Imediato</span>
+      </Button>
     </Link>
-    <p className="font-sans font-bold text-[14px] text-[#AAAAAA] mt-4 text-center uppercase tracking-widest">
-      (Verificar se o desconto ainda está disponível)
+    <p className="font-sans font-bold text-xs text-slate-400 mt-6 text-center uppercase tracking-[0.3em] animate-pulse">
+       ⚠️ Verifique a disponibilidade da oferta hoje
     </p>
   </div>
 );
 
 const CommentItem = ({ name, date, text, likes, isReply = false }: { name: string; date: string; text: string; likes: number; isReply?: boolean }) => (
-  <div className={cn("py-6 flex gap-4", isReply ? 'ml-8 md:ml-16 border-l-2 border-[#EEEEEE] pl-5' : 'border-b border-[#EEEEEE]')}>
-    <div className={cn("shrink-0 rounded-2xl bg-[#8B1A1A] flex items-center justify-center text-white font-black uppercase shadow-sm", isReply ? 'w-10 h-10 text-[12px]' : 'w-14 h-14 text-[18px]')}>
+  <div className={cn("py-8 flex gap-6", isReply ? 'ml-12 md:ml-24 border-l-4 border-slate-50 pl-8' : 'border-b border-slate-50')}>
+    <div className={cn("shrink-0 rounded-3xl bg-slate-100 flex items-center justify-center text-slate-900 font-black uppercase shadow-inner", isReply ? 'w-12 h-12 text-sm' : 'w-16 h-16 text-xl')}>
       {name.charAt(0)}
     </div>
-    <div className="flex-1">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="font-sans font-black text-[16px] md:text-[18px] text-[#8B1A1A] cursor-pointer hover:underline">{name}</span>
-        <span className="font-sans font-bold text-[13px] text-[#CCCCCC]">{date}</span>
+    <div className="flex-1 space-y-3">
+      <div className="flex items-center gap-3">
+        <span className="font-sans font-black text-lg text-slate-900 cursor-pointer hover:text-orange-600 transition-colors">{name}</span>
+        <span className="font-sans font-bold text-[10px] text-slate-300 uppercase tracking-widest">{date}</span>
       </div>
-      <p className="font-sans text-[17px] md:text-[19px] text-[#333333] leading-relaxed mb-3 font-medium">{text}</p>
-      <div className="font-sans text-[13px] text-[#AAAAAA] flex items-center gap-4 font-black uppercase tracking-wider">
-        <button className="hover:text-[#8B1A1A] transition-colors">Curtir</button>
-        <button className="hover:text-[#8B1A1A] transition-colors">Responder</button>
+      <p className="font-sans text-lg md:text-xl text-slate-500 leading-relaxed font-medium">{text}</p>
+      <div className="font-sans text-[10px] text-slate-400 flex items-center gap-6 font-black uppercase tracking-widest pt-2">
+        <button className="hover:text-orange-600 transition-colors">Curtir</button>
+        <button className="hover:text-orange-600 transition-colors">Responder</button>
         {likes > 0 && (
-          <span className="flex items-center gap-1.5 ml-auto bg-slate-50 px-2 py-1 rounded-full border">
-            <span className="text-[#8B1A1A]">👍</span>
-            <span className="text-slate-600">{likes}</span>
+          <span className="flex items-center gap-2 ml-auto bg-white px-3 py-1.5 rounded-full border border-slate-100 shadow-sm">
+            <span className="text-orange-500">❤️</span>
+            <span className="text-slate-900 text-xs">{likes}</span>
           </span>
         )}
       </div>
@@ -144,12 +188,29 @@ const CommentItem = ({ name, date, text, likes, isReply = false }: { name: strin
 
 export default function KcrAdvV2Page() {
   return (
-    <div className="bg-white min-h-screen antialiased selection:bg-[#8B1A1A] selection:text-white">
+    <div className="bg-[#FDFDFD] min-h-screen antialiased selection:bg-orange-100">
       <PageTracker contentId="adv-kcr-v2" />
 
-      <article className="max-w-[760px] mx-auto px-5 py-10 md:py-16">
+      {/* NAVBAR ESTILO BLOG PREMIUM */}
+      <nav className="bg-white border-b border-slate-100 py-6 px-6 sticky top-0 z-50 shadow-sm">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+              <span className="text-2xl font-sans font-black tracking-tighter text-slate-950 uppercase italic">
+                Meu <span className="text-orange-600">Diário</span>
+              </span>
+              <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                  <span className="hover:text-orange-600 cursor-pointer transition-colors">Saúde</span>
+                  <span className="hover:text-orange-600 cursor-pointer transition-colors">Autoestima</span>
+                  <span className="hover:text-orange-600 cursor-pointer transition-colors">Beleza</span>
+              </div>
+              <div className="bg-orange-50 text-orange-700 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border border-orange-100">
+                  Relato Exclusivo
+              </div>
+          </div>
+      </nav>
+
+      <article className="max-w-[850px] mx-auto px-6 py-12 md:py-24">
         
-        <Meta>Meu Diário de Saúde e Beleza  |  Por Cláudia Mendes  |  Brasília, DF  |  Leitura: 7 minutos</Meta>
+        <Meta>Publicado em 14 de Junho de 2025  •  Brasília, DF  •  7 Minutos de Leitura</Meta>
 
         <H1>Eu chorava toda vez que olhava para o ralo do meu chuveiro.</H1>
         <H1Sub>Hoje meu cabelo voltou a crescer — e eu finalmente me reconheço no espelho.</H1Sub>
@@ -278,26 +339,28 @@ export default function KcrAdvV2Page() {
         />
 
         <P>Eu sei que parece caro à primeira vista. <strong>Mas faz a conta comigo:</strong></P>
-        <PullQuote>R$ 159,90 ÷ 90 dias de tratamento = menos de R$ 1,80 por dia.</PullQuote>
-        <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
-        <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
+        <div className="bg-slate-900 text-white p-10 rounded-[3rem] text-center my-12 shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform"><ShieldCheck size={100} /></div>
+            <p className="font-sans font-black text-3xl md:text-5xl tracking-tighter mb-4 text-orange-500">R$ 1,80 Por Dia.</p>
+            <p className="font-sans text-lg md:text-xl font-medium opacity-80 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
+        </div>
+        
+        <P>Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado. Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
 
         <BoxAlerta>
-          ⚠️ Importante: o Kit Cavalo de Raça Original está disponível em <strong className="text-[#8B1A1A]">elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
+          ⚠️ <span className="underline">Importante:</span> o Kit Cavalo de Raça Original está disponível em <strong>elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
         </BoxAlerta>
 
-        <div className="text-center my-10">
-          <p className="font-sans font-black text-[32px] md:text-[40px] text-[#8B1A1A] leading-none mb-3">De R$ 227,00 por R$ 159,90</p>
-          <p className="font-sans font-extrabold text-[18px] text-emerald-600 uppercase tracking-widest">
-             + Frete Grátis Para Todo Brasil
-          </p>
-          <p className="font-sans text-[15px] text-[#AAAAAA] mt-4 italic font-bold">
-            Aprovado e testado pela ANVISA  |  Garantia de resultado  |  Dinheiro de volta se não gostar
+        <div className="text-center my-12 p-10 rounded-[3.5rem] bg-orange-50 border-2 border-orange-100">
+          <p className="font-sans font-black text-[36px] md:text-[48px] text-orange-700 leading-none mb-4">De R$ 227,00 por R$ 159,90</p>
+          <div className="inline-flex items-center gap-2 px-6 py-2 bg-emerald-100 text-emerald-700 rounded-full font-black text-sm uppercase tracking-widest">
+             <Check size={16} strokeWidth={4} /> Frete Grátis Para Todo Brasil
+          </div>
+          <p className="font-sans text-sm text-slate-400 mt-6 font-bold uppercase tracking-widest">
+            Aprovado e testado pela ANVISA  |  Garantia de 7 Dias
           </p>
         </div>
 
-        <P className="text-center font-black text-[#8B1A1A] uppercase tracking-tighter text-xl">⏳ ATENÇÃO: O desconto é por tempo limitado.</P>
-        
         <CTAButton />
 
         <Divisor />
@@ -310,39 +373,46 @@ export default function KcrAdvV2Page() {
         
         <CTAButton />
 
-        <div className="mt-12 font-sans font-black text-[18px] space-y-1">
-          <p className="italic text-[#8B1A1A] text-2xl font-serif">Com amor,</p>
-          <p className="text-2xl mt-2">Cláudia Mendes</p>
-          <p className="text-[#999999] text-sm uppercase tracking-widest">Brasília, DF</p>
+        <div className="mt-20 pt-10 border-t border-slate-100 font-sans">
+          <p className="italic text-orange-600 text-3xl font-black mb-2">Com carinho,</p>
+          <p className="text-3xl font-black text-slate-900 leading-none">Cláudia Mendes</p>
+          <p className="text-slate-400 text-xs font-black uppercase tracking-[0.3em] mt-3">Brasília, DF</p>
         </div>
 
         <Divisor />
 
-        {/* Seção de Comentários Ampliada */}
-        <section className="mt-16 border-t-4 border-[#EEEEEE] pt-12 pb-20">
-          <div className="flex items-baseline gap-3 mb-12">
-            <h4 className="font-sans font-black text-[24px] md:text-[32px] text-[#1A1A1A] tracking-tighter uppercase">Comentários</h4>
-            <span className="font-sans font-bold text-[16px] text-[#999999] uppercase tracking-widest">20 relatos</span>
+        {/* Seção de Comentários Estilo Moderno */}
+        <section className="mt-20 pt-16 border-t-8 border-slate-50">
+          <div className="flex items-center justify-between gap-3 mb-16">
+            <h4 className="font-sans font-black text-2xl md:text-5xl text-slate-950 tracking-tighter uppercase leading-none">
+                Leitoras <span className="text-orange-600">Comentando</span>
+            </h4>
+            <div className="bg-slate-100 px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400">
+                20 Relatos
+            </div>
           </div>
 
-          <div className="space-y-2">
-            <CommentItem name="Fatima Oliveira" date="3 horas atrás" likes={47} text="Gente, eu ERA cética. Já tinha tentado o shampoo Pantogar, a biotina, óleo de rícino... nada funcionou. Comprei o Cavalo de Raça sem muita esperança. *Na segunda semana, o ralo do chuveiro estava visivelmente mais limpo.* Não consigo acreditar. Já pedi o segundo kit." />
+          <div className="space-y-4">
+            <CommentItem name="Fatima Oliveira" date="3 HORAS ATRÁS" likes={47} text="Gente, eu ERA cética. Já tinha tentado o shampoo Pantogar, a biotina, óleo de rícino... nada funcionou. Comprei o Cavalo de Raça sem muita esperança. *Na segunda semana, o ralo do chuveiro estava visivelmente mais limpo.* Não consigo acreditar. Já pedi o segundo kit." />
             
-            <CommentItem name="Rosimeire Santos" date="1 dia atrás" likes={38} text="Comprei numa terça-feira à noite e chegou na quinta de manhã! Vim logo comentar porque achei que ia demorar muito mais. Embalagem muito caprichada, todos os produtos bem protegidos. *Já usei na primeira lavagem e o cheiro é maravilhoso.* Ainda vou contar o resultado depois, mas começou bem!" />
+            <CommentItem name="Rosimeire Santos" date="1 DIA ATRÁS" likes={38} text="Comprei numa terça-feira à noite e chegou na quinta de manhã! Vim logo comentar porque achei que ia demorar muito mais. Embalagem muito caprichada, todos os produtos bem protegidos. *Já usei na primeira lavagem e o cheiro é maravilhoso.* Ainda vou contar o resultado depois, mas começou bem!" />
             
-            <CommentItem name="Cleide Aparecida" date="2 dias atrás" likes={61} text="Preciso deixar meu relato aqui porque talvez ajude alguma mulher na mesma situação que eu. Estou na menopausa há 2 anos e meu cabelo caiu muito com as mudanças hormonais. *Com 3 semanas de kit, a queda reduziu de um jeito que eu não via há muito tempo.* 55 anos e meu cabelo está reagindo sim. Não desistam!" />
+            <CommentItem name="Cleide Aparecida" date="2 DIAS ATRÁS" likes={61} text="Preciso deixar meu relato aqui porque talvez ajude alguma mulher na mesma situação que eu. Estou na menopausa há 2 anos e meu cabelo caiu muito com as mudanças hormonais. *Com 3 semanas de kit, a queda reduziu de um jeito que eu não via há muito tempo.* 55 anos e meu cabelo está reagindo sim. Não desistam!" />
             
-            <CommentItem name="Marcia Gomes" date="1 semana atrás" likes={41} text="Moro no interior do Pará e fiquei com medo de demorar muito ou chegar danificado. *Chegou em 4 dias, embalado com plástico bolha, todos os frascos com lacre intacto.* Loja profissional demais." />
-            <CommentItem name="Cláudia Mendes" date="6 dias atrás" likes={7} isReply={true} text="Márcia, que alegria que chegou bem! Moro aqui em Brasília e também tive boa experiência com a entrega. Obrigada por contar, isso ajuda muito quem está em dúvida! 💛" />
+            <CommentItem name="Marcia Gomes" date="1 SEMANA ATRÁS" likes={41} text="Moro no interior do Pará e fiquei com medo de demorar muito ou chegar danificado. *Chegou em 4 dias, embalado com plástico bolha, todos os frascos com lacre intacto.* Loja profissional demais." />
+            <CommentItem name="Cláudia Mendes" date="6 DIAS ATRÁS" likes={7} isReply={true} text="Márcia, que alegria que chegou bem! Moro aqui em Brasília e também tive boa experiência com a entrega. Obrigada por contar, isso ajuda muito quem está em dúvida! 💛" />
           </div>
         </section>
 
-        {/* Rodapé Legal */}
-        <footer className="mt-20 pt-10 border-t border-[#EEEEEE]">
-          <p className="font-sans italic text-[13px] text-[#AAAAAA] leading-relaxed text-center font-bold uppercase tracking-wider">
-            Este post pode conter links de afiliados. Isso significa que posso receber uma comissão se você comprar através do link, sem custo adicional para você. Só recomendo produtos que usei e acredito de verdade. Resultados podem variar de pessoa para pessoa. Produto aprovado e testado pela ANVISA.
+        {/* Rodapé Moderno */}
+        <footer className="mt-32 pt-16 border-t border-slate-100 space-y-12">
+          <div className="flex justify-center gap-10 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+             <ShieldCheck size={32} /> <Zap size={32} /> <MessageSquare size={32} />
+          </div>
+          <p className="font-sans text-[10px] md:text-xs text-slate-400 leading-relaxed text-center font-bold uppercase tracking-[0.2em] max-w-2xl mx-auto italic">
+            Aviso: Este post contém links de afiliados. Resultados variam de pessoa para pessoa. Produto aprovado pela ANVISA conforme normas vigentes.
             <br /><br />
-            © 2024 Meu Diário de Saúde e Beleza. Todos os direitos reservados.
+            © 2025 MEU DIÁRIO DE SAÚDE E BELEZA. TODOS OS DIREITOS RESERVADOS.
           </p>
         </footer>
 
