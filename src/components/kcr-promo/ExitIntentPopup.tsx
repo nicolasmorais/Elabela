@@ -10,8 +10,8 @@ export const ExitIntentPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(false);
 
-  // Link da oferta de 97 (Placeholder - ajuste conforme necessário)
-  const discountLink = "https://seguro.elabela.store/r/I83HKZOFGP";
+  // Link da oferta atualizado
+  const discountLink = "https://seguro.elabela.store/r/EGL6N8EAE1";
 
   useEffect(() => {
     const handleMouseOut = (e: MouseEvent) => {

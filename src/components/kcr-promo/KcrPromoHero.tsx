@@ -22,7 +22,7 @@ export const KcrPromoHero = ({
     productImages, 
     config
 }: KcrPromoHeroProps) => {
-  const checkoutUrl = 'https://seguro.elabela.store/r/I83HKZOFGP';
+  const checkoutUrl = 'https://seguro.elabela.store/r/EGL6N8EAE1';
 
   return (
     <header className="relative pt-0 md:pt-16 pb-16 md:pb-24 px-0 md:px-6 overflow-hidden bg-white">
@@ -120,7 +120,7 @@ export const KcrPromoHero = ({
                     <div className="space-y-6 pt-2">
                         <Link href={checkoutUrl} target="_blank" className="hidden md:block group/btn">
                             <Button 
-                                className="w-full h-20 text-white rounded-3xl font-black text-2xl uppercase tracking-widest shadow-[0_20px_40px_-10px_rgba(53,200,103,0.4)] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4"
+                                className="w-full h-20 text-white rounded-3xl font-black text-2xl uppercase tracking-widest shadow-[0_20px_40px_-10px_rgba(53,200,103,0.4)] transition-all hover:scale-[1.02] active:scale-[0.99] flex items-center justify-center gap-4"
                                 style={{ backgroundColor: '#35c867' }}
                             >
                                 <ShoppingBag size={24} />

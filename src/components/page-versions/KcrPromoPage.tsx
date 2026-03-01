@@ -59,7 +59,7 @@ export function KcrPromoPage() {
       pricePix: '147,00',
       installmentText: 'Ou 12x de R$ 14,96',
       buttonText: 'PAGAR AGORA',
-      checkoutUrl: 'https://seguro.elabela.store/r/I83HKZOFGP'
+      checkoutUrl: 'https://seguro.elabela.store/r/EGL6N8EAE1'
   });
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export function KcrPromoPage() {
                   priceCard: data.priceCard || 'R$ 187,00',
                   pricePix: data.pricePix || '147,00',
                   installmentText: data.installmentText || 'Ou 12x de R$ 14,96',
-                  buttonText: 'PAGAR AGORA',
+                  buttonText: data.buttonText || 'PAGAR AGORA',
                   checkoutUrl: data.checkoutUrl
                 });
             }
