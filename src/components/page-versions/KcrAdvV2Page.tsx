@@ -3,70 +3,71 @@
 import React, { ReactNode } from 'react';
 import { PageTracker } from "./PageTracker";
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
-// --- Componentes de Estilo Corrigidos ---
+// --- Componentes de Estilo com Tamanhos Ampliados e Space Grotesk ---
 
 const Meta = ({ children }: { children: ReactNode }) => (
-  <div className="font-sans text-[13px] text-[#999999] border-b border-[#EEEEEE] pb-2 mb-8 uppercase tracking-tight">
+  <div className="font-sans text-[14px] text-[#999999] border-b border-[#EEEEEE] pb-2 mb-8 uppercase tracking-wider">
     {children}
   </div>
 );
 
 const H1 = ({ children }: { children: ReactNode }) => (
-  <h1 className="font-serif font-bold text-[26px] md:text-[36px] text-[#1A1A1A] leading-tight mb-4">
+  <h1 className="font-sans font-black text-[30px] md:text-[44px] text-[#1A1A1A] leading-[1.1] mb-6 tracking-tight">
     {children}
   </h1>
 );
 
 const H1Sub = ({ children }: { children: ReactNode }) => (
-  <h2 className="font-serif font-bold text-[22px] md:text-[28px] text-[#8B1A1A] leading-tight mb-10">
+  <h2 className="font-sans font-bold text-[24px] md:text-[32px] text-[#8B1A1A] leading-tight mb-10 tracking-tight">
     {children}
   </h2>
 );
 
 const H2 = ({ children }: { children: ReactNode }) => (
-  <h3 className="font-serif font-bold text-[21px] md:text-[26px] text-[#8B1A1A] mt-12 mb-6">
+  <h3 className="font-sans font-extrabold text-[24px] md:text-[30px] text-[#8B1A1A] mt-14 mb-6 tracking-tight">
     {children}
   </h3>
 );
 
 const P = ({ children, className }: { children: ReactNode; className?: string }) => (
-  <p className={`font-serif text-[15px] md:text-[16px] text-[#222222] leading-[1.85] mb-[22px] text-left ${className || ''}`}>
+  <p className={cn("font-sans text-[18px] md:text-[20px] text-[#222222] leading-[1.7] mb-8 text-left font-medium", className)}>
     {children}
   </p>
 );
 
 const Ancora = ({ children }: { children: ReactNode }) => (
-  <p className="font-serif font-bold text-[18px] text-[#1A1A1A] my-4 leading-snug">
+  <p className="font-sans font-black text-[20px] md:text-[22px] text-[#1A1A1A] my-6 leading-tight tracking-tight">
     {children}
   </p>
 );
 
 const PullQuote = ({ children }: { children: ReactNode }) => (
-  <div className="font-serif font-bold italic text-[19px] text-[#8B1A1A] border-l-[5px] border-[#8B1A1A] pl-6 my-8 leading-relaxed">
+  <div className="font-sans font-bold italic text-[22px] md:text-[26px] text-[#8B1A1A] border-l-[6px] border-[#8B1A1A] pl-8 my-10 leading-relaxed tracking-tight">
     {children}
   </div>
 );
 
 const Citacao = ({ text, author }: { text: string; author: string }) => (
-  <div className="font-serif italic text-[16px] text-[#555555] border-l-[4px] border-[#8B1A1A] p-4 md:p-6 bg-[#F9F9F9] my-8">
+  <div className="font-sans italic text-[18px] md:text-[21px] text-[#555555] border-l-[5px] border-[#8B1A1A] p-6 md:p-8 bg-[#F9F9F9] my-10 rounded-r-2xl">
     <p>"{text}"</p>
-    <p className="not-italic font-bold mt-2 text-[#8B1A1A]">— {author}</p>
+    <p className="not-italic font-black mt-4 text-[#8B1A1A] text-sm uppercase tracking-widest">— {author}</p>
   </div>
 );
 
 const Divisor = () => (
-  <div className="text-center text-[#BBBBBB] text-2xl my-10 font-serif tracking-[10px]">···</div>
+  <div className="text-center text-[#DDDDDD] text-3xl my-14 tracking-[15px]">···</div>
 );
 
 const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) => (
-  <div className="my-8 font-serif overflow-hidden rounded-sm border border-[#EEEEEE]">
+  <div className="my-10 font-sans overflow-hidden rounded-2xl border-2 border-[#EEEEEE]">
     {items.map((item, i) => (
-      <div key={i} className="flex flex-col md:flex-row border-b border-[#EEEEEE] last:border-0">
-        <div className="md:w-1/4 bg-[#8B1A1A] text-white font-bold text-[14px] p-3 md:p-4 flex items-center">
+      <div key={i} className="flex flex-col md:flex-row border-b-2 border-[#EEEEEE] last:border-0">
+        <div className="md:w-1/4 bg-[#8B1A1A] text-white font-black text-[15px] p-4 md:p-6 flex items-center justify-center text-center uppercase tracking-widest">
           {item.label}
         </div>
-        <div className="md:w-3/4 bg-[#FDF5F5] text-[#222222] text-[16px] p-4 leading-relaxed">
+        <div className="md:w-3/4 bg-[#FDF5F5] text-[#222222] text-[18px] md:text-[20px] p-6 md:p-8 leading-relaxed font-medium">
           {item.text}
         </div>
       </div>
@@ -75,63 +76,64 @@ const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) 
 );
 
 const BoxLista = ({ title, items }: { title: string; items: ReactNode[] }) => (
-  <div className="bg-[#FDF5F5] border-y-[3px] border-[#8B1A1A] p-5 md:p-6 my-8 font-serif">
-    <h4 className="font-bold text-[18px] mb-4 text-[#1A1A1A]">{title}</h4>
-    <ul className="space-y-3">
-      {items.map((item, i) => <li key={i} className="text-[16px] leading-relaxed">{item}</li>)}
+  <div className="bg-[#FDF5F5] border-y-4 border-[#8B1A1A] p-6 md:p-10 my-12 font-sans rounded-xl shadow-sm">
+    <h4 className="font-black text-[22px] md:text-[26px] mb-6 text-[#1A1A1A] tracking-tight uppercase">{title}</h4>
+    <ul className="space-y-4">
+      {items.map((item, i) => (
+        <li key={i} className="text-[18px] md:text-[20px] leading-relaxed font-bold flex items-start gap-3">
+            <span className="text-[#8B1A1A] mt-1">✓</span>
+            {item}
+        </li>
+      ))}
     </ul>
   </div>
 );
 
 const BoxAlerta = ({ children }: { children: ReactNode }) => (
-  <div className="bg-[#FDF5F5] border-y-[3px] border-[#8B1A1A] p-5 md:p-6 my-8 font-serif text-[16px] leading-relaxed">
+  <div className="bg-[#FFF5F5] border-2 border-[#8B1A1A] p-6 md:p-8 my-10 font-sans text-[18px] md:text-[20px] leading-relaxed font-bold text-[#8B1A1A] rounded-2xl shadow-inner">
     {children}
   </div>
 );
 
 const Depoimento = ({ name, text }: { name: string; text: string }) => (
-  <div className="bg-[#F9F9F9] border-l-[4px] border-[#8B1A1A] p-5 md:p-6 my-6 font-serif">
-    <p className="font-serif italic text-[16px] text-[#222222] leading-relaxed mb-3">"{text}"</p>
-    <p className="font-serif font-bold italic text-[15px] text-[#8B1A1A]">{name}</p>
+  <div className="bg-[#F9F9F9] border-l-[6px] border-[#8B1A1A] p-6 md:p-8 my-8 font-sans rounded-r-3xl shadow-sm">
+    <p className="italic text-[19px] md:text-[22px] text-[#222222] leading-relaxed mb-4">"{text}"</p>
+    <p className="font-black text-[14px] md:text-[16px] text-[#8B1A1A] uppercase tracking-[0.2em]">{name}</p>
   </div>
 );
 
 const CTAButton = () => (
-  <div className="flex flex-col items-center my-10 px-4 md:px-0">
-    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full md:w-auto">
-      <button className="w-full bg-[#8B1A1A] text-white font-bold text-[18px] py-[18px] px-9 rounded-[4px] shadow-md hover:brightness-110 transition-all uppercase leading-tight text-center">
+  <div className="flex flex-col items-center my-14 px-2 md:px-0">
+    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full">
+      <button className="w-full bg-[#8B1A1A] text-white font-black text-[20px] md:text-[24px] py-8 px-6 rounded-2xl shadow-[0_20px_40px_-10px_rgba(139,26,26,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all uppercase leading-tight text-center tracking-tight">
         {">> CLIQUE AQUI — Ver Kit com Desconto na elabela.store <<"}
       </button>
     </Link>
-    <p className="font-serif italic text-[14px] text-[#999999] mt-3 text-center">
+    <p className="font-sans font-bold text-[14px] text-[#AAAAAA] mt-4 text-center uppercase tracking-widest">
       (Verificar se o desconto ainda está disponível)
     </p>
   </div>
 );
 
 const CommentItem = ({ name, date, text, likes, isReply = false }: { name: string; date: string; text: string; likes: number; isReply?: boolean }) => (
-  <div className={`py-4 flex gap-3 ${isReply ? 'ml-12 border-l-2 border-[#EEEEEE] pl-4' : 'border-b border-[#EEEEEE]'}`}>
-    <div className={`shrink-0 rounded-full bg-[#8B1A1A] flex items-center justify-center text-white font-bold uppercase ${isReply ? 'w-8 h-8 text-[10px]' : 'w-12 h-12 text-[14px]'}`}>
+  <div className={cn("py-6 flex gap-4", isReply ? 'ml-8 md:ml-16 border-l-2 border-[#EEEEEE] pl-5' : 'border-b border-[#EEEEEE]')}>
+    <div className={cn("shrink-0 rounded-2xl bg-[#8B1A1A] flex items-center justify-center text-white font-black uppercase shadow-sm", isReply ? 'w-10 h-10 text-[12px]' : 'w-14 h-14 text-[18px]')}>
       {name.charAt(0)}
     </div>
     <div className="flex-1">
-      <div className="flex items-center gap-2 mb-1">
-        <span className="font-sans font-bold text-[15px] text-[#8B1A1A] cursor-pointer hover:underline">{name}</span>
-        <span className="font-sans text-[13px] text-[#AAAAAA]">{date}</span>
+      <div className="flex items-center gap-3 mb-2">
+        <span className="font-sans font-black text-[16px] md:text-[18px] text-[#8B1A1A] cursor-pointer hover:underline">{name}</span>
+        <span className="font-sans font-bold text-[13px] text-[#CCCCCC]">{date}</span>
       </div>
-      <p className="font-serif text-[15px] text-[#333333] leading-[1.7] mb-2">{text}</p>
-      <div className="font-sans text-[13px] text-[#AAAAAA] flex items-center gap-3">
-        <button className="hover:underline font-bold">Curtir</button>
-        <span>·</span>
-        <button className="hover:underline font-bold">Responder</button>
+      <p className="font-sans text-[17px] md:text-[19px] text-[#333333] leading-relaxed mb-3 font-medium">{text}</p>
+      <div className="font-sans text-[13px] text-[#AAAAAA] flex items-center gap-4 font-black uppercase tracking-wider">
+        <button className="hover:text-[#8B1A1A] transition-colors">Curtir</button>
+        <button className="hover:text-[#8B1A1A] transition-colors">Responder</button>
         {likes > 0 && (
-          <>
-            <span>·</span>
-            <span className="flex items-center gap-1">
-              <span className="bg-[#8B1A1A] text-white text-[9px] rounded-full w-4 h-4 flex items-center justify-center">👍</span>
-              {likes}
-            </span>
-          </>
+          <span className="flex items-center gap-1.5 ml-auto bg-slate-50 px-2 py-1 rounded-full border">
+            <span className="text-[#8B1A1A]">👍</span>
+            <span className="text-slate-600">{likes}</span>
+          </span>
         )}
       </div>
     </div>
@@ -142,10 +144,10 @@ const CommentItem = ({ name, date, text, likes, isReply = false }: { name: strin
 
 export default function KcrAdvV2Page() {
   return (
-    <div className="bg-white min-h-screen antialiased">
+    <div className="bg-white min-h-screen antialiased selection:bg-[#8B1A1A] selection:text-white">
       <PageTracker contentId="adv-kcr-v2" />
 
-      <article className="max-w-[720px] mx-auto px-4 py-8 md:py-12">
+      <article className="max-w-[760px] mx-auto px-5 py-10 md:py-16">
         
         <Meta>Meu Diário de Saúde e Beleza  |  Por Cláudia Mendes  |  Brasília, DF  |  Leitura: 7 minutos</Meta>
 
@@ -157,8 +159,7 @@ export default function KcrAdvV2Page() {
         <P>Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
         <P>Porque toda vez que eu me via, o que eu enxergava não era eu.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
-        <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem.</P>
-        <P>Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
+        <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
         <P>Eu ficava contando os fios no chuveiro. Sabe quando você começa a fazer isso? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</P>
         <P>Eu tinha 51 anos. E aí vem aquela coisa que ninguém avisa direito:</P>
@@ -285,14 +286,17 @@ export default function KcrAdvV2Page() {
           ⚠️ Importante: o Kit Cavalo de Raça Original está disponível em <strong className="text-[#8B1A1A]">elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
         </BoxAlerta>
 
-        <div className="text-center my-8">
-          <p className="font-serif font-bold text-[28px] text-[#8B1A1A]">De R$ 227,00 por R$ 159,90 + Frete Grátis</p>
-          <p className="font-serif text-[15px] text-[#666666] mt-1 italic">
+        <div className="text-center my-10">
+          <p className="font-sans font-black text-[32px] md:text-[40px] text-[#8B1A1A] leading-none mb-3">De R$ 227,00 por R$ 159,90</p>
+          <p className="font-sans font-extrabold text-[18px] text-emerald-600 uppercase tracking-widest">
+             + Frete Grátis Para Todo Brasil
+          </p>
+          <p className="font-sans text-[15px] text-[#AAAAAA] mt-4 italic font-bold">
             Aprovado e testado pela ANVISA  |  Garantia de resultado  |  Dinheiro de volta se não gostar
           </p>
         </div>
 
-        <P className="text-center">⏳ <strong>ATENÇÃO: O desconto é por tempo limitado.</strong></P>
+        <P className="text-center font-black text-[#8B1A1A] uppercase tracking-tighter text-xl">⏳ ATENÇÃO: O desconto é por tempo limitado.</P>
         
         <CTAButton />
 
@@ -306,19 +310,19 @@ export default function KcrAdvV2Page() {
         
         <CTAButton />
 
-        <div className="mt-12 font-serif text-[16px]">
-          <p>Com amor,</p>
-          <p className="font-bold mt-2">Cláudia Mendes</p>
-          <p className="text-[#999999] text-[14px]">Brasília, DF</p>
+        <div className="mt-12 font-sans font-black text-[18px] space-y-1">
+          <p className="italic text-[#8B1A1A] text-2xl font-serif">Com amor,</p>
+          <p className="text-2xl mt-2">Cláudia Mendes</p>
+          <p className="text-[#999999] text-sm uppercase tracking-widest">Brasília, DF</p>
         </div>
 
         <Divisor />
 
-        {/* Seção de Comentários */}
-        <section className="mt-12 border-t-2 border-[#EEEEEE] pt-8">
-          <div className="flex items-baseline gap-2 mb-8">
-            <h4 className="font-serif font-bold text-[22px] text-[#1A1A1A]">O que as leitoras estão dizendo:</h4>
-            <span className="font-sans text-[13px] text-[#999999]">20 comentários</span>
+        {/* Seção de Comentários Ampliada */}
+        <section className="mt-16 border-t-4 border-[#EEEEEE] pt-12 pb-20">
+          <div className="flex items-baseline gap-3 mb-12">
+            <h4 className="font-sans font-black text-[24px] md:text-[32px] text-[#1A1A1A] tracking-tighter uppercase">Comentários</h4>
+            <span className="font-sans font-bold text-[16px] text-[#999999] uppercase tracking-widest">20 relatos</span>
           </div>
 
           <div className="space-y-2">
@@ -326,7 +330,7 @@ export default function KcrAdvV2Page() {
             
             <CommentItem name="Rosimeire Santos" date="1 dia atrás" likes={38} text="Comprei numa terça-feira à noite e chegou na quinta de manhã! Vim logo comentar porque achei que ia demorar muito mais. Embalagem muito caprichada, todos os produtos bem protegidos. *Já usei na primeira lavagem e o cheiro é maravilhoso.* Ainda vou contar o resultado depois, mas começou bem!" />
             
-            <CommentItem name="Cleide Aparecida" date="2 dias atrás" likes={61} text="Preciso deixar meu relato aqui porque talvez ajude alguma mulher na mesma situação que eu. Estou na menopausa há 2 anos e meu cabelo caiu muito com as mudanças hormonais. *Com 3 semanas de kit, a queda reduziu de um jeito que eu não via há muito tempo.* 55 anos e meu cabelo está reagindo sim." />
+            <CommentItem name="Cleide Aparecida" date="2 dias atrás" likes={61} text="Preciso deixar meu relato aqui porque talvez ajude alguma mulher na mesma situação que eu. Estou na menopausa há 2 anos e meu cabelo caiu muito com as mudanças hormonais. *Com 3 semanas de kit, a queda reduziu de um jeito que eu não via há muito tempo.* 55 anos e meu cabelo está reagindo sim. Não desistam!" />
             
             <CommentItem name="Marcia Gomes" date="1 semana atrás" likes={41} text="Moro no interior do Pará e fiquei com medo de demorar muito ou chegar danificado. *Chegou em 4 dias, embalado com plástico bolha, todos os frascos com lacre intacto.* Loja profissional demais." />
             <CommentItem name="Cláudia Mendes" date="6 dias atrás" likes={7} isReply={true} text="Márcia, que alegria que chegou bem! Moro aqui em Brasília e também tive boa experiência com a entrega. Obrigada por contar, isso ajuda muito quem está em dúvida! 💛" />
@@ -334,8 +338,8 @@ export default function KcrAdvV2Page() {
         </section>
 
         {/* Rodapé Legal */}
-        <footer className="mt-16 pt-8 border-t border-[#EEEEEE]">
-          <p className="font-sans italic text-[12px] text-[#AAAAAA] leading-relaxed text-center">
+        <footer className="mt-20 pt-10 border-t border-[#EEEEEE]">
+          <p className="font-sans italic text-[13px] text-[#AAAAAA] leading-relaxed text-center font-bold uppercase tracking-wider">
             Este post pode conter links de afiliados. Isso significa que posso receber uma comissão se você comprar através do link, sem custo adicional para você. Só recomendo produtos que usei e acredito de verdade. Resultados podem variar de pessoa para pessoa. Produto aprovado e testado pela ANVISA.
             <br /><br />
             © 2024 Meu Diário de Saúde e Beleza. Todos os direitos reservados.
