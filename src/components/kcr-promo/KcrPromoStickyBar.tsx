@@ -1,7 +1,9 @@
 "use client";
 
 import React from 'react';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingBag, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface KcrPromoStickyBarProps {
   priceCard: string;
@@ -9,34 +11,28 @@ interface KcrPromoStickyBarProps {
   checkoutUrl: string;
 }
 
-export function KcrPromoStickyBar({ checkoutUrl }: KcrPromoStickyBarProps) {
+export const KcrPromoStickyBar = ({ priceCard, pricePix, checkoutUrl }: KcrPromoStickyBarProps) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-orange-100 shadow-[0_-10px_40px_rgba(0,0,0,0.15)] md:hidden">
-      <div className="px-4 py-5 flex flex-col gap-4">
-        
-        {/* Chamada de Oferta Clara e Amigável */}
-        <div className="flex items-center justify-center gap-2 animate-pulse">
-            <span className="text-[13px] font-black text-orange-700 uppercase tracking-tight text-center">
-                🔥 PROMOÇÃO: COMPRE 1 E GANHE MAIS 1 DE PRESENTE
-            </span>
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-100 p-4 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div className="flex flex-col">
+          <span className="text-[10px] font-black text-orange-600 uppercase tracking-widest">Oferta 1+1</span>
+          <div className="flex items-baseline gap-1">
+            <span className="text-xl font-black text-slate-950">R$ {pricePix}</span>
+            <span className="text-[10px] font-bold text-slate-400">à vista</span>
+          </div>
         </div>
 
-        {/* Botão - Verde com novo texto */}
-        <a
-            href={checkoutUrl}
-            className="w-full bg-green-600 hover:bg-green-700 text-white h-16 rounded-[1.5rem] flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl animate-pulse border-2 border-green-500/20"
-        >
-            <div className="flex flex-col items-center leading-none">
-                <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/80 mb-0.5">
-                    CLIQUE AQUI PARA
-                </span>
-                <span className="text-base font-black uppercase tracking-widest">
-                    COMPRAR 1 E LEVAR 2
-                </span>
-            </div>
-            <ShoppingCart size={20} className="text-white ml-1" />
-        </a>
+        <Link href={checkoutUrl} className="flex-1 max-w-[240px]">
+          <Button 
+            className="w-full h-14 bg-[#35c867] hover:bg-[#2eb15a] text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-lg shadow-green-100 flex items-center justify-center gap-2 transition-all active:scale-95"
+          >
+            <ShoppingBag size={18} />
+            <span>COMPRAR AGORA</span>
+            <ArrowRight size={16} />
+          </Button>
+        </Link>
       </div>
     </div>
   );
-}
+};
