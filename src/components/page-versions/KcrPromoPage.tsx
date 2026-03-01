@@ -35,17 +35,17 @@ const GALLERY_IMAGES = [
 const DELIVERY_TESTIMONIALS = [
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643769511-Gemini_Generated_Image_6q1tk16q1tk16q1t.png",
-    text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje e o brinde é lindo demais. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme.",
+    text: "Chegou super rápido! Já estou usando há 10 dias e a diferença é gritante. A queda de cabelo diminuiu drasticamente e sinto os fios muito mais resistentes à quebra.",
     author: "Marta S., São Paulo"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
-    text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. O secador que veio de brinde é potente e ajudou muito a não quebrar os fios.",
+    text: "Entrega relâmpago! Completei uma semana de uso hoje e estou chocada. Meu cabelo parou de cair no banho e a quebra reduziu muito. O kit realmente cumpre o que promete.",
     author: "Juliana P., Rio de Janeiro"
   },
   {
     image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
-    text: "Recebi em tempo recorde! O kit é lindo e o brinde me surpreendeu. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a queda diminuiu logo de cara.",
+    text: "Recebi rapidinho! Já faz 8 dias que comecei e o resultado na queda foi imediato. O cabelo está muito mais forte e não quebra mais ao pentear. Melhor investimento que fiz!",
     author: "Fernanda L., Belo Horizonte"
   }
 ];
