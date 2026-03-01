@@ -4,12 +4,16 @@ import React from 'react';
 import { Gift, Zap, ShieldAlert, Sparkles } from 'lucide-react';
 
 export const KcrPromoFreeGift = () => {
+  // Componente ocultado conforme solicitação
+  return null;
+
+  /* 
   return (
     <section className="py-24 px-6 bg-[#FDF8F3] border-y border-orange-100 overflow-hidden">
         <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-16">
                 
-                {/* Lado Esquerdo: Imagem do Brinde */}
+                {/* Lado Esquerdo: Imagem do Brinde * /}
                 <div className="flex-1 relative w-full">
                     <div className="absolute inset-0 bg-orange-400/10 rounded-full blur-[100px] opacity-70"></div>
                     <div className="relative group">
@@ -25,7 +29,7 @@ export const KcrPromoFreeGift = () => {
                     </div>
                 </div>
 
-                {/* Lado Direito: Texto da Oferta */}
+                {/* Lado Direito: Texto da Oferta * /}
                 <div className="flex-1 space-y-8">
                     <div className="space-y-4">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-orange-100 border border-orange-200 rounded-xl text-orange-800 text-[10px] font-black uppercase tracking-widest">
@@ -57,4 +61,5 @@ export const KcrPromoFreeGift = () => {
         </div>
     </section>
   );
+  */
 };
