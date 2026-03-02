@@ -231,7 +231,7 @@ export default function KcrAdvV2Page() {
         <P>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente." Eu disse que estava cansada do trabalho. Mas a verdade é que eu tinha vergonha. Vergonha de ter 51 anos e estar com menos cabelo do que minha mãe com 72.</P>
         <P>E ainda tinha aquela voz na cabeça: "é a idade, Cláudia. É a menopausa. É o que acontece com a gente."</P>
         <PullQuote>Como se depois dos 50 a gente tivesse que aceitar virar outra pessoa.</PullQuote>
-        <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. Não aguentava a ideia de todo mundo olhando.</P>
+        <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. No aguentava a ideia de todo mundo olhando.</P>
         <Ancora>Aquele domingo foi o fundo do poço pra mim.</Ancora>
 
         <div className="flex justify-center my-16 opacity-10">
@@ -300,6 +300,15 @@ export default function KcrAdvV2Page() {
 
         <H2>Três meses depois: eu não me reconhecia — do jeito bom</H2>
         <P>Hoje meu cabelo voltou. Não do jeito que estava antes da queda começar.</P>
+        
+        <div className="my-10 -mx-6 md:mx-0">
+          <img 
+            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772412756942-Gemini_Generated_Image_6eit2k6eit2k6eit.png" 
+            alt="Resultado final de Cláudia Mendes" 
+            className="w-full h-auto rounded-xl md:rounded-2xl shadow-lg border-2 border-white"
+          />
+        </div>
+
         <Ancora>Melhor.</Ancora>
         <P>O volume voltou. A queda está em zero. Os fios novos cresceram e já se misturaram com o restante. Mas o que mudou mais foi outra coisa.</P>
         <P>Aqui eu preciso talk especialmente pras mulheres que estão na mesma fase que eu — acima dos 45, acima dos 50.</P>
