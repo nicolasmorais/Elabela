@@ -16,6 +16,8 @@ import { KcrOriginalFooter } from '@/components/kcr-original/KcrOriginalFooter';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
+  
+  // Estado inicial (valores padrão)
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
       pricePix: '147,00',
@@ -29,11 +31,19 @@ export function KcrOriginalPage() {
       setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
     }, 1000);
 
+    // Busca as configurações salvas na Dashboard
     fetch('/api/page-settings/kcroriginal')
         .then(res => res.json())
         .then(data => {
-            if (data && data.checkoutUrl) setConfig(prev => ({ ...prev, ...data }));
-        });
+            // FIX: Removemos a obrigatoriedade do checkoutUrl para atualizar o preço
+            if (data && typeof data === 'object') {
+                setConfig(prev => ({
+                    ...prev,
+                    ...data // Sobrescreve apenas o que foi alterado na dashboard
+                }));
+            }
+        })
+        .catch(err => console.error("Erro ao sincronizar dados da dashboard:", err));
 
     return () => clearInterval(timer);
   }, []);
