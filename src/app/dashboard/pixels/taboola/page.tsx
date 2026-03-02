@@ -24,10 +24,11 @@ const SYSTEM_PAGES = [
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2', category: 'Vendas' },
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', category: 'Vendas' },
   { id: 'kcrpromo', name: 'KCR Promo', category: 'Vendas' },
+  { id: 'kcroriginal', name: 'KCR Original Modular', category: 'Vendas' },
   { id: 'clareador', name: 'Clareador', category: 'Vendas' },
   { id: 'novoclareador', name: 'Novo Clareador V2', category: 'Vendas' },
   { id: 'advkcr', name: 'Advertorial KCR', category: 'Vendas' },
-  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)', category: 'Vendas' }, // NEW
+  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)', category: 'Vendas' },
   { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)', category: 'Vendas' },
 ];
 

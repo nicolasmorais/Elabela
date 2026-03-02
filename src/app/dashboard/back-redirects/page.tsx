@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from '@/components/ui/button';
+import { Button } from '@/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -26,10 +26,11 @@ const STATIC_PAGES = [
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2' },
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3' },
   { id: 'kcrpromo', name: 'KCR Promo' },
+  { id: 'kcroriginal', name: 'KCR Original Modular' },
   { id: 'clareador', name: 'Clareador' },
   { id: 'novoclareador', name: 'Novo Clareador V2' },
   { id: 'advkcr', name: 'Advertorial KCR' },
-  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)' }, // NEW
+  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)' },
   { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)' },
 ];
 
