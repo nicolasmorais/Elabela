@@ -267,6 +267,16 @@ export default function KcrAdvV2Page() {
         <H2>A mensagem que mudou tudo — e eu quase nem li</H2>
         <P>Foi minha prima Renata quem me mandou. A gente se fala bastante por Whatsapp. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</P>
         <P>But a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
+        
+        {/* NOVA IMAGEM SOLICITADA */}
+        <div className="my-10 -mx-6 md:mx-0">
+          <img 
+            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772414134566-722f3359e9000ba0c1cb3cba3384328c-(1).jpg" 
+            alt="Resultado da Renata" 
+            className="w-full h-auto rounded-xl md:rounded-2xl shadow-lg border-2 border-white"
+          />
+        </div>
+
         <P>Eu sabia que a Renata tinha passado pelo mesmo problem — ela tem 53 anos, passou pela menopausa cedo, e o cabelo dela tinha ficado horrível.</P>
         <Ancora>Liguei pra ela na hora.</Ancora>
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
