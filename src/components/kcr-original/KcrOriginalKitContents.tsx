@@ -1,14 +1,15 @@
 "use client";
 
 import React from 'react';
-import { ShoppingBag, CheckCircle2 } from 'lucide-react';
+import { ShoppingBag, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const KcrOriginalKitContents = () => {
   const items = [
     { t: "Shampoo Reconstrutor 300ml", d: "Ancora a raiz (fio para de SOLTAR)" },
     { t: "Condicionador Fortificante 300ml", d: "Sela cutícula (fio para de QUEBRAR)" },
     { t: "Máscara Anti-Queda Intensiva 250g", d: "Reconstrói fibra (fio fica FORTE)" },
-    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" }
+    { t: "Leave-in Protetor 200ml", d: "Protege estrutura (resultado DURA)" },
+    { t: "Tônico Capilar Antiqueda", d: "Estimula o folículo (fios novos NASCEM)" }
   ];
 
   return (
@@ -21,7 +22,7 @@ export const KcrOriginalKitContents = () => {
                             <ShoppingBag size={28} />
                         </div>
                         <h3 className="text-2xl md:text-4xl font-black text-slate-900 uppercase tracking-tight">
-                            VOCÊ RECEBE O KIT COMPLETO:
+                            VOCÊ RECEBE OS 5 PRODUTOS DO KIT COMPLETO:
                         </h3>
                     </div>
                     
@@ -37,6 +38,13 @@ export const KcrOriginalKitContents = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    <div className="p-6 bg-orange-50 rounded-3xl border border-orange-100 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                        <AlertCircle className="text-orange-600 shrink-0" size={24} />
+                        <p className="text-orange-900 font-bold text-lg leading-relaxed">
+                            Os 5 produtos trabalham juntos em sistema. Usar só um ou dois quebra o ciclo e reduz o resultado.
+                        </p>
                     </div>
 
                     <div className="pt-12 border-t border-slate-100 flex flex-wrap justify-center gap-8 md:gap-16">
