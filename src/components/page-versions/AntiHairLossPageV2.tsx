@@ -392,7 +392,7 @@ export function AntiHairLossPageV2() {
             </div>
             <div className="flex-1 lg:sticky lg:top-24 relative w-full">
                 <img 
-                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772330023955-image.jpg" 
+                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772420576087-image-(1).jpg" 
                     alt="Resultado de Tratamento Profissional" 
                     className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                 />
