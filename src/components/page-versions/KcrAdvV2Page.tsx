@@ -362,7 +362,7 @@ export default function KcrAdvV2Page() {
         <P>Eu tô bem. Faz tanto tempo que eu não podia dizer isso de verdade.</P>
         <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem nem perceber.</P>
         <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. </P>
-        <PullQuote>É identity. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
+        <PullQuote>É identidade. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
 
         <div className="flex justify-center my-16 opacity-10">
             <div className="h-px w-full bg-slate-900"></div>
@@ -386,27 +386,36 @@ export default function KcrAdvV2Page() {
         <BoxLista 
           title="O que eu recebi no Kit Cavalo de Raça:"
           items={[
-            "Shampoo Reconstrutor — pra segurar o fio na raiz.",
-            "Máscara Anti-Queda — reconstrói o cabelo por dentro.",
-            "Condicionador Fortificante — sela as pontas e dá brilho.",
-            "Leave-in — protege o dia todo contra o calor.",
-            "Tônico Capilar — esse é o segredo que faz nascer fio novo."
+            "1. Shampoo Reconstrutor — pra segurar o fio na raiz.",
+            "2. Máscara Anti-Queda Intensiva — reconstrói o cabelo por dentro.",
+            "3. Condicionador Fortificante — sela as pontas e dá brilho.",
+            "4. Leave-in — protege o dia todo contra o calor.",
+            "5. Tônico Capilar — esse é o segredo que faz nascer fio novo."
           ]}
         />
 
         <div className="space-y-6 text-slate-700">
-            <P className="font-bold text-[#1A1A1A]">Eu sei que parece caro à primeira vista. Mas faz a conta comigo:</P>
+            <P>Eu paguei R$ 227,00 pelos 5 produtos. E esse kit durou 3 meses inteiros de tratamento.</P>
+            
             <div className="bg-pink-50 p-8 rounded-3xl border border-pink-100 text-center my-8">
-                <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-2 text-pink-700">R$ 1,80 Por Dia.</p>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">R$ 159,90 ÷ 90 dias de tratamento</p>
+                <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-2 text-pink-700">Menos de R$ 2,60 por dia.</p>
+                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Faz a conta: O kit dura 90 dias</p>
             </div>
-            <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
-            <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
+            
+            <P>Menos que um cafezinho. Por 5 produtos profissionais que mudaram a minha vida.</P>
+            <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? Isso foi menos de um quinto daquilo — e funcionou de verdade.</P>
+            
+            <Ancora>Mas calma.</Ancora>
+            
+            <P>Você não vai pagar R$ 227,00.</P>
+            <P>Eu entrei em contato com a loja e consegui um desconto especial pra você que está lendo aqui no blog.</P>
         </div>
 
         <div className="text-center my-16 space-y-6 pt-10 border-t border-slate-50">
             <div className="space-y-2">
-                <p className="font-merriweather font-black text-3xl md:text-4xl text-slate-900">De R$ 227,00 por <span className="text-[#df327b]">R$ 159,90</span> + Frete Grátis</p>
+                <p className="font-merriweather font-black text-3xl md:text-5xl text-slate-900">
+                    De R$ 227,00 por <span className="text-[#df327b]">apenas R$ 159,90</span> + Frete Grátis
+                </p>
                 <p className="font-merriweather text-xs md:text-sm font-bold text-slate-400 uppercase tracking-[0.2em] leading-relaxed max-w-lg mx-auto">
                     Aprovado e testado pela ANVISA  |  Garantia de resultado  |  Dinheiro de volta se não gostar
                 </p>
