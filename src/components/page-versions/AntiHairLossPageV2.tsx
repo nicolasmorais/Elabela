@@ -383,12 +383,16 @@ export function AntiHairLossPageV2() {
                             </li>
                         ))}
                     </ul>
+                    {/* TEXTOS RESTAURADOS ABAIXO */}
+                    <div className="space-y-4 text-2xl font-black text-slate-900 tracking-tight leading-tight pt-4">
+                        <p>Porque você merece acordar SEM cabelo no travesseiro.</p>
+                        <p className="text-orange-800 italic underline decoration-orange-300">Sem precisar escolher entre: Tratar a queda OU pagar as contas.</p>
+                    </div>
                 </div>
             </div>
             <div className="flex-1 lg:sticky lg:top-24 relative w-full">
-                {/* NOVA IMAGEM ATUALIZADA ABAIXO */}
                 <img 
-                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772420576087-image-(1).jpg" 
+                    src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772330023955-image.jpg" 
                     alt="Resultado de Tratamento Profissional" 
                     className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-8 border-white"
                 />
