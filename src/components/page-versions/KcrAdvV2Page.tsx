@@ -386,13 +386,25 @@ export default function KcrAdvV2Page() {
         <BoxLista 
           title="O que eu recebi no Kit Cavalo de Raça:"
           items={[
-            "1. Shampoo Reconstrutor — pra segurar o fio na raiz.",
-            "2. Máscara Anti-Queda Intensiva — reconstrói o cabelo por dentro.",
-            "3. Condicionador Fortificante — sela as pontas e dá brilho.",
-            "4. Leave-in — protege o dia todo contra o calor.",
-            "5. Tônico Capilar — esse é o segredo que faz nascer fio novo."
+            "Shampoo Reconstrutor — pra segurar o fio na raiz.",
+            "Máscara Anti-Queda — reconstrói o cabelo por dentro.",
+            "Condicionador Fortificante — sela as pontas e dá brilho.",
+            "Leave-in — protege o dia todo contra o calor.",
+            "Tônico Capilar — esse é o segredo que faz nascer fio novo."
           ]}
         />
+
+        {/* VÍDEO DO KIT ABAIXO DA LISTA */}
+        <div className="my-10 max-w-[400px] mx-auto overflow-hidden rounded-3xl shadow-xl border-4 border-white aspect-[9/16]">
+          <iframe 
+            src="https://vhost.onebasex.pro/video/1772415468230-br-11110105-6kfko-lwerw7vlx186d9.16000081718135715.mp4" 
+            width="100%" 
+            height="100%" 
+            frameBorder="0" 
+            allowFullScreen 
+            allow="autoplay; fullscreen"
+          ></iframe>
+        </div>
 
         <div className="space-y-6 text-slate-700">
             <P>Eu paguei R$ 227,00 pelos 5 produtos. E esse kit durou 3 meses inteiros de tratamento.</P>
