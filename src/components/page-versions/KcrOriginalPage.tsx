@@ -12,6 +12,7 @@ import { KcrOriginalKitContents } from '@/components/kcr-original/KcrOriginalKit
 import { KcrOriginalCommunity } from '@/components/kcr-original/KcrOriginalCommunity';
 import { KcrOriginalFAQ } from '@/components/kcr-original/KcrOriginalFAQ';
 import { KcrOriginalGuarantee } from '@/components/kcr-original/KcrOriginalGuarantee';
+import { KcrOriginalFooter } from '@/components/kcr-original/KcrOriginalFooter';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
@@ -71,9 +72,7 @@ export function KcrOriginalPage() {
 
           <KcrOriginalFAQ />
 
-          <div className="py-20 text-center text-slate-300 italic">
-            Novas seções modulares em breve...
-          </div>
+          <KcrOriginalFooter />
         </main>
       </div>
     </>
