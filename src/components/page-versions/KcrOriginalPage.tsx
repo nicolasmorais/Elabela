@@ -11,6 +11,7 @@ import { KcrOriginalComparison } from '@/components/kcr-original/KcrOriginalComp
 import { KcrOriginalKitContents } from '@/components/kcr-original/KcrOriginalKitContents';
 import { KcrOriginalCommunity } from '@/components/kcr-original/KcrOriginalCommunity';
 import { KcrOriginalFAQ } from '@/components/kcr-original/KcrOriginalFAQ';
+import { KcrOriginalGuarantee } from '@/components/kcr-original/KcrOriginalGuarantee';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
@@ -65,6 +66,8 @@ export function KcrOriginalPage() {
           <KcrOriginalKitContents />
 
           <KcrOriginalCommunity />
+
+          <KcrOriginalGuarantee />
 
           <KcrOriginalFAQ />
 
