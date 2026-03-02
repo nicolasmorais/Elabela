@@ -362,7 +362,7 @@ export default function KcrAdvV2Page() {
         <P>Eu tô bem. Faz tanto tempo que eu não podia dizer isso de verdade.</P>
         <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem nem perceber.</P>
         <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. </P>
-        <PullQuote>É identidade. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
+        <PullQuote>É identity. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
 
         <div className="flex justify-center my-16 opacity-10">
             <div className="h-px w-full bg-slate-900"></div>
@@ -384,13 +384,13 @@ export default function KcrAdvV2Page() {
         <P>Não é indicação paga. Só quero que você tenha acesso ao mesmo tratamento que mudou a minha vida.</P>
 
         <BoxLista 
-          title="O que você recebe no Kit Cavalo de Raça:"
+          title="O que eu recebi no Kit Cavalo de Raça:"
           items={[
-            "1. Shampoo Reconstrutor — ancora a raiz. O fio para de soltar.",
-            "2. Máscara Anti-Queda Intensiva — reconstrói a fibra. O fio fica forte.",
-            "3. Condicionador Fortificante — sela as cutículas. O fio para de quebrar.",
-            "4. Leave-in Protetor — protege o fio reconstruído no dia a dia.",
-            "5. Tônico Capilar Antiqueda — age no folículo. Estimula os fios novos a nascer."
+            "Shampoo Reconstrutor — pra segurar o fio na raiz.",
+            "Máscara Anti-Queda — reconstrói o cabelo por dentro.",
+            "Condicionador Fortificante — sela as pontas e dá brilho.",
+            "Leave-in — protege o dia todo contra o calor.",
+            "Tônico Capilar — esse é o segredo que faz nascer fio novo."
           ]}
         />
 
