@@ -74,9 +74,18 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                         <p className="text-slate-800 font-black text-xl italic leading-tight">"Todo Dia Era um Bolo de Cabelo no Pente... Hoje Não Cai Quase Nada."</p>
                     </div>
                     <div className="space-y-4 pt-4">
-                        <Link href={config.checkoutUrl} target="_blank">
-                            <Button className="w-full h-20 text-white rounded-full font-black text-2xl uppercase tracking-widest shadow-2xl transition-all flex items-center justify-center gap-4" style={{ backgroundColor: '#35c867' }}>
-                                <ShoppingBag size={28} /> {config.buttonText} <ArrowRight size={28} />
+                        <Link href={config.checkoutUrl} target="_blank" className="block group/btn">
+                            <Button 
+                                className="w-full h-24 bg-[#35c867] hover:bg-[#2eb35a] text-white rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(53,200,103,0.5)] transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center gap-0 border-b-[6px] border-[#258d48] overflow-hidden"
+                            >
+                                <div className="flex items-center gap-3 relative z-10">
+                                    <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" /> 
+                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-widest">{config.buttonText}</span>
+                                    <ArrowRight size={28} className="group-hover/btn:translate-x-2 transition-transform" />
+                                </div>
+                                <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] mt-1 relative z-10">
+                                    Site 100% Seguro | Envio Imediato
+                                </span>
                             </Button>
                         </Link>
                         
