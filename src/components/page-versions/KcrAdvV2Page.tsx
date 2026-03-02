@@ -215,7 +215,7 @@ export default function KcrAdvV2Page() {
 
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
-        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
+        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
@@ -347,23 +347,32 @@ export default function KcrAdvV2Page() {
           ]}
         />
 
-        <P>Eu sei que parece caro à primeira vista. <strong>Mas faz a conta comigo:</strong></P>
-        <P>R$ 159,90 ÷ 90 dias de tratamento = menos de R$ 1,80 por dia.</P>
-        <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
-        <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? Isso é menos de um quinto daquilo.</P>
+        <div className="space-y-6 text-slate-700">
+            <P className="font-bold text-[#1A1A1A]">Eu sei que parece caro à primeira vista. Mas faz a conta comigo:</P>
+            <div className="bg-pink-50 p-8 rounded-3xl border border-pink-100 text-center my-8">
+                <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-2 text-pink-700">R$ 1,80 Por Dia.</p>
+                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">R$ 159,90 ÷ 90 dias de tratamento</p>
+            </div>
+            <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
+            <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
+        </div>
 
-        <BoxAlerta>
-          ⚠️ Importante: o Kit Cavalo de Raça Original está disponível em <strong className="text-slate-900">elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
-        </BoxAlerta>
+        <div className="text-center my-16 space-y-6 pt-10 border-t border-slate-50">
+            <div className="space-y-2">
+                <p className="font-merriweather font-black text-3xl md:text-4xl text-pink-600">De R$ 227,00 por R$ 159,90 + Frete Grátis</p>
+                <p className="font-merriweather text-xs md:text-sm font-bold text-slate-400 uppercase tracking-[0.2em] leading-relaxed max-w-lg mx-auto">
+                    Aprovado e testado pela ANVISA  |  Garantia de resultado  |  Dinheiro de volta se não gostar
+                </p>
+            </div>
 
-        <div className="text-center my-10 space-y-2">
-          <p className="font-merriweather font-black text-3xl md:text-4xl text-pink-600">De R$ 227,00 por R$ 159,90</p>
-          <div className="flex justify-center items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest">
-             <Check size={16} strokeWidth={4} /> Frete Grátis Para Todo Brasil
-          </div>
-          <p className="font-merriweather text-xs text-slate-400 font-bold uppercase tracking-widest pt-4">
-            Aprovado pela ANVISA  |  Dinheiro de volta se não gostar
-          </p>
+            <div className="space-y-4">
+                <p className="font-merriweather font-black text-xl md:text-2xl text-rose-600 tracking-tight flex items-center justify-center gap-2">
+                    ⏳ ATENÇÃO: O desconto é por tempo limitado.
+                </p>
+                <p className="font-merriweather text-lg md:text-xl text-slate-600 font-medium italic leading-relaxed max-w-xl mx-auto">
+                    Não sei até quando o link fica ativo com esse preço especial. Se você está lendo isso hoje, aproveita agora.
+                </p>
+            </div>
         </div>
 
         <CTAButton />
