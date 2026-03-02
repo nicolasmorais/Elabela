@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -92,6 +92,19 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                                 </div>
                             </div>
                             <ShieldCheck className="text-emerald-500/30 group-hover:text-emerald-500 transition-colors" size={24} />
+                        </div>
+
+                        {/* SELOS DE SEGURANÇA */}
+                        <div className="flex flex-wrap justify-center gap-6 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700 pt-2">
+                            <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-600">
+                                <ShieldCheck size={14} /> Compra Segura
+                            </div>
+                            <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-600">
+                                <Lock size={14} /> SSL Criptografado
+                            </div>
+                            <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-600">
+                                <CreditCard size={14} /> Pix / Cartão
+                            </div>
                         </div>
                     </div>
                 </div>
