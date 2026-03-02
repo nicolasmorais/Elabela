@@ -49,9 +49,14 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                     </div>
                     <div className="space-y-2">
                         <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Kit Cavalo de Raça - Reconstrução + Antiqueda Intensiva</h1>
-                        <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                            <div className="flex gap-0.5 text-orange-400">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}</div>
-                            <span>4.9 | 2322 avaliações 5 estrelas</span>
+                        <div className="flex flex-col gap-1">
+                            <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
+                                <div className="flex gap-0.5 text-orange-400">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}</div>
+                                <span>4.9 | 2322 avaliações 5 estrelas</span>
+                            </div>
+                            <p className="text-emerald-600 font-bold text-sm">
+                                Mais de 50800 compras no mês passado.
+                            </p>
                         </div>
                     </div>
                     <div className="space-y-3">
