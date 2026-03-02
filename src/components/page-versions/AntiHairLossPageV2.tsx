@@ -63,7 +63,7 @@ import { MobileStickyBar } from './MobileStickyBar';
 const PRODUCT_IMAGES = [
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772416572105-unnamed-(5)-(1).jpg",
   "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772421083925-image-(2)-(1).jpg",
-  "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png"
+
 ];
 
 // IMAGENS DA SEÇÃO RESULTADOS REAIS (ATUALIZADAS)
