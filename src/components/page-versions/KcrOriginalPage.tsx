@@ -6,7 +6,7 @@ import { KcrOriginalNav } from '@/components/kcr-original/KcrOriginalNav';
 import { KcrOriginalHero } from '@/components/kcr-original/KcrOriginalHero';
 import { KcrOriginalResults } from '@/components/kcr-original/KcrOriginalResults';
 import { KcrOriginalSolution } from '@/components/kcr-original/KcrOriginalSolution';
-import { KcrOriginalTripleAction } from '@/components/kcr-original/KcrOriginalTripleAction';
+import { KcrOriginalQuadrupleAction } from '@/components/kcr-original/KcrOriginalQuadrupleAction';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
@@ -54,7 +54,7 @@ export function KcrOriginalPage() {
 
           <KcrOriginalSolution />
 
-          <KcrOriginalTripleAction />
+          <KcrOriginalQuadrupleAction />
 
           {/* Seções Adicionais serão inseridas aqui modularmente conforme solicitado */}
           <div className="py-20 text-center text-slate-300 italic">
