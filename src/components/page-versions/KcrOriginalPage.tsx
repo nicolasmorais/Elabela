@@ -16,7 +16,7 @@ import { KcrOriginalGuarantee } from '@/components/kcr-original/KcrOriginalGuara
 import { KcrOriginalFooter } from '@/components/kcr-original/KcrOriginalFooter';
 
 export function KcrOriginalPage() {
-  const [timeLeft, setTimeLeft] = useState(1800); // 30 minutos
+  const [timeLeft, setTimeLeft] = useState(1800); // Sincronizado para 30 minutos
   
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
@@ -31,22 +31,17 @@ export function KcrOriginalPage() {
       setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
     }, 1000);
 
-    // Busca as configurações salvas no dashboard
     fetch('/api/page-settings/kcroriginal')
         .then(res => res.json())
         .then(data => {
-            // Só atualiza se houver dados válidos salvos no banco para evitar "pulo" de valores
-            if (data && data.pricePix) {
-                setConfig({
-                    priceCard: data.priceCard || 'R$ 187,00',
-                    pricePix: data.pricePix || '147,00',
-                    installmentText: data.installmentText || 'Ou 12x de R$ 14,96',
-                    buttonText: data.buttonText || 'Comprar agora',
-                    checkoutUrl: data.checkoutUrl || 'https://seguro.elabela.store/r/RC8ASYUL88'
-                });
+            if (data && typeof data === 'object') {
+                setConfig(prev => ({
+                    ...prev,
+                    ...data
+                }));
             }
         })
-        .catch(err => console.error("Erro ao sincronizar dados:", err));
+        .catch(err => console.error("Erro ao sincronizar dados da dashboard:", err));
 
     return () => clearInterval(timer);
   }, []);
