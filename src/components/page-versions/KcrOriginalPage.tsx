@@ -55,7 +55,7 @@ export function KcrOriginalPage() {
   return (
     <>
       <PageTracker contentId="kcroriginal" />
-      <div className="bg-white text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
+      <div className="bg-[#FDF8F3] text-slate-900 font-sans selection:bg-orange-100 antialiased min-h-screen">
         <KcrOriginalNav />
         <main>
           <KcrOriginalHero 
