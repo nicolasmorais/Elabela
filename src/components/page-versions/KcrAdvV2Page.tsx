@@ -80,6 +80,17 @@ const Citacao = ({ text, author }: { text: string; author: string }) => (
   </div>
 );
 
+const DialogoBox = ({ children }: { children: ReactNode }) => (
+  <div className="bg-[#FDF5F5] border-2 border-[#8B1A1A]/10 p-8 my-10 rounded-[2rem] shadow-sm relative overflow-hidden">
+    <div className="absolute -top-0 right-0 p-8 opacity-[0.03] pointer-events-none">
+        <MessageSquare size={120} />
+    </div>
+    <div className="font-merriweather text-lg md:text-xl leading-relaxed text-slate-700 relative z-10">
+        {children}
+    </div>
+  </div>
+);
+
 const Timeline = ({ items }: { items: Array<{ label: string; text: string }> }) => (
   <div className="my-12 space-y-6">
     {items.map((item, i) => (
@@ -281,10 +292,14 @@ export default function KcrAdvV2Page() {
         <Ancora>Liguei pra ela na hora.</Ancora>
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
         <P>Perguntei logo: "mas funciona mesmo pra quem já tem uma certa idade? Porque eu já tentei de tudo..."</P>
-        <P>Ela me disse: <strong>"Cláudia, eu tenho 53. Funciona exatamente porque é feito pra fios que já passaram por mudança hormonal. É diferente de produto pra menina de 20 anos com cabelo virgem."</strong></P>
+        
+        <DialogoBox>
+            <p className="mb-6 font-bold text-slate-900">Ela me disse: "Cláudia, eu tenho 53. Funciona exatamente porque é feito pra fios que já passaram por mudança hormonal. É diferente de produto pra menina de 20 anos com cabelo virgem."</p>
+            <p className="mb-6">E o tônico foi o que mais me surpreendeu depois. Você aplica direto no couro cabeludo e ele age dentro do folículo — onde o fio nasce. Os outros produtos cuidam do fio que já existe.</p>
+            <p className="font-black text-slate-900 border-b-2 border-pink-200 inline-block">O tônico cuida do fio que ainda vai nascer.</p>
+        </DialogoBox>
+
         <Citacao text="É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. Não adianta." author="Renata, minha prima" />
-        <P>E o tônico foi o que mais me surpreendeu depois. Você aplica direto no couro cabeludo e ele age dentro do folículo — onde o fio nasce. Os outros produtos cuidam do fio que já existe.</P>
-        <Ancora>O tônico cuida do fio que ainda vai nascer.</Ancora>
         <P>Pedi o link pra ela. Comprei naquela mesma noite.</P>
 
         <div className="flex justify-center my-16 opacity-10">
@@ -355,7 +370,7 @@ export default function KcrAdvV2Page() {
 
         <H2>Não sou só eu — leia o que outras mulheres estão dizendo</H2>
         <P>Desde que postei minha foto nova, recebi centenas de mensagens. Mulheres acima dos 45, acima dos 50, com a mesma história. Peço licença pra compartilhar algumas aqui:</P>
-        <Depoimento name="Maria Luíza, 54 anos — Goiânia, GO" text="Achei que era tarde demais pra mim. Meu cabelo estava caindo há dois anos e o dermatologista disse que era da menopausa, que eu tinha que aceitar. Comprei o kit sem muita esperança. Na segunda semana já estava diferente. Não consigo mais parar de usar." />
+        <Depoimento name="Maria Luíza, 54 anos — Goiânia, GO" text="Achei que era tarde demais pra mim. Meu cabelo estava cainao há dois anos e o dermatologista disse que era da menopausa, que eu tinha que aceitar. Comprei o kit sem muita esperança. Na segunda semana já estava diferente. Não consigo mais parar de usar." />
         <Depoimento name="Sônia Aparecida, 49 anos — Belo Horizonte, MG" text="Eu escondia o couro cabeludo com progressiva porque estava tão ralo que dava pra ver. Minha autoestima estava no chão. Com um mês de kit, minha filha me perguntou o que eu tinha feito no cabelo. Quase chorei ali na frente dela." />
         <Depoimento name="Rosângela, 52 anos — Recife, PE" text="Já tinha gastado mais de R$ 600 em produtos que não funcionaram. Estava desacreditada. Comprei o kit como última tentativa. Foi a melhor decisão que tomei. A queda parou na primeira semana. Agora estou vendo os fios novos nascendo." />
 
