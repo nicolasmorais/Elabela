@@ -147,7 +147,7 @@ const Depoimento = ({ name, text }: { name: string; text: string }) => (
 
 const CTAButton = () => (
   <div className="flex flex-col items-center my-16 w-full px-2">
-    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full flex justify-center">
+    <Link href="https://elabela.store/antiqueda2" className="w-full flex justify-center">
       <Button 
         className="w-full max-w-xl h-auto min-h-[72px] py-4 md:py-6 bg-[#df327b] hover:bg-[#c4286a] text-white rounded-[24px] font-black text-base md:text-xl uppercase tracking-tight shadow-[0_20px_50px_rgba(223,50,123,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 font-merriweather border-b-[4px] border-[#a11f56] animate-pulse whitespace-normal text-center"
       >
@@ -387,7 +387,7 @@ export default function KcrAdvV2Page() {
           title="O que eu recebi no Kit Cavalo de Raça:"
           items={[
             "Shampoo Reconstrutor — pra segurar o fio na raiz.",
-            "Máscara Anti-Queda — reconstrói o cabelo por dentro.",
+            "Máscara Anti-Queda Intensiva — reconstrói o cabelo por dentro.",
             "Condicionador Fortificante — sela as pontas e dá brilho.",
             "Leave-in — protege o dia todo contra o calor.",
             "Tônico Capilar — esse é o segredo que faz nascer fio novo."
