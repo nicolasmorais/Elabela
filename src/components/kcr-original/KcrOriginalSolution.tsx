@@ -16,13 +16,14 @@ export const KcrOriginalSolution = () => {
                         <h4 className="text-2xl font-black text-slate-950 border-b-2 border-orange-200 inline-block pb-1 uppercase tracking-tight">PARA VOCÊ QUE:</h4>
                         <ul className="space-y-4">
                             {[
-                                "💔 Chora vendo tanto cabelo caindo no ralo",
-                                "💔 Evita passar a mão no cabelo com medo que caia mais",
-                                "💔 Já escondeu o couro cabeludo com truques de penteado",
-                                "💔 Não pode (ou não quer) gastar R$ 500 em dermatologista",
-                                "💔 Trabalha, cuida da casa e não tem tempo para salão toda semana"
+                                "💔 Passou dos 40 e o cabelo nunca mais foi o mesmo — e o médico disse que é hormônio, que é a menopausa, que você tem que aceitar",
+                                "💔 Acorda todo dia com fios no travesseiro e tenta não contar",
+                                "💔 Já usou chapéu, coque ou truques de penteado pra esconder o couro cabeludo",
+                                "💔 Gastou dinheiro em shampoo caro, vitamina e óleo — e nada funcionou",
+                                "💔 Fica com medo de passar a mão no próprio cabelo dentro do chuveiro",
+                                "💔 Sente que está perdendo mais do que cabelo — está perdendo a confiança"
                             ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-700">
+                                <li key={i} className="flex items-start gap-3 text-lg font-bold text-slate-700 leading-snug">
                                     {item}
                                 </li>
                             ))}
