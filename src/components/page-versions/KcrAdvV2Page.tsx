@@ -217,7 +217,7 @@ export default function KcrAdvV2Page() {
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
         <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
-        <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
+        <P>Meu cabelo estava cainoin. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
         <P>Eu ficava contando os fios no chuveiro. Sabe quando você começa a fazer isso? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</P>
         <P>Eu tinha 51 anos. E aí vem aquela coisa que ninguém avisa direito:</P>
@@ -237,7 +237,7 @@ export default function KcrAdvV2Page() {
         <P>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente." Eu disse que estava cansada do trabalho. Mas a verdade é que eu tinha vergonha. Vergonha de tel 51 anos e estar com menos cabelo do que minha mãe com 72.</P>
         <P>E ainda tinha aquela voz na cabeça: "é a idade, Cláudia. É a menopausa. É o que acontece com a gente."</P>
         <PullQuote>Como se depois dos 50 a gente tivesse que aceitar virar outra pessoa.</PullQuote>
-        <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. Não aguentava a ideia de todo mundo olhando.</P>
+        <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. No aguentava a ideia de todo mundo olhando.</P>
         <Ancora>Aquele domingo foi o fundo do poço pra mim.</Ancora>
 
         <div className="flex justify-center my-16 opacity-10">
@@ -268,7 +268,7 @@ export default function KcrAdvV2Page() {
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
         <P>Perguntei logo: "mas funciona mesmo pra quem já tem uma certa idade? Porque eu já tentei de tudo..."</P>
         <P>Ela me disse: <strong>"Cláudia, eu tenho 53. Funciona exatamente porque é feito pra fios que já passaram por mudança hormonal. É diferente de produto pra menina de 20 anos com cabelo virgem."</strong></P>
-        <Citacao text="É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. Não adianta." author="Renata, minha prima" />
+        <Citacao text="É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. No adianta." author="Renata, minha prima" />
         <P>E o tônico foi o que mais me surpreendeu depois. Você aplica direto no couro cabeludo e ele age dentro do folículo — onde o fio nasce. Os outros produtos cuidam do fio que já existe.</P>
         <Ancora>O tônico cuida do fio que ainda vai nascer.</Ancora>
         <P>Pedi o link pra ela. Comprei naquela mesma noite.</P>
@@ -322,18 +322,8 @@ export default function KcrAdvV2Page() {
             <div className="h-px w-full bg-slate-900"></div>
         </div>
 
-        <H2>Imagina você daqui a 60 dias...</H2>
-        <P>Fecha os olhos um segundo. Imagina você acordando de manhã, passando a mão no cabelo no travesseiro — e não encontrando quase nada.</P>
-        <P>Imagina entrar no chuveiro sem aquela ansiedade de olhar pro ralo. Terminar o banho tranquila.</P>
-        <Ancora>Imagina abrir o guarda-roupa e escolher aquela blusa que você evitava porque não queria mostrar o cabelo ralo.</Ancora>
-        <P>Imagina postar uma foto e se reconhecer na imagem. Se gostar do que você vê. Isso não é sonho. Foi exatamente o que aconteceu comigo em 60 dias.</P>
-        <Ancora>E pode acontecer com você também.</Ancora>
-
-        <div className="flex justify-center my-16 opacity-10">
-            <div className="h-px w-full bg-slate-900"></div>
-        </div>
-
         <H2>Não sou só eu — leia o que outras mulheres estão dizendo</H2>
+        <P>Desde que postei minha foto nova, recebi centenas de mensagens. Mulheres acima dos 45, acima dos 50, com a mesma história. Peço licença pra compartilhar algumas aqui:</P>
         <Depoimento name="Maria Luíza, 54 anos — Goiânia, GO" text="Achei que era tarde demais pra mim. Meu cabelo estava caindo há dois anos e o dermatologista disse que era da menopausa, que eu tinha que aceitar. Comprei o kit sem muita esperança. Na segunda semana já estava diferente. Não consigo mais parar de usar." />
         <Depoimento name="Sônia Aparecida, 49 anos — Belo Horizonte, MG" text="Eu escondia o couro cabeludo com progressiva porque estava tão ralo que dava pra ver. Minha autoestima estava no chão. Com um mês de kit, minha filha me perguntou o que eu tinha feito no cabelo. Quase chorei ali na frente dela." />
         <Depoimento name="Rosângela, 52 anos — Recife, PE" text="Já tinha gastado mais de R$ 600 em produtos que não funcionaram. Estava desacreditada. Comprei o kit como última tentativa. Foi a melhor decisão que tomei. A queda parou na primeira semana. Agora estou vendo os fios novos nascendo." />
@@ -395,7 +385,7 @@ export default function KcrAdvV2Page() {
           <p className="text-slate-400 text-xs font-black uppercase tracking-widest">Brasília, DF</p>
         </div>
 
-        {/* Seção de Comentários Estilo Blog Nativo */}
+        {/* Seção de Comentários Estilo Blog Nativo --- */}
         <section className="mt-24 pt-16 border-t border-slate-100 pb-20">
           <div className="flex items-center justify-between mb-12">
             <h4 className="font-merriweather font-black text-2xl md:text-3xl text-slate-900 tracking-tighter uppercase leading-none">
