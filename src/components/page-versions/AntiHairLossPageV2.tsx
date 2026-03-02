@@ -444,7 +444,7 @@ export function AntiHairLossPageV2() {
                         <div className="relative">
                             <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                             <img 
-                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
+                                src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772412756942-Gemini_Generated_Image_6eit2k6eit2k6eit.png" 
                                 alt="Tecnologia Tripla Ancoragem" 
                                 className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03]"
                             />
