@@ -141,13 +141,13 @@ const Depoimento = ({ name, text }: { name: string; text: string }) => (
 );
 
 const CTAButton = () => (
-  <div className="flex flex-col items-center my-16 w-full">
-    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full">
+  <div className="flex flex-col items-center my-16 w-full px-2">
+    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full flex justify-center">
       <Button 
-        className="w-full h-24 md:h-20 bg-[#df327b] hover:bg-[#c4286a] text-white rounded-[24px] font-black text-lg md:text-xl uppercase tracking-tight shadow-[0_20px_50px_rgba(223,50,123,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 font-merriweather border-b-[4px] border-[#a11f56] animate-pulse"
+        className="w-full max-w-xl h-auto min-h-[72px] py-4 md:py-6 bg-[#df327b] hover:bg-[#c4286a] text-white rounded-[24px] font-black text-base md:text-xl uppercase tracking-tight shadow-[0_20px_50px_rgba(223,50,123,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 font-merriweather border-b-[4px] border-[#a11f56] animate-pulse whitespace-normal text-center"
       >
-        <ShoppingBag size={24} className="shrink-0" />
-        <span className="leading-tight px-4">Comprar com Desconto - No Site Oficial</span>
+        <ShoppingBag size={20} className="shrink-0 hidden xs:block" />
+        <span className="leading-tight px-2">Comprar com Desconto - No Site Oficial</span>
       </Button>
     </Link>
     <p className="font-merriweather font-bold text-[10px] text-slate-400 mt-6 text-center uppercase tracking-[0.4em]">
@@ -215,7 +215,7 @@ export default function KcrAdvV2Page() {
 
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
-        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</P>
+        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
