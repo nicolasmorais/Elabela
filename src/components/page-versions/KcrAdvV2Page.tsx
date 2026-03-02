@@ -204,7 +204,7 @@ export default function KcrAdvV2Page() {
         <H1>Eu chorava toda vez que olhava para o ralo do meu chuveiro.</H1>
         <H1Sub>Hoje meu cabelo voltou a crescer — e eu finalmente me reconheço no espelho.</H1Sub>
 
-        {/* IMAGEM DE RELATO AJUSTADA: MAIOR NO MOBILE E ARREDONDAMENTO SUAVE */}
+        {/* IMAGEM DE RELATO */}
         <div className="my-10 -mx-6 md:mx-0">
           <img 
             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771644725841-Gemini_Generated_Image_bi45tvbi45tvbi45.png" 
@@ -217,12 +217,12 @@ export default function KcrAdvV2Page() {
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
         <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
-        <P>Meu cabelo estava cainoin. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
+        <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
         <P>Eu ficava contando os fios no chuveiro. Sabe quando você começa a fazer isso? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</P>
         <P>Eu tinha 51 anos. E aí vem aquela coisa que ninguém avisa direito:</P>
         <Ancora>Depois dos 45, o cabelo muda. Os hormônios mudam. O corpo inteiro muda.</Ancora>
-        <P>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. But ninguém te avisa que você pode acordar um dia e o seu cabelo não ser mais o mesmo.</P>
+        <P>Ninguém te fala isso com clareza. Te falam sobre menopausa, sobre colesterol, sobre pressão. Mas ninguém te avisa que você pode acordar um dia e o seu cabelo não ser mais o mesmo.</P>
 
         <div className="flex justify-center my-16 opacity-10">
             <div className="h-px w-full bg-slate-900"></div>
@@ -234,10 +234,10 @@ export default function KcrAdvV2Page() {
         <P>Quando ele começou a cair, eu senti que estava perdendo um pedaço de mim. Literalmente.</P>
         <P>Comecei a usar truques de penteado pra esconder as falhas. Rabinho alto disfarçava o couro cabeludo aparecendo na frente. Coque escondia o volume que tinha sumido.</P>
         <Ancora>Chapéu virou meu acessório favorito. E eu odeio chapéu.</Ancora>
-        <P>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente." Eu disse que estava cansada do trabalho. Mas a verdade é que eu tinha vergonha. Vergonha de tel 51 anos e estar com menos cabelo do que minha mãe com 72.</P>
+        <P>Meu marido, o Marcos, perguntou uma vez: "Você tá bem? Você tá diferente." Eu disse que estava cansada do trabalho. Mas a verdade é que eu tinha vergonha. Vergonha de ter 51 anos e estar com menos cabelo do que minha mãe com 72.</P>
         <P>E ainda tinha aquela voz na cabeça: "é a idade, Cláudia. É a menopausa. É o que acontece com a gente."</P>
         <PullQuote>Como se depois dos 50 a gente tivesse que aceitar virar outra pessoa.</PullQuote>
-        <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. No aguentava a ideia de todo mundo olhando.</P>
+        <P>Teve um domingo que eu não fui ao churrasco da família. Inventei dor de cabeça. Na verdade, eu não conseguia arranjar um penteado que me fizesse sentir presentável. Não aguentava a ideia de todo mundo olhando.</P>
         <Ancora>Aquele domingo foi o fundo do poço pra mim.</Ancora>
 
         <div className="flex justify-center my-16 opacity-10">
@@ -262,7 +262,7 @@ export default function KcrAdvV2Page() {
 
         <H2>A mensagem que mudou tudo — e eu quase nem li</H2>
         <P>Foi minha prima Renata quem me mandou. A gente se fala bastante por Whatsapp. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</P>
-        <P>But a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
+        <P>Mas a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
         <P>Eu sabia que a Renata tinha passado pelo mesmo problema — ela tem 53 anos, passou pela menopausa cedo, e o cabelo dela tinha ficado horrível.</P>
         <Ancora>Liguei pra ela na hora.</Ancora>
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
@@ -314,20 +314,9 @@ export default function KcrAdvV2Page() {
         <Ancora>Eu não me conformei. E você também não precisa.</Ancora>
         <P>No domingo passado, eu fui ao churrasco da família. Arrumei o cabelo solto. Botei um brinco bonito. Quando minha cunhada disse "Cláudia, você tá ótima, o que aconteceu?", eu consegui responder sem travar: "Tô bem, obrigada."</P>
         <P>Eu tô bem. Faz tanto tempo que eu não podia dizer isso de verdade.</P>
-        <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem ni perceber.</P>
+        <P>O Marcos me olhou diferente naquele domingo. A gente conversou mais, riu mais. Coisas que a gente tinha parado de fazer sem nem perceber.</P>
         <P>Cabelo é vaidade? Pode ser. Mas quando você está perdendo, você entende que não é só vaidade. </P>
         <PullQuote>É identidade. É como você se apresenta pro mundo. É como você se sente digna de ocupar espaço.</PullQuote>
-
-        <div className="flex justify-center my-16 opacity-10">
-            <div className="h-px w-full bg-slate-900"></div>
-        </div>
-
-        <H2>Imagina você daqui a 60 dias...</H2>
-        <P>Fecha os olhos um segundo. Imagina você acordando de manhã, passando a mão no cabelo no travesseiro — e não encontrando quase nada.</P>
-        <P>Imagina entrar no chuveiro sem aquela ansiedade de olhar pro ralo. Terminar o banho tranquila.</P>
-        <Ancora>Imagina abrir o guarda-roupa e escolher aquela blusa que você evitava porque não queria mostrar o cabelo ralo.</Ancora>
-        <P>Imagina postar uma foto e se reconhecer na imagem. Se gostar do que você vê. Isso não é sonho. Foi exatamente o que aconteceu comigo em 60 dias.</P>
-        <Ancora>E pode acontecer com você também.</Ancora>
 
         <div className="flex justify-center my-16 opacity-10">
             <div className="h-px w-full bg-slate-900"></div>
@@ -345,7 +334,7 @@ export default function KcrAdvV2Page() {
 
         <H2>Por que estou escrevendo isso aqui hoje</H2>
         <P>Recebi tantas mensagens de mulheres perguntando qual foi o kit, que resolvi escrever aqui de vez.</P>
-        <P>Entrei em contato com a loja onde comprei — a elabela.store — e expliquei que muitas leitoras do meu blog estavam perguntando. Eles me passaram um link com desconto exclusivo pra quem vier daqui.</p>
+        <P>Entrei em contato com a loja onde comprei — a elabela.store — e expliquei que muitas leitoras do meu blog estavam perguntando. Eles me passaram um link com desconto exclusivo pra quem vier daqui.</P>
         <P>Não é indicação paga. Só quero que você tenha acesso ao mesmo tratamento que mudou a minha vida.</P>
 
         <BoxLista 
@@ -359,7 +348,6 @@ export default function KcrAdvV2Page() {
           ]}
         />
 
-        <P>Eu sei que parece caro à primeira vista. <strong>Mas faz a conta comigo:</strong></P>
         <div className="bg-pink-50 p-10 rounded-3xl text-center my-12 border border-pink-100">
             <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-4 text-pink-700">R$ 1,80 Por Dia.</p>
             <p className="font-merriweather text-lg md:text-xl font-medium text-slate-500 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
