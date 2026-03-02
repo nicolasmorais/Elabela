@@ -262,13 +262,13 @@ export default function KcrAdvV2Page() {
 
         <H2>A mensagem que mudou tudo — e eu quase nem li</H2>
         <P>Foi minha prima Renata quem me mandou. A gente se fala bastante por Whatsapp. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</P>
-        <P>Mas a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
+        <P>But a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
         <P>Eu sabia que a Renata tinha passado pelo mesmo problema — ela tem 53 anos, passou pela menopausa cedo, e o cabelo dela tinha ficado horrível.</P>
         <Ancora>Liguei pra ela na hora.</Ancora>
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
         <P>Perguntei logo: "mas funciona mesmo pra quem já tem uma certa idade? Porque eu já tentei de tudo..."</P>
         <P>Ela me disse: <strong>"Cláudia, eu tenho 53. Funciona exatamente porque é feito pra fios que já passaram por mudança hormonal. É diferente de produto pra menina de 20 anos com cabelo virgem."</strong></P>
-        <Citacao text="É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. No adianta." author="Renata, minha prima" />
+        <Citacao text="É como tentar consertar uma cadeira pregando um parafuso quando os outros três estão soltos. Não adianta." author="Renata, minha prima" />
         <P>E o tônico foi o que mais me surpreendeu depois. Você aplica direto no couro cabeludo e ele age dentro do folículo — onde o fio nasce. Os outros produtos cuidam do fio que já existe.</P>
         <Ancora>O tônico cuida do fio que ainda vai nascer.</Ancora>
         <P>Pedi o link pra ela. Comprei naquela mesma noite.</P>
@@ -322,6 +322,17 @@ export default function KcrAdvV2Page() {
             <div className="h-px w-full bg-slate-900"></div>
         </div>
 
+        <H2>Imagina você daqui a 60 dias...</H2>
+        <P>Fecha os olhos um segundo. Imagina você acordando de manhã, passando a mão no cabelo no travesseiro — e não encontrando quase nada.</P>
+        <P>Imagina entrar no chuveiro sem aquela ansiedade de olhar pro ralo. Terminar o banho tranquila.</P>
+        <Ancora>Imagina abrir o guarda-roupa e escolher aquela blusa que você evitava porque não queria mostrar o cabelo ralo.</Ancora>
+        <P>Imagina postar uma foto e se reconhecer na imagem. Se gostar do que você vê. Isso não é sonho. Foi exatamente o que aconteceu comigo em 60 dias.</P>
+        <Ancora>E pode acontecer com você também.</Ancora>
+
+        <div className="flex justify-center my-16 opacity-10">
+            <div className="h-px w-full bg-slate-900"></div>
+        </div>
+
         <H2>Não sou só eu — leia o que outras mulheres estão dizendo</H2>
         <P>Desde que postei minha foto nova, recebi centenas de mensagens. Mulheres acima dos 45, acima dos 50, com a mesma história. Peço licença pra compartilhar algumas aqui:</P>
         <Depoimento name="Maria Luíza, 54 anos — Goiânia, GO" text="Achei que era tarde demais pra mim. Meu cabelo estava caindo há dois anos e o dermatologista disse que era da menopausa, que eu tinha que aceitar. Comprei o kit sem muita esperança. Na segunda semana já estava diferente. Não consigo mais parar de usar." />
@@ -331,6 +342,11 @@ export default function KcrAdvV2Page() {
         <div className="flex justify-center my-16 opacity-10">
             <div className="h-px w-full bg-slate-900"></div>
         </div>
+
+        <H2>Por que estou escrevendo isso aqui hoje</H2>
+        <P>Recebi tantas mensagens de mulheres perguntando qual foi o kit, que resolvi escrever aqui de vez.</P>
+        <P>Entrei em contato com a loja onde comprei — a elabela.store — e expliquei que muitas leitoras do meu blog estavam perguntando. Eles me passaram um link com desconto exclusivo pra quem vier daqui.</p>
+        <P>Não é indicação paga. Só quero que você tenha acesso ao mesmo tratamento que mudou a minha vida.</P>
 
         <BoxLista 
           title="O que você recebe no Kit Cavalo de Raça:"
@@ -385,7 +401,7 @@ export default function KcrAdvV2Page() {
           <p className="text-slate-400 text-xs font-black uppercase tracking-widest">Brasília, DF</p>
         </div>
 
-        {/* Seção de Comentários Estilo Blog Nativo --- */}
+        {/* Seção de Comentários Estilo Blog Nativo */}
         <section className="mt-24 pt-16 border-t border-slate-100 pb-20">
           <div className="flex items-center justify-between mb-12">
             <h4 className="font-merriweather font-black text-2xl md:text-3xl text-slate-900 tracking-tighter uppercase leading-none">
