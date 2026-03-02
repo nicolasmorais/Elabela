@@ -16,7 +16,7 @@ import { KcrOriginalGuarantee } from '@/components/kcr-original/KcrOriginalGuara
 import { KcrOriginalFooter } from '@/components/kcr-original/KcrOriginalFooter';
 
 export function KcrOriginalPage() {
-  const [timeLeft, setTimeLeft] = useState(38010);
+  const [timeLeft, setTimeLeft] = useState(1800); // Sincronizado para 30 minutos
   
   const [config, setConfig] = useState({
       priceCard: 'R$ 187,00',
@@ -47,9 +47,9 @@ export function KcrOriginalPage() {
   }, []);
 
   const formatTime = (seconds: number) => {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    return `${h}h ${m} min`;
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, '0')} min`;
   };
 
   return (
