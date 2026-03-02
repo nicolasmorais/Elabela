@@ -53,7 +53,7 @@ export const KcrOriginalQuadrupleAction = () => {
                     <img 
                         src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772412756942-Gemini_Generated_Image_6eit2k6eit2k6eit.png" 
                         alt="Tecnologia Quádrupla Ancoragem" 
-                        className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03]"
+                        className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03] rounded-[3rem]"
                     />
                 </div>
             </div>
@@ -73,7 +73,7 @@ export const KcrOriginalQuadrupleAction = () => {
                         icon: Layers, 
                         title: "CAMADA 2: RECONSTRÓI A FIBRA", 
                         prod: "Máscara Anti-Queda Intensiva",
-                        desc: "Penetra na estrutura interna do fio com queratina biomimética — une as pontas quebradas como se fosse soldar. O fio que estava partido por dentro volta a ser um só.",
+                        desc: "Penetra na estrutura interna do fio with queratina biomimética — une as pontas quebradas como se fosse soldar. O fio que estava partido por dentro volta a ser um só.",
                         feels: ["✔ 1ª aplicação: fio fica com peso de fio saudável", "✔ 1 semana: para de ver fios partidos no pente", "✔ 2 semanas: fio dobra sem quebrar"],
                         analogia: "É como consertar rachaduras numa parede. Não adianta pintar por cima. Tem que tapar o buraco."
                     },
