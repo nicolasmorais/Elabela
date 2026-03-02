@@ -5,32 +5,32 @@ import { Star, Verified } from 'lucide-react';
 
 const DELIVERY_TESTIMONIALS = [
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558637636-1.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772424581866-br-11134103-7r98o-m2e0k7l1n6up40.webp",
     text: "Chegou super rápido! Já comecei meu tratamento antiqueda hoje. O cheiro é maravilhoso e na primeira lavada já senti o cabelo mais firme e cheiroso.",
     author: "Marta S., São Paulo"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558641342-2.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772424580859-br-11134103-7r98o-lx2ovwv7z4xr65.webp",
     text: "Entrega relâmpago aqui no RJ! Usei hoje pela primeira vez e o perfume é incrível. Notei que caiu bem menos fios no banho, já sinto a diferença na quebra.",
     author: "Juliana P., Rio de Janeiro"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558644450-3.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772424583249-br-11134103-7r98p-llnppczak2rq05.webp",
     text: "Recebi em tempo recorde! O kit é lindo e muito cheiroso. Fiz a primeira aplicação e o cabelo ficou super macio, parece que a quebra diminuiu logo de cara.",
     author: "Fernanda L., Belo Horizonte"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558648736-4.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772424577080-br-11134103-7r98o-m1y7dwagoaqnf9.webp",
     text: "Chegou voando! Começando o cronograma antiqueda agora. O perfume fixou no cabelo e já sinto os fios mais resistentes, caiu quase nada no pente hoje.",
     author: "Carla T., Curitiba"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558652832-5.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772424578975-br-11134103-7r98o-loftzznnqjbbd6.webp",
     text: "Impecável a entrega! O cheiro é viciante e o resultado no primeiro dia me surpreendeu. O cabelo ficou soltinho e senti que parou de quebrar tanto.",
     author: "Cláudia Mendes, Brasília"
   },
   {
-    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770558657652-6.png",
+    image: "https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772424573679-br-11134103-7r98o-m0ftwmodl7cx6d.webp",
     text: "Meu kit chegou antes do esperado! Já iniciei o tratamento. O cabelo está super cheiroso e sinto que a queda já deu uma segurada na primeira lavagem.",
     author: "Beatriz A., Porto Alegre"
   }
