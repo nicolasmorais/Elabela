@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard } from 'lucide-react';
+import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard, MoveHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -20,6 +20,10 @@ interface KcrOriginalHeroProps {
 export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHeroProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  const nextImage = () => {
+    setActiveImageIndex((prev) => (prev + 1) % PRODUCT_IMAGES.length);
+  };
+
   return (
     <header className="relative pt-10 pb-20 px-6 bg-white overflow-hidden border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
@@ -27,18 +31,22 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                 
                 {/* GALERIA */}
                 <div className="lg:col-span-6 space-y-6">
-                    <div className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-xl group">
-                        <img src={PRODUCT_IMAGES[activeImageIndex]} alt="Produto" className="w-full h-full object-cover" />
-                        <div className="absolute bottom-6 right-6 bg-slate-900/80 text-white text-[10px] font-black px-3 py-1 rounded-full">
+                    <div 
+                        className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-xl group cursor-pointer"
+                        onClick={nextImage}
+                    >
+                        <img src={PRODUCT_IMAGES[activeImageIndex]} alt="Produto" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        
+                        {/* Indicador de Arraste */}
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2 border border-white shadow-lg text-slate-800 text-[10px] font-black uppercase tracking-widest animate-pulse pointer-events-none">
+                            <MoveHorizontal size={14} className="text-orange-600" />
+                            Arraste para o lado
+                        </div>
+
+                        {/* Contador */}
+                        <div className="absolute top-6 right-6 bg-slate-900/80 text-white text-[10px] font-black px-3 py-1 rounded-full">
                           {activeImageIndex + 1} / {PRODUCT_IMAGES.length}
                         </div>
-                    </div>
-                    <div className="grid grid-cols-4 gap-4 px-2">
-                        {PRODUCT_IMAGES.map((img, i) => (
-                            <button key={i} onClick={() => setActiveImageIndex(i)} className={cn("aspect-square rounded-2xl overflow-hidden border-2 transition-all", activeImageIndex === i ? "border-orange-500 scale-105" : "border-slate-100 opacity-60")}>
-                                <img src={img} alt="Thumb" className="w-full h-full object-cover" />
-                            </button>
-                        ))}
                     </div>
                 </div>
 
