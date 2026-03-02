@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { PageTracker } from "./PageTracker";
 import { KcrOriginalNav } from '@/components/kcr-original/KcrOriginalNav';
 import { KcrOriginalHero } from '@/components/kcr-original/KcrOriginalHero';
+import { KcrOriginalResults } from '@/components/kcr-original/KcrOriginalResults';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
@@ -47,6 +48,8 @@ export function KcrOriginalPage() {
             timeLeft={timeLeft} 
           />
           
+          <KcrOriginalResults />
+
           {/* Seções Adicionais serão inseridas aqui modularmente conforme solicitado */}
           <div className="py-20 text-center text-slate-300 italic">
             Novas seções modulares em breve...
