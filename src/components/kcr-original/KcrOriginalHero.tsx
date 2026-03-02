@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Star, Award, Zap, ShoppingBag, ArrowRight, ShieldCheck, Lock, CreditCard, MoveHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { KitSelector, KitOption } from '../clareador/KitSelector';
 import Link from 'next/link';
 
 const PRODUCT_IMAGES = [
@@ -20,6 +21,36 @@ interface KcrOriginalHeroProps {
 export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHeroProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  // Criamos os kits dinamicamente com base no valor da Dashboard para o kit principal
+  const kits: KitOption[] = [
+    {
+      id: '1',
+      units: 1,
+      discount: 'PREÇO ESPECIAL',
+      unitPrice: config.pricePix,
+      price: config.pricePix,
+      originalPrice: config.priceCard,
+      checkoutUrl: config.checkoutUrl
+    },
+    {
+      id: '2',
+      units: 2,
+      discount: 'MAIS VENDIDO',
+      unitPrice: (parseFloat(config.pricePix.replace(',', '.')) * 0.8).toFixed(2).replace('.', ','),
+      price: (parseFloat(config.pricePix.replace(',', '.')) * 1.6).toFixed(2).replace('.', ','),
+      originalPrice: 'R$ 379,80',
+      badges: ['Recomendado'],
+      checkoutUrl: config.checkoutUrl
+    }
+  ];
+
+  const [selectedKit, setSelectedKit] = useState<KitOption>(kits[0]);
+
+  // Sincroniza o kit selecionado se a config mudar (carregamento da API)
+  useEffect(() => {
+    setSelectedKit(kits[0]);
+  }, [config.pricePix]);
+
   const nextImage = () => {
     setActiveImageIndex((prev) => (prev + 1) % PRODUCT_IMAGES.length);
   };
@@ -30,20 +61,16 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 {/* GALERIA */}
-                <div className="lg:col-span-6 space-y-6">
+                <div className="lg:col-span-5 space-y-6">
                     <div 
-                        className="relative aspect-square bg-[#FDFDFD] rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-xl group cursor-pointer"
+                        className="relative aspect-square bg-[#FDFDFD] rounded-[3rem] overflow-hidden border border-slate-100 shadow-xl group cursor-pointer"
                         onClick={nextImage}
                     >
                         <img src={PRODUCT_IMAGES[activeImageIndex]} alt="Produto" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                        
-                        {/* Indicador de Arraste */}
                         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2 border border-white shadow-lg text-slate-800 text-[10px] font-black uppercase tracking-widest animate-pulse pointer-events-none">
                             <MoveHorizontal size={14} className="text-orange-600" />
                             Arraste para o lado
                         </div>
-
-                        {/* Contador */}
                         <div className="absolute top-6 right-6 bg-slate-900/80 text-white text-[10px] font-black px-3 py-1 rounded-full">
                           {activeImageIndex + 1} / {PRODUCT_IMAGES.length}
                         </div>
@@ -51,26 +78,21 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                 </div>
 
                 {/* INFOS DE COMPRA */}
-                <div className="lg:col-span-6 space-y-6">
+                <div className="lg:col-span-7 space-y-6">
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm text-[11px] font-bold text-slate-600">
                         <div className="bg-pink-500 p-1 rounded-md text-white"><Award size={14} /></div> Eleito o melhor Kit do Brasil
                     </div>
                     <div className="space-y-2">
-                        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Kit Cavalo de Raça - Reconstrução + Antiqueda Intensiva</h1>
-                        <div className="flex flex-col gap-1">
-                            <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                                <div className="flex gap-0.5 text-orange-400">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}</div>
-                                <span>4.9 | 2322 avaliações 5 estrelas</span>
-                            </div>
-                            <p className="text-emerald-600 font-bold text-sm">
-                                Mais de 50800 compras no mês passado.
-                            </p>
-                        </div>
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-950">Kit Cavalo de Raça - Reconstrução + Antiqueda Intensiva</h1>
+                        <p className="text-emerald-600 font-bold text-sm">
+                            Mais de 50.800 compras no mês passado.
+                        </p>
                     </div>
+
                     <div className="space-y-3">
                         <div className="flex items-center gap-3">
                           <span className="text-slate-400 line-through text-lg">{config.priceCard}</span>
-                          <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">21% OFF</span>
+                          <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-black">OFERTA ATIVA</span>
                         </div>
                         <div className="flex items-baseline gap-2 leading-none">
                           <span className="text-5xl font-black text-slate-950">R$ {config.pricePix}</span>
@@ -78,57 +100,41 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                         </div>
                         <p className="text-slate-500 font-medium text-sm">{config.installmentText}</p>
                     </div>
-                    
-                    <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl space-y-3">
-                        <p className="text-slate-800 font-black text-lg leading-snug">
-                            O Kit Cavalo de Raça age nos 4 motivos que fazem isso acontecer ao mesmo tempo — ancora a raiz, reconstrói o fio por dentro, protege por fora e ainda acorda o folículo pra nascer cabelo novo.
-                        </p>
-                        <p className="text-slate-600 font-bold text-sm italic">
-                            É o seu banho de sempre. Só que com produtos que realmente tratam a causa.
-                        </p>
+
+                    {/* Seletor de Kits opcional - agora usando valores da config */}
+                    <div className="pt-4">
+                        <KitSelector 
+                            options={kits} 
+                            selectedId={selectedKit.id} 
+                            onSelect={setSelectedKit} 
+                        />
                     </div>
 
                     <div className="space-y-4 pt-4">
                         <Link href={config.checkoutUrl} target="_blank" className="block group/btn">
                             <Button 
-                                className="w-full h-24 bg-[#35c867] hover:bg-[#2eb35a] text-white rounded-[2rem] shadow-[0_20px_50px_-10px_rgba(53,200,103,0.5)] transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center gap-0 border-b-[6px] border-[#258d48] overflow-hidden"
+                                className="w-full h-24 bg-[#35c867] hover:bg-[#2eb35a] text-white rounded-[2rem] shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98] flex flex-col items-center justify-center border-b-[6px] border-[#258d48]"
                             >
-                                <div className="flex items-center gap-3 relative z-10">
-                                    <ShoppingBag size={28} className="group-hover/btn:scale-110 transition-transform" /> 
-                                    <span className="text-2xl md:text-3xl font-black uppercase tracking-widest">{config.buttonText}</span>
-                                    <ArrowRight size={28} className="group-hover/btn:translate-x-2 transition-transform" />
+                                <div className="flex items-center gap-3">
+                                    <ShoppingBag size={28} /> 
+                                    <span className="text-2xl md:text-3xl font-black uppercase">{config.buttonText}</span>
+                                    <ArrowRight size={28} />
                                 </div>
-                                <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] mt-1 relative z-10">
+                                <span className="text-[10px] font-black uppercase opacity-60 tracking-[0.2em] mt-1">
                                     Site 100% Seguro | Envio Imediato
                                 </span>
                             </Button>
                         </Link>
                         
-                        {/* BANNER ENTREGA FULL */}
-                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center justify-between group">
+                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                                <div className="bg-emerald-500 text-white p-2 rounded-lg">
-                                    <Zap size={20} fill="currentColor" />
-                                </div>
+                                <div className="bg-emerald-500 text-white p-2 rounded-lg"><Zap size={20} fill="currentColor" /></div>
                                 <div>
-                                    <p className="text-xs font-black text-slate-900 uppercase">ENTREGA FULL — <span className="text-slate-500 font-bold">Envio imediato em até 24h</span></p>
-                                    <p className="text-[10px] font-bold text-slate-500">Comprando dentro das próximas <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
+                                    <p className="text-xs font-black text-slate-900 uppercase">ENTREGA FULL</p>
+                                    <p className="text-[10px] font-bold text-slate-500">Envio em até 24h. Oferta expira em <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
                                 </div>
                             </div>
-                            <ShieldCheck className="text-emerald-500/30 group-hover:text-emerald-500 transition-colors" size={24} />
-                        </div>
-
-                        {/* SELOS DE SEGURANÇA */}
-                        <div className="flex flex-wrap justify-center gap-6 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-700 pt-2">
-                            <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-600">
-                                <ShieldCheck size={14} /> Compra Segura
-                            </div>
-                            <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-600">
-                                <Lock size={14} /> SSL Criptografado
-                            </div>
-                            <div className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-widest text-slate-600">
-                                <CreditCard size={14} /> Pix / Cartão
-                            </div>
+                            <ShieldCheck className="text-emerald-500" size={24} />
                         </div>
                     </div>
                 </div>
