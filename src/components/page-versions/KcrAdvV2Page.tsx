@@ -22,18 +22,12 @@ import { Button } from '@/components/ui/button';
 // --- Componentes de Design Blog Nativo & Feminino ---
 
 const HeaderMeta = () => (
-  <div className="flex flex-col gap-4 border-b border-pink-100 pb-8 mb-10 font-merriweather">
-    <div className="flex items-center gap-2 text-pink-600 text-[10px] font-black uppercase tracking-[0.3em]">
-      <div className="w-1.5 h-1.5 rounded-full bg-pink-500"></div>
-      Saúde & Bem-Estar Feminino
-    </div>
-    <div className="flex flex-wrap items-center gap-4 text-slate-400 text-xs font-bold">
-      <span className="flex items-center gap-1.5"><Calendar size={14} className="text-pink-300" /> 14 de Junho de 2025</span>
-      <span className="opacity-20">|</span>
-      <span className="flex items-center gap-1.5"><Clock size={14} className="text-pink-300" /> 7 min de leitura</span>
-      <span className="opacity-20">|</span>
-      <span className="text-pink-500 font-black uppercase tracking-widest">Brasília, DF</span>
-    </div>
+  <div className="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-6 font-merriweather border-b border-slate-50 pb-2">
+    <span className="text-pink-500 font-black">Saúde Feminina</span>
+    <span className="opacity-20">|</span>
+    <span>14 Jun 2025</span>
+    <span className="opacity-20">|</span>
+    <span className="text-pink-500/60">Brasília, DF</span>
   </div>
 );
 
@@ -215,7 +209,7 @@ export default function KcrAdvV2Page() {
 
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
-        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
+        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
@@ -262,7 +256,7 @@ export default function KcrAdvV2Page() {
 
         <H2>A mensagem que mudou tudo — e eu quase nem li</H2>
         <P>Foi minha prima Renata quem me mandou. A gente se fala bastante por Whatsapp. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</P>
-        <P>Mas a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
+        <P>But a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
         <P>Eu sabia que a Renata tinha passado pelo mesmo problema — ela tem 53 anos, passou pela menopausa cedo, e o cabelo dela tinha ficado horrível.</P>
         <Ancora>Liguei pra ela na hora.</Ancora>
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
