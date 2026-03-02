@@ -211,6 +211,16 @@ export default function KcrAdvV2Page() {
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
         <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
+
+        {/* IMAGEM DE QUEDA SOLICITADA */}
+        <div className="my-10 -mx-6 md:mx-0">
+          <img 
+            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772413548639-Gemini_Generated_Image_9c5g139c5g139c5g.png" 
+            alt="Evidência de queda capilar severa" 
+            className="w-full h-auto rounded-xl md:rounded-2xl shadow-lg border-2 border-white"
+          />
+        </div>
+
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
         <P>Eu ficava contando os fios no chuveiro. Sabe quando você começa a fazer isso? É quando você sabe que chegou num lugar muito feio dentro de si mesma.</P>
@@ -283,7 +293,6 @@ export default function KcrAdvV2Page() {
         <P>No terceiro dia, eu fechei o chuveiro. Fiquei parada olhando pro ralo por um bom tempo. Pensei que tinha sido coincidência. Mas no quarto dia, o mesmo. No quinto dia, o mesmo.</P>
         <P>Na escova pela manhã, menos fios. No travesseiro, quase nada.</P>
         
-        {/* NOVA IMAGEM SOLICITADA */}
         <div className="my-10 -mx-6 md:mx-0">
           <img 
             src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643964059-Gemini_Generated_Image_yehyu3yehyu3yehy-(1).png" 
