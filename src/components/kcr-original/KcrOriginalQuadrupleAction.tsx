@@ -51,7 +51,7 @@ export const KcrOriginalQuadrupleAction = () => {
                 <div className="relative">
                     <div className="absolute inset-0 bg-orange-400/5 rounded-full blur-[100px]"></div>
                     <img 
-                        src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1770414108426-ChatGPT-Image-6-de-fev.-de-2026,-18_41_41.png" 
+                        src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1772412756942-Gemini_Generated_Image_6eit2k6eit2k6eit.png" 
                         alt="Tecnologia Quádrupla Ancoragem" 
                         className="relative z-10 w-full h-auto drop-shadow-2xl transition-transform duration-1000 hover:scale-[1.03]"
                     />
@@ -89,7 +89,7 @@ export const KcrOriginalQuadrupleAction = () => {
                         icon: Zap, 
                         title: "CAMADA 4: ATIVA O NASCIMENTO", 
                         prod: "Tônico Capilar Antiqueda",
-                        desc: "Esta é a camada que os outros kits não têm — e a mais importante para mulheres acima dos 40. Quando o cabelo cai por causa dos hormônios, o folículo fica inativo. O tônico reativa o ciclo de crescimento.",
+                        desc: "Esta é a camada que os outros kits não têm — e a mais importante para mulheres acima dos 40. Quando o cabelo cai por causa dos hormônios, o folículo fica inativo. Ele está lá, mas não recebe mais o sinal para produzir fio novo. O tônico age direto nesse folículo, reativando o ciclo de crescimento.",
                         feels: ["✔ Primeiros dias: folículo ativado", "✔ 2 semanas: queda reduz também na raiz", "✔ 3 a 4 semanas: fios novos aparecendo"],
                         special: "As outras 3 camadas cuidam do fio que já existe. O tônico cuida do fio que ainda vai nascer.",
                         analogia: "É como adubar o solo antes de plantar. Não adianta só cuidar da planta que já cresceu. Tem que preparar o terreno para o novo nascer forte."
