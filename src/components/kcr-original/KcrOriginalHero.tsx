@@ -79,12 +79,19 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                                 <ShoppingBag size={28} /> {config.buttonText} <ArrowRight size={28} />
                             </Button>
                         </Link>
-                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center gap-4">
-                            <div className="bg-emerald-500 text-white p-2 rounded-lg"><Zap size={20} fill="currentColor" /></div>
-                            <div>
-                              <p className="text-xs font-black text-slate-900 uppercase">ENTREGA ACELERADA</p>
-                              <p className="text-[10px] font-bold text-slate-500">Envio hoje se comprar em <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
+                        
+                        {/* BANNER ENTREGA FULL */}
+                        <div className="bg-emerald-50/80 border border-emerald-100 rounded-2xl p-5 flex items-center justify-between group">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-emerald-500 text-white p-2 rounded-lg">
+                                    <Zap size={20} fill="currentColor" />
+                                </div>
+                                <div>
+                                    <p className="text-xs font-black text-slate-900 uppercase">ENTREGA FULL — <span className="text-slate-500 font-bold">Envio imediato em até 24h</span></p>
+                                    <p className="text-[10px] font-bold text-slate-500">Comprando dentro das próximas <span className="text-slate-900 font-black">{formatTime(timeLeft)}</span></p>
+                                </div>
                             </div>
+                            <ShieldCheck className="text-emerald-500/30 group-hover:text-emerald-500 transition-colors" size={24} />
                         </div>
                     </div>
                 </div>
