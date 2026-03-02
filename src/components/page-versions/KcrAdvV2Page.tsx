@@ -257,7 +257,7 @@ export default function KcrAdvV2Page() {
         <H2>A mensagem que mudou tudo — e eu quase nem li</H2>
         <P>Foi minha prima Renata quem me mandou. A gente se fala bastante por Whatsapp. Quando ela me mandou uma foto do cabelo dela com a mensagem "Cláudia, você precisa ver isso", eu quase ignorei.</P>
         <P>But a foto me chamou atenção. O cabelo dela estava diferente. Mais cheio. Com um brilho diferente.</P>
-        <P>Eu sabia que a Renata tinha passado pelo mesmo problema — ela tem 53 anos, passou pela menopausa cedo, e o cabelo dela tinha ficado horrível.</P>
+        <P>Eu sabia que a Renata tinha passado pelo mesmo problem — ela tem 53 anos, passou pela menopausa cedo, e o cabelo dela tinha ficado horrível.</P>
         <Ancora>Liguei pra ela na hora.</Ancora>
         <P>Ela me contou que estava usando o Kit Cavalo de Raça. Me disse que o diferencial é que ele não trata só o sintoma — ele trata as três causas da queda ao mesmo tempo, com cinco produtos que trabalham em sistema.</P>
         <P>Perguntei logo: "mas funciona mesmo pra quem já tem uma certa idade? Porque eu já tentei de tudo..."</P>
@@ -282,6 +282,16 @@ export default function KcrAdvV2Page() {
         ]} />
         <P>No terceiro dia, eu fechei o chuveiro. Fiquei parada olhando pro ralo por um bom tempo. Pensei que tinha sido coincidência. Mas no quarto dia, o mesmo. No quinto dia, o mesmo.</P>
         <P>Na escova pela manhã, menos fios. No travesseiro, quase nada.</P>
+        
+        {/* NOVA IMAGEM SOLICITADA */}
+        <div className="my-10 -mx-6 md:mx-0">
+          <img 
+            src="https://pub-da9fd1c19b8e45d691d67626b9a7ba6d.r2.dev/1771643964059-Gemini_Generated_Image_yehyu3yehyu3yehy-(1).png" 
+            alt="Emoção do resultado" 
+            className="w-full h-auto rounded-xl md:rounded-2xl shadow-lg border-2 border-white"
+          />
+        </div>
+
         <Ancora>Chorei. No banheiro mesmo, de emoção. Aquelas lágrimas diferentes — não de tristeza, mas de alívio.</Ancora>
 
         <div className="flex justify-center my-16 opacity-10">
