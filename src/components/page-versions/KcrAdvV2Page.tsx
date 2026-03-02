@@ -278,7 +278,6 @@ export default function KcrAdvV2Page() {
         </div>
 
         <H2>O que aconteceu semana a semana</H2>
-        <P>Vou te contar exatamente o que aconteceu. Sem exagero, sem enfeite.</P>
         <Timeline items={[
           { label: "DIA 1", text: "Couro cabeludo leve. Limpo de um jeito que eu não lembrava de ter sentido." },
           { label: "DIA 3", text: "Olhei pro ralo no chuveiro. Estava quase limpo. Fiquei parada olhando." },
@@ -348,12 +347,10 @@ export default function KcrAdvV2Page() {
           ]}
         />
 
-        <div className="bg-pink-50 p-10 rounded-3xl text-center my-12 border border-pink-100">
-            <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-4 text-pink-700">R$ 1,80 Por Dia.</p>
-            <p className="font-merriweather text-lg md:text-xl font-medium text-slate-500 uppercase tracking-widest leading-relaxed">Menos que um café para ter seu cabelo e sua confiança de volta.</p>
-        </div>
-        
-        <P>Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado. Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
+        <P>Eu sei que parece caro à primeira vista. <strong>Mas faz a conta comigo:</strong></P>
+        <P>R$ 159,90 ÷ 90 dias de tratamento = menos de R$ 1,80 por dia.</P>
+        <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
+        <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? Isso é menos de um quinto daquilo.</P>
 
         <BoxAlerta>
           ⚠️ Importante: o Kit Cavalo de Raça Original está disponível em <strong className="text-slate-900">elabela.store</strong>. Tem muita cópia barata circulando sem a fórmula completa. Compre só pelo link abaixo pra garantir o original com desconto e frete grátis.
