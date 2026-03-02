@@ -33,10 +33,10 @@ export const KcrOriginalQuadrupleAction = () => {
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {[
-                            { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Os hormônios mudaram. Seu folículo perdeu força e não segura mais o fio." },
-                            { n: "2", t: "FIBRA QUEBRADA", d: "O fio ficou tão ressecado e fraco que parte ao meio antes de cair da raiz." },
+                            { n: "1", t: "RAIZ ENFRAQUECIDA", d: "Os hormônios mudaram. Seu folículo perdeu força e não consegue mais segurar o fio." },
+                            { n: "2", t: "FIBRA QUEBRADA", d: "O fio ficou tão ressecado e fraco que parte ao meio antes mesmo de cair da raiz." },
                             { n: "3", t: "PROTEÇÃO DESTRUÍDA", d: "Cutículas abertas deixam o fio exposto e vulnerável a qualquer atrito." },
-                            { n: "4", t: "FOLÍCULO INATIVO", d: "O fio caiu — mas o folículo ficou parado. Sem sinal, nada nasce no lugar." }
+                            { n: "4", t: "FOLÍCULO INATIVO", d: "O fio caiu — mas o folículo ficou parado. Sem estímulo, nenhum fio novo nasce no lugar." }
                         ].map((item, i) => (
                             <div key={i} className="flex gap-4 p-5 bg-[#FDF8F3] rounded-2xl border border-orange-100 hover:bg-white hover:shadow-lg transition-all duration-300">
                                 <div className="h-8 w-8 rounded-lg bg-orange-600 text-white flex items-center justify-center font-black shrink-0 shadow-sm">{item.n}</div>
@@ -65,7 +65,7 @@ export const KcrOriginalQuadrupleAction = () => {
                         icon: Anchor, 
                         title: "CAMADA 1: ANCORA A RAIZ", 
                         prod: "Shampoo Reconstrutor",
-                        desc: "Remove os resíduos químicos que dissolvem a proteção da raiz e deposita aminoácidos que reconstroem a bainha folicular — a base que segura o seu cabelo.",
+                        desc: "Remove os resíduos químicos que dissolvem a proteção da raiz e deposita aminoácidos que reconstroem a bainha folicular — a base que segurava o seu cabelo.",
                         feels: ["✔ 1ª lavada: couro cabeludo respira", "✔ 3 dias: fios param de soltar", "✔ 7 dias: raiz firme, zero quebra"],
                         analogia: "É como cimentar um poste que estava solto no chão. O fio para de cair porque ele está preso de verdade."
                     },
@@ -74,13 +74,13 @@ export const KcrOriginalQuadrupleAction = () => {
                         title: "CAMADA 2: RECONSTRÓI A FIBRA", 
                         prod: "Máscara Anti-Queda Intensiva",
                         desc: "Penetra na estrutura interna do fio com queratina biomimética — une as pontas quebradas como se fosse soldar. O fio que estava partido por dentro volta a ser um só.",
-                        feels: ["✔ 1ª aplicação: fio com peso de fio saudável", "✔ 1 semana: para de ver fios partidos no pente", "✔ 2 semanas: fio dobra sem quebrar"],
+                        feels: ["✔ 1ª aplicação: fio fica com peso de fio saudável", "✔ 1 semana: para de ver fios partidos no pente", "✔ 2 semanas: fio dobra sem quebrar"],
                         analogia: "É como consertar rachaduras numa parede. Não adianta pintar por cima. Tem que tapar o buraco."
                     },
                     { 
                         icon: ShieldCheck, 
                         title: "CAMADA 3: SELA E PROTEGE", 
-                        prod: "Condicionador + Leave-in",
+                        prod: "Condicionador Fortificante + Leave-in Protetor",
                         desc: "Fecha as cutículas abertas e cria um filme protetor contra calor, atrito e umidade — impedindo que o fio reconstruído quebre de novo no dia a dia.",
                         feels: ["✔ Imediato: fio desembaraça sozinho", "✔ 3 dias: zero eletricidade estática", "✔ 1 semana: escova sem fios no chão"],
                         analogia: "É como envernizar madeira. Protege de água, sol e atrito. O resultado dura muito mais."
@@ -90,7 +90,7 @@ export const KcrOriginalQuadrupleAction = () => {
                         title: "CAMADA 4: ATIVA O NASCIMENTO", 
                         prod: "Tônico Capilar Antiqueda",
                         desc: "Esta é a camada que os outros kits não têm — e a mais importante para mulheres acima dos 40. Quando o cabelo cai por causa dos hormônios, o folículo fica inativo. Ele está lá, mas não recebe mais o sinal para produzir fio novo. O tônico age direto nesse folículo, reativando o ciclo de crescimento.",
-                        feels: ["✔ Primeiros dias: folículo ativado", "✔ 2 semanas: queda reduz também na raiz", "✔ 3 a 4 semanas: fios novos aparecendo"],
+                        feels: ["✔ Primeiros dias: couro cabeludo menos sensível, folículo ativado", "✔ 2 semanas: queda reduz também na raiz", "✔ 3 a 4 semanas: fios novos começando a aparecer — aqueles fios curtos que ficam em pé"],
                         special: "As outras 3 camadas cuidam do fio que já existe. O tônico cuida do fio que ainda vai nascer.",
                         analogia: "É como adubar o solo antes de plantar. Não adianta só cuidar da planta que já cresceu. Tem que preparar o terreno para o novo nascer forte."
                     }
@@ -131,7 +131,7 @@ export const KcrOriginalQuadrupleAction = () => {
             {/* DICA DE USO DO TÔNICO */}
             <div className="max-w-3xl mx-auto bg-slate-950 text-white rounded-[2.5rem] p-8 text-center relative overflow-hidden shadow-2xl">
                 <div className="absolute top-0 left-0 p-8 opacity-10"><FlaskConical size={80} /></div>
-                <p className="text-xl font-black relative z-10 uppercase tracking-tight mb-2">💡 Dica de Ouro do Tônico:</p>
+                <p className="text-xl font-black relative z-10 uppercase tracking-tight mb-2">💡 Modo de Uso:</p>
                 <p className="text-lg text-slate-300 relative z-10 leading-relaxed">
                     Aplique após o banho, direto no couro cabeludo. Massageie com a ponta dos dedos para ativar a circulação. <strong className="text-white">Não enxágue.</strong>
                 </p>
