@@ -12,11 +12,13 @@ export async function GET(
     const result = await client.query('SELECT value FROM settings WHERE key = $1', [`pageConfig_${slug}`]);
     
     if (result.rows.length === 0) {
-      // Retorna valores padrão se não existir no banco
+      // Retorna valores padrão (147,00) se não existir no banco
       return NextResponse.json({ 
-        priceCard: 'R$ 157,00', 
-        pricePix: '97,00', 
-        checkoutUrl: '#' 
+        priceCard: 'R$ 187,00', 
+        pricePix: '147,00', 
+        installmentText: 'Ou 12x de R$ 14,96',
+        buttonText: 'Comprar agora',
+        checkoutUrl: 'https://seguro.elabela.store/r/RC8ASYUL88' 
       });
     }
     
