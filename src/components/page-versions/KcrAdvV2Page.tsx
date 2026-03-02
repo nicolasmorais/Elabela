@@ -141,13 +141,13 @@ const Depoimento = ({ name, text }: { name: string; text: string }) => (
 );
 
 const CTAButton = () => (
-  <div className="flex flex-col items-center my-16">
-    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full max-w-xl">
+  <div className="flex flex-col items-center my-16 w-full">
+    <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full">
       <Button 
-        className="w-full h-20 bg-[#df327b] hover:bg-[#c4286a] text-white rounded-[24px] font-bold text-base md:text-lg uppercase tracking-tight shadow-[0_20px_40px_rgba(223,50,123,0.3)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 font-merriweather border-b-[4px] border-[#a11f56]"
+        className="w-full h-24 md:h-20 bg-[#df327b] hover:bg-[#c4286a] text-white rounded-[24px] font-black text-lg md:text-xl uppercase tracking-tight shadow-[0_20px_50px_rgba(223,50,123,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 font-merriweather border-b-[4px] border-[#a11f56] animate-pulse"
       >
-        <ShoppingBag size={20} />
-        Comprar com Desconto - No Site Oficial
+        <ShoppingBag size={24} className="shrink-0" />
+        <span className="leading-tight px-4">Comprar com Desconto - No Site Oficial</span>
       </Button>
     </Link>
     <p className="font-merriweather font-bold text-[10px] text-slate-400 mt-6 text-center uppercase tracking-[0.4em]">
@@ -215,7 +215,7 @@ export default function KcrAdvV2Page() {
 
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
-        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
+        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
@@ -349,9 +349,10 @@ export default function KcrAdvV2Page() {
 
         <div className="space-y-6 text-slate-700">
             <P className="font-bold text-[#1A1A1A]">Eu sei que parece caro à primeira vista. Mas faz a conta comigo:</P>
-            <P className="bg-slate-50 p-6 rounded-2xl border border-slate-100 font-bold italic text-slate-900">
-                R$ 159,90 ÷ 90 dias de tratamento = menos de R$ 1,80 por dia.
-            </P>
+            <div className="bg-pink-50 p-8 rounded-3xl border border-pink-100 text-center my-8">
+                <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-2 text-pink-700">R$ 1,80 Por Dia.</p>
+                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">R$ 159,90 ÷ 90 dias de tratamento</p>
+            </div>
             <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
             <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
         </div>
