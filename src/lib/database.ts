@@ -1,15 +1,12 @@
 import { DbSchema, defaultDbData } from './advertorial-types';
 import { Client } from 'pg';
 
-// Não armazenamos a connectionString fora para garantir que pegamos a mais recente do env
 let client: Client | null = null;
 
 export async function getDb(): Promise<Client> {
     const connectionString = process.env.DATABASE_URL;
-    // Usando credenciais padrão PostgreSQL que devem funcionar
     const dbConnectionString = connectionString || 'postgres://postgres:password@localhost:5432/postgres';
 
-    // Se o cliente já existe, tenta uma consulta simples para ver se a conexão ainda é válida
     if (client) {
         try {
             await client.query('SELECT 1');
@@ -51,7 +48,6 @@ async function ensureTablesExist(client: Client): Promise<void> {
 }
 
 async function insertDefaultData(client: Client): Promise<void> {
-    // Configurações iniciais
     const configs = [
         { key: 'approvalPageContent', value: defaultDbData.approvalPageContent },
         { key: 'pixelConfig', value: defaultDbData.pixelConfig },
@@ -65,7 +61,6 @@ async function insertDefaultData(client: Client): Promise<void> {
         }
     }
     
-    // Rotas padrão
     const defaultRoutes = [
         { path: '/', name: 'Página Principal', content_id: 'v1' },
         { path: '/v1', name: 'Rota do Advertorial V1', content_id: 'v1' },
@@ -77,6 +72,7 @@ async function insertDefaultData(client: Client): Promise<void> {
         { path: '/antiqueda2', name: 'Vendas: Tratamento Antiqueda V2', content_id: 'antiqueda2' },
         { path: '/antiqueda3', name: 'Vendas: Tratamento Antiqueda V3', content_id: 'antiqueda3' },
         { path: '/kcrpromo', name: 'Vendas: KCR Promo', content_id: 'kcrpromo' },
+        { path: '/kcroriginal', name: 'Vendas: KCR Original Modular', content_id: 'kcroriginal' }, // NEW
         { path: '/clareador', name: 'Vendas: Clareador', content_id: 'clareador' },
     ];
 

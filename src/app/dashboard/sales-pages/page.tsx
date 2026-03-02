@@ -57,10 +57,11 @@ const STATIC_PAGES = [
   { id: 'antiqueda2', name: 'Tratamento Antiqueda V2', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'antiqueda3', name: 'Tratamento Antiqueda V3', type: 'Vendas', icon: Scissors, color: 'text-amber-600', bg: 'bg-amber-50 dark:bg-amber-950/20' },
   { id: 'kcrpromo', name: 'KCR Promo', type: 'Vendas', icon: ShoppingBag, color: 'text-emerald-600', bg: 'bg-emerald-50 dark:bg-emerald-950/20' },
+  { id: 'kcroriginal', name: 'KCR Original Modular', type: 'Vendas', icon: ShoppingBag, color: 'text-pink-600', bg: 'bg-pink-50 dark:bg-pink-950/20' }, // NEW
   { id: 'clareador', name: 'Clareador', type: 'Vendas', icon: Sparkles, color: 'text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20' },
   { id: 'novoclareador', name: 'Novo Clareador V2', type: 'Vendas', icon: Sparkles, color: 'text-emerald-500', bg: 'bg-emerald-50 dark:bg-emerald-950/20' },
   { id: 'advkcr', name: 'Advertorial KCR', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' },
-  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' }, // NEW
+  { id: 'adv-kcr-v2', name: 'Advertorial KCR V2 (Relato)', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' },
   { id: 'adv-kcr-v3', name: 'Advertorial KCR V3 (Diário)', type: 'Vendas', icon: FileText, color: 'text-slate-600', bg: 'bg-slate-50 dark:bg-slate-800/50' },
 ];
 
@@ -119,7 +120,7 @@ export default function SalesPagesListPage() {
                       <TableCell><Badge variant="outline" className={cn("rounded-full px-3 py-0.5 border-none font-bold text-[10px] uppercase tracking-widest", page.type === 'Vendas' ? "bg-emerald-50 text-emerald-600" : page.type === 'Dinâmica' ? "bg-blue-50 text-blue-600" : "bg-slate-100 text-slate-500")}>{page.type}</Badge></TableCell>
                       <TableCell><code className="bg-slate-100 text-slate-500 px-3 py-1.5 rounded-lg text-xs font-mono">/{page.id}</code></TableCell>
                       <TableCell className="text-right pr-8"><div className="flex items-center justify-end gap-2"><Link href={`/${page.id}`} target="_blank"><Button variant="ghost" size="sm" className="rounded-xl font-bold h-10 px-4"><ExternalLink size={14} className="mr-2" /> Ver Página</Button></Link>
-                      {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda' || page.id === 'antiqueda2' || page.id === 'antiqueda3' || page.id === 'kcrpromo' || page.id === 'clareador' || page.id === 'novoclareador') && (
+                      {(page.id === 'cavalo-de-raca' || page.id === 'antiqueda' || page.id === 'antiqueda2' || page.id === 'antiqueda3' || page.id === 'kcrpromo' || page.id === 'kcroriginal' || page.id === 'clareador' || page.id === 'novoclareador') && (
                         <DropdownMenu><DropdownMenuTrigger asChild><Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl"><MoreVertical size={18} /></Button></DropdownMenuTrigger><DropdownMenuContent align="end" className="w-48 rounded-xl"><DropdownMenuItem onClick={() => openEditDialog(page.id)} className="font-bold gap-2 cursor-pointer"><Settings2 size={16} /> Editar Preços/Link</DropdownMenuItem></DropdownMenuContent></DropdownMenu>
                       )}</div></TableCell>
                     </TableRow>
