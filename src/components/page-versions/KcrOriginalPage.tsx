@@ -9,6 +9,7 @@ import { KcrOriginalSolution } from '@/components/kcr-original/KcrOriginalSoluti
 import { KcrOriginalQuadrupleAction } from '@/components/kcr-original/KcrOriginalQuadrupleAction';
 import { KcrOriginalComparison } from '@/components/kcr-original/KcrOriginalComparison';
 import { KcrOriginalKitContents } from '@/components/kcr-original/KcrOriginalKitContents';
+import { KcrOriginalCommunity } from '@/components/kcr-original/KcrOriginalCommunity';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
@@ -61,6 +62,8 @@ export function KcrOriginalPage() {
           <KcrOriginalComparison />
 
           <KcrOriginalKitContents />
+
+          <KcrOriginalCommunity />
 
           <div className="py-20 text-center text-slate-300 italic">
             Novas seções modulares em breve...
