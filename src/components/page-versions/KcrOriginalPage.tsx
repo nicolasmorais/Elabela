@@ -10,6 +10,7 @@ import { KcrOriginalQuadrupleAction } from '@/components/kcr-original/KcrOrigina
 import { KcrOriginalComparison } from '@/components/kcr-original/KcrOriginalComparison';
 import { KcrOriginalKitContents } from '@/components/kcr-original/KcrOriginalKitContents';
 import { KcrOriginalCommunity } from '@/components/kcr-original/KcrOriginalCommunity';
+import { KcrOriginalFAQ } from '@/components/kcr-original/KcrOriginalFAQ';
 
 export function KcrOriginalPage() {
   const [timeLeft, setTimeLeft] = useState(38010);
@@ -64,6 +65,8 @@ export function KcrOriginalPage() {
           <KcrOriginalKitContents />
 
           <KcrOriginalCommunity />
+
+          <KcrOriginalFAQ />
 
           <div className="py-20 text-center text-slate-300 italic">
             Novas seções modulares em breve...
