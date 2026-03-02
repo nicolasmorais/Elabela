@@ -144,13 +144,13 @@ const CTAButton = () => (
   <div className="flex flex-col items-center my-16">
     <Link href="https://seguro.elabela.store/r/RC8ASYUL88" className="w-full max-w-xl">
       <Button 
-        className="w-full h-20 bg-pink-600 hover:bg-pink-700 text-white rounded-2xl font-black text-lg md:text-xl uppercase tracking-widest shadow-xl shadow-pink-200 transition-all active:scale-95 flex items-center justify-center gap-3 font-merriweather"
+        className="w-full h-20 bg-[#df327b] hover:bg-[#c4286a] text-white rounded-[24px] font-bold text-base md:text-lg uppercase tracking-tight shadow-[0_20px_40px_rgba(223,50,123,0.3)] transition-all active:scale-[0.98] flex items-center justify-center gap-3 font-merriweather border-b-[4px] border-[#a11f56]"
       >
-        <ShoppingBag size={24} />
-        Clique Aqui para ver o Kit
+        <ShoppingBag size={20} />
+        Comprar com Desconto - No Site Oficial
       </Button>
     </Link>
-    <p className="font-merriweather font-bold text-[10px] text-slate-400 mt-4 text-center uppercase tracking-[0.3em]">
+    <p className="font-merriweather font-bold text-[10px] text-slate-400 mt-6 text-center uppercase tracking-[0.4em]">
        Verifique a disponibilidade hoje no site oficial
     </p>
   </div>
@@ -215,7 +215,7 @@ export default function KcrAdvV2Page() {
 
         <P>Eu preciso te contar uma coisa que nunca tive coragem de falar nem pra minha irmã.</P>
         <P>Durante quase dois anos, eu evitei espelhos. Não o espelho do banheiro, não a câmera do celular, não o reflexo em vitrine de loja. Nada.</P>
-        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma version de mim que estava... desaparecendo.</P>
+        <P>Porque toda vez que eu me via, o que eu enxergava não era eu. Era uma versão de mim que estava... desaparecendo.</P>
         <Ancora>Era uma versão de mim que estava... desaparecendo.</Ancora>
         <P>Meu cabelo estava caindo. E não era aquela queda normal que todo mundo tem. Era tufo. Era bola de cabelo no ralo. Era travesseiro cheio de fios pela manhã.</P>
         <P>Era escova com tanto cabelo que eu precisava limpar no meio do processo pra conseguir terminar de pentear.</P>
@@ -308,7 +308,7 @@ export default function KcrAdvV2Page() {
         <P>Hoje meu cabelo voltou. Não do jeito que estava antes da queda começar.</P>
         <Ancora>Melhor.</Ancora>
         <P>O volume voltou. A queda está em zero. Os fios novos cresceram e já se misturaram com o restante. Mas o que mudou mais foi outra coisa.</P>
-        <P>Aqui eu preciso falar especialmente pras mulheres que estão na mesma fase que eu — acima dos 45, acima dos 50.</P>
+        <P>Aqui eu preciso talk especialmente pras mulheres que estão na mesma fase que eu — acima dos 45, acima dos 50.</P>
         <P>A gente cresce ouvindo que depois de uma certa idade tem que "se conformar". Com o corpo, com o cabelo, com a aparência.</P>
         <Ancora>Eu não me conformei. E você também não precisa.</Ancora>
         <P>No domingo passado, eu fui ao churrasco da família. Arrumei o cabelo solto. Botei um brinco bonito. Quando minha cunhada disse "Cláudia, você tá ótima, o que aconteceu?", eu consegui responder sem travar: "Tô bem, obrigada."</P>
@@ -349,17 +349,16 @@ export default function KcrAdvV2Page() {
 
         <div className="space-y-6 text-slate-700">
             <P className="font-bold text-[#1A1A1A]">Eu sei que parece caro à primeira vista. Mas faz a conta comigo:</P>
-            <div className="bg-pink-50 p-8 rounded-3xl border border-pink-100 text-center my-8">
-                <p className="font-merriweather font-black text-3xl md:text-5xl tracking-tighter mb-2 text-pink-700">R$ 1,80 Por Dia.</p>
-                <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">R$ 159,90 ÷ 90 dias de tratamento</p>
-            </div>
+            <P className="bg-slate-50 p-6 rounded-2xl border border-slate-100 font-bold italic text-slate-900">
+                R$ 159,90 ÷ 90 dias de tratamento = menos de R$ 1,80 por dia.
+            </P>
             <P>Menos que um café. Por 5 produtos profissionais aprovados pela ANVISA, com frete grátis e garantia de resultado.</P>
             <P>Lembra que eu joguei R$ 800 fora em coisas que não funcionaram? <strong>Isso é menos de um quinto daquilo.</strong></P>
         </div>
 
         <div className="text-center my-16 space-y-6 pt-10 border-t border-slate-50">
             <div className="space-y-2">
-                <p className="font-merriweather font-black text-3xl md:text-4xl text-pink-600">De R$ 227,00 por R$ 159,90 + Frete Grátis</p>
+                <p className="font-merriweather font-black text-3xl md:text-4xl text-slate-900">De R$ 227,00 por <span className="text-[#df327b]">R$ 159,90</span> + Frete Grátis</p>
                 <p className="font-merriweather text-xs md:text-sm font-bold text-slate-400 uppercase tracking-[0.2em] leading-relaxed max-w-lg mx-auto">
                     Aprovado e testado pela ANVISA  |  Garantia de resultado  |  Dinheiro de volta se não gostar
                 </p>
