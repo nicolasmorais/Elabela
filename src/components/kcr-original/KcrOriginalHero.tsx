@@ -78,9 +78,16 @@ export const KcrOriginalHero = ({ config, formatTime, timeLeft }: KcrOriginalHer
                         </div>
                         <p className="text-slate-500 font-medium text-sm">{config.installmentText}</p>
                     </div>
-                    <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl">
-                        <p className="text-slate-800 font-black text-xl italic leading-tight">"Todo Dia Era um Bolo de Cabelo no Pente... Hoje Não Cai Quase Nada."</p>
+                    
+                    <div className="bg-orange-50/50 border-l-4 border-orange-400 p-5 rounded-r-2xl space-y-3">
+                        <p className="text-slate-800 font-black text-lg leading-snug">
+                            O Kit Cavalo de Raça age nos 4 motivos que fazem isso acontecer ao mesmo tempo — ancora a raiz, reconstrói o fio por dentro, protege por fora e ainda acorda o folículo pra nascer cabelo novo.
+                        </p>
+                        <p className="text-slate-600 font-bold text-sm italic">
+                            É o seu banho de sempre. Só que com produtos que realmente tratam a causa.
+                        </p>
                     </div>
+
                     <div className="space-y-4 pt-4">
                         <Link href={config.checkoutUrl} target="_blank" className="block group/btn">
                             <Button 
